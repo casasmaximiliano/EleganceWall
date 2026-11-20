@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Videos y audios generados (pesados)
+estudio-moni/video/out/
