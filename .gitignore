@@ -25,3 +25,4 @@ yarn-error.log*
 # Videos y audios generados (pesados)
 estudio-moni/video/out/
 __pycache__/
+estudio-moni/marca/out/
