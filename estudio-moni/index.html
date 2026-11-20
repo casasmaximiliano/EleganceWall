@@ -1,0 +1,839 @@
+<title>Estudio Moni</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=Patrick+Hand&display=swap">
+<style>
+/* Layout: estudio de animación — un hero con el personaje, la investigación en dos columnas (viral / flop), y una "sala de pruebas" con 5 teléfonos 9:16 que reproducen cada formato. */
+:root{
+  --bg:#EEF2EF; --surface:#FFFFFF; --ink:#14221D; --muted:#56675F; --line:#D3DDD7;
+  --coin:#F2B12A; --coin-ink:#7A5200; --green:#17865A; --green-soft:#DDF0E6; --red:#C53B4E; --red-soft:#F8E1E4;
+  --f-display:"Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --f-body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --f-hand:"Patrick Hand", "Comic Sans MS", cursive;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1613; --surface:#16211D; --ink:#E6EEEA; --muted:#97A9A1; --line:#2A3833;
+  --coin:#F5BE45; --coin-ink:#FFD77A; --green:#43C98C; --green-soft:#173326; --red:#F07A8A; --red-soft:#3A1E24; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1613; --surface:#16211D; --ink:#E6EEEA; --muted:#97A9A1; --line:#2A3833;
+  --coin:#F5BE45; --coin-ink:#FFD77A; --green:#43C98C; --green-soft:#173326; --red:#F07A8A; --red-soft:#3A1E24; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:1160px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.08;margin:0}
+h2{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.02em}
+h3{font-size:20px;font-weight:700}
+p{margin:0}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+section{padding-block:56px 8px;display:grid;gap:28px}
+.lede{max-width:62ch;color:var(--muted);font-size:17px}
+a{color:var(--green)}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid var(--coin);outline-offset:2px}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:32px;align-items:center;padding-block:40px 16px}
+.hero h1{font-size:clamp(44px,8vw,92px);font-weight:800;letter-spacing:-.04em}
+.hero h1 span{color:var(--coin-ink);background:linear-gradient(transparent 62%,color-mix(in srgb,var(--coin) 45%,transparent) 62%)}
+.hero .copy{display:grid;gap:18px}
+.hero-stage{position:relative;aspect-ratio:1/1;max-width:100%;border-radius:50%;
+  background:radial-gradient(circle at 50% 55%,color-mix(in srgb,var(--coin) 28%,var(--surface)) 0,var(--surface) 62%);border:1px solid var(--line)}
+.hero-stage .actor{width:62%;left:19%;top:12%}
+.quote{font-family:var(--f-display);font-weight:700;font-size:20px;border-left:4px solid var(--coin);padding-left:14px}
+.cast{display:flex;gap:10px;flex-wrap:wrap}
+.cast div{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 14px 4px 4px;font-size:14px}
+.cast svg{width:34px;height:40px}
+.cast b{font-weight:700}
+
+/* look switcher */
+.lookbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;gap:12px;align-items:center;flex-wrap:wrap;
+  background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);padding:10px 0;border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+.seg{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px}
+.seg button{border:0;background:none;padding:6px 14px;border-radius:999px;font-weight:600;font-size:14px}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.lookbar .hint{font-size:13px;color:var(--muted)}
+
+/* RESEARCH */
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.col{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:grid;gap:16px;align-content:start;min-width:0}
+.col header{display:flex;align-items:center;gap:10px}
+.pill{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 10px;border-radius:999px}
+.pill.g{background:var(--green-soft);color:var(--green)}
+.pill.r{background:var(--red-soft);color:var(--red)}
+.find{display:grid;gap:4px;padding-top:14px;border-top:1px dashed var(--line)}
+.find:first-of-type{border-top:0;padding-top:0}
+.find b{font-family:var(--f-display);font-size:17px}
+.find p{color:var(--muted);font-size:15px}
+.find .ev{font-size:13px;color:var(--ink);font-variant-numeric:tabular-nums}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.stat{border-top:3px solid var(--coin);padding-top:10px;display:grid;gap:2px}
+.stat strong{font-family:var(--f-display);font-size:30px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.stat span{font-size:13px;color:var(--muted)}
+.caveat{font-size:14px;color:var(--muted);max-width:75ch}
+
+/* FORMATS */
+.formats{display:grid;gap:28px}
+.fmt{display:grid;grid-template-columns:300px minmax(0,1fr);gap:28px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;align-items:start}
+.fmt .info{display:grid;gap:14px;min-width:0}
+.fmt .top{display:flex;justify-content:space-between;gap:12px;align-items:start}
+.fmt .tag{font-size:13px;font-weight:700;color:var(--coin-ink);letter-spacing:.04em}
+.fmt h3{font-size:26px;font-weight:800;letter-spacing:-.01em}
+.fav{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:7px 14px;font-weight:700;font-size:14px;white-space:nowrap}
+.fav[aria-pressed="true"]{background:var(--coin);border-color:var(--coin);color:#2a1d00}
+.kv{display:grid;grid-template-columns:130px minmax(0,1fr);gap:8px 16px;font-size:15px}
+.kv dt{color:var(--muted);font-weight:600}
+.kv dd{margin:0}
+.meter{display:inline-flex;gap:3px;vertical-align:middle;margin-right:6px}
+.meter i{width:14px;height:8px;border-radius:2px;background:var(--line)}
+.meter i.on{background:var(--ink)}
+.script{font-size:14px;border-radius:12px;background:var(--bg);padding:12px 14px;display:grid;gap:4px}
+.script div{display:grid;grid-template-columns:46px minmax(0,1fr);gap:8px}
+.script span{font-variant-numeric:tabular-nums;color:var(--muted)}
+
+/* PHONE */
+.phone-col{display:grid;gap:10px;justify-items:center}
+.ph{width:100%;max-width:300px;aspect-ratio:9/16;border-radius:26px;background:#000;padding:6px;box-shadow:0 14px 30px -18px rgba(0,0,0,.5)}
+.screen{position:relative;width:100%;height:100%;border-radius:21px;overflow:hidden;container-type:inline-size;isolation:isolate}
+.ctrls{display:flex;gap:8px}
+.ctrls button{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600}
+.ctrls button[aria-pressed="true"]{background:var(--green);color:#fff;border-color:var(--green)}
+.prog{position:absolute;left:4%;right:4%;top:2.2%;height:.9cqw;background:rgba(255,255,255,.3);border-radius:9px;z-index:9;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:#fff}
+.handle{position:absolute;left:5%;bottom:3.5%;z-index:9;color:#fff;font:700 4.2cqw var(--f-body);text-shadow:0 1px 3px rgba(0,0,0,.6);display:flex;align-items:center;gap:2cqw}
+.handle i{width:7cqw;height:7cqw;border-radius:50%;background:var(--coin);display:inline-block;border:.6cqw solid #fff}
+.rail{position:absolute;right:3%;bottom:12%;z-index:9;display:grid;gap:4cqw;justify-items:center;color:#fff;font:600 3.2cqw var(--f-body);text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.rail b{display:block;width:10cqw;height:10cqw;border-radius:50%;background:rgba(0,0,0,.35);backdrop-filter:blur(4px)}
+.cap{position:absolute;left:6%;right:14%;top:73%;z-index:8;text-align:center;font:800 7.4cqw/1.12 var(--f-display);color:#fff;
+  paint-order:stroke;-webkit-text-stroke:1.6cqw #000;letter-spacing:-.01em}
+.cap .w{opacity:.55;transition:opacity .08s}
+.cap .w.lit{opacity:1}
+.cap .w.now{color:#FFD43B}
+.ph.cap-board .cap{-webkit-text-stroke:0;color:#1b1b1b;font-family:var(--f-hand);font-weight:400;font-size:8.4cqw}
+.ph.cap-board .cap .w.now{color:#0F7A4E;background:#FFF07A}
+.ph.cap-board .handle,.ph.cap-board .rail{color:#222;text-shadow:none}
+.ph.cap-board .prog{background:rgba(0,0,0,.12)}.ph.cap-board .prog i{background:#222}
+
+/* scene-gated elements */
+.ph [data-s]{opacity:0;visibility:hidden;transition:opacity .25s, visibility 0s .25s}
+.ph [data-s].show{opacity:1;visibility:visible;transition:opacity .25s}
+.l{position:absolute;z-index:3}
+.pop.show{animation:pop .45s cubic-bezier(.3,1.6,.5,1) both}
+.slam.show{animation:slam .5s cubic-bezier(.2,1.4,.4,1) both}
+.rise.show{animation:rise .5s ease-out both}
+@keyframes pop{from{transform:scale(.4)}to{transform:scale(1)}}
+@keyframes slam{0%{transform:scale(2.6) rotate(-14deg);opacity:0}70%{opacity:1}100%{transform:scale(1) rotate(-8deg)}}
+@keyframes rise{from{transform:translateY(30%);opacity:0}to{transform:none;opacity:1}}
+
+/* ACTORS */
+.actor{position:absolute;z-index:5;width:56%;left:22%;top:25%;transition:left .55s cubic-bezier(.5,0,.2,1.2),top .55s cubic-bezier(.5,0,.2,1.2),width .55s ease}
+.actor svg{display:block;width:100%;height:auto;overflow:visible;animation:bob 2.6s ease-in-out infinite}
+.at-left{left:1%;width:47%;top:33%}
+.at-right{left:52%;width:47%;top:33%}
+.at-off-right{left:115%;width:47%;top:33%}
+.at-off-left{left:-60%;width:47%;top:33%}
+.at-br{left:63%;width:34%;top:47%}
+.at-bl{left:3%;width:34%;top:47%}
+.at-low{left:24%;width:52%;top:38%}
+.at-small-l{left:4%;width:38%;top:44%}
+.at-small-r{left:56%;width:38%;top:44%}
+.at-zoom{left:6%;width:88%;top:16%}
+@keyframes bob{50%{transform:translateY(-2.5%)}}
+.talk svg{animation:bob .5s ease-in-out infinite}
+.talk .mouth{animation:talk .16s ease-in-out infinite alternate}
+@keyframes talk{from{transform:scaleY(.3)}to{transform:scaleY(1.1)}}
+.mouth,.eye,.arm-r,.arm-l,.brow,.pupils{transform-box:fill-box;transform-origin:center}
+.arm-r{transform-origin:0% 100%}.arm-l{transform-origin:100% 0%}
+.eye{animation:blink 4.2s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.ex-wave .arm-r{animation:wave .5s ease-in-out infinite alternate}
+@keyframes wave{from{transform:rotate(-10deg)}to{transform:rotate(18deg)}}
+.ex-shock svg{animation:shake .12s linear 6}
+@keyframes shake{25%{transform:translateX(-2%)}75%{transform:translateX(2%)}}
+
+/* expressions */
+.m-o,.m-smirk,.m-flat,.lids,.sweat,.bulb{display:none}
+.ex-shock .m-smile,.ex-sly .m-smile,.ex-angry .m-smile,.ex-worried .m-smile,.ex-think .m-smile{display:none}
+.ex-shock .m-o{display:inline}
+.ex-shock .brows{transform:translateY(-7px)}
+.ex-shock .pupil{r:4.5px}
+.ex-sly .m-smirk,.ex-sly .lids{display:inline}
+.ex-angry .m-flat,.ex-worried .m-o,.ex-worried .sweat,.ex-think .m-flat,.ex-think .bulb{display:inline}
+.ex-worried .m-o{transform:scale(.6)}
+.ex-angry .brow-l{transform:rotate(20deg) translateY(4px)}
+.ex-angry .brow-r{transform:rotate(-20deg) translateY(4px)}
+.ex-worried .brow-l{transform:rotate(-16deg)}
+.ex-worried .brow-r{transform:rotate(16deg)}
+.ex-think .pupils{transform:translate(3px,-5px)}
+.ex-think .brow-r{transform:translateY(-6px)}
+.mouth .m-o{transform-box:fill-box;transform-origin:center}
+
+/* LOOKS: flat (default), soft (3D suave), doodle (dibujado a mano) */
+.chr .fill-main{fill:var(--c-main)}
+.chr .ln{stroke:var(--c-dark);stroke-width:4;stroke-linejoin:round}
+.chr .limb{fill:none;stroke:var(--c-dark);stroke-width:6;stroke-linecap:round}
+.chr .acc{fill:var(--c-acc)}
+.chr .eyew{fill:#fff;stroke:var(--c-dark);stroke-width:2.5}
+.chr .pupil{fill:#16110a}
+.chr .shine{fill:#fff}
+.chr .brow{fill:none;stroke:#2b1d08;stroke-width:5;stroke-linecap:round}
+.chr .mth{fill:#7c1d22;stroke:#3d0c0f;stroke-width:2.5}
+.chr .mline{fill:none;stroke:#3d0c0f;stroke-width:4.5;stroke-linecap:round}
+.chr .cheek{fill:#FF7C8F;opacity:.45}
+.chr .sweat path{fill:#7FD3FF;stroke:#2B87B8;stroke-width:2}
+.chr .leaf{fill:#3DBE6E;stroke:#1C6B3A;stroke-width:3}
+.chr .rim{fill:none;stroke:var(--c-dark);stroke-width:2.5;stroke-dasharray:2 7;opacity:.55}
+.chr .gloss{display:none}
+.chr .shoe{fill:#2A2320}
+.chr .bulb circle{fill:#FFE45C;stroke:#B58A00;stroke-width:2.5}
+.chr .bulb path{stroke:#B58A00;stroke-width:3;fill:none;stroke-linecap:round}
+.chr-moni{--c-main:#F7BC2B;--c-dark:#9C6400;--c-acc:#FFD970}
+.chr-card{--c-main:#E5426A;--c-dark:#8A1233;--c-acc:#FFCC4D}
+.chr-cup{--c-main:#F6E6CF;--c-dark:#7A4E2C;--c-acc:#8B5A34}
+
+[data-look="soft"] .chr-moni .fill-main{fill:url(#g-coin)}
+[data-look="soft"] .chr-card .fill-main{fill:url(#g-card)}
+[data-look="soft"] .chr-cup .fill-main{fill:url(#g-cup)}
+[data-look="soft"] .chr .ln{stroke:none}
+[data-look="soft"] .chr .limb{stroke-width:9}
+[data-look="soft"] .chr .gloss{display:inline;fill:#fff;opacity:.38}
+[data-look="soft"] .chr .eyew{stroke:none;fill:url(#g-eye)}
+[data-look="soft"] .chr .rim{stroke-dasharray:none;opacity:.25;stroke-width:5}
+[data-look="soft"] .actor svg,[data-look="soft"] .cast svg{filter:drop-shadow(0 6px 5px rgba(0,0,0,.28))}
+
+[data-look="doodle"] .chr .fill-main{fill:#FFFDF4}
+[data-look="doodle"] .chr-moni .fill-main.tint{fill:#FFE9A8}
+[data-look="doodle"] .chr-card .fill-main.tint{fill:#FFC9D5}
+[data-look="doodle"] .chr-cup .fill-main.tint{fill:#F0DCC0}
+[data-look="doodle"] .chr .ln,[data-look="doodle"] .chr .eyew{stroke:#1a1a1a;stroke-width:3.5}
+[data-look="doodle"] .chr .limb{stroke:#1a1a1a;stroke-width:4.5}
+[data-look="doodle"] .chr .rim{stroke:#1a1a1a;opacity:.5;stroke-dasharray:6 6}
+[data-look="doodle"] .chr .leaf{fill:#fff;stroke:#1a1a1a}
+[data-look="doodle"] .chr .cheek{fill:none;stroke:#E84B62;stroke-width:2.5;opacity:.8}
+[data-look="doodle"] .chr .acc{fill:#1a1a1a}
+[data-look="doodle"] .chr .shoe{fill:#1a1a1a}
+[data-look="doodle"] .chr > g{filter:url(#wobble)}
+
+/* ===== FORMAT STAGES ===== */
+.bg{position:absolute;inset:0;z-index:0}
+/* 1 novela */
+.f-novela .bg{background:radial-gradient(ellipse 70% 45% at 50% 58%,#7B2A73 0,#3A0F3E 45%,#14051A 100%)}
+.f-novela .spot{position:absolute;inset:0;background:radial-gradient(ellipse 30% 60% at 50% 0,rgba(255,220,240,.25),transparent 70%);z-index:1}
+.vig{position:absolute;inset:0;z-index:2;box-shadow:inset 0 0 18cqw 4cqw rgba(255,0,60,.55)}
+.vig.show{animation:flash .9s ease-out 2}
+@keyframes flash{0%{opacity:1}100%{opacity:.25}}
+.badge{left:5%;top:5.5%;font:800 3.6cqw var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:#FFC6E8;background:rgba(255,255,255,.1);padding:1.2cqw 3cqw;border-radius:9px;border:1px solid rgba(255,198,232,.4)}
+.panel{left:8%;right:8%;top:11%;display:grid;gap:1.5cqw;text-align:center;color:#fff;font-family:var(--f-display)}
+.panel .row{display:flex;justify-content:center;align-items:baseline;gap:3cqw;font-weight:800;font-size:9cqw}
+.panel .row small{font:600 4.4cqw var(--f-body);color:#FFC6E8}
+.panel .big{font-size:17cqw;color:#FFD43B;font-weight:800;line-height:1;text-shadow:0 0 6cqw rgba(255,212,59,.5)}
+.panel .row:nth-child(2){animation-delay:.35s}.panel .big{animation-delay:.7s}
+.foot{left:6%;right:6%;top:39%;color:rgba(255,255,255,.7);font:500 3.2cqw var(--f-body);text-align:center}
+.next{right:5%;top:12%;font:800 4.6cqw var(--f-display);color:#14051A;background:#FFD43B;padding:1.6cqw 3.4cqw;border-radius:2cqw;transform:rotate(4deg)}
+/* 2 pizarra */
+.f-board .bg{background:#FBFBF6;background-image:linear-gradient(#E7ECEF 1px,transparent 1px),linear-gradient(90deg,#E7ECEF 1px,transparent 1px);background-size:7cqw 7cqw}
+.f-board .tray{position:absolute;left:0;right:0;bottom:0;height:2.4%;background:#C9CED3;z-index:1}
+.wb-title{left:0;right:0;top:7%;text-align:center;font:400 13cqw var(--f-hand);color:#1b1b1b;line-height:1}
+.wb-title u{text-decoration-color:#E5426A;text-decoration-thickness:1cqw;text-underline-offset:2cqw}
+.pie{left:6%;top:19%;width:52%}
+.pie circle{fill:none;stroke-width:34}
+.pie .seg{transition:none}
+.pie .seg.show{animation:draw 1s ease-out both}
+.seg1{stroke:#3AA6E0;--len:50}.seg2{stroke:#F7BC2B;--len:30}.seg3{stroke:#2DB36F;--len:20}
+@keyframes draw{from{stroke-dasharray:0 100}to{stroke-dasharray:var(--len) 100}}
+.pie .ring{stroke:#1b1b1b;stroke-width:2.5;fill:none}
+.lbl{left:62%;font:400 6.6cqw/1 var(--f-hand);color:#1b1b1b;display:grid}
+.lbl b{font-size:10cqw;font-weight:400}
+.lbl.a{top:16%}.lbl.a b{color:#2385BC}
+.lbl.b{top:26.5%}.lbl.b b{color:#C38800}
+.lbl.c{top:37%}.lbl.c b{color:#1E8A52}
+.pin{left:8%;top:57%;font:400 7cqw var(--f-hand);background:#FFF07A;color:#1b1b1b;padding:1.5cqw 3cqw;transform:rotate(-5deg);box-shadow:0 1cqw 2cqw rgba(0,0,0,.15)}
+/* 3 sitcom */
+.f-sit .bg{background:linear-gradient(#F4C98E 0 64%,#B9784A 64% 100%)}
+.f-sit .win{position:absolute;left:58%;top:8%;width:30%;height:20%;background:linear-gradient(#9FD8F2,#D9F1FA);border:1.6cqw solid #FFF4E2;z-index:1}
+.f-sit .frame{position:absolute;left:10%;top:11%;width:20%;height:13%;background:#5C8C7A;border:1.4cqw solid #6B3F22;z-index:1}
+.f-sit .couch{position:absolute;left:-4%;right:-4%;top:56%;height:14%;background:#5E7FB8;border-radius:5cqw 5cqw 0 0;z-index:1;box-shadow:inset 0 -3cqw 0 #4A68A0}
+.sit-title{left:6%;right:6%;top:6%;text-align:center;font:800 6.4cqw/1.1 var(--f-display);color:#3A1D08;background:#FFF4E2;padding:2cqw;border-radius:3cqw;transform:rotate(-2deg)}
+.calc{left:14%;right:14%;top:7%;background:#1E2A2A;color:#9EF5C6;border-radius:3cqw;padding:3cqw;font:700 6.8cqw/1.35 ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.calc div{animation:rise .4s ease-out both}
+.calc div:nth-child(2){animation-delay:.6s}.calc div:nth-child(3){animation-delay:1.2s}
+.total{left:8%;right:8%;top:8%;text-align:center;font:800 16cqw/1 var(--f-display);color:#C8102E;-webkit-text-stroke:.8cqw #fff;paint-order:stroke}
+.total small{display:block;font-size:6cqw;color:#3A1D08;-webkit-text-stroke:0}
+.laugh{right:6%;top:30%;font:700 4.4cqw var(--f-body);color:#fff;background:#3A1D08;padding:1cqw 2.6cqw;border-radius:99px}
+.ep{left:6%;top:6%;font:800 4cqw var(--f-body);color:#3A1D08;background:#FFF4E2;padding:1.4cqw 3cqw;border-radius:99px}
+/* 4 simulador */
+.f-sim .bg{background:#0A241D;background-image:linear-gradient(rgba(126,255,196,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(126,255,196,.07) 1px,transparent 1px);background-size:8cqw 8cqw}
+.bign{left:0;right:0;top:12%;text-align:center;font:800 19cqw/1 var(--f-display);color:#7EFFC4;text-shadow:0 0 8cqw rgba(126,255,196,.6);font-variant-numeric:tabular-nums}
+.bign small{display:block;font:600 4.6cqw var(--f-body);color:#CFEFE2;text-shadow:none;margin-top:2cqw}
+.rew{left:6%;top:6%;font:800 4.4cqw var(--f-body);color:#0A241D;background:#7EFFC4;padding:1.2cqw 3cqw;border-radius:99px}
+.chart{left:4%;right:4%;top:12%}
+.chart svg{width:100%;display:block}
+.chart text{font:600 9px var(--f-body);fill:#CFEFE2}
+.chart .ax{stroke:rgba(207,239,226,.5);stroke-width:1}
+.chart .ln1{fill:none;stroke:#F7BC2B;stroke-width:3.5;stroke-linecap:round}
+.chart .ln2{fill:none;stroke:#7EFFC4;stroke-width:4;stroke-linecap:round}
+.chart .area{fill:rgba(126,255,196,.14)}
+.chart .draw.show{animation:dline 1.8s ease-in-out both}
+@keyframes dline{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.chart .draw{stroke-dasharray:1;stroke-dashoffset:1}
+.leg{left:6%;top:50%;display:grid;gap:1cqw;font:700 4.6cqw var(--f-body);color:#fff;font-variant-numeric:tabular-nums}
+.leg .k1{color:#F7BC2B}.leg .k2{color:#7EFFC4}
+.disc{left:6%;right:6%;bottom:9%;color:rgba(207,239,226,.65);font:500 2.9cqw var(--f-body);text-align:left;padding-right:30%}
+.ask{left:6%;right:6%;top:12%;text-align:center;font:800 8.6cqw/1.1 var(--f-display);color:#fff}
+.ask em{font-style:normal;color:#7EFFC4}
+/* 5 mito */
+.f-myth .bg{background:linear-gradient(115deg,#C7243A 0 49.6%,#0F8A57 50.4% 100%)}
+.gs{left:0;right:0;top:6%;text-align:center;font:800 9.4cqw/1 var(--f-display);color:#fff;letter-spacing:-.02em;text-shadow:0 .8cqw 0 rgba(0,0,0,.25)}
+.gs i{font-style:normal;font-size:6cqw;opacity:.85}
+.stmt{left:7%;right:7%;top:16%;background:#fff;color:#1b1b1b;border-radius:3cqw;padding:3.4cqw;text-align:center;font:800 6.6cqw/1.15 var(--f-display);box-shadow:0 2cqw 0 rgba(0,0,0,.25)}
+.btns{left:7%;right:7%;top:34%;display:grid;grid-template-columns:1fr 1fr;gap:3cqw}
+.btns div{text-align:center;font:800 6cqw var(--f-display);color:#fff;padding:2.6cqw 0;border-radius:3cqw;border:1cqw solid #fff}
+.btns div:first-child{background:#9C1428}.btns div:last-child{background:#0A6A42}
+.cd{left:0;right:0;top:45%;text-align:center;font:800 16cqw/1 var(--f-display);color:#fff;height:17cqw}
+.cd span{position:absolute;left:0;right:0;opacity:0}
+.cd.show span{animation:cd 1s ease-out both}
+.cd.show span:nth-child(2){animation-delay:1s}.cd.show span:nth-child(3){animation-delay:2s}
+@keyframes cd{0%{opacity:0;transform:scale(1.8)}20%{opacity:1;transform:scale(1)}85%{opacity:1}100%{opacity:0}}
+.stamp{left:16%;top:14%;font:800 16cqw/1 var(--f-display);color:#FFD43B;border:1.6cqw solid #FFD43B;padding:1cqw 4cqw;border-radius:3cqw;transform:rotate(-8deg);background:rgba(120,0,20,.55)}
+.stamp sup{font-size:7cqw}
+.why{left:5%;width:58%;display:grid;gap:2.4cqw}
+.why div{background:#fff;color:#1b1b1b;border-radius:2.6cqw;padding:2.4cqw 3cqw;font:600 3.9cqw/1.25 var(--f-body);animation:rise .45s ease-out both}
+.why div:nth-child(2){animation-delay:.9s}
+.why{top:37%}
+.cta{left:6%;right:6%;top:15%;text-align:center;font:800 8cqw/1.1 var(--f-display);color:#fff}
+
+/* PLAN */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;gap:6px;align-content:start;counter-increment:s}
+.steps li::before{content:counter(s);font:800 15px var(--f-display);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--coin);color:#2a1d00}
+.steps b{font-family:var(--f-display);font-size:17px}
+.steps p{color:var(--muted);font-size:15px}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:560px}
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:700;white-space:nowrap}
+.pick{background:var(--ink);color:var(--bg);border-radius:22px;padding:28px;display:grid;gap:14px}
+.pick h2{color:var(--bg)}
+.pick p{opacity:.85;max-width:65ch}
+.pick output{display:block;font-family:var(--f-display);font-size:19px;font-weight:700;background:color-mix(in srgb,var(--bg) 12%,transparent);padding:14px 16px;border-radius:12px;user-select:all}
+.pick button{justify-self:start;background:var(--coin);color:#2a1d00;border:0;border-radius:999px;padding:10px 18px;font-weight:700}
+.src{columns:2;column-gap:32px;font-size:14px;padding-left:18px;color:var(--muted)}
+.src li{break-inside:avoid;margin-bottom:6px}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:minmax(0,1fr)}
+  .hero-stage{max-width:340px;justify-self:center;width:100%}
+  .cols{grid-template-columns:minmax(0,1fr)}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fmt{grid-template-columns:minmax(0,1fr)}
+  .steps{grid-template-columns:minmax(0,1fr)}
+  .src{columns:1}
+  .kv{grid-template-columns:minmax(0,1fr)}
+  .kv dt{margin-top:6px}
+}
+@media (prefers-reduced-motion:reduce){
+  .actor svg,.eye,.talk .mouth,.ex-wave .arm-r{animation:none!important}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="g-coin" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#FFF0A8"/><stop offset=".45" stop-color="#F7BC2B"/><stop offset="1" stop-color="#B87400"/></radialGradient>
+    <linearGradient id="g-card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF8DA8"/><stop offset=".5" stop-color="#E5426A"/><stop offset="1" stop-color="#9E1238"/></linearGradient>
+    <linearGradient id="g-cup" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#F6E6CF"/><stop offset="1" stop-color="#CFAE84"/></linearGradient>
+    <radialGradient id="g-eye" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#DCE3EA"/></radialGradient>
+    <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="1"><animate attributeName="seed" values="1;3;5" dur=".45s" calcMode="discrete" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" scale="3.2"/></filter>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="copy">
+    <p class="eyebrow">Investigación + sala de pruebas · noviembre 2026</p>
+    <h1>Conocé a <span>Moni</span>.</h1>
+    <p class="lede">Una moneda con un brote en la cabeza: la plata que se cuida, crece. Este es el personaje que propongo para tus shorts de finanzas. Abajo está lo que encontré sobre por qué algunos shorts animados con IA explotan y otros mueren en 200 vistas, y cinco formatos de prueba animados para que elijas el estilo.</p>
+    <p class="quote">“Plata que duerme, plata que pierde.”</p>
+    <div class="cast" id="cast"></div>
+  </div>
+  <div class="hero-stage" aria-label="Moni saludando"><div class="actor ex-wave" data-a="moni" id="heroMoni"></div></div>
+</header>
+
+<section id="investigacion">
+  <div style="display:grid;gap:10px">
+    <p class="eyebrow">Qué encontré</p>
+    <h2>Lo viral no es la IA. Es la estructura.</h2>
+    <p class="lede">Revisé análisis de shorts sin rostro, tendencias de animación con IA de 2026 (como las telenovelas de frutas) y los canales de finanzas animados que más crecen. El patrón es claro: ganan los que tienen un personaje fijo, una historia con conflicto y un gancho que pega en el primer segundo.</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><strong>3,3 M</strong><span>seguidores en ~10 días para <i>Fruit Love Island</i>, una serie con personajes fijos</span></div>
+    <div class="stat"><strong>4.400 M</strong><span>vistas en el hashtag en español #frutinovela</span></div>
+    <div class="stat"><strong>58 %</strong><span>de los shorts virales analizados dura menos de 30 s</span></div>
+    <div class="stat"><strong>0 de 500</strong><span>shorts virales sin rostro arrancan con un saludo</span></div>
+  </div>
+  <div class="cols">
+    <article class="col">
+      <header><span class="pill g">Por qué explotan</span></header>
+      <div class="find"><b>Un gancho triple en el segundo cero</b><p>Voz, texto e imagen arrancan juntos. Nada de “hola, hoy les traigo”. Las guías ponen el gancho en el primer 1 a 1,5 segundos.</p><p class="ev">500 shorts virales: ninguno abre con saludo, casi todos combinan las tres capas.</p></div>
+      <div class="find"><b>Personaje recurrente y formato de serie</b><p>La gente vuelve por el personaje, no por el tema. Las series cortan en cliffhanger y piden el capítulo siguiente.</p><p class="ev">Frutas con IA: capítulos de 30 a 60 s, trama de telenovela, millones de seguidores en días.</p></div>
+      <div class="find"><b>Historia antes que lista</b><p>Conflicto, villano, giro, resolución. Una lista de “5 tips” compite con miles iguales. Una historia con un villano (la tarjeta, el gasto hormiga) se recuerda.</p><p class="ev">Hallazgo #5 del análisis de 500 shorts: la narrativa le gana a la lista.</p></div>
+      <div class="find"><b>El texto en pantalla es la capa principal</b><p>Subtítulos grandes palabra por palabra y cortes cada 2 o 3 segundos. Mucha gente mira sin sonido.</p></div>
+      <div class="find"><b>Mostrar el resultado primero</b><p>Arrancar con el número sorprendente (“$183.000”) y después explicar cómo se llega. La curiosidad sostiene la retención.</p></div>
+      <div class="find"><b>Identidad visual reconocible</b><p>En finanzas crecen los canales con un personaje de estilo propio y fijo. Se reconoce el video antes de leer el título.</p></div>
+    </article>
+    <article class="col">
+      <header><span class="pill r">Por qué fracasan</span></header>
+      <div class="find"><b>Sin identidad</b><p>Cambian de estilo, de voz y de formato en cada video. El espectador no tiene nada a lo que volver.</p></div>
+      <div class="find"><b>Voz de IA genérica</b><p>La voz por defecto de las herramientas suena a la de otros mil canales, y la retención cae en videos más largos.</p></div>
+      <div class="find"><b>Producción en masa y plantillas</b><p>YouTube cambió en julio de 2025 su regla a “contenido no auténtico” y desmonetiza lo repetitivo hecho en serie. La IA está permitida si aporta algo original.</p><p class="ev">Enero 2026: 16 canales cerrados con 35 M de suscriptores y 4.700 M de vistas.</p></div>
+      <div class="find"><b>Tema genérico, título que promete de más</b><p>“Cómo hacerte rico” sin un ángulo concreto. El espectador se siente engañado, desliza, y el algoritmo deja de mostrarlo.</p></div>
+      <div class="find"><b>Abandono temprano</b><p>La mayoría de los canales sin rostro se abandona entre la semana 3 y la 8, antes de que el algoritmo encuentre su público.</p></div>
+      <div class="find"><b>En finanzas, la desconfianza</b><p>TikTok premia lo viral, no lo correcto, y la gente ya desconfía de los gurús. Usar números verificables y aclarar “ejemplo ilustrativo” es una ventaja, no un freno.</p></div>
+    </article>
+  </div>
+  <p class="caveat">Las cifras salen sobre todo de blogs de herramientas de video y de medios que cubren tendencias. Varias no están auditadas, así que las uso como hipótesis. Tus propios datos de YouTube Studio van a mandar sobre cualquier promedio. Las fuentes están al final.</p>
+</section>
+
+<section id="formatos">
+  <div style="display:grid;gap:10px">
+    <p class="eyebrow">Sala de pruebas</p>
+    <h2>Cinco formatos, el mismo personaje</h2>
+    <p class="lede">Cada teléfono reproduce un borrador de 15 segundos. Cambiá el estilo visual arriba para ver a Moni en plano 2D, 3D suave o dibujado a mano. Tocá <b>Voz</b> para escuchar el guion con la voz del navegador (es solo de referencia: la versión final lleva una voz propia). Marcá con ★ los que te gusten.</p>
+  </div>
+  <div class="lookbar" role="group" aria-label="Estilo visual del personaje">
+    <span class="eyebrow">Estilo visual</span>
+    <div class="seg" id="lookSeg">
+      <button type="button" data-look="flat" aria-pressed="true">Plano 2D</button>
+      <button type="button" data-look="soft" aria-pressed="false">3D suave</button>
+      <button type="button" data-look="doodle" aria-pressed="false">Dibujado a mano</button>
+    </div>
+    <span class="hint">Se aplica a todos los formatos</span>
+  </div>
+
+  <div class="formats">
+
+    <!-- 1 NOVELA -->
+    <article class="fmt" data-id="novela">
+      <div class="phone-col">
+        <div class="ph f-novela" data-f="novela"><div class="screen">
+          <div class="bg"></div><div class="spot"></div>
+          <div class="vig" data-s="0"></div>
+          <div class="l badge" data-s="0 1 2 4">Moni · Capítulo 1</div>
+          <div class="l panel" data-s="3">
+            <div class="row rise">$1.000 <small>de deuda</small></div>
+            <div class="row rise">6 años <small>pagando el mínimo</small></div>
+            <div class="big pop"><span class="count" data-s="3" data-to="1867" data-pre="$">$1.867</span></div>
+          </div>
+          <div class="l foot" data-s="3">Ejemplo: 24 % anual, pago mínimo 3 % o $25.</div>
+          <div class="l next pop" data-s="4">Capítulo 2 →</div>
+          <div class="actor" data-a="moni"></div><div class="actor" data-a="card"></div>
+          <div class="cap"></div>
+          <div class="prog"><i></i></div><div class="rail"><b></b>12 K<b></b>841<b></b></div><div class="handle"><i></i>@moni.finanzas</div>
+        </div></div>
+        <div class="ctrls"></div>
+      </div>
+      <div class="info">
+        <div class="top"><div><p class="tag">Formato 1 · Serie</p><h3>La telenovela del dinero</h3></div><button class="fav" type="button" aria-pressed="false">☆ Me gusta</button></div>
+        <dl class="kv">
+          <dt>Idea</dt><dd>Drama en capítulos. Moni contra villanos financieros: Tarjetín (la tarjeta de crédito), la inflación, el préstamo “fácil”. Cada capítulo deja un cliffhanger.</dd>
+          <dt>Gancho</dt><dd>Una frase de telenovela con zoom y flash rojo: “¡Mi tarjeta me estuvo mintiendo!”</dd>
+          <dt>Por qué puede andar</dt><dd>Copia lo que hizo explotar a las frutas con IA (serie, conflicto, personajes fijos) pero con una enseñanza real. El cliffhanger empuja a seguir la cuenta.</dd>
+          <dt>Riesgo</dt><dd>Si el drama tapa el dato, la gente se ríe y no aprende. El número tiene que ser el clímax de cada capítulo.</dd>
+          <dt>Producción</dt><dd><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>Alta: dos o más personajes y continuidad entre capítulos.</dd>
+        </dl>
+        <div class="script" aria-label="Guion"></div>
+      </div>
+    </article>
+
+    <!-- 2 PIZARRA -->
+    <article class="fmt" data-id="pizarra">
+      <div class="phone-col">
+        <div class="ph f-board cap-board" data-f="pizarra"><div class="screen">
+          <div class="bg"></div><div class="tray"></div>
+          <div class="l wb-title" data-s="0 1 2 3 4"><u>50 / 30 / 20</u></div>
+          <svg class="l pie" viewBox="0 0 200 200" data-s="1 2 3 4" aria-hidden="true">
+            <g transform="rotate(-90 100 100)">
+              <circle class="seg seg1" data-s="1 2 3 4" cx="100" cy="100" r="62" pathLength="100" stroke-dasharray="50 100"/>
+              <circle class="seg seg2" data-s="2 3 4" cx="100" cy="100" r="62" pathLength="100" stroke-dasharray="30 100" stroke-dashoffset="-50"/>
+              <circle class="seg seg3" data-s="3 4" cx="100" cy="100" r="62" pathLength="100" stroke-dasharray="20 100" stroke-dashoffset="-80"/>
+            </g>
+            <circle class="ring" cx="100" cy="100" r="79"/><circle class="ring" cx="100" cy="100" r="45"/>
+          </svg>
+          <div class="l lbl a pop" data-s="1 2 3 4"><b>50%</b>necesidades</div>
+          <div class="l lbl b pop" data-s="2 3 4"><b>30%</b>gustos</div>
+          <div class="l lbl c pop" data-s="3 4"><b>20%</b>tu futuro</div>
+          <div class="l pin pop" data-s="4">📌 Guardalo</div>
+          <div class="actor" data-a="moni"></div>
+          <div class="cap"></div>
+          <div class="prog"><i></i></div><div class="rail"><b></b>48 K<b></b>2 K<b></b></div><div class="handle"><i></i>@moni.finanzas</div>
+        </div></div>
+        <div class="ctrls"></div>
+      </div>
+      <div class="info">
+        <div class="top"><div><p class="tag">Formato 2 · Explicador</p><h3>Pizarra express</h3></div><button class="fav" type="button" aria-pressed="false">☆ Me gusta</button></div>
+        <dl class="kv">
+          <dt>Idea</dt><dd>Moni dibuja un concepto en una pizarra en 15 segundos: una regla, una fórmula, un gráfico. Subtítulos manuscritos y resaltador.</dd>
+          <dt>Gancho</dt><dd>La promesa concreta en el título: “Tu sueldo dividido en 3. Así.”</dd>
+          <dt>Por qué puede andar</dt><dd>Es el formato de los canales de finanzas tipo stickman que más crecen: simple, legible y repetible. Se guarda y se comparte, dos señales fuertes para el algoritmo.</dd>
+          <dt>Riesgo</dt><dd>Es el formato más copiado. Lo que lo distingue es Moni y el tono, así que no puede ser solo una pizarra con voz.</dd>
+          <dt>Producción</dt><dd><span class="meter"><i class="on"></i><i></i><i></i><i></i></span>Baja: un personaje, un fondo, gráficos simples. Ideal para publicar todos los días.</dd>
+        </dl>
+        <div class="script" aria-label="Guion"></div>
+      </div>
+    </article>
+
+    <!-- 3 SITCOM -->
+    <article class="fmt" data-id="sitcom">
+      <div class="phone-col">
+        <div class="ph f-sit" data-f="sitcom"><div class="screen">
+          <div class="bg"></div><div class="win"></div><div class="frame"></div><div class="couch"></div>
+          <div class="l sit-title pop" data-s="0 1">El enemigo más tierno de tu sueldo</div>
+          <div class="l calc" data-s="2"><div>$3 × 22 días</div><div>× 12 meses</div><div>= ???</div></div>
+          <div class="l total pop" data-s="3"><span class="count" data-s="3" data-to="792" data-pre="$">$792</span><small>por año en cafecitos</small></div>
+          <div class="l laugh pop" data-s="3">[risas]</div>
+          <div class="l ep" data-s="4">Gastos hormiga · Ep. 3</div>
+          <div class="actor" data-a="moni"></div><div class="actor" data-a="cup"></div>
+          <div class="cap"></div>
+          <div class="prog"><i></i></div><div class="rail"><b></b>31 K<b></b>1,2 K<b></b></div><div class="handle"><i></i>@moni.finanzas</div>
+        </div></div>
+        <div class="ctrls"></div>
+      </div>
+      <div class="info">
+        <div class="top"><div><p class="tag">Formato 3 · Comedia</p><h3>Sitcom: Moni y Cafecito</h3></div><button class="fav" type="button" aria-pressed="false">☆ Me gusta</button></div>
+        <dl class="kv">
+          <dt>Idea</dt><dd>Diálogo corto entre Moni y un “gasto” con personalidad (Cafecito, Delivery, Suscripción Olvidada). Remate cómico con el número.</dd>
+          <dt>Gancho</dt><dd>El villano tierno habla primero: “Tranqui, soy solo un cafecito de $3.”</dd>
+          <dt>Por qué puede andar</dt><dd>Es el formato de dos personajes de los canales de finanzas estilo dibujo animado para adultos, que crecen por personajes reconocibles. El humor se comparte con amigos (“sos vos”).</dd>
+          <dt>Riesgo</dt><dd>Depende mucho del guion y del timing. Un chiste flojo se nota más que una explicación floja.</dd>
+          <dt>Producción</dt><dd><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>Media-alta: dos voces distintas y escenas de diálogo.</dd>
+        </dl>
+        <div class="script" aria-label="Guion"></div>
+      </div>
+    </article>
+
+    <!-- 4 SIMULADOR -->
+    <article class="fmt" data-id="simulador">
+      <div class="phone-col">
+        <div class="ph f-sim" data-f="simulador"><div class="screen">
+          <div class="bg"></div>
+          <div class="l bign pop" data-s="0">$183.000<small>con $5 por día</small></div>
+          <div class="l rew pop" data-s="1">⏪ Volvamos al día 1</div>
+          <div class="l chart" data-s="1 2 3"><svg viewBox="0 0 300 190" id="simChart" aria-hidden="true"></svg></div>
+          <div class="l leg" data-s="2 3">
+            <div class="k1" data-s="2 3">● Lo que pusiste: <span class="count" data-s="2 3" data-to="54000" data-pre="$">$54.000</span></div>
+            <div class="k2" data-s="3">● Con interés: <span class="count" data-s="3" data-to="183000" data-pre="$">$183.000</span></div>
+          </div>
+          <div class="l ask pop" data-s="4">¿A qué edad <em>empezás</em> vos? 👇</div>
+          <div class="l disc" data-s="1 2 3 4">Supuesto: $150 por mes, 7 % anual, 30 años. Ilustrativo, no es asesoramiento.</div>
+          <div class="actor" data-a="moni"></div>
+          <div class="cap"></div>
+          <div class="prog"><i></i></div><div class="rail"><b></b>90 K<b></b>5 K<b></b></div><div class="handle"><i></i>@moni.finanzas</div>
+        </div></div>
+        <div class="ctrls"></div>
+      </div>
+      <div class="info">
+        <div class="top"><div><p class="tag">Formato 4 · Dato</p><h3>¿Y si…? El simulador</h3></div><button class="fav" type="button" aria-pressed="false">☆ Me gusta</button></div>
+        <dl class="kv">
+          <dt>Idea</dt><dd>Arranca con el resultado sorprendente y rebobina para mostrar cómo se llega, con un gráfico que crece en pantalla.</dd>
+          <dt>Gancho</dt><dd>El número gigante en el primer cuadro: “$183.000”.</dd>
+          <dt>Por qué puede andar</dt><dd>“Resultado primero” es uno de los ganchos que más se repiten en los análisis. Termina con una pregunta que invita a comentar la edad propia.</dd>
+          <dt>Riesgo</dt><dd>Hay que explicar bien los supuestos. Un número que parece exagerado genera comentarios de desconfianza.</dd>
+          <dt>Producción</dt><dd><span class="meter"><i class="on"></i><i class="on"></i><i></i><i></i></span>Baja-media: el gráfico se genera solo cambiando los números.</dd>
+        </dl>
+        <div class="script" aria-label="Guion"></div>
+      </div>
+    </article>
+
+    <!-- 5 MITO -->
+    <article class="fmt" data-id="mito">
+      <div class="phone-col">
+        <div class="ph f-myth" data-f="mito"><div class="screen">
+          <div class="bg"></div>
+          <div class="l gs" data-s="0 1">¿MITO <i>o</i> VERDAD?</div>
+          <div class="l stmt" data-s="0 1 2">“Alquilar es tirar la plata”</div>
+          <div class="l btns" data-s="1"><div>MITO</div><div>VERDAD</div></div>
+          <div class="l cd" data-s="1"><span>3</span><span>2</span><span>1</span></div>
+          <div class="l stamp slam" data-s="2 3">MITO<sup>*</sup></div>
+          <div class="l why" data-s="3"><div>Comprar también cuesta: intereses, impuestos, arreglos.</div><div>Si alquilar sale menos y invertís la diferencia, podés salir ganando.</div></div>
+          <div class="l cta pop" data-s="4">Comentá el próximo mito que querés que destruya 👇</div>
+          <div class="actor" data-a="moni"></div>
+          <div class="cap"></div>
+          <div class="prog"><i></i></div><div class="rail"><b></b>22 K<b></b>3,4 K<b></b></div><div class="handle"><i></i>@moni.finanzas</div>
+        </div></div>
+        <div class="ctrls"></div>
+      </div>
+      <div class="info">
+        <div class="top"><div><p class="tag">Formato 5 · Juego</p><h3>Mito o verdad</h3></div><button class="fav" type="button" aria-pressed="false">☆ Me gusta</button></div>
+        <dl class="kv">
+          <dt>Idea</dt><dd>Moni presenta una frase típica de finanzas, da 3 segundos para que el espectador decida, y la resuelve con dos argumentos.</dd>
+          <dt>Gancho</dt><dd>Una frase polémica que todos escucharon alguna vez.</dd>
+          <dt>Por qué puede andar</dt><dd>La cuenta regresiva hace que la gente se quede hasta la respuesta, y el “mito” genera debate en comentarios. Las ideas para los próximos videos salen de esos comentarios.</dd>
+          <dt>Riesgo</dt><dd>Los temas polémicos atraen gente que discute. Siempre aclarar “depende” y mostrar el porqué.</dd>
+          <dt>Producción</dt><dd><span class="meter"><i class="on"></i><i class="on"></i><i></i><i></i></span>Baja-media: plantilla fija, cambia la frase y los argumentos.</dd>
+        </dl>
+        <div class="script" aria-label="Guion"></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="produccion">
+  <div style="display:grid;gap:10px">
+    <p class="eyebrow">Cómo lo hacemos</p>
+    <h2>De idea a short publicado</h2>
+    <p class="lede">El objetivo es que cada video tenga algo que una plantilla no puede copiar: tu guion, una voz propia y un personaje que no cambia. Eso además te protege de la política de contenido no auténtico de YouTube.</p>
+  </div>
+  <ol class="steps">
+    <li><b>Fijar a Moni</b><p>Hoja de modelo con frente, perfil y 8 expresiones en el estilo que elijas. Todo se genera desde esa referencia para que Moni no cambie entre videos.</p></li>
+    <li><b>Guion escrito por vos</b><p>Una idea por video. Gancho de una línea, un número verificable, un cierre que invite a comentar o a ver el siguiente. 60 a 90 palabras.</p></li>
+    <li><b>Voz propia</b><p>Clonar tu voz o diseñar una voz única para Moni (por ejemplo en ElevenLabs). Nunca la voz por defecto.</p></li>
+    <li><b>Animación</b><p>2D o dibujado: animación en código como estos borradores, que renderiza el video automáticamente. 3D suave: imagen de referencia más una herramienta de imagen a video y sincronización de labios.</p></li>
+    <li><b>Edición y subtítulos</b><p>Subtítulos palabra por palabra, efectos de sonido en cada corte, 15 a 35 segundos. Final que conecta con el inicio para que el video se repita.</p></li>
+    <li><b>Publicar y medir</b><p>El mismo video en Shorts, Reels y TikTok. Cada formato se juzga con datos, no con intuición.</p></li>
+  </ol>
+  <div style="display:grid;gap:12px">
+    <h3>Plan de prueba de 3 semanas</h3>
+    <p class="caveat">Elegí 2 o 3 formatos y publicá 3 videos de cada uno. Después comparamos estas métricas en YouTube Studio y nos quedamos con el ganador.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Métrica</th><th>Dónde se ve</th><th>Qué nos dice</th><th>Referencia orientativa</th></tr></thead>
+      <tbody>
+        <tr><td>Vistos vs. deslizados</td><td>YouTube Studio, Shorts</td><td>Si el gancho del primer segundo funciona</td><td>Más de 70 % visto</td></tr>
+        <tr><td>Retención a 3 s</td><td>Curva de retención</td><td>Si la primera escena sostiene</td><td>Cerca de 80 %</td></tr>
+        <tr><td>% promedio visto</td><td>Analytics del video</td><td>Si el ritmo y la historia funcionan</td><td>Más de 70 %, ideal más de 100 % por repeticiones</td></tr>
+        <tr><td>Guardados y compartidos</td><td>Por cada 1.000 vistas</td><td>Si el contenido tiene valor real</td><td>Comparar entre formatos</td></tr>
+        <tr><td>Seguidores por video</td><td>Analytics del canal</td><td>Si el personaje engancha</td><td>Comparar entre formatos</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="elegir">
+  <div class="pick">
+    <p class="eyebrow" style="color:inherit;opacity:.7">Tu elección</p>
+    <h2>¿Con cuál arrancamos?</h2>
+    <p>Marcá con ★ los formatos que te gustan y elegí el estilo visual. Copiá este texto y mandámelo: con eso hago la hoja de modelo de Moni y el primer video completo en vertical, con voz y listo para subir.</p>
+    <output id="pickOut">Todavía no marcaste ningún formato.</output>
+    <button type="button" id="copyPick">Copiar mi elección</button>
+  </div>
+</section>
+
+<section id="fuentes">
+  <p class="eyebrow">Fuentes</p>
+  <ul class="src">
+    <li><a href="https://easyviral.ai/blog/we-analyzed-500-viral-faceless-shorts" target="_blank" rel="noopener">EasyViral: análisis de 500 shorts virales sin rostro (2026)</a></li>
+    <li><a href="https://easyviral.ai/blog/why-90-percent-faceless-youtube-channels-fail-2026" target="_blank" rel="noopener">EasyViral: por qué fracasan los canales sin rostro</a></li>
+    <li><a href="https://www.nbcnews.com/pop-culture/viral/ai-fruit-love-island-tiktok-slop-popularity-rcna264946" target="_blank" rel="noopener">NBC News: el drama de frutas con IA en TikTok</a></li>
+    <li><a href="https://en.wikipedia.org/wiki/Fruit_Love_Island" target="_blank" rel="noopener">Wikipedia: Fruit Love Island</a></li>
+    <li><a href="https://www.makeviral.ai/templates/ai-fruit-story" target="_blank" rel="noopener">MakeViral: cifras de #fruitstory y #frutinovela</a></li>
+    <li><a href="https://aituber.app/blog/talking-food-fruit-videos/" target="_blank" rel="noopener">AITuber: por qué funcionan los videos de comida que habla</a></li>
+    <li><a href="https://www.gofaceless.ai/en/blog/high-retention-youtube-shorts-attributes" target="_blank" rel="noopener">GoFaceless: atributos de shorts con alta retención</a></li>
+    <li><a href="https://www.gofaceless.ai/en/blog/mastering-first-impressions-two-second-rule" target="_blank" rel="noopener">GoFaceless: la regla de los 2 segundos</a></li>
+    <li><a href="https://faceless-directory.pages.dev/blog/retention-drop-off-fix-guide" target="_blank" rel="noopener">Faceless Directory: caídas de retención a los 3 s</a></li>
+    <li><a href="https://alternativeto.net/news/2025/7/youtube-updates-its-policy-to-demonetize-inauthentic-mass-produced-ai-generated-content" target="_blank" rel="noopener">AlternativeTo: YouTube y el contenido no auténtico (jul. 2025)</a></li>
+    <li><a href="https://thenextweb.com/news/youtube-ai-slop-crackdown-faceless-creators-collateral-damage" target="_blank" rel="noopener">The Next Web: la purga de contenido de IA en YouTube</a></li>
+    <li><a href="https://www.searchenginejournal.com/youtubes-ai-slop-problem-and-how-marketers-can-compete/" target="_blank" rel="noopener">Search Engine Journal: el problema del “AI slop” en YouTube</a></li>
+    <li><a href="https://outlierkit.com/resources/youtube-ai-slop-crackdown-2026/" target="_blank" rel="noopener">OutlierKit: cierres de canales en 2026</a></li>
+    <li><a href="https://recapio.com/digest/this-is-why-family-guy-style-finance-channels-are-exploding-by-aitrends" target="_blank" rel="noopener">Recapio: canales de finanzas estilo dibujo animado</a></li>
+    <li><a href="https://saturaai.com/blog/funny-stickman-ai-shorts-is-this-real-youtube-automation-niche-qzatpq" target="_blank" rel="noopener">Satura: shorts de stickman con IA</a></li>
+    <li><a href="https://outlierkit.com/channel/nickinvestsus" target="_blank" rel="noopener">OutlierKit: análisis del canal Nick Invests</a></li>
+    <li><a href="https://subscribr.ai/youtube-strategy/mistakes-new-faceless-ai-channels" target="_blank" rel="noopener">Subscribr: errores de canales nuevos con IA</a></li>
+    <li><a href="https://www.minuto60.com/economia/lo-que-tiktok-si-le-puede-ensenar-finanzas-personales-que-no/7655" target="_blank" rel="noopener">Minuto60: lo que TikTok puede enseñar de finanzas</a></li>
+    <li><a href="https://www.forbes.com.mx/esta-es-la-forma-de-detectar-a-falsos-influencers-de-finanzas-personales/" target="_blank" rel="noopener">Forbes México: cómo detectar falsos influencers de finanzas</a></li>
+    <li><a href="https://medium.com/@manqa06/i-ranked-the-44-most-watched-ai-videos-on-youtube-4eca0f9b187f" target="_blank" rel="noopener">Medium: los 44 videos de IA más vistos de YouTube</a></li>
+  </ul>
+</section>
+</div>
+
+<script>
+(function(){
+/* ---------- characters ---------- */
+function face(x,y){
+  return `<g class="face">
+  <g class="brows"><path class="brow brow-l" d="M${x-33} ${y-24} q11 -8 22 -1"/><path class="brow brow-r" d="M${x+11} ${y-25} q11 -7 22 1"/></g>
+  <g class="eye"><ellipse class="eyew" cx="${x-21}" cy="${y}" rx="12.5" ry="15"/><ellipse class="eyew" cx="${x+21}" cy="${y}" rx="12.5" ry="15"/>
+   <g class="pupils"><circle class="pupil" cx="${x-18}" cy="${y+3}" r="6.5"/><circle class="pupil" cx="${x+24}" cy="${y+3}" r="6.5"/>
+   <circle class="shine" cx="${x-15.5}" cy="${y}" r="2.2"/><circle class="shine" cx="${x+26.5}" cy="${y}" r="2.2"/></g></g>
+  <g class="lids"><path class="fill-main tint ln" d="M${x-35} ${y+1} a14 14 0 0 1 28 0 z" style="stroke-width:2.5"/><path class="fill-main tint ln" d="M${x+7} ${y+1} a14 14 0 0 1 28 0 z" style="stroke-width:2.5"/></g>
+  <circle class="cheek" cx="${x-38}" cy="${y+26}" r="8"/><circle class="cheek" cx="${x+38}" cy="${y+26}" r="8"/>
+  <g class="mouth"><path class="mth m-smile" d="M${x-17} ${y+28} q17 20 34 0 q-17 7 -34 0z"/><ellipse class="mth m-o" cx="${x}" cy="${y+36}" rx="9" ry="12"/>
+   <path class="mline m-smirk" d="M${x-14} ${y+36} q15 7 28 -9"/><path class="mline m-flat" d="M${x-12} ${y+36} q12 -3 24 0"/></g>
+  <g class="sweat"><path d="M${x+50} ${y-28} q7 11 0 16 q-7 -5 0 -16z"/></g>
+  <g class="bulb"><circle cx="${x+58}" cy="${y-62}" r="13"/><path d="M${x+58} ${y-82} v-6 M${x+76} ${y-74} l5 -5 M${x+40} ${y-74} l-5 -5"/></g>
+ </g>`;
+}
+function limbs(){
+  return `<path class="limb" d="M84 188 L80 222"/><path class="limb" d="M116 188 L120 222"/>
+  <ellipse class="shoe" cx="74" cy="225" rx="13" ry="6.5"/><ellipse class="shoe" cx="126" cy="225" rx="13" ry="6.5"/>
+  <g class="arm-l"><path class="limb" d="M36 124 Q16 140 20 162"/><circle class="fill-main tint ln" cx="20" cy="165" r="8"/></g>
+  <g class="arm-r"><path class="limb" d="M164 122 Q186 106 182 82"/><circle class="fill-main tint ln" cx="182" cy="79" r="8"/></g>`;
+}
+const CH={
+ moni:()=>`<svg class="chr chr-moni" viewBox="0 0 210 240" aria-hidden="true"><g>
+  <path class="limb" d="M100 46 L100 26" style="stroke:#1C6B3A"/>
+  <path class="leaf" d="M100 32 C88 14 70 16 66 26 C80 34 92 36 100 32Z"/><path class="leaf" d="M100 26 C112 6 132 8 136 18 C122 28 108 30 100 26Z"/>
+  ${limbs()}
+  <circle cx="107" cy="117" r="72" style="fill:var(--c-dark)"/>
+  <circle class="fill-main tint ln" cx="100" cy="116" r="72" style="stroke-width:5"/>
+  <text x="100" y="68" text-anchor="middle" style="font:800 20px var(--f-display);fill:var(--c-dark);opacity:.75">$</text>
+  <circle class="rim" cx="100" cy="116" r="60"/>
+  <ellipse class="gloss" cx="72" cy="76" rx="22" ry="12" transform="rotate(-28 72 76)"/>
+  ${face(100,104)}
+ </g></svg>`,
+ card:()=>`<svg class="chr chr-card" viewBox="0 0 210 240" aria-hidden="true"><g>
+  ${limbs()}
+  <rect class="fill-main tint ln" x="22" y="56" width="166" height="128" rx="16" style="stroke-width:5"/>
+  <rect x="22" y="160" width="166" height="12" style="fill:var(--c-dark);opacity:.5"/>
+  <rect class="acc" x="40" y="72" width="30" height="22" rx="4"/>
+  <ellipse class="gloss" cx="70" cy="66" rx="34" ry="6"/>
+  ${face(112,112)}
+ </g></svg>`,
+ cup:()=>`<svg class="chr chr-cup" viewBox="0 0 210 240" aria-hidden="true"><g>
+  <path class="limb" d="M80 30 q-8 -10 0 -18 q8 -8 0 -16" style="stroke:#C9B49A;stroke-width:4"/><path class="limb" d="M118 30 q-8 -10 0 -18 q8 -8 0 -16" style="stroke:#C9B49A;stroke-width:4"/>
+  ${limbs()}
+  <path class="ln" d="M164 90 q34 4 26 38 q-6 22 -32 18" style="fill:none;stroke-width:9"/>
+  <path class="fill-main tint ln" d="M36 52 L172 52 L160 182 Q100 196 48 182 Z" style="stroke-width:5"/>
+  <path class="acc" d="M40 82 L168 82 L165 108 L43 108 Z" style="opacity:.9"/>
+  <ellipse class="fill-main ln" cx="104" cy="52" rx="70" ry="12" style="stroke-width:4"/>
+  <ellipse class="acc" cx="104" cy="52" rx="58" ry="7"/>
+  <ellipse class="gloss" cx="60" cy="130" rx="8" ry="30"/>
+  ${face(104,136)}
+ </g></svg>`
+};
+document.querySelectorAll('.actor[data-a]').forEach(a=>{a.innerHTML=CH[a.dataset.a]()});
+document.getElementById('cast').innerHTML=[
+ ['moni','Moni','la protagonista'],['card','Tarjetín','el villano'],['cup','Cafecito','el gasto hormiga']
+].map(([k,n,r])=>`<div>${CH[k]()}<span><b>${n}</b> · ${r}</span></div>`).join('');
+
+/* ---------- look switcher ---------- */
+const root=document.documentElement;
+function setLook(l){root.dataset.look=l;document.querySelectorAll('#lookSeg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.look===l));try{localStorage.setItem('moni-look',l)}catch(e){}updatePick()}
+document.querySelectorAll('#lookSeg button').forEach(b=>b.addEventListener('click',()=>setLook(b.dataset.look)));
+
+/* ---------- formats ---------- */
+const F={
+ novela:{name:'La telenovela del dinero',scenes:[
+  {d:2.6,who:'moni',a:{moni:'ex-shock at-zoom',card:'at-off-right'},say:'¡Mi tarjeta me estuvo mintiendo!'},
+  {d:3,who:'card',a:{moni:'ex-worried at-left',card:'ex-sly at-right'},say:'Pagá solo el mínimo, mi amor.'},
+  {d:2.6,who:'moni',a:{moni:'ex-think at-left',card:'ex-sly at-right'},say:'¿Y cuánto termino pagando?'},
+  {d:3.6,who:'',a:{moni:'ex-shock at-small-l',card:'ex-sly at-small-r'},say:'Seis años. Casi el doble.'},
+  {d:3,who:'moni',a:{moni:'ex-angry at-left',card:'ex-worried at-right'},say:'Esto no se queda así.'}]},
+ pizarra:{name:'Pizarra express',scenes:[
+  {d:2.6,who:'moni',a:{moni:'ex-wave at-low'},say:'Tu sueldo, dividido en tres. Así.'},
+  {d:3,who:'moni',a:{moni:'at-br'},say:'La mitad: alquiler, comida y transporte.'},
+  {d:3,who:'moni',a:{moni:'ex-sly at-br'},say:'Un treinta para disfrutar sin culpa.'},
+  {d:3,who:'moni',a:{moni:'ex-think at-br'},say:'Y el veinte, para vos del futuro.'},
+  {d:2.6,who:'moni',a:{moni:'ex-wave at-br'},say:'Guardalo para el día de cobro.'}]},
+ sitcom:{name:'Sitcom: Moni y Cafecito',scenes:[
+  {d:2.8,who:'cup',a:{moni:'at-left',cup:'at-right'},say:'Tranqui, soy solo un cafecito de tres dólares.'},
+  {d:2.4,who:'moni',a:{moni:'ex-think at-left',cup:'at-right'},say:'¿Todos los días de trabajo?'},
+  {d:3.2,who:'moni',a:{moni:'ex-think at-left',cup:'ex-worried at-right'},say:'Tres por veintidós días, por doce meses…'},
+  {d:2.8,who:'moni',a:{moni:'ex-shock at-left',cup:'ex-worried at-right'},say:'¡Setecientos noventa y dos al año!'},
+  {d:3,who:'cup',a:{moni:'at-left',cup:'ex-sly at-right'},say:'¿Y si mejor me preparás en casa?'}]},
+ simulador:{name:'¿Y si…? El simulador',scenes:[
+  {d:2.8,who:'moni',a:{moni:'ex-shock at-low'},say:'Esto tenés si ahorrás cinco dólares por día.'},
+  {d:2.8,who:'moni',a:{moni:'at-br'},say:'Cinco por día son ciento cincuenta por mes.'},
+  {d:3.4,who:'moni',a:{moni:'ex-think at-br'},say:'En treinta años, vos ponés cincuenta y cuatro mil.'},
+  {d:3.4,who:'moni',a:{moni:'ex-shock at-br'},say:'El resto lo pone el interés compuesto.'},
+  {d:2.6,who:'moni',a:{moni:'ex-wave at-low'},say:'¿Y vos, a qué edad empezás?'}]},
+ mito:{name:'Mito o verdad',scenes:[
+  {d:2.8,who:'moni',a:{moni:'ex-sly at-low'},say:'Alquilar es tirar la plata. ¿Mito o verdad?'},
+  {d:3.1,who:'moni',a:{moni:'ex-think at-br'},say:'Pensalo. Tres, dos, uno…'},
+  {d:2.4,who:'moni',a:{moni:'ex-angry at-br'},say:'¡Mito! Depende de los números.'},
+  {d:3.8,who:'moni',a:{moni:'at-br'},say:'Comprar también cuesta: intereses, impuestos y arreglos.'},
+  {d:2.6,who:'moni',a:{moni:'ex-wave at-low'},say:'Comentá el próximo mito.'}]}
+};
+
+/* chart for simulador */
+(function(){
+  const svg=document.getElementById('simChart');const W=300,H=190,x0=34,x1=272,y0=168,y1=14;
+  const r=.07/12,maxV=183000;const X=t=>x0+(x1-x0)*t/30,Y=v=>y0-(y0-y1)*v/maxV;
+  let p1='',p2='',area='';for(let t=0;t<=30;t+=.5){const n=t*12,fv=n?150*((1+r)**n-1)/r:0,c=150*n;
+    p1+=(t?'L':'M')+X(t).toFixed(1)+' '+Y(c).toFixed(1);p2+=(t?'L':'M')+X(t).toFixed(1)+' '+Y(fv).toFixed(1)}
+  area=p2+`L${X(30)} ${y0} L${X(0)} ${y0}Z`;
+  let ticks='';[0,10,20,30].forEach(t=>ticks+=`<text x="${X(t)}" y="${y0+14}" text-anchor="middle">${t} años</text>`);
+  [50000,100000,150000].forEach(v=>ticks+=`<line class="ax" x1="${x0}" x2="${x1}" y1="${Y(v)}" y2="${Y(v)}" stroke-dasharray="2 4"/><text x="${x0-4}" y="${Y(v)+3}" text-anchor="end">${v/1000}k</text>`);
+  svg.innerHTML=`<line class="ax" x1="${x0}" x2="${x1}" y1="${y0}" y2="${y0}"/>${ticks}
+   <path class="area" d="${area}" data-s="3"/><path class="ln1 draw" pathLength="1" d="${p1}" data-s="2 3"/><path class="ln2 draw" pathLength="1" d="${p2}" data-s="3"/>`;
+})();
+
+const fmtN=n=>Math.round(n).toLocaleString('es-AR');
+function runCount(el){const to=+el.dataset.to,pre=el.dataset.pre||'',t0=performance.now(),D=1100;
+  (function step(now){const k=Math.min(1,(now-t0)/D),e=1-Math.pow(1-k,3);el.textContent=pre+fmtN(to*e);if(k<1)requestAnimationFrame(step)})(t0)}
+
+/* voice */
+const synth=window.speechSynthesis;let esVoice=null;
+function pickVoice(){try{const v=synth.getVoices();esVoice=v.find(x=>/es[-_](AR|419|MX|US)/i.test(x.lang))||v.find(x=>/^es/i.test(x.lang))||null}catch(e){}}
+if(synth){pickVoice();synth.onvoiceschanged=pickVoice}
+const PITCH={moni:1.35,card:.75,cup:1.15,'':1};
+let voiceOwner=null;
+function speak(text,who){if(!synth)return;try{synth.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='es-AR';if(esVoice)u.voice=esVoice;u.rate=1.12;u.pitch=PITCH[who]??1;synth.speak(u)}catch(e){}}
+
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const phones=[];
+document.querySelectorAll('.ph').forEach(ph=>{
+  const f=F[ph.dataset.f];const total=f.scenes.reduce((s,x)=>s+x.d,0);
+  const st={ph,f,total,t:0,idx:-1,playing:!reduce,visible:false,cap:ph.querySelector('.cap'),bar:ph.querySelector('.prog i'),words:[]};
+  phones.push(st);
+  const card=ph.closest('.fmt');
+  card.querySelector('.script').innerHTML=f.scenes.reduce((acc,s)=>{acc.h+=`<div><span>${acc.t.toFixed(1).replace('.',',')} s</span>${s.say}</div>`;acc.t+=s.d;return acc},{h:'',t:0}).h;
+  const c=card.querySelector('.ctrls');
+  c.innerHTML=`<button type="button" class="b-play">${st.playing?'Pausa':'Reproducir'}</button><button type="button" class="b-re">Desde el inicio</button><button type="button" class="b-voz" aria-pressed="false">Voz</button>`;
+  st.bPlay=c.querySelector('.b-play');
+  st.bPlay.onclick=()=>{st.playing=!st.playing;st.bPlay.textContent=st.playing?'Pausa':'Reproducir';if(!st.playing&&voiceOwner===st&&synth)synth.cancel()};
+  c.querySelector('.b-re').onclick=()=>{restart(st);st.playing=true;st.bPlay.textContent='Pausa'};
+  const bv=c.querySelector('.b-voz');st.bVoz=bv;
+  bv.onclick=()=>{const on=voiceOwner!==st;phones.forEach(p=>p.bVoz.setAttribute('aria-pressed','false'));if(synth)synth.cancel();
+    voiceOwner=on?st:null;bv.setAttribute('aria-pressed',on);if(on){restart(st);st.playing=true;st.bPlay.textContent='Pausa'}};
+  setScene(st,0);
+});
+
+function setScene(st,i){
+  st.idx=i;const sc=st.f.scenes[i],ph=st.ph;ph.dataset.scene=i;
+  ph.querySelectorAll('[data-s]').forEach(el=>{const on=el.dataset.s.split(' ').includes(String(i));
+    if(on&&!el.classList.contains('show')){el.classList.add('show');if(el.classList.contains('count'))runCount(el)}
+    else if(!on)el.classList.remove('show')});
+  ph.querySelectorAll('.actor').forEach(a=>{a.className='actor '+(sc.a[a.dataset.a]||'at-off-right')+(sc.who===a.dataset.a?' talk':'')});
+  st.cap.innerHTML=sc.say.split(' ').map(w=>`<span class="w">${w}</span>`).join(' ');
+  st.words=[...st.cap.querySelectorAll('.w')];
+  if(voiceOwner===st)speak(sc.say,sc.who);
+}
+function restart(st){st.t=0;st.ph.querySelectorAll('.show').forEach(e=>e.classList.remove('show'));void st.ph.offsetWidth;setScene(st,0)}
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{const st=phones.find(p=>p.ph===e.target);if(st)st.visible=e.isIntersecting}),{threshold:.25});
+phones.forEach(p=>io.observe(p.ph));
+
+let last=performance.now();
+function tick(now){const dt=Math.min(.1,(now-last)/1000);last=now;
+  phones.forEach(st=>{if(!st.playing||!st.visible)return;st.t+=dt;
+    if(st.t>=st.total+.8){restart(st);return}
+    let acc=0,i=0;for(;i<st.f.scenes.length;i++){if(st.t<acc+st.f.scenes[i].d)break;acc+=st.f.scenes[i].d}
+    if(i>=st.f.scenes.length){i=st.f.scenes.length-1;acc=st.total-st.f.scenes[i].d}
+    if(i!==st.idx)setScene(st,i);
+    const frac=Math.min(1,(st.t-acc)/(st.f.scenes[i].d*.8)),n=Math.ceil(frac*st.words.length);
+    st.words.forEach((w,k)=>{w.classList.toggle('lit',k<n);w.classList.toggle('now',k===n-1)});
+    st.bar.style.width=Math.min(100,st.t/st.total*100)+'%';
+  });
+  requestAnimationFrame(tick)}
+requestAnimationFrame(tick);
+
+/* ---------- favorites + pick ---------- */
+let favs=[];try{favs=JSON.parse(localStorage.getItem('moni-favs')||'[]')}catch(e){}
+const LOOKN={flat:'Plano 2D',soft:'3D suave',doodle:'Dibujado a mano'};
+function updatePick(){const out=document.getElementById('pickOut');if(!out)return;
+  const names=favs.map(id=>F[id]&&F[id].name).filter(Boolean);
+  const look=LOOKN[root.dataset.look||'flat'];
+  out.textContent=names.length?`Me quedo con: ${names.join(', ')}. Estilo visual: ${look}.`:`Todavía no marcaste ningún formato. Estilo visual elegido: ${look}.`}
+document.querySelectorAll('.fmt').forEach(card=>{const id=card.dataset.id,b=card.querySelector('.fav');
+  const paint=()=>{const on=favs.includes(id);b.setAttribute('aria-pressed',on);b.textContent=on?'★ Me gusta':'☆ Me gusta'};paint();
+  b.onclick=()=>{favs=favs.includes(id)?favs.filter(x=>x!==id):[...favs,id];try{localStorage.setItem('moni-favs',JSON.stringify(favs))}catch(e){}paint();updatePick()}});
+document.getElementById('copyPick').onclick=function(){const t=document.getElementById('pickOut').textContent,btn=this;
+  const ok=()=>{btn.textContent='Copiado';setTimeout(()=>btn.textContent='Copiar mi elección',1600)};
+  const fb=()=>{const r=document.createRange();r.selectNodeContents(document.getElementById('pickOut'));const s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent='Texto seleccionado: copialo'};
+  try{navigator.clipboard.writeText(t).then(ok,fb)}catch(e){fb()}};
+let saved='flat';try{saved=localStorage.getItem('moni-look')||'flat'}catch(e){}
+setLook(LOOKN[saved]?saved:'flat');
+})();
+</script>
