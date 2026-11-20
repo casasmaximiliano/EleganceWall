@@ -146,12 +146,41 @@ def tts(key, text, vdir, cache, echo=False):
 
 
 def chorus(text, vdir, cache):
-    parts = [tts(k, text, vdir, cache) for k in ("PIPO", "TOTO", "LULA", "ZUMBI")]
-    n = max(len(p) for p in parts)
-    mix = np.zeros(n, np.float32)
-    for p in parts:
-        mix[:len(p)] += p
-    return mix / (np.abs(mix).max() or 1) * 0.85
+    """Coro sincronizado: UNA sola locución base (misma duración de cada sílaba) a la que se le cambia
+    solo el tono para cada personaje. Así todas las voces empiezan y terminan cada palabra a la vez."""
+    h = hashlib.md5(f"CHORUS|{text}|v4".encode()).hexdigest()
+    out = os.path.join(cache, h + ".wav")
+    if not os.path.exists(out):
+        from piper import SynthesisConfig
+        model = "es_AR-daniela-high"
+        v = _load_voice(model, vdir)
+        raw, base = out + ".raw.wav", out + ".base.wav"
+        with wave.open(raw, "wb") as wf:
+            v.synthesize_wav(tts_text(text), wf, syn_config=SynthesisConfig(length_scale=1.05, noise_scale=0.5, noise_w_scale=0.0))
+        trim = ("silenceremove=start_periods=1:start_threshold=-45dB,areverse,"
+                "silenceremove=start_periods=1:start_threshold=-45dB,areverse")
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", raw, "-af", f"aresample={SR},{trim}", "-ac", "1", base], check=True)
+        sr0 = SR
+        parts = []
+        for pitch, gain in ((1.30, 1.0), (0.86, 0.55), (1.20, 0.5), (1.45, 0.45)):  # Pipo (voz principal), Toto, Lula, Zumbi
+            pv = out + f".{pitch}.wav"
+            af = f"asetrate={int(sr0 * pitch)},aresample={SR},atempo={1 / pitch:.5f}"
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", base, "-af", af, "-ac", "1", pv], check=True)
+            a = read_wav(pv)
+            parts.append((a / (np.abs(a).max() or 1)) * gain)
+            os.remove(pv)
+        n = min(len(p) for p in parts)  # misma duración: se recorta al más corto (difieren en milisegundos)
+        mix = sum(p[:n] for p in parts)
+        mix = mix / (np.abs(mix).max() or 1) * 0.85
+        with wave.open(out, "wb") as w:
+            w.setnchannels(1)
+            w.setsampwidth(2)
+            w.setframerate(SR)
+            w.writeframes((mix * 32767).astype(np.int16).tobytes())
+        os.remove(raw)
+        os.remove(base)
+    a = read_wav(out)
+    return a / (np.abs(a).max() or 1) * 0.85
 
 
 def env(n, a=0.005, r=0.3):
