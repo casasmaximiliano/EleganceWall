@@ -1,0 +1,2302 @@
+{
+ "moni": "Moni: moneda dorada redonda con canto grueso, pequeño signo $ grabado arriba, brote verde de dos hojas en la cabeza, ojos grandes blancos con pupilas negras, cejas marrones, mejillas rosadas, sonrisa roja, brazos y piernas finos marrones, zapatos negros",
+ "styles": {
+  "soft": "animación 3D suave estilo película familiar, iluminación cálida, texturas lisas",
+  "flat": "ilustración 2D plana con contornos limpios y colores sólidos",
+  "doodle": "dibujo a mano con marcador negro y colores pastel, líneas temblorosas"
+ },
+ "formats": {
+  "novela": "Telenovela del dinero",
+  "pizarra": "Pizarra express",
+  "sitcom": "Sitcom",
+  "simulador": "¿Y si…? Simulador",
+  "mito": "Mito o verdad"
+ },
+ "shorts": [
+  {
+   "fmt": "novela",
+   "serie": "T1 · Moni contra Tarjetín · Cap. 1",
+   "titulo": "Mi tarjeta me estuvo mintiendo 😱",
+   "desc": "Tarjetín le dice a Moni que pague solo el mínimo. ¿Cuánto termina pagando en realidad? Capítulo 1 de la telenovela del dinero.",
+   "tags": "#finanzaspersonales #tarjetadecredito #deudas #moni",
+   "gancho": "Moni en primer plano, temblando, flash rojo: “¡MI TARJETA ME ESTUVO MINTIENDO!”",
+   "guion": [
+    "Moni: ¡Mi tarjeta me estuvo mintiendo!",
+    "Tarjetín: Pagá solo el mínimo, mi amor…",
+    "Moni: ¿Y cuánto termino pagando?",
+    "Narrador: Mil dólares de deuda. Seis años. Mil ochocientos sesenta y siete.",
+    "Moni: Esto no se queda así."
+   ],
+   "dato": "$1.000 al 24 % anual pagando el mínimo (3 % o $25): 73 meses y $1.867 en total.",
+   "cierre": "Cartel “Capítulo 2 →” y Moni con cara de venganza.",
+   "escena": "Moni asustada a la izquierda, Tarjetín sonriendo con picardía a la derecha, escenario de telenovela con luz violeta",
+   "n": 1,
+   "dia": 1,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Tarjetín: tarjeta de crédito rojo frambuesa con chip dorado, ojos entrecerrados y sonrisa pícara, brazos y piernas finos"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T1 · Moni contra Tarjetín · Cap. 2",
+   "titulo": "Cómo destruí a Tarjetín en 25 meses",
+   "desc": "Moni descubre que pagar el doble del mínimo cambia todo. Mismo deuda, mitad de tiempo y $600 menos.",
+   "tags": "#deudas #tarjetadecredito #educacionfinanciera #moni",
+   "gancho": "Moni con casco de guerrera y una calculadora gigante: “CAPÍTULO 2: LA VENGANZA”",
+   "guion": [
+    "Moni: Tarjetín, se terminó.",
+    "Tarjetín: Ja, nadie me paga más que el mínimo.",
+    "Moni: Yo te pago el doble. Todos los meses.",
+    "Narrador: Resultado: 25 meses en vez de 73. Y casi seiscientos dólares menos.",
+    "Tarjetín: ¡Eso no estaba en el contrato!"
+   ],
+   "dato": "Misma deuda de $1.000 al 24 %: pagando el doble del mínimo se cancela en 25 meses y $1.271 (vs. 73 meses y $1.867).",
+   "cierre": "“Pero Tarjetín tiene un plan… Capítulo 3”.",
+   "escena": "Moni con casco y escudo de moneda frente a Tarjetín que retrocede, chispas, fondo dramático violeta",
+   "n": 2,
+   "dia": 6,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Tarjetín: tarjeta de crédito rojo frambuesa con chip dorado, ojos entrecerrados y sonrisa pícara, brazos y piernas finos"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T1 · Moni contra Tarjetín · Cap. 3",
+   "titulo": "Tarjetín contraataca: “cuotas sin interés”",
+   "desc": "Tarjetín vuelve disfrazado de oferta. Las cuotas sin interés no cobran interés, pero se comen tu sueldo futuro.",
+   "tags": "#cuotas #tarjetadecredito #finanzas #moni",
+   "gancho": "Tarjetín con bigote falso y cartel “12 CUOTAS SIN INTERÉS 🎉”",
+   "guion": [
+    "Tarjetín: ¡Doce cuotas sin interés, preciosa!",
+    "Moni: Bueno… una compra no es nada.",
+    "Narrador: Cinco compras de cien dólares en doce cuotas…",
+    "Narrador: …son cuarenta y dos dólares por mes, durante un año entero.",
+    "Moni: ¡Me gasté el sueldo del año que viene!"
+   ],
+   "dato": "5 compras de $100 en 12 cuotas = $41,67 por mes comprometidos durante 12 meses.",
+   "cierre": "“¿Cuántas cuotas tenés vos ahora? Comentá 👇”",
+   "escena": "Tarjetín con bigote falso y sombrero sosteniendo un cartel de oferta, Moni mirando una pila de bolsas de compras",
+   "n": 3,
+   "dia": 9,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Tarjetín: tarjeta de crédito rojo frambuesa con chip dorado, ojos entrecerrados y sonrisa pícara, brazos y piernas finos"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T1 · Moni contra Tarjetín · Cap. 4",
+   "titulo": "La trampa del adelanto de efectivo",
+   "desc": "Moni necesita efectivo y Tarjetín le ofrece un adelanto. Lo que no dice: suele cobrar comisión y el interés corre desde el primer día.",
+   "tags": "#tarjetadecredito #adelantodeefectivo #finanzaspersonales #moni",
+   "gancho": "Cajero automático oscuro, Tarjetín asomando: “¿Necesitás plata YA?”",
+   "guion": [
+    "Tarjetín: ¿Necesitás plata ya? Sacá del cajero con la tarjeta.",
+    "Moni: ¡Qué amable!",
+    "Narrador: El adelanto de efectivo suele tener comisión…",
+    "Narrador: …y una tasa más alta que corre desde el día uno, sin período de gracia.",
+    "Moni: Amable las pelotas… digo, ¡qué trampa!"
+   ],
+   "dato": "En la mayoría de los bancos el adelanto de efectivo cobra comisión fija o porcentual y genera intereses desde el día en que se retira. Revisá las condiciones de tu tarjeta.",
+   "cierre": "“Último capítulo: Moni le corta las alas.”",
+   "escena": "Cajero automático en un callejón de noche con luz azul, Tarjetín apoyado como vendedor sospechoso, Moni con una bolsita vacía",
+   "n": 4,
+   "dia": 14,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Tarjetín: tarjeta de crédito rojo frambuesa con chip dorado, ojos entrecerrados y sonrisa pícara, brazos y piernas finos"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T1 · Moni contra Tarjetín · Cap. 5 (final)",
+   "titulo": "La regla que derrotó a Tarjetín para siempre",
+   "desc": "Final de temporada: Moni no rompe la tarjeta, la domestica. La regla: solo gastás lo que podés pagar completo al vencimiento.",
+   "tags": "#tarjetadecredito #finanzas #reglasdedinero #moni",
+   "gancho": "Tarjetín atado con una correa como perrito: “FINAL DE TEMPORADA”",
+   "guion": [
+    "Narrador: Final de temporada.",
+    "Tarjetín: ¿Me vas a romper?",
+    "Moni: No. Te voy a domesticar.",
+    "Moni: Regla: solo te uso si puedo pagar el total cuando vence el resumen.",
+    "Tarjetín: …Guau."
+   ],
+   "dato": "Pagar el total del resumen antes del vencimiento evita los intereses de financiación en casi todas las tarjetas.",
+   "cierre": "“Temporada 2: un fantasma se come tu plata 👻”.",
+   "escena": "Moni paseando a Tarjetín con correa en un parque soleado, Tarjetín con cara de perrito resignado",
+   "n": 5,
+   "dia": 19,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Tarjetín: tarjeta de crédito rojo frambuesa con chip dorado, ojos entrecerrados y sonrisa pícara, brazos y piernas finos"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T2 · La inflación invisible · Cap. 1",
+   "titulo": "Un fantasma se está comiendo mi plata 👻",
+   "desc": "Nadie le robó a Moni, pero sus billetes compran menos cada año. Conocé a Infla, el fantasma de la inflación.",
+   "tags": "#inflacion #ahorro #finanzaspersonales #moni",
+   "gancho": "Billetes que se vuelven transparentes en la mano de Moni: “ALGUIEN ME ESTÁ ROBANDO”",
+   "guion": [
+    "Moni: ¡Alguien me está robando y no veo a nadie!",
+    "Infla: Buuu… soy la inflación.",
+    "Narrador: Con cinco por ciento de inflación por año…",
+    "Narrador: …mil dólares guardados compran como setecientos ochenta y cuatro en cinco años.",
+    "Moni: ¡Mi plata se volvió fantasma!"
+   ],
+   "dato": "Poder de compra de $1.000 con 5 % de inflación anual durante 5 años: 1.000 / 1,05⁵ = $783,5.",
+   "cierre": "“Capítulo 2: el colchón no te salva”.",
+   "escena": "Fantasma verde translúcido llamado Infla flotando sobre la alcancía de Moni, billetes semitransparentes, cuarto oscuro",
+   "n": 6,
+   "dia": 21,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Infla: fantasma verde translúcido, simpático pero travieso, con signo % en la panza"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T2 · La inflación invisible · Cap. 2",
+   "titulo": "Escondí la plata en el colchón y pasó esto",
+   "desc": "Moni cree que esconder billetes la protege. Infla atraviesa el colchón como si nada.",
+   "tags": "#inflacion #ahorro #colchon #moni",
+   "gancho": "Moni durmiendo sobre un colchón lleno de billetes, Infla atravesándolo",
+   "guion": [
+    "Moni: Acá no me encontrás, fantasma.",
+    "Infla: Yo no necesito encontrarte. Atravieso todo.",
+    "Narrador: La plata quieta no pierde billetes. Pierde lo que esos billetes compran.",
+    "Moni: Entonces tengo que moverla…",
+    "Infla: Eso no te lo iba a decir yo."
+   ],
+   "dato": "Guardar efectivo protege del robo de billetes, no de la pérdida de poder de compra.",
+   "cierre": "“¿Dónde la escondo entonces? Capítulo 3”.",
+   "escena": "Moni en pijama sobre un colchón con billetes asomando, fantasma Infla atravesando el colchón desde abajo, luz de luna",
+   "n": 7,
+   "dia": 26,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Infla: fantasma verde translúcido, simpático pero travieso, con signo % en la panza"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T2 · La inflación invisible · Cap. 3",
+   "titulo": "Dónde se esconde la plata del fantasma",
+   "desc": "Moni investiga qué tipo de ahorro suele crecer más que la inflación. Spoiler: no es la billetera.",
+   "tags": "#inversiones #inflacion #ahorro #moni",
+   "gancho": "Moni con lupa de detective: “CAPÍTULO 3: LA BÚSQUEDA”",
+   "guion": [
+    "Moni: Fantasma, voy a encontrar tu punto débil.",
+    "Narrador: Lo que suele ganarle a la inflación a largo plazo: instrumentos que ajustan por inflación o que invierten en empresas.",
+    "Narrador: Como bonos ajustados por inflación o fondos indexados diversificados.",
+    "Infla: ¡No! ¡Eso me debilita!",
+    "Moni: Ojo: no es magia ni garantía. Es largo plazo."
+   ],
+   "dato": "Bonos indexados a la inflación y fondos de índices diversificados son opciones habituales para proteger poder de compra a largo plazo. No es recomendación: depende de tu país y perfil.",
+   "cierre": "“Capítulo 4: Infla se disfraza”.",
+   "escena": "Moni detective con gorro y lupa examinando un mapa con caminos marcados, fantasma Infla nervioso detrás",
+   "n": 8,
+   "dia": 29,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Infla: fantasma verde translúcido, simpático pero travieso, con signo % en la panza"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T2 · La inflación invisible · Cap. 4",
+   "titulo": "El disfraz más tramposo de la inflación",
+   "desc": "Mismo precio, menos producto. Moni descubre la reduflación en el supermercado.",
+   "tags": "#reduflacion #inflacion #supermercado #moni",
+   "gancho": "Paquete de galletitas que se encoge en la mano de Moni: “¿ME ESTÁN CARGANDO?”",
+   "guion": [
+    "Moni: Mismo precio… ¿por qué hay menos galletitas?",
+    "Infla: Ji, ji. Me llamo reduflación.",
+    "Narrador: Cuando el paquete achica y el precio no cambia, igual estás pagando más.",
+    "Moni: A partir de hoy miro el precio por kilo.",
+    "Infla: ¡No mires el precio por kilo!"
+   ],
+   "dato": "Reduflación: reducir la cantidad manteniendo el precio. Comparar el precio por kilo o por litro lo deja en evidencia.",
+   "cierre": "“Final de temporada: el sueldo que no sube”.",
+   "escena": "Góndola de supermercado, Moni sosteniendo un paquete que se achica, Infla disfrazado de empleado con bigote",
+   "n": 9,
+   "dia": 34,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Infla: fantasma verde translúcido, simpático pero travieso, con signo % en la panza"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T2 · La inflación invisible · Cap. 5 (final)",
+   "titulo": "Me aumentaron el sueldo y soy más pobre",
+   "desc": "Final de temporada. A Moni le suben el sueldo 3 %, pero la inflación fue 6 %. Hacé la cuenta.",
+   "tags": "#sueldo #inflacion #aumento #moni",
+   "gancho": "Moni festejando con confeti que se cae: “¡ME AUMENTARON!… ¿no?”",
+   "guion": [
+    "Moni: ¡Me aumentaron el sueldo un tres por ciento!",
+    "Infla: Y yo subí un seis.",
+    "Narrador: Resultado: tu sueldo compra casi un tres por ciento menos que el año pasado.",
+    "Moni: O sea que me bajaron el sueldo con una sonrisa.",
+    "Moni: Próxima negociación: llevo el dato de inflación."
+   ],
+   "dato": "Aumento 3 % con inflación 6 %: 1,03 / 1,06 − 1 = −2,8 % de poder de compra.",
+   "cierre": "“Temporada 3: el préstamo fácil”.",
+   "escena": "Moni en una oficina con confeti cayendo y cara de duda, fantasma Infla sosteniendo un globo que se desinfla",
+   "n": 10,
+   "dia": 39,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Infla: fantasma verde translúcido, simpático pero travieso, con signo % en la panza"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T3 · El préstamo fácil · Cap. 1",
+   "titulo": "Me ofrecieron plata en 5 minutos 🚨",
+   "desc": "Préstamín aparece con una oferta irresistible. Moni aprende a mirar el número que importa: el costo total, no la cuota.",
+   "tags": "#prestamos #deudas #finanzaspersonales #moni",
+   "gancho": "Celular vibrando con notificación: “PRÉSTAMO APROBADO EN 5 MINUTOS”",
+   "guion": [
+    "Préstamín: ¡Aprobado! Mil dólares en cinco minutos.",
+    "Moni: ¿Y cuánto me cuesta?",
+    "Préstamín: Una cuota chiquitita.",
+    "Narrador: Nunca mires solo la cuota. Mirá la tasa anual y el costo total.",
+    "Moni: Mostrame el costo total… ¿por qué te escondés?"
+   ],
+   "dato": "El costo financiero total (tasa + comisiones + seguros) es el dato para comparar préstamos, no la cuota.",
+   "cierre": "“Capítulo 2: la cuota chiquita”.",
+   "escena": "Préstamín, un billete con sonrisa de vendedor y traje brillante, saliendo de un celular; Moni desconfiada",
+   "n": 11,
+   "dia": 41,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Préstamín: billete verde con traje brillante y sonrisa de vendedor"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T3 · El préstamo fácil · Cap. 2",
+   "titulo": "La cuota chiquita que me costó $354",
+   "desc": "Moni hace la cuenta del préstamo de Préstamín: $1.000 al 60 % anual en 12 cuotas.",
+   "tags": "#prestamos #intereses #deudas #moni",
+   "gancho": "Moni mirando una cuota de “$112” que se multiplica por 12 en el aire",
+   "guion": [
+    "Narrador: Préstamo de mil dólares, sesenta por ciento anual, doce cuotas.",
+    "Préstamín: Solo ciento trece por mes.",
+    "Moni: Ciento trece por doce…",
+    "Narrador: Mil trescientos cincuenta y cuatro. Pagaste trescientos cincuenta y cuatro de intereses.",
+    "Moni: La cuota era chiquita. El problema era el doce."
+   ],
+   "dato": "Préstamo de $1.000 al 60 % anual (5 % mensual) en 12 cuotas: cuota $112,83, total $1.353,90.",
+   "cierre": "“Capítulo 3: el primo deudor”.",
+   "escena": "Moni con una calculadora enorme, números flotando ×12, Préstamín sudando",
+   "n": 12,
+   "dia": 46,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Préstamín: billete verde con traje brillante y sonrisa de vendedor"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T3 · El préstamo fácil · Cap. 3",
+   "titulo": "Le presté plata a mi primo y…",
+   "desc": "El primo Centavito pide prestado “hasta el viernes”. ¿Qué viernes? Regla de Moni para prestar sin perder.",
+   "tags": "#prestamos #familia #finanzaspersonales #moni",
+   "gancho": "Centavito con cara de cachorro: “¿Me prestás hasta el viernes?”",
+   "guion": [
+    "Centavito: ¿Me prestás cien hasta el viernes?",
+    "Narrador: Tres meses después…",
+    "Moni: ¿Qué viernes, Centavito?",
+    "Moni: Nueva regla: presto solo lo que estoy dispuesta a regalar.",
+    "Moni: Si vuelve, es sorpresa. Si no, ya estaba perdido."
+   ],
+   "dato": "Regla práctica: prestá a familia o amigos solo un monto que puedas perder sin afectar tus finanzas ni la relación.",
+   "cierre": "“¿Te devolvieron alguna vez? Comentá 👇”.",
+   "escena": "Centavito, una moneda pequeña con ojos de cachorro, pidiendo a Moni; calendario con hojas volando",
+   "n": 13,
+   "dia": 49,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Centavito: moneda cobre pequeña, primo de Moni, ojos de cachorro"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T3 · El préstamo fácil · Cap. 4",
+   "titulo": "Bola de nieve vs. avalancha: cómo salir de deudas",
+   "desc": "Moni tiene tres deudas. ¿Cuál paga primero? Los dos métodos más usados, en 30 segundos.",
+   "tags": "#deudas #bolanieve #avalancha #moni",
+   "gancho": "Bola de nieve gigante rodando hacia Moni: “TENGO 3 DEUDAS”",
+   "guion": [
+    "Moni: Tengo tres deudas. ¿Cuál ataco primero?",
+    "Narrador: Avalancha: pagás primero la de tasa más alta. Ahorrás más intereses.",
+    "Narrador: Bola de nieve: pagás primero la más chica. Ganás motivación rápido.",
+    "Moni: En las dos, al resto le pagás el mínimo.",
+    "Moni: Elegí la que vayas a cumplir."
+   ],
+   "dato": "Avalancha (mayor tasa primero) minimiza intereses; bola de nieve (menor saldo primero) mejora la constancia.",
+   "cierre": "“Final de temporada: Moni libre”.",
+   "escena": "Moni en la cima de una montaña nevada eligiendo entre una bola de nieve y una avalancha, tres deudas como bloques",
+   "n": 14,
+   "dia": 54,
+   "formato": "Telenovela del dinero",
+   "reparto": []
+  },
+  {
+   "fmt": "novela",
+   "serie": "T3 · El préstamo fácil · Cap. 5 (final)",
+   "titulo": "El secreto para no volver a endeudarme",
+   "desc": "Final de temporada: Moni paga todo, pero Préstamín promete volver. La defensa: un fondo de emergencia.",
+   "tags": "#deudas #fondodeemergencia #ahorro #moni",
+   "gancho": "Moni rompiendo una cadena: “¡LIBRE!”",
+   "guion": [
+    "Moni: ¡Libre de deudas!",
+    "Préstamín: Ya vas a volver. Siempre hay una emergencia.",
+    "Moni: Por eso arranco un fondo de emergencia.",
+    "Narrador: La mayoría vuelve a endeudarse por un gasto inesperado, no por un capricho.",
+    "Préstamín: …Odio los fondos de emergencia."
+   ],
+   "dato": "Un fondo para imprevistos evita recurrir a deuda cara cuando aparece un gasto inesperado.",
+   "cierre": "“Temporada 4: el fondo de emergencia”.",
+   "escena": "Moni rompiendo cadenas con fuegos artificiales, Préstamín alejándose enojado",
+   "n": 15,
+   "dia": 59,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Préstamín: billete verde con traje brillante y sonrisa de vendedor",
+    "Capricho: moño de regalo rosa con cuernitos de diablito"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T4 · El fondo de emergencia · Cap. 1",
+   "titulo": "Se me rompió el celular y no tenía ni un peso",
+   "desc": "El celular de Moni se cae y la emergencia llega. ¿Cuánto tendría que tener ahorrado?",
+   "tags": "#fondodeemergencia #ahorro #imprevistos #moni",
+   "gancho": "Celular cayendo en cámara lenta: “NOOOO”",
+   "guion": [
+    "Moni: ¡Noooo!",
+    "Moni: No tengo ahorros. ¿Ahora qué?",
+    "Narrador: Fondo de emergencia: de tres a seis meses de tus gastos básicos.",
+    "Moni: ¿Seis meses? ¡Imposible!",
+    "Narrador: No arranca en seis. Arranca en uno."
+   ],
+   "dato": "Recomendación habitual: 3 a 6 meses de gastos esenciales en un lugar líquido y seguro.",
+   "cierre": "“Capítulo 2: dónde lo guardo”.",
+   "escena": "Celular cayendo en cámara lenta con pantalla rota, Moni gritando dramáticamente",
+   "n": 16,
+   "dia": 61,
+   "formato": "Telenovela del dinero",
+   "reparto": []
+  },
+  {
+   "fmt": "novela",
+   "serie": "T4 · El fondo de emergencia · Cap. 2",
+   "titulo": "¿Dónde guardo el fondo de emergencia?",
+   "desc": "Moni guarda su fondo en la misma cuenta que usa todos los días… y desaparece. La regla: separado y disponible.",
+   "tags": "#fondodeemergencia #ahorro #cuentas #moni",
+   "gancho": "Dos alcancías: una se vacía sola",
+   "guion": [
+    "Moni: Lo guardé en mi cuenta de siempre.",
+    "Narrador: Una semana después…",
+    "Moni: ¿Dónde está?",
+    "Narrador: Separalo: otra cuenta o un instrumento que puedas retirar en días, sin riesgo de perder.",
+    "Moni: Que se vea poco y se saque rápido."
+   ],
+   "dato": "El fondo debe ser líquido (disponible en días) y de bajo riesgo, separado de la cuenta de gastos.",
+   "cierre": "“Capítulo 3: empezar desde cero”.",
+   "escena": "Dos alcancías, una con una puerta cerrada con candado y otra abierta vaciándose, Moni rascándose la cabeza",
+   "n": 17,
+   "dia": 66,
+   "formato": "Telenovela del dinero",
+   "reparto": []
+  },
+  {
+   "fmt": "novela",
+   "serie": "T4 · El fondo de emergencia · Cap. 3",
+   "titulo": "Cómo junté $1.000 empezando con $0",
+   "desc": "Moni no tiene nada. Con $20 por semana llega a $1.000 en 50 semanas.",
+   "tags": "#ahorro #retodeahorro #fondodeemergencia #moni",
+   "gancho": "Contador en $0 y Moni con cara de “a ver”",
+   "guion": [
+    "Moni: Tengo cero.",
+    "Narrador: Veinte dólares por semana.",
+    "Narrador: Cincuenta semanas después: mil dólares.",
+    "Moni: Veinte es lo que gasto en un delivery.",
+    "Moni: Y lo programé automático, para no tener que acordarme."
+   ],
+   "dato": "$20 × 50 semanas = $1.000.",
+   "cierre": "“Capítulo 4: la tentación”.",
+   "escena": "Frasco de vidrio llenándose de monedas semana a semana, calendario, Moni contenta",
+   "n": 18,
+   "dia": 69,
+   "formato": "Telenovela del dinero",
+   "reparto": []
+  },
+  {
+   "fmt": "novela",
+   "serie": "T4 · El fondo de emergencia · Cap. 4",
+   "titulo": "El Black Friday intentó robarme el fondo",
+   "desc": "Ofertas por todos lados. Moni duda: ¿un televisor es una emergencia?",
+   "tags": "#blackfriday #ahorro #compras #moni",
+   "gancho": "Carteles de “-70 %” rodeando a Moni",
+   "guion": [
+    "Ofertín: ¡Setenta por ciento off! ¡Solo hoy!",
+    "Moni: Pero… el fondo es para emergencias.",
+    "Ofertín: ¡Esto ES una emergencia!",
+    "Moni: Pregunta clave: si no hubiera oferta, ¿lo compraría?",
+    "Moni: No. Entonces no es una emergencia."
+   ],
+   "dato": "Una emergencia es inesperada, necesaria y urgente. Una oferta no cumple ninguna de las tres.",
+   "cierre": "“Final: el fondo salva el día”.",
+   "escena": "Ofertín, una etiqueta de precio con megáfono, rodeando a Moni con carteles de descuento",
+   "n": 19,
+   "dia": 74,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Ofertín: etiqueta de precio amarilla con megáfono"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T4 · El fondo de emergencia · Cap. 5 (final)",
+   "titulo": "El día que el fondo de emergencia me salvó",
+   "desc": "Final de temporada: se rompe la heladera. Esta vez Moni no llama a Préstamín.",
+   "tags": "#fondodeemergencia #ahorro #finanzaspersonales #moni",
+   "gancho": "Heladera echando humo: “OTRA EMERGENCIA”",
+   "guion": [
+    "Moni: ¡Se rompió la heladera!",
+    "Préstamín: ¿Me necesitás?",
+    "Moni: No. Tengo fondo.",
+    "Narrador: Sin deudas. Sin intereses. Sin drama.",
+    "Moni: Ahora a reponerlo."
+   ],
+   "dato": "Usar el fondo y reponerlo enseguida es exactamente para lo que existe.",
+   "cierre": "“Temporada 5: hay zombies en tu cuenta 🧟”.",
+   "escena": "Heladera humeando, Moni tranquila con su alcancía, Préstamín decepcionado en la puerta",
+   "n": 20,
+   "dia": 79,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Préstamín: billete verde con traje brillante y sonrisa de vendedor"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T5 · Suscripciones zombie · Cap. 1",
+   "titulo": "Hay zombies en mi cuenta bancaria 🧟",
+   "desc": "Suscripciones que Moni ya no usa siguen cobrando cada mes. Cuatro de $10 son $480 al año.",
+   "tags": "#suscripciones #gastoshormiga #ahorro #moni",
+   "gancho": "Manos de zombie saliendo del resumen de la tarjeta",
+   "guion": [
+    "Moni: ¿Qué es esto en mi resumen?",
+    "Zombis: Suuus… cripcioooones.",
+    "Narrador: Cuatro suscripciones de diez dólares que no usás…",
+    "Narrador: …son cuatrocientos ochenta al año.",
+    "Moni: ¡Están vivas y yo ni las miro!"
+   ],
+   "dato": "4 × $10 × 12 meses = $480 por año.",
+   "cierre": "“Capítulo 2: la prueba gratis que muerde”.",
+   "escena": "Resumen de tarjeta gigante del que salen zombies con logos genéricos de streaming, Moni asustada con linterna",
+   "n": 21,
+   "dia": 81,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Zombis: zombies caricaturescos y tiernos, nada aterradores"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T5 · Suscripciones zombie · Cap. 2",
+   "titulo": "La prueba gratis que me mordió",
+   "desc": "“Siete días gratis” se convierte en un año pagando. El truco de Moni: cancelar el mismo día que te anotás.",
+   "tags": "#suscripciones #pruebagratis #ahorro #moni",
+   "gancho": "Regalo con moño que muerde a Moni",
+   "guion": [
+    "Zombi: Siete días gratiiis…",
+    "Narrador: Ocho meses después, seguía cobrando.",
+    "Moni: Truco: me anoto y cancelo el mismo día.",
+    "Moni: Los siete días los uso igual.",
+    "Zombi: ¡Nooo! ¡Eso es trampa!"
+   ],
+   "dato": "En la mayoría de los servicios, cancelar durante la prueba mantiene el acceso hasta el último día gratis.",
+   "cierre": "“Capítulo 3: la auditoría”.",
+   "escena": "Caja de regalo con dientes mordiendo la mano de Moni, zombie sonriendo detrás",
+   "n": 22,
+   "dia": 86,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Zombis: zombies caricaturescos y tiernos, nada aterradores"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T5 · Suscripciones zombie · Cap. 3",
+   "titulo": "Hice una auditoría de mis gastos y encontré esto",
+   "desc": "Moni revisa tres meses de resúmenes con lupa. El método para encontrar todo lo que se cobra solo.",
+   "tags": "#presupuesto #suscripciones #ahorro #moni",
+   "gancho": "Moni con casco de cazafantasmas y lupa: “AUDITORÍA”",
+   "guion": [
+    "Moni: Operativo auditoría.",
+    "Narrador: Abrí tres meses de resúmenes.",
+    "Narrador: Marcá todo lo que se repite cada mes.",
+    "Narrador: Preguntá: ¿lo usé esta semana?",
+    "Moni: Si la respuesta es no, ¡zombie eliminado!"
+   ],
+   "dato": "Revisar 3 meses de movimientos permite detectar cargos recurrentes, incluidos los trimestrales.",
+   "cierre": "“Capítulo 4: el zombie del gimnasio”.",
+   "escena": "Moni con lupa y casco sobre papeles de resumen, marcando con resaltador cargos repetidos",
+   "n": 23,
+   "dia": 89,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Zombis: zombies caricaturescos y tiernos, nada aterradores"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T5 · Suscripciones zombie · Cap. 4",
+   "titulo": "El gimnasio al que no voy me costó $480",
+   "desc": "Moni paga gimnasio desde enero. Fue dos veces. Cada visita le salió $240.",
+   "tags": "#gimnasio #suscripciones #gastoshormiga #moni",
+   "gancho": "Pesa con telarañas y Moni en el sillón",
+   "guion": [
+    "Gym Zombi: ¡Este año sí vas!",
+    "Narrador: Cuarenta dólares por mes. Doce meses. Dos visitas.",
+    "Narrador: Cuatrocientos ochenta dólares. Doscientos cuarenta por visita.",
+    "Moni: La visita más cara de mi vida.",
+    "Moni: Pago por clase hasta que vaya en serio."
+   ],
+   "dato": "$40 × 12 = $480 al año; con 2 visitas, $240 por visita.",
+   "cierre": "“¿Cuánto te cuesta tu gimnasio por visita? 👇”.",
+   "escena": "Pesa con telarañas, Moni en el sillón con un snack, zombie con ropa deportiva",
+   "n": 24,
+   "dia": 94,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Zombis: zombies caricaturescos y tiernos, nada aterradores"
+   ]
+  },
+  {
+   "fmt": "novela",
+   "serie": "T5 · Suscripciones zombie · Cap. 5 (final)",
+   "titulo": "El truco de rotar suscripciones",
+   "desc": "Final de la temporada 5. Moni no se queda sin series: tiene una suscripción por mes y rota.",
+   "tags": "#suscripciones #streaming #ahorro #moni",
+   "gancho": "Ruleta de servicios girando: “FINAL DE TEMPORADA”",
+   "guion": [
+    "Moni: No necesito cuatro plataformas a la vez.",
+    "Narrador: Una por mes. Ves todo lo que querías. Cancelás. Pasás a la otra.",
+    "Moni: Mismo contenido. Un cuarto del precio.",
+    "Zombis: Nos… derrotaron…",
+    "Moni: Y lo que ahorro va directo al fondo."
+   ],
+   "dato": "Con 4 servicios de $10: pagar uno a la vez cuesta $120 al año en vez de $480.",
+   "cierre": "“¿Querés temporada 6? Comentá qué villano querés ver”.",
+   "escena": "Moni girando una ruleta con íconos de pantallas, zombies desmayados alrededor, final de temporada con confeti",
+   "n": 25,
+   "dia": 99,
+   "formato": "Telenovela del dinero",
+   "reparto": [
+    "Zombis: zombies caricaturescos y tiernos, nada aterradores"
+   ]
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Tu sueldo, dividido en 3. Así.",
+   "desc": "La regla 50/30/20 explicada por Moni en 15 segundos. Guardalo para el día de cobro.",
+   "tags": "#presupuesto #regla503020 #ahorro #moni",
+   "gancho": "Título dibujado “50 / 30 / 20” y Moni con marcador",
+   "guion": [
+    "Moni: Tu sueldo, dividido en tres. Así.",
+    "Moni: La mitad: alquiler, comida y transporte.",
+    "Moni: Un treinta para disfrutar sin culpa.",
+    "Moni: Y el veinte, para vos del futuro.",
+    "Moni: Guardalo para el día de cobro."
+   ],
+   "dato": "Regla 50/30/20 popularizada por Elizabeth Warren: 50 % necesidades, 30 % deseos, 20 % ahorro/deudas.",
+   "cierre": "📌 Guardalo.",
+   "escena": "Pizarra blanca con gráfico de torta 50/30/20 dibujado a mano, Moni con marcador",
+   "n": 26,
+   "dia": 2,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Interés compuesto en 15 segundos",
+   "desc": "$1.000 al 10 % anual por 20 años no se convierten en $3.000, sino en $6.727. Moni lo dibuja.",
+   "tags": "#interescompuesto #inversiones #educacionfinanciera #moni",
+   "gancho": "Bola de nieve dibujada que crece: “$1.000 → ¿$3.000?”",
+   "guion": [
+    "Moni: Mil dólares al diez por ciento por veinte años. ¿Tres mil?",
+    "Moni: No. Porque el interés también gana interés.",
+    "Moni: Año uno: cien. Año diez: doscientos treinta y seis.",
+    "Moni: Al final: seis mil setecientos veintisiete.",
+    "Moni: Eso es el interés compuesto."
+   ],
+   "dato": "1.000 × 1,10²⁰ = $6.727,50. Con interés simple serían $3.000.",
+   "cierre": "“¿Cuánto tiempo tenés vos? Comentá tu edad”.",
+   "escena": "Pizarra con bola de nieve dibujada creciendo por una colina, números a mano",
+   "n": 27,
+   "dia": 7,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "La regla del 72: cuándo se duplica tu plata",
+   "desc": "Dividí 72 por la tasa y sabés en cuántos años duplicás. Al 8 %: 9 años.",
+   "tags": "#regladel72 #inversiones #interescompuesto #moni",
+   "gancho": "“72 ÷ ? =” escrito con marcador gigante",
+   "guion": [
+    "Moni: ¿Querés saber cuándo se duplica tu plata?",
+    "Moni: Setenta y dos dividido la tasa anual.",
+    "Moni: Al ocho por ciento: nueve años.",
+    "Moni: Al seis: doce. Al tres: veinticuatro.",
+    "Moni: Funciona al revés con la inflación: te dice cuándo tu plata vale la mitad."
+   ],
+   "dato": "Regla del 72: aproximación de años para duplicar = 72 / tasa %. Al 8 % → 9 años (exacto: 9,006).",
+   "cierre": "📌 Guardalo y hacé tu cuenta.",
+   "escena": "Pizarra con la fórmula 72 ÷ tasa = años, flechas y un billete que se duplica",
+   "n": 28,
+   "dia": 10,
+   "formato": "Pizarra express",
+   "reparto": [
+    "Infla: fantasma verde translúcido, simpático pero travieso, con signo % en la panza"
+   ]
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Qué es la inflación, explicado con pizza 🍕",
+   "desc": "Si la pizza sube y tu billete no, tu billete vale menos. Moni lo explica con porciones.",
+   "tags": "#inflacion #economia #educacionfinanciera #moni",
+   "gancho": "Pizza dibujada perdiendo porciones",
+   "guion": [
+    "Moni: Con diez dólares comprabas una pizza entera.",
+    "Moni: Un año después, con los mismos diez, te dan siete porciones.",
+    "Moni: La pizza no cambió. Tu billete compra menos.",
+    "Moni: Eso es la inflación.",
+    "Moni: Por eso la plata quieta pierde."
+   ],
+   "dato": "Inflación: suba generalizada de precios que reduce el poder de compra del dinero.",
+   "cierre": "“Mañana: dónde guardar la plata para que no pierda”.",
+   "escena": "Pizarra con una pizza dibujada a la que le faltan porciones y un billete triste",
+   "n": 29,
+   "dia": 15,
+   "formato": "Pizarra express",
+   "reparto": [
+    "Infla: fantasma verde translúcido, simpático pero travieso, con signo % en la panza"
+   ]
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Tasa nominal vs. efectiva: la trampa del 12 %",
+   "desc": "Un 12 % anual que se capitaliza todos los meses en realidad es 12,68 %. Moni muestra la diferencia.",
+   "tags": "#tasadeinteres #tea #finanzas #moni",
+   "gancho": "“12 % ≠ 12 %” con signo de pregunta",
+   "guion": [
+    "Moni: Doce por ciento no siempre es doce por ciento.",
+    "Moni: Si se capitaliza cada mes, el interés de un mes genera interés el siguiente.",
+    "Moni: Doce nominal anual, capitalizable mensual, da doce coma sesenta y ocho efectivo.",
+    "Moni: Para comparar, usá siempre la tasa efectiva.",
+    "Moni: Si te la esconden, preguntá."
+   ],
+   "dato": "(1 + 0,12/12)¹² − 1 = 12,68 % efectiva anual.",
+   "cierre": "📌 Guardalo para tu próximo plazo fijo o préstamo.",
+   "escena": "Pizarra con dos columnas TNA y TEA, flechas y Moni señalando",
+   "n": 30,
+   "dia": 20,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Qué es una acción (en 15 segundos)",
+   "desc": "Comprar una acción es comprar un pedacito de una empresa. Moni lo dibuja con una pizzería.",
+   "tags": "#acciones #bolsa #inversiones #moni",
+   "gancho": "Edificio dibujado partido en pedacitos",
+   "guion": [
+    "Moni: Imaginá una pizzería dividida en mil pedacitos.",
+    "Moni: Comprás uno: sos dueño de una milésima.",
+    "Moni: Si la pizzería gana más, tu pedacito vale más.",
+    "Moni: Si le va mal, vale menos.",
+    "Moni: Eso es una acción."
+   ],
+   "dato": "Una acción representa una parte de la propiedad de una empresa.",
+   "cierre": "“Mañana: qué es un bono”.",
+   "escena": "Pizarra con una pizzería dibujada dividida en cuadraditos, uno pintado",
+   "n": 31,
+   "dia": 22,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Qué es un bono (sin palabras raras)",
+   "desc": "Un bono es prestarle plata a un gobierno o empresa a cambio de intereses. Moni lo explica.",
+   "tags": "#bonos #inversiones #rentafija #moni",
+   "gancho": "Moni dándole un billete a un edificio con corbata",
+   "guion": [
+    "Moni: Un bono es un préstamo… pero el banco sos vos.",
+    "Moni: Le prestás a un gobierno o a una empresa.",
+    "Moni: Te pagan intereses y al final te devuelven lo prestado.",
+    "Moni: El riesgo: que no te paguen.",
+    "Moni: Por eso los que pagan más suelen ser más riesgosos."
+   ],
+   "dato": "Bono: título de deuda; el emisor paga intereses (cupones) y devuelve el capital al vencimiento.",
+   "cierre": "📌 Guardalo.",
+   "escena": "Pizarra con Moni prestando un billete a un edificio con corbata y flechas de intereses",
+   "n": 32,
+   "dia": 27,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Qué es un fondo indexado (ETF)",
+   "desc": "En vez de elegir una empresa, comprás una canasta con cientos. Moni lo dibuja como una ensalada de frutas.",
+   "tags": "#etf #fondosindexados #inversiones #moni",
+   "gancho": "Canasta dibujada llena de logos genéricos",
+   "guion": [
+    "Moni: ¿No sabés qué empresa elegir?",
+    "Moni: Un fondo indexado compra una canasta con cientos de empresas.",
+    "Moni: Si una cae, las otras compensan.",
+    "Moni: Suelen tener comisiones bajas.",
+    "Moni: Es como comprar la ensalada en vez de adivinar la fruta."
+   ],
+   "dato": "Un fondo indexado o ETF replica un índice (por ejemplo, las 500 mayores empresas de EE. UU.).",
+   "cierre": "“Mañana: diversificar”.",
+   "escena": "Pizarra con una canasta dibujada llena de pequeñas fábricas y una ensalada de frutas",
+   "n": 33,
+   "dia": 30,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Diversificar: la regla de los huevos 🥚",
+   "desc": "No pongas todos los huevos en la misma canasta. Moni lo dibuja y se le rompen.",
+   "tags": "#diversificacion #inversiones #riesgo #moni",
+   "gancho": "Canasta con todos los huevos tambaleando",
+   "guion": [
+    "Moni: Todos mis huevos en una canasta.",
+    "Moni: ¡Ups!",
+    "Moni: Diversificar es repartir: distintas empresas, países y tipos de inversión.",
+    "Moni: No sube todo junto, pero tampoco cae todo junto.",
+    "Moni: Menos sustos, mismo camino."
+   ],
+   "dato": "La diversificación reduce el riesgo específico de una sola inversión.",
+   "cierre": "📌 Guardalo.",
+   "escena": "Pizarra con huevos repartidos en varias canastas y una canasta rota",
+   "n": 34,
+   "dia": 35,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Riesgo y rendimiento: la balanza",
+   "desc": "Si te prometen mucho rendimiento sin riesgo, desconfiá. Moni lo explica con una balanza.",
+   "tags": "#riesgo #rendimiento #inversiones #moni",
+   "gancho": "Balanza dibujada con “GANANCIA” y “RIESGO”",
+   "guion": [
+    "Moni: Rendimiento y riesgo viajan juntos.",
+    "Moni: Más rendimiento esperado, más riesgo.",
+    "Moni: Plazo fijo: poco y estable. Acciones: más, pero con subidas y bajadas.",
+    "Moni: ¿Te prometen mucho y sin riesgo?",
+    "Moni: Corré."
+   ],
+   "dato": "Principio básico: a mayor rendimiento esperado, mayor riesgo asumido.",
+   "cierre": "“¿Qué te prometieron alguna vez? 👇”.",
+   "escena": "Pizarra con una balanza dibujada, Moni equilibrándola",
+   "n": 35,
+   "dia": 40,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Pagate a vos primero",
+   "desc": "El ahorro no es lo que sobra a fin de mes. Es lo primero que separás cuando cobrás.",
+   "tags": "#ahorro #pagateatiprimero #habitos #moni",
+   "gancho": "Flecha del sueldo que va primero a la alcancía",
+   "guion": [
+    "Moni: ¿Ahorrás lo que sobra a fin de mes?",
+    "Moni: Spoiler: nunca sobra.",
+    "Moni: Cobrás, y lo primero que hacés es separar tu ahorro.",
+    "Moni: Mejor si es automático.",
+    "Moni: Con el resto, vivís."
+   ],
+   "dato": "“Pay yourself first”: ahorrar al inicio del mes mejora la constancia frente a ahorrar el remanente.",
+   "cierre": "📌 Guardalo para el día de cobro.",
+   "escena": "Pizarra con flechas de un sueldo que primero llena una alcancía y después a gastos",
+   "n": 36,
+   "dia": 42,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Presupuesto base cero en 20 segundos",
+   "desc": "Cada dólar tiene un trabajo. Moni le pone nombre a toda la plata del mes.",
+   "tags": "#presupuesto #basecero #finanzaspersonales #moni",
+   "gancho": "Billetes con cartelitos de “trabajo” colgados",
+   "guion": [
+    "Moni: Presupuesto base cero: cada dólar tiene un trabajo.",
+    "Moni: Sueldo menos gastos, ahorro y metas tiene que dar cero.",
+    "Moni: Cero no es gastar todo. Es asignar todo.",
+    "Moni: Si sobra, le das trabajo de ahorro.",
+    "Moni: Así ninguna plata se pierde sin que la veas."
+   ],
+   "dato": "Método base cero: ingresos − asignaciones = 0.",
+   "cierre": "📌 Guardalo.",
+   "escena": "Pizarra con billetes dibujados con cascos de trabajo y carteles: alquiler, comida, ahorro",
+   "n": 37,
+   "dia": 47,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Activo vs. pasivo: la definición que te cambia la cabeza",
+   "desc": "Un activo pone plata en tu bolsillo. Un pasivo la saca. Moni dibuja la diferencia.",
+   "tags": "#activos #pasivos #educacionfinanciera #moni",
+   "gancho": "Bolsillo con flecha que entra y flecha que sale",
+   "guion": [
+    "Moni: Definición simple.",
+    "Moni: Activo: algo que pone plata en tu bolsillo.",
+    "Moni: Pasivo: algo que la saca.",
+    "Moni: Un departamento que alquilás: activo. Un auto que solo gasta: se parece a un pasivo.",
+    "Moni: Comprá más de los primeros."
+   ],
+   "dato": "Definición simplificada usada en educación financiera (en contabilidad el término es más amplio).",
+   "cierre": "“¿Tu auto es activo o pasivo? 👇”.",
+   "escena": "Pizarra dividida en dos con un bolsillo, flechas verdes que entran y rojas que salen",
+   "n": 38,
+   "dia": 50,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "El número que importa en un préstamo no es la cuota",
+   "desc": "Moni explica el costo total del préstamo: tasa + comisiones + seguros.",
+   "tags": "#prestamos #cft #deudas #moni",
+   "gancho": "Lupa sobre una letra chiquita",
+   "guion": [
+    "Moni: Dos préstamos con la misma cuota pueden costar muy distinto.",
+    "Moni: Mirá la tasa anual efectiva…",
+    "Moni: …y el costo total: comisiones, seguros, gastos.",
+    "Moni: Ese es el número para comparar.",
+    "Moni: La cuota es la parte que te quieren mostrar."
+   ],
+   "dato": "El costo financiero total (CFT/TAE según el país) incluye tasa y cargos obligatorios.",
+   "cierre": "📌 Guardalo antes de pedir un préstamo.",
+   "escena": "Pizarra con un contrato dibujado y Moni con lupa sobre la letra chica",
+   "n": 39,
+   "dia": 55,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Patrimonio neto: tu verdadero número",
+   "desc": "No es cuánto ganás. Es lo que tenés menos lo que debés. Moni hace la resta.",
+   "tags": "#patrimonio #finanzaspersonales #riqueza #moni",
+   "gancho": "Resta gigante escrita en la pizarra",
+   "guion": [
+    "Moni: ¿Cuánto vale tu situación financiera?",
+    "Moni: Sumá lo que tenés: ahorros, inversiones, cosas que podrías vender.",
+    "Moni: Restá lo que debés.",
+    "Moni: Ese es tu patrimonio neto.",
+    "Moni: Calculalo una vez por año y miralo crecer."
+   ],
+   "dato": "Patrimonio neto = activos − deudas.",
+   "cierre": "📌 Guardalo y hacé tu cuenta.",
+   "escena": "Pizarra con una resta grande: lo que tenés menos lo que debés, Moni con marcador",
+   "n": 40,
+   "dia": 60,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Liquidez: por qué tener plata ‘a mano’",
+   "desc": "Tener mucho no sirve si no lo podés usar cuando lo necesitás. Moni explica la liquidez.",
+   "tags": "#liquidez #ahorro #finanzas #moni",
+   "gancho": "Grifo dibujado: abierto vs. cerrado",
+   "guion": [
+    "Moni: Liquidez: qué tan rápido convertís algo en efectivo.",
+    "Moni: Efectivo: inmediato.",
+    "Moni: Una casa: meses.",
+    "Moni: Para emergencias, necesitás alta liquidez.",
+    "Moni: Para el largo plazo, podés sacrificar un poco."
+   ],
+   "dato": "Liquidez: facilidad y rapidez para convertir un activo en dinero sin perder valor.",
+   "cierre": "📌 Guardalo.",
+   "escena": "Pizarra con un grifo dibujado, una casa con reloj de arena y billetes",
+   "n": 41,
+   "dia": 62,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Ingreso activo vs. pasivo (lo que nadie te explica)",
+   "desc": "Ingreso pasivo no es ganar sin hacer nada. Moni explica qué es en realidad.",
+   "tags": "#ingresopasivo #inversiones #emprender #moni",
+   "gancho": "Reloj y alcancía en una balanza",
+   "guion": [
+    "Moni: Ingreso activo: cambiás tiempo por plata.",
+    "Moni: Ingreso pasivo: la plata llega sin que trabajes cada hora.",
+    "Moni: Ejemplos: dividendos, intereses, alquileres.",
+    "Moni: Pero casi siempre requiere capital o mucho trabajo antes.",
+    "Moni: Pasivo no es mágico. Es trabajo adelantado."
+   ],
+   "dato": "El ingreso pasivo requiere inversión previa de dinero o trabajo.",
+   "cierre": "“¿Cuál tenés vos? 👇”.",
+   "escena": "Pizarra con un reloj de un lado y un árbol de monedas del otro",
+   "n": 42,
+   "dia": 67,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "El método de los sobres ✉️",
+   "desc": "Un sobre por categoría y cuando se vacía, se terminó. Moni lo dibuja.",
+   "tags": "#metododesobres #presupuesto #ahorro #moni",
+   "gancho": "Sobres dibujados con nombres: comida, salidas, transporte",
+   "guion": [
+    "Moni: El método de los sobres.",
+    "Moni: Un sobre por categoría: comida, salidas, transporte.",
+    "Moni: Ponés la plata del mes en cada uno.",
+    "Moni: Si se vacía el de salidas, no hay más salidas.",
+    "Moni: Hoy podés hacerlo con subcuentas en el banco."
+   ],
+   "dato": "Método de sobres: presupuesto con límites físicos o digitales por categoría.",
+   "cierre": "📌 Guardalo.",
+   "escena": "Pizarra con sobres dibujados con etiquetas y monedas entrando",
+   "n": 43,
+   "dia": 70,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Qué mira un banco antes de prestarte",
+   "desc": "Tu historial de crédito es tu reputación financiera. Moni explica qué lo mejora.",
+   "tags": "#historialcrediticio #score #credito #moni",
+   "gancho": "Medidor de puntaje dibujado",
+   "guion": [
+    "Moni: Antes de prestarte, el banco mira tu historial.",
+    "Moni: Lo que más suma: pagar siempre a tiempo.",
+    "Moni: También: no usar todo tu límite de crédito.",
+    "Moni: Y no pedir muchos créditos juntos.",
+    "Moni: Es tu reputación, pero en números."
+   ],
+   "dato": "Factores generales de los puntajes de crédito: puntualidad de pagos, nivel de uso del crédito, antigüedad y solicitudes recientes.",
+   "cierre": "📌 Guardalo.",
+   "escena": "Pizarra con un velocímetro de puntaje y Moni empujando la aguja hacia verde",
+   "n": 44,
+   "dia": 75,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Invertir de a poco todos los meses (y por qué funciona)",
+   "desc": "Aportar lo mismo cada mes compra más cuando está barato y menos cuando está caro.",
+   "tags": "#invertir #aportesperiodicos #inversiones #moni",
+   "gancho": "Escalera dibujada subiendo y bajando",
+   "guion": [
+    "Moni: No sé si es buen momento para invertir.",
+    "Moni: Solución: la misma cantidad todos los meses.",
+    "Moni: Cuando el precio baja, comprás más unidades.",
+    "Moni: Cuando sube, comprás menos.",
+    "Moni: Y te olvidás de adivinar."
+   ],
+   "dato": "Aportes periódicos fijos (dollar cost averaging) reducen el riesgo de entrar todo en un mal momento.",
+   "cierre": "📌 Guardalo.",
+   "escena": "Pizarra con un gráfico zigzag y bolsitas de monedas cayendo a intervalos iguales",
+   "n": 45,
+   "dia": 80,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Costo de oportunidad: lo que no ves",
+   "desc": "Cada vez que elegís algo, renunciás a otra cosa. Moni explica la idea más útil de la economía.",
+   "tags": "#costodeoportunidad #economia #decisiones #moni",
+   "gancho": "Dos caminos dibujados",
+   "guion": [
+    "Moni: Comprar algo cuesta dos cosas.",
+    "Moni: La plata que pagás…",
+    "Moni: …y lo que podrías haber hecho con esa plata.",
+    "Moni: Eso segundo es el costo de oportunidad.",
+    "Moni: La próxima compra, preguntate: ¿qué dejo de lado?"
+   ],
+   "dato": "Costo de oportunidad: valor de la mejor alternativa a la que se renuncia.",
+   "cierre": "“¿Qué compra te costó más de lo que pensabas? 👇”.",
+   "escena": "Pizarra con un camino que se bifurca, Moni en el cruce",
+   "n": 46,
+   "dia": 82,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "La regla de las 24 horas para no gastar de más",
+   "desc": "¿Querés algo que no necesitás? Esperá 24 horas. Moni explica por qué funciona.",
+   "tags": "#comprasimpulsivas #ahorro #habitos #moni",
+   "gancho": "Reloj de arena gigante sobre un carrito de compras",
+   "guion": [
+    "Moni: ¿Querés comprar algo que no planeabas?",
+    "Moni: Esperá veinticuatro horas.",
+    "Moni: Para compras grandes, setenta y dos.",
+    "Moni: La mayoría de las ganas se van solas.",
+    "Moni: Si mañana lo seguís queriendo, ahí lo pensás."
+   ],
+   "dato": "Una pausa antes de comprar reduce las compras por impulso.",
+   "cierre": "📌 Guardalo.",
+   "escena": "Pizarra con un reloj de arena sobre un carrito de compras dibujado",
+   "n": 47,
+   "dia": 87,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Qué es un dividendo",
+   "desc": "Algunas empresas reparten parte de sus ganancias entre sus accionistas. Moni lo explica con limonada.",
+   "tags": "#dividendos #acciones #inversiones #moni",
+   "gancho": "Puesto de limonada dibujado repartiendo monedas",
+   "guion": [
+    "Moni: Sos dueño de un pedacito de un puesto de limonada.",
+    "Moni: A fin de año ganó plata.",
+    "Moni: Parte la reinvierte y parte la reparte entre los dueños.",
+    "Moni: Lo que te toca a vos es un dividendo.",
+    "Moni: No todas las empresas pagan dividendos."
+   ],
+   "dato": "Dividendo: parte de las ganancias que una empresa distribuye entre sus accionistas.",
+   "cierre": "📌 Guardalo.",
+   "escena": "Pizarra con un puesto de limonada dibujado y monedas repartiéndose",
+   "n": 48,
+   "dia": 90,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Interés simple vs. compuesto",
+   "desc": "El simple te paga solo por lo que pusiste. El compuesto también por lo que ganaste. Moni lo muestra.",
+   "tags": "#interescompuesto #interessimple #ahorro #moni",
+   "gancho": "Escalera recta vs. curva que se dispara",
+   "guion": [
+    "Moni: Interés simple: ganás siempre sobre lo que pusiste.",
+    "Moni: Interés compuesto: ganás sobre lo que pusiste más lo que ya ganaste.",
+    "Moni: Al principio casi no se nota.",
+    "Moni: Con los años, la curva se dispara.",
+    "Moni: El secreto no es la tasa. Es el tiempo."
+   ],
+   "dato": "Simple: C × (1 + r × t). Compuesto: C × (1 + r)ᵗ.",
+   "cierre": "“Mañana: cuánto te come una comisión”.",
+   "escena": "Pizarra con dos líneas, una recta y otra curva hacia arriba",
+   "n": 49,
+   "dia": 95,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "pizarra",
+   "serie": "Pizarra express",
+   "titulo": "Sueldo bruto vs. neto: por qué cobro menos",
+   "desc": "Moni lee un recibo de sueldo y descubre a dónde va la diferencia.",
+   "tags": "#sueldo #recibodesueldo #finanzaspersonales #moni",
+   "gancho": "Recibo de sueldo dibujado con partes tachadas",
+   "guion": [
+    "Moni: Me dijeron un sueldo y cobré menos.",
+    "Moni: Bruto: lo que figura en el contrato.",
+    "Moni: Neto: lo que te llega después de aportes e impuestos.",
+    "Moni: Esos aportes suelen ir a jubilación y salud.",
+    "Moni: Para tu presupuesto, usá siempre el neto."
+   ],
+   "dato": "Neto = bruto − aportes y retenciones (varía por país).",
+   "cierre": "📌 Guardalo.",
+   "escena": "Pizarra con un recibo de sueldo dibujado y flechas hacia jubilación y salud",
+   "n": 50,
+   "dia": 100,
+   "formato": "Pizarra express",
+   "reparto": []
+  },
+  {
+   "fmt": "sitcom",
+   "serie": "Sitcom: los gastos hormiga · Ep. 1",
+   "titulo": "El enemigo más tierno de tu sueldo ☕",
+   "desc": "Cafecito dice que solo cuesta $3. Moni hace la cuenta del año.",
+   "tags": "#gastoshormiga #cafe #ahorro #moni",
+   "gancho": "Cafecito sonriendo: “Tranqui, soy solo un cafecito de $3”",
+   "guion": [
+    "Cafecito: Tranqui, soy solo un cafecito de tres dólares.",
+    "Moni: ¿Todos los días de trabajo?",
+    "Moni: Tres por veintidós días, por doce meses…",
+    "Moni: ¡Setecientos noventa y dos al año!",
+    "Cafecito: ¿Y si mejor me preparás en casa?"
+   ],
+   "dato": "$3 × 22 días hábiles × 12 meses = $792.",
+   "cierre": "“Gastos hormiga · Ep. 2 mañana”.",
+   "escena": "Living de sitcom, Moni en el sillón y Cafecito, una taza de café con cara, en la mesa",
+   "n": 51,
+   "dia": 4,
+   "formato": "Sitcom",
+   "reparto": [
+    "Cafecito: taza de café de cartón color crema con franja marrón y tapa, vapor saliendo, cara tierna"
+   ]
+  },
+  {
+   "fmt": "sitcom",
+   "serie": "Sitcom: los gastos hormiga · Ep. 2",
+   "titulo": "Delivery me costó $2.340 este año 🛵",
+   "desc": "Delivy, la bolsa de delivery, visita a Moni tres veces por semana. La cuenta anual la deja helada.",
+   "tags": "#delivery #gastoshormiga #ahorro #moni",
+   "gancho": "Bolsa de delivery tocando el timbre: “¡Llegó tu pedido!”",
+   "guion": [
+    "Delivy: ¡Llegó tu pedido! Como siempre.",
+    "Moni: Son solo quince dólares…",
+    "Delivy: Tres veces por semana.",
+    "Moni: Quince por tres por cincuenta y dos… ¡dos mil trescientos cuarenta!",
+    "Delivy: ¿Nos vemos el jueves?"
+   ],
+   "dato": "$15 × 3 × 52 semanas = $2.340 al año.",
+   "cierre": "“Ep. 3: envío gratis”.",
+   "escena": "Puerta de departamento, Delivy, una bolsa de comida con cara, saludando a Moni en pijama",
+   "n": 52,
+   "dia": 11,
+   "formato": "Sitcom",
+   "reparto": [
+    "Delivy: bolsa de delivery de papel con cara y gorra"
+   ]
+  },
+  {
+   "fmt": "sitcom",
+   "serie": "Sitcom: los gastos hormiga · Ep. 3",
+   "titulo": "Gasté $20 más para ahorrarme $5 de envío",
+   "desc": "La trampa del “envío gratis superando $50”. Moni cae y se da cuenta tarde.",
+   "tags": "#enviogratis #compras #ahorro #moni",
+   "gancho": "Carrito en $45 y un cartel: “¡Sumá $5 y el envío es gratis!”",
+   "guion": [
+    "Carrito: ¡Sumá cinco dólares y el envío es gratis!",
+    "Moni: ¡Genial! Agrego unas medias de veinte.",
+    "Carrito: Ahorraste cinco de envío.",
+    "Moni: Y gasté veinte en algo que no necesitaba.",
+    "Carrito: Ji, ji. Cada vez funciona."
+   ],
+   "dato": "Pagar $20 en algo innecesario para no pagar $5 de envío es gastar $15 de más.",
+   "cierre": "“¿Caíste alguna vez? 👇”.",
+   "escena": "Carrito de compras con cara pícara y Moni con unas medias en la mano",
+   "n": 53,
+   "dia": 16,
+   "formato": "Sitcom",
+   "reparto": []
+  },
+  {
+   "fmt": "sitcom",
+   "serie": "Sitcom: los gastos hormiga · Ep. 4",
+   "titulo": "El 2x1 que no necesitaba",
+   "desc": "Ofertín convence a Moni de llevar dos de algo que no iba a comprar. ¿Ahorró o gastó?",
+   "tags": "#ofertas #2x1 #compras #moni",
+   "gancho": "Ofertín con cartel gigante: “¡2x1!”",
+   "guion": [
+    "Ofertín: ¡Dos por uno! ¡Ahorrás el cincuenta por ciento!",
+    "Moni: Pero yo no iba a comprar ninguno.",
+    "Ofertín: Entonces ahorrás… ¿el cien?",
+    "Moni: No. Si no lo necesitaba, gasté el cien por ciento.",
+    "Ofertín: Las matemáticas me odian."
+   ],
+   "dato": "Una oferta solo ahorra si ya ibas a comprar ese producto.",
+   "cierre": "“Ep. 5: el zombie del sillón”.",
+   "escena": "Góndola de supermercado, Ofertín, una etiqueta con megáfono, frente a Moni con los brazos cruzados",
+   "n": 54,
+   "dia": 24,
+   "formato": "Sitcom",
+   "reparto": [
+    "Ofertín: etiqueta de precio amarilla con megáfono"
+   ]
+  },
+  {
+   "fmt": "sitcom",
+   "serie": "Sitcom: los gastos hormiga · Ep. 5",
+   "titulo": "La suscripción que vive en mi sillón",
+   "desc": "Una suscripción zombie se instaló en el living de Moni. Nadie la usa, pero come todos los meses.",
+   "tags": "#suscripciones #gastoshormiga #ahorro #moni",
+   "gancho": "Zombie comiendo pochoclos en el sillón de Moni",
+   "guion": [
+    "Moni: ¿Vos quién sos?",
+    "Zombi: Soy la plataforma que no abrís desde marzo.",
+    "Moni: ¿Y qué hacés acá?",
+    "Zombi: Como diez dólares por mes. Ciento veinte al año.",
+    "Moni: Cancelado. Afuera."
+   ],
+   "dato": "$10 × 12 = $120 al año por un servicio sin uso.",
+   "cierre": "“¿Cuántos zombies tenés? 👇”.",
+   "escena": "Zombie simpático comiendo pochoclo en el sillón del living, Moni señalando la puerta",
+   "n": 55,
+   "dia": 31,
+   "formato": "Sitcom",
+   "reparto": [
+    "Zombis: zombies caricaturescos y tiernos, nada aterradores"
+   ]
+  },
+  {
+   "fmt": "sitcom",
+   "serie": "Sitcom: los gastos hormiga · Ep. 6",
+   "titulo": "“Invito yo” y la cuenta que llegó después",
+   "desc": "Tarjetín convence a Moni de invitar a todos en un cumpleaños. El resumen llega un mes después.",
+   "tags": "#tarjetadecredito #salidas #gastos #moni",
+   "gancho": "Mesa de cumpleaños, Tarjetín susurrando: “Decí que invitás vos”",
+   "guion": [
+    "Tarjetín: Decí que invitás vos. Quedás genial.",
+    "Moni: ¡Invito yo!",
+    "Narrador: Un mes después.",
+    "Resumen: Doscientos cuarenta dólares.",
+    "Moni: Quedé genial… y en cero."
+   ],
+   "dato": "Los gastos sociales con tarjeta se sienten gratis hasta que llega el resumen.",
+   "cierre": "“Ep. 7: me lo merezco”.",
+   "escena": "Mesa de cumpleaños con globos, Tarjetín susurrando al oído de Moni",
+   "n": 56,
+   "dia": 36,
+   "formato": "Sitcom",
+   "reparto": [
+    "Tarjetín: tarjeta de crédito rojo frambuesa con chip dorado, ojos entrecerrados y sonrisa pícara, brazos y piernas finos"
+   ]
+  },
+  {
+   "fmt": "sitcom",
+   "serie": "Sitcom: los gastos hormiga · Ep. 7",
+   "titulo": "“Me lo merezco” me dejó sin ahorro",
+   "desc": "Capricho, el pequeño diablito del autopremio, aparece cada viernes.",
+   "tags": "#comprasimpulsivas #ahorro #autocontrol #moni",
+   "gancho": "Diablito con forma de moño de regalo: “Te lo merecés”",
+   "guion": [
+    "Capricho: Trabajaste toda la semana. Te lo merecés.",
+    "Moni: Es cierto…",
+    "Capricho: Y la semana pasada también. Y la anterior.",
+    "Moni: Si me lo merezco todas las semanas, no es premio, es costumbre.",
+    "Moni: Me merezco tener ahorros también."
+   ],
+   "dato": "Los autopremios frecuentes funcionan como un gasto fijo no planificado.",
+   "cierre": "“¿Qué te comprás cuando decís ‘me lo merezco’? 👇”.",
+   "escena": "Capricho, un pequeño moño de regalo con cuernitos, sobre el hombro de Moni",
+   "n": 57,
+   "dia": 44,
+   "formato": "Sitcom",
+   "reparto": [
+    "Capricho: moño de regalo rosa con cuernitos de diablito"
+   ]
+  },
+  {
+   "fmt": "sitcom",
+   "serie": "Sitcom: los gastos hormiga · Ep. 8",
+   "titulo": "Cuotín se multiplica",
+   "desc": "Una cuota, después otra, después otra. Moni descubre que tiene 7 cuotitas al mismo tiempo.",
+   "tags": "#cuotas #deudas #tarjeta #moni",
+   "gancho": "Cuotín, una cuota pequeña, se clona en siete",
+   "guion": [
+    "Cuotín: Soy chiquito, no me vas a notar.",
+    "Moni: ¿Y vos? ¿Y vos? ¿Y vos?",
+    "Cuotines: ¡Somos siete!",
+    "Moni: Siete cuotas de treinta… doscientos diez por mes.",
+    "Moni: Ustedes no son chiquitos. Son una banda."
+   ],
+   "dato": "7 × $30 = $210 por mes comprometidos.",
+   "cierre": "“¿Cuántas cuotas tenés activas? 👇”.",
+   "escena": "Siete cuotas pequeñas con caritas rodeando a Moni en el living",
+   "n": 58,
+   "dia": 51,
+   "formato": "Sitcom",
+   "reparto": [
+    "Cuotín: cuadradito celeste con número de cuota en la panza"
+   ]
+  },
+  {
+   "fmt": "sitcom",
+   "serie": "Sitcom: los gastos hormiga · Ep. 9",
+   "titulo": "Mi amigo me juró que esta cripto sube seguro",
+   "desc": "Fomito, el amigo que siempre tiene el dato, aparece con una moneda que “va a la luna”.",
+   "tags": "#fomo #cripto #inversiones #moni",
+   "gancho": "Fomito con cohete de cartón: “¡ESTA VA A LA LUNA!”",
+   "guion": [
+    "Fomito: ¡Esta moneda va a la luna! ¡Todos están comprando!",
+    "Moni: ¿Por qué va a subir?",
+    "Fomito: Porque… todos están comprando.",
+    "Moni: Eso no es una razón. Es un miedo a quedarse afuera.",
+    "Moni: Si no entiendo qué compro, no compro."
+   ],
+   "dato": "FOMO (miedo a quedarse afuera) es una de las causas más comunes de malas decisiones de inversión.",
+   "cierre": "“¿Quién es tu Fomito? Etiquetalo 👇”.",
+   "escena": "Fomito, un personaje con ojos de espiral y cohete de cartón, frente a Moni escéptica",
+   "n": 59,
+   "dia": 56,
+   "formato": "Sitcom",
+   "reparto": [
+    "Fomito: personaje redondo violeta con ojos en espiral y cohete de cartón"
+   ]
+  },
+  {
+   "fmt": "sitcom",
+   "serie": "Sitcom: los gastos hormiga · Ep. 10",
+   "titulo": "El cajero automático me cobra por existir",
+   "desc": "Moni saca plata de otro banco cuatro veces por mes. $144 al año en comisiones.",
+   "tags": "#comisiones #banco #ahorro #moni",
+   "gancho": "Cajero con cara cobrando: “Son $3, señorita”",
+   "guion": [
+    "Cajero: Son tres dólares de comisión, señorita.",
+    "Moni: Bueno, son solo tres.",
+    "Cajero: Cuatro veces por mes.",
+    "Moni: ¡Ciento cuarenta y cuatro al año por sacar MI plata!",
+    "Moni: Desde hoy, cajero de mi banco o pago digital."
+   ],
+   "dato": "$3 × 4 × 12 = $144 al año.",
+   "cierre": "“Ep. 11: el agua más cara del mundo”.",
+   "escena": "Cajero automático con cara de cobrador y Moni indignada con el ticket",
+   "n": 60,
+   "dia": 64,
+   "formato": "Sitcom",
+   "reparto": []
+  },
+  {
+   "fmt": "sitcom",
+   "serie": "Sitcom: los gastos hormiga · Ep. 11",
+   "titulo": "La botella de agua más cara del mundo 💧",
+   "desc": "Botellín, la botella de agua, cuesta un dólar por día. Un filtro cuesta mucho menos al año.",
+   "tags": "#gastoshormiga #agua #ahorro #moni",
+   "gancho": "Botellín presumido: “Soy agua premium”",
+   "guion": [
+    "Botellín: Soy agua premium. Un dólar nomás.",
+    "Moni: ¿Todos los días?",
+    "Botellín: Trescientos sesenta y cinco por año.",
+    "Moni: La canilla con filtro no cobra por día.",
+    "Botellín: ¡Pero yo tengo etiqueta linda!"
+   ],
+   "dato": "$1 × 365 días = $365 al año.",
+   "cierre": "“¿Cuál es tu gasto hormiga? 👇”.",
+   "escena": "Botellín, una botella de agua con anteojos de sol, en la cocina frente a Moni con un filtro",
+   "n": 61,
+   "dia": 71,
+   "formato": "Sitcom",
+   "reparto": [
+    "Botellín: botella de agua con anteojos de sol"
+   ]
+  },
+  {
+   "fmt": "sitcom",
+   "serie": "Sitcom: los gastos hormiga · Ep. 12",
+   "titulo": "Celular nuevo cada año vs. cada 3 años",
+   "desc": "Celulín quiere que Moni lo cambie todos los años. La diferencia: $667 por año.",
+   "tags": "#celular #consumo #ahorro #moni",
+   "gancho": "Celulín fingiendo estar viejo: “Ya estoy muy lento…”",
+   "guion": [
+    "Celulín: Ya estoy viejo. Cambiame.",
+    "Moni: Tenés un año.",
+    "Narrador: Un celular de mil dólares cada año: mil por año.",
+    "Narrador: Cada tres años: trescientos treinta y tres por año.",
+    "Moni: Te quedás. Me ahorro seiscientos sesenta y siete por año."
+   ],
+   "dato": "$1.000/año vs. $1.000/3 = $333/año → $667 de diferencia anual.",
+   "cierre": "“¿Cada cuánto cambiás el tuyo? 👇”.",
+   "escena": "Celulín, un celular con bastón y barba falsa, fingiendo estar viejo frente a Moni",
+   "n": 62,
+   "dia": 76,
+   "formato": "Sitcom",
+   "reparto": [
+    "Celulín: celular con bastón y barba falsa"
+   ]
+  },
+  {
+   "fmt": "sitcom",
+   "serie": "Sitcom: los gastos hormiga · Ep. 13",
+   "titulo": "El kiosco me cobra $520 por año",
+   "desc": "Snacky, el paquete de golosinas, aparece todos los días a las 4 de la tarde.",
+   "tags": "#gastoshormiga #snacks #ahorro #moni",
+   "gancho": "Snacky a las 16:00: “¡Hora de mí!”",
+   "guion": [
+    "Snacky: Son las cuatro. Hora de mí.",
+    "Moni: Son solo dos dólares…",
+    "Snacky: Cinco días por semana.",
+    "Moni: Dos por cinco por cincuenta y dos… ¡quinientos veinte!",
+    "Moni: Snacky, a partir de hoy vos venís de casa."
+   ],
+   "dato": "$2 × 5 × 52 = $520 al año.",
+   "cierre": "“Ep. 14: el costo por uso”.",
+   "escena": "Oficina, Snacky, un paquete de papas con cara, saltando sobre el escritorio de Moni",
+   "n": 63,
+   "dia": 84,
+   "formato": "Sitcom",
+   "reparto": [
+    "Snacky: paquete de papas fritas con cara"
+   ]
+  },
+  {
+   "fmt": "sitcom",
+   "serie": "Sitcom: los gastos hormiga · Ep. 14",
+   "titulo": "La remera barata que me salió carísima",
+   "desc": "Moni compara una prenda de $60 usada 2 veces con una de $80 usada 80. El truco: el costo por uso.",
+   "tags": "#costoporuso #ropa #consumo #moni",
+   "gancho": "Dos prendas en perchas: “$60” y “$80”",
+   "guion": [
+    "Remera: Soy barata, ¡sesenta!",
+    "Moni: Te usé dos veces. Treinta por uso.",
+    "Campera: Yo costé ochenta.",
+    "Moni: Te usé ochenta veces. Un dólar por uso.",
+    "Moni: La barata fue la cara."
+   ],
+   "dato": "Costo por uso = precio / cantidad de usos: $60/2 = $30 vs. $80/80 = $1.",
+   "cierre": "📌 Guardalo antes de tu próxima compra.",
+   "escena": "Placard con dos prendas con caritas discutiendo, Moni de jueza",
+   "n": 64,
+   "dia": 91,
+   "formato": "Sitcom",
+   "reparto": []
+  },
+  {
+   "fmt": "sitcom",
+   "serie": "Sitcom: los gastos hormiga · Ep. 15 (final)",
+   "titulo": "Lo que realmente cuesta tener auto",
+   "desc": "Autito cree que solo cuesta la nafta. Moni le muestra la lista completa.",
+   "tags": "#auto #gastos #presupuesto #moni",
+   "gancho": "Autito orgulloso: “Solo gasto nafta”",
+   "guion": [
+    "Autito: Yo solo gasto nafta.",
+    "Moni: ¿Y el seguro?",
+    "Moni: ¿Patente, cochera, mantenimiento, peajes?",
+    "Moni: ¿Y que perdés valor todos los años?",
+    "Autito: …¿Me vas a vender?"
+   ],
+   "dato": "El costo total de un auto incluye combustible, seguro, impuestos, estacionamiento, mantenimiento y depreciación.",
+   "cierre": "“Hacé la lista del tuyo y comentá el total 👇”.",
+   "escena": "Garage, Autito, un auto pequeño con cara orgullosa, y Moni con una lista larga que llega al piso",
+   "n": 65,
+   "dia": 96,
+   "formato": "Sitcom",
+   "reparto": [
+    "Autito: auto pequeño redondeado con faros como ojos"
+   ]
+  },
+  {
+   "fmt": "simulador",
+   "serie": "¿Y si…?",
+   "titulo": "Ahorrando $5 por día tenés ESTO en 30 años",
+   "desc": "Arranca con el resultado: $183.000. Después Moni rebobina y muestra cómo se llega.",
+   "tags": "#interescompuesto #ahorro #inversiones #moni",
+   "gancho": "Número gigante: “$183.000”",
+   "guion": [
+    "Moni: Esto tenés si ahorrás cinco dólares por día.",
+    "Moni: Cinco por día son ciento cincuenta por mes.",
+    "Moni: En treinta años, vos ponés cincuenta y cuatro mil.",
+    "Moni: El resto lo pone el interés compuesto.",
+    "Moni: ¿Y vos, a qué edad empezás?"
+   ],
+   "dato": "$150/mes al 7 % anual (capitalización mensual) por 30 años ≈ $182.996; aportado $54.000. Ilustrativo.",
+   "cierre": "“¿A qué edad empezás vos? 👇”.",
+   "escena": "Fondo verde oscuro con cuadrícula, gráfico que sube, Moni sorprendida frente a un número gigante",
+   "n": 66,
+   "dia": 5,
+   "formato": "¿Y si…? Simulador",
+   "reparto": []
+  },
+  {
+   "fmt": "simulador",
+   "serie": "¿Y si…?",
+   "titulo": "Empezar a los 25 vs. a los 35: la diferencia es brutal",
+   "desc": "Mismo aporte de $200 por mes hasta los 65. Diez años antes duplican el resultado.",
+   "tags": "#jubilacion #interescompuesto #inversiones #moni",
+   "gancho": "Dos Monis en una carrera: “25 años” y “35 años”",
+   "guion": [
+    "Moni: Doscientos por mes hasta los sesenta y cinco, al siete por ciento.",
+    "Moni: Empezando a los treinta y cinco: doscientos cuarenta y cuatro mil.",
+    "Moni: Empezando a los veinticinco: quinientos veinticinco mil.",
+    "Moni: Solo pusiste veinticuatro mil más.",
+    "Moni: El mejor momento fue ayer. El segundo, hoy."
+   ],
+   "dato": "$200/mes al 7 %: 40 años ≈ $524.963; 30 años ≈ $243.994. Aportes: $96.000 vs. $72.000. Ilustrativo.",
+   "cierre": "“Etiquetá a alguien que tenga 25 👇”.",
+   "escena": "Dos Monis corriendo una carrera con dorsales 25 y 35, gráfico de dos curvas",
+   "n": 67,
+   "dia": 12,
+   "formato": "¿Y si…? Simulador",
+   "reparto": []
+  },
+  {
+   "fmt": "simulador",
+   "serie": "¿Y si…?",
+   "titulo": "Si hubiera invertido el cafecito durante 20 años",
+   "desc": "$66 por mes en café. Invertidos al 7 % durante 20 años: más de $34.000.",
+   "tags": "#gastoshormiga #inversiones #cafe #moni",
+   "gancho": "Taza de café que se convierte en una pila de billetes",
+   "guion": [
+    "Moni: Este café costó treinta y cuatro mil dólares.",
+    "Moni: Bueno, no este. Todos.",
+    "Moni: Sesenta y seis por mes durante veinte años: quince mil ochocientos.",
+    "Moni: Invertidos al siete por ciento: treinta y cuatro mil.",
+    "Moni: No digo que no tomes café. Digo que sepas cuánto cuesta."
+   ],
+   "dato": "$66/mes al 7 % por 20 años ≈ $34.381; aportado $15.840. Ilustrativo.",
+   "cierre": "“¿Cuál es tu café? 👇”.",
+   "escena": "Taza de café que se transforma en una montaña de monedas, Cafecito sorprendido",
+   "n": 68,
+   "dia": 17,
+   "formato": "¿Y si…? Simulador",
+   "reparto": [
+    "Cafecito: taza de café de cartón color crema con franja marrón y tapa, vapor saliendo, cara tierna"
+   ]
+  },
+  {
+   "fmt": "simulador",
+   "serie": "¿Y si…?",
+   "titulo": "$100 por mes: colchón vs. invertir en 10 años",
+   "desc": "Moni compara guardar $100 por mes bajo el colchón contra invertirlos, con inflación de 4 %.",
+   "tags": "#inflacion #ahorro #inversiones #moni",
+   "gancho": "Colchón vs. maceta con brote",
+   "guion": [
+    "Moni: Cien dólares por mes durante diez años.",
+    "Moni: En el colchón: doce mil billetes…",
+    "Moni: …que con cuatro por ciento de inflación compran como ocho mil cien de hoy.",
+    "Moni: Invertidos al siete: diecisiete mil trescientos.",
+    "Moni: El colchón no roba billetes. Roba poder de compra."
+   ],
+   "dato": "$12.000 / 1,04¹⁰ ≈ $8.107 de poder de compra; $100/mes al 7 % por 10 años ≈ $17.308 (nominal). Ilustrativo.",
+   "cierre": "“¿Colchón o maceta? 👇”.",
+   "escena": "Pantalla dividida: colchón con billetes grises, maceta con brote de monedas verdes",
+   "n": 69,
+   "dia": 25,
+   "formato": "¿Y si…? Simulador",
+   "reparto": [
+    "Infla: fantasma verde translúcido, simpático pero travieso, con signo % en la panza"
+   ]
+  },
+  {
+   "fmt": "simulador",
+   "serie": "¿Y si…?",
+   "titulo": "Pagar el mínimo vs. pagar el doble",
+   "desc": "Misma deuda de $1.000 al 24 %. Pagando el doble del mínimo terminás 4 años antes.",
+   "tags": "#tarjetadecredito #deudas #intereses #moni",
+   "gancho": "Dos calendarios: “73 meses” vs. “25 meses”",
+   "guion": [
+    "Moni: Mil dólares de deuda en la tarjeta.",
+    "Moni: Pagando el mínimo: setenta y tres meses y mil ochocientos sesenta y siete.",
+    "Moni: Pagando el doble del mínimo: veinticinco meses y mil doscientos setenta y uno.",
+    "Moni: Cuatro años menos.",
+    "Moni: Y casi seiscientos dólares de vuelta en tu bolsillo."
+   ],
+   "dato": "24 % anual, mínimo 3 % o $25: 73 meses/$1.867 vs. doble mínimo: 25 meses/$1.271.",
+   "cierre": "📌 Guardalo y mostráselo a quien lo necesite.",
+   "escena": "Dos calendarios que se deshojan a distinta velocidad, Moni corriendo",
+   "n": 70,
+   "dia": 32,
+   "formato": "¿Y si…? Simulador",
+   "reparto": []
+  },
+  {
+   "fmt": "simulador",
+   "serie": "¿Y si…?",
+   "titulo": "Cuánto necesitás para vivir de tus inversiones",
+   "desc": "La regla del 4 %: para retirar $1.000 por mes necesitarías alrededor de $300.000.",
+   "tags": "#libertadfinanciera #regladel4 #jubilacion #moni",
+   "gancho": "Número gigante: “$300.000”",
+   "guion": [
+    "Moni: Para retirar mil dólares por mes de tus inversiones…",
+    "Moni: …necesitás unos trescientos mil.",
+    "Moni: Es la regla del cuatro por ciento: retirás el cuatro por ciento por año.",
+    "Moni: Doce mil por año dividido cero coma cero cuatro.",
+    "Moni: Es una guía, no una ley. Pero sirve para ponerse una meta."
+   ],
+   "dato": "Regla del 4 % (estudio Trinity / Bengen): $12.000/año ÷ 0,04 = $300.000. Es una referencia, no garantía.",
+   "cierre": "“¿Cuál sería tu número? 👇”.",
+   "escena": "Montaña de monedas con una canilla que gotea mil dólares por mes, Moni en la cima",
+   "n": 71,
+   "dia": 37,
+   "formato": "¿Y si…? Simulador",
+   "reparto": []
+  },
+  {
+   "fmt": "simulador",
+   "serie": "¿Y si…?",
+   "titulo": "En cuántos años duplicás tu plata al 3, 6 y 9 %",
+   "desc": "Tres carriles, tres tasas. Moni usa la regla del 72 para ver quién duplica primero.",
+   "tags": "#regladel72 #inversiones #interescompuesto #moni",
+   "gancho": "Tres carriles de carrera con 3 %, 6 % y 9 %",
+   "guion": [
+    "Moni: Tres tasas. ¿Quién duplica primero?",
+    "Moni: Al tres por ciento: veinticuatro años.",
+    "Moni: Al seis: doce.",
+    "Moni: Al nueve: ocho.",
+    "Moni: Pequeñas diferencias de tasa, enormes diferencias de tiempo."
+   ],
+   "dato": "Regla del 72: 72/3 = 24, 72/6 = 12, 72/9 = 8 años (aproximado).",
+   "cierre": "📌 Guardalo.",
+   "escena": "Pista de carreras con tres monedas corriendo y carteles de 3 %, 6 % y 9 %",
+   "n": 72,
+   "dia": 45,
+   "formato": "¿Y si…? Simulador",
+   "reparto": []
+  },
+  {
+   "fmt": "simulador",
+   "serie": "¿Y si…?",
+   "titulo": "La comisión del 1 % que te come $16.000",
+   "desc": "$10.000 invertidos 30 años al 7 %. Con 1 % de comisión vs. 0,1 %: $16.582 de diferencia.",
+   "tags": "#comisiones #inversiones #fondos #moni",
+   "gancho": "Bichito comiéndose un pedazo de una pila de monedas",
+   "guion": [
+    "Moni: Uno por ciento de comisión parece nada.",
+    "Moni: Diez mil invertidos treinta años al siete por ciento.",
+    "Moni: Con cero coma uno de comisión: setenta y cuatro mil.",
+    "Moni: Con uno por ciento: cincuenta y siete mil.",
+    "Moni: Ese bichito se comió dieciséis mil quinientos."
+   ],
+   "dato": "10.000 × 1,069³⁰ ≈ $74.017 vs. 10.000 × 1,06³⁰ ≈ $57.435. Diferencia ≈ $16.582. Ilustrativo.",
+   "cierre": "“¿Sabés cuánto te cobra tu fondo? 👇”.",
+   "escena": "Bichito con dientes comiendo una pila de monedas en un gráfico",
+   "n": 73,
+   "dia": 52,
+   "formato": "¿Y si…? Simulador",
+   "reparto": []
+  },
+  {
+   "fmt": "simulador",
+   "serie": "¿Y si…?",
+   "titulo": "Ahorrar 10 % vs. 20 % del sueldo durante 10 años",
+   "desc": "Con un sueldo de $2.000: ahorrar el 20 % al 6 % anual te deja $65.552; el 10 %, $32.776.",
+   "tags": "#ahorro #porcentajedeahorro #inversiones #moni",
+   "gancho": "Dos alcancías llenándose a distinto ritmo",
+   "guion": [
+    "Moni: Sueldo de dos mil dólares.",
+    "Moni: Ahorrando el diez por ciento al seis anual, diez años: treinta y dos mil.",
+    "Moni: Ahorrando el veinte: sesenta y cinco mil.",
+    "Moni: El doble de esfuerzo, el doble de libertad.",
+    "Moni: ¿Y si arrancás con el doce y subís de a poco?"
+   ],
+   "dato": "$200/mes al 6 % por 10 años ≈ $32.776; $400/mes ≈ $65.552. Ilustrativo.",
+   "cierre": "“¿Qué porcentaje ahorrás hoy? 👇”.",
+   "escena": "Dos alcancías transparentes llenándose, una al doble de velocidad",
+   "n": 74,
+   "dia": 57,
+   "formato": "¿Y si…? Simulador",
+   "reparto": []
+  },
+  {
+   "fmt": "simulador",
+   "serie": "¿Y si…?",
+   "titulo": "Subir tu ahorro 1 % por año: el truco invisible",
+   "desc": "Moni empieza ahorrando 5 % y sube un punto por año. En 10 años junta casi el doble que si se quedaba en 5 %.",
+   "tags": "#ahorro #habitos #inversiones #moni",
+   "gancho": "Escalera que sube un escalón por año",
+   "guion": [
+    "Moni: Ahorrar el veinte por ciento de golpe es difícil.",
+    "Moni: Empezá con cinco y subí un punto cada año.",
+    "Moni: Sueldo de dos mil, al seis por ciento anual.",
+    "Moni: Quedándote en cinco: dieciséis mil. Subiendo uno por año: veintinueve mil quinientos.",
+    "Moni: Casi el doble sin sentir el cambio."
+   ],
+   "dato": "Sueldo $2.000, 6 % anual, 10 años: ahorro fijo 5 % ≈ $16.388; 5 % + 1 punto por año ≈ $29.528. Ilustrativo.",
+   "cierre": "📌 Guardalo para tu próximo aumento.",
+   "escena": "Moni subiendo una escalera de monedas un escalón por año",
+   "n": 75,
+   "dia": 65,
+   "formato": "¿Y si…? Simulador",
+   "reparto": []
+  },
+  {
+   "fmt": "simulador",
+   "serie": "¿Y si…?",
+   "titulo": "Así se ve la inflación en 10 años",
+   "desc": "Con 5 % anual, $100 de hoy compran como $61 dentro de 10 años. Moni lo muestra con un carrito.",
+   "tags": "#inflacion #poderdecompra #economia #moni",
+   "gancho": "Carrito de compras que se vacía año a año",
+   "guion": [
+    "Moni: Cien dólares. Carrito lleno.",
+    "Moni: Inflación del cinco por ciento por año.",
+    "Moni: Diez años después, el mismo billete llena sesenta y un por ciento del carrito.",
+    "Moni: Casi cuarenta por ciento menos.",
+    "Moni: Y eso con inflación baja."
+   ],
+   "dato": "100 / 1,05¹⁰ ≈ $61,39 de poder de compra.",
+   "cierre": "“¿Cuánto fue la inflación en tu país este año? 👇”.",
+   "escena": "Carrito de supermercado que pierde productos año a año, contador de años",
+   "n": 76,
+   "dia": 72,
+   "formato": "¿Y si…? Simulador",
+   "reparto": [
+    "Infla: fantasma verde translúcido, simpático pero travieso, con signo % en la panza"
+   ]
+  },
+  {
+   "fmt": "simulador",
+   "serie": "¿Y si…?",
+   "titulo": "Cuánto ahorrar por mes para tener $1 millón",
+   "desc": "Al 8 % anual durante 30 años necesitás unos $671 por mes. Moni lo muestra.",
+   "tags": "#millon #inversiones #interescompuesto #moni",
+   "gancho": "“$1.000.000” brillando en dorado",
+   "guion": [
+    "Moni: ¿Un millón de dólares? ¿Cuánto por mes?",
+    "Moni: Al ocho por ciento anual, en treinta años…",
+    "Moni: …seiscientos setenta y uno por mes.",
+    "Moni: Vos ponés doscientos cuarenta y un mil. El resto, el tiempo.",
+    "Moni: Con menos tiempo, necesitás mucho más por mes."
+   ],
+   "dato": "Pago mensual = 1.000.000 × (0,08/12) / ((1 + 0,08/12)³⁶⁰ − 1) ≈ $671. Aportado ≈ $241.560. Ilustrativo.",
+   "cierre": "“¿Cuánto tiempo te queda a vos? 👇”.",
+   "escena": "Número un millón dorado brillando, Moni con una calculadora, fondo verde oscuro",
+   "n": 77,
+   "dia": 77,
+   "formato": "¿Y si…? Simulador",
+   "reparto": []
+  },
+  {
+   "fmt": "simulador",
+   "serie": "¿Y si…?",
+   "titulo": "Auto 0 km vs. usado: la diferencia invertida",
+   "desc": "Moni elige un auto usado $10.000 más barato e invierte la diferencia 10 años al 7 %.",
+   "tags": "#auto #inversiones #costodeoportunidad #moni",
+   "gancho": "Dos autos y una flecha hacia un gráfico",
+   "guion": [
+    "Moni: Auto nuevo o usado diez mil más barato.",
+    "Moni: Elijo el usado e invierto los diez mil.",
+    "Moni: Al siete por ciento anual, en diez años…",
+    "Moni: …diecinueve mil seiscientos setenta y dos.",
+    "Moni: Y el nuevo, en diez años, ya también es usado."
+   ],
+   "dato": "10.000 × 1,07¹⁰ ≈ $19.672. Ilustrativo.",
+   "cierre": "“¿Nuevo o usado? 👇”.",
+   "escena": "Dos autos, uno brillante y uno usado, con una flecha de monedas creciendo",
+   "n": 78,
+   "dia": 85,
+   "formato": "¿Y si…? Simulador",
+   "reparto": []
+  },
+  {
+   "fmt": "simulador",
+   "serie": "¿Y si…?",
+   "titulo": "El préstamo de $5.000 que te cuesta $7.641",
+   "desc": "Un préstamo de $5.000 a 3 años al 30 % anual. Moni muestra la cuota y el total.",
+   "tags": "#prestamos #intereses #deudas #moni",
+   "gancho": "“$5.000” que crece a “$7.641”",
+   "guion": [
+    "Moni: Cinco mil dólares, treinta y seis cuotas, treinta por ciento anual.",
+    "Moni: Cuota: doscientos doce.",
+    "Moni: Total pagado: siete mil seiscientos cuarenta y uno.",
+    "Moni: Dos mil seiscientos cuarenta y uno solo en intereses.",
+    "Moni: Antes de firmar, multiplicá la cuota por la cantidad de cuotas."
+   ],
+   "dato": "Préstamo francés: $5.000, 30 % anual (2,5 % mensual), 36 cuotas → $212,26 × 36 = $7.641. Ilustrativo.",
+   "cierre": "📌 Guardalo antes de pedir un préstamo.",
+   "escena": "Billete de cinco mil que se infla como globo hasta siete mil seiscientos",
+   "n": 79,
+   "dia": 92,
+   "formato": "¿Y si…? Simulador",
+   "reparto": [
+    "Infla: fantasma verde translúcido, simpático pero travieso, con signo % en la panza"
+   ]
+  },
+  {
+   "fmt": "simulador",
+   "serie": "¿Y si…?",
+   "titulo": "Pagar una deuda al 25 % es ganar 25 % seguro",
+   "desc": "Moni compara invertir con pagar una deuda cara. Spoiler: cancelar deuda es la mejor inversión garantizada.",
+   "tags": "#deudas #inversiones #finanzaspersonales #moni",
+   "gancho": "Balanza: “invertir 7 %” vs. “deuda 25 %”",
+   "guion": [
+    "Moni: Tengo dos mil de deuda al veinticinco por ciento.",
+    "Moni: Esa deuda me cuesta quinientos por año.",
+    "Moni: Si invierto al siete, gano ciento cuarenta.",
+    "Moni: Si pago la deuda, me ahorro quinientos. Seguro.",
+    "Moni: Primero la deuda cara. Después invertir."
+   ],
+   "dato": "$2.000 × 25 % = $500 de interés anual vs. $2.000 × 7 % = $140 de rendimiento esperado.",
+   "cierre": "“¿Qué hacés primero vos? 👇”.",
+   "escena": "Balanza con una bolsa de deuda roja pesada y una de inversión verde",
+   "n": 80,
+   "dia": 97,
+   "formato": "¿Y si…? Simulador",
+   "reparto": []
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿Alquilar es tirar la plata?",
+   "desc": "La frase que escuchaste mil veces. Moni la pone a prueba en 15 segundos.",
+   "tags": "#alquilar #vivienda #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Alquilar es tirar la plata”",
+   "guion": [
+    "Moni: Alquilar es tirar la plata. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito. Depende de los números!",
+    "Moni: Comprar también cuesta: intereses, impuestos y arreglos.",
+    "Moni: Si alquilar sale menos y invertís la diferencia, podés salir ganando."
+   ],
+   "dato": "Comparar alquiler vs. compra requiere sumar intereses, mantenimiento, impuestos y el costo de oportunidad del pie.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Alquilar es tirar la plata”, Moni presentadora con micrófono",
+   "n": 81,
+   "dia": 3,
+   "formato": "Mito o verdad",
+   "reparto": []
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿Para invertir hay que tener mucha plata?",
+   "desc": "Moni desarma la excusa número uno para no empezar.",
+   "tags": "#invertir #inversiones #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Para invertir necesitás mucha plata”",
+   "guion": [
+    "Moni: Para invertir necesitás mucha plata. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito!",
+    "Moni: Hoy muchos fondos y plataformas permiten empezar con montos chicos.",
+    "Moni: Lo que más importa al principio es el hábito, no el monto."
+   ],
+   "dato": "Muchas plataformas permiten fondos indexados o fracciones de acciones con montos bajos.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Para invertir necesitás mucha plata”, Moni presentadora con micrófono",
+   "n": 82,
+   "dia": 8,
+   "formato": "Mito o verdad",
+   "reparto": []
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿Las tarjetas de crédito son malas?",
+   "desc": "¿Hay que romper la tarjeta? Moni responde.",
+   "tags": "#tarjetadecredito #mitosfinancieros #finanzas #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Las tarjetas de crédito son malas”",
+   "guion": [
+    "Moni: Las tarjetas de crédito son malas. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito!",
+    "Moni: La tarjeta es una herramienta: el problema es financiar con ella.",
+    "Moni: Si pagás el total cada mes, no pagás intereses y podés sumar beneficios."
+   ],
+   "dato": "Pagando el total del resumen al vencimiento no se generan intereses de financiación.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Las tarjetas de crédito son malas”, Moni presentadora con micrófono",
+   "n": 83,
+   "dia": 13,
+   "formato": "Mito o verdad",
+   "reparto": []
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿El oro nunca baja?",
+   "desc": "El refugio de siempre también tiene caídas. Moni lo muestra.",
+   "tags": "#oro #inversiones #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “El oro nunca baja”",
+   "guion": [
+    "Moni: El oro nunca baja. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito!",
+    "Moni: Entre 2011 y 2015 el oro cayó más de un cuarenta por ciento.",
+    "Moni: Puede proteger en crisis, pero también tiene años malos."
+   ],
+   "dato": "El oro pasó de unos $1.900 la onza (2011) a cerca de $1.050 (fines de 2015), una caída de alrededor del 45 %.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “El oro nunca baja”, Moni presentadora con micrófono",
+   "n": 84,
+   "dia": 18,
+   "formato": "Mito o verdad",
+   "reparto": []
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿Dejar la plata en la cuenta es ahorrar?",
+   "desc": "¿Ahorrar es solo no gastar? Moni explica la diferencia.",
+   "tags": "#ahorro #inflacion #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Dejar la plata en la cuenta del banco ya es ahorrar”",
+   "guion": [
+    "Moni: Dejar la plata en la cuenta del banco ya es ahorrar. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito a medias!",
+    "Moni: Si la cuenta no paga interés, la inflación le come poder de compra.",
+    "Moni: Para el fondo de emergencia está bien. Para el largo plazo, se queda corta."
+   ],
+   "dato": "Una cuenta sin interés pierde valor real frente a la inflación.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Dejar la plata en la cuenta del banco ya es ahorrar”, Moni presentadora con micrófono",
+   "n": 85,
+   "dia": 23,
+   "formato": "Mito o verdad",
+   "reparto": [
+    "Infla: fantasma verde translúcido, simpático pero travieso, con signo % en la panza"
+   ]
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿Invertir es como apostar en el casino?",
+   "desc": "Moni compara una ruleta con un fondo indexado.",
+   "tags": "#inversiones #bolsa #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Invertir es como apostar en el casino”",
+   "guion": [
+    "Moni: Invertir es como apostar en el casino. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito!",
+    "Moni: En el casino, la casa tiene ventaja matemática siempre.",
+    "Moni: Invertir diversificado y a largo plazo es ser dueño de empresas que producen."
+   ],
+   "dato": "Los juegos de casino tienen esperanza matemática negativa para el jugador; un índice diversificado refleja el crecimiento de empresas.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Invertir es como apostar en el casino”, Moni presentadora con micrófono",
+   "n": 86,
+   "dia": 28,
+   "formato": "Mito o verdad",
+   "reparto": []
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿Si gano más voy a ahorrar más?",
+   "desc": "El aumento no te salva si los gastos suben con él.",
+   "tags": "#sueldo #ahorro #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Si gano más, voy a ahorrar más”",
+   "guion": [
+    "Moni: Si gano más, voy a ahorrar más. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito!",
+    "Moni: Cuando sube el sueldo, suben los gastos: se llama inflación del estilo de vida.",
+    "Moni: Truco: cada aumento, mandá la mitad directo al ahorro."
+   ],
+   "dato": "La inflación del estilo de vida (lifestyle creep) hace que el gasto crezca con el ingreso.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Si gano más, voy a ahorrar más”, Moni presentadora con micrófono",
+   "n": 87,
+   "dia": 33,
+   "formato": "Mito o verdad",
+   "reparto": [
+    "Infla: fantasma verde translúcido, simpático pero travieso, con signo % en la panza"
+   ]
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿Pagar el mínimo de la tarjeta está bien?",
+   "desc": "La trampa más cara de la tarjeta, en 15 segundos.",
+   "tags": "#tarjetadecredito #deudas #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Pagar el mínimo de la tarjeta está bien”",
+   "guion": [
+    "Moni: Pagar el mínimo de la tarjeta está bien. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito!",
+    "Moni: Mil dólares al veinticuatro por ciento pagando el mínimo: seis años.",
+    "Moni: Y pagás casi el doble. El mínimo es para no caer en mora, no para salir."
+   ],
+   "dato": "$1.000 al 24 % anual pagando el mínimo (3 % o $25): 73 meses y $1.867.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Pagar el mínimo de la tarjeta está bien”, Moni presentadora con micrófono",
+   "n": 88,
+   "dia": 38,
+   "formato": "Mito o verdad",
+   "reparto": []
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿Las cuotas sin interés son gratis?",
+   "desc": "Sin interés no siempre significa sin costo. Moni explica.",
+   "tags": "#cuotas #compras #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Las cuotas sin interés son gratis”",
+   "guion": [
+    "Moni: Las cuotas sin interés son gratis. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Verdad a medias!",
+    "Moni: No pagás interés, pero comprometés tu sueldo futuro.",
+    "Moni: Y a veces el precio en cuotas es más alto que pagando de contado."
+   ],
+   "dato": "Comparar precio de contado vs. en cuotas y sumar las cuotas activas del mes evita sorpresas.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Las cuotas sin interés son gratis”, Moni presentadora con micrófono",
+   "n": 89,
+   "dia": 43,
+   "formato": "Mito o verdad",
+   "reparto": []
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿Hay que esperar el momento perfecto para invertir?",
+   "desc": "La excusa para nunca empezar. Moni la desarma.",
+   "tags": "#invertir #bolsa #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Hay que esperar el momento perfecto para invertir”",
+   "guion": [
+    "Moni: Hay que esperar el momento perfecto para invertir. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito!",
+    "Moni: Nadie sabe cuál es el momento perfecto. Ni los expertos.",
+    "Moni: Invertir de a poco todos los meses le gana a esperar para siempre."
+   ],
+   "dato": "Intentar adivinar el mercado (market timing) suele rendir peor que aportar de forma constante.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Hay que esperar el momento perfecto para invertir”, Moni presentadora con micrófono",
+   "n": 90,
+   "dia": 48,
+   "formato": "Mito o verdad",
+   "reparto": []
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿Todas las deudas son malas?",
+   "desc": "Moni explica deuda buena y deuda mala.",
+   "tags": "#deudas #credito #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Todas las deudas son malas”",
+   "guion": [
+    "Moni: Todas las deudas son malas. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito!",
+    "Moni: Una deuda a tasa baja para algo que genera valor puede tener sentido.",
+    "Moni: La mala es la cara y para consumo: tarjeta, préstamos rápidos."
+   ],
+   "dato": "Distinguir deuda productiva (educación, vivienda, negocio) de deuda de consumo cara.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Todas las deudas son malas”, Moni presentadora con micrófono",
+   "n": 91,
+   "dia": 53,
+   "formato": "Mito o verdad",
+   "reparto": []
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿Guardar efectivo en casa es lo más seguro?",
+   "desc": "¿El colchón es el lugar más seguro? Moni responde.",
+   "tags": "#ahorro #efectivo #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Guardar efectivo en casa es lo más seguro”",
+   "guion": [
+    "Moni: Guardar efectivo en casa es lo más seguro. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito!",
+    "Moni: Hay riesgo de robo, incendio o de que se pierda.",
+    "Moni: Y la inflación se lo come en silencio."
+   ],
+   "dato": "El efectivo en casa no tiene protección ni rendimiento.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Guardar efectivo en casa es lo más seguro”, Moni presentadora con micrófono",
+   "n": 92,
+   "dia": 58,
+   "formato": "Mito o verdad",
+   "reparto": [
+    "Infla: fantasma verde translúcido, simpático pero travieso, con signo % en la panza"
+   ]
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿Las cripto son plata fácil?",
+   "desc": "Moni muestra la montaña rusa de las criptomonedas.",
+   "tags": "#cripto #bitcoin #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Las cripto son plata fácil”",
+   "guion": [
+    "Moni: Las cripto son plata fácil. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito!",
+    "Moni: En 2022, bitcoin cayó más de un setenta y cinco por ciento desde su máximo.",
+    "Moni: Pueden subir mucho y bajar mucho. Invertí solo lo que puedas perder."
+   ],
+   "dato": "Bitcoin pasó de unos $69.000 (noviembre 2021) a cerca de $15.500 (noviembre 2022): −77 %.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Las cripto son plata fácil”, Moni presentadora con micrófono",
+   "n": 93,
+   "dia": 63,
+   "formato": "Mito o verdad",
+   "reparto": []
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿Los ricos lo son por no tomar café?",
+   "desc": "Moni defiende al cafecito… un poco.",
+   "tags": "#gastoshormiga #ahorro #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Si dejás el café, te hacés rico”",
+   "guion": [
+    "Moni: Si dejás el café, te hacés rico. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito a medias!",
+    "Moni: Los gastos chicos suman, pero las grandes decisiones pesan más.",
+    "Moni: Vivienda, auto e ingresos mueven mucho más la aguja que un café."
+   ],
+   "dato": "Los mayores gastos de un hogar suelen ser vivienda, transporte y alimentación.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Si dejás el café, te hacés rico”, Moni presentadora con micrófono",
+   "n": 94,
+   "dia": 68,
+   "formato": "Mito o verdad",
+   "reparto": []
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿Un seguro es plata tirada?",
+   "desc": "¿Pagar por algo que quizás nunca uses? Moni explica.",
+   "tags": "#seguros #finanzaspersonales #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Un seguro es plata tirada”",
+   "guion": [
+    "Moni: Un seguro es plata tirada. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito!",
+    "Moni: Pagás un poco para no perder mucho si pasa algo grave.",
+    "Moni: Si nunca lo usás, fue suerte, no un mal negocio."
+   ],
+   "dato": "Los seguros transfieren riesgos de pérdidas grandes que no podrías cubrir solo.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Un seguro es plata tirada”, Moni presentadora con micrófono",
+   "n": 95,
+   "dia": 73,
+   "formato": "Mito o verdad",
+   "reparto": []
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿El presupuesto es para los que ganan poco?",
+   "desc": "Moni explica por qué hasta los millonarios hacen presupuesto.",
+   "tags": "#presupuesto #ahorro #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Hacer presupuesto es para los que ganan poco”",
+   "guion": [
+    "Moni: Hacer presupuesto es para los que ganan poco. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito!",
+    "Moni: Mucha gente con ingresos altos vive al día.",
+    "Moni: El presupuesto no es para gastar menos: es para gastar en lo que te importa."
+   ],
+   "dato": "Gastar todo lo que se gana ocurre en todos los niveles de ingreso.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Hacer presupuesto es para los que ganan poco”, Moni presentadora con micrófono",
+   "n": 96,
+   "dia": 78,
+   "formato": "Mito o verdad",
+   "reparto": []
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿Ganar 10 % por mes es normal?",
+   "desc": "La promesa que aparece antes de cada estafa. Moni la desarma.",
+   "tags": "#estafas #ponzi #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Ganar diez por ciento por mes es normal”",
+   "guion": [
+    "Moni: Ganar diez por ciento por mes es normal. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito. Es una señal de estafa!",
+    "Moni: Diez por ciento mensual son más de doscientos por ciento al año.",
+    "Moni: Si te prometen eso garantizado, probablemente sea una pirámide."
+   ],
+   "dato": "1,10¹² = 3,14 → +214 % anual. Las promesas de rendimientos altos y garantizados son señal típica de esquema Ponzi.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Ganar diez por ciento por mes es normal”, Moni presentadora con micrófono",
+   "n": 97,
+   "dia": 83,
+   "formato": "Mito o verdad",
+   "reparto": []
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿Si un fondo ganó mucho, va a seguir ganando?",
+   "desc": "La trampa de elegir por el ranking del año pasado.",
+   "tags": "#fondos #inversiones #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Si un fondo ganó mucho el año pasado, va a seguir ganando”",
+   "guion": [
+    "Moni: Si un fondo ganó mucho el año pasado, va a seguir ganando. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito!",
+    "Moni: Rendimientos pasados no garantizan rendimientos futuros.",
+    "Moni: Mirá comisiones, diversificación y plazo, no solo el último año."
+   ],
+   "dato": "Los fondos con mejor rendimiento en un período rara vez repiten el puesto en el siguiente.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Si un fondo ganó mucho el año pasado, va a seguir ganando”, Moni presentadora con micrófono",
+   "n": 98,
+   "dia": 88,
+   "formato": "Mito o verdad",
+   "reparto": []
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿Necesito un asesor caro para invertir?",
+   "desc": "¿Hace falta pagar para invertir bien? Moni responde.",
+   "tags": "#asesorfinanciero #inversiones #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “Para invertir necesitás un asesor carísimo”",
+   "guion": [
+    "Moni: Para invertir necesitás un asesor carísimo. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito a medias!",
+    "Moni: Para empezar, un fondo indexado de bajo costo es simple.",
+    "Moni: Un buen asesor sirve en casos complejos. Preguntá siempre cuánto cobra y cómo."
+   ],
+   "dato": "Las comisiones altas restan rendimiento año tras año (ver el short de la comisión del 1 %).",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “Para invertir necesitás un asesor carísimo”, Moni presentadora con micrófono",
+   "n": 99,
+   "dia": 93,
+   "formato": "Mito o verdad",
+   "reparto": []
+  },
+  {
+   "fmt": "mito",
+   "serie": "Mito o verdad",
+   "titulo": "¿A los 40 ya es tarde para ahorrar?",
+   "desc": "Moni le habla a los que creen que se les pasó el tren.",
+   "tags": "#ahorro #jubilacion #mitosfinancieros #moni",
+   "gancho": "Cartel gigante: “¿MITO O VERDAD?” y la frase “A los cuarenta ya es tarde para empezar a ahorrar”",
+   "guion": [
+    "Moni: A los cuarenta ya es tarde para empezar a ahorrar. ¿Mito o verdad?",
+    "Moni: Pensalo. Tres, dos, uno…",
+    "Moni: ¡Mito!",
+    "Moni: Trescientos por mes durante veinticinco años al siete por ciento: unos doscientos cuarenta y tres mil.",
+    "Moni: Vos ponés noventa mil. El tiempo que queda todavía trabaja."
+   ],
+   "dato": "$300/mes al 7 % anual por 25 años ≈ $243.022; aportado $90.000. Ilustrativo.",
+   "cierre": "“Comentá el próximo mito que querés que destruya 👇”.",
+   "escena": "Fondo dividido rojo y verde estilo programa de juegos, cartel con la frase “A los cuarenta ya es tarde para empezar a ahorrar”, Moni presentadora con micrófono",
+   "n": 100,
+   "dia": 98,
+   "formato": "Mito o verdad",
+   "reparto": []
+  }
+ ]
+}
