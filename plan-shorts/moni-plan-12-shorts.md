@@ -402,7 +402,7 @@ Scene: Moni standing proudly on top of a giant glass jar overflowing with shiny 
 |---|---|---|---|---|
 | 1 | 0 a 5 s | Moni de papel flotando y riendo. | Moni: "¡Ay! ¡Soy de papel!" | Moni: "Whoa! I'm made of paper!" |
 | 2 | 5 a 9 s | Rebobinado; texto "HACE UNOS 1.000 AÑOS…". | Narrador: "¿Cómo pasó esto? ¡Rebobinemos!" | Narrator: "How did this happen? Let's rewind!" |
-| 3 | 9 a 17 s | Un mercador antiguo en China, amable, carga una bolsa pesadísima de monedas y resopla. | Moni: "Las monedas pesaban mucho para llevar tantas…" | Moni: "So many coins were heavy to carry…" |
+| 3 | 9 a 17 s | Un mercader antiguo en China, amable, carga una bolsa pesadísima de monedas y resopla. | Moni: "Las monedas pesaban mucho para llevar tantas…" | Moni: "So many coins were heavy to carry…" |
 | 4 | 17 a 26 s | Le dan un papel con sellos rojos; se le ilumina la cara. | Moni: "En China inventaron papeles que valían como monedas, ¡y eran livianos!" | Moni: "In China, they made papers worth as much as coins, and they were light!" |
 | 5 | 26 a 34 s | Moni vuelve a ser redonda con un "¡pop!" y abraza al billete. | Estribillo. Narrador: "Hoy aprendimos que el dinero puede tener muchas formas. ¡Cántalo conmigo!" | Chorus. Narrator: "Today we learned money comes in many shapes. Sing it with me!" |
 
