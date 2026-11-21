@@ -53,9 +53,6 @@ const ASSETS = {
         </div>
       </div>
     </div>`},
-  // Marca de agua de YouTube (150x150)
-  'marca_de_agua_150.png': {w: 150, h: 150, html: `
-    <div class="asset" style="width:150px;height:150px;border-radius:50%;background:${GREEN_BG}">${actor('moni', 'happy', 4, 8, 142)}</div>`},
 };
 // Portadas de destacados de Instagram (1080x1920, el ícono va al centro)
 const HL = [
