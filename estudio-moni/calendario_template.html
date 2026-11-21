@@ -1,0 +1,167 @@
+<title>Calendario Moni Finanzas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: agenda de publicación — resumen y horarios arriba, barra fija con semana y zona horaria, y los días como bloques con sus 2 o 3 publicaciones. */
+:root{
+  --bg:#EEF2EF; --surface:#FFFFFF; --ink:#14221D; --muted:#56675F; --line:#D3DDD7; --soft:#F5F8F6;
+  --brand:#0E5A40; --gold:#F2B12A; --ok:#17865A;
+  --c-novela:#A23C8F; --c-pizarra:#2C7FB8; --c-sitcom:#B9622A; --c-simulador:#14825A; --c-mito:#C53B4E;
+  --f-display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
+  --f-body:"Figtree","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1613; --surface:#16211D; --ink:#E6EEEA; --muted:#97A9A1; --line:#2A3833; --soft:#1B2823; --brand:#0B3D2E; --gold:#F5BE45; --ok:#43C98C;
+  --c-novela:#E07BCF; --c-pizarra:#6CB8EE; --c-sitcom:#F0A06A; --c-simulador:#4FD39A; --c-mito:#F07A8A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1613; --surface:#16211D; --ink:#E6EEEA; --muted:#97A9A1; --line:#2A3833; --soft:#1B2823; --brand:#0B3D2E; --gold:#F5BE45; --ok:#43C98C;
+  --c-novela:#E07BCF; --c-pizarra:#6CB8EE; --c-sitcom:#F0A06A; --c-simulador:#4FD39A; --c-mito:#F07A8A; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5;margin:0;padding-block:0 64px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+.in{max-width:1000px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1;text-wrap:balance}
+h1{font-size:clamp(34px,6vw,56px);font-weight:800;letter-spacing:-.03em;color:#fff}
+h2{font-size:24px;font-weight:800}
+p{margin:0}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+button,select{font:inherit;color:inherit}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.hero{background:var(--brand);margin-top:calc(-1 * env(safe-area-inset-top,0px));padding-top:calc(env(safe-area-inset-top,0px) + 36px);padding-bottom:30px}
+.hero .in{display:grid;gap:12px}
+.hero .eyebrow{color:#BFE3D2}
+.hero p{color:#DDF3E8;max-width:64ch;font-size:17px}
+.stats{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:6px}
+.stats div{color:#fff;font-size:14px}
+.stats b{display:block;font:800 30px var(--f-display);color:#F7BC2B;font-variant-numeric:tabular-nums}
+main{display:grid;gap:30px;padding-top:28px}
+.rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.rule{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:6px;align-content:start}
+.rule h3{font-size:17px}
+.rule p{color:var(--muted);font-size:15px}
+.slots{display:grid;gap:6px;font-size:15px}
+.slots div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--line);padding-bottom:4px}
+.slots span{color:var(--muted)}
+.slots b{font-variant-numeric:tabular-nums}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-block:10px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:700;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.bar select{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px}
+.prog{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;margin-left:auto}
+.days{display:grid;gap:12px}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px}
+.date{display:grid;align-content:start;gap:2px}
+.date small{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.date b{font:800 30px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.date span{font-size:13px;color:var(--muted)}
+.posts{display:grid;gap:8px;min-width:0}
+.post{display:grid;grid-template-columns:auto 64px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 10px;border-radius:12px;background:var(--soft);border-left:4px solid var(--fc)}
+.post.done{opacity:.55}
+.post.done .tt{text-decoration:line-through}
+.post input{width:20px;height:20px;accent-color:var(--ok)}
+.time{font:800 18px var(--f-display);font-variant-numeric:tabular-nums}
+.time small{display:block;font:600 11px var(--f-body);color:var(--muted)}
+.tt{font-weight:700;font-size:15px;overflow-wrap:anywhere}
+.meta{font-size:12.5px;color:var(--muted);overflow-wrap:anywhere}
+.meta .f{color:var(--fc);font-weight:700}
+.acts{display:flex;gap:6px}
+.copy{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 10px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
+.tips{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px;display:grid;gap:10px}
+.tips ul{margin:0;padding-left:20px;color:var(--muted)}
+.tips li{margin-bottom:6px}
+.tips b{color:var(--ink)}
+@media (max-width:760px){
+  .rules{grid-template-columns:minmax(0,1fr)}
+  .day{grid-template-columns:minmax(0,1fr)}
+  .date{display:flex;gap:8px;align-items:baseline}.date b{font-size:22px}
+  .post{grid-template-columns:auto 56px minmax(0,1fr)}
+  .acts{grid-column:2 / -1}
+  .bar{position:static}
+}
+</style>
+
+<header class="hero"><div class="in">
+  <p class="eyebrow">Calendario de publicación · Moni Finanzas</p>
+  <h1>100 shorts en 37 días</h1>
+  <p>Tres por día de lunes a viernes y dos los fines de semana. Los archivos de los zips ya tienen el orden, la fecha y la hora en el nombre, así que los subís en el orden en que aparecen.</p>
+  <div class="stats" id="stats"></div>
+</div></header>
+
+<main class="in">
+  <section class="rules">
+    <div class="rule"><p class="eyebrow">Horarios</p>
+      <div class="slots">
+        <div><span>Lunes a viernes</span><b>13:00 · 19:00 · 22:00</b></div>
+        <div><span>Sábado y domingo</span><b>12:00 · 21:00</b></div>
+      </div>
+      <p>Hora de Argentina. Cambiá la zona horaria en la barra para ver tu hora local.</p>
+    </div>
+    <div class="rule"><p class="eyebrow">Telenovela</p><h3>Un capítulo por día, a las 22:00</h3>
+      <p>Cada capítulo cierra con “Próximo capítulo mañana”. Sale en el horario de más audiencia y crea el hábito de volver al canal.</p></div>
+    <div class="rule"><p class="eyebrow">Orden</p><h3>Los mejores ganchos primero</h3>
+      <p>La primera semana arranca con $183.000, Cafecito y “Alquilar es tirar la plata”. El mismo día nunca se repite formato.</p></div>
+  </section>
+
+  <div class="bar">
+    <div class="chips" id="weeks"></div>
+    <select id="tz" aria-label="Zona horaria">
+      <option value="ar">Argentina · Uruguay · Chile</option>
+      <option value="co">Colombia · Perú · Ecuador</option>
+      <option value="mx">México</option>
+      <option value="es">España</option>
+    </select>
+    <span class="prog" id="prog"></span>
+  </div>
+
+  <div class="days" id="days"></div>
+
+  <section class="tips">
+    <h2>Cómo subirlos sin estar pendiente todo el día</h2>
+    <ul>
+      <li><b>YouTube:</b> subí la semana entera desde YouTube Studio en la computadora y usá “Programar” con la fecha y hora de cada archivo.</li>
+      <li><b>Instagram:</b> al publicar un reel, en “Configuración avanzada” elegí “Programar”. Se puede programar con semanas de anticipación.</li>
+      <li><b>TikTok:</b> desde tiktok.com en la computadora podés programar videos con unos días de anticipación. Subí cada 3 o 4 días.</li>
+      <li><b>Después de 2 semanas:</b> en YouTube Studio, Estadísticas → Público → “Cuándo están conectados tus usuarios”. Si tu público se conecta a otra hora, movemos los horarios.</li>
+      <li><b>En los Shorts el horario importa menos que en los videos largos:</b> el algoritmo los sigue mostrando durante días. Lo que más pesa es publicar siempre a la misma hora.</li>
+    </ul>
+  </section>
+</main>
+
+<script>
+const PLAN=__DATA__;
+const TZ={ar:'hora_ar',co:'hora_co',mx:'hora_mx',es:'hora_es'};
+const MESES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+const FK={'Telenovela del dinero':'novela','Pizarra express':'pizarra','Sitcom':'sitcom','¿Y si…? Simulador':'simulador','Mito o verdad':'mito'};
+let week='all',tz='ar',done={};
+try{done=JSON.parse(localStorage.getItem('moni-cal-done')||'{}');tz=localStorage.getItem('moni-cal-tz')||'ar'}catch(e){}
+document.getElementById('tz').value=tz;
+const weeks=[...new Set(PLAN.map(p=>p.semana))];
+document.getElementById('weeks').innerHTML=['all',...weeks].map(w=>`<button class="chip" data-w="${w}" aria-pressed="${w==='all'}">${w==='all'?'Todas':'Semana '+w}</button>`).join('');
+const first=PLAN[0].fecha,last=PLAN[PLAN.length-1].fecha;
+const fd=s=>{const [y,m,d]=s.split('-');return `${+d} ${MESES[m-1]}`};
+document.getElementById('stats').innerHTML=`<div><b>${PLAN.length}</b>shorts</div><div><b>${new Set(PLAN.map(p=>p.fecha)).size}</b>días</div><div><b>${fd(first)}</b>primer short</div><div><b>${fd(last)}</b>último short</div>`;
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function render(){
+  const items=PLAN.filter(p=>week==='all'||String(p.semana)===String(week));
+  const byDay={};items.forEach(p=>(byDay[p.fecha]=byDay[p.fecha]||[]).push(p));
+  document.getElementById('days').innerHTML=Object.entries(byDay).map(([f,ps])=>{const [y,m,d]=f.split('-');
+    return `<article class="day"><div class="date"><small>${ps[0].dia_semana}</small><b>${+d} ${MESES[m-1]}</b><span>Semana ${ps[0].semana}</span></div>
+    <div class="posts">${ps.map(p=>{const k=FK[p.formato]||'pizarra';const ok=!!done[p.orden];
+      return `<div class="post ${ok?'done':''}" style="--fc:var(--c-${k})">
+        <input type="checkbox" id="c${p.orden}" data-o="${p.orden}" ${ok?'checked':''} aria-label="Marcar como publicado">
+        <div class="time">${p[TZ[tz]]}<small>#${p.orden}</small></div>
+        <div><div class="tt">${esc(p.titulo)}</div><div class="meta"><span class="f">${esc(p.formato)}</span> · ${esc(p.serie)} · ${esc(p.archivo)}</div></div>
+        <div class="acts"><button class="copy" data-t="${p.orden}">Título</button><button class="copy" data-d="${p.orden}">Descripción</button></div>
+      </div>`}).join('')}</div></article>`}).join('');
+  const n=Object.keys(done).filter(k=>done[k]).length;document.getElementById('prog').textContent=`${n} de ${PLAN.length} publicados`;
+}
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.w){week=b.dataset.w;document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===b));render();return}
+  const p=PLAN.find(x=>x.orden==(b.dataset.t||b.dataset.d));if(!p)return;const txt=b.dataset.t?p.titulo:p.descripcion;const old=b.textContent;
+  try{navigator.clipboard.writeText(txt).then(()=>{b.textContent='Copiado';setTimeout(()=>b.textContent=old,1300)},()=>{b.textContent='No se pudo'})}catch(_){b.textContent='No se pudo'}});
+document.addEventListener('change',e=>{if(e.target.id==='tz'){tz=e.target.value;try{localStorage.setItem('moni-cal-tz',tz)}catch(_){}render();return}
+  if(e.target.dataset.o){done[e.target.dataset.o]=e.target.checked;try{localStorage.setItem('moni-cal-done',JSON.stringify(done))}catch(_){}render()}});
+render();
+</script>
