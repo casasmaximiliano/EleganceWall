@@ -30,6 +30,7 @@ from data_a import A  # noqa: E402
 from data_bc import B, C  # noqa: E402
 from data_def import D, E, F  # noqa: E402
 from characters import build_sprites  # noqa: E402
+from data_en import EN, SERIES_EN  # noqa: E402
 
 W, H, FPS, SR = 1080, 1920, 24, 44100
 FONT_B = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
@@ -47,6 +48,73 @@ VOICES = {  # modelo, tono (x), length_scale (más alto = más lento)
     "GM": ("es_MX-ald-medium", 1.10, 1.02),
     "GF": ("es_AR-daniela-high", 1.05, 1.02),
 }
+VOICES_ES = dict(VOICES)
+VOICES_EN = {
+    "PIPO": ("en_US-amy-medium", 1.30, 1.00),
+    "TOTO": ("en_US-ryan-high", 0.86, 1.12),
+    "LULA": ("en_US-hfc_female-medium", 1.20, 1.08),
+    "ZUMBI": ("en_US-amy-medium", 1.45, 0.85),
+    "ABU": ("en_US-hfc_female-medium", 0.93, 1.12),
+    "GM": ("en_US-ryan-high", 1.10, 1.02),
+    "GF": ("en_US-amy-medium", 1.05, 1.02),
+}
+CHORUS_MODEL = {"es": "es_AR-daniela-high", "en": "en_US-amy-medium"}
+T = {
+    "es": dict(learned="¡Hoy aprendimos que {l}!", sing="¡Cántala otra vez!", play="¡Juega otra vez!",
+               banner="¡HOY APRENDIMOS!", header="El mundo de Pipo", ep="Cap.", all="Todos",
+               jingle="¡Un, dos, tres, a descubrir otra vez!"),
+    "en": dict(learned="Today we learned that {l}!", sing="Sing it again!", play="Play again!",
+               banner="TODAY WE LEARNED!", header="Pipo's World", ep="Ep.", all="Everyone",
+               jingle="One, two, three, come discover with me!"),
+}
+LABEL_EN = {"Abu Tortu": "Grandma Tortu", "Todos": "Everyone", "Gallina": "Hen", "Mamá Cocodrilo": "Mama Croc",
+            "Cocodrilo": "Crocodile", "Avestruz bebé": "Baby Ostrich", "Mamá Avestruz": "Mama Ostrich", "Rana": "Frog",
+            "Colibrí": "Hummingbird", "Guepardo": "Cheetah", "Pájaro": "Bowerbird", "Pingüino": "Penguin",
+            "Murciélago": "Bat", "Chispi": "Sparky", "Ardilla": "Squirrel", "Elefante": "Elephant", "Gatito": "Kitty",
+            "Pajarito": "Little Bird", "Castor": "Beaver", "Pulpo": "Octopus", "Camaleón": "Chameleon", "Pez": "Fish",
+            "Braquiosaurio": "Brachiosaurus", "Caracol": "Snail", "Canguro": "Kangaroo", "Tricerátops": "Triceratops",
+            "Eco": "Echo"}
+LANG = "es"
+
+
+def set_lang(lang):
+    global LANG, JINGLE
+    LANG = lang
+    VOICES.clear()
+    VOICES.update(VOICES_EN if lang == "en" else VOICES_ES)
+    JINGLE = T[lang]["jingle"]
+
+
+def get_short(sid):
+    x = ALL_SHORTS[sid]
+    if LANG != "en":
+        return x
+    lines, l, cliff = EN[sid]
+    y = dict(x)
+    y["s"] = [sc.split("|", 1)[0].strip() + " | " + ln for sc, ln in zip(x["s"], lines)]
+    y["l"], y["cliff"] = l, cliff or ""
+    if "song" in x:
+        y["song"] = (x["song"][1], x["song"][0])
+    y["hes"], y["tes"] = x["hen"], x["ten"]
+    if "serie" in x:
+        y["serie_label"] = SERIES_EN[x["serie"]]
+    return y
+
+
+def is_countdown(t):
+    t = norm(t)
+    return "tres, dos, uno" in t or "three, two, one" in t
+
+
+def is_rewind(t):
+    t = norm(t)
+    return "rebobin" in t or "rewind" in t
+
+
+def label_of(name):
+    return LABEL_EN.get(name, name) if LANG == "en" else name
+
+
 COLOR = {"PIPO": (110, 230, 150), "TOTO": (255, 160, 70), "LULA": (130, 205, 255), "ZUMBI": (255, 215, 60),
          "ABU": (205, 170, 255), "ALL": (255, 215, 60), "GUEST": (255, 140, 200)}
 NAMES = {"Pipo": "PIPO", "Toto": "TOTO", "Lula": "LULA", "Zumbi": "ZUMBI", "Abu Tortu": "ABU", "Todos": "ALL"}
@@ -92,14 +160,14 @@ NUM_WORDS = {"0": "cero"}
 
 
 def norm(s):
-    return unicodedata.normalize("NFC", s.lower())
+    return unicodedata.normalize("NFC", s.lower()).replace("lunares", "puntitos")
 
 
 def tts_text(t):
     t = t.replace("«", "").replace("»", "")
     t = re.sub(r"Zzz-?", "Bsss, ", t)
     t = re.sub(r"\bzzz\b", "sss", t, flags=re.I)
-    t = t.replace("T. rex", "Tiranosaurio Rex").replace("rawr", "roarrr").replace("Rawr", "Roarrr")
+    t = t.replace("T. rex", "T-Rex" if LANG == "en" else "Tiranosaurio Rex").replace("rawr", "roarrr").replace("Rawr", "Roarrr")
     t = t.replace("RAWR", "ROARRR").replace("…", ", ")
     return t
 
@@ -125,7 +193,7 @@ def read_wav(p):
 
 def tts(key, text, vdir, cache, echo=False):
     model, pitch, ls = VOICES[key]
-    h = hashlib.md5(f"{key}|{text}|{echo}|v3".encode()).hexdigest()
+    h = hashlib.md5(f"{key}|{text}|{echo}|v3{'' if LANG == 'es' else '|' + LANG}".encode()).hexdigest()
     out = os.path.join(cache, h + ".wav")
     if not os.path.exists(out):
         from piper import SynthesisConfig
@@ -148,11 +216,11 @@ def tts(key, text, vdir, cache, echo=False):
 def chorus(text, vdir, cache):
     """Coro sincronizado: UNA sola locución base (misma duración de cada sílaba) a la que se le cambia
     solo el tono para cada personaje. Así todas las voces empiezan y terminan cada palabra a la vez."""
-    h = hashlib.md5(f"CHORUS|{text}|v4".encode()).hexdigest()
+    h = hashlib.md5(f"CHORUS|{text}|v4{'' if LANG == 'es' else '|' + LANG}".encode()).hexdigest()
     out = os.path.join(cache, h + ".wav")
     if not os.path.exists(out):
         from piper import SynthesisConfig
-        model = "es_AR-daniela-high"
+        model = CHORUS_MODEL[LANG]
         v = _load_voice(model, vdir)
         raw, base = out + ".raw.wav", out + ".base.wav"
         with wave.open(raw, "wb") as wf:
@@ -285,14 +353,16 @@ def build_lines(x):
     close = []
     ABU = ("ABU", "Abu Tortu", "")
     ALL = ("ALL", "Todos", "")
+    tx = T[LANG]
+    learned = tx["learned"].format(l=l.rstrip("!"))
     if x["f"] == "F":
-        close = [(ALL, x["song"][0].replace(" | ", " ")), (ABU, f"¡Hoy aprendimos que {l}! ¡Cántala otra vez!")]
+        close = [(ALL, x["song"][0].replace(" | ", " ")), (ABU, f"{learned} {tx['sing']}")]
     elif x["f"] == "A":
-        close = [(ABU, f"¡Hoy aprendimos que {l}!"), (ABU, x["cliff"]), (ALL, JINGLE)]
+        close = [(ABU, learned), (ABU, x["cliff"]), (ALL, JINGLE)]
     elif x["f"] == "E":
-        close = [(ABU, f"¡Hoy aprendimos que {l}! ¡Juega otra vez!"), (ALL, JINGLE)]
+        close = [(ABU, f"{learned} {tx['play']}"), (ALL, JINGLE)]
     else:
-        close = [(ABU, f"¡Hoy aprendimos que {l}!"), (ALL, JINGLE)]
+        close = [(ABU, learned), (ALL, JINGLE)]
     scenes.append({"vis": "CIERRE " + x["s"][0].split("|")[0], "lines": close, "closing": True})
     return scenes
 
@@ -477,7 +547,8 @@ def lula_mood(x, vis):
 
 def render_short(args):
     sid, vdir, outdir, cache, meta = args
-    x = ALL_SHORTS[sid]
+    set_lang(meta.get("lang", "es"))
+    x = get_short(sid)
     sprites = build_sprites()
     scenes = build_lines(x)
 
@@ -499,11 +570,11 @@ def render_short(args):
                 a = tts(vk, text, vdir, cache, echo=(g == "Eco"))
             else:
                 a = tts(key, text, vdir, cache)
-            if "rebobin" in norm(text):
+            if is_rewind(text):
                 sfx_ev.append((t, "whoosh", 0.5))
-            if key == "TOTO" and text.startswith("¡Uy"):
+            if key == "TOTO" and text.startswith(("¡Uy", "Uh-oh")):
                 sfx_ev.append((t, "boing", 0.3))
-            if "tres, dos, uno" in norm(text):
+            if is_countdown(text):
                 d3 = len(a) / SR
                 for k in range(3):
                     sfx_ev.append((t + k * d3 / 3, "beep", 0.4))
@@ -652,7 +723,7 @@ def render_short(args):
             e = emoji(em, max(40, size))
             frame.paste(e, (cx - e.width // 2, cy - e.height // 2), e)
         # cuenta regresiva
-        if ev and "tres, dos, uno" in norm(ev["text"]):
+        if ev and is_countdown(ev["text"]):
             dur = len(ev["a"]) / SR
             k = int(min(2, (tt - ev["t"]) / (dur / 3)))
             num = str(3 - k)
@@ -699,7 +770,7 @@ def render_short(args):
             ImageDraw.Draw(m).ellipse([0, 0, 199, 199], fill=255)
             frame.paste(head, (45, 1115), Image.composite(head, Image.new("RGBA", (200, 200), (0, 0, 0, 0)), m))
         # efecto rebobinar
-        if ev and "rebobin" in norm(ev["text"]):
+        if ev and is_rewind(ev["text"]):
             arr = np.asarray(frame).astype(np.int16)
             arr[::6] = np.clip(arr[::6] + 60, 0, 255)
             arr[..., 2] = np.clip(arr[..., 2] + 30, 0, 255)
@@ -718,17 +789,17 @@ def render_short(args):
             d = ImageDraw.Draw(frame, "RGBA")
         # cabecera
         d.rounded_rectangle([W // 2 - 230, 40, W // 2 + 230, 110], 35, fill=(255, 255, 255, 215))
-        d.text((W // 2, 75), "El mundo de Pipo", font=font(40), fill=(60, 150, 100), anchor="mm")
+        d.text((W // 2, 75), T[LANG]["header"], font=font(40), fill=(60, 150, 100), anchor="mm")
         if x["f"] == "A":
-            text_center(d, W // 2, 150, f"{x['serie']} · Cap. {x['cap']}", 38, (255, 255, 255), sw=5)
+            text_center(d, W // 2, 150, f"{x.get('serie_label', x['serie'])} · {T[LANG]['ep']} {x['cap']}", 38, (255, 255, 255), sw=5)
         # gancho (visible desde el frame 0)
         if tt < hook_t:
             wob = 1 + 0.04 * math.sin(tt * 9)
             text_center(d, W // 2, 330, x["hes"], int(118 * wob), (255, 214, 60), sw=12, maxw=W - 70)
         # cierre: banner
         if sc.get("closing"):
-            if ev and ev["text"].startswith("¡Hoy aprendimos"):
-                text_center(d, W // 2, 330, "¡HOY APRENDIMOS!", 96, (255, 214, 60), sw=11)
+            if ev and ev["text"].startswith(T[LANG]["learned"].split("{")[0].strip()[:12]):
+                text_center(d, W // 2, 330, T[LANG]["banner"], 96, (255, 214, 60), sw=11)
             elif ev and ev["key"] == "ALL":
                 for i, c in enumerate([(255, 90, 90), (255, 170, 60), (255, 230, 80), (110, 210, 110), (90, 160, 255), (170, 110, 230)]):
                     d.arc([60 + i * 22, 420 + i * 22, W - 60 - i * 22, 1500 - i * 22], 180, 360, fill=c, width=22)
@@ -752,7 +823,7 @@ def render_short(args):
             tw = d.textlength(full, font=f)
             xx = (W - tw) / 2
             y = 1560
-            label = ev["name"] if not ev["key"] == "ALL" else "Todos"
+            label = label_of(ev["name"]) if not ev["key"] == "ALL" else T[LANG]["all"]
             d.text((W // 2, y - 85), label, font=font(40), fill=col, anchor="mm", stroke_width=5, stroke_fill=(30, 25, 45))
             for j in ch:
                 wtxt = words[j] + " "
@@ -776,6 +847,7 @@ def main():
     ap.add_argument("--voices", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--only", default="")
+    ap.add_argument("--lang", default="es", choices=["es", "en"])
     ap.add_argument("--jobs", type=int, default=4)
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
@@ -783,16 +855,19 @@ def main():
     os.makedirs(cache, exist_ok=True)
     cal = list(csv.DictReader(open(os.path.join(HERE, "..", "calendario.csv"), encoding="utf-8")))
     only = set(filter(None, a.only.split(",")))
+    set_lang(a.lang)
     jobs = []
     for r in cal:
         if only and r["id"] not in only:
             continue
         x = ALL_SHORTS[r["id"]]
-        fname = f"Dia{int(r['dia']):02d}_{r['hora'].replace(':', '')}_{r['id']}_{safe(x['tes'])}"
-        jobs.append((r["id"], a.voices, a.out, cache, {"hora": r["hora"], "file": fname}))
+        title = x["ten"] if a.lang == "en" else x["tes"]
+        pre = "Day" if a.lang == "en" else "Dia"
+        fname = f"{pre}{int(r['dia']):02d}_{r['hora'].replace(':', '')}_{r['id']}_{safe(title)}"
+        jobs.append((r["id"], a.voices, a.out, cache, {"hora": r["hora"], "file": fname, "lang": a.lang}))
     # 1) voces primero (en serie, se guardan en caché)
     for j in jobs:
-        for sc in build_lines(ALL_SHORTS[j[0]]):
+        for sc in build_lines(get_short(j[0])):
             for (key, name, qual), text in sc["lines"]:
                 if key == "ALL":
                     chorus(text, a.voices, cache)
