@@ -42,7 +42,7 @@
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Bombolín, messy fur with a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big clumsy feet, always slightly off-balance.
 Scene: Toto mid-sneeze into his elbow with a cartoon 'achoo' puff, Bombolín dancing and demonstrating the elbow move, cheerful classroom background.
 ```
@@ -85,7 +85,7 @@ Scene: Toto mid-sneeze into his elbow with a cartoon 'achoo' puff, Bombolín dan
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 ZUMBI: a tiny round bumblebee boy, yellow (#FFD23F) and black stripes, oversized sparkly wings, antennae tipped with little hearts, six legs with tiny red sneakers, often with speed lines.
 Scene: A cheerful flower-race starting line with a big banner made of petals, Zumbi vibrating with speed lines ahead of the line, Bombolín calling to him, other cute insects waiting.
 ```
@@ -128,7 +128,7 @@ Scene: A cheerful flower-race starting line with a big banner made of petals, Zu
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 ABU TORTU: a kind grandmother tortoise, twice Bombolín's height, green patchwork-quilt shell, round golden glasses, lavender knitted scarf, a walking cane shaped like a leaf, warm smile.
 Scene: Three zebras in a row on a golden savanna, Bombolín inspecting their stripes with a big magnifying glass, a chalkboard comparing stripes to a fingerprint.
 ```
@@ -171,7 +171,7 @@ Scene: Three zebras in a row on a golden savanna, Bombolín inspecting their str
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Bombolín, messy fur with a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big clumsy feet, always slightly off-balance.
 Scene: A smiling orange starfish on wet sand with a playful glowing nerve-network x-ray effect on its arms, Toto scratching his head, Bombolín holding a 'MYTH' sign.
 ```
@@ -214,7 +214,7 @@ Scene: A smiling orange starfish on wet sand with a playful glowing nerve-networ
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 ZUMBI: a tiny round bumblebee boy, yellow (#FFD23F) and black stripes, oversized sparkly wings, antennae tipped with little hearts, six legs with tiny red sneakers, often with speed lines.
 Scene: A tiny iridescent hummingbird hovering mid-air beside Zumbi, its wings a soft blur, Bombolín running below on a flower-lined path.
 ```
@@ -257,7 +257,7 @@ Scene: A tiny iridescent hummingbird hovering mid-air beside Zumbi, its wings a 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Bombolín, messy fur with a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big clumsy feet, always slightly off-balance.
 Scene: Toto making a funny grossed-out face at a little broccoli tree on his plate, Bombolín happily munching broccoli, colorful kitchen table.
 ```
@@ -302,7 +302,7 @@ Scene: Toto making a funny grossed-out face at a little broccoli tree on his pla
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Bombolín, messy fur with a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big clumsy feet, always slightly off-balance.
 Scene: A plate arranged as a rainbow of fruit with cute smiling faces dancing in a line, Bombolín and Toto biting fruit happily in a bright kitchen.
 ```
@@ -345,7 +345,7 @@ Scene: A plate arranged as a rainbow of fruit with cute smiling faces dancing in
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 ZUMBI: a tiny round bumblebee boy, yellow (#FFD23F) and black stripes, oversized sparkly wings, antennae tipped with little hearts, six legs with tiny red sneakers, often with speed lines.
 Scene: A friendly cheetah stopping beside Bombolín with wind-swept leaves around them, Zumbi kindly helping a little ladybug stand up on the path.
 ```
@@ -388,7 +388,7 @@ Scene: A friendly cheetah stopping beside Bombolín with wind-swept leaves aroun
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 ABU TORTU: a kind grandmother tortoise, twice Bombolín's height, green patchwork-quilt shell, round golden glasses, lavender knitted scarf, a walking cane shaped like a leaf, warm smile.
 Scene: A happy shiny hippo with tiny reddish droplets on its skin by a river, Bombolín wearing a big sun hat and applying sunscreen, chalkboard with a sun-and-shield doodle.
 ```
@@ -431,7 +431,7 @@ Scene: A happy shiny hippo with tiny reddish droplets on its skin by a river, Bo
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 ZUMBI: a tiny round bumblebee boy, yellow (#FFD23F) and black stripes, oversized sparkly wings, antennae tipped with little hearts, six legs with tiny red sneakers, often with speed lines.
 Scene: A game-show stage with a hen, a puppy and an ant wearing sneakers lined up, big glowing numbers 2, 4, 6 above them, Bombolín and Zumbi as hosts.
 ```
@@ -474,7 +474,7 @@ Scene: A game-show stage with a hen, a puppy and an ant wearing sneakers lined u
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 ZUMBI: a tiny round bumblebee boy, yellow (#FFD23F) and black stripes, oversized sparkly wings, antennae tipped with little hearts, six legs with tiny red sneakers, often with speed lines.
 ABU TORTU: a kind grandmother tortoise, twice Bombolín's height, green patchwork-quilt shell, round golden glasses, lavender knitted scarf, a walking cane shaped like a leaf, warm smile.
 Scene: Abu Tortu smiling warmly beside a sad Zumbi sitting on a leaf, Bombolín next to them, a winding flower path toward a distant finish arch.
@@ -518,7 +518,7 @@ Scene: Abu Tortu smiling warmly beside a sad Zumbi sitting on a leaf, Bombolín 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Bombolín, messy fur with a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big clumsy feet, always slightly off-balance.
 Scene: Toto sluggish with his tongue out, Bombolín handing him a big glass of water, a chalkboard silhouette filling with blue water.
 ```
@@ -563,7 +563,7 @@ Scene: Toto sluggish with his tongue out, Bombolín handing him a big glass of w
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Bombolín, messy fur with a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big clumsy feet, always slightly off-balance.
 Scene: A tiny strong ant lifting a giant green leaf over its head, a line of ants helping Toto carry toys into a box, Bombolín flexing playfully.
 ```
@@ -606,7 +606,7 @@ Scene: A tiny strong ant lifting a giant green leaf over its head, a line of ant
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 ZUMBI: a tiny round bumblebee boy, yellow (#FFD23F) and black stripes, oversized sparkly wings, antennae tipped with little hearts, six legs with tiny red sneakers, often with speed lines.
 ABU TORTU: a kind grandmother tortoise, twice Bombolín's height, green patchwork-quilt shell, round golden glasses, lavender knitted scarf, a walking cane shaped like a leaf, warm smile.
 TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Bombolín, messy fur with a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big clumsy feet, always slightly off-balance.
@@ -652,7 +652,7 @@ Scene: Bombolín, Zumbi and Abu Tortu crossing a flower-arch finish line holding
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 ABU TORTU: a kind grandmother tortoise, twice Bombolín's height, green patchwork-quilt shell, round golden glasses, lavender knitted scarf, a walking cane shaped like a leaf, warm smile.
 Scene: A friendly octopus shifting colors from red to yellow to green against a coral reef, Bombolín hiding badly behind a sea plant with his eggshell hat poking out.
 ```
@@ -697,7 +697,7 @@ Scene: A friendly octopus shifting colors from red to yellow to green against a 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 LULA: a small soft cloud girl, sky-blue (#8FD3F4) when calm, rosy cheeks, big gentle eyes with long lashes, tiny cloud hands; her color changes with her feelings (grey when sad, soft red when angry, pink when shy, rainbow-striped when happy).
 Scene: A pink flamingo balancing on one leg and winking in a shallow lagoon, Bombolín wobbling on one leg, Lula floating as a soft cushion beside him.
 ```
@@ -740,7 +740,7 @@ Scene: A pink flamingo balancing on one leg and winking in a shallow lagoon, Bom
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Bombolín, messy fur with a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big clumsy feet, always slightly off-balance.
 Scene: Toto and a fluffy koala both asleep hugging a eucalyptus tree trunk, moon and sun swirling in the sky, Bombolín peeking and giggling.
 ```
@@ -783,7 +783,7 @@ Scene: Toto and a fluffy koala both asleep hugging a eucalyptus tree trunk, moon
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 ZUMBI: a tiny round bumblebee boy, yellow (#FFD23F) and black stripes, oversized sparkly wings, antennae tipped with little hearts, six legs with tiny red sneakers, often with speed lines.
 Scene: Zumbi with six tiny red sneakers, one stuck on his antenna, Bombolín kneeling to help him count, glowing numbers 1 to 6 floating around.
 ```
@@ -826,7 +826,7 @@ Scene: Zumbi with six tiny red sneakers, one stuck on his antenna, Bombolín kne
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 ZUMBI: a tiny round bumblebee boy, yellow (#FFD23F) and black stripes, oversized sparkly wings, antennae tipped with little hearts, six legs with tiny red sneakers, often with speed lines.
 Scene: Bombolín joyfully soaring over a small house roof in the outback with a friendly red kangaroo below demonstrating a jump, Zumbi buzzing alongside.
 ```
@@ -869,7 +869,7 @@ Scene: Bombolín joyfully soaring over a small house roof in the outback with a 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 ZUMBI: a tiny round bumblebee boy, yellow (#FFD23F) and black stripes, oversized sparkly wings, antennae tipped with little hearts, six legs with tiny red sneakers, often with speed lines.
 Scene: An ostrich, a hummingbird and a peregrine falcon at a cartoon race starting line, the falcon diving like a rocket with speed lines, Zumbi refereeing with a flag.
 ```
@@ -912,7 +912,7 @@ Scene: An ostrich, a hummingbird and a peregrine falcon at a cartoon race starti
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
-PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
+BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Bombolín, messy fur with a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big clumsy feet, always slightly off-balance.
 Scene: A cheerful beaver in a tiny yellow hard hat helping Toto put toys into colorful bins, a giant one-minute timer on the wall, Bombolín cheering.
 ```

@@ -17,7 +17,7 @@ OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STYLE = ("Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, "
          "warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.")
 CHAR = {
- "PIPO": ("PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round "
+ "PIPO": ("BOMBOLÍN: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round "
           "brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three "
           "darker green spots, three small rounded orange spikes on his back, short tail, little orange "
           "sneakers, wearing the top half of his white eggshell with blue spots as a little hat."),
