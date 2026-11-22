@@ -1,7 +1,7 @@
-"""Genera el calendario y los guiones semana por semana de «El mundo de Pipo».
+"""Genera el calendario y los guiones semana por semana de «Bombolín y sus amigos».
 
-Uso: python3 plan-shorts/pipo/src/build.py
-Escribe: plan-shorts/pipo/calendario.csv y plan-shorts/pipo/semana-1.md … semana-5.md
+Uso: python3 plan-shorts/bombolin/src/build.py
+Escribe: plan-shorts/bombolin/calendario.csv y plan-shorts/bombolin/semana-1.md … semana-5.md
 """
 import csv
 import os
@@ -21,7 +21,7 @@ CHAR = {
           "brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three "
           "darker green spots, three small rounded orange spikes on his back, short tail, little orange "
           "sneakers, wearing the top half of his white eggshell with blue spots as a little hat."),
- "TOTO": ("TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Pipo, messy fur with "
+ "TOTO": ("TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Bombolín, messy fur with "
           "a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big "
           "clumsy feet, always slightly off-balance."),
  "LULA": ("LULA: a small soft cloud girl, sky-blue (#8FD3F4) when calm, rosy cheeks, big gentle eyes "
@@ -30,7 +30,7 @@ CHAR = {
  "ZUMBI": ("ZUMBI: a tiny round bumblebee boy, yellow (#FFD23F) and black stripes, oversized sparkly "
            "wings, antennae tipped with little hearts, six legs with tiny red sneakers, often with "
            "speed lines."),
- "ABU": ("ABU TORTU: a kind grandmother tortoise, twice Pipo's height, green patchwork-quilt shell, "
+ "ABU": ("ABU TORTU: a kind grandmother tortoise, twice Bombolín's height, green patchwork-quilt shell, "
          "round golden glasses, lavender knitted scarf, a walking cane shaped like a leaf, warm smile."),
 }
 FMT = {"A": "A. Serie", "B": "B. Pizarra", "C": "C. Comedia", "D": "D. ¿Y si…?",
@@ -39,7 +39,7 @@ TAG_ES = {"A": "#cuentosinfantiles", "B": "#curiosidadesparaniños", "C": "#humo
           "D": "#ysi", "E": "#juegosparaniños", "F": "#cancionesinfantiles"}
 TAG_EN = {"A": "#kidsstories", "B": "#funfactsforkids", "C": "#funnykids",
           "D": "#whatif", "E": "#kidsquiz", "F": "#kidssongs"}
-NAME = {"PIPO": "Pipo", "TOTO": "Toto", "LULA": "Lula", "ZUMBI": "Zumbi", "ABU": "Abu Tortu"}
+NAME = {"PIPO": "Bombolín", "TOTO": "Toto", "LULA": "Lula", "ZUMBI": "Zumbi", "ABU": "Abu Tortu"}
 JINGLE_ES = "¡Un, dos, tres, a descubrir otra vez!"
 JINGLE_EN = "One, two, three, come discover with me!"
 DIAS = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
@@ -88,8 +88,8 @@ for x in by_id.values():
 
 def hashtags(x, lang):
     if lang == "es":
-        return f"#Pipo #dibujosanimados #videosinfantiles {x['tag']} {TAG_ES[x['f']]}"
-    return f"#Pipo #kidscartoon #kidsvideos #learnwithpipo {TAG_EN[x['f']]}"
+        return f"#Bombolin #dibujosanimados #videosinfantiles {x['tag']} {TAG_ES[x['f']]}"
+    return f"#Bombolin #kidscartoon #kidsvideos #learnwithbombolin {TAG_EN[x['f']]}"
 
 
 def cierre(x):
@@ -144,7 +144,7 @@ for day, dow, hora, franja, sid in sched:
 
 for w, parts in weeks.items():
     first, last = (w - 1) * 7 + 1, min(w * 7, 30)
-    head = (f"# El mundo de Pipo · Semana {w} (días {first} a {last})\n\n"
+    head = (f"# Bombolín y sus amigos · Semana {w} (días {first} a {last})\n\n"
             "> Generado con `src/build.py`. Para cambiar un guion, edita `src/data_*.py` y vuelve a correr el script.\n"
             "> Los horarios son la hora local del público principal de cada canal (ver `README.md`).\n\n---\n")
     with open(os.path.join(OUT, f"semana-{w}.md"), "w", encoding="utf-8") as fh:
@@ -154,8 +154,8 @@ with open(os.path.join(OUT, "calendario.csv"), "w", newline="", encoding="utf-8"
     wr = csv.writer(fh)
     wr.writerow(["dia", "dia_semana", "hora", "franja", "id", "formato", "serie", "capitulo",
                  "titulo_es", "titulo_en", "descripcion_es", "descripcion_en", "playlist"])
-    PL = {"A": "Series de Pipo", "B": "Pipo explica", "C": "Pipo y sus amigos",
-          "D": "¿Y si…? con Pipo", "E": "Juega con Pipo", "F": "Canciones de Pipo"}
+    PL = {"A": "Series de Bombolín", "B": "Bombolín explica", "C": "Bombolín y sus amigos",
+          "D": "¿Y si…? con Bombolín", "E": "Juega con Bombolín", "F": "Canciones de Bombolín"}
     for day, dow, hora, franja, sid in sched:
         x = by_id[sid]
         wr.writerow([day, DIAS[dow], hora, franja, sid, FMT[x["f"]], x.get("serie", ""), x.get("cap", ""),

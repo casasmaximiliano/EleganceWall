@@ -1,4 +1,4 @@
-# El mundo de Pipo · Semana 2 (días 8 a 14)
+# Bombolín y sus amigos · Semana 2 (días 8 a 14)
 
 > Generado con `src/build.py`. Para cambiar un guion, edita `src/data_*.py` y vuelve a correr el script.
 > Los horarios son la hora local del público principal de cada canal (ver `README.md`).
@@ -13,16 +13,16 @@
 - EN: Can owls turn their heads backward?
 
 **Descripción**
-- ES: ¿Mito o verdad?: los búhos pueden girar la cabeza muchísimo. ¡Adivina en 3 segundos! #Pipo #dibujosanimados #videosinfantiles #mitooverdad #juegosparaniños
-- EN: Myth or truth: owls can turn their heads really far. Guess in 3 seconds! #Pipo #kidscartoon #kidsvideos #learnwithpipo #kidsquiz
+- ES: ¿Mito o verdad?: los búhos pueden girar la cabeza muchísimo. ¡Adivina en 3 segundos! #Bombolin #dibujosanimados #videosinfantiles #mitooverdad #juegosparaniños
+- EN: Myth or truth: owls can turn their heads really far. Guess in 3 seconds! #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #kidsquiz
 
-**Gancho (segundo 0):** Un búho mira a la cámara con ojos enormes. Texto grande: **¿GIRA LA CABEZA?** / **HEAD TURN?**. Primera frase: Pipo: «¿Los búhos pueden mirar para atrás?»
+**Gancho (segundo 0):** Un búho mira a la cámara con ojos enormes. Texto grande: **¿GIRA LA CABEZA?** / **HEAD TURN?**. Primera frase: Bombolín: «¿Los búhos pueden mirar para atrás?»
 
 **Guion**
 
 | # | Tiempo | Qué se ve | Quién habla y qué dice |
 |---|---|---|---|
-| 1 | 0–4 s | Un búho mira a la cámara con ojos enormes | Pipo: «¿Los búhos pueden mirar para atrás?» |
+| 1 | 0–4 s | Un búho mira a la cámara con ojos enormes | Bombolín: «¿Los búhos pueden mirar para atrás?» |
 | 2 | 4–11 s | Cuenta regresiva 3-2-1 | Todos: «¡Tres, dos, uno!» |
 | 3 | 11–18 s | ¡VERDAD! El búho gira la cabeza despacito por encima del hombro | Toto: «¡Uy, uy, uy! ¡Mira para atrás!» |
 | 4 | 18–25 s | Pizarra: círculo con tres cuartos pintados | Abu Tortu (voz): «Los búhos pueden girar la cabeza unos doscientos setenta grados: ¡casi una vuelta!» |
@@ -35,14 +35,14 @@
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que cada cuerpo tiene su manera de ver!
 
-**Voces:** Pipo, Toto, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Toto, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
-TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Pipo, messy fur with a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big clumsy feet, always slightly off-balance.
-Scene: A fluffy wide-eyed owl on a moonlit branch turning its head over its shoulder, Toto trying to copy it and getting dizzy, Pipo laughing.
+TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Bombolín, messy fur with a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big clumsy feet, always slightly off-balance.
+Scene: A fluffy wide-eyed owl on a moonlit branch turning its head over its shoulder, Toto trying to copy it and getting dizzy, Bombolín laughing.
 ```
 
 ---
@@ -56,8 +56,8 @@ Scene: A fluffy wide-eyed owl on a moonlit branch turning its head over its shou
 - EN: Lula turned grey! Where did her colors go?
 
 **Descripción**
-- ES: Lula, la nubecita, se despertó sin sus colores. Pipo la va a ayudar a encontrarlos. Capítulo 1 de «Lula perdió su arcoíris». #Pipo #dibujosanimados #videosinfantiles #arcoirisdelula #cuentosinfantiles
-- EN: Lula the little cloud woke up without her colors. Pipo will help her find them. Episode 1 of “Lula Lost Her Rainbow”. #Pipo #kidscartoon #kidsvideos #learnwithpipo #kidsstories
+- ES: Lula, la nubecita, se despertó sin sus colores. Bombolín la va a ayudar a encontrarlos. Capítulo 1 de «Lula perdió su arcoíris». #Bombolin #dibujosanimados #videosinfantiles #arcoirisdelula #cuentosinfantiles
+- EN: Lula the little cloud woke up without her colors. Bombolín will help her find them. Episode 1 of “Lula Lost Her Rainbow”. #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #kidsstories
 
 **Gancho (segundo 0):** Lula gris, con gotitas que caen como lágrimas chiquitas. Texto grande: **¡LULA ESTÁ GRIS!** / **LULA IS GREY!**. Primera frase: Lula: «¡Perdí mis colores!»
 
@@ -66,9 +66,9 @@ Scene: A fluffy wide-eyed owl on a moonlit branch turning its head over its shou
 | # | Tiempo | Qué se ve | Quién habla y qué dice |
 |---|---|---|---|
 | 1 | 0–4 s | Lula gris, con gotitas que caen como lágrimas chiquitas | Lula: «¡Perdí mis colores!» |
-| 2 | 4–11 s | Pipo la abraza; caen gotitas en su gorrito de cascarón | Pipo: «¡No llores, Lula! Te ayudo a buscarlos.» |
+| 2 | 4–11 s | Bombolín la abraza; caen gotitas en su gorrito de cascarón | Bombolín: «¡No llores, Lula! Te ayudo a buscarlos.» |
 | 3 | 11–18 s | Pizarra: una nube por dentro, llena de gotitas | Abu Tortu (voz): «Las nubes están hechas de gotitas de agua chiquititas.» |
-| 4 | 18–25 s | Mapa con 5 lugares marcados con signos de pregunta de colores | Pipo: «¡Vamos a buscarlos uno por uno!» |
+| 4 | 18–25 s | Mapa con 5 lugares marcados con signos de pregunta de colores | Bombolín: «¡Vamos a buscarlos uno por uno!» |
 | 5 | 25–33 s | Todos juntos, con la misma toma del inicio para que el video vuelva a empezar solo | Abu Tortu: «¡Hoy aprendimos que cuando un amigo está triste, lo acompañamos! ¿Dónde estará el primer color?» Todos: «¡Un, dos, tres, a descubrir otra vez!» |
 
 **Rima del canal:** *¡Un, dos, tres, a descubrir otra vez!* / *One, two, three, come discover with me!*
@@ -78,14 +78,14 @@ Scene: A fluffy wide-eyed owl on a moonlit branch turning its head over its shou
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que cuando un amigo está triste, lo acompañamos!
 
-**Voces:** Pipo, Lula, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Lula, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 LULA: a small soft cloud girl, sky-blue (#8FD3F4) when calm, rosy cheeks, big gentle eyes with long lashes, tiny cloud hands; her color changes with her feelings (grey when sad, soft red when angry, pink when shy, rainbow-striped when happy).
-Scene: Lula as a grey little cloud with tiny teardrop raindrops, Pipo hugging her gently, a soft pastel meadow under a cloudy sky.
+Scene: Lula as a grey little cloud with tiny teardrop raindrops, Bombolín hugging her gently, a soft pastel meadow under a cloudy sky.
 ```
 
 ---
@@ -99,8 +99,8 @@ Scene: Lula as a grey little cloud with tiny teardrop raindrops, Pipo hugging he
 - EN: Lula got angry and turned red!
 
 **Descripción**
-- ES: Lula se enoja tanto que se pone roja y hace truenitos. ¿Qué le pasa al cuerpo cuando nos enojamos? #Pipo #dibujosanimados #videosinfantiles #emociones #humorinfantil
-- EN: Lula gets so mad she turns red and makes tiny thunder. What happens to our body when we're angry? #Pipo #kidscartoon #kidsvideos #learnwithpipo #funnykids
+- ES: Lula se enoja tanto que se pone roja y hace truenitos. ¿Qué le pasa al cuerpo cuando nos enojamos? #Bombolin #dibujosanimados #videosinfantiles #emociones #humorinfantil
+- EN: Lula gets so mad she turns red and makes tiny thunder. What happens to our body when we're angry? #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #funnykids
 
 **Gancho (segundo 0):** Lula roja, con truenitos chiquitos. Texto grande: **¡GRRR!** / **GRRR!**. Primera frase: Lula: «¡Grrr! ¡Se me cayó el helado!»
 
@@ -110,8 +110,8 @@ Scene: Lula as a grey little cloud with tiny teardrop raindrops, Pipo hugging he
 |---|---|---|---|
 | 1 | 0–4 s | Lula roja, con truenitos chiquitos | Lula: «¡Grrr! ¡Se me cayó el helado!» |
 | 2 | 4–11 s | Pizarra: un corazón que late rápido, «pum-pum-pum» | Abu Tortu (voz): «Cuando nos enojamos, el corazón late más rápido.» |
-| 3 | 11–18 s | Pipo pone las manos en la panza e infla como un globo | Pipo: «Respiremos juntos: inflo la panza… y suelto.» |
-| 4 | 18–25 s | Lula vuelve a ser celeste | Lula: «Ya estoy mejor. ¡Gracias, Pipo!» |
+| 3 | 11–18 s | Bombolín pone las manos en la panza e infla como un globo | Bombolín: «Respiremos juntos: inflo la panza… y suelto.» |
+| 4 | 18–25 s | Lula vuelve a ser celeste | Lula: «Ya estoy mejor. ¡Gracias, Bombolín!» |
 | 5 | 25–33 s | Todos juntos, con la misma toma del inicio para que el video vuelva a empezar solo | Abu Tortu: «¡Hoy aprendimos que enojarse está bien, y respirar nos ayuda a calmarnos!» Todos: «¡Un, dos, tres, a descubrir otra vez!» |
 
 **Rima del canal:** *¡Un, dos, tres, a descubrir otra vez!* / *One, two, three, come discover with me!*
@@ -121,14 +121,14 @@ Scene: Lula as a grey little cloud with tiny teardrop raindrops, Pipo hugging he
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que enojarse está bien, y respirar nos ayuda a calmarnos!
 
-**Voces:** Pipo, Lula, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Lula, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 LULA: a small soft cloud girl, sky-blue (#8FD3F4) when calm, rosy cheeks, big gentle eyes with long lashes, tiny cloud hands; her color changes with her feelings (grey when sad, soft red when angry, pink when shy, rainbow-striped when happy).
-Scene: Lula as a soft red cloud with tiny cartoon thunder zigzags, a dropped ice cream on the ground, Pipo calmly breathing with hands on his belly.
+Scene: Lula as a soft red cloud with tiny cartoon thunder zigzags, a dropped ice cream on the ground, Bombolín calmly breathing with hands on his belly.
 ```
 
 ---
@@ -142,8 +142,8 @@ Scene: Lula as a soft red cloud with tiny cartoon thunder zigzags, a dropped ice
 - EN: The rainbow colors song
 
 **Descripción**
-- ES: Rojo, naranja, amarillo… ¡Canta los colores del arcoíris con Lula! #Pipo #dibujosanimados #videosinfantiles #colores #cancionesinfantiles
-- EN: Red, orange, yellow… Sing the rainbow colors with Lula! #Pipo #kidscartoon #kidsvideos #learnwithpipo #kidssongs
+- ES: Rojo, naranja, amarillo… ¡Canta los colores del arcoíris con Lula! #Bombolin #dibujosanimados #videosinfantiles #colores #cancionesinfantiles
+- EN: Red, orange, yellow… Sing the rainbow colors with Lula! #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #kidssongs
 
 **Gancho (segundo 0):** Lula se pinta de rojo y explota en colores. Texto grande: **¡ROJO, NARANJA, AMARILLO!** / **RED, ORANGE, YELLOW!**. Primera frase: Lula (canta): «¡Rojo, naranja, amarillo y verde!»
 
@@ -152,7 +152,7 @@ Scene: Lula as a soft red cloud with tiny cartoon thunder zigzags, a dropped ice
 | # | Tiempo | Qué se ve | Quién habla y qué dice |
 |---|---|---|---|
 | 1 | 0–4 s | Lula se pinta de rojo y explota en colores | Lula (canta): «¡Rojo, naranja, amarillo y verde!» |
-| 2 | 4–11 s | Pipo salta sobre cada franja como una rayuela | Pipo (canta): «¡Azul, añil, violeta!» |
+| 2 | 4–11 s | Bombolín salta sobre cada franja como una rayuela | Bombolín (canta): «¡Azul, añil, violeta!» |
 | 3 | 11–18 s | Pizarra: Isaac Newton con un prisma | Abu Tortu (voz): «Isaac Newton nombró siete colores en el arcoíris, ¡aunque en realidad tiene muchísimos más mezclados!» |
 | 4 | 18–25 s | Arcoíris completo con todos bailando | Todos (cantan): «¡Nunca se pierde!» |
 | 5 | 25–33 s | Todos juntos, con la misma toma del inicio para que el video vuelva a empezar solo | Todos cantan el estribillo completo una vez más. Abu Tortu: «¡Hoy aprendimos que los colores están en todas partes! ¡Cántala otra vez!» |
@@ -166,14 +166,14 @@ Scene: Lula as a soft red cloud with tiny cartoon thunder zigzags, a dropped ice
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que los colores están en todas partes!
 
-**Voces:** Pipo, Lula, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Lula, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 LULA: a small soft cloud girl, sky-blue (#8FD3F4) when calm, rosy cheeks, big gentle eyes with long lashes, tiny cloud hands; her color changes with her feelings (grey when sad, soft red when angry, pink when shy, rainbow-striped when happy).
-Scene: Lula bursting into a full rainbow while Pipo hops across the color stripes like hopscotch, bright sunny sky.
+Scene: Lula bursting into a full rainbow while Bombolín hops across the color stripes like hopscotch, bright sunny sky.
 ```
 
 ---
@@ -187,19 +187,19 @@ Scene: Lula bursting into a full rainbow while Pipo hops across the color stripe
 - EN: The yellow was in the sunflowers!
 
 **Descripción**
-- ES: Pipo y Lula llegan a un campo de girasoles que miran hacia el sol. ¿Estará ahí el amarillo? Capítulo 2. #Pipo #dibujosanimados #videosinfantiles #arcoirisdelula #cuentosinfantiles
-- EN: Pipo and Lula reach a field of sunflowers facing the sun. Is the yellow there? Episode 2. #Pipo #kidscartoon #kidsvideos #learnwithpipo #kidsstories
+- ES: Bombolín y Lula llegan a un campo de girasoles que miran hacia el sol. ¿Estará ahí el amarillo? Capítulo 2. #Bombolin #dibujosanimados #videosinfantiles #arcoirisdelula #cuentosinfantiles
+- EN: Bombolín and Lula reach a field of sunflowers facing the sun. Is the yellow there? Episode 2. #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #kidsstories
 
-**Gancho (segundo 0):** Campo enorme de girasoles que giran juntos hacia el sol. Texto grande: **¡AMARILLO!** / **YELLOW!**. Primera frase: Pipo: «¡Mira! ¡Se mueven todos juntos!»
+**Gancho (segundo 0):** Campo enorme de girasoles que giran juntos hacia el sol. Texto grande: **¡AMARILLO!** / **YELLOW!**. Primera frase: Bombolín: «¡Mira! ¡Se mueven todos juntos!»
 
 **Guion**
 
 | # | Tiempo | Qué se ve | Quién habla y qué dice |
 |---|---|---|---|
-| 1 | 0–4 s | Campo enorme de girasoles que giran juntos hacia el sol | Pipo: «¡Mira! ¡Se mueven todos juntos!» |
+| 1 | 0–4 s | Campo enorme de girasoles que giran juntos hacia el sol | Bombolín: «¡Mira! ¡Se mueven todos juntos!» |
 | 2 | 4–11 s | Lula se acerca y le aparece una franja amarilla | Lula: «¡Mi amarillo! ¡Volvió!» |
 | 3 | 11–18 s | Pizarra: girasol joven que sigue al sol de la mañana a la tarde | Abu Tortu (voz): «Los girasoles jóvenes siguen al sol durante el día.» |
-| 4 | 18–25 s | Lula sonríe con su franja amarilla; quedan 4 signos de pregunta | Pipo: «¡Uno menos! ¡Faltan cuatro!» |
+| 4 | 18–25 s | Lula sonríe con su franja amarilla; quedan 4 signos de pregunta | Bombolín: «¡Uno menos! ¡Faltan cuatro!» |
 | 5 | 25–33 s | Todos juntos, con la misma toma del inicio para que el video vuelva a empezar solo | Abu Tortu: «¡Hoy aprendimos que la alegría vuelve de a poquito! ¿Cuál será el próximo color?» Todos: «¡Un, dos, tres, a descubrir otra vez!» |
 
 **Rima del canal:** *¡Un, dos, tres, a descubrir otra vez!* / *One, two, three, come discover with me!*
@@ -209,14 +209,14 @@ Scene: Lula bursting into a full rainbow while Pipo hops across the color stripe
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que la alegría vuelve de a poquito!
 
-**Voces:** Pipo, Lula, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Lula, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 LULA: a small soft cloud girl, sky-blue (#8FD3F4) when calm, rosy cheeks, big gentle eyes with long lashes, tiny cloud hands; her color changes with her feelings (grey when sad, soft red when angry, pink when shy, rainbow-striped when happy).
-Scene: Pipo and Lula in a vast sunflower field all facing a bright sun, Lula with a new yellow stripe on her cloud body, smiling.
+Scene: Bombolín and Lula in a vast sunflower field all facing a bright sun, Lula with a new yellow stripe on her cloud body, smiling.
 ```
 
 ---
@@ -230,19 +230,19 @@ Scene: Pipo and Lula in a vast sunflower field all facing a bright sun, Lula wit
 - EN: Dolphins sleep with half their brain
 
 **Descripción**
-- ES: ¿Cómo duerme un delfín sin dejar de nadar? Abu Tortu nos cuenta un truco increíble. #Pipo #dibujosanimados #videosinfantiles #delfines #curiosidadesparaniños
-- EN: How does a dolphin sleep while it keeps swimming? Grandma Tortu shares an amazing trick. #Pipo #kidscartoon #kidsvideos #learnwithpipo #funfactsforkids
+- ES: ¿Cómo duerme un delfín sin dejar de nadar? Abu Tortu nos cuenta un truco increíble. #Bombolin #dibujosanimados #videosinfantiles #delfines #curiosidadesparaniños
+- EN: How does a dolphin sleep while it keeps swimming? Grandma Tortu shares an amazing trick. #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #funfactsforkids
 
-**Gancho (segundo 0):** Un delfín nada con un ojo abierto y el otro cerrado. Texto grande: **¿DUERME NADANDO?** / **SLEEPS WHILE SWIMMING?**. Primera frase: Pipo: «¡Ese delfín duerme con un ojo abierto!»
+**Gancho (segundo 0):** Un delfín nada con un ojo abierto y el otro cerrado. Texto grande: **¿DUERME NADANDO?** / **SLEEPS WHILE SWIMMING?**. Primera frase: Bombolín: «¡Ese delfín duerme con un ojo abierto!»
 
 **Guion**
 
 | # | Tiempo | Qué se ve | Quién habla y qué dice |
 |---|---|---|---|
-| 1 | 0–4 s | Un delfín nada con un ojo abierto y el otro cerrado | Pipo: «¡Ese delfín duerme con un ojo abierto!» |
+| 1 | 0–4 s | Un delfín nada con un ojo abierto y el otro cerrado | Bombolín: «¡Ese delfín duerme con un ojo abierto!» |
 | 2 | 4–11 s | Pizarra: un cerebro con una mitad dormida (zzz) y otra despierta | Abu Tortu: «Duerme con una mitad del cerebro, y la otra mitad lo cuida.» |
 | 3 | 11–18 s | El delfín sube a respirar | Abu Tortu: «Así no se olvida de subir a respirar.» |
-| 4 | 18–25 s | Pipo se tapa un ojo, intenta dormir así y se cae de risa | Pipo: «¡Yo duermo con todo el cerebro!» |
+| 4 | 18–25 s | Bombolín se tapa un ojo, intenta dormir así y se cae de risa | Bombolín: «¡Yo duermo con todo el cerebro!» |
 | 5 | 25–33 s | Todos juntos, con la misma toma del inicio para que el video vuelva a empezar solo | Abu Tortu: «¡Hoy aprendimos que todos los animales necesitan descansar!» Todos: «¡Un, dos, tres, a descubrir otra vez!» |
 
 **Rima del canal:** *¡Un, dos, tres, a descubrir otra vez!* / *One, two, three, come discover with me!*
@@ -252,14 +252,14 @@ Scene: Pipo and Lula in a vast sunflower field all facing a bright sun, Lula wit
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que todos los animales necesitan descansar!
 
-**Voces:** Pipo, Abu Tortu. Ver `voces.md`.
+**Voces:** Bombolín, Abu Tortu. Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
-ABU TORTU: a kind grandmother tortoise, twice Pipo's height, green patchwork-quilt shell, round golden glasses, lavender knitted scarf, a walking cane shaped like a leaf, warm smile.
-Scene: A gentle dolphin swimming with one eye closed in calm moonlit water, a chalkboard doodle of half a brain sleeping, Pipo covering one eye and giggling.
+ABU TORTU: a kind grandmother tortoise, twice Bombolín's height, green patchwork-quilt shell, round golden glasses, lavender knitted scarf, a walking cane shaped like a leaf, warm smile.
+Scene: A gentle dolphin swimming with one eye closed in calm moonlit water, a chalkboard doodle of half a brain sleeping, Bombolín covering one eye and giggling.
 ```
 
 ---
@@ -273,18 +273,18 @@ Scene: A gentle dolphin swimming with one eye closed in calm moonlit water, a ch
 - EN: Whose shadow is this? Guess the dinosaur!
 
 **Descripción**
-- ES: ¿Es un T. rex, un tricerátops o un estegosaurio? ¡Adivina la sombra en 3 segundos! #Pipo #dibujosanimados #videosinfantiles #adivinanza #juegosparaniños
-- EN: Is it a T. rex, a Triceratops or a Stegosaurus? Guess the shadow in 3 seconds! #Pipo #kidscartoon #kidsvideos #learnwithpipo #kidsquiz
+- ES: ¿Es un T. rex, un tricerátops o un estegosaurio? ¡Adivina la sombra en 3 segundos! #Bombolin #dibujosanimados #videosinfantiles #adivinanza #juegosparaniños
+- EN: Is it a T. rex, a Triceratops or a Stegosaurus? Guess the shadow in 3 seconds! #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #kidsquiz
 
-**Gancho (segundo 0):** Una silueta negra con tres cuernos. Texto grande: **¿QUIÉN ES?** / **WHO IS IT?**. Primera frase: Pipo: «¿De quién es esta sombra?»
+**Gancho (segundo 0):** Una silueta negra con tres cuernos. Texto grande: **¿QUIÉN ES?** / **WHO IS IT?**. Primera frase: Bombolín: «¿De quién es esta sombra?»
 
 **Guion**
 
 | # | Tiempo | Qué se ve | Quién habla y qué dice |
 |---|---|---|---|
-| 1 | 0–4 s | Una silueta negra con tres cuernos | Pipo: «¿De quién es esta sombra?» |
+| 1 | 0–4 s | Una silueta negra con tres cuernos | Bombolín: «¿De quién es esta sombra?» |
 | 2 | 4–11 s | Tres opciones con dibujos y cuenta regresiva 3-2-1 | Todos: «¡Tres, dos, uno!» |
-| 3 | 11–18 s | ¡El tricerátops! Se ilumina y saluda | Tricerátops: «¡Hola, Pipo!» |
+| 3 | 11–18 s | ¡El tricerátops! Se ilumina y saluda | Tricerátops: «¡Hola, Bombolín!» |
 | 4 | 18–25 s | Pizarra: «TRI-CERA-TOPS» = tres-cuernos-cara | Abu Tortu (voz): «Tricerátops quiere decir cara con tres cuernos.» |
 | 5 | 25–33 s | Todos juntos, con la misma toma del inicio para que el video vuelva a empezar solo | Abu Tortu: «¡Hoy aprendimos que los nombres nos cuentan cómo son las cosas! ¡Juega otra vez!» Todos: «¡Un, dos, tres, a descubrir otra vez!» |
 
@@ -295,13 +295,13 @@ Scene: A gentle dolphin swimming with one eye closed in calm moonlit water, a ch
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que los nombres nos cuentan cómo son las cosas!
 
-**Voces:** Pipo, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
-Scene: A friendly Triceratops stepping out from behind a glowing shadow screen on a colorful game-show stage, Pipo cheering with a big question-mark sign.
+Scene: A friendly Triceratops stepping out from behind a glowing shadow screen on a colorful game-show stage, Bombolín cheering with a big question-mark sign.
 ```
 
 ---
@@ -315,19 +315,19 @@ Scene: A friendly Triceratops stepping out from behind a glowing shadow screen o
 - EN: Do frogs drink with their skin? Yes!
 
 **Descripción**
-- ES: En la laguna, una rana amiga le devuelve el verde a Lula y le cuenta un secreto: ¡toma agua con la piel! Capítulo 3. #Pipo #dibujosanimados #videosinfantiles #arcoirisdelula #cuentosinfantiles
-- EN: At the pond, a frog friend gives Lula back her green and shares a secret: frogs drink through their skin! Episode 3. #Pipo #kidscartoon #kidsvideos #learnwithpipo #kidsstories
+- ES: En la laguna, una rana amiga le devuelve el verde a Lula y le cuenta un secreto: ¡toma agua con la piel! Capítulo 3. #Bombolin #dibujosanimados #videosinfantiles #arcoirisdelula #cuentosinfantiles
+- EN: At the pond, a frog friend gives Lula back her green and shares a secret: frogs drink through their skin! Episode 3. #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #kidsstories
 
-**Gancho (segundo 0):** Una rana verde salta del agua y salpica a Pipo. Texto grande: **¡VERDE!** / **GREEN!**. Primera frase: Rana: «¡Croac! ¿Buscan el verde?»
+**Gancho (segundo 0):** Una rana verde salta del agua y salpica a Bombolín. Texto grande: **¡VERDE!** / **GREEN!**. Primera frase: Rana: «¡Croac! ¿Buscan el verde?»
 
 **Guion**
 
 | # | Tiempo | Qué se ve | Quién habla y qué dice |
 |---|---|---|---|
-| 1 | 0–4 s | Una rana verde salta del agua y salpica a Pipo | Rana: «¡Croac! ¿Buscan el verde?» |
+| 1 | 0–4 s | Una rana verde salta del agua y salpica a Bombolín | Rana: «¡Croac! ¿Buscan el verde?» |
 | 2 | 4–11 s | Lula toca una hoja de nenúfar y aparece su franja verde | Lula: «¡Verde! ¡Gracias, ranita!» |
 | 3 | 11–18 s | Pizarra: una rana sentada en el agua, flechitas que entran por su piel | Abu Tortu (voz): «Las ranas no toman agua con la boca: ¡la absorben con la piel!» |
-| 4 | 18–25 s | Pipo prueba sentarse en el agua y se ríe, todo mojado | Pipo: «¡Yo mejor tomo con un vaso!» |
+| 4 | 18–25 s | Bombolín prueba sentarse en el agua y se ríe, todo mojado | Bombolín: «¡Yo mejor tomo con un vaso!» |
 | 5 | 25–33 s | Todos juntos, con la misma toma del inicio para que el video vuelva a empezar solo | Abu Tortu: «¡Hoy aprendimos que cada animal es especial a su manera! ¡Ya tiene amarillo y verde! ¿Cuál falta?» Todos: «¡Un, dos, tres, a descubrir otra vez!» |
 
 **Rima del canal:** *¡Un, dos, tres, a descubrir otra vez!* / *One, two, three, come discover with me!*
@@ -337,14 +337,14 @@ Scene: A friendly Triceratops stepping out from behind a glowing shadow screen o
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que cada animal es especial a su manera!
 
-**Voces:** Pipo, Lula, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Lula, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 LULA: a small soft cloud girl, sky-blue (#8FD3F4) when calm, rosy cheeks, big gentle eyes with long lashes, tiny cloud hands; her color changes with her feelings (grey when sad, soft red when angry, pink when shy, rainbow-striped when happy).
-Scene: A cute bright-green frog splashing out of a lily pond, Lula now with yellow and green stripes, Pipo laughing while sitting in shallow water.
+Scene: A cute bright-green frog splashing out of a lily pond, Lula now with yellow and green stripes, Bombolín laughing while sitting in shallow water.
 ```
 
 ---
@@ -358,17 +358,17 @@ Scene: A cute bright-green frog splashing out of a lily pond, Lula now with yell
 - EN: Lula is crying… is it okay to cry?
 
 **Descripción**
-- ES: Lula llora y hace charcos. Pipo le dice que llorar está bien, ¡y que las lágrimas también cuidan los ojos! #Pipo #dibujosanimados #videosinfantiles #emociones #humorinfantil
-- EN: Lula cries and makes puddles. Pipo says it's okay to cry, and that tears take care of our eyes too! #Pipo #kidscartoon #kidsvideos #learnwithpipo #funnykids
+- ES: Lula llora y hace charcos. Bombolín le dice que llorar está bien, ¡y que las lágrimas también cuidan los ojos! #Bombolin #dibujosanimados #videosinfantiles #emociones #humorinfantil
+- EN: Lula cries and makes puddles. Bombolín says it's okay to cry, and that tears take care of our eyes too! #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #funnykids
 
-**Gancho (segundo 0):** Lula gris llora y deja charquitos; Pipo salta en uno. Texto grande: **¡CUÁNTOS CHARCOS!** / **SO MANY PUDDLES!**. Primera frase: Lula: «Es que extraño a mi abuela…»
+**Gancho (segundo 0):** Lula gris llora y deja charquitos; Bombolín salta en uno. Texto grande: **¡CUÁNTOS CHARCOS!** / **SO MANY PUDDLES!**. Primera frase: Lula: «Es que extraño a mi abuela…»
 
 **Guion**
 
 | # | Tiempo | Qué se ve | Quién habla y qué dice |
 |---|---|---|---|
-| 1 | 0–4 s | Lula gris llora y deja charquitos; Pipo salta en uno | Lula: «Es que extraño a mi abuela…» |
-| 2 | 4–11 s | Pipo se sienta a su lado | Pipo: «Está bien llorar. Yo te acompaño.» |
+| 1 | 0–4 s | Lula gris llora y deja charquitos; Bombolín salta en uno | Lula: «Es que extraño a mi abuela…» |
+| 2 | 4–11 s | Bombolín se sienta a su lado | Bombolín: «Está bien llorar. Yo te acompaño.» |
 | 3 | 11–18 s | Pizarra: un ojo con lágrimas que lo limpian como un limpiaparabrisas | Abu Tortu (voz): «Las lágrimas también limpian y cuidan tus ojos.» |
 | 4 | 18–25 s | Lula se calma y hace un mini arcoíris | Lula: «¡Ya me siento mejor!» |
 | 5 | 25–33 s | Todos juntos, con la misma toma del inicio para que el video vuelva a empezar solo | Abu Tortu: «¡Hoy aprendimos que está bien llorar y pedir un abrazo!» Todos: «¡Un, dos, tres, a descubrir otra vez!» |
@@ -380,14 +380,14 @@ Scene: A cute bright-green frog splashing out of a lily pond, Lula now with yell
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que está bien llorar y pedir un abrazo!
 
-**Voces:** Pipo, Lula, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Lula, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 LULA: a small soft cloud girl, sky-blue (#8FD3F4) when calm, rosy cheeks, big gentle eyes with long lashes, tiny cloud hands; her color changes with her feelings (grey when sad, soft red when angry, pink when shy, rainbow-striped when happy).
-Scene: Lula as a grey cloud gently crying small puddles, Pipo sitting beside her offering a hug, soft afternoon light, a tiny rainbow forming.
+Scene: Lula as a grey cloud gently crying small puddles, Bombolín sitting beside her offering a hug, soft afternoon light, a tiny rainbow forming.
 ```
 
 ---
@@ -401,16 +401,16 @@ Scene: Lula as a grey cloud gently crying small puddles, Pipo sitting beside her
 - EN: The water song! How much of Earth is water?
 
 **Descripción**
-- ES: Canción para tomar agua y saber cuánto de nuestro planeta está cubierto de agua. #Pipo #dibujosanimados #videosinfantiles #agua #cancionesinfantiles
-- EN: A song about drinking water, and how much of our planet is covered in it. #Pipo #kidscartoon #kidsvideos #learnwithpipo #kidssongs
+- ES: Canción para tomar agua y saber cuánto de nuestro planeta está cubierto de agua. #Bombolin #dibujosanimados #videosinfantiles #agua #cancionesinfantiles
+- EN: A song about drinking water, and how much of our planet is covered in it. #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #kidssongs
 
-**Gancho (segundo 0):** Un vaso de agua gigante con olas; Pipo salta adentro. Texto grande: **¡GLU, GLU, GLU!** / **GLUG, GLUG, GLUG!**. Primera frase: Pipo (canta): «¡Glu, glu, glu, agüita fresca!»
+**Gancho (segundo 0):** Un vaso de agua gigante con olas; Bombolín salta adentro. Texto grande: **¡GLU, GLU, GLU!** / **GLUG, GLUG, GLUG!**. Primera frase: Bombolín (canta): «¡Glu, glu, glu, agüita fresca!»
 
 **Guion**
 
 | # | Tiempo | Qué se ve | Quién habla y qué dice |
 |---|---|---|---|
-| 1 | 0–4 s | Un vaso de agua gigante con olas; Pipo salta adentro | Pipo (canta): «¡Glu, glu, glu, agüita fresca!» |
+| 1 | 0–4 s | Un vaso de agua gigante con olas; Bombolín salta adentro | Bombolín (canta): «¡Glu, glu, glu, agüita fresca!» |
 | 2 | 4–11 s | Toto toma y hace burbujas por la nariz, riendo | Toto: «¡Uy! ¡Me salieron burbujas!» |
 | 3 | 11–18 s | Pizarra: planeta Tierra mayormente azul | Abu Tortu (voz): «Más de dos tercios de la Tierra están cubiertos de agua.» |
 | 4 | 18–25 s | Todos brindan con vasitos | Todos (cantan): «¡Tomo un vasito!» |
@@ -425,14 +425,14 @@ Scene: Lula as a grey cloud gently crying small puddles, Pipo sitting beside her
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que tomar agua nos hace bien!
 
-**Voces:** Pipo, Toto, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Toto, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
-TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Pipo, messy fur with a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big clumsy feet, always slightly off-balance.
-Scene: Pipo joyfully jumping into a giant cartoon glass of water with splashing waves, Toto blowing bubbles from his nose, a big blue planet Earth in the background.
+TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Bombolín, messy fur with a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big clumsy feet, always slightly off-balance.
+Scene: Bombolín joyfully jumping into a giant cartoon glass of water with splashing waves, Toto blowing bubbles from his nose, a big blue planet Earth in the background.
 ```
 
 ---
@@ -446,19 +446,19 @@ Scene: Pipo joyfully jumping into a giant cartoon glass of water with splashing 
 - EN: This butterfly is blue… with no blue paint!
 
 **Descripción**
-- ES: Una mariposa morfo azul ayuda a Lula a recuperar su azul y nos cuenta un truco mágico de sus alas. Capítulo 4. #Pipo #dibujosanimados #videosinfantiles #arcoirisdelula #cuentosinfantiles
-- EN: A blue morpho butterfly helps Lula find her blue and shows us a magic trick of its wings. Episode 4. #Pipo #kidscartoon #kidsvideos #learnwithpipo #kidsstories
+- ES: Una mariposa morfo azul ayuda a Lula a recuperar su azul y nos cuenta un truco mágico de sus alas. Capítulo 4. #Bombolin #dibujosanimados #videosinfantiles #arcoirisdelula #cuentosinfantiles
+- EN: A blue morpho butterfly helps Lula find her blue and shows us a magic trick of its wings. Episode 4. #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #kidsstories
 
-**Gancho (segundo 0):** Una mariposa azul brillante pasa volando frente a la cámara. Texto grande: **¡AZUL BRILLANTE!** / **SHINY BLUE!**. Primera frase: Pipo: «¡Qué azul tan brillante!»
+**Gancho (segundo 0):** Una mariposa azul brillante pasa volando frente a la cámara. Texto grande: **¡AZUL BRILLANTE!** / **SHINY BLUE!**. Primera frase: Bombolín: «¡Qué azul tan brillante!»
 
 **Guion**
 
 | # | Tiempo | Qué se ve | Quién habla y qué dice |
 |---|---|---|---|
-| 1 | 0–4 s | Una mariposa azul brillante pasa volando frente a la cámara | Pipo: «¡Qué azul tan brillante!» |
+| 1 | 0–4 s | Una mariposa azul brillante pasa volando frente a la cámara | Bombolín: «¡Qué azul tan brillante!» |
 | 2 | 4–11 s | La mariposa se posa en Lula; aparece la franja azul | Lula: «¡Mi azul!» |
 | 3 | 11–18 s | Pizarra con lupa: el ala tiene escamitas con forma especial que hacen rebotar la luz | Abu Tortu (voz): «Sus alas no tienen pintura azul: tienen escamitas que hacen brillar la luz.» |
-| 4 | 18–25 s | Pipo mira el ala de cerca con una lupa gigante | Pipo: «¡Es como magia de verdad!» |
+| 4 | 18–25 s | Bombolín mira el ala de cerca con una lupa gigante | Bombolín: «¡Es como magia de verdad!» |
 | 5 | 25–33 s | Todos juntos, con la misma toma del inicio para que el video vuelva a empezar solo | Abu Tortu: «¡Hoy aprendimos que lo bonito a veces está en los detalles! ¡Ya casi! ¿Qué pasará con el último color?» Todos: «¡Un, dos, tres, a descubrir otra vez!» |
 
 **Rima del canal:** *¡Un, dos, tres, a descubrir otra vez!* / *One, two, three, come discover with me!*
@@ -468,14 +468,14 @@ Scene: Pipo joyfully jumping into a giant cartoon glass of water with splashing 
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que lo bonito a veces está en los detalles!
 
-**Voces:** Pipo, Lula, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Lula, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 LULA: a small soft cloud girl, sky-blue (#8FD3F4) when calm, rosy cheeks, big gentle eyes with long lashes, tiny cloud hands; her color changes with her feelings (grey when sad, soft red when angry, pink when shy, rainbow-striped when happy).
-Scene: A shimmering blue morpho butterfly landing on Lula, who now has yellow, green and blue stripes, Pipo holding a giant magnifying glass, lush rainforest background.
+Scene: A shimmering blue morpho butterfly landing on Lula, who now has yellow, green and blue stripes, Bombolín holding a giant magnifying glass, lush rainforest background.
 ```
 
 ---
@@ -489,8 +489,8 @@ Scene: A shimmering blue morpho butterfly landing on Lula, who now has yellow, g
 - EN: Sea otters hold hands while they sleep
 
 **Descripción**
-- ES: ¿Por qué las nutrias marinas se toman de la mano? Abu Tortu cuenta este dato tan tierno. #Pipo #dibujosanimados #videosinfantiles #nutrias #curiosidadesparaniños
-- EN: Why do sea otters hold hands? Grandma Tortu shares this sweet fact. #Pipo #kidscartoon #kidsvideos #learnwithpipo #funfactsforkids
+- ES: ¿Por qué las nutrias marinas se toman de la mano? Abu Tortu cuenta este dato tan tierno. #Bombolin #dibujosanimados #videosinfantiles #nutrias #curiosidadesparaniños
+- EN: Why do sea otters hold hands? Grandma Tortu shares this sweet fact. #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #funfactsforkids
 
 **Gancho (segundo 0):** Dos nutrias flotan boca arriba tomadas de la mano. Texto grande: **¿DE LA MANO?** / **HOLDING HANDS?**. Primera frase: Lula: «¡Awww! ¡Están de la mano!»
 
@@ -501,7 +501,7 @@ Scene: A shimmering blue morpho butterfly landing on Lula, who now has yellow, g
 | 1 | 0–4 s | Dos nutrias flotan boca arriba tomadas de la mano | Lula: «¡Awww! ¡Están de la mano!» |
 | 2 | 4–11 s | Pizarra: olas y una flecha que muestra que no se separan | Abu Tortu: «Las nutrias marinas se toman de la mano para no separarse mientras duermen.» |
 | 3 | 11–18 s | Las nutrias se envuelven en algas como una manta | Abu Tortu: «¡Y a veces se envuelven en algas!» |
-| 4 | 18–25 s | Pipo y Lula se toman de la mano y sonríen | Pipo: «¡Juntos nunca nos perdemos!» |
+| 4 | 18–25 s | Bombolín y Lula se toman de la mano y sonríen | Bombolín: «¡Juntos nunca nos perdemos!» |
 | 5 | 25–33 s | Todos juntos, con la misma toma del inicio para que el video vuelva a empezar solo | Abu Tortu: «¡Hoy aprendimos que estar juntos nos hace sentir seguros!» Todos: «¡Un, dos, tres, a descubrir otra vez!» |
 
 **Rima del canal:** *¡Un, dos, tres, a descubrir otra vez!* / *One, two, three, come discover with me!*
@@ -511,15 +511,15 @@ Scene: A shimmering blue morpho butterfly landing on Lula, who now has yellow, g
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que estar juntos nos hace sentir seguros!
 
-**Voces:** Pipo, Abu Tortu, Lula. Ver `voces.md`.
+**Voces:** Bombolín, Abu Tortu, Lula. Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
-ABU TORTU: a kind grandmother tortoise, twice Pipo's height, green patchwork-quilt shell, round golden glasses, lavender knitted scarf, a walking cane shaped like a leaf, warm smile.
+ABU TORTU: a kind grandmother tortoise, twice Bombolín's height, green patchwork-quilt shell, round golden glasses, lavender knitted scarf, a walking cane shaped like a leaf, warm smile.
 LULA: a small soft cloud girl, sky-blue (#8FD3F4) when calm, rosy cheeks, big gentle eyes with long lashes, tiny cloud hands; her color changes with her feelings (grey when sad, soft red when angry, pink when shy, rainbow-striped when happy).
-Scene: Two adorable sea otters floating on their backs holding paws among kelp on a calm sunset sea, Pipo and Lula holding hands on the shore.
+Scene: Two adorable sea otters floating on their backs holding paws among kelp on a calm sunset sea, Bombolín and Lula holding hands on the shore.
 ```
 
 ---
@@ -533,8 +533,8 @@ Scene: Two adorable sea otters floating on their backs holding paws among kelp o
 - EN: Do butterflies taste with their feet?
 
 **Descripción**
-- ES: ¿Mito o verdad?: las mariposas sienten los sabores con las patas. ¡Piensa rápido! #Pipo #dibujosanimados #videosinfantiles #mitooverdad #juegosparaniños
-- EN: Myth or truth: butterflies taste with their feet. Think fast! #Pipo #kidscartoon #kidsvideos #learnwithpipo #kidsquiz
+- ES: ¿Mito o verdad?: las mariposas sienten los sabores con las patas. ¡Piensa rápido! #Bombolin #dibujosanimados #videosinfantiles #mitooverdad #juegosparaniños
+- EN: Myth or truth: butterflies taste with their feet. Think fast! #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #kidsquiz
 
 **Gancho (segundo 0):** Una mariposa se posa en una frutilla. Texto grande: **¿CON LAS PATAS?** / **WITH THEIR FEET?**. Primera frase: Lula: «¿Las mariposas prueban la comida con las patas?»
 
@@ -544,8 +544,8 @@ Scene: Two adorable sea otters floating on their backs holding paws among kelp o
 |---|---|---|---|
 | 1 | 0–4 s | Una mariposa se posa en una frutilla | Lula: «¿Las mariposas prueban la comida con las patas?» |
 | 2 | 4–11 s | Cuenta regresiva 3-2-1 | Todos: «¡Tres, dos, uno!» |
-| 3 | 11–18 s | ¡VERDAD! Zoom a las patitas con brillitos de sabor | Pipo: «¡Verdad! ¡Prueban con los pies!» |
-| 4 | 18–25 s | Pipo pisa una torta para probar y se mancha | Pipo: «¡Uy! Yo mejor pruebo con la boca.» |
+| 3 | 11–18 s | ¡VERDAD! Zoom a las patitas con brillitos de sabor | Bombolín: «¡Verdad! ¡Prueban con los pies!» |
+| 4 | 18–25 s | Bombolín pisa una torta para probar y se mancha | Bombolín: «¡Uy! Yo mejor pruebo con la boca.» |
 | 5 | 25–33 s | Todos juntos, con la misma toma del inicio para que el video vuelva a empezar solo | Abu Tortu: «¡Hoy aprendimos que los insectos sienten el mundo de maneras sorprendentes! ¡Juega otra vez!» Todos: «¡Un, dos, tres, a descubrir otra vez!» |
 
 **Rima del canal:** *¡Un, dos, tres, a descubrir otra vez!* / *One, two, three, come discover with me!*
@@ -555,14 +555,14 @@ Scene: Two adorable sea otters floating on their backs holding paws among kelp o
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que los insectos sienten el mundo de maneras sorprendentes!
 
-**Voces:** Pipo, Lula, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Lula, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 LULA: a small soft cloud girl, sky-blue (#8FD3F4) when calm, rosy cheeks, big gentle eyes with long lashes, tiny cloud hands; her color changes with her feelings (grey when sad, soft red when angry, pink when shy, rainbow-striped when happy).
-Scene: A colorful butterfly landing on a big strawberry with sparkles on its tiny feet, Pipo with frosting on his foot after stepping on a cake, Lula giggling.
+Scene: A colorful butterfly landing on a big strawberry with sparkles on its tiny feet, Bombolín with frosting on his foot after stepping on a cake, Lula giggling.
 ```
 
 ---
@@ -576,8 +576,8 @@ Scene: A colorful butterfly landing on a big strawberry with sparkles on its tin
 - EN: Lula is a rainbow again! Did you know this?
 
 **Descripción**
-- ES: Final: los amigos le dan un abrazo a Lula y ¡vuelve el arcoíris! Y aprendemos un secreto: los arcoíris son redondos. Final de la serie. #Pipo #dibujosanimados #videosinfantiles #arcoirisdelula #cuentosinfantiles
-- EN: Finale: the friends give Lula a big hug and her rainbow comes back! Plus a secret: rainbows are round. Series finale. #Pipo #kidscartoon #kidsvideos #learnwithpipo #kidsstories
+- ES: Final: los amigos le dan un abrazo a Lula y ¡vuelve el arcoíris! Y aprendemos un secreto: los arcoíris son redondos. Final de la serie. #Bombolin #dibujosanimados #videosinfantiles #arcoirisdelula #cuentosinfantiles
+- EN: Finale: the friends give Lula a big hug and her rainbow comes back! Plus a secret: rainbows are round. Series finale. #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #kidsstories
 
 **Gancho (segundo 0):** Lula todavía tiene franjas vacías; Toto y Zumbi llegan corriendo. Texto grande: **¡ARCOÍRIS!** / **RAINBOW!**. Primera frase: Toto: «¡Uy, uy, uy! ¡Abrazo grupal!»
 
@@ -598,14 +598,14 @@ Scene: A colorful butterfly landing on a big strawberry with sparkles on its tin
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que un abrazo de amigos puede cambiar nuestro día!
 
-**Voces:** Pipo, Lula, Toto, Zumbi, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Lula, Toto, Zumbi, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 LULA: a small soft cloud girl, sky-blue (#8FD3F4) when calm, rosy cheeks, big gentle eyes with long lashes, tiny cloud hands; her color changes with her feelings (grey when sad, soft red when angry, pink when shy, rainbow-striped when happy).
-TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Pipo, messy fur with a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big clumsy feet, always slightly off-balance.
+TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Bombolín, messy fur with a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big clumsy feet, always slightly off-balance.
 ZUMBI: a tiny round bumblebee boy, yellow (#FFD23F) and black stripes, oversized sparkly wings, antennae tipped with little hearts, six legs with tiny red sneakers, often with speed lines.
 Scene: Lula glowing with a full rainbow, all friends in a group hug, a circular rainbow ring in the sky with Zumbi zooming through the middle, joyful sunny meadow.
 ```
@@ -621,8 +621,8 @@ Scene: Lula glowing with a full rainbow, all friends in a group hug, a circular 
 - EN: Toto says he's not sleepy… but the cat is!
 
 **Descripción**
-- ES: Toto no quiere dormir la siesta. Un gatito le cuenta cuántas horas duerme él por día. #Pipo #dibujosanimados #videosinfantiles #siesta #humorinfantil
-- EN: Toto doesn't want a nap. A kitty tells him how many hours a day cats sleep. #Pipo #kidscartoon #kidsvideos #learnwithpipo #funnykids
+- ES: Toto no quiere dormir la siesta. Un gatito le cuenta cuántas horas duerme él por día. #Bombolin #dibujosanimados #videosinfantiles #siesta #humorinfantil
+- EN: Toto doesn't want a nap. A kitty tells him how many hours a day cats sleep. #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #funnykids
 
 **Gancho (segundo 0):** Toto salta en la cama con los ojos medio cerrados. Texto grande: **¡NO TENGO SUEÑO!** / **I'M NOT SLEEPY!**. Primera frase: Toto: «¡No tengo sueñooo!»
 
@@ -643,13 +643,13 @@ Scene: Lula glowing with a full rainbow, all friends in a group hug, a circular 
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que descansar también es importante!
 
-**Voces:** Pipo, Toto, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Toto, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
-TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Pipo, messy fur with a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big clumsy feet, always slightly off-balance.
+TOTO: a round fluffy orange (#FF9A3C) furball monster the same height as Bombolín, messy fur with a striped sock stuck on it, two tiny purple horns, big goofy grin with one front tooth, big clumsy feet, always slightly off-balance.
 Scene: Toto bouncing sleepily on a bed, a fluffy kitten stretching and yawning on a pillow, cozy afternoon bedroom light.
 ```
 
@@ -664,8 +664,8 @@ Scene: Toto bouncing sleepily on a bed, a fluffy kitten stretching and yawning o
 - EN: The bee dance! How bees tell where flowers are
 
 **Descripción**
-- ES: Zumbi enseña el baile secreto de las abejas: ¡bailan para contar dónde hay flores! #Pipo #dibujosanimados #videosinfantiles #abejas #cancionesinfantiles
-- EN: Zumbi teaches the bees' secret dance: they dance to tell each other where flowers are! #Pipo #kidscartoon #kidsvideos #learnwithpipo #kidssongs
+- ES: Zumbi enseña el baile secreto de las abejas: ¡bailan para contar dónde hay flores! #Bombolin #dibujosanimados #videosinfantiles #abejas #cancionesinfantiles
+- EN: Zumbi teaches the bees' secret dance: they dance to tell each other where flowers are! #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #kidssongs
 
 **Gancho (segundo 0):** Zumbi menea la colita en forma de 8. Texto grande: **¡MENEA, MENEA!** / **WIGGLE, WIGGLE!**. Primera frase: Zumbi (canta): «¡Menea, menea, gira y zumba!»
 
@@ -674,7 +674,7 @@ Scene: Toto bouncing sleepily on a bed, a fluffy kitten stretching and yawning o
 | # | Tiempo | Qué se ve | Quién habla y qué dice |
 |---|---|---|---|
 | 1 | 0–4 s | Zumbi menea la colita en forma de 8 | Zumbi (canta): «¡Menea, menea, gira y zumba!» |
-| 2 | 4–11 s | Pipo lo imita moviendo la cola de dinosaurio | Pipo: «¡Así se baila!» |
+| 2 | 4–11 s | Bombolín lo imita moviendo la cola de dinosaurio | Bombolín: «¡Así se baila!» |
 | 3 | 11–18 s | Pizarra: abeja con flecha que apunta hacia las flores | Abu Tortu (voz): «Las abejas bailan para contarles a sus amigas dónde hay flores.» |
 | 4 | 18–25 s | Todas las abejas bailan en fila hacia un campo de flores | Todos (cantan): «¡Allá hay flores!» |
 | 5 | 25–33 s | Todos juntos, con la misma toma del inicio para que el video vuelva a empezar solo | Todos cantan el estribillo completo una vez más. Abu Tortu: «¡Hoy aprendimos que hay muchas formas de comunicarse! ¡Cántala otra vez!» |
@@ -688,14 +688,14 @@ Scene: Toto bouncing sleepily on a bed, a fluffy kitten stretching and yawning o
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que hay muchas formas de comunicarse!
 
-**Voces:** Pipo, Zumbi, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Zumbi, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 ZUMBI: a tiny round bumblebee boy, yellow (#FFD23F) and black stripes, oversized sparkly wings, antennae tipped with little hearts, six legs with tiny red sneakers, often with speed lines.
-Scene: Zumbi doing a figure-eight waggle dance with tiny musical notes, Pipo wiggling his dinosaur tail to copy him, a field of colorful flowers behind them.
+Scene: Zumbi doing a figure-eight waggle dance with tiny musical notes, Bombolín wiggling his dinosaur tail to copy him, a field of colorful flowers behind them.
 ```
 
 ---
@@ -709,18 +709,18 @@ Scene: Zumbi doing a figure-eight waggle dance with tiny musical notes, Pipo wig
 - EN: What if you had a giant dinosaur neck?
 
 **Descripción**
-- ES: ¡Pipo puede mirar por la ventana del cuarto piso! Rebobinamos para conocer al braquiosaurio. #Pipo #dibujosanimados #videosinfantiles #dinosaurios #ysi
-- EN: Pipo can look through a fourth-floor window! Let's rewind and meet Brachiosaurus. #Pipo #kidscartoon #kidsvideos #learnwithpipo #whatif
+- ES: ¡Bombolín puede mirar por la ventana del cuarto piso! Rebobinamos para conocer al braquiosaurio. #Bombolin #dibujosanimados #videosinfantiles #dinosaurios #ysi
+- EN: Bombolín can look through a fourth-floor window! Let's rewind and meet Brachiosaurus. #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #whatif
 
-**Gancho (segundo 0):** Pipo con un cuello larguísimo se asoma por la ventana de un edificio. Texto grande: **¡HOLA, CUARTO PISO!** / **HI, FOURTH FLOOR!**. Primera frase: Pipo: «¡Hola, vecinos del cuarto piso!»
+**Gancho (segundo 0):** Bombolín con un cuello larguísimo se asoma por la ventana de un edificio. Texto grande: **¡HOLA, CUARTO PISO!** / **HI, FOURTH FLOOR!**. Primera frase: Bombolín: «¡Hola, vecinos del cuarto piso!»
 
 **Guion**
 
 | # | Tiempo | Qué se ve | Quién habla y qué dice |
 |---|---|---|---|
-| 1 | 0–4 s | Pipo con un cuello larguísimo se asoma por la ventana de un edificio | Pipo: «¡Hola, vecinos del cuarto piso!» |
+| 1 | 0–4 s | Bombolín con un cuello larguísimo se asoma por la ventana de un edificio | Bombolín: «¡Hola, vecinos del cuarto piso!» |
 | 2 | 4–11 s | Rebobinar: el cuello se encoge | Abu Tortu (voz): «¡Rebobinemos!» |
-| 3 | 11–18 s | Pipo sueña con un braquiosaurio que come hojas de la copa de los árboles | Braquiosaurio: «¡Yo como las hojas más altas!» |
+| 3 | 11–18 s | Bombolín sueña con un braquiosaurio que come hojas de la copa de los árboles | Braquiosaurio: «¡Yo como las hojas más altas!» |
 | 4 | 18–25 s | Pizarra: un braquiosaurio al lado de un edificio de 4 pisos | Abu Tortu (voz): «El braquiosaurio podía levantar la cabeza a unos doce metros de altura.» |
 | 5 | 25–33 s | Todos juntos, con la misma toma del inicio para que el video vuelva a empezar solo | Abu Tortu: «¡Hoy aprendimos que cada cuerpo sirve para algo especial!» Todos: «¡Un, dos, tres, a descubrir otra vez!» |
 
@@ -731,13 +731,13 @@ Scene: Zumbi doing a figure-eight waggle dance with tiny musical notes, Pipo wig
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que cada cuerpo sirve para algo especial!
 
-**Voces:** Pipo, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
-Scene: Pipo with a comically super-long neck peeking into a fourth-floor apartment window, neighbors waving, a dreamy Brachiosaurus eating treetop leaves in a thought bubble.
+Scene: Bombolín with a comically super-long neck peeking into a fourth-floor apartment window, neighbors waving, a dreamy Brachiosaurus eating treetop leaves in a thought bubble.
 ```
 
 ---
@@ -751,8 +751,8 @@ Scene: Pipo with a comically super-long neck peeking into a fourth-floor apartme
 - EN: Zumbi doesn't want to share his flower
 
 **Descripción**
-- ES: Zumbi encontró la flor más linda y no la quiere compartir. Las abejas de la colmena le enseñan algo. #Pipo #dibujosanimados #videosinfantiles #compartir #humorinfantil
-- EN: Zumbi found the prettiest flower and won't share it. The hive bees teach him something. #Pipo #kidscartoon #kidsvideos #learnwithpipo #funnykids
+- ES: Zumbi encontró la flor más linda y no la quiere compartir. Las abejas de la colmena le enseñan algo. #Bombolin #dibujosanimados #videosinfantiles #compartir #humorinfantil
+- EN: Zumbi found the prettiest flower and won't share it. The hive bees teach him something. #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #funnykids
 
 **Gancho (segundo 0):** Zumbi abraza una flor enorme y no deja que nadie se acerque. Texto grande: **¡ES MÍA!** / **IT'S MINE!**. Primera frase: Zumbi: «¡Es mía! ¡Toda mía!»
 
@@ -761,7 +761,7 @@ Scene: Pipo with a comically super-long neck peeking into a fourth-floor apartme
 | # | Tiempo | Qué se ve | Quién habla y qué dice |
 |---|---|---|---|
 | 1 | 0–4 s | Zumbi abraza una flor enorme y no deja que nadie se acerque | Zumbi: «¡Es mía! ¡Toda mía!» |
-| 2 | 4–11 s | Pipo señala la colmena, donde las abejas se pasan néctar entre ellas | Pipo: «Mira a tus amigas…» |
+| 2 | 4–11 s | Bombolín señala la colmena, donde las abejas se pasan néctar entre ellas | Bombolín: «Mira a tus amigas…» |
 | 3 | 11–18 s | Pizarra: dos abejas pasándose una gotita de boca a boca | Abu Tortu (voz): «En la colmena, las abejas comparten la comida entre ellas.» |
 | 4 | 18–25 s | Zumbi invita a sus amigas a la flor | Zumbi: «¡Vengan todas! ¡Hay para todas!» |
 | 5 | 25–33 s | Todos juntos, con la misma toma del inicio para que el video vuelva a empezar solo | Abu Tortu: «¡Hoy aprendimos que compartir hace que todos estemos felices!» Todos: «¡Un, dos, tres, a descubrir otra vez!» |
@@ -773,14 +773,14 @@ Scene: Pipo with a comically super-long neck peeking into a fourth-floor apartme
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que compartir hace que todos estemos felices!
 
-**Voces:** Pipo, Zumbi, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Zumbi, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 ZUMBI: a tiny round bumblebee boy, yellow (#FFD23F) and black stripes, oversized sparkly wings, antennae tipped with little hearts, six legs with tiny red sneakers, often with speed lines.
-Scene: Zumbi hugging a giant pink flower possessively, a beehive behind him where bees pass nectar drops to each other, Pipo smiling and pointing.
+Scene: Zumbi hugging a giant pink flower possessively, a beehive behind him where bees pass nectar drops to each other, Bombolín smiling and pointing.
 ```
 
 ---
@@ -794,18 +794,18 @@ Scene: Zumbi hugging a giant pink flower possessively, a beehive behind him wher
 - EN: What if you walked on the Moon? Your footprints would stay!
 
 **Descripción**
-- ES: ¡Pipo dejó sus huellas en la Luna! Rebobinamos para saber por qué duran tanto allá arriba. #Pipo #dibujosanimados #videosinfantiles #luna #ysi
-- EN: Pipo left footprints on the Moon! Rewind to find out why they last so long up there. #Pipo #kidscartoon #kidsvideos #learnwithpipo #whatif
+- ES: ¡Bombolín dejó sus huellas en la Luna! Rebobinamos para saber por qué duran tanto allá arriba. #Bombolin #dibujosanimados #videosinfantiles #luna #ysi
+- EN: Bombolín left footprints on the Moon! Rewind to find out why they last so long up there. #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #whatif
 
-**Gancho (segundo 0):** Huellitas de dinosaurio en la Luna; la Tierra brilla atrás. Texto grande: **¡HUELLAS EN LA LUNA!** / **FOOTPRINTS ON THE MOON!**. Primera frase: Pipo: «¡Mis huellas en la Luna!»
+**Gancho (segundo 0):** Huellitas de dinosaurio en la Luna; la Tierra brilla atrás. Texto grande: **¡HUELLAS EN LA LUNA!** / **FOOTPRINTS ON THE MOON!**. Primera frase: Bombolín: «¡Mis huellas en la Luna!»
 
 **Guion**
 
 | # | Tiempo | Qué se ve | Quién habla y qué dice |
 |---|---|---|---|
-| 1 | 0–4 s | Huellitas de dinosaurio en la Luna; la Tierra brilla atrás | Pipo: «¡Mis huellas en la Luna!» |
+| 1 | 0–4 s | Huellitas de dinosaurio en la Luna; la Tierra brilla atrás | Bombolín: «¡Mis huellas en la Luna!» |
 | 2 | 4–11 s | Rebobinar | Abu Tortu (voz): «¡Rebobinemos!» |
-| 3 | 11–18 s | Pipo con casco de astronauta salta despacito; Lula lo mira | Lula: «En la Luna no hay viento ni lluvia… ¡ni nubes como yo!» |
+| 3 | 11–18 s | Bombolín con casco de astronauta salta despacito; Lula lo mira | Lula: «En la Luna no hay viento ni lluvia… ¡ni nubes como yo!» |
 | 4 | 18–25 s | Pizarra: una huella con un reloj que pasa muchos años | Abu Tortu (voz): «Las huellas de los astronautas siguen en la Luna desde hace más de cincuenta años.» |
 | 5 | 25–33 s | Todos juntos, con la misma toma del inicio para que el video vuelva a empezar solo | Abu Tortu: «¡Hoy aprendimos que la Luna es un lugar muy diferente!» Todos: «¡Un, dos, tres, a descubrir otra vez!» |
 
@@ -816,14 +816,14 @@ Scene: Zumbi hugging a giant pink flower possessively, a beehive behind him wher
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que la Luna es un lugar muy diferente!
 
-**Voces:** Pipo, Lula, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Lula, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 LULA: a small soft cloud girl, sky-blue (#8FD3F4) when calm, rosy cheeks, big gentle eyes with long lashes, tiny cloud hands; her color changes with her feelings (grey when sad, soft red when angry, pink when shy, rainbow-striped when happy).
-Scene: Pipo in a cute round astronaut helmet bouncing on the Moon's grey surface leaving dinosaur footprints, planet Earth glowing in the black sky, Lula peeking in a little space bubble.
+Scene: Bombolín in a cute round astronaut helmet bouncing on the Moon's grey surface leaving dinosaur footprints, planet Earth glowing in the black sky, Lula peeking in a little space bubble.
 ```
 
 ---
@@ -837,18 +837,18 @@ Scene: Pipo in a cute round astronaut helmet bouncing on the Moon's grey surface
 - EN: Did some dinosaurs have feathers? Myth or truth!
 
 **Descripción**
-- ES: ¿Mito o verdad?: algunos dinosaurios tenían plumas. ¡3 segundos para pensar! #Pipo #dibujosanimados #videosinfantiles #mitooverdad #juegosparaniños
-- EN: Myth or truth: some dinosaurs had feathers. 3 seconds to think! #Pipo #kidscartoon #kidsvideos #learnwithpipo #kidsquiz
+- ES: ¿Mito o verdad?: algunos dinosaurios tenían plumas. ¡3 segundos para pensar! #Bombolin #dibujosanimados #videosinfantiles #mitooverdad #juegosparaniños
+- EN: Myth or truth: some dinosaurs had feathers. 3 seconds to think! #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #kidsquiz
 
-**Gancho (segundo 0):** Pipo con plumas pegadas que se le caen. Texto grande: **¿DINOS CON PLUMAS?** / **FEATHERED DINOS?**. Primera frase: Pipo: «¿Algunos dinosaurios tenían plumas?»
+**Gancho (segundo 0):** Bombolín con plumas pegadas que se le caen. Texto grande: **¿DINOS CON PLUMAS?** / **FEATHERED DINOS?**. Primera frase: Bombolín: «¿Algunos dinosaurios tenían plumas?»
 
 **Guion**
 
 | # | Tiempo | Qué se ve | Quién habla y qué dice |
 |---|---|---|---|
-| 1 | 0–4 s | Pipo con plumas pegadas que se le caen | Pipo: «¿Algunos dinosaurios tenían plumas?» |
+| 1 | 0–4 s | Bombolín con plumas pegadas que se le caen | Bombolín: «¿Algunos dinosaurios tenían plumas?» |
 | 2 | 4–11 s | Cuenta regresiva 3-2-1 | Todos: «¡Tres, dos, uno!» |
-| 3 | 11–18 s | ¡VERDAD! Un velocirraptor esponjoso con plumas de colores, pequeño como un pavo | Pipo: «¡Verdad! ¡Mira qué plumoso!» |
+| 3 | 11–18 s | ¡VERDAD! Un velocirraptor esponjoso con plumas de colores, pequeño como un pavo | Bombolín: «¡Verdad! ¡Mira qué plumoso!» |
 | 4 | 18–25 s | Pizarra: un fósil con marcas de plumas | Abu Tortu (voz): «Los científicos encontraron fósiles con plumas.» |
 | 5 | 25–33 s | Todos juntos, con la misma toma del inicio para que el video vuelva a empezar solo | Abu Tortu: «¡Hoy aprendimos que la ciencia descubre cosas nuevas todo el tiempo! ¡Juega otra vez!» Todos: «¡Un, dos, tres, a descubrir otra vez!» |
 
@@ -859,13 +859,13 @@ Scene: Pipo in a cute round astronaut helmet bouncing on the Moon's grey surface
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que la ciencia descubre cosas nuevas todo el tiempo!
 
-**Voces:** Pipo, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
-Scene: A fluffy, friendly turkey-sized Velociraptor with colorful feathers next to Pipo, who has feathers clumsily taped to his arms, bright game-show stage.
+Scene: A fluffy, friendly turkey-sized Velociraptor with colorful feathers next to Bombolín, who has feathers clumsily taped to his arms, bright game-show stage.
 ```
 
 ---
@@ -879,8 +879,8 @@ Scene: A fluffy, friendly turkey-sized Velociraptor with colorful feathers next 
 - EN: Daddy penguin keeps the egg… on his feet!
 
 **Descripción**
-- ES: Zumbi no quiere esperar a su mamá. Pipo le muestra cómo el papá pingüino emperador espera durante semanas. #Pipo #dibujosanimados #videosinfantiles #paciencia #humorinfantil
-- EN: Zumbi doesn't want to wait for his mom. Pipo shows how emperor penguin dads wait for weeks. #Pipo #kidscartoon #kidsvideos #learnwithpipo #funnykids
+- ES: Zumbi no quiere esperar a su mamá. Bombolín le muestra cómo el papá pingüino emperador espera durante semanas. #Bombolin #dibujosanimados #videosinfantiles #paciencia #humorinfantil
+- EN: Zumbi doesn't want to wait for his mom. Bombolín shows how emperor penguin dads wait for weeks. #Bombolin #kidscartoon #kidsvideos #learnwithbombolin #funnykids
 
 **Gancho (segundo 0):** Zumbi zumba impaciente frente al reloj. Texto grande: **¿EN LAS PATAS?** / **ON HIS FEET?**. Primera frase: Zumbi: «¡Zzz! ¿Cuándo viene mi mamá?»
 
@@ -889,7 +889,7 @@ Scene: A fluffy, friendly turkey-sized Velociraptor with colorful feathers next 
 | # | Tiempo | Qué se ve | Quién habla y qué dice |
 |---|---|---|---|
 | 1 | 0–4 s | Zumbi zumba impaciente frente al reloj | Zumbi: «¡Zzz! ¿Cuándo viene mi mamá?» |
-| 2 | 4–11 s | Pipo le muestra a un papá pingüino con un huevo sobre las patas | Pipo: «Él espera muchísimo.» |
+| 2 | 4–11 s | Bombolín le muestra a un papá pingüino con un huevo sobre las patas | Bombolín: «Él espera muchísimo.» |
 | 3 | 11–18 s | Pizarra: papá pingüino con el huevo debajo de un pliegue de panza calentito | Abu Tortu (voz): «El papá pingüino emperador cuida el huevo en sus patas mientras la mamá va a buscar comida.» |
 | 4 | 18–25 s | Zumbi se sienta tranquilo; llega su mamá | Zumbi: «¡Valió la pena esperar!» |
 | 5 | 25–33 s | Todos juntos, con la misma toma del inicio para que el video vuelva a empezar solo | Abu Tortu: «¡Hoy aprendimos que esperar con calma es posible!» Todos: «¡Un, dos, tres, a descubrir otra vez!» |
@@ -901,14 +901,14 @@ Scene: A fluffy, friendly turkey-sized Velociraptor with colorful feathers next 
 
 **Aprendizaje (ES):** ¡Hoy aprendimos que esperar con calma es posible!
 
-**Voces:** Pipo, Zumbi, Abu Tortu (narradora). Ver `voces.md`.
+**Voces:** Bombolín, Zumbi, Abu Tortu (narradora). Ver `voces.md`.
 
 **Prompt visual (escena principal)**
 ```
 Soft 3D animated-film style, rounded plush-toy shapes, bright saturated colors, warm soft lighting, cheerful and safe for preschoolers, vertical 9:16, no text, no logos.
 PIPO: a baby dinosaur, mint-green (#7ED9A6), chubby round body and big round head, huge round brown eyes with white sparkles, small rounded teeth in a wide smile, soft yellow belly with three darker green spots, three small rounded orange spikes on his back, short tail, little orange sneakers, wearing the top half of his white eggshell with blue spots as a little hat.
 ZUMBI: a tiny round bumblebee boy, yellow (#FFD23F) and black stripes, oversized sparkly wings, antennae tipped with little hearts, six legs with tiny red sneakers, often with speed lines.
-Scene: An emperor penguin dad balancing an egg on his feet under his belly fold in the snowy Antarctic, Zumbi watching in awe, Pipo beside him.
+Scene: An emperor penguin dad balancing an egg on his feet under his belly fold in the snowy Antarctic, Zumbi watching in awe, Bombolín beside him.
 ```
 
 ---

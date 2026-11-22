@@ -6,10 +6,10 @@
 | Día | Hora | ID | Formato | Título (ES) |
 |---|---|---|---|---|
 | 1 lun | 07:30 | `F01` | F. Canción | La canción del cepillo: ¡2 minutos, 2 veces al día! |
-| 1 lun | 17:00 | `A1-1` | A. Serie | Pipo encontró un huevo gigante… ¿de quién es? |
+| 1 lun | 17:00 | `A1-1` | A. Serie | Bombolín encontró un huevo gigante… ¿de quién es? |
 | 1 lun | 19:30 | `B01` | B. Pizarra | ¿Qué quiere decir «dinosaurio»? ¡Te sorprenderá! |
 | 2 mar | 07:30 | `E04` | E. Juego con cuenta regresiva | ¿Las arañas son insectos? ¡Cuenta sus patas! |
-| 2 mar | 17:00 | `A1-2` | A. Serie | ¿Será un huevo de gallina? ¡Pipo pregunta! |
+| 2 mar | 17:00 | `A1-2` | A. Serie | ¿Será un huevo de gallina? ¡Bombolín pregunta! |
 | 2 mar | 19:30 | `C01` | C. Comedia | ¡Toto perdió su cuchara! ¿Dónde la dejó? |
 | 3 mié | 07:30 | `F02` | F. Canción | ¡Lávate las manos 20 segundos con esta canción! |
 | 3 mié | 17:00 | `A1-3` | A. Serie | ¡Ups! Toto dejó rodar el huevo gigante |
@@ -90,8 +90,8 @@
 | 28 dom | 12:30 | `D06` | D. ¿Y si…? | ¿Y si un caracol te ganara una carrera? |
 | 28 dom | 18:00 | `C18` | C. Comedia | ¿Los chimpancés se ríen con cosquillas? |
 | 29 lun | 07:30 | `F15` | F. Canción | ¡La jirafa tiene la lengua azul y larguísima! |
-| 29 lun | 17:00 | `A5-1` | A. Serie | ¿Quién repite todo lo que dice Pipo? |
+| 29 lun | 17:00 | `A5-1` | A. Serie | ¿Quién repite todo lo que dice Bombolín? |
 | 29 lun | 19:30 | `B11` | B. Pizarra | ¿Cuánto tiempo vivieron los dinosaurios? |
 | 30 mar | 07:30 | `E05` | E. Juego con cuenta regresiva | ¿Un papá que lleva a sus bebés en la panza? |
 | 30 mar | 17:00 | `A5-2` | A. Serie | Estas piedras crecen… ¡muy, muy despacito! |
-| 30 mar | 19:30 | `C17` | C. Comedia | Pipo no ve a Abu en el parque… ¿qué hace? |
+| 30 mar | 19:30 | `C17` | C. Comedia | Bombolín no ve a Abu en el parque… ¿qué hace? |

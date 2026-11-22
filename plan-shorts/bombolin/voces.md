@@ -1,4 +1,4 @@
-# Voces de los personajes de «El mundo de Pipo»
+# Voces de los personajes de «Bombolín y sus amigos»
 
 Cada personaje tiene **una sola voz para siempre**, en los dos idiomas. Los chicos reconocen a los personajes por la voz antes que por la imagen, así que no hay que cambiarla nunca.
 
@@ -26,7 +26,7 @@ Cada personaje tiene **una sola voz para siempre**, en los dos idiomas. Los chic
 
 ---
 
-## Pipo, el protagonista (dinosaurio bebé)
+## Bombolín, el protagonista (dinosaurio bebé)
 - **Cómo suena:** un nene de unos 5 años. Voz aguda pero cálida, curiosa, que se ríe mucho. Dice «¡Wiii!» cuando algo le encanta.
 - **Muletilla:** «¡Wiii!» y la rima del canal: *«¡Un, dos, tres, a descubrir otra vez!»*
 - **Descripción para la IA (ES):** *Voz de un niño pequeño de 5 años, de dibujo animado, alegre y curiosa, aguda pero cálida, con risitas, entusiasta, habla con claridad y un poco despacio, español latino neutro.*
@@ -34,7 +34,7 @@ Cada personaje tiene **una sola voz para siempre**, en los dos idiomas. Los chic
 - **Línea de prueba:** «¡Wiii! ¡Un huevo gigante! ¡Es más grande que yo!» / "Wheee! A giant egg! It's bigger than me!"
 
 ## Toto, el monstruito del desorden
-- **Cómo suena:** más grave que Pipo, suave, un poco ronquito y torpe. Habla lento y se ríe de sí mismo. Es el personaje más gracioso.
+- **Cómo suena:** más grave que Bombolín, suave, un poco ronquito y torpe. Habla lento y se ríe de sí mismo. Es el personaje más gracioso.
 - **Muletilla:** «¡Uy, uy, uy!» / "Uh-oh, uh-oh!"
 - **Descripción para la IA (ES):** *Voz de monstruito de peluche de dibujo animado, grave pero suave y amigable, un poco ronca, torpe y graciosa, habla lento, se ríe con «jo, jo», español latino neutro.*
 - **Descripción para la IA (EN):** *A friendly plush cartoon monster voice, low but soft, slightly raspy, clumsy and funny, speaks slowly, chuckles "ho ho", neutral American English.*

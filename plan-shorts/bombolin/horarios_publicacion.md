@@ -10,7 +10,7 @@
 | YouTube | TikTok | Instagram | Short | Título (ES) | Título (EN) |
 |---|---|---|---|---|---|
 | 07:30 | 08:30 | 09:00 | `F01` | La canción del cepillo: ¡2 minutos, 2 veces al día! | The toothbrush song: 2 minutes, twice a day! |
-| 17:00 | 18:00 | 18:30 | `A1-1` | Pipo encontró un huevo gigante… ¿de quién es? | Pipo found a giant egg… whose is it? |
+| 17:00 | 18:00 | 18:30 | `A1-1` | Bombolín encontró un huevo gigante… ¿de quién es? | Bombolín found a giant egg… whose is it? |
 | 19:30 | 20:30 | 21:00 | `B01` | ¿Qué quiere decir «dinosaurio»? ¡Te sorprenderá! | What does “dinosaur” mean? You'll be surprised! |
 
 ### Día 2 · martes 1 de dic
@@ -18,7 +18,7 @@
 | YouTube | TikTok | Instagram | Short | Título (ES) | Título (EN) |
 |---|---|---|---|---|---|
 | 07:30 | 08:30 | 09:00 | `E04` | ¿Las arañas son insectos? ¡Cuenta sus patas! | Are spiders insects? Count their legs! |
-| 17:00 | 18:00 | 18:30 | `A1-2` | ¿Será un huevo de gallina? ¡Pipo pregunta! | Is it a chicken egg? Pipo asks! |
+| 17:00 | 18:00 | 18:30 | `A1-2` | ¿Será un huevo de gallina? ¡Bombolín pregunta! | Is it a chicken egg? Bombolín asks! |
 | 19:30 | 20:30 | 21:00 | `C01` | ¡Toto perdió su cuchara! ¿Dónde la dejó? | Toto lost his spoon! Where did he leave it? |
 
 ### Día 3 · miércoles 2 de dic
@@ -234,7 +234,7 @@
 | YouTube | TikTok | Instagram | Short | Título (ES) | Título (EN) |
 |---|---|---|---|---|---|
 | 07:30 | 08:30 | 09:00 | `F15` | ¡La jirafa tiene la lengua azul y larguísima! | Giraffes have super long, dark tongues! |
-| 17:00 | 18:00 | 18:30 | `A5-1` | ¿Quién repite todo lo que dice Pipo? | Who repeats everything Pipo says? |
+| 17:00 | 18:00 | 18:30 | `A5-1` | ¿Quién repite todo lo que dice Bombolín? | Who repeats everything Bombolín says? |
 | 19:30 | 20:30 | 21:00 | `B11` | ¿Cuánto tiempo vivieron los dinosaurios? | How long did dinosaurs live on Earth? |
 
 ### Día 30 · martes 29 de dic
@@ -243,4 +243,4 @@
 |---|---|---|---|---|---|
 | 07:30 | 08:30 | 09:00 | `E05` | ¿Un papá que lleva a sus bebés en la panza? | A dad who carries babies in his belly? |
 | 17:00 | 18:00 | 18:30 | `A5-2` | Estas piedras crecen… ¡muy, muy despacito! | These rocks grow… very, very slowly! |
-| 19:30 | 20:30 | 21:00 | `C17` | Pipo no ve a Abu en el parque… ¿qué hace? | Pipo can't see Grandma at the park… what now? |
+| 19:30 | 20:30 | 21:00 | `C17` | Bombolín no ve a Abu en el parque… ¿qué hace? | Bombolín can't see Grandma at the park… what now? |

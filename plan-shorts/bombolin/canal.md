@@ -1,18 +1,20 @@
-# Kit del canal: El mundo de Pipo / Pipo's World
+# Kit del canal: Bombolín y sus amigos / Bombolín & Friends
 
 ## 1. Nombre
 
 | | Español | Inglés |
 |---|---|---|
-| **Nombre del canal** | **El mundo de Pipo** | **Pipo's World** |
-| Usuario sugerido (YouTube, Instagram y TikTok) | @ElMundoDePipo | @PiposWorld |
-| Alternativas si el usuario está ocupado | @MundoPipo · @PipoDino · @ElMundoDePipoTV | @PiposWorldKids · @PipoDino · @PiposWorldTV |
+| **Nombre del canal** | **Bombolín y sus amigos** | **Bombolín & Friends** |
+| Usuario sugerido (YouTube, Instagram y TikTok) | @BombolinYSusAmigos | @BombolinAndFriends |
+| Alternativas si el usuario está ocupado | @BombolinOficial · @BombolinTV · @SoyBombolin | @BombolinFriends · @BombolinKids · @BombolinTVkids |
+
+Los usuarios no pueden llevar tilde, por eso van como «Bombolin». En el nombre visible del canal sí se escribe «Bombolín».
 
 **Por qué este nombre:**
-- **Es corto, fácil de decir y de recordar.** Un nene de 3 años puede pedirlo: «¡quiero ver a Pipo!».
-- **El protagonista está en el nombre.** Los canales infantiles crecen por sus personajes, y el nombre hace que la gente relacione el canal con Pipo.
-- **Se adapta a los dos idiomas** sin cambiar el personaje: «El mundo de Pipo» y «Pipo's World».
-- **Deja lugar para crecer.** «El mundo» abarca animales, dinosaurios, emociones, canciones y todo lo que venga después.
+- **Es fácil y divertido para los chicos.** Bom-bo-lín suena a «bombón» y a algo que rebota; un nene de 3 años lo repite enseguida: «¡quiero ver a Bombolín!».
+- **Es original.** Lo busqué en YouTube, TikTok, Instagram y Google y no encontré ningún canal, serie ni marca con ese nombre. En cambio, «Pipo» y todo lo que empieza con «Dino» ya están muy usados en contenido infantil.
+- **El protagonista está en el nombre.** Los canales infantiles crecen por sus personajes, y «y sus amigos» suma a Toto, Lula, Zumbi y Abu Tortu.
+- **Funciona en los dos idiomas:** «Bombolín y sus amigos» y «Bombolín & Friends».
 
 > Antes de crear las cuentas, confirma que el usuario esté libre en las tres redes y usa **el mismo en todas**. También conviene buscar el nombre en Google y en el registro de marcas de tu país, para no chocar con una marca que ya exista.
 
@@ -23,7 +25,7 @@
 | Archivo | Dónde va | Medida |
 |---|---|---|
 | `logo_perfil_1080.png` (fondo transparente) / `logo_perfil_1080_fondo.jpg` | Foto de perfil de **YouTube, Instagram y TikTok** (las tres la recortan en círculo; el diseño ya está pensado para eso) | 1080x1080 |
-| `youtube_banner_es_2560x1440.jpg` / `youtube_banner_en_2560x1440.jpg` | Banner del canal de YouTube | 2560x1440 (el texto y Pipo están dentro de la zona que se ve en el celular) |
+| `youtube_banner_es_2560x1440.jpg` / `youtube_banner_en_2560x1440.jpg` | Banner del canal de YouTube | 2560x1440 (el texto y Bombolín están dentro de la zona que se ve en el celular) |
 | `youtube_marca_de_agua_150.png` | YouTube Studio → Personalización → Marca de agua del video | 150x150 |
 | `instagram_destacada_*.jpg` (canciones, juegos, series, animales, dinosaurios) | Portadas de las historias destacadas de Instagram | 1080x1920 |
 
@@ -35,9 +37,9 @@
 
 ### YouTube (español)
 ```
-¡Bienvenidos a El mundo de Pipo! 🦕🥚
+¡Bienvenidos a Bombolín y sus amigos! 🦕🥚
 
-Pipo es un dinosaurio bebé que acaba de salir del huevo y quiere descubrirlo todo. Junto a sus amigos Toto, Lula, Zumbi y la Abu Tortu, vive aventuras llenas de canciones, juegos y datos sorprendentes sobre animales, dinosaurios y la naturaleza.
+Bombolín es un dinosaurio bebé que acaba de salir del huevo y quiere descubrirlo todo. Junto a sus amigos Toto, Lula, Zumbi y la Abu Tortu, vive aventuras llenas de canciones, juegos y datos sorprendentes sobre animales, dinosaurios y la naturaleza.
 
 En el canal vas a encontrar:
 🎵 Canciones para cepillarse los dientes, lavarse las manos y bailar
@@ -55,9 +57,9 @@ Para niños de 3 a 8 años. ¡Ideal para ver en familia!
 
 ### YouTube (inglés)
 ```
-Welcome to Pipo's World! 🦕🥚
+Welcome to Bombolín & Friends! 🦕🥚
 
-Pipo is a baby dinosaur who just hatched and wants to discover everything. With his friends Toto, Lula, Zumbi and Grandma Tortu, he goes on adventures full of songs, games and amazing facts about animals, dinosaurs and nature.
+Bombolín is a baby dinosaur who just hatched and wants to discover everything. With his friends Toto, Lula, Zumbi and Grandma Tortu, he goes on adventures full of songs, games and amazing facts about animals, dinosaurs and nature.
 
 On this channel you'll find:
 🎵 Songs for brushing teeth, washing hands and dancing
@@ -74,20 +76,20 @@ One, two, three, come discover with me!
 ```
 
 **Palabras clave del canal (YouTube Studio → Configuración → Canal):**
-- ES: `dibujos animados, videos infantiles, canciones infantiles, dinosaurios para niños, animales para niños, aprender jugando, cuentos infantiles, Pipo, El mundo de Pipo`
-- EN: `kids cartoon, kids songs, dinosaurs for kids, animals for kids, learning for kids, preschool, toddler videos, Pipo, Pipo's World`
+- ES: `dibujos animados, videos infantiles, canciones infantiles, dinosaurios para niños, animales para niños, aprender jugando, cuentos infantiles, Bombolín, Bombolín y sus amigos`
+- EN: `kids cartoon, kids songs, dinosaurs for kids, animals for kids, learning for kids, preschool, toddler videos, Bombolín, Bombolín & Friends`
 
 ### Instagram (biografía, máximo 150 caracteres)
-- **Nombre:** `El mundo de Pipo 🦕` / `Pipo's World 🦕`
-- **ES** (132 caracteres):
+- **Nombre:** `Bombolín y sus amigos 🦕` / `Bombolín & Friends 🦕`
+- **ES** (136 caracteres):
   ```
-  🦕 Pipo, un dinosaurio bebé que descubre el mundo
+  🦕 Bombolín, un dinosaurio bebé que descubre el mundo
   🎵 Canciones, juegos y datos de animales
   👨‍👩‍👧 Para ver en familia · 3 videos al día
   ```
-- **EN** (122 caracteres):
+- **EN** (126 caracteres):
   ```
-  🦕 Pipo, a baby dino discovering the world
+  🦕 Bombolín, a baby dino discovering the world
   🎵 Songs, games and animal facts
   👨‍👩‍👧 Made to watch as a family · 3 videos a day
   ```
@@ -95,10 +97,10 @@ One, two, three, come discover with me!
 - **Historias destacadas:** Canciones 🎵 · Juegos 🎲 · Series 🥚 · Animales 🦒 · Dinosaurios 🦕 (usa las portadas del kit).
 
 ### TikTok (biografía, máximo 80 caracteres)
-- **Nombre:** `El mundo de Pipo` / `Pipo's World`
-- **ES** (69 caracteres): `🦕 Canciones y juegos con Pipo · Para ver en familia · 3 videos al día`
-- **EN** (66 caracteres): `🦕 Songs & games with Pipo · Watch as a family · 3 new videos a day`
-- **Listas de reproducción (si TikTok te las habilita):** Series de Pipo · Canciones · Juegos · ¿Y si…?
+- **Nombre:** `Bombolín y sus amigos` / `Bombolín & Friends`
+- **ES** (73 caracteres): `🦕 Canciones y juegos con Bombolín · Para ver en familia · 3 videos al día`
+- **EN** (70 caracteres): `🦕 Songs & games with Bombolín · Watch as a family · 3 new videos a day`
+- **Listas de reproducción (si TikTok te las habilita):** Series de Bombolín · Canciones · Juegos · ¿Y si…?
 
 > **Importante sobre Instagram y TikTok:** las dos redes son **para mayores de 13 años** y no tienen la opción «contenido para niños» de YouTube. La cuenta tiene que manejarla un adulto, y las biografías y los textos le hablan **a las familias** («para ver en familia»), no directamente a los chicos. Activa el filtro de comentarios en las dos, nunca pidas datos personales y no publiques imágenes de niños reales.
 
@@ -109,8 +111,8 @@ One, two, three, come discover with me!
 **YouTube**
 - Configuración → Canal → Configuración avanzada → Audiencia: **«Sí, configurar este canal como contenido creado para niños»**.
 - Sube el banner, el logo y la marca de agua.
-- Crea las playlists: Series de Pipo (una por serie), Canciones de Pipo, Juega con Pipo, ¿Y si…? con Pipo, Pipo explica, Pipo y sus amigos.
-- Para el canal en inglés: un canal aparte, «Pipo's World», con los mismos ajustes.
+- Crea las playlists: Series de Bombolín (una por serie), Canciones de Bombolín, Juega con Bombolín, ¿Y si…? con Bombolín, Bombolín explica, Bombolín y sus amigos.
+- Para el canal en inglés: un canal aparte, «Bombolín & Friends», con los mismos ajustes.
 
 **Instagram**
 - Usa una cuenta profesional (de creador) para ver estadísticas.

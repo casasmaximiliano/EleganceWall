@@ -1,4 +1,4 @@
-"""Dibujo vectorial (PIL) de los personajes originales de «El mundo de Pipo».
+"""Dibujo vectorial (PIL) de los personajes originales de «Bombolín y sus amigos».
 
 Cada personaje se dibuja una vez en alta resolución (con supersampling para suavizar bordes)
 y se guarda como sprite RGBA en sus variantes: boca cerrada / abierta y ojos abiertos / cerrados.

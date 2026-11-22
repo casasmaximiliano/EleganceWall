@@ -1,4 +1,4 @@
-# El mundo de Pipo: plan de un mes (90 shorts, 3 por día)
+# Bombolín y sus amigos: plan de un mes (90 shorts, 3 por día)
 
 Canal de animación con IA para YouTube Shorts, TikTok y Reels. **Contenido creado para niños** de 3 a 8 años, en español y en inglés.
 
@@ -17,12 +17,12 @@ Canal de animación con IA para YouTube Shorts, TikTok y Reels. **Contenido crea
 
 ## 1. Qué cambié y por qué
 
-| Antes (Moni) | Ahora (Pipo) | Por qué |
+| Antes (Moni) | Ahora (Bombolín) | Por qué |
 |---|---|---|
-| Una moneda que ahorra | **Pipo, un dinosaurio bebé** | A los chicos de 3 a 8 años les encantan los dinosaurios y los bebés, y un protagonista que «recién nació» descubre el mundo al mismo tiempo que ellos. |
+| Una moneda que ahorra | **Bombolín, un dinosaurio bebé** | A los chicos de 3 a 8 años les encantan los dinosaurios y los bebés, y un protagonista que «recién nació» descubre el mundo al mismo tiempo que ellos. |
 | Tema: dinero y ahorro | **Tema: descubrir el mundo**: animales, dinosaurios, hábitos (dientes, manos, sueño, comida) y emociones | Son temas que los chicos miran solos y que los padres quieren que miren. |
 | 5 formatos | **6 formatos**: agregué **F. Canción corta** | La música y la repetición son la base de los canales infantiles más grandes. |
-| 4 videos por semana | **3 por día, con franjas fijas** (mañana con energía, tarde con la serie, noche tranquila) | Los chicos y los padres aprenden «a qué hora sale Pipo». La franja de la noche es más tranquila, para la hora de dormir. |
+| 4 videos por semana | **3 por día, con franjas fijas** (mañana con energía, tarde con la serie, noche tranquila) | Los chicos y los padres aprenden «a qué hora sale Bombolín». La franja de la noche es más tranquila, para la hora de dormir. |
 | Una voz de narrador | **5 voces de personaje + invitados** | Cada personaje se reconoce por la voz (ver `voces.md`). |
 | Solo datos | **Un dato verificable con fuente en cada video**, y además humor físico (Toto) y emociones (Lula) | Los chicos se ríen, los padres confían y YouTube Kids premia el contenido de calidad. |
 
@@ -43,7 +43,7 @@ Canal de animación con IA para YouTube Shorts, TikTok y Reels. **Contenido crea
 
 ## 3. Personajes (no cambian nunca)
 
-### Protagonista: **Pipo**
+### Protagonista: **Bombolín**
 - **Qué es:** un dinosaurio bebé verde menta que acaba de salir del huevo y **usa la mitad de su cascarón como gorrito**. El gorrito es su marca: si se le cae, siempre lo recupera.
 - **Personalidad:** curioso, risueño y valiente, aunque a veces duda un poquito.
 - **Frase de cabecera:** **«¡Un, dos, tres, a descubrir otra vez!»** / **"One, two, three, come discover with me!"**
@@ -59,8 +59,8 @@ Canal de animación con IA para YouTube Shorts, TikTok y Reels. **Contenido crea
 
 Nadie es malo. Toto, Lula y Zumbi se equivocan, y entre todos lo arreglan.
 
-**Proporciones fijas:** Pipo y Toto miden lo mismo, Abu Tortu mide el doble, Zumbi cabe en la mano de Pipo y Lula es del tamaño de la cabeza de Abu.
-**Paleta:** verde Pipo `#7ED9A6`, naranja Toto `#FF9A3C`, celeste Lula `#8FD3F4`, amarillo Zumbi `#FFD23F`, verde y lavanda Abu, y fondos crema y pastel.
+**Proporciones fijas:** Bombolín y Toto miden lo mismo, Abu Tortu mide el doble, Zumbi cabe en la mano de Bombolín y Lula es del tamaño de la cabeza de Abu.
+**Paleta:** verde Bombolín `#7ED9A6`, naranja Toto `#FF9A3C`, celeste Lula `#8FD3F4`, amarillo Zumbi `#FFD23F`, verde y lavanda Abu, y fondos crema y pastel.
 **Estilo:** 3D suave tipo película animada, con formas redondeadas de peluche. Las descripciones exactas para la IA están dentro de cada prompt (son siempre iguales).
 
 ---
@@ -77,7 +77,7 @@ Nadie es malo. Toto, Lula y Zumbi se equivocan, y entre todos lo arreglan.
 | F. Canción corta | 15 | Mañanas (con energía) |
 
 **Las series del mes**
-1. Semana 1: **El huevo misterioso**. Pipo encuentra un huevo gigante… ¡y nace un avestruz!
+1. Semana 1: **El huevo misterioso**. Bombolín encuentra un huevo gigante… ¡y nace un avestruz!
 2. Semana 2: **Lula perdió su arcoíris**. Buscan sus colores uno por uno.
 3. Semana 3: **La gran carrera de Zumbi**. Aprende que llegar juntos vale más que ganar.
 4. Semana 4: **El cumpleaños de Abu Tortu**. La fiesta sorpresa.
@@ -96,12 +96,12 @@ Nadie es malo. Toto, Lula y Zumbi se equivocan, y entre todos lo arreglan.
 - En TikTok y Reels, publica los mismos videos 1 o 2 horas después que en YouTube.
 
 ### Playlists (en contenido infantil, de acá sale el crecimiento)
-1. Series de Pipo (una playlist por serie, con los capítulos en orden)
-2. Canciones de Pipo
-3. Juega con Pipo
-4. ¿Y si…? con Pipo
-5. Pipo explica
-6. Pipo y sus amigos
+1. Series de Bombolín (una playlist por serie, con los capítulos en orden)
+2. Canciones de Bombolín
+3. Juega con Bombolín
+4. ¿Y si…? con Bombolín
+5. Bombolín explica
+6. Bombolín y sus amigos
 
 Al terminar cada semana, une los 5 capítulos de la serie en **un video largo de unos 3 minutos** y súbelo los domingos a la noche. Los videos largos ayudan a que el canal crezca más allá de los Shorts.
 

@@ -1,4 +1,4 @@
-"""Genera los shorts de «El mundo de Pipo» (video vertical 1080x1920 con voces, música y subtítulos).
+"""Genera los shorts de «Bombolín y sus amigos» (video vertical 1080x1920 con voces, música y subtítulos).
 
 Uso:
   python3 render.py --voices DIR --out DIR [--only ID,ID] [--jobs 4]
@@ -61,10 +61,10 @@ VOICES_EN = {
 CHORUS_MODEL = {"es": "es_AR-daniela-high", "en": "en_US-amy-medium"}
 T = {
     "es": dict(learned="¡Hoy aprendimos que {l}!", sing="¡Cántala otra vez!", play="¡Juega otra vez!",
-               banner="¡HOY APRENDIMOS!", header="El mundo de Pipo", ep="Cap.", all="Todos",
+               banner="¡HOY APRENDIMOS!", header="Bombolín y sus amigos", ep="Cap.", all="Todos",
                jingle="¡Un, dos, tres, a descubrir otra vez!"),
     "en": dict(learned="Today we learned that {l}!", sing="Sing it again!", play="Play again!",
-               banner="TODAY WE LEARNED!", header="Pipo's World", ep="Ep.", all="Everyone",
+               banner="TODAY WE LEARNED!", header="Bombolín & Friends", ep="Ep.", all="Everyone",
                jingle="One, two, three, come discover with me!"),
 }
 LABEL_EN = {"Abu Tortu": "Grandma Tortu", "Todos": "Everyone", "Gallina": "Hen", "Mamá Cocodrilo": "Mama Croc",
@@ -117,7 +117,7 @@ def label_of(name):
 
 COLOR = {"PIPO": (110, 230, 150), "TOTO": (255, 160, 70), "LULA": (130, 205, 255), "ZUMBI": (255, 215, 60),
          "ABU": (205, 170, 255), "ALL": (255, 215, 60), "GUEST": (255, 140, 200)}
-NAMES = {"Pipo": "PIPO", "Toto": "TOTO", "Lula": "LULA", "Zumbi": "ZUMBI", "Abu Tortu": "ABU", "Todos": "ALL"}
+NAMES = {"Bombolín": "PIPO", "Toto": "TOTO", "Lula": "LULA", "Zumbi": "ZUMBI", "Abu Tortu": "ABU", "Todos": "ALL"}
 GUESTS = {  # nombre: (emoji, voz)
     "Gallina": ("🐔", "GF"), "Mamá Cocodrilo": ("🐊", "GF"), "Cocodrilo": ("🐊", "GM"), "Avestruz bebé": ("🐣", "GF"),
     "Mamá Avestruz": ("🪶", "GF"), "Rana": ("🐸", "GM"), "Colibrí": ("🐦", "GM"), "Guepardo": ("🐆", "GM"),
@@ -167,7 +167,9 @@ def tts_text(t):
     t = t.replace("«", "").replace("»", "")
     t = re.sub(r"Zzz-?", "Bsss, ", t)
     t = re.sub(r"\bzzz\b", "sss", t, flags=re.I)
-    t = t.replace("T. rex", "T-Rex" if LANG == "en" else "Tiranosaurio Rex").replace("rawr", "roarrr").replace("Rawr", "Roarrr")
+    t = t.replace("T. rex", "T-Rex" if LANG == "en" else "Tiranosaurio Rex")
+    if LANG == "en":
+        t = t.replace("Bombolín", "Bombo-leen").replace("rawr", "roarrr").replace("Rawr", "Roarrr")
     t = t.replace("RAWR", "ROARRR").replace("…", ", ")
     return t
 
@@ -230,7 +232,7 @@ def chorus(text, vdir, cache):
         subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", raw, "-af", f"aresample={SR},{trim}", "-ac", "1", base], check=True)
         sr0 = SR
         parts = []
-        for pitch, gain in ((1.30, 1.0), (0.86, 0.55), (1.20, 0.5), (1.45, 0.45)):  # Pipo (voz principal), Toto, Lula, Zumbi
+        for pitch, gain in ((1.30, 1.0), (0.86, 0.55), (1.20, 0.5), (1.45, 0.45)):  # Bombolín (voz principal), Toto, Lula, Zumbi
             pv = out + f".{pitch}.wav"
             af = f"asetrate={int(sr0 * pitch)},aresample={SR},atempo={1 / pitch:.5f}"
             subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", base, "-af", af, "-ac", "1", pv], check=True)
@@ -651,7 +653,7 @@ def render_short(args):
             props = sc_fallback[:1]
         cast = []
         for c in x["ch"]:
-            nm = {"PIPO": "pipo", "TOTO": "toto", "LULA": "lula", "ZUMBI": "zumbi", "ABU": "abu tortu"}[c]
+            nm = {"PIPO": "bombolín", "TOTO": "toto", "LULA": "lula", "ZUMBI": "zumbi", "ABU": "abu tortu"}[c]
             on = nm in v or (c in speakers and not (c == "ABU" and any("voz" in q for (k, _, q), _ in sc["lines"] if k == "ABU")))
             if sc.get("closing"):
                 on = True

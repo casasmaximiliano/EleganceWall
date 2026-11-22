@@ -1,4 +1,4 @@
-"""Identidad visual del canal «El mundo de Pipo» / «Pipo's World».
+"""Identidad visual del canal «Bombolín y sus amigos» / «Bombolín & Friends».
 
 Genera: logo (foto de perfil para YouTube, Instagram y TikTok), banner de YouTube (ES y EN),
 marca de agua para los videos de YouTube y portadas de historias destacadas de Instagram.
@@ -98,7 +98,7 @@ def logo(size=1080):
         d.polygon([(x, y - r * 2), (x + r * 0.6, y - r * 0.6), (x + r * 2, y), (x + r * 0.6, y + r * 0.6),
                    (x, y + r * 2), (x - r * 0.6, y + r * 0.6), (x - r * 2, y), (x - r * 0.6, y - r * 0.6)],
                   fill=(255, 215, 70))
-    # Pipo
+    # Bombolín
     p = sprite("PIPO", int(S * 0.95))
     layer = Image.new("RGBA", (S, S), (0, 0, 0, 0))
     layer.paste(p, (int(S / 2 - p.width / 2 + S * 0.02), int(S * 0.13)), p)
@@ -108,7 +108,7 @@ def logo(size=1080):
     bw, bh, by = S * 0.62, S * 0.15, S * 0.80
     d.rounded_rectangle([S / 2 - bw / 2, by - bh / 2, S / 2 + bw / 2, by + bh / 2], bh / 2,
                         fill=(255, 255, 255), outline=INK, width=int(S * 0.008))
-    outlined(d, (S / 2, by - S * 0.005), "PIPO", font(F700, int(S * 0.13)), GREEN, stroke=(255, 255, 255), sw=1)
+    outlined(d, (S / 2, by - S * 0.005), "BOMBOLÍN", font(F700, int(S * 0.085)), GREEN, stroke=(255, 255, 255), sw=1)
     return im
 
 
@@ -121,28 +121,28 @@ def banner(lang):
         d.arc([250 + i * 34, 180 + i * 34, W - 250 - i * 34, 2300 - i * 34], 180, 360, fill=c + (150,), width=34)
     # zona segura (se ve en todos los dispositivos): 1546x423 centrada
     sx0, sy0, sx1, sy1 = (W - 1546) // 2, (H - 423) // 2, (W + 1546) // 2, (H + 423) // 2
-    title = {"es": ("El mundo de ", "Pipo"), "en": ("", "Pipo's World")}[lang]
+    title = {"es": ("Bombolín", " y sus amigos"), "en": ("Bombolín", " & Friends")}[lang]
     sub = {"es": "Canciones, juegos y aventuras para pequeños exploradores",
            "en": "Songs, games and adventures for little explorers"}[lang]
     pill = {"es": "¡Videos nuevos todos los días!", "en": "New videos every day!"}[lang]
     # placa blanca detrás del texto
     d.rounded_rectangle([sx0 + 250, sy0 + 15, sx1 - 250, sy1 - 15], 60, fill=(255, 255, 255, 220))
     f1 = font(F700, 112)
-    full = title[0] + title[1]
-    tw = d.textlength(full, font=f1)
+    while d.textlength(title[0] + title[1], font=f1) > 960:
+        f1 = font(F700, f1.size - 4)
+    tw = d.textlength(title[0] + title[1], font=f1)
     x = W / 2 - tw / 2
     y = sy0 + 135
-    if title[0]:
-        d.text((x, y), title[0], font=f1, fill=(70, 120, 220), anchor="lm", stroke_width=6, stroke_fill=(255, 255, 255))
-        x += d.textlength(title[0], font=f1)
-    d.text((x, y), title[1], font=f1, fill=GREEN, anchor="lm", stroke_width=6, stroke_fill=(255, 255, 255))
+    d.text((x, y), title[0], font=f1, fill=GREEN, anchor="lm", stroke_width=6, stroke_fill=(255, 255, 255))
+    x += d.textlength(title[0], font=f1)
+    d.text((x, y), title[1], font=f1, fill=(70, 120, 220), anchor="lm", stroke_width=6, stroke_fill=(255, 255, 255))
     f2 = font(F600, 35)
     d.text((W / 2, sy0 + 255), sub, font=f2, fill=INK, anchor="mm")
     f3 = font(F700, 40)
     pw = d.textlength(pill, font=f3) + 80
     d.rounded_rectangle([W / 2 - pw / 2, sy0 + 305, W / 2 + pw / 2, sy0 + 375], 35, fill=(255, 120, 150))
     d.text((W / 2, sy0 + 340), pill, font=f3, fill=(255, 255, 255), anchor="mm")
-    # personajes: Pipo y Toto dentro de la zona segura; el resto en la zona extendida (PC y TV)
+    # personajes: Bombolín y Toto dentro de la zona segura; el resto en la zona extendida (PC y TV)
     for name, cx, base, h in [("PIPO", sx0 + 120, sy1 - 5, 360), ("TOTO", sx1 - 115, sy1 - 5, 310),
                               ("ABU", sx0 - 260, sy1 + 140, 400), ("LULA", sx1 + 300, sy0 + 140, 240),
                               ("ZUMBI", sx0 - 220, sy0 + 20, 190)]:
