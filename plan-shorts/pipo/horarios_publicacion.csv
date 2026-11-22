@@ -1,0 +1,91 @@
+dia,fecha,dia_semana,id,titulo_es,titulo_en,youtube,tiktok,instagram
+1,2026-11-30,lunes,F01,"La canción del cepillo: ¡2 minutos, 2 veces al día!","The toothbrush song: 2 minutes, twice a day!",07:30,08:30,09:00
+1,2026-11-30,lunes,A1-1,Pipo encontró un huevo gigante… ¿de quién es?,Pipo found a giant egg… whose is it?,17:00,18:00,18:30
+1,2026-11-30,lunes,B01,¿Qué quiere decir «dinosaurio»? ¡Te sorprenderá!,What does “dinosaur” mean? You'll be surprised!,19:30,20:30,21:00
+2,2026-12-01,martes,E04,¿Las arañas son insectos? ¡Cuenta sus patas!,Are spiders insects? Count their legs!,07:30,08:30,09:00
+2,2026-12-01,martes,A1-2,¿Será un huevo de gallina? ¡Pipo pregunta!,Is it a chicken egg? Pipo asks!,17:00,18:00,18:30
+2,2026-12-01,martes,C01,¡Toto perdió su cuchara! ¿Dónde la dejó?,Toto lost his spoon! Where did he leave it?,19:30,20:30,21:00
+3,2026-12-02,miércoles,F02,¡Lávate las manos 20 segundos con esta canción!,Wash your hands for 20 seconds with this song!,07:30,08:30,09:00
+3,2026-12-02,miércoles,A1-3,¡Ups! Toto dejó rodar el huevo gigante,Oops! Toto let the giant egg roll away,17:00,18:00,18:30
+3,2026-12-02,miércoles,B04,¿Cuántas horas tiene que dormir un niño?,How many hours should kids sleep?,19:30,20:30,21:00
+4,2026-12-03,jueves,E01,¿Los elefantes pueden saltar? ¿Mito o verdad?,Can elephants jump? Myth or truth?,07:30,08:30,09:00
+4,2026-12-03,jueves,A1-4,Abu Tortu tiene una pista sobre el huevo,Grandma Tortu has a clue about the egg,17:00,18:00,18:30
+4,2026-12-03,jueves,C03,¿Truenos? Cuenta conmigo y no tengas miedo,Thunder? Count with me and don't be scared,19:30,20:30,21:00
+5,2026-12-04,viernes,F04,Cuenta hasta 5 con las estrellas de mar,Count to 5 with the starfish!,07:30,08:30,09:00
+5,2026-12-04,viernes,A1-5,¡Se abrió el huevo! ¿Quién nació?,The egg hatched! Who was born?,17:00,18:00,18:30
+5,2026-12-04,viernes,B02,¿Por qué los flamencos son rosados?,Why are flamingos pink?,19:30,20:30,21:00
+6,2026-12-05,sábado,F03,¡El baile del T. rex de brazos cortitos!,The short-armed T. rex dance!,09:00,10:00,10:30
+6,2026-12-05,sábado,D09,¿Y si los dinosaurios volvieran? ¡Ya están aquí!,What if dinosaurs came back? They're already here!,12:30,13:30,14:00
+6,2026-12-05,sábado,C02,¡Yo primero! Zumbi aprende de los pingüinos,Me first! Zumbi learns from penguins,18:00,19:00,19:30
+7,2026-12-06,domingo,D01,¿Y si tuvieras tres corazones como el pulpo?,What if you had three hearts like an octopus?,09:00,10:00,10:30
+7,2026-12-06,domingo,E02,¿Hay un animal más grande que los dinosaurios?,Is any animal bigger than the dinosaurs?,12:30,13:30,14:00
+7,2026-12-06,domingo,C04,Toto no quiere bañarse… ¡pero el elefante sí!,Toto won't take a bath… but the elephant will!,18:00,19:00,19:30
+8,2026-12-07,lunes,E06,¿Los búhos pueden girar la cabeza para atrás?,Can owls turn their heads backward?,07:30,08:30,09:00
+8,2026-12-07,lunes,A2-1,¡Lula se puso gris! ¿Dónde están sus colores?,Lula turned grey! Where did her colors go?,17:00,18:00,18:30
+8,2026-12-07,lunes,C06,Lula se enojó ¡y se puso roja!,Lula got angry and turned red!,19:30,20:30,21:00
+9,2026-12-08,martes,F05,La canción de los colores del arcoíris,The rainbow colors song,07:30,08:30,09:00
+9,2026-12-08,martes,A2-2,¡El amarillo estaba en los girasoles!,The yellow was in the sunflowers!,17:00,18:00,18:30
+9,2026-12-08,martes,B03,Los delfines duermen con medio cerebro,Dolphins sleep with half their brain,19:30,20:30,21:00
+10,2026-12-09,miércoles,E07,¿De quién es esta sombra? ¡Adivina el dinosaurio!,Whose shadow is this? Guess the dinosaur!,07:30,08:30,09:00
+10,2026-12-09,miércoles,A2-3,¿Las ranas toman agua con la piel? ¡Sí!,Do frogs drink with their skin? Yes!,17:00,18:00,18:30
+10,2026-12-09,miércoles,C10,Lula llora… ¿está bien llorar?,Lula is crying… is it okay to cry?,19:30,20:30,21:00
+11,2026-12-10,jueves,F06,¡La canción del agua! ¿Cuánta agua hay en la Tierra?,The water song! How much of Earth is water?,07:30,08:30,09:00
+11,2026-12-10,jueves,A2-4,¡Esta mariposa es azul… pero no tiene pintura!,This butterfly is blue… with no blue paint!,17:00,18:00,18:30
+11,2026-12-10,jueves,B08,Las nutrias se toman de la mano para dormir,Sea otters hold hands while they sleep,19:30,20:30,21:00
+12,2026-12-11,viernes,E08,¿Las mariposas sienten sabores con las patas?,Do butterflies taste with their feet?,07:30,08:30,09:00
+12,2026-12-11,viernes,A2-5,¡Lula volvió a ser arcoíris! ¿Sabías esto?,Lula is a rainbow again! Did you know this?,17:00,18:00,18:30
+12,2026-12-11,viernes,C12,Toto dice que no tiene sueño… ¡pero el gato sí!,Toto says he's not sleepy… but the cat is!,19:30,20:30,21:00
+13,2026-12-12,sábado,F07,¡El baile de las abejas! Así se dicen dónde hay flores,The bee dance! How bees tell where flowers are,09:00,10:00,10:30
+13,2026-12-12,sábado,D05,¿Y si tuvieras el cuello de un dinosaurio gigante?,What if you had a giant dinosaur neck?,12:30,13:30,14:00
+13,2026-12-12,sábado,C05,Zumbi no quiere compartir su flor,Zumbi doesn't want to share his flower,18:00,19:00,19:30
+14,2026-12-13,domingo,D08,¿Y si caminaras en la Luna? ¡Tus huellas quedarían!,What if you walked on the Moon? Your footprints would stay!,09:00,10:00,10:30
+14,2026-12-13,domingo,E13,¿Algunos dinosaurios tenían plumas? ¡Mito o verdad!,Did some dinosaurs have feathers? Myth or truth!,12:30,13:30,14:00
+14,2026-12-13,domingo,C11,El papá pingüino cuida el huevo… ¡en sus patas!,Daddy penguin keeps the egg… on his feet!,18:00,19:00,19:30
+15,2026-12-14,lunes,F08,¿Dónde estornudas? ¡La canción del codo!,Where do you sneeze? The elbow song!,07:30,08:30,09:00
+15,2026-12-14,lunes,A3-1,¡Zumbi se anotó en la carrera de las flores!,Zumbi signed up for the Flower Race!,17:00,18:00,18:30
+15,2026-12-14,lunes,B09,¿Hay dos cebras iguales? ¡Mira sus rayas!,Are any two zebras the same? Look at the stripes!,19:30,20:30,21:00
+16,2026-12-15,martes,E09,¿La estrella de mar tiene cerebro? ¡Adivina!,Does a starfish have a brain? Guess!,07:30,08:30,09:00
+16,2026-12-15,martes,A3-2,Un colibrí aletea más rápido que Zumbi,A hummingbird flaps faster than Zumbi!,17:00,18:00,18:30
+16,2026-12-15,martes,C07,Toto dice «¡puaj!» al brócoli… ¿y después?,Toto says “yuck!” to broccoli… and then?,19:30,20:30,21:00
+17,2026-12-16,miércoles,F09,¡La canción de las frutas de colores!,The colorful fruit song!,07:30,08:30,09:00
+17,2026-12-16,miércoles,A3-3,¡El guepardo es el más rápido! ¿Y Zumbi?,The cheetah is the fastest! What about Zumbi?,17:00,18:00,18:30
+17,2026-12-16,miércoles,B05,¿Los hipopótamos tienen protector solar?,Do hippos have their own sunscreen?,19:30,20:30,21:00
+18,2026-12-17,jueves,E10,¿Cuántas patas? ¡Juguemos a contar animales!,How many legs? Let's count animal legs!,07:30,08:30,09:00
+18,2026-12-17,jueves,A3-4,Abu Tortu le enseña a Zumbi el secreto,Grandma Tortu teaches Zumbi the secret,17:00,18:00,18:30
+18,2026-12-17,jueves,C09,¿Tu cuerpo tiene agua? ¡Más de la mitad!,Is your body made of water? More than half!,19:30,20:30,21:00
+19,2026-12-18,viernes,F11,La canción de las hormigas fuertes,The strong ants song,07:30,08:30,09:00
+19,2026-12-18,viernes,A3-5,¡La meta! ¿Quién ganó la carrera de las flores?,The finish line! Who won the Flower Race?,17:00,18:00,18:30
+19,2026-12-18,viernes,B06,¿Cómo cambia de color el pulpo?,How does an octopus change color?,19:30,20:30,21:00
+20,2026-12-19,sábado,F13,El baile del flamenco: ¡en una sola pata!,The flamingo dance: on one leg!,09:00,10:00,10:30
+20,2026-12-19,sábado,D02,¿Y si durmieras 20 horas como un koala?,What if you slept 20 hours like a koala?,12:30,13:30,14:00
+20,2026-12-19,sábado,C14,Zumbi tiene 6 patas… ¡y 6 zapatillas!,Zumbi has 6 legs… and 6 sneakers!,18:00,19:00,19:30
+21,2026-12-20,domingo,D10,¿Y si saltaras como un canguro? ¡8 metros!,What if you jumped like a kangaroo? 8 meters!,09:00,10:00,10:30
+21,2026-12-20,domingo,E03,¿Cuál es el ave más rápida? ¡Elige rápido!,Which is the fastest bird? Pick fast!,12:30,13:30,14:00
+21,2026-12-20,domingo,C15,¡Ordena tu cuarto en un minuto como un castor!,Tidy your room in one minute like a beaver!,18:00,19:00,19:30
+22,2026-12-21,lunes,E11,¿Las personas vivieron con dinosaurios? ¡Mito o verdad!,Did people live with dinosaurs? Myth or truth!,07:30,08:30,09:00
+22,2026-12-21,lunes,A4-1,¡Fiesta sorpresa para Abu Tortu! ¿Cuántos años cumple?,Surprise party for Grandma Tortu! How old?,17:00,18:00,18:30
+22,2026-12-21,lunes,C13,A Lula le da vergüenza cantar,Lula feels too shy to sing,19:30,20:30,21:00
+23,2026-12-22,martes,F12,¿El cocodrilo puede sacar la lengua? ¡Canción!,Can a crocodile stick out its tongue? Song!,07:30,08:30,09:00
+23,2026-12-22,martes,A4-2,Un pájaro decora con cosas azules. ¡Y Toto también!,A bird decorates with blue things. So does Toto!,17:00,18:00,18:30
+23,2026-12-22,martes,B10,¿Cuánta miel hace una abeja en toda su vida?,How much honey does a bee make in its life?,19:30,20:30,21:00
+24,2026-12-23,miércoles,E12,¿Quién es el animal más alto del mundo?,Who is the tallest animal in the world?,07:30,08:30,09:00
+24,2026-12-23,miércoles,A4-3,¿Sabías que los pingüinos regalan piedritas?,Did you know penguins give pebbles as gifts?,17:00,18:00,18:30
+24,2026-12-23,miércoles,C16,¿Cómo hace Lula un arcoíris? ¡Su secreto!,How does Lula make a rainbow? Her secret!,19:30,20:30,21:00
+25,2026-12-24,jueves,F14,La canción para calmarse: ¡infla el globo!,The calm-down song: blow up the balloon!,07:30,08:30,09:00
+25,2026-12-24,jueves,A4-4,¡Ups! Lula hizo llover sobre la torta,Oops! Lula made it rain on the cake,17:00,18:00,18:30
+25,2026-12-24,jueves,B07,Uno de los dinosaurios más grandes vivió en Argentina,One of the biggest dinosaurs lived in Argentina,19:30,20:30,21:00
+26,2026-12-25,viernes,E14,¿Cuál es la fruta con semillas por fuera?,Which fruit wears its seeds on the outside?,07:30,08:30,09:00
+26,2026-12-25,viernes,A4-5,¡Sorpresa! Y una tortuga real tiene casi 200 años,Surprise! And a real tortoise is almost 200!,17:00,18:00,18:30
+26,2026-12-25,viernes,C08,¿Abu Tortu se puede sacar el caparazón?,Can Grandma Tortu take off her shell?,19:30,20:30,21:00
+27,2026-12-26,sábado,F10,El perezoso baja del árbol… ¡solo una vez por semana!,Sloths come down… only once a week!,09:00,10:00,10:30
+27,2026-12-26,sábado,D07,¿Y si durmieras colgado cabeza abajo?,What if you slept upside down?,12:30,13:30,14:00
+27,2026-12-26,sábado,D03,¿Y si cada ojo mirara para un lado distinto?,What if your eyes looked two ways at once?,18:00,19:00,19:30
+28,2026-12-27,domingo,D04,¿Y si pudieras respirar bajo el agua como un pez?,What if you could breathe underwater like a fish?,09:00,10:00,10:30
+28,2026-12-27,domingo,D06,¿Y si un caracol te ganara una carrera?,What if a snail beat you in a race?,12:30,13:30,14:00
+28,2026-12-27,domingo,C18,¿Los chimpancés se ríen con cosquillas?,Do chimpanzees laugh when tickled?,18:00,19:00,19:30
+29,2026-12-28,lunes,F15,¡La jirafa tiene la lengua azul y larguísima!,"Giraffes have super long, dark tongues!",07:30,08:30,09:00
+29,2026-12-28,lunes,A5-1,¿Quién repite todo lo que dice Pipo?,Who repeats everything Pipo says?,17:00,18:00,18:30
+29,2026-12-28,lunes,B11,¿Cuánto tiempo vivieron los dinosaurios?,How long did dinosaurs live on Earth?,19:30,20:30,21:00
+30,2026-12-29,martes,E05,¿Un papá que lleva a sus bebés en la panza?,A dad who carries babies in his belly?,07:30,08:30,09:00
+30,2026-12-29,martes,A5-2,"Estas piedras crecen… ¡muy, muy despacito!","These rocks grow… very, very slowly!",17:00,18:00,18:30
+30,2026-12-29,martes,C17,Pipo no ve a Abu en el parque… ¿qué hace?,Pipo can't see Grandma at the park… what now?,19:30,20:30,21:00

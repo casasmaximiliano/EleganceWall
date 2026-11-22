@@ -6,6 +6,7 @@ y se guarda como sprite RGBA en sus variantes: boca cerrada / abierta y ojos abi
 from PIL import Image, ImageDraw
 
 SS = 2  # supersampling
+OUT_SCALE = 1.0  # escala de salida (1 = tamaño usado en los videos)
 
 
 def _c(d, cx, cy, r, fill, outline=None, w=0):
@@ -87,7 +88,7 @@ def pipo(open_=False, blink=False):
     d.line(pts, fill=OUT, width=5 * s)
     for (x, y, r) in [(200, 60, 16), (300, 45, 12), (350, 85, 14), (250, 95, 10)]:
         _c(d, x * s, y * s, r * s, (120, 180, 255))
-    return im.resize((W // SS, H // SS), Image.LANCZOS)
+    return im.resize((int(W * OUT_SCALE) // SS, int(H * OUT_SCALE) // SS), Image.LANCZOS)
 
 
 def toto(open_=False, blink=False):
@@ -118,7 +119,7 @@ def toto(open_=False, blink=False):
         _c(d, x * s, y * s, 7 * s, (200, 150, 90))
     _eyes(d, [195 * s, 325 * s], 260 * s, 55 * s, (90, 60, 160), blink)
     _mouth(d, 260 * s, 370 * s, 130 * s, open_, tooth=True)
-    return im.resize((W // SS, H // SS), Image.LANCZOS)
+    return im.resize((int(W * OUT_SCALE) // SS, int(H * OUT_SCALE) // SS), Image.LANCZOS)
 
 
 LULA_COLORS = {
@@ -153,7 +154,7 @@ def lula(open_=False, blink=False, mood="calm"):
     if mood == "angry":
         for x in (150, 410):
             d.line([(x) * s, 90 * s, (x + 20) * s, 120 * s, (x - 5) * s, 125 * s, (x + 15) * s, 160 * s], fill=(255, 220, 60), width=8 * s)
-    return im.resize((W // SS, H // SS), Image.LANCZOS)
+    return im.resize((int(W * OUT_SCALE) // SS, int(H * OUT_SCALE) // SS), Image.LANCZOS)
 
 
 def zumbi(open_=False, blink=False, wing=0):
@@ -197,7 +198,7 @@ def zumbi(open_=False, blink=False, wing=0):
     _c(d, 280 * s, 250 * s, 18 * s, (255, 150, 170))
     _eyes(d, [170 * s, 250 * s], 205 * s, 36 * s, (60, 40, 20), blink)
     _mouth(d, 210 * s, 255 * s, 60 * s, open_)
-    return im2.resize((W // SS, H // SS), Image.LANCZOS)
+    return im2.resize((int(W * OUT_SCALE) // SS, int(H * OUT_SCALE) // SS), Image.LANCZOS)
 
 
 def abu(open_=False, blink=False):
@@ -235,7 +236,7 @@ def abu(open_=False, blink=False):
         d.ellipse([(x - 44) * s, 136 * s, (x + 44) * s, 224 * s], outline=(220, 170, 40), width=7 * s)
     d.line([114 * s, 178 * s, 106 * s, 178 * s], fill=(220, 170, 40), width=7 * s)
     _mouth(d, 110 * s, 250 * s, 70 * s, open_)
-    return im.resize((W // SS, H // SS), Image.LANCZOS)
+    return im.resize((int(W * OUT_SCALE) // SS, int(H * OUT_SCALE) // SS), Image.LANCZOS)
 
 
 DRAW = {"PIPO": pipo, "TOTO": toto, "LULA": lula, "ZUMBI": zumbi, "ABU": abu}
