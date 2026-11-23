@@ -22,7 +22,7 @@ TARJETÍN{sly}: Eso es exactamente lo que tenías que sentir.
 MONI: Primera lección que aprendí después: el límite no es plata tuya. Es plata que el banco te presta, y que vas a devolver con intereses si no pagás el total.
 P: EL LÍMITE NO ES TUYO |
 MONI: El banco te da el límite pensando en cuánto le puede convenir prestarte, no en cuánto te conviene gastar a vos.
-## Capítulo 1: mi tarjeta me mintió
+## Episodio 1: mi tarjeta me mintió
 @bg novela
 P: SEIS MESES DESPUÉS |
 MONI: Seis meses después, tenía mil dólares de deuda. Un poco de acá, un poco de allá. Nada grande. Hasta que miré el resumen.
@@ -35,7 +35,7 @@ MONI{shock}: Setenta y tres meses. Más de seis años. Y mil ochocientos sesenta
 P: EXPLICACIÓN | ¿por qué tanto?
 MONI: ¿Por qué tanto? Porque con el mínimo, casi todo lo que pagás se va en intereses. El primer mes, de treinta dólares, unos veinte eran intereses. Solo diez bajaban la deuda.
 MONI{angry}: Esto no se queda así.
-## Capítulo 2: la venganza
+## Episodio 2: la venganza
 @bg simulador
 P: ×2 |
 MONI: Capítulo dos. Decidí pagar el doble del mínimo. Todos los meses.
@@ -47,7 +47,7 @@ P: EXPLICACIÓN | lo extra va directo a la deuda
 MONI: La explicación: los intereses del mes son los mismos pagues lo que pagues. Entonces todo lo que pagás por encima del mínimo va directo contra la deuda. Por eso duplicar el pago reduce el tiempo a un tercio.
 P: ESCENA NUEVA | la planilla
 MONI{think}: Armé una planilla chiquita. Cada mes anotaba la deuda. Verla bajar fue adictivo. Tarjetín empezó a ponerse nervioso.
-## Capítulo 3: las cuotas sin interés
+## Episodio 3: las cuotas sin interés
 @bg novela
 P: 12 CUOTAS SIN INTERÉS |
 TARJETÍN: Moni, Moni. Te propongo algo distinto. Doce cuotas sin interés. ¡Es gratis!
@@ -59,7 +59,7 @@ MONI{shock}: Cuarenta y dos dólares por mes, durante un año, comprometidos ant
 P: EXPLICACIÓN | la trampa del sueldo futuro
 MONI: La trampa de las cuotas sin interés no es el interés. Es que te gastás el sueldo del año que viene sin sentirlo. Y que, a veces, el precio en cuotas es más alto que el de contado.
 MONI: Lección: antes de comprar en cuotas, sumá todas las cuotas que ya tenés activas. Si ese número te asusta, no compres.
-## Capítulo 4: el adelanto de efectivo
+## Episodio 4: el adelanto de efectivo
 @bg novela
 P: UN CAJERO A LAS 11 PM |
 MONI: Capítulo cuatro. Un viernes a la noche necesitaba efectivo. Y ahí estaba Tarjetín, apoyado en un cajero.
@@ -69,7 +69,7 @@ MONI: Lo que no me dijo: el adelanto de efectivo suele tener comisión al retira
 P: EXPLICACIÓN | $100 que cuestan más
 MONI{think}: Si sacás cien dólares con una comisión del cinco por ciento y una tasa alta, aunque pagues todo en el siguiente resumen, ya pagaste de más. Y si no lo pagás, crece rapidísimo.
 MONI{angry}: Ese día entendí que necesitaba otra cosa: un fondo de emergencia. Plata mía, para emergencias, sin intereses.
-## Capítulo 5: la regla final
+## Episodio 5: la regla final
 @bg marca
 P: FINAL DE TEMPORADA |
 TARJETÍN{worried}: ¿Me vas a romper?

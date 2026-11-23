@@ -11,7 +11,7 @@ INFLA{sly}: Buuu. Hola, Moni.
 P: INFLA |
 MONI: Esta es la película completa de la segunda temporada: Infla, el fantasma de la inflación. Con escenas nuevas, la explicación de cada capítulo y un final que no salió en los shorts.
 MONI{wave}: Apagá la luz, que este es de fantasmas.
-## Capítulo 1: el robo invisible
+## Episodio 1: el robo invisible
 @bg novela
 @cast moni
 P: LA ALCANCÍA |
@@ -27,7 +27,7 @@ MONI{angry}: ¡Me robaste doscientos dieciséis dólares sin tocar la alcancía!
 INFLA{sly}: No te robé nada. Los billetes están todos. Solo valen menos.
 P: EXPLICACIÓN | poder de compra
 MONI: Explicación: la inflación no te saca billetes. Te saca poder de compra, que es lo que podés comprar con esos billetes. Por eso es tan peligrosa: no se ve.
-## Capítulo 2: la noche del colchón
+## Episodio 2: la noche del colchón
 @bg sitcom
 @cast moni,ghost
 P: ESCENA NUEVA | la mudanza al colchón
@@ -39,7 +39,7 @@ MONI: Explicación: guardar efectivo en casa tiene dos riesgos. El robo, que se 
 P: UN POCO SÍ, TODO NO |
 MONI{think}: Tener un poco de efectivo para emergencias de un día está bien. Pero los ahorros de largo plazo, quietos en un colchón, pierden valor año tras año.
 INFLA{sly}: El colchón es mi lugar favorito.
-## Capítulo 3: dónde se esconde la plata
+## Episodio 3: dónde se esconde la plata
 @bg pizarra
 @cast moni
 P: LA BÚSQUEDA |
@@ -56,7 +56,7 @@ MONI: Y tres, el que nadie te dice: tu propio ingreso. Capacitarte y negociar tu
 INFLA{worried}: Esos escondites no me gustan nada.
 P: NO ES MAGIA |
 MONI{think}: Ojo: ninguno es garantía ni magia. Cada uno tiene riesgos y depende de tu país. Pero dejar la plata quieta es la única opción que pierde siempre.
-## Capítulo 4: el disfraz
+## Episodio 4: el disfraz
 @bg sitcom
 @cast moni,ghost
 P: EL SUPERMERCADO |
@@ -69,7 +69,7 @@ MONI{angry}: ¡Reduflación! Mismo precio, menos producto. Me estabas cobrando m
 P: PRECIO POR KILO |
 MONI: Explicación: la forma de descubrir el disfraz es mirar el precio por kilo o por litro. Si el paquete se achica y el precio por kilo sube, es inflación disfrazada.
 INFLA{worried}: Esa letra chica me arruina todo.
-## Capítulo 5: el sueldo
+## Episodio 5: el sueldo
 @bg novela
 @cast moni,ghost
 P: EL AUMENTO |
