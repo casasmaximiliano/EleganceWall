@@ -89,7 +89,13 @@ window.setupLong = function (tl) {
     // cameos (solo si el personaje no está en escena)
     if (mot) for (const [re, kind, name] of CAMEO) { const t = at(re); if (t !== null && !(s.cast || []).includes(kind) && (!lastCameo[kind] || t - lastCameo[kind] > 45)) { mot.events.push({t: t + 0.05, kind, label: name, scene: idx}); lastCameo[kind] = t; break } }
   });
-  if (mot) mot.events.sort((a, b) => a.t - b.t);
+  if (mot) {
+    // si entra un personaje invitado, se quita el ícono que disparó la misma palabra (evita carrito 🛒 + Carrito a la vez)
+    const cams = mot.events.filter(e => e.kind);
+    mot.events = mot.events.filter(e => e.kind || !cams.some(c => Math.abs(c.t - e.t) < 1.5));
+    window.__MOTION.events = mot.events;
+    mot.events.sort((a, b) => a.t - b.t);
+  }
   B.yr = B.years.length ? [Math.min(...B.years.map(y => y.y)), Math.max(...B.years.map(y => y.y))] : null;
   // listas: por capítulo, paneles que empiezan con número
   let cur = null;
