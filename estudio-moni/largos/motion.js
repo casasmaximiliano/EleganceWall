@@ -13,6 +13,10 @@ const CSS = `
   background:#FFFDF6;border-radius:50%;box-shadow:0 12px 0 rgba(0,0,0,.22),0 0 0 7px #F7BC2B inset}
 .stk b{font:400 128px/1 "Noto Color Emoji",sans-serif}
 .stk span{position:absolute;bottom:-26px;font:800 32px "Figtree";color:#14221D;background:#F7BC2B;padding:4px 14px;border-radius:999px;white-space:nowrap;text-transform:uppercase;letter-spacing:.04em}
+.stk.cam{background:transparent;box-shadow:none;width:250px;height:290px;margin:-145px 0 0 -125px}
+.stk.cam b{width:250px;font-size:0;display:block}
+.stk.cam b svg{width:100%;height:auto;overflow:visible;filter:drop-shadow(0 14px 10px rgba(0,0,0,.3))}
+.stk.cam span{bottom:-6px}
 #Lwipe{position:absolute;top:-20%;bottom:-20%;width:140%;left:-150%;z-index:15;background:linear-gradient(90deg,#0E5A40 0 40%,#F7BC2B 40% 60%,#0E5A40 60%);transform:skewX(-14deg);display:none}
 #L .cap .w.kw.lit{color:#7EFFC4}
 #L.b-pizarra .cap .w.kw.lit{color:#C2185B}
@@ -70,7 +74,7 @@ const SLOTS = {
   '2': [[330, 260], [1590, 260], [690, 670], [1230, 670]],
   '3': [[300, 270], [1620, 270], [960, 200], [600, 230]],
 };
-const ICON_DUR = 3.0;
+const ICON_DUR = 3.0; let CU = 0;
 let M = {};
 const origSetup = window.setupLong, origFrame = window.frameLong;
 window.setupLong = function (tl) {
@@ -167,7 +171,10 @@ window.frameLong = function (t) {
   cam.style.transform = `translate(${px}px,${py}px) scale(${z})`;
   const P = document.getElementById('Lp'); if (P && P.style.display !== 'none') P.style.translate = `0 ${Math.sin(t * 1.3) * 6}px`;
   // íconos
-  const slots = (() => { const n = s.cast ? s.cast.length : 1; return n === 1 ? (s.panel ? SLOTS['1p'] : SLOTS['1']) : SLOTS[String(Math.min(3, n))] })();
+  let slots = (() => { const n = s.cast ? s.cast.length : 1; return n === 1 ? (s.panel ? SLOTS['1p'] : SLOTS['1']) : SLOTS[String(Math.min(3, n))] })();
+  const busy = window.__brollBusy ? window.__brollBusy(t) : null;   // zona ocupada por un widget: {x0,y0,x1,y1}
+  if (busy) slots = slots.filter(([x, y]) => !busy.some(b => x > b.x0 - 130 && x < b.x1 + 130 && y > b.y0 - 130 && y < b.y1 + 130));
+  if (!slots.length) slots = [[300, 650]];
   const active = M.events.filter(ev => t >= ev.t && t < ev.t + ICON_DUR && TL_scene(ev.scene) && TL_scene(i).type === 'line').slice(-3);
   const els = [...document.querySelectorAll('#Lst .stk')];
   els.forEach((el, k) => {
@@ -176,7 +183,12 @@ window.frameLong = function (t) {
     const slot = slots[(M.events.indexOf(ev)) % slots.length];
     const et = t - ev.t; const inK = back(et / 0.35), outK = clamp((ICON_DUR - et) / 0.3);
     const rot = (rnd(M.events.indexOf(ev)) - 0.5) * 24;
-    el.style.display = 'flex'; el.querySelector('b').textContent = ev.emoji; el.querySelector('span').textContent = ev.label;
+    el.style.display = 'flex';
+    if (ev.kind) {   // cameo de personaje
+      if (el.dataset.kind !== ev.kind) { el.dataset.kind = ev.kind; el.classList.add('cam'); const u = '_c' + (++CU);
+        el.querySelector('b').innerHTML = charSVG(ev.kind).split('g-' + ev.kind + '"').join('g-' + ev.kind + u + '"').split('#g-' + ev.kind + ')').join('#g-' + ev.kind + u + ')') }
+    } else { if (el.dataset.kind) { delete el.dataset.kind; el.classList.remove('cam') } el.querySelector('b').textContent = ev.emoji }
+    el.querySelector('span').textContent = ev.label;
     Object.assign(el.style, {left: slot[0] + 'px', top: (slot[1] + Math.sin(et * 3) * 8) + 'px', opacity: outK,
       transform: `scale(${(0.2 + 0.8 * inK) * (0.6 + 0.4 * outK)}) rotate(${rot * (1 - 0.3 * ease(et))}deg)`});
   });

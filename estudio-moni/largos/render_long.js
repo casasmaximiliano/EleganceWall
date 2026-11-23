@@ -6,7 +6,7 @@ const fs = require('fs'), path = require('path');
 const HERE = __dirname, OUT = path.join(HERE, 'out');
 const FPS = 24;
 const args = process.argv.slice(2); let workers = 4, stills = null; const nums = [];
-for (let i = 0; i < args.length; i++) { if (['--watch','--desc','--no-motion','--out-motion'].includes(args[i])) {} else if (args[i] === '--workers') workers = +args[++i]; else if (args[i] === '--stills') stills = args[++i].split(',').map(Number); else nums.push(+args[i]) }
+for (let i = 0; i < args.length; i++) { if (['--watch','--desc','--no-motion','--out-motion','--no-broll'].includes(args[i])) {} else if (args[i] === '--workers') workers = +args[++i]; else if (args[i] === '--stills') stills = args[++i].split(',').map(Number); else nums.push(+args[i]) }
 const all = fs.readdirSync(path.join(OUT, 'timeline')).filter(f => f.endsWith('.json')).map(f => +f.slice(0, 2)).sort((a, b) => a - b);
 let watch = args.includes('--watch');
 const queue = watch ? [] : (nums.length ? nums : all).filter(n => all.includes(n));
@@ -49,6 +49,11 @@ async function renderOne(page, n) {
     await page.goto('file://' + path.join(HERE, '..', 'video', 'renderer.html'));
     await page.addScriptTag({path: path.join(HERE, 'long.js')});
     if (!args.includes('--no-motion')) await page.addScriptTag({path: path.join(HERE, 'motion.js')});
+    if (!args.includes('--no-broll')) {
+      for (const f of ['d3-array/dist/d3-array.min.js', 'd3-geo/dist/d3-geo.min.js', 'topojson-client/dist/topojson-client.min.js']) await page.addScriptTag({path: path.join(HERE, 'node_modules', f)});
+      await page.evaluate(w => { window.__WORLD = w }, JSON.parse(fs.readFileSync(path.join(HERE, 'node_modules/world-atlas/countries-110m.json'), 'utf8')));
+      await page.addScriptTag({path: path.join(HERE, 'broll.js')});
+    }
     await page.evaluate(() => document.fonts.ready);
     while (true) {
       let n = watch ? nextReady() : queue.shift();
