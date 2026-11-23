@@ -1,0 +1,134 @@
+@tipo historia
+## Entrás por pan
+@bg sitcom
+@cast moni
+P: LA LISTA: 3 COSAS | pan · leche · huevos
+MONI: Entro al supermercado con una lista de tres cosas: pan, leche y huevos. Cinco minutos, dije.
+P: 40 MINUTOS · $80 |
+MONI{shock}: Salgo cuarenta minutos después, con ochenta dólares de compras. Y me olvidé los huevos.
+MONI: ¿Te pasó? No es que seas desordenado. Es que el supermercado es una de las máquinas de hacer gastar mejor diseñadas del mundo.
+P: NADA ES CASUALIDAD |
+MONI: La música, las luces, dónde está la leche, la altura de los chocolates, el tamaño del carrito. Casi nada es casualidad.
+MONI{think}: Hoy recorremos un supermercado juntos, pasillo por pasillo, y te muestro los trucos más comunes y cómo ganarles. No hay nada ilegal en esto. Es marketing. Pero conocerlo te da ventaja.
+## La entrada
+@bg marca
+P: FLORES Y FRUTAS |
+MONI: Empecemos por la entrada. En muchos supermercados, lo primero que ves son flores, frutas y verduras. Colores, frescura, olor rico.
+MONI: Eso te pone de buen humor y te da la sensación de que el lugar es fresco y de calidad. Y cuando estás de buen humor, gastás más tranquilo.
+P: EL OLOR A PAN |
+MONI: Algunos tienen la panadería cerca de la entrada. El olor a pan recién horneado despierta el hambre. Y con hambre, todo parece necesario.
+P: EL CARRITO GIGANTE |
+@cast moni,cart
+CARRITO: ¡Hola! Soy grande, cómodo y estoy vacío. Llename.
+MONI: Y el carrito. Con los años los carritos se volvieron más grandes. Un carrito medio vacío se siente como una compra incompleta.
+MONI: Truco de defensa: si vas por pocas cosas, agarrá un canasto. Pesa, y eso te hace pensar dos veces cada cosa que metés.
+CARRITO{worried}: Me dejaste solo.
+## El recorrido
+@bg pizarra
+@cast moni
+P: LO BÁSICO, AL FONDO |
+MONI: ¿Alguna vez notaste que la leche, el pan o los huevos suelen estar al fondo del local? Muchas veces es a propósito.
+MONI: Lo que todo el mundo viene a buscar se pone lejos de la entrada. Así tenés que atravesar el local entero y pasar por delante de cientos de productos.
+P: EL CAMINO LARGO |
+MONI: Y cada producto que ves es una oportunidad de que lo agarres. Mirá, esto está en oferta. Ah, me faltaba esto. Esto se ve rico.
+P: MÚSICA LENTA |
+MONI: La música también juega. Hay estudios que muestran que con música lenta la gente camina más despacio, y cuanto más tiempo pasás adentro, más tendés a comprar.
+MONI{think}: Y casi nunca hay relojes ni ventanas a la vista. Es fácil perder la noción del tiempo.
+## Las góndolas
+@bg marca
+P: A LA ALTURA DE LOS OJOS |
+MONI: Ahora las góndolas. El lugar más valioso es el que está a la altura de los ojos. Ahí suelen ir los productos que más le conviene vender al supermercado, que no siempre son los más baratos.
+P: ARRIBA Y ABAJO |
+MONI: Las marcas más económicas y las marcas propias del supermercado muchas veces están más arriba o más abajo. Hay que agacharse o estirarse.
+P: A LA ALTURA DE LOS CHICOS |
+MONI: Y los dulces, los cereales con dibujos y los juguetes, muchas veces están a la altura de los ojos de los chicos.
+P: LAS CABECERAS |
+MONI: Las cabeceras, que son los extremos de cada pasillo, son espacio premium. Ahí van las ofertas y las promociones. Pero cuidado: no todo lo que está en una cabecera está en oferta. A veces solo está bien ubicado.
+P: $9,99 |
+MONI: Y los precios terminados en noventa y nueve. Nueve con noventa y nueve se siente mucho más cerca de nueve que de diez, aunque la diferencia sea un centavo. Nuestro cerebro lee el primer número y se queda con eso.
+## Ofertas y paquetes que se achican
+@bg novela
+@cast moni,tag
+P: LLEVÁ 3, PAGÁ 2 |
+OFERTÍN: ¡Llevá tres y pagá dos! ¡Segunda unidad al setenta por ciento!
+MONI: Las promociones por cantidad te hacen comprar más de lo que necesitás. Si no lo vas a usar antes de que venza, no es ahorro.
+P: PRECIO POR KILO |
+MONI: El arma secreta contra casi todos estos trucos es el precio por kilo o por litro. En muchos países es obligatorio mostrarlo en la etiqueta, en letra chiquita.
+MONI{shock}: Y a veces descubrís que el paquete grande, el familiar, sale más caro por kilo que el chico.
+@cast moni,ghost
+P: REDUFLACIÓN |
+INFLA{sly}: Y mi truco favorito: mismo precio, menos producto.
+MONI: La reduflación. El paquete de galletitas que tenía doce y ahora tiene diez. El yogur que pasó de un kilo a novecientos gramos. Mismo precio, menos cantidad.
+MONI: El precio por kilo te lo muestra al instante.
+## La caja
+@bg sitcom
+@cast moni
+P: LA ZONA DE CAJAS |
+MONI: Llegaste a la caja. Pensás que terminaste. No. La zona de cajas es otra zona de venta.
+P: GOLOSINAS · PILAS · REVISTAS |
+MONI: Golosinas, chicles, pilas, bebidas frías. Compras chiquitas, de impulso, mientras esperás en la fila. Y si vas con chicos, ya sabés lo que pasa.
+P: LA DONACIÓN · LOS PUNTOS |
+MONI: Y en la caja te ofrecen sumar puntos, abrir la tarjeta del supermercado o llevar algo más con descuento. Cada pregunta es una oportunidad de que gastes un poco más.
+MONI{think}: Las tarjetas de fidelidad pueden ser útiles, pero recordá que a cambio el supermercado aprende muchísimo sobre lo que comprás.
+## Las seis defensas
+@bg simulador
+P: 6 DEFENSAS |
+MONI: Ahora sí, las seis defensas para salir del supermercado con lo que fuiste a buscar.
+P: 1 · LISTA |
+MONI: Una: ir con lista. Y respetarla. Si algo no está en la lista, preguntate si de verdad lo necesitás hoy.
+P: 2 · COMER ANTES |
+MONI: Dos: ir con la panza llena. Con hambre, todo parece urgente.
+P: 3 · CANASTO |
+MONI: Tres: si son pocas cosas, canasto en vez de carrito.
+P: 4 · PRECIO POR KILO |
+MONI: Cuatro: comparar siempre el precio por kilo o por litro, no el precio del paquete.
+P: 5 · MIRAR ARRIBA Y ABAJO |
+MONI: Cinco: mirar arriba y abajo en la góndola. Las marcas propias suelen ser bastante más baratas y muchas veces las fabrica el mismo proveedor.
+P: 6 · UNA COMPRA GRANDE |
+MONI: Y seis: hacer una compra grande planificada y pocas compras chiquitas. Cada visita al súper es una nueva oportunidad de gastar de más.
+## Comprar online también tiene trucos
+@bg marca
+@cast moni,cart
+P: ¿Y ONLINE? |
+MONI: ¿Y si comprás por internet? Los trucos cambian de forma, pero son muy parecidos.
+P: ENVÍO GRATIS DESDE $50 |
+CARRITO: Te faltan solo cinco dólares para el envío gratis. ¿Agregás algo?
+MONI: El envío gratis a partir de cierto monto es la versión online del carrito grande. Terminás agregando algo que no necesitabas para no pagar un envío que costaba menos.
+P: LOS QUE COMPRARON ESTO… |
+MONI: Las recomendaciones: los que compraron esto también compraron. Son el pasillo que te hace atravesar el local, pero hecho a tu medida.
+P: QUEDAN 2 · 15 PERSONAS MIRANDO |
+MONI{think}: Los avisos de urgencia: quedan dos unidades, quince personas están viendo este producto. Son la versión digital de la música lenta: te sacan de pensar con calma.
+P: LA TARJETA GUARDADA |
+MONI: Y la tarjeta guardada con compra en un clic. Cuanto menos te cuesta pagar, menos sentís que estás gastando.
+P: DEFENSA ONLINE |
+MONI: La defensa es la misma: lista, esperar veinticuatro horas antes de comprar lo que no planeabas, comparar precios y, si te cuesta, borrar la tarjeta guardada.
+CARRITO{worried}: Me dejaste en el abandono otra vez.
+## La lista que funciona
+@bg pizarra
+@cast moni
+P: LA LISTA |
+MONI: Ya que la lista es la defensa número uno, te cuento cómo hago la mía para que funcione.
+P: ORDENADA POR SECTOR |
+MONI: La ordeno según los sectores del súper: verdulería, almacén, lácteos, limpieza. Así recorro una sola vez y no paseo por pasillos que no necesito.
+P: CON CANTIDADES |
+MONI: Le pongo cantidades. No dice yogur. Dice cuatro yogures. Eso evita llevar el pack de doce porque estaba en promo.
+P: MENÚ DE LA SEMANA |
+MONI: Y la armo a partir del menú de la semana. Si sé qué voy a cocinar, sé exactamente qué comprar, y casi no tiro comida.
+P: LA COMIDA TIRADA |
+MONI{think}: Ese último punto es enorme. La comida que se vence en la heladera es plata que tiraste dos veces: cuando la compraste y cuando la tiraste.
+@cast moni,cart
+CARRITO{worried}: Con lista, ya no me llenan.
+MONI: Te llenan con lo justo, Carrito. Que es lo mejor que te puede pasar.
+## El súper en números
+@bg simulador
+@cast moni
+P: $20 POR SEMANA |
+MONI: ¿Cuánto podés ahorrar aplicando las seis defensas? Si te ahorran veinte dólares por semana, que es bastante común con lista y precio por kilo, son más de mil dólares por año.
+MONI{think}: Mil dólares por año sin cambiar lo que comés, solo cambiando cómo comprás.
+## Cierre
+@bg marca
+@cast moni
+P: CONOCER EL JUEGO |
+MONI: El supermercado no es tu enemigo. Pero juega su juego, y es muy bueno jugándolo. Conocer las reglas te da la ventaja.
+P: ¿Cuál te agarra a vos? |
+MONI{wave}: Contame en los comentarios: ¿cuál de estos trucos te agarra siempre? A mí, el olor a pan.

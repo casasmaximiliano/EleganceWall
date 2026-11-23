@@ -1,0 +1,139 @@
+@tipo telenovela
+## Anteriormente en la telenovela del dinero
+@bg novela
+@cast moni,card
+P: TEMPORADA 1 | la película
+MONI: Durante cinco días, Tarjetín me mintió. Pago mínimo, cuotas sin interés, adelantos de efectivo. Si viste los shorts, conocés el final.
+TARJETÍN{sly}: Y si no los viste, mejor. Así no sabés cómo perdí.
+MONI: Lo que nadie vio es lo que pasó entre capítulo y capítulo. Las escenas nuevas, la explicación de cada trampa con números, y el plan exacto que usé para ganarle.
+MONI{wave}: Esta es la película completa de la primera temporada. Agarrá el pochoclo.
+## Cómo conocí a Tarjetín
+@bg sitcom
+@cast moni
+P: ESCENA NUEVA | el banco
+MONI: Todo empezó un martes, en el banco. Fui a abrir una cuenta para cobrar mi sueldo. Nada más.
+@cast moni,card
+TARJETÍN: Hola, preciosa. ¿Ya tenés tarjeta de crédito? Te la damos gratis el primer año.
+MONI{think}: ¿Gratis?
+TARJETÍN: Gratis. Con un límite de dos mil dólares. Para emergencias, para viajar, para lo que quieras.
+P: LÍMITE: $2.000 |
+MONI: Yo ganaba mil doscientos por mes. Y me estaban dando un límite de casi dos sueldos. Me sentí importante. Me sentí rica.
+TARJETÍN{sly}: Eso es exactamente lo que tenías que sentir.
+MONI: Primera lección que aprendí después: el límite no es plata tuya. Es plata que el banco te presta, y que vas a devolver con intereses si no pagás el total.
+P: EL LÍMITE NO ES TUYO |
+MONI: El banco te da el límite pensando en cuánto le puede convenir prestarte, no en cuánto te conviene gastar a vos.
+## Capítulo 1: mi tarjeta me mintió
+@bg novela
+P: SEIS MESES DESPUÉS |
+MONI: Seis meses después, tenía mil dólares de deuda. Un poco de acá, un poco de allá. Nada grande. Hasta que miré el resumen.
+TARJETÍN: Tranquila, mi amor. Pagá solo el mínimo. Es chiquito.
+MONI{think}: ¿Y cuánto termino pagando?
+P: $1.000 al 24 % | pagando el mínimo
+MONI: Hice la cuenta. Mil dólares al veinticuatro por ciento anual, pagando el mínimo, que era el tres por ciento o veinticinco dólares.
+P: 73 MESES · $1.867 |
+MONI{shock}: Setenta y tres meses. Más de seis años. Y mil ochocientos sesenta y siete dólares en total. Casi el doble.
+P: EXPLICACIÓN | ¿por qué tanto?
+MONI: ¿Por qué tanto? Porque con el mínimo, casi todo lo que pagás se va en intereses. El primer mes, de treinta dólares, unos veinte eran intereses. Solo diez bajaban la deuda.
+MONI{angry}: Esto no se queda así.
+## Capítulo 2: la venganza
+@bg simulador
+P: ×2 |
+MONI: Capítulo dos. Decidí pagar el doble del mínimo. Todos los meses.
+TARJETÍN{sly}: Ja. Nadie me paga más que el mínimo.
+P: 25 MESES · $1.271 |
+MONI: Resultado: veinticinco meses en vez de setenta y tres. Mil doscientos setenta y uno en vez de mil ochocientos sesenta y siete.
+TARJETÍN{shock}: ¡Eso no estaba en el contrato!
+P: EXPLICACIÓN | lo extra va directo a la deuda
+MONI: La explicación: los intereses del mes son los mismos pagues lo que pagues. Entonces todo lo que pagás por encima del mínimo va directo contra la deuda. Por eso duplicar el pago reduce el tiempo a un tercio.
+P: ESCENA NUEVA | la planilla
+MONI{think}: Armé una planilla chiquita. Cada mes anotaba la deuda. Verla bajar fue adictivo. Tarjetín empezó a ponerse nervioso.
+## Capítulo 3: las cuotas sin interés
+@bg novela
+P: 12 CUOTAS SIN INTERÉS |
+TARJETÍN: Moni, Moni. Te propongo algo distinto. Doce cuotas sin interés. ¡Es gratis!
+MONI: Esa noche había una oferta. Un celular, una campera y unas zapatillas. Todo en doce cuotas sin interés.
+P: ESCENA NUEVA | la noche de las cuotas
+MONI{worried}: Y caí. Una cuota acá, otra allá. Cinco compras de cien dólares en doce cuotas.
+P: $41,67 | por mes durante 12 meses
+MONI{shock}: Cuarenta y dos dólares por mes, durante un año, comprometidos antes de cobrar. Justo cuando estaba pagando el doble del mínimo.
+P: EXPLICACIÓN | la trampa del sueldo futuro
+MONI: La trampa de las cuotas sin interés no es el interés. Es que te gastás el sueldo del año que viene sin sentirlo. Y que, a veces, el precio en cuotas es más alto que el de contado.
+MONI: Lección: antes de comprar en cuotas, sumá todas las cuotas que ya tenés activas. Si ese número te asusta, no compres.
+## Capítulo 4: el adelanto de efectivo
+@bg novela
+P: UN CAJERO A LAS 11 PM |
+MONI: Capítulo cuatro. Un viernes a la noche necesitaba efectivo. Y ahí estaba Tarjetín, apoyado en un cajero.
+TARJETÍN{sly}: ¿Plata ya? Sacala con la tarjeta. Así de fácil.
+P: COMISIÓN + INTERÉS DÍA 1 |
+MONI: Lo que no me dijo: el adelanto de efectivo suele tener comisión al retirar, y el interés corre desde el primer día, sin período de gracia.
+P: EXPLICACIÓN | $100 que cuestan más
+MONI{think}: Si sacás cien dólares con una comisión del cinco por ciento y una tasa alta, aunque pagues todo en el siguiente resumen, ya pagaste de más. Y si no lo pagás, crece rapidísimo.
+MONI{angry}: Ese día entendí que necesitaba otra cosa: un fondo de emergencia. Plata mía, para emergencias, sin intereses.
+## Capítulo 5: la regla final
+@bg marca
+P: FINAL DE TEMPORADA |
+TARJETÍN{worried}: ¿Me vas a romper?
+MONI: No. Te voy a domesticar.
+P: LA REGLA | solo si pago el total
+MONI: Regla: solo te uso si puedo pagar el total cuando vence el resumen. Si no puedo pagarlo, no lo compro.
+TARJETÍN: Guau.
+P: FINAL ALTERNATIVO | ¿y si la rompía?
+MONI{think}: ¿Y si la rompía? Pensé en eso. Pero romper la tarjeta no arregla el hábito. Si no aprendía a usarla, iba a caer con un préstamo, con un crédito en una tienda o con otra tarjeta.
+MONI: Además, usada bien, la tarjeta da un mes de plazo gratis, protección en compras y ayuda a construir historial para créditos futuros.
+## Detrás de escena
+@bg pizarra
+@cast moni
+P: ¿QUÉ ES REAL? |
+MONI: Detrás de escena: ¿qué hay de real en esta telenovela?
+P: LOS NÚMEROS |
+MONI: Los números son reales. Los calculé con una tasa del veinticuatro por ciento anual y un mínimo del tres por ciento o veinticinco dólares. En muchos países las tasas son más altas, y la diferencia sería todavía mayor.
+P: LAS TRAMPAS |
+MONI: Las trampas son reales: el mínimo, las cuotas que se acumulan y el adelanto de efectivo. Cambian los nombres según el banco y el país.
+P: LO QUE NO ES REAL |
+MONI: Lo que no es real: las tarjetas no hablan. Por suerte. Aunque a veces, cuando llega un mail de aumentamos tu límite, parece que sí.
+## Lo que Tarjetín no quiere que sepas
+@bg sitcom
+@cast moni,card
+P: 3 SECRETOS |
+TARJETÍN{worried}: Esto no lo cuentes, por favor.
+MONI: Tres secretos que aprendí después de la temporada, y que no salieron en los shorts.
+P: 1 · TODO SE NEGOCIA |
+MONI: Uno: muchas cosas se negocian. Si tenés buen historial, podés llamar al banco y pedir que te bajen la tasa, que te bonifiquen el mantenimiento o que te suban el límite solo si lo necesitás. No siempre dicen que sí, pero preguntar es gratis.
+P: 2 · EL AUMENTO DE LÍMITE |
+MONI: Dos: cuando te suben el límite sin que lo pidas, no es un regalo. Es una invitación a gastar más. Podés pedir que te lo bajen.
+P: 3 · LAS COMPRAS GUARDADAS |
+MONI: Tres: la tarjeta guardada en aplicaciones y tiendas online hace que gastar sea demasiado fácil. Borrarla de los lugares donde más gastás de impulso es uno de los cambios que más me ayudaron.
+TARJETÍN{sly}: Bueno, pero no me borres de todos lados.
+MONI: De los importantes, no. Del resto, sí.
+## Lo que aprendí de la temporada
+@bg pizarra
+@cast moni
+P: 5 LECCIONES |
+MONI: Después de cinco capítulos y una película, me quedo con cinco lecciones.
+P: 1 · LEER EL RESUMEN |
+MONI: Una: leer el resumen todos los meses. Fecha de cierre, vencimiento, total y mínimo. Si no lo leés, Tarjetín decide por vos.
+P: 2 · EL MÍNIMO ES UNA TRAMPA |
+MONI: Dos: el pago mínimo es para no caer en mora, no para salir de la deuda.
+P: 3 · SUMAR LAS CUOTAS |
+MONI: Tres: sumar todas las cuotas activas antes de tomar una nueva.
+P: 4 · FONDO ANTES QUE ADELANTO |
+MONI: Cuatro: un fondo de emergencia evita los adelantos de efectivo y los préstamos caros.
+P: 5 · DOMESTICAR, NO ROMPER |
+MONI{wave}: Y cinco: la tarjeta no se rompe, se domestica. Usada con reglas, es una aliada.
+## Si te sentiste identificado
+@bg marca
+@cast moni,card
+P: NO ESTÁS SOLO |
+MONI: Si mientras mirabas te sentiste identificado, no estás solo. Millones de personas tienen deudas en la tarjeta, y casi nadie lo cuenta por vergüenza.
+TARJETÍN: Es que yo soy muy convincente.
+MONI: Sos muy convincente, Tarjetín. Por eso hay que conocerte.
+P: EL PRIMER PASO |
+MONI{think}: El primer paso es el más difícil: abrir el resumen y mirar el número completo. Ese número no te define. Es solo el punto de partida de tu plan.
+MONI: Y si la deuda ya es imposible de pagar, buscá ayuda: muchos bancos tienen planes de refinanciación, y en varios países existen organismos de defensa del consumidor que asesoran gratis.
+## Cierre
+@bg marca
+@cast moni,card
+P: TEMPORADA 6 |
+MONI{wave}: Y así terminó la primera temporada. Contame en los comentarios: ¿qué villano querés ver en la temporada seis? ¿El préstamo de las aplicaciones? ¿Las apuestas online? ¿Las compras por impulso?
+TARJETÍN{sly}: Yo voto por mí.
+MONI: Vos ya tuviste tu temporada, Tarjetín.

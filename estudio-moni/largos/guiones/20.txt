@@ -1,0 +1,132 @@
+@tipo guia
+## La frase de siempre
+@bg mito
+@cast moni
+P: ALQUILAR ES TIRAR LA PLATA |
+MONI: Alquilar es tirar la plata. Lo escuchaste de tus padres, de tus tíos y de algún compañero de trabajo.
+MONI{think}: Y tiene algo de lógica: el alquiler se paga todos los meses y al final no te queda nada. En cambio, la cuota de una casa propia es plata que vuelve a vos.
+P: ¿MITO O VERDAD? |
+MONI: Pero comprar también tiene costos que casi nadie suma: intereses del crédito, impuestos, mantenimiento, arreglos, y la plata del anticipo que deja de rendir.
+MONI: Hoy hacemos la cuenta completa, con un ejemplo con números, para ver en qué casos conviene cada opción.
+P: Ejemplo ilustrativo | cada país es distinto
+MONI: Un aviso: los números cambian muchísimo según el país, la ciudad y las tasas de los créditos. Lo importante es aprender a hacer la cuenta, no el resultado de mi ejemplo.
+## Lo que cuesta alquilar
+@bg marca
+P: ALQUILAR |
+MONI: Empecemos por alquilar. El costo más obvio es el alquiler mismo.
+P: $500 POR MES | +3 % por año
+MONI: En nuestro ejemplo, un departamento que se alquila por quinientos dólares por mes, con aumentos del tres por ciento por año.
+P: + MUDANZAS · DEPÓSITOS |
+MONI: Además hay costos de vez en cuando: mudanzas, depósitos de garantía, comisiones de inmobiliaria.
+P: ✓ FLEXIBILIDAD |
+MONI: Pero alquilar tiene ventajas que no figuran en la cuenta: podés mudarte si cambia tu trabajo, tu familia o tu barrio. Y los arreglos grandes, en general, los paga el dueño.
+## Lo que cuesta comprar
+@bg pizarra
+P: COMPRAR · $100.000 |
+MONI: Ahora comprar. Supongamos que ese mismo departamento cuesta cien mil dólares.
+P: ANTICIPO · $20.000 |
+MONI: Para comprarlo, necesitás un anticipo. En el ejemplo, el veinte por ciento: veinte mil dólares.
+P: CRÉDITO · $80.000 | 8 % anual · 20 años
+MONI: El resto, ochenta mil, con un crédito hipotecario al ocho por ciento anual, a veinte años.
+P: CUOTA · $669 |
+MONI{shock}: La cuota da unos seiscientos sesenta y nueve dólares por mes. Ya es más que el alquiler.
+P: + $1.500 POR AÑO | impuestos y mantenimiento
+MONI: Y hay que sumar impuestos y mantenimiento: arreglos, pintura, un calefón que se rompe. En el ejemplo, mil quinientos dólares por año.
+P: ≈ $794 POR MES |
+MONI: Total: unos setecientos noventa y cuatro dólares por mes para el que compra, contra quinientos del que alquila.
+MONI{think}: Y ojo: en los primeros años, la mayor parte de la cuota del crédito son intereses. La parte que realmente se convierte en tuya es más chica de lo que parece.
+## El costo del anticipo
+@bg simulador
+P: COSTO DE OPORTUNIDAD |
+MONI: Acá viene lo que casi nadie cuenta: el costo de oportunidad del anticipo.
+MONI: Esos veinte mil dólares del anticipo podrían estar invertidos, rindiendo. Al usarlos para la casa, dejás de ganar eso.
+P: EL QUE ALQUILA INVIERTE |
+MONI: Para que la comparación sea justa, supongamos que el que alquila invierte los veinte mil del anticipo, y además invierte todos los meses la diferencia entre lo que pagaría como dueño y lo que paga de alquiler.
+P: RENDIMIENTO · 6 % |
+MONI: Supongamos que esas inversiones rinden un seis por ciento anual. Y que el departamento se valoriza un dos por ciento por año.
+## El ejemplo a diez años
+@bg simulador
+@cast moni
+P: 10 AÑOS DESPUÉS |
+MONI: Hagamos la cuenta a diez años.
+P: DUEÑO · ≈ $66.700 |
+MONI: El que compró tiene un departamento que vale unos ciento veintidós mil, y todavía le debe al banco unos cincuenta y cinco mil. Su patrimonio en la casa: unos sesenta y seis mil setecientos dólares.
+P: INQUILINO · ≈ $74.000 |
+MONI{shock}: El que alquiló e invirtió la diferencia tiene unos setenta y cuatro mil dólares en inversiones.
+P: CON ESTOS SUPUESTOS | gana el que alquila
+MONI: Con estos supuestos, gana el que alquila, por unos siete mil dólares.
+P: SI LA CASA SUBE 4 % |
+MONI{think}: Pero cambiemos un solo número. Si el departamento se valoriza un cuatro por ciento por año en vez de dos, el que compró termina con unos noventa y tres mil. Y gana el que compró, por casi veinte mil.
+MONI: ¿Ves? No hay una respuesta universal. Depende de cuánto suben las propiedades, de la tasa del crédito, de cuánto rinden las inversiones y, sobre todo, de una condición clave.
+## La condición que casi nadie cumple
+@bg sitcom
+@cast moni,bow
+P: LA CONDICIÓN |
+MONI: La condición es que el que alquila invierta la diferencia, de verdad, todos los meses, durante diez años.
+CAPRICHO: Ja. Si me sobran doscientos dólares por mes, me los gasto.
+MONI: Exacto, Capricho. Y esa es la ventaja escondida de comprar: la cuota te obliga a ahorrar. Es un ahorro forzoso.
+P: AHORRO FORZOSO |
+MONI: Mucha gente que alquila no invierte la diferencia. La gasta. Y en ese caso, comprar suele terminar siendo mejor, aunque los números en papel digan otra cosa.
+MONI{think}: Por eso la pregunta no es solo qué conviene. Es qué vas a hacer vos de verdad.
+## Lo que los números no miden
+@bg marca
+@cast moni
+P: LO QUE NO SE MIDE |
+MONI: Hay cosas que ninguna planilla mide.
+P: ESTABILIDAD |
+MONI: La estabilidad de saber que nadie te va a pedir el departamento, poder pintarlo como quieras, quedarte en el barrio donde van tus hijos a la escuela.
+P: MOVILIDAD |
+MONI: O la libertad de mudarte a otra ciudad por un buen trabajo sin tener que vender una casa.
+P: RIESGO |
+MONI: También el riesgo: con un crédito, tenés una deuda grande por veinte años. Si perdés el trabajo, la cuota sigue.
+MONI{think}: Ninguna opción es tirar la plata. Alquilar es pagar por flexibilidad. Comprar es pagar por estabilidad y patrimonio. Lo importante es elegir sabiendo lo que pagás.
+## Cómo hacer tu propia cuenta
+@bg pizarra
+P: TU CUENTA |
+MONI: Si estás pensando en comprar, hacé tu propia cuenta con estos datos.
+P: 1 · COSTO MENSUAL REAL |
+MONI: Uno: el costo mensual real de comprar: cuota, impuestos, mantenimiento y seguros. Comparalo con el alquiler de algo parecido.
+P: 2 · EL ANTICIPO |
+MONI: Dos: cuánto rendiría el anticipo si lo invirtieras.
+P: 3 · CUÁNTO TIEMPO TE QUEDÁS |
+MONI: Tres: cuántos años pensás quedarte. Comprar y vender tiene costos altos: escrituras, impuestos, comisiones. Si te vas en dos o tres años, alquilar casi siempre conviene.
+P: 4 · LA CUOTA ≤ 30 % |
+MONI: Cuatro: que la cuota no supere, como regla general, un tercio de tus ingresos. Y que te quede un fondo de emergencia después del anticipo.
+## Errores comunes al comprar
+@bg sitcom
+@cast moni,bow
+P: 4 ERRORES |
+MONI: Si decidís comprar, cuatro errores que conviene evitar.
+P: 1 · TODO EN EL ANTICIPO |
+MONI: Uno: poner absolutamente todos tus ahorros en el anticipo y quedarte sin fondo de emergencia. El primer arreglo grande o un mes sin trabajo te deja en problemas.
+P: 2 · CUOTA AL LÍMITE |
+MONI: Dos: tomar la cuota máxima que te aprueba el banco. Que te lo aprueben no significa que te convenga.
+CAPRICHO: ¡Pero si me lo dan, es porque puedo!
+MONI: No, Capricho. El banco calcula lo que puede cobrarte, no lo que te deja vivir tranquilo.
+P: 3 · TASA VARIABLE SIN ENTENDER |
+MONI: Tres: firmar un crédito con tasa variable o ajustable sin entender cómo puede cambiar la cuota. Pedí siempre una simulación del peor escenario.
+P: 4 · OLVIDAR LOS GASTOS DE COMPRA |
+MONI{think}: Y cuatro: olvidar los gastos de la compra: escrituras, impuestos, comisiones, mudanza y muebles. Pueden sumar varios puntos del valor de la propiedad.
+## La pregunta que me hacen siempre
+@bg pizarra
+@cast moni
+P: ¿Y SI ALQUILO TODA LA VIDA? |
+MONI: La pregunta que más me hacen: ¿y si alquilo toda la vida, qué pasa cuando me jubile?
+MONI: Es una preocupación real. Si alquilás, tu plan de retiro tiene que incluir el alquiler. Por eso es tan importante invertir la diferencia desde joven: esa inversión es la que después paga tu vivienda.
+P: PLAN DE RETIRO |
+MONI{think}: Comprar te da una vivienda pagada para la vejez. Alquilar te tiene que dar un capital invertido equivalente. Los dos caminos funcionan, siempre que tengan un plan.
+P: LO QUE NO FUNCIONA |
+MONI: Lo que no funciona es alquilar sin ahorrar, o comprar algo que no podés pagar. Esos son los dos caminos que salen mal.
+## Resumen en 30 segundos
+@bg pizarra
+@cast moni
+P: RESUMEN |
+MONI: Alquilar o comprar: comprar cuesta mucho más que la cuota, porque suma intereses, impuestos, mantenimiento y el rendimiento perdido del anticipo.
+MONI: Con algunos supuestos gana el que alquila e invierte la diferencia; con otros, gana el que compra.
+MONI: La clave es si de verdad vas a invertir la diferencia, cuántos años te vas a quedar y que la cuota no supere un tercio de tus ingresos.
+## Cierre
+@bg marca
+P: ¿MITO? |
+MONI: Veredicto: alquilar es tirar la plata es un mito. Depende de los números y, sobre todo, de lo que hagas con la diferencia.
+P: ¿Alquilás o tenés casa? |
+MONI{wave}: Contame en los comentarios: ¿alquilás o tenés casa propia? ¿Y en tu ciudad cuántos años de alquiler hacen falta para comprar un departamento? Ese número dice mucho.

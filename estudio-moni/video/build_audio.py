@@ -40,6 +40,7 @@ VOICES = {
  "Snacky": ("em_alex", 6, 1.1, "chips"),
  "Autito": ("em_santa", 2, 1.05, "car"),
  "Centavito": ("ef_dora", 7, 1.1, "centavito"),
+ "Peso": ("em_alex", 1, 1.04, "peso"),
  "Resumen": ("em_alex", -3, 0.98, "doc"),
  "Cuotín": ("ef_dora", 8, 1.12, "cuotin"),
  "Cuotines": ("ef_dora", 8, 1.12, "cuotin"),
@@ -47,7 +48,7 @@ VOICES = {
  "Remera": ("ef_dora", 4, 1.08, "shirt"),
  "Campera": ("em_santa", 0, 1.0, "jacket"),
 }
-FRIENDLY = {"moni", "centavito", "shirt", "jacket"}
+FRIENDLY = {"moni", "centavito", "peso", "shirt", "jacket"}
 
 _k = None
 def kokoro():
@@ -62,9 +63,12 @@ def clean_for_tts(text):
     t = EMOJI.sub("", text).replace("…", "...").replace("“", "").replace("”", "")
     return re.sub(r"\s+", " ", t).strip()
 
-def tts(text, speaker):
+def tts(text, speaker, speed_mult=1.0):
     voice, semis, speed, _ = VOICES[speaker]
-    key = re.sub(r"[^a-z0-9]+", "_", f"{speaker}_{text}".lower())[:120] + f"_{abs(hash((text, speaker))) % 10**8}"
+    speed = speed * speed_mult
+    import hashlib
+    tag = "" if speed_mult == 1.0 else f"_s{speed_mult}"
+    key = re.sub(r"[^a-z0-9]+", "_", f"{speaker}_{text}".lower())[:100] + "_" + hashlib.md5(f"{speaker}|{text}{tag}".encode()).hexdigest()[:10]
     path = os.path.join(CACHE, key + ".wav")
     if not os.path.exists(path):
         samples, sr = kokoro().create(clean_for_tts(text), voice=voice, speed=speed, lang="es")

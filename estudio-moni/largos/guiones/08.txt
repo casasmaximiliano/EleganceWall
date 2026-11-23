@@ -1,0 +1,140 @@
+@tipo guia
+## El resumen de febrero
+@bg novela
+@cast moni
+P: FEBRERO |
+MONI{shock}: Febrero. Llega el resumen de la tarjeta. Y adentro están los regalos, las cenas, la ropa para las fiestas y la mitad de las vacaciones.
+MONI: Diciembre es el único mes del año en que cobrás más y terminás con menos.
+P: + AGUINALDO = − PLATA |
+MONI: Aguinaldo, o sueldo extra, según tu país. Regalos para toda la familia. El amigo invisible del trabajo, el del grupo de amigos y el de la familia.
+MONI: La cena de Navidad, la de Año Nuevo, la despedida del trabajo, la previa, la ropa nueva, y encima ya estás pensando en las vacaciones de enero.
+MONI{think}: Este video es el plan para disfrutar las fiestas sin pasarte el verano pagándolas. Qué hacer con el sueldo extra, cuánto apartar, cómo hacer regalos sin culpa y cómo esquivar las trampas de las ofertas.
+## Qué hacer con el sueldo extra
+@bg pizarra
+P: SUELDO EXTRA |
+MONI: Empecemos por la plata que entra. Si en tu país hay aguinaldo, bono de fin de año o sueldo extra, lo peor que podés hacer es dejarlo en la cuenta de siempre.
+MONI: Porque se mezcla con la plata del mes y desaparece sin que te des cuenta.
+P: ⅓ · ⅓ · ⅓ |
+MONI: Mi regla de los tres tercios. Apenas lo cobrás, lo dividís en tres partes.
+P: ⅓ · FIESTAS | regalos y celebraciones
+MONI: Un tercio para las fiestas: regalos, cenas y celebraciones. Ese es tu presupuesto de diciembre, y no se toca nada más.
+P: ⅓ · ENERO | vacaciones y gastos de inicio de año
+MONI: Un tercio para enero: las vacaciones, los aumentos de principio de año y todo lo que arranca con el año nuevo.
+P: ⅓ · FUTURO | fondo o deudas
+MONI: Y un tercio para tu futuro: el fondo de emergencia o las deudas que tengas.
+MONI{wave}: Si no tenés sueldo extra, no pasa nada. Hacé lo mismo con la plata que puedas apartar de noviembre y diciembre.
+## El presupuesto de las fiestas
+@bg marca
+P: LA LISTA CERRADA |
+MONI: Ahora, el presupuesto de fiestas. La regla de oro: la lista se arma antes de salir a comprar. No en el shopping, no en la aplicación, no en la vereda del local.
+P: 1 · TOTAL |
+MONI: Paso uno: decidí un total. Por ejemplo, trescientos dólares para todas las fiestas. Ese número sale del tercio del sueldo extra o de lo que ahorraste.
+P: 2 · REPARTIR |
+MONI: Paso dos: repartilo. Tanto para regalos, tanto para cenas y reuniones, tanto para ropa, tanto para imprevistos. Siempre un poquito para imprevistos, porque siempre aparece un regalo que te olvidaste.
+P: 3 · ANOTAR |
+MONI: Paso tres: anotá cada gasto en el momento. Una nota en el celular alcanza. Diciembre es un mes en el que la plata se va en muchísimos gastos chiquitos.
+MONI{think}: Si a mitad de mes vas pasado, ajustás. Mejor una cena más simple que un resumen imposible en febrero.
+## Regalos sin fundirse
+@bg sitcom
+@cast moni,bow
+P: REGALOS |
+CAPRICHO: ¡Regalos para todos! ¡Lo más caro! ¡Que se note que los querés!
+MONI: Capricho, el cariño no se mide en dólares. Pero entiendo la presión. Te paso cuatro ideas que funcionan.
+P: 1 · AMIGO INVISIBLE |
+MONI: Una: el amigo invisible. En vez de regalarle a diez personas, cada uno le regala a una. Todos reciben algo y nadie se funde.
+P: 2 · TOPE POR PERSONA |
+MONI: Dos: un tope por persona, acordado de antemano. Veinte dólares, por ejemplo. Saca la competencia de quién regala más.
+P: 3 · EXPERIENCIAS |
+MONI: Tres: regalos de experiencias. Una salida juntos, una comida que cocinás vos, una tarde de algo. Suelen recordarse más que un objeto.
+P: 4 · COMPRAR ANTES |
+MONI: Y cuatro: comprar antes. En la última semana se compra apurado, sin comparar y pagando lo que sea.
+CAPRICHO{worried}: Bueno, pero a mí me regalás algo lindo.
+MONI: A vos te regalo un presupuesto.
+## Las trampas de las ofertas
+@bg novela
+@cast moni,tag
+P: −70 % |
+OFERTÍN: ¡Setenta por ciento de descuento! ¡Solo hoy! ¡Últimas unidades!
+MONI: Diciembre es temporada alta de Ofertín. Y tiene trucos que conviene conocer.
+P: EL PRECIO TACHADO |
+MONI: Truco uno: el precio tachado. A veces el precio original nunca existió, o se subió unos días antes para que el descuento parezca enorme. Si podés, compará con el precio de semanas anteriores.
+P: SOLO HOY |
+MONI: Truco dos: la urgencia. Solo hoy, últimas unidades, la oferta termina en diez minutos. Está diseñado para que no pienses.
+OFERTÍN{sly}: Si lo pensás, no comprás.
+MONI: Exacto. Por eso hay que pensarlo.
+P: 2x1 |
+MONI: Truco tres: el dos por uno. Solo es ahorro si ibas a comprar ese producto igual. Si no, es gastar el doble en algo que no necesitabas.
+P: CUOTAS EN ENERO |
+MONI{worried}: Y truco cuatro: las cuotas que empiezan en enero o febrero. Se sienten gratis en diciembre, y te persiguen todo el año.
+OFERTÍN{worried}: Me arruinaste la temporada.
+## Enero también existe
+@bg marca
+@cast moni
+P: ENERO |
+MONI: Lo que más se olvida en diciembre es que después viene enero. Y enero suele ser un mes caro.
+P: VACACIONES |
+MONI: Si te vas de vacaciones, armá el presupuesto antes: pasajes, alojamiento, comida y un extra para gustos. Y pagá lo que puedas antes de viajar, para no volver con deudas.
+P: AUMENTOS |
+MONI: En muchos lugares, en enero suben precios, cuotas, seguros o servicios. Revisá qué pagos se renuevan y apartá esa plata.
+P: VUELTA A CLASES |
+MONI: Y si tenés hijos, en febrero o marzo viene la vuelta a clases. Útiles, uniformes, cuotas. Mejor empezar a apartar desde diciembre.
+## Checklist de diciembre
+@bg pizarra
+P: CHECKLIST |
+MONI: Te dejo la checklist completa. Sacale captura de pantalla.
+P: ✓ DIVIDIR EL EXTRA |
+MONI: Uno: dividir el sueldo extra en tres partes el mismo día que lo cobrás.
+P: ✓ TOTAL Y LISTA |
+MONI: Dos: definir un total para las fiestas y armar la lista de regalos antes de salir.
+P: ✓ TOPE Y AMIGO INVISIBLE |
+MONI: Tres: proponer amigo invisible o un tope por persona en cada grupo.
+P: ✓ NO A LAS CUOTAS LARGAS |
+MONI: Cuatro: evitar cuotas que se coman el sueldo de todo el año.
+P: ✓ RESERVA PARA ENERO |
+MONI: Y cinco: dejar una reserva para enero y para la vuelta a clases.
+## Si ya te pasaste
+@bg simulador
+@cast moni,card
+P: ¿YA TE PASASTE? |
+MONI: ¿Y si este video te llega tarde y ya te pasaste? Tranquilo. Plan de rescate para enero.
+P: 1 · LA FOTO |
+MONI: Paso uno: sacá la foto completa. Cuánto quedó en la tarjeta, cuántas cuotas tomaste y cuándo vence cada cosa.
+TARJETÍN{sly}: No mires, es más lindo no saber.
+MONI: Es más lindo para vos, Tarjetín.
+P: 2 · PAGAR EL TOTAL |
+MONI: Paso dos: si podés, pagá el total del resumen aunque te duela, usando ahorros si los tenés. Los intereses de la tarjeta suelen ser mucho más altos que lo que rinde cualquier ahorro.
+P: 3 · ENERO EN MODO AHORRO |
+MONI: Paso tres: si no podés pagar el total, enero va en modo ahorro. Recortá salidas y compras durante un mes o dos, y todo lo que ahorres va a la tarjeta.
+P: 4 · NO MÁS CUOTAS |
+MONI: Paso cuatro: nada de cuotas nuevas hasta terminar de pagar las de diciembre.
+MONI{think}: Y anotá cuánto gastaste en total en estas fiestas. Ese número es tu presupuesto realista para el año que viene. Empezá a apartar de a poco desde septiembre.
+## Cuánto gastamos de verdad en las fiestas
+@bg simulador
+@cast moni,bow
+P: LA CUENTA REAL |
+MONI: Hagamos una cuenta rápida de un diciembre típico, para que veas cómo se acumula.
+P: REGALOS · $180 |
+MONI: Regalos para familia y amigos: unas doce personas a quince dólares cada una son ciento ochenta.
+P: CENAS Y REUNIONES · $150 |
+MONI: Cenas, despedidas y reuniones: cinco encuentros a treinta dólares, ciento cincuenta.
+P: ROPA Y EXTRAS · $120 |
+MONI: Ropa para las fiestas, decoración, bebidas y algún extra: ciento veinte.
+P: TOTAL · $450 |
+MONI{shock}: Cuatrocientos cincuenta dólares sin darte cuenta. Para muchos, más de un tercio del sueldo.
+CAPRICHO: ¡Pero es diciembre! ¡Es una vez al año!
+MONI: Justamente, Capricho. Es una vez al año, todos los años. Si sabés que viene, lo podés planificar. Apartando cuarenta dólares por mes desde enero, llegás a diciembre con cuatrocientos ochenta.
+## Cómo decir que no sin quedar mal
+@bg sitcom
+@cast moni
+P: DECIR QUE NO |
+MONI: Una de las cosas más difíciles de diciembre es decir que no. A la cena carísima, al regalo grupal de cien dólares, al viaje de egresados del trabajo.
+P: FRASES QUE AYUDAN |
+MONI: Te dejo frases que me ayudaron. Este mes estoy ahorrando para algo importante. Esta vez no llego, pero ¿hacemos algo en enero? ¿Y si hacemos amigo invisible con tope?
+MONI{think}: La gente que te quiere lo entiende. Y muchas veces, alguien más del grupo estaba pensando lo mismo y no se animaba a decirlo.
+## Cierre
+@bg marca
+@cast moni
+P: FIESTAS SIN CULPA |
+MONI: Las fiestas están para disfrutarlas, con la gente que querés. Con un plan simple, podés hacerlo sin pasarte el año pagándolas.
+P: ¿Hacés amigo invisible? |
+MONI{wave}: Contame en los comentarios: ¿en tu familia hacen amigo invisible o regalan todos a todos? Y felices fiestas de parte de Moni.

@@ -1,0 +1,142 @@
+@tipo guia
+## La pelea del resumen
+@bg sitcom
+@cast moni,peso
+P: 💔 |
+PESO: ¿Doscientos dólares en ropa? ¿Este mes?
+MONI{angry}: ¿Y vos los cien en el videojuego? ¿Esos no cuentan?
+P: LA PELEA MÁS COMÚN |
+MONI: Escena real de muchísimas parejas. La plata es uno de los motivos de pelea más comunes. Y casi nunca porque falte, sino porque nadie habló de ella hasta que apareció un problema.
+P: ❤️ + 💰 |
+MONI{think}: ¿Cuenta conjunta o separada? ¿Mitad y mitad, o según lo que gana cada uno? ¿Qué pasa con las deudas que traía cada uno?
+MONI: En este video, justo para San Valentín, te doy un método para tener esa conversación sin que termine en pelea, los tres sistemas para organizar la plata en pareja, y cómo armar metas compartidas.
+PESO{worried}: Yo solo quería un videojuego.
+MONI: Y yo solo quería una campera. Por eso tenemos que hablar.
+## Por qué peleamos por plata
+@bg marca
+@cast moni
+P: HISTORIAS DISTINTAS |
+MONI: ¿Por qué la plata genera tantas peleas? Porque cada uno llega a la pareja con una historia distinta con el dinero.
+P: AHORRADOR vs. GASTADOR |
+MONI: Si creciste en una casa donde nunca alcanzaba, quizás ahorres todo por miedo. Si creciste en una casa donde se disfrutaba el momento, quizás gastar te parezca normal. Ninguno de los dos está mal. Son historias diferentes.
+P: LA PLATA = OTRA COSA |
+MONI: Además, la plata casi nunca es solo plata. Para uno puede significar seguridad. Para el otro, libertad. Para otro, amor: regalar es su forma de cuidar.
+MONI{think}: Cuando peleamos por un gasto, muchas veces estamos peleando por esas cosas, sin darnos cuenta.
+P: EL SILENCIO |
+MONI: Y el silencio empeora todo. Muchas parejas no saben cuánto gana el otro, cuánto debe o cuánto ahorra. Y lo que no se habla, se acumula.
+## La conversación
+@bg pizarra
+P: LA CONVERSACIÓN |
+MONI: Primer paso: la conversación. Elijan un momento tranquilo, no justo después de una pelea ni cuando llega el resumen. Un café un domingo, por ejemplo.
+P: 5 PREGUNTAS |
+MONI: Cinco preguntas para hacerse, con honestidad y sin juzgar.
+P: 1 · ¿CUÁNTO GANAMOS? |
+MONI: Una: ¿cuánto gana cada uno, de verdad?
+P: 2 · ¿CUÁNTO DEBEMOS? |
+MONI: Dos: ¿qué deudas tiene cada uno? Tarjetas, préstamos, cuotas. Todo.
+P: 3 · ¿CÓMO NOS CRIARON? |
+MONI: Tres: ¿cómo se manejaba la plata en tu casa cuando eras chico? Esta pregunta explica muchas cosas.
+P: 4 · ¿QUÉ NOS IMPORTA? |
+MONI: Cuatro: ¿en qué nos gusta gastar? Viajes, salidas, ropa, tecnología. Saberlo evita muchos reproches.
+P: 5 · ¿QUÉ SOÑAMOS? |
+MONI{wave}: Y cinco: ¿qué soñamos juntos? Una casa, un viaje, hijos, emprender. Las metas compartidas son las que hacen que ahorrar tenga sentido.
+## Los tres sistemas
+@bg simulador
+P: 3 SISTEMAS |
+MONI: Segundo paso: elegir un sistema. Hay tres grandes formas de organizar la plata en pareja.
+P: 1 · TODO JUNTO |
+MONI: Uno: todo junto. Los dos sueldos van a una cuenta común y de ahí sale todo. Es simple y genera mucho sentido de equipo. Pero requiere mucha confianza y acuerdos sobre los gastos personales.
+P: 2 · TODO SEPARADO |
+MONI: Dos: todo separado. Cada uno maneja su plata y se dividen los gastos comunes. Da mucha independencia, pero a veces se siente más como compañeros de departamento que como pareja.
+P: 3 · SISTEMA MIXTO |
+MONI: Tres: el mixto. Cada uno aporta a una cuenta común para los gastos compartidos, y lo que queda es de cada uno, para usar sin dar explicaciones.
+MONI{think}: El mixto es el que más recomiendan muchos especialistas, porque combina equipo con libertad. Pero el mejor sistema es el que les funcione a los dos.
+## Mitad y mitad o proporcional
+@bg pizarra
+P: ¿CUÁNTO PONE CADA UNO? |
+MONI: Si eligen el sistema mixto o el separado, aparece la gran pregunta: ¿cuánto pone cada uno?
+P: SUELDOS: $1.500 y $1.000 |
+MONI: Ejemplo. Moni gana mil quinientos dólares. Peso gana mil. Los gastos comunes de la casa son mil dólares por mes.
+P: MITAD Y MITAD | $500 y $500
+MONI: Mitad y mitad: quinientos cada uno. A Moni le quedan mil para ella. A Peso, solo quinientos.
+P: PROPORCIONAL | $600 y $400
+MONI: Proporcional: cada uno pone según lo que gana. Moni gana el sesenta por ciento del total, entonces pone seiscientos. Peso, cuatrocientos.
+P: LES QUEDA: $900 y $600 |
+MONI{think}: Así, a Moni le quedan novecientos y a Peso seiscientos. Los dos aportan el mismo esfuerzo relativo: el cuarenta por ciento de su sueldo.
+@cast moni,peso
+PESO: Me gusta más el proporcional.
+MONI: Lo importante no es cuál eligen, sino que lo elijan juntos y lo revisen si cambian los sueldos.
+## Deudas, ahorros y secretos
+@bg novela
+@cast moni,card
+P: LAS DEUDAS DE CADA UNO |
+TARJETÍN{sly}: Hola, vengo con Peso. Soy su deuda de la tarjeta.
+MONI: Las deudas que cada uno traía antes de la pareja, en general, siguen siendo de cada uno. Pero afectan a los dos, porque una parte del sueldo se va en pagarlas.
+P: HABLARLAS |
+MONI: Por eso conviene hablarlas y, si se puede, armar un plan juntos para salir más rápido.
+P: INFIDELIDAD FINANCIERA |
+MONI{worried}: Lo que más daña la confianza son los secretos de plata: tarjetas escondidas, deudas ocultas, compras que no se cuentan. Hay quienes lo llaman infidelidad financiera.
+MONI: Una regla simple: cualquier gasto por encima de cierto monto, que acuerden entre los dos, se consulta antes.
+TARJETÍN{worried}: Ya no me puedo esconder en ningún lado.
+## Metas compartidas
+@bg marca
+@cast moni,peso
+P: METAS JUNTOS |
+MONI: Tercer paso: las metas compartidas. Ahorrar es mucho más fácil cuando es para algo que los dos quieren.
+P: 1 · FONDO DE LA CASA |
+MONI: Primera meta, siempre: un fondo de emergencia de la casa. Si se rompe la heladera o uno se queda sin trabajo, que no sea una crisis.
+P: 2 · UN SUEÑO |
+MONI: Después, un sueño concreto: un viaje, una mudanza, la casa propia. Con un número y una fecha.
+P: 3 · EL FUTURO |
+MONI: Y el largo plazo: la jubilación, la educación de los hijos si los hay o los planean.
+PESO: ¿Y si queremos cosas distintas?
+MONI{think}: Pasa siempre. Por eso existe la plata personal del sistema mixto. Las metas comunes van a la cuenta común, y cada uno persigue las suyas con su parte.
+## La cita mensual de plata
+@bg sitcom
+@cast moni,peso
+P: LA CITA DE PLATA |
+MONI: Último consejo, y mi favorito: una cita de plata una vez por mes.
+P: 30 MINUTOS |
+MONI: Treinta minutos, con algo rico. Revisan juntos cuánto entró, cuánto se gastó, cómo van las metas y si hay que ajustar algo.
+P: SIN JUZGAR |
+MONI: La regla de oro de la cita: nadie juzga. Se habla de números y de planes, no de culpas.
+PESO: ¿Y si hay pizza?
+MONI{wave}: Si hay pizza, mejor. La plata se habla mejor con la panza llena.
+## Mitos de la plata en pareja
+@bg mito
+@cast moni,peso
+P: ¿MITO O VERDAD? |
+MONI: Juguemos un rato a mito o verdad, versión pareja.
+P: “EL QUE GANA MÁS DECIDE” |
+PESO: El que gana más decide en qué se gasta.
+MONI{angry}: Mito. En una pareja, las decisiones comunes se toman entre los dos, sin importar quién gane más. La plata no compra el voto.
+P: “HABLAR DE PLATA ES POCO ROMÁNTICO” |
+PESO: Hablar de plata es poco romántico.
+MONI: Mito. No hablar de plata es lo que termina con el romance. Planificar un viaje juntos puede ser lo más romántico del mundo.
+P: “CUENTA CONJUNTA = MÁS AMOR” |
+PESO: Si tenemos cuenta conjunta, nos queremos más.
+MONI{think}: Mito. El sistema no mide el amor. Hay parejas felicísimas con todo separado, y parejas que pelean con todo junto. Lo que importa es que el sistema sea claro y acordado.
+P: “CON MÁS PLATA NO HAY PELEAS” |
+PESO{worried}: Bueno, pero si ganáramos más, no pelearíamos.
+MONI: Mito también. Las parejas con más ingresos también pelean por plata. Lo que reduce las peleas no es la cantidad, es tener acuerdos.
+## Cuando hay hijos
+@bg marca
+@cast moni,peso
+P: CON HIJOS |
+PESO: ¿Y cuando hay hijos, cambia algo?
+MONI: Cambia bastante. Los gastos suben, a veces uno de los dos trabaja menos para cuidar, y los planes de largo plazo se vuelven más importantes.
+P: EL QUE CUIDA |
+MONI: Si uno de los dos deja de trabajar o trabaja menos para cuidar a los chicos, conviene que el sistema lo tenga en cuenta: que esa persona siga teniendo plata propia y que su futuro, como la jubilación, también esté protegido.
+P: EL FONDO CRECE |
+MONI{think}: Y el fondo de emergencia tiene que ser más grande, porque hay más personas que dependen de los mismos ingresos.
+PESO: Mucho para pensar.
+MONI{wave}: Por eso conviene empezar a hablarlo antes, no cuando ya llegó el primer pañal.
+## Cierre
+@bg marca
+@cast moni,peso
+P: HABLAR DE PLATA = AMOR |
+MONI: Resumen: hablar de plata es una forma de cuidarse. Conversación honesta, un sistema que les funcione a los dos, un aporte justo, sin secretos y con metas compartidas.
+P: ¿Cómo lo hacen ustedes? |
+MONI{wave}: Contame en los comentarios: ¿con tu pareja tienen todo junto, todo separado o un sistema mixto? Y etiquetá a tu pareja, que hoy es San Valentín.
+PESO: Feliz día, Moni.
+MONI: Feliz día, Peso. Y no te olvides de nuestra cita de plata.

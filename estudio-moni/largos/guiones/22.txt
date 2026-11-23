@@ -1,0 +1,120 @@
+@tipo guia
+## La pizzería de Moni
+@bg marca
+@cast moni
+P: LA BOLSA |
+MONI: Todos los días escuchás en las noticias que la bolsa subió, bajó o se desplomó. Pero ¿qué es la bolsa, en concreto? ¿Quién compra, quién vende y por qué los precios se mueven?
+MONI: Hoy lo explicamos con una pizzería. Y al final vas a entender qué es una acción, un índice, un dividendo y por qué casi nadie le gana al mercado a largo plazo.
+P: 🍕 PIZZERÍA MONI |
+MONI: Imaginá que abro una pizzería. Me va tan bien que quiero abrir diez locales más. Pero no tengo la plata.
+MONI{think}: Tengo dos opciones: pedir un préstamo al banco, o conseguir socios que pongan plata a cambio de ser dueños de una parte de la pizzería.
+P: 1.000 PEDACITOS |
+MONI: Elijo socios. Divido la pizzería en mil pedacitos iguales, y vendo algunos. Cada pedacito se llama acción.
+MONI{wave}: Y así, sin darte cuenta, acabamos de explicar la base de todo el mercado de acciones.
+## Qué es una acción
+@bg pizarra
+P: ACCIÓN = PEDACITO |
+MONI: Una acción es un pedacito de propiedad de una empresa. Si tenés una de las mil acciones de la pizzería, sos dueño de una milésima parte.
+P: SI LE VA BIEN |
+MONI: Si a la pizzería le va bien, gana más plata y vale más, tu pedacito también vale más.
+P: SI LE VA MAL |
+MONI: Si le va mal, tu pedacito vale menos. Y si quiebra, podés perder todo lo que pusiste en esa acción.
+P: DUEÑO, NO PRESTAMISTA |
+MONI{think}: Fijate la diferencia con un bono o un depósito. Ahí le prestás plata a alguien que te promete devolvértela con intereses. Con una acción no hay promesa: sos dueño, y te va como le va a la empresa.
+P: MÁS RIESGO, MÁS POTENCIAL |
+MONI: Por eso las acciones tienen más riesgo, pero también más potencial de ganancia a largo plazo.
+## Qué es la bolsa
+@bg marca
+P: EL MERCADO |
+MONI: ¿Y si un socio quiere vender su pedacito? Necesita encontrar a alguien que se lo compre. La bolsa es, básicamente, el mercado donde se juntan los que quieren comprar y los que quieren vender acciones.
+P: COMO UNA FERIA |
+MONI: Pensalo como una feria gigante, pero digital, donde en vez de frutas se compran y venden pedacitos de empresas. Hay bolsas en casi todos los países.
+P: BRÓKER |
+MONI: Para comprar en la bolsa, en general necesitás un intermediario, que se llama bróker o sociedad de bolsa. Puede ser un banco o una plataforma regulada.
+P: SALIR A LA BOLSA |
+MONI{think}: Cuando una empresa vende sus acciones al público por primera vez, se dice que sale a la bolsa. A partir de ahí, cualquiera puede comprar un pedacito.
+## Por qué se mueven los precios
+@bg simulador
+P: OFERTA Y DEMANDA |
+MONI: ¿Por qué el precio de una acción cambia todos los días? Por oferta y demanda. Si hay más gente que quiere comprar que vender, el precio sube. Si hay más gente que quiere vender, baja.
+P: ¿QUÉ MUEVE LAS GANAS? |
+MONI: ¿Y qué hace que la gente quiera comprar o vender? Las expectativas sobre el futuro de la empresa.
+P: NOTICIAS |
+MONI: Si la pizzería anuncia que abre en otra ciudad, la gente espera que gane más, y compra. Si aparece una competencia fuerte, la gente se preocupa, y vende.
+P: CORTO PLAZO = RUIDO |
+MONI{think}: En el corto plazo, los precios se mueven mucho por noticias, rumores y emociones. Es como el clima: cambia todos los días. Pero en el largo plazo, el precio tiende a seguir lo que realmente gana la empresa. Es como el clima de una estación entera.
+## Índices y fondos indexados
+@bg pizarra
+P: ÍNDICE |
+MONI: Cuando en las noticias dicen la bolsa subió, en general hablan de un índice. Un índice es un promedio de un grupo de acciones.
+P: S&P 500 |
+MONI: Por ejemplo, el S&P 500 reúne a unas quinientas de las empresas más grandes de Estados Unidos. Cada país tiene sus índices.
+P: FONDO INDEXADO |
+MONI: Un fondo indexado es un fondo que compra todas las acciones de un índice. Con una sola compra, sos dueño de pedacitos de cientos de empresas.
+P: 🥗 LA ENSALADA |
+MONI{wave}: Es como comprar la ensalada de frutas completa en vez de intentar adivinar cuál fruta va a estar más rica. Si una fruta sale mala, las otras compensan.
+P: COMISIONES BAJAS |
+MONI: Además, como no hay alguien eligiendo acciones todo el tiempo, suelen tener comisiones bajas. Por eso son tan recomendados para principiantes.
+## Dividendos
+@bg sitcom
+P: 🍋 DIVIDENDOS |
+MONI: Volvamos a la pizzería. A fin de año ganó plata. ¿Qué hace con esa ganancia?
+P: REINVERTIR O REPARTIR |
+MONI: Puede reinvertirla, abriendo más locales, o repartir una parte entre los dueños. Lo que te toca a vos por tus acciones se llama dividendo.
+P: NO TODAS PAGAN |
+MONI: No todas las empresas pagan dividendos. Muchas empresas jóvenes que están creciendo prefieren reinvertir todo. Y eso no es malo: si reinvierten bien, sus acciones pueden valer más.
+MONI{think}: Para el inversor de largo plazo, una estrategia común es reinvertir los dividendos. Así se suma más interés compuesto.
+## Por qué casi nadie le gana al mercado
+@bg simulador
+@cast moni,fomito
+P: ¿LE GANO AL MERCADO? |
+FOMITO: Yo voy a elegir las mejores acciones y le voy a ganar al mercado. ¡Fácil!
+MONI: Fomito, te cuento algo que sorprende a casi todos.
+P: ≈ 9 DE CADA 10 |
+MONI: Hay informes que comparan, año tras año, a los fondos manejados por profesionales con los índices. En períodos de quince años, cerca de nueve de cada diez fondos de grandes empresas de Estados Unidos rindieron menos que su índice.
+FOMITO{shock}: ¿Los profesionales pierden contra un promedio?
+P: ¿POR QUÉ? |
+MONI: Por dos motivos. Uno: las comisiones. Elegir acciones cuesta plata, y esos costos se descuentan todos los años. Dos: adivinar qué acción va a subir es dificilísimo, porque el precio ya incorpora lo que todos saben.
+MONI{think}: Si a los profesionales con equipos enteros les cuesta, imaginate a nosotros mirando el celular en el colectivo.
+FOMITO{worried}: Entonces, ¿compro el índice?
+MONI: Para la mayoría de la gente, comprar el mercado entero y quedarse mucho tiempo es una estrategia muy difícil de superar.
+## Los errores más comunes en la bolsa
+@bg novela
+@cast moni
+P: 4 ERRORES |
+MONI: Cuatro errores que cometen casi todos los que empiezan.
+P: 1 · COMPRAR LO QUE SUBIÓ |
+MONI: Uno: comprar una acción porque subió mucho la semana pasada. Que haya subido no dice nada de lo que va a pasar.
+P: 2 · VENDER EN PÁNICO |
+MONI: Dos: vender todo cuando el mercado cae. Las caídas son parte normal de la bolsa. Vender en la caída convierte una pérdida temporal en una real.
+P: 3 · TODO EN UNA |
+MONI: Tres: poner todo en una sola empresa, aunque la ames. Las empresas que parecían eternas también caen.
+P: 4 · MIRAR TODO EL DÍA |
+MONI{think}: Y cuatro: mirar los precios todo el día. Genera ansiedad y te empuja a decisiones malas. Para el largo plazo, mirá cada tantos meses.
+## Las caídas son normales
+@bg simulador
+@cast moni
+P: CAÍDAS |
+MONI: Algo que conviene saber antes de entrar: la bolsa cae. Seguido.
+P: −10 % · −20 % · −30 % |
+MONI: Caídas del diez por ciento pasan cada tanto. Caídas del veinte o treinta por ciento pasan algunas veces por década. Y hubo caídas peores, como en 2008, cuando muchos índices perdieron más de la mitad.
+P: Y SE RECUPERARON |
+MONI: Históricamente, los grandes índices diversificados se recuperaron y siguieron creciendo, aunque a veces tardaron años.
+MONI{think}: Por eso la bolsa es para plata que no vas a necesitar en mucho tiempo. Si la vas a necesitar el año que viene, no es lugar para esa plata.
+## Cómo empezar en la bolsa
+@bg marca
+@cast moni
+P: 3 PASOS |
+MONI: Si querés dar el primer paso, tres pasos simples.
+P: 1 · BASE ARMADA |
+MONI: Uno: asegurate de tener fondo de emergencia y no tener deudas caras.
+P: 2 · BRÓKER REGULADO |
+MONI: Dos: elegí un bróker o banco regulado en tu país, con comisiones claras.
+P: 3 · ALGO DIVERSIFICADO |
+MONI{wave}: Tres: empezá con algo diversificado, como un fondo indexado, y aportá todos los meses. Simple, aburrido y efectivo.
+## Cierre
+@bg marca
+P: LA BOLSA, FÁCIL |
+MONI: Resumen: una acción es un pedacito de una empresa. La bolsa es el mercado donde se compran y venden. Los precios se mueven por oferta, demanda y expectativas. Un índice es un promedio, y un fondo indexado te deja comprarlo entero. Y a largo plazo, casi nadie le gana al mercado.
+P: ¿Qué querés que explique? |
+MONI{wave}: Contame en los comentarios qué otro concepto de inversiones querés que explique con la pizzería. Y si te sirvió, compartilo con alguien que siempre dice que la bolsa es un casino.

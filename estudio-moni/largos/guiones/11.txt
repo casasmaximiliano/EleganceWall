@@ -1,0 +1,119 @@
+@tipo historia
+## El billete de cien billones
+@bg novela
+@cast moni,ghost
+P: 100.000.000.000.000 | dólares zimbabuenses
+MONI{shock}: Cien billones. Un uno con catorce ceros. Ese era el valor de un billete que imprimió Zimbabue a comienzos de 2009.
+MONI: A las pocas semanas, ese billete casi no servía para comprar nada.
+INFLA{sly}: Buuu. ¿Te acordás de mí? Soy Infla, el fantasma de la inflación. Pero hoy vas a conocer mi versión gigante.
+P: HIPERINFLACIÓN |
+MONI: Eso se llama hiperinflación: cuando los precios suben tan rápido que la moneda deja de funcionar.
+P: 1923 · ALEMANIA |
+MONI: Unos ochenta y cinco años antes, en la Alemania de 1923, la gente cobraba dos veces por día y salía corriendo a gastar antes de que los precios subieran a la tarde.
+MONI{think}: Hoy vemos cómo nace una hiperinflación, cómo se vive adentro de una, cómo se frena y qué nos enseña para la inflación de todos los días.
+## Alemania, 1923
+@bg pizarra
+@cast moni
+P: DESPUÉS DE LA GUERRA |
+MONI: Alemania salió de la Primera Guerra Mundial con enormes deudas y la obligación de pagar reparaciones a los países ganadores.
+MONI: El gobierno, para cubrir sus gastos, empezó a imprimir cada vez más dinero. Y cuanto más dinero había, menos valía cada billete.
+P: OCTUBRE DE 1923 |
+MONI{shock}: En el peor momento, en octubre de 1923, los precios se duplicaban cada pocos días.
+P: SUELDO DOS VECES POR DÍA |
+MONI: Los trabajadores cobraban una o dos veces por día. Al salir, sus familias los esperaban para correr a las tiendas antes de que los precios volvieran a subir.
+MONI: Hay fotos famosas de esa época: gente llevando billetes en carretillas, chicos jugando con fajos de billetes como si fueran bloques, billetes usados para empapelar paredes.
+P: LOS AHORROS, A CERO |
+MONI{worried}: Lo peor les pasó a los ahorristas. Una persona que había ahorrado toda su vida en marcos alemanes vio cómo esos ahorros pasaban a valer, literalmente, nada.
+## Zimbabue, 2008
+@bg novela
+P: ZIMBABUE |
+MONI: Saltemos a Zimbabue, en el sur de África. A comienzos de los dos mil, la economía del país entró en una crisis profunda: cayó fuertemente la producción, y el gobierno también recurrió a imprimir dinero para pagar sus gastos.
+P: NOVIEMBRE DE 2008 |
+MONI{shock}: En noviembre de 2008, según las estimaciones del economista Steve Hanke, los precios se duplicaban aproximadamente cada día.
+P: 79.600 MILLONES % | inflación mensual estimada
+MONI: La inflación mensual estimada llegó a una cifra que cuesta hasta leer: setenta y nueve mil seiscientos millones por ciento.
+MONI: Los comercios cambiaban los precios varias veces por día. La gente prefería pagar con dólares, con otras monedas, o directamente con trueque.
+P: 2009 · ADIÓS MONEDA |
+MONI: En 2009, el país prácticamente abandonó su moneda y empezó a usar dólares estadounidenses y otras monedas extranjeras.
+## Cómo nace una hiperinflación
+@bg pizarra
+P: 3 INGREDIENTES |
+MONI: ¿Cómo se llega a algo así? Los casos son distintos, pero se repiten tres ingredientes.
+P: 1 · EMISIÓN SIN RESPALDO |
+MONI: Uno: un gobierno que gasta mucho más de lo que recauda y cubre la diferencia imprimiendo dinero en grandes cantidades, sin que la economía produzca más.
+P: 2 · MENOS PRODUCCIÓN |
+MONI: Dos: una economía que produce menos, por una guerra, una crisis o un colapso productivo. Hay más billetes persiguiendo menos cosas.
+P: 3 · PÉRDIDA DE CONFIANZA |
+MONI: Tres, y el más importante: la pérdida de confianza. Cuando la gente espera que mañana los precios sean más altos, se apura a gastar hoy. Nadie quiere quedarse con la moneda.
+INFLA{sly}: Y cuanto más rápido gastan, más rápido crezco yo.
+MONI{think}: Exacto. La hiperinflación se alimenta a sí misma. Por eso es tan difícil de frenar.
+## Cómo se vive adentro
+@bg sitcom
+@cast moni
+P: LA VIDA COTIDIANA |
+MONI: ¿Cómo se vive en un país así? Las historias se parecen mucho, aunque pasen en épocas distintas.
+P: PRECIOS EN OTRA MONEDA |
+MONI: Los precios se empiezan a pensar en otra moneda más estable. Se dice esto vale tantos dólares, aunque se pague en moneda local.
+P: COMPRAR COSAS |
+MONI: La gente ahorra en cosas: comida no perecedera, materiales de construcción, electrodomésticos. Cualquier cosa que mantenga su valor mejor que el billete.
+P: NADIE PLANIFICA |
+MONI{worried}: Y es imposible planificar. No sabés cuánto va a costar el alquiler el mes que viene ni cuánto va a valer tu sueldo. Todo se vuelve urgente.
+MONI: Los que más sufren son los que tienen ingresos fijos en moneda local y no tienen cómo protegerse: jubilados, empleados con sueldos que se ajustan tarde, los más pobres.
+## Cómo se frena
+@bg simulador
+P: CÓMO SE FRENA |
+MONI: ¿Y cómo termina? En los casos históricos, la salida suele combinar varias cosas.
+P: NUEVA MONEDA |
+MONI: En Alemania, en noviembre de 1923, se creó una moneda nueva, el Rentenmark. Un Rentenmark equivalía a un billón de los marcos viejos.
+P: CONFIANZA |
+MONI: Pero la moneda nueva sola no alcanza. Lo que hizo funcionar el cambio fue que se dejó de imprimir dinero sin control y la gente volvió a confiar.
+MONI{think}: En todos los casos, la clave es la misma: que la gente vuelva a creer que el dinero de mañana va a valer más o menos lo mismo que el de hoy. Y esa confianza tarda mucho en construirse y muy poco en perderse.
+P: SIN POLÍTICA |
+MONI: No vamos a entrar en debates políticos. Los economistas discuten mucho sobre cómo salir de cada caso. Lo que nos interesa es lo que podemos aprender como personas.
+## Lo que aprendemos para todos los días
+@bg marca
+@cast moni,ghost
+P: INFLA CHIQUITO |
+INFLA: En casi todos los países vivo en versión chiquita. Dos, tres, cinco por ciento por año.
+MONI: Y aunque no sea hiperinflación, el efecto es el mismo, pero lento. Con cinco por ciento anual, cien dólares de hoy compran como sesenta y uno dentro de diez años.
+P: 1 · NO DEJAR LA PLATA QUIETA |
+MONI: Lección uno: la plata quieta pierde. Para el largo plazo, buscá instrumentos que, al menos, intenten ganarle a la inflación.
+P: 2 · DIVERSIFICAR |
+MONI: Lección dos: no tener todo en un solo lugar ni en una sola moneda, si en tu país eso es posible y legal.
+P: 3 · INGRESOS QUE SE AJUSTEN |
+MONI: Lección tres: cuidar que tus ingresos se ajusten. Negociar aumentos con el dato de inflación en la mano.
+P: 4 · DEUDAS A TASA FIJA |
+MONI{think}: Y lección cuatro, que sorprende: con inflación, una deuda a tasa fija se va haciendo más chica en términos reales. No es para endeudarse sin pensar, pero conviene entenderlo.
+INFLA{worried}: Me estás desarmando.
+## La inflación en números de todos los días
+@bg pizarra
+@cast moni
+P: 5 % POR AÑO |
+MONI: Para entender la diferencia entre inflación normal e hiperinflación, comparemos.
+P: 5 % ANUAL |
+MONI: Con un cinco por ciento anual, algo que hoy cuesta cien, el año que viene cuesta ciento cinco. Se nota, pero se puede planificar.
+P: 50 % MENSUAL |
+MONI: Los economistas suelen hablar de hiperinflación cuando los precios suben más de un cincuenta por ciento en un solo mes.
+P: 100 → 13.000 en un año |
+MONI{shock}: Con cincuenta por ciento mensual, algo que cuesta cien a principio de año termina costando cerca de trece mil a fin de año. Imposible planificar nada.
+MONI: Y en los peores momentos de Alemania o Zimbabue, la suba era mucho más rápida que eso.
+MONI{think}: Por eso los economistas se preocupan tanto cuando la inflación empieza a acelerarse, aunque todavía esté lejos de esos números. Lo peligroso no es solo el nivel, sino que la gente pierda la confianza.
+## Argentina, Venezuela y la memoria
+@bg marca
+@cast moni
+P: AMÉRICA LATINA |
+MONI: En América Latina, la inflación alta no es solo historia de libros. Varios países la vivieron en carne propia.
+P: AÑOS 80 Y 90 |
+MONI: En los ochenta y comienzos de los noventa, países como Argentina, Brasil, Perú y Bolivia tuvieron episodios de hiperinflación. Muchas familias recuerdan los precios que cambiaban de un día para el otro.
+P: VENEZUELA |
+MONI: Y en la última década, Venezuela atravesó una de las hiperinflaciones más largas de la historia moderna.
+P: LA MEMORIA |
+MONI{think}: Esa memoria explica muchos hábitos: ahorrar en otra moneda, comprar ladrillos, desconfiar de los bancos o gastar el sueldo apenas se cobra. Son respuestas lógicas a lo que vivieron muchas generaciones.
+MONI: Entender de dónde vienen esos hábitos ayuda a decidir cuáles siguen teniendo sentido hoy y cuáles no.
+## Cierre
+@bg marca
+@cast moni
+P: CONFIANZA |
+MONI: Las hiperinflaciones nos enseñan que el dinero es, en el fondo, un acuerdo de confianza. Cuando esa confianza se rompe, los billetes son solo papel.
+P: ¿Viviste inflación alta? |
+MONI{wave}: Si viviste una época de inflación muy alta, contá tu historia en los comentarios. ¿Qué hacía tu familia para protegerse? Me encantaría leerlas.

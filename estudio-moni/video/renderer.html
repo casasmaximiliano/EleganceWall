@@ -153,6 +153,7 @@ function limbs(legs=true,armY=124){
 const PAL={
  moni:['#F7BC2B','#9C6400','#FFD970',['#FFF0A8','#F7BC2B','#B87400']],
  centavito:['#D9824A','#7A3A12','#F2B48A',['#FFD2B0','#D9824A','#8E4419']],
+ peso:['#C9D3DC','#56636F','#8FA0AE',['#F4F7FA','#C9D3DC','#7E8C99']],
  card:['#E5426A','#8A1233','#FFCC4D',['#FF8DA8','#E5426A','#9E1238']],
  cup:['#F6E6CF','#7A4E2C','#8B5A34',['#FFFFFF','#F6E6CF','#CFAE84']],
  ghost:['#8EEBC4','#2E8F6A','#2E8F6A',['#E6FFF4','#8EEBC4','#44B98C']],
@@ -178,6 +179,7 @@ const BODY={
  moni:()=>`<path class="limb" d="M100 46 L100 26" style="stroke:#1C6B3A"/><path class="leaf" d="M100 32 C88 14 70 16 66 26 C80 34 92 36 100 32Z"/><path class="leaf" d="M100 26 C112 6 132 8 136 18 C122 28 108 30 100 26Z"/>
   ${limbs()}<circle cx="107" cy="117" r="72" class="ink"/><circle class="fill-main ln" cx="100" cy="116" r="72" style="stroke-width:5"/><circle class="rim" cx="100" cy="116" r="60"/>
   <text x="100" y="68" text-anchor="middle" style="font:800 20px var(--f-display);fill:var(--c-dark);opacity:.75">$</text><ellipse class="gloss" cx="72" cy="76" rx="22" ry="12" transform="rotate(-28 72 76)"/>${face(100,106)}`,
+ peso:()=>`<path d="M88 44 q12 -18 26 -2" style="fill:none;stroke:#56636F;stroke-width:6;stroke-linecap:round"/>${limbs()}<circle cx="107" cy="117" r="68" class="ink"/><circle class="fill-main ln" cx="100" cy="116" r="68" style="stroke-width:5"/><circle class="rim" cx="100" cy="116" r="56"/><text x="100" y="72" text-anchor="middle" style="font:800 18px var(--f-display);fill:var(--c-dark);opacity:.7">1</text><ellipse class="gloss" cx="74" cy="80" rx="20" ry="11" transform="rotate(-28 74 80)"/>${face(100,108)}<path d="M88 176 l12 8 l12 -8 l0 16 l-12 -8 l-12 8z" style="fill:#E5426A"/>`,
  centavito:()=>`${limbs()}<circle cx="105" cy="140" r="50" class="ink"/><circle class="fill-main ln" cx="100" cy="138" r="50" style="stroke-width:5"/><circle class="rim" cx="100" cy="138" r="41"/>${face(100,132,.82)}`,
  card:()=>`${limbs()}<rect class="fill-main ln" x="22" y="56" width="166" height="128" rx="16" style="stroke-width:5"/><rect x="22" y="160" width="166" height="12" class="ink" style="opacity:.5"/>
   <rect class="acc" x="40" y="72" width="30" height="22" rx="4"/><ellipse class="gloss" cx="70" cy="66" rx="34" ry="6"/>${face(112,112)}`,

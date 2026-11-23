@@ -1,0 +1,129 @@
+@tipo guia
+## $262.000 con $100 por mes
+@bg simulador
+@cast moni
+P: $100 | por mes
+MONI: Cien dólares por mes. Durante cuarenta años. Invertidos a un siete por ciento anual.
+P: $262.481 |
+MONI{shock}: Resultado: doscientos sesenta y dos mil dólares.
+P: $48.000 | lo que pusiste vos
+MONI: De esa montaña, vos pusiste cuarenta y ocho mil. Los otros doscientos catorce mil los hizo una sola cosa: el interés compuesto.
+MONI{think}: Pero cuidado. La misma fuerza funciona al revés con tus deudas. Y ahí te hunde con la misma potencia.
+MONI: Hoy la vemos trabajar para vos y en tu contra, con números reales, sin fórmulas raras. Y al final te enseño a calcular tu propio número.
+P: Ejemplo ilustrativo | no es asesoramiento
+MONI: Un aviso: el siete por ciento es un ejemplo. Ninguna inversión garantiza un rendimiento fijo. Pero la lógica es la misma con cualquier número.
+## Simple contra compuesto
+@bg pizarra
+P: INTERÉS SIMPLE |
+MONI: Arranquemos por lo básico. Interés simple: ganás siempre sobre lo que pusiste al principio.
+P: $1.000 al 10 % | $100 por año, siempre
+MONI: Mil dólares al diez por ciento simple: cien dólares por año, todos los años. En veinte años, tres mil dólares.
+P: INTERÉS COMPUESTO |
+MONI: Interés compuesto: ganás sobre lo que pusiste más lo que ya ganaste. El interés se suma al capital y empieza a generar su propio interés.
+P: AÑO 1: $100 · AÑO 10: $236 |
+MONI: Mil dólares al diez por ciento compuesto. El primer año ganás cien. El año diez ya ganás doscientos treinta y seis en ese solo año.
+P: $6.727 | en 20 años
+MONI{shock}: A los veinte años tenés seis mil setecientos veintisiete dólares. Más del doble que con interés simple.
+MONI: Es como una bola de nieve que baja por una montaña. Al principio es chiquita y casi no crece. Pero cuanto más grande es, más nieve junta en cada vuelta.
+## El tiempo es el ingrediente secreto
+@bg simulador
+P: TASA × TIEMPO |
+MONI: Lo que más me sorprendió cuando aprendí esto: el ingrediente más poderoso no es la tasa. Es el tiempo.
+P: AÑO 10 · $17.000 |
+MONI: Con nuestros cien dólares por mes al siete por ciento, a los diez años tenés unos diecisiete mil. Pusiste doce mil. Meh.
+P: AÑO 20 · $52.000 |
+MONI: A los veinte años, unos cincuenta y dos mil. Pusiste veinticuatro mil. Ya empieza a ponerse interesante.
+P: AÑO 40 · $262.000 |
+MONI{shock}: Y a los cuarenta años, doscientos sesenta y dos mil. Duplicaste el tiempo y la plata se multiplicó por cinco.
+MONI: Por eso los últimos años son los más poderosos. Y por eso la mejor decisión es empezar temprano, aunque sea con poco.
+## La regla del 72
+@bg pizarra
+P: 72 ÷ TASA | = años para duplicar
+MONI: Hay un truco para calcular el interés compuesto de cabeza: la regla del setenta y dos.
+MONI: Dividís setenta y dos por la tasa anual, y te da, aproximadamente, en cuántos años se duplica tu plata.
+P: 8 % → 9 AÑOS |
+MONI: Al ocho por ciento, se duplica en nueve años.
+P: 6 % → 12 · 3 % → 24 |
+MONI: Al seis por ciento, en doce años. Al tres por ciento, en veinticuatro.
+MONI{think}: Fijate qué potente es: pasar del tres al seis por ciento no te da el doble de plata. Te da el doble de duplicaciones.
+P: INFLACIÓN AL 6 % |
+MONI: Y funciona también al revés. Si la inflación es del seis por ciento anual, la plata quieta pierde la mitad de su valor en unos doce años.
+## Empezar a los 25 contra a los 35
+@bg simulador
+P: $200 por mes | hasta los 65
+MONI: Hagamos una carrera. Dos Monis. Las dos ponen doscientos dólares por mes hasta los sesenta y cinco años, al siete por ciento.
+P: EMPIEZA A LOS 35 | $244.000
+MONI: La Moni que empieza a los treinta y cinco llega con unos doscientos cuarenta y cuatro mil dólares.
+P: EMPIEZA A LOS 25 | $525.000
+MONI{shock}: La Moni que empieza a los veinticinco llega con quinientos veinticinco mil. Más del doble.
+P: DIFERENCIA DE APORTES | solo $24.000
+MONI: Y la diferencia en lo que pusieron es de solo veinticuatro mil dólares. Diez años más de aportes valieron casi trescientos mil dólares más.
+MONI{wave}: Si tenés veinte años, este es tu superpoder. Si tenés cuarenta, no te desanimes: el segundo mejor momento para empezar es hoy.
+## El lado oscuro
+@bg novela
+@cast moni,card
+P: EL LADO OSCURO |
+TARJETÍN{sly}: ¿Así que te gusta el interés compuesto? A mí también. Me encanta.
+MONI: Tarjetín usa exactamente la misma fuerza, pero contra vos. Los intereses que no pagás se suman a la deuda, y generan más intereses.
+P: 60 % ANUAL |
+MONI: Con una tasa de tarjeta del sesenta por ciento anual, que en algunos países es normal, una deuda se duplica en poco más de un año si no la pagás.
+P: 72 ÷ 60 ≈ 1,2 AÑOS |
+MONI{shock}: Setenta y dos dividido sesenta: uno coma dos años. La bola de nieve rueda, pero rueda hacia vos.
+TARJETÍN: Por eso me gusta tanto el pago mínimo.
+MONI{angry}: Por eso la primera inversión es pagar las deudas caras. Ninguna inversión te va a dar un sesenta por ciento seguro. Pagar esa deuda, sí.
+## Lo que se come tu rendimiento
+@bg marca
+@cast moni
+P: 2 LADRONES |
+MONI: Hay dos ladrones silenciosos que le sacan pedacitos a tu bola de nieve todos los años.
+P: 1 · COMISIONES |
+MONI: Uno: las comisiones. Diez mil dólares invertidos treinta años al siete por ciento. Con una comisión de cero coma uno por ciento, terminás con setenta y cuatro mil.
+P: 1 % → $57.000 |
+MONI{shock}: Con una comisión del uno por ciento, cincuenta y siete mil. Ese uno por ciento, que parecía nada, se comió dieciséis mil quinientos dólares.
+P: 2 · INFLACIÓN |
+MONI: Dos: la inflación. Lo que importa no es cuánta plata tenés, sino cuánto podés comprar con ella. Si tu inversión rinde cinco y la inflación es cuatro, en realidad ganaste uno.
+MONI{think}: Por eso siempre conviene mirar el rendimiento real, el que queda después de la inflación y las comisiones.
+## Tu número
+@bg pizarra
+P: TU NÚMERO |
+MONI: Ahora, calculá el tuyo. Necesitás tres datos: cuánto podés poner por mes, cuántos años faltan hasta tu objetivo y una tasa realista.
+P: CALCULADORA ONLINE |
+MONI: Buscá en internet calculadora de interés compuesto. Hay muchas gratis. Probá con distintos números y mirá cómo cambia el resultado si empezás antes o ponés un poco más.
+MONI: Te recomiendo hacer tres versiones: una pesimista, una normal y una optimista. Así no te enamorás de un solo número.
+## Errores con el interés compuesto
+@bg sitcom
+@cast moni,fomito
+P: 4 ERRORES |
+MONI: Antes de terminar, cuatro errores comunes que le quitan potencia al interés compuesto.
+P: 1 · EMPEZAR TARDE |
+MONI: Error uno: esperar a tener mucha plata para empezar. Ya viste la carrera: diez años de ventaja valen más que montos grandes después.
+P: 2 · SACAR LA PLATA |
+MONI: Error dos: sacar la plata cada vez que crece. Cada retiro corta la bola de nieve y la hace empezar de nuevo, más chica.
+FOMITO: ¡Pero yo quiero ganar rápido! ¡Esta moneda sube veinte por ciento por semana!
+P: 3 · PERSEGUIR RENDIMIENTOS |
+MONI: Error tres: perseguir rendimientos enormes. El interés compuesto funciona con rendimientos razonables sostenidos en el tiempo, no con apuestas que pueden perderlo todo.
+MONI{angry}: Fomito, una pérdida del cincuenta por ciento necesita una ganancia del cien por ciento para volver al punto de partida. Las pérdidas grandes son veneno para el interés compuesto.
+FOMITO{worried}: Eso no me lo había dicho nadie.
+P: 4 · IGNORAR LA INFLACIÓN |
+MONI: Y error cuatro: mirar solo el número nominal. Si tu plata crece cinco por ciento pero la inflación es seis, en realidad perdiste poder de compra.
+P: CONSTANCIA |
+MONI: El secreto aburrido del interés compuesto es la constancia: aportar todos los meses, no tocarlo y dejar que el tiempo haga su trabajo.
+## Cómo empezar esta semana
+@bg marca
+@cast moni
+P: ESTA SEMANA |
+MONI: Si este video te convenció, tres pasos para empezar esta misma semana.
+P: 1 · UN MONTO |
+MONI: Uno: elegí un monto que no te duela. Veinte, cincuenta, cien dólares por mes. El monto importa menos que la constancia.
+P: 2 · UN LUGAR |
+MONI: Dos: elegí un lugar simple, regulado y con comisiones bajas. Si tenés dudas, empezá por lo más sencillo que ofrezca tu banco.
+P: 3 · AUTOMÁTICO |
+MONI{wave}: Tres: programalo en automático. El interés compuesto necesita tiempo, y el tiempo empieza a correr el día que arrancás.
+## Cierre
+@bg marca
+@cast moni
+P: TIEMPO > TASA |
+MONI: Resumen: el interés compuesto premia la paciencia. El tiempo pesa más que la tasa. Y la misma fuerza que te hace crecer con las inversiones te hunde con las deudas.
+P: ¿Cuál es tu número? |
+MONI{wave}: Contame en los comentarios cuánto te dio tu cálculo y a qué edad empezaste. Y si todavía no empezaste, contame qué te frena.
+MONI: Y muy pronto subimos el video de cómo empezar a invertir con poca plata. Suscribite para no perdértelo.

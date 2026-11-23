@@ -1,0 +1,147 @@
+@tipo guia
+## Las tres deudas de Moni
+@bg novela
+@cast moni,card,bill
+P: 3 DEUDAS |
+MONI{worried}: Tengo tres deudas. Y doscientos... no, trescientos dólares por mes para pagarlas. ¿Por dónde empiezo?
+TARJETÍN{sly}: Por mí, obvio. Soy el más lindo.
+PRÉSTAMÍN{sly}: Por mí, que te di la plata en cinco minutos.
+@cast moni,centavito
+CENTAVITO: Y yo soy tu primo. Me debés quinientos desde marzo.
+@cast moni
+P: 2 MÉTODOS |
+MONI: Hay dos métodos famosos para salir de deudas: la avalancha y la bola de nieve. Dan resultados distintos. Y elegir bien te puede ahorrar cientos de dólares.
+MONI{think}: Hoy los ponemos a competir con los mismos números, mes por mes, para que veas cuál te conviene a vos. Y al final, cómo no volver a caer.
+## Paso cero: la foto completa
+@bg pizarra
+P: LA FOTO COMPLETA |
+MONI: Antes de cualquier método, el paso cero: la foto completa. Una lista con cada deuda, el saldo, la tasa de interés y el pago mínimo o la cuota.
+P: TARJETA · $1.500 | 60 % anual · mínimo 3 %
+MONI: Deuda uno: la tarjeta. Mil quinientos dólares, al sesenta por ciento anual, con un mínimo del tres por ciento.
+P: PRÉSTAMO · $3.000 | 30 % anual · cuota $127
+MONI: Deuda dos: un préstamo personal. Tres mil dólares al treinta por ciento anual, en treinta y seis cuotas de ciento veintisiete dólares.
+P: PRIMO · $500 | sin interés · $20 por mes
+MONI: Deuda tres: mi primo Centavito. Quinientos dólares, sin interés. Le pago veinte por mes.
+P: PRESUPUESTO · $300 |
+MONI: Y tengo trescientos dólares por mes para todas las deudas. Los mínimos suman unos ciento noventa. Me sobran ciento diez para atacar.
+MONI{think}: Ese extra es el arma. La pregunta es a quién se lo doy primero.
+## Método avalancha
+@bg simulador
+@cast moni,card
+P: AVALANCHA |
+MONI: Método avalancha: a todas les pagás el mínimo, y todo el extra va a la deuda con la tasa más alta. En mi caso, la tarjeta, al sesenta por ciento.
+TARJETÍN{shock}: ¿A mí primero? ¡No, no, no!
+P: MESES 1 a 9 | todo el extra a la tarjeta
+MONI: Durante los primeros meses, la tarjeta recibe el mínimo más los ciento diez de extra. Baja rápido, y con ella bajan los intereses más caros.
+P: TARJETA: CERO |
+MONI: Cuando la tarjeta llega a cero, todo lo que le pagaba pasa al préstamo, que es la siguiente tasa más alta. Y al final, a mi primo.
+P: 23 MESES · $1.792 | en intereses
+MONI{wave}: Resultado de la avalancha: veintitrés meses para quedar libre, y mil setecientos noventa y dos dólares pagados en intereses.
+## Método bola de nieve
+@bg simulador
+@cast moni,centavito
+P: BOLA DE NIEVE |
+MONI: Método bola de nieve: a todas les pagás el mínimo, y todo el extra va a la deuda más chica, sin importar la tasa. En mi caso, mi primo.
+CENTAVITO: ¡Yupi! ¡Me pagás a mí primero!
+P: MES 4 | ¡primera deuda cancelada!
+MONI: En unos cuatro meses, la deuda con Centavito está pagada. Y esa sensación de tachar una deuda de la lista es tremendamente motivadora.
+P: LA BOLA CRECE |
+MONI: Lo que le pagaba a mi primo se suma al extra, y va a la siguiente más chica: la tarjeta. Y después al préstamo. Por eso se llama bola de nieve: el pago crece con cada deuda que cancelás.
+P: 24 MESES · $2.194 | en intereses
+MONI: Resultado de la bola de nieve: veinticuatro meses, y dos mil ciento noventa y cuatro dólares en intereses.
+## El resultado
+@bg pizarra
+@cast moni
+P: AVALANCHA · 23 meses · $1.792 |
+MONI: Comparemos. Avalancha: veintitrés meses y mil setecientos noventa y dos de intereses.
+P: BOLA DE NIEVE · 24 meses · $2.194 |
+MONI: Bola de nieve: veinticuatro meses y dos mil ciento noventa y cuatro.
+P: DIFERENCIA · $402 |
+MONI{think}: La avalancha gana por cuatrocientos dólares y un mes. Matemáticamente, siempre gana la avalancha.
+P: ¿ENTONCES? |
+MONI: ¿Entonces la bola de nieve no sirve? Sí sirve. Hay estudios que muestran que a mucha gente cancelar deudas chicas rápido la ayuda a no abandonar el plan.
+MONI: Y un plan que cumplís le gana siempre a un plan perfecto que abandonás en el tercer mes.
+P: MI CONSEJO |
+MONI: Mi consejo: si sos disciplinado y la diferencia de tasas es grande, avalancha. Si necesitás motivación o tus deudas tienen tasas parecidas, bola de nieve. Y si dudás, una mezcla: cancelá primero una deuda muy chica para arrancar con energía, y después pasá a la avalancha.
+## Trucos para acelerar
+@bg marca
+P: 4 TRUCOS |
+MONI: Sea cual sea el método, cuatro trucos para salir más rápido.
+P: 1 · EL EXTRA DEL MES |
+MONI: Uno: todo ingreso extra, aguinaldo, bono, venta de algo que no usás, una parte grande va a la deuda.
+P: 2 · REFINANCIAR |
+MONI: Dos: averiguá si podés pasar la deuda más cara a una más barata. Un préstamo al treinta por ciento para cancelar una tarjeta al sesenta te ahorra mucho. Pero solo si dejás de usar la tarjeta.
+P: 3 · NEGOCIAR |
+MONI: Tres: llamá y negociá. Muchos bancos ofrecen planes de pago o quitas de intereses, sobre todo si estás atrasado. Preguntar es gratis.
+P: 4 · VENDER |
+MONI: Cuatro: vendé lo que no usás. Ropa, electrónica, muebles. Cada venta va directo a la deuda.
+## Cómo no volver a caer
+@bg novela
+@cast moni,card,bill
+P: NO VOLVER |
+TARJETÍN{sly}: Bueno, cuando termines, nos volvemos a ver, ¿no?
+PRÉSTAMÍN{sly}: Yo siempre estoy a cinco minutos.
+MONI: No, chicos. Tengo un plan para que no vuelvan.
+P: 1 · FONDO DE EMERGENCIA |
+MONI: Uno: un fondo de emergencia. La mayoría vuelve a endeudarse por un imprevisto, no por capricho.
+P: 2 · TARJETA = PAGO TOTAL |
+MONI: Dos: la tarjeta, solo si puedo pagar el total.
+P: 3 · LA CUOTA LIBERADA |
+MONI{wave}: Y tres, mi favorito: cuando termine de pagar, los trescientos dólares que destinaba a deudas siguen saliendo todos los meses. Pero ahora van al ahorro y la inversión. Ya me acostumbré a vivir sin esa plata.
+TARJETÍN{worried}: Eso es cruel.
+PRÉSTAMÍN{worried}: Muy cruel.
+## Los errores que te hacen volver a empezar
+@bg sitcom
+@cast moni,card
+P: 4 ERRORES |
+MONI: Hay cuatro errores que hacen que mucha gente pague deudas durante meses y termine igual o peor.
+P: 1 · SEGUIR USANDO LA TARJETA |
+TARJETÍN{sly}: Pagame, pero seguí comprando, ¿eh?
+MONI: Uno: pagar la tarjeta y seguir usándola para el día a día. Es como vaciar un balde con un agujero.
+P: 2 · NO TENER FONDO |
+MONI: Dos: destinar todo a las deudas sin un mini fondo de emergencia. Aparece un imprevisto y volvés a la tarjeta.
+P: 3 · PRÉSTAMO PARA PAGAR PRÉSTAMO |
+MONI: Tres: sacar un préstamo nuevo para pagar el anterior, sin bajar la tasa. Solo estirás el problema y sumás costos.
+P: 4 · NO CELEBRAR |
+MONI{wave}: Y cuatro, aunque suene raro: no celebrar. Cada deuda cancelada merece un festejo chiquito y barato. Salir de deudas es una maratón, y hace falta motivación.
+TARJETÍN{worried}: ¿Vas a festejar que me dejaste?
+MONI: Con una cena en casa, Tarjetín.
+## Cuando la deuda es demasiado grande
+@bg marca
+@cast moni
+P: SI NO LLEGÁS NI AL MÍNIMO |
+MONI: ¿Y si ni siquiera llegás a pagar los mínimos? Ahí hacen falta otras medidas.
+P: 1 · HABLAR CON EL ACREEDOR |
+MONI: Uno: hablá con el banco o la empresa antes de atrasarte. Muchos ofrecen planes de pago, refinanciaciones o congelamiento de intereses. Es mucho más fácil negociar antes que después.
+P: 2 · PRIORIZAR LO ESENCIAL |
+MONI: Dos: asegurá primero lo esencial: vivienda, comida, servicios básicos. Las deudas son importantes, pero no más que comer.
+P: 3 · PEDIR AYUDA |
+MONI{think}: Tres: buscá asesoramiento. En muchos países hay organismos de defensa del consumidor o asociaciones que ayudan gratis a renegociar deudas.
+P: 4 · CUIDADO CON LOS SALVADORES |
+MONI{angry}: Y cuatro: cuidado con las empresas que prometen borrar tus deudas a cambio de un pago por adelantado. Muchas son estafas que se aprovechan de la desesperación.
+## Lo que viene después
+@bg simulador
+@cast moni
+P: DESPUÉS DE LAS DEUDAS |
+MONI: ¿Qué pasa el día que terminás de pagar? Ese día tenés un superpoder: trescientos dólares por mes que antes se iban en deudas.
+P: $300 POR MES · 10 AÑOS |
+MONI: Si esos trescientos van a una inversión al siete por ciento, en diez años son más de cincuenta mil dólares.
+MONI{think}: Es la misma plata que antes se llevaban los intereses. Ahora trabaja para vos. Por eso salir de deudas no es el final del plan. Es el comienzo.
+P: CELEBRAR Y SEGUIR |
+MONI{wave}: Celebrá, date un gusto chiquito, y al mes siguiente programá esa transferencia. Tu yo del futuro te lo va a agradecer.
+## Resumen en 30 segundos
+@bg pizarra
+@cast moni
+P: RESUMEN |
+MONI: Para salir de deudas: hacé la foto completa, pagá el mínimo de todas y poné todo el extra en una sola.
+MONI: Avalancha, la tasa más alta primero, para pagar menos intereses.
+MONI: Bola de nieve, la más chica primero, para ganar motivación.
+MONI: Cuando cancelás una, su pago pasa a la siguiente.
+MONI: Y para no volver: fondo de emergencia y tarjeta solo con pago total.
+## Cierre
+@bg marca
+@cast moni
+P: EL MEJOR MÉTODO |
+MONI: Resumen: foto completa, mínimos a todas, el extra a una sola deuda, y cuando la cancelás, la bola crece. Avalancha si querés pagar menos, bola de nieve si necesitás motivación.
+P: ¿Cuál vas a usar? |
+MONI{wave}: Contame en los comentarios: ¿cuál vas a usar? Y si querés, contá cuántas deudas tenés, sin montos, así nadie se siente solo.

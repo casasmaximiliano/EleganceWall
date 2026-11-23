@@ -1,0 +1,136 @@
+@tipo historia
+## No sos irresponsable
+@bg marca
+@cast moni
+P: 🧠 |
+MONI: Si alguna vez saliste de una tienda con algo que no pensabas comprar, y te preguntaste por qué lo hice, este video es para vos.
+MONI: No gastás de más porque seas irresponsable. Gastás de más porque tu cerebro tiene atajos.
+P: ATAJOS MENTALES |
+MONI: Esos atajos funcionaban perfecto hace miles de años, cuando había que decidir rápido si algo era peligroso o si había comida. Hoy las tiendas, las aplicaciones y las publicidades los conocen muy bien.
+MONI{think}: Los psicólogos y economistas los estudian hace décadas. Daniel Kahneman ganó el premio Nobel de Economía en 2002 en buena parte por estudiar estos sesgos.
+P: 7 TRAMPAS |
+MONI: Hoy te presento siete trampas mentales, una por una, con un ejemplo de tu vida real y la defensa para cada una.
+## Trampa 1: el ancla
+@bg novela
+@cast moni,tag
+P: ~~$200~~ → $99 |
+OFERTÍN: ¡Antes doscientos, ahora noventa y nueve! ¡La mitad!
+MONI: Trampa uno: el anclaje. El primer número que ves se convierte en tu referencia. Si primero ves doscientos, noventa y nueve te parece barato.
+P: ¿VALE $99? |
+MONI: Pero la pregunta correcta no es cuánto me ahorro. Es: ¿pagaría noventa y nueve por esto si nunca hubiera visto el doscientos?
+MONI: Pasa también en los menús de restaurante. El plato carísimo de arriba muchas veces está para que los demás parezcan razonables.
+OFERTÍN{sly}: Ese plato no lo pide nadie. Pero vende todos los otros.
+P: DEFENSA |
+MONI{think}: Defensa: antes de mirar el precio tachado, preguntate cuánto pagarías vos. Y compará con otras tiendas, no con el precio inventado.
+## Trampa 2: el miedo a perder
+@bg novela
+P: ÚLTIMAS UNIDADES |
+OFERTÍN: ¡Solo hoy! ¡Quedan tres unidades! ¡La oferta termina en diez minutos!
+MONI: Trampa dos: la aversión a la pérdida. Kahneman y su colega Amos Tversky encontraron que perder algo nos duele, más o menos, el doble de lo que nos alegra ganar lo mismo.
+P: PERDER DUELE ×2 |
+MONI: Por eso los mensajes de últimas unidades o solo hoy funcionan tan bien. No te venden el producto. Te venden el miedo a perderte la oportunidad.
+P: DEFENSA |
+MONI{think}: Defensa: si una oferta solo funciona si decidís en diez minutos, la oferta es para que no pienses. Casi siempre va a haber otra oferta.
+## Trampa 3: la plata de juguete
+@bg pizarra
+@cast moni,bow
+P: CONTABILIDAD MENTAL |
+MONI: Trampa tres: la contabilidad mental. Tu cerebro separa la plata en cajitas: la del sueldo, la del aguinaldo, la que te regalaron, la que encontraste en un bolsillo.
+CAPRICHO: ¡La del aguinaldo no cuenta! ¡Es plata extra!
+MONI: Y la plata extra se gasta con menos culpa, aunque valga exactamente lo mismo. El economista Richard Thaler, que también ganó el Nobel, estudió mucho este efecto.
+P: TODO ES LA MISMA PLATA |
+MONI: Pasa también con los reintegros, los puntos y las devoluciones. Se sienten como regalo y se gastan como regalo.
+P: DEFENSA |
+MONI{think}: Defensa: tratá la plata extra con una regla fija, decidida de antemano. Por ejemplo, un tercio para disfrutar y dos tercios para ahorro o deudas.
+## Trampa 4: me lo merezco
+@bg sitcom
+@cast moni,bow
+P: ME LO MEREZCO |
+CAPRICHO: Trabajaste toda la semana. Te lo merecés.
+MONI: Trampa cuatro: el autopremio. Después de un día difícil, gastar se siente como una recompensa justa.
+CAPRICHO: Y la semana pasada también te lo merecías. Y la anterior.
+P: PREMIO ≠ COSTUMBRE |
+MONI{shock}: Ese es el problema. Si te lo merecés todas las semanas, ya no es un premio. Es un gasto fijo que no planificaste.
+P: DEFENSA |
+MONI: Defensa: poné los premios en el presupuesto. Una categoría de gustos con un monto. Así te premiás sin culpa y sin sorpresas.
+CAPRICHO{worried}: Con presupuesto no tiene gracia.
+MONI: Tiene la misma gracia, Capricho, pero sin el resumen de la tarjeta.
+## Trampa 5: todos lo hacen
+@bg novela
+@cast moni,fomito
+P: EFECTO MANADA |
+FOMITO: ¡Todos están comprando esta moneda! ¡Mis amigos ya ganaron!
+MONI: Trampa cinco: el efecto manada. Si todos hacen algo, nuestro cerebro asume que debe estar bien. Durante miles de años, seguir al grupo nos mantuvo vivos.
+P: FOMO |
+MONI: Hoy se llama FOMO: miedo a quedarse afuera. Es el motor de las burbujas, de las modas caras y de muchas estafas.
+P: DEFENSA |
+MONI{think}: Defensa: preguntate si lo comprarías aunque nadie más lo estuviera comprando. Si la única razón es que todos lo hacen, no es una razón.
+FOMITO{worried}: ¿Y si de verdad sube?
+MONI: Puede pasar. Pero si no entendés por qué sube, tampoco vas a entender por qué baja.
+## Trampa 6: ya pagué
+@bg sitcom
+@cast moni,gymzombi
+P: COSTO HUNDIDO |
+GYM ZOMBI: Pagaste el año completo del gimnasio. No lo podés dejar ahora.
+MONI: Trampa seis: el costo hundido. Seguimos con algo solo porque ya pusimos plata o tiempo, aunque ya no nos convenga.
+P: LA PLATA YA SE FUE |
+MONI: El gimnasio que no usás, la película mala que seguís mirando porque ya pagaste la entrada, la inversión que perdió y no vendés porque esperás recuperar.
+MONI{think}: La plata que ya gastaste no vuelve, hagas lo que hagas. La única pregunta útil es: desde hoy, ¿qué me conviene más?
+P: DEFENSA |
+MONI: Defensa: cuando tengas que decidir, imaginá que empezás de cero. ¿Lo elegirías hoy? Si la respuesta es no, soltalo.
+## Trampa 7: el futuro puede esperar
+@bg simulador
+@cast moni
+P: SESGO DEL PRESENTE |
+MONI: Trampa siete, la más poderosa: el sesgo del presente. Le damos mucho más valor a lo de hoy que a lo de mañana.
+MONI: Un gusto hoy se siente real. Una jubilación tranquila en treinta años se siente como una historia de otra persona.
+P: EL VOS DEL FUTURO |
+MONI: Por eso ahorrar cuesta tanto. Tu cerebro siente que le estás quitando plata a vos para dársela a un desconocido.
+P: DEFENSA |
+MONI{wave}: Defensa: automatizá. Si el ahorro sale solo el día de cobro, no tenés que ganarle a tu cerebro todos los meses. Ya le ganaste una vez, cuando lo programaste.
+## Las trampas en las aplicaciones
+@bg simulador
+@cast moni
+P: LAS APPS |
+MONI: Todas estas trampas se potenciaron con el celular. Las aplicaciones de compras las usan todo el tiempo.
+P: NOTIFICACIONES |
+MONI: Las notificaciones de oferta solo por hoy usan el miedo a perder. Las de alguien compró esto cerca tuyo usan el efecto manada.
+P: COMPRA EN UN CLIC |
+MONI: La compra en un clic elimina el momento de pensar. Y los puntos y reintegros funcionan como plata de juguete.
+P: DESACTIVAR |
+MONI{think}: Defensa general: desactivá las notificaciones de las aplicaciones de compras. No te perdés nada importante. Cuando necesites algo, entrás vos a buscarlo.
+## Cómo usar los sesgos a tu favor
+@bg marca
+@cast moni,bow
+P: A TU FAVOR |
+MONI: Lo mejor de conocer los sesgos es que también los podés usar a tu favor.
+P: ANCLA PARA AHORRAR |
+MONI: El ancla: si te fijás una meta grande de ahorro, cualquier avance se compara con eso y te motiva a seguir.
+P: AVERSIÓN A LA PÉRDIDA |
+MONI: La aversión a la pérdida: pensá en el ahorro como algo que ya es tuyo. Gastarlo se siente como perderlo.
+P: EFECTO MANADA |
+MONI: El efecto manada: rodeate de gente que ahorra. Hablar de plata con amigos ordenados hace que ahorrar parezca normal.
+CAPRICHO{worried}: ¿Y yo qué hago?
+MONI{wave}: Vos quedás a cargo del presupuesto de gustos, Capricho. Con límite.
+## El experimento de la semana
+@bg pizarra
+@cast moni
+P: EXPERIMENTO |
+MONI: Te propongo un experimento para esta semana. Cada vez que estés por comprar algo que no planeabas, frená y preguntate: ¿qué trampa me está usando ahora?
+MONI: ¿Es el precio tachado? ¿El solo hoy? ¿El me lo merezco? ¿Todos lo tienen?
+MONI{think}: Solo con nombrar la trampa, su poder baja muchísimo. Es como cuando conocés el truco de un mago: el truco sigue, pero ya no te engaña.
+P: ANOTALAS |
+MONI: Anotá cuántas veces te pasó en la semana. Te vas a sorprender.
+## Resumen en 30 segundos
+@bg pizarra
+@cast moni
+P: RESUMEN |
+MONI: Las siete trampas: el ancla del precio tachado, el miedo a perder la oferta, la plata extra que se siente de juguete, el me lo merezco, el efecto manada, el costo hundido y el sesgo del presente.
+MONI: La defensa general: reglas decididas de antemano, esperar antes de comprar y automatizar el ahorro.
+## Cierre
+@bg marca
+P: CONOCER LAS TRAMPAS |
+MONI: Ancla, miedo a perder, plata de juguete, me lo merezco, todos lo hacen, ya pagué y el futuro puede esperar. Siete trampas que todos tenemos.
+MONI: No se trata de eliminarlas. Se trata de reconocerlas a tiempo y tener una regla preparada.
+P: ¿Cuál te pasa más? |
+MONI{wave}: Contame en los comentarios cuál de las siete te pasa más. La mía, sin dudas, es la del me lo merezco.

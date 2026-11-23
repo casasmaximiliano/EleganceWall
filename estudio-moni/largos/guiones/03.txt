@@ -1,0 +1,119 @@
+@tipo historia
+## Diciembre de 2008
+@bg novela
+@cast moni
+P: DICIEMBRE 2008 | Nueva York
+MONI: Diez de diciembre de 2008. Nueva York. Un hombre de setenta años les confiesa a sus dos hijos que su negocio es, en sus propias palabras, una gran mentira.
+MONI: Al día siguiente, el FBI lo detiene en su departamento de Manhattan.
+P: BERNIE MADOFF |
+MONI{shock}: Se llamaba Bernard Madoff, y acababa de destapar la estafa financiera más grande de la historia conocida.
+P: ≈ $65.000 MILLONES | en cuentas que no existían
+MONI: Los estados de cuenta de sus clientes sumaban unos sesenta y cinco mil millones de dólares. Plata que, en su mayor parte, no existía.
+MONI: Le habían confiado sus ahorros bancos, fundaciones, celebridades, jubilados y familias enteras.
+MONI{think}: ¿Cómo engañó a tanta gente, tan inteligente, durante tantos años? Hoy desarmamos la estafa pieza por pieza.
+MONI: Y al final te dejo tres señales que podés usar mañana mismo para que no te pase a vos.
+## Quién era Madoff
+@bg marca
+P: 1960 | funda su empresa
+MONI: Madoff fundó su empresa en 1960, con unos pocos miles de dólares. Empezó como intermediario de acciones, comprando y vendiendo para otros.
+MONI: Y le fue muy bien. Su empresa fue pionera en usar computadoras para operar en la bolsa.
+P: PRESIDENTE DEL NASDAQ |
+MONI: Llegó a ser presidente del Nasdaq, uno de los mercados de acciones más importantes del mundo. Asesoraba a los reguladores. Era respetado.
+MONI: Y eso es clave. Su mejor arma no era una fórmula secreta. Era la confianza.
+P: EL CLUB EXCLUSIVO |
+MONI: Además, no aceptaba a cualquiera. Para invertir con Madoff, alguien te tenía que recomendar. Muchas veces te decía que no.
+MONI{sly}: Y cuando algo es exclusivo, lo queremos más. La gente rogaba que la dejaran entrar.
+## Cómo funciona un esquema Ponzi
+@bg pizarra
+P: ESQUEMA PONZI |
+MONI: Lo que hacía Madoff tiene nombre: esquema Ponzi. Se llama así por Charles Ponzi, un estafador que en 1920, en Boston, prometía duplicar la plata en noventa días.
+P: NUEVOS → VIEJOS |
+MONI: El truco es simple. No hay inversión real, o casi. La plata que ponen los inversores nuevos se usa para pagarles a los viejos.
+MONI: Los viejos cobran puntual, están felices y recomiendan a más gente. Llega más plata nueva, y la rueda sigue girando.
+P: SIEMPRE MÁS GENTE |
+MONI: El problema es que necesita que entre cada vez más plata. Si un día muchos quieren retirar a la vez, no hay de dónde sacar.
+MONI{worried}: Todo esquema Ponzi termina igual. La única pregunta es cuándo.
+P: 10 a 12 % por año | todos los años
+MONI: La genialidad de Madoff fue no prometer mucho. Ofrecía alrededor de diez a doce por ciento anual. Bueno, pero no escandaloso.
+MONI: Lo raro era otra cosa: lo daba todos los años, con subas parejitas, sin casi ningún mes malo. Los mercados reales no funcionan así.
+## Las alertas que nadie escuchó
+@bg novela
+P: HARRY MARKOPOLOS |
+MONI: Hubo alguien que lo vio. Harry Markopolos, un analista financiero de Boston, intentó copiar la estrategia de Madoff para su empresa.
+MONI: Hizo los números y llegó a una conclusión: con la estrategia que Madoff decía usar, era imposible obtener esos resultados.
+P: 2000 · 2001 · 2005 | denuncias a la SEC
+MONI{angry}: Desde el año 2000 lo denunció varias veces ante la SEC, el organismo que regula los mercados en Estados Unidos. En 2005 mandó un informe titulado, más o menos: el fondo más grande del mundo es un fraude.
+MONI: Lo investigaron, pero no encontraron nada. Madoff era demasiado respetado, demasiado conocido.
+P: EL AUDITOR | una oficina chiquita
+MONI: Había otras señales. La empresa que auditaba sus cuentas, una firma gigantesca, era en realidad una oficina diminuta con muy poco personal.
+MONI{think}: Y Madoff no dejaba que nadie supiera bien cómo ganaba. Cuando le preguntaban, decía que era un secreto.
+## Por qué caen personas inteligentes
+@bg pizarra
+P: ¿CÓMO CAYERON? |
+MONI: Acá viene la pregunta que más me intriga. Entre las víctimas había banqueros, abogados, empresarios y fondos profesionales. Gente que sabía de finanzas. ¿Cómo cayeron?
+P: 1 · PRUEBA SOCIAL |
+MONI: Primero, la prueba social. Si mi vecino rico, el banco grande y la fundación famosa invierten con él, debe ser seguro. Cada cliente nuevo hacía más creíble al siguiente.
+P: 2 · LO QUE QUEREMOS CREER |
+MONI: Segundo, el deseo. Todos queremos una inversión que gane siempre y no pierda nunca. Cuando aparece, no queremos hacer las preguntas incómodas, porque la respuesta nos podría quitar el sueño.
+P: 3 · DELEGAR LA DUDA |
+MONI: Tercero, delegar la duda. Muchos inversores pensaban que otros ya habían revisado todo. El banco pensaba que el regulador había revisado. El regulador pensaba que el auditor había revisado. Y nadie revisaba de verdad.
+P: 4 · VERGÜENZA |
+MONI{worried}: Y cuarto, la vergüenza. Cuando alguien empezaba a sospechar, le costaba admitir que lo habían engañado. Era más fácil esperar un poco más.
+MONI: La inteligencia no te protege de las estafas. Lo que te protege son las preguntas.
+## El derrumbe
+@bg marca
+P: CRISIS 2008 |
+MONI: Entonces llegó la crisis financiera de 2008. Los mercados se desplomaron y mucha gente necesitaba plata urgente.
+MONI: Y pasó lo inevitable: muchísimos clientes pidieron retirar sus fondos al mismo tiempo.
+P: $7.000 MILLONES | en pedidos de retiro
+MONI: Se habla de pedidos por unos siete mil millones de dólares. Madoff no tenía de dónde sacarlos.
+MONI: Fue entonces cuando les confesó todo a sus hijos, que lo denunciaron.
+P: 150 AÑOS |
+MONI: En 2009 lo condenaron a ciento cincuenta años de prisión. Murió en la cárcel en 2021.
+P: + $14.000 MILLONES | recuperados
+MONI: Durante más de una década, un síndico se dedicó a recuperar plata para las víctimas. Logró juntar más de catorce mil millones de dólares. Mucho, pero lejos de todo lo perdido.
+MONI{worried}: Muchas familias perdieron los ahorros de toda su vida. Algunas fundaciones benéficas tuvieron que cerrar.
+## Tres señales de estafa
+@bg simulador
+@cast moni,bill
+P: 3 SEÑALES |
+MONI: Ahora lo importante. ¿Cómo te protegés vos? No hace falta ser experto. Hay tres señales que se repiten en casi todas las estafas.
+P: 1 · RENDIMIENTO GARANTIZADO |
+PRÉSTAMÍN: Te garantizo un diez por ciento por mes, sin riesgo.
+MONI{angry}: Señal uno: rendimiento alto y garantizado. En las inversiones reales, más rendimiento siempre trae más riesgo. Si te dicen sin riesgo y mucho rendimiento, alguien miente.
+P: 2 · NO SE ENTIENDE |
+MONI: Señal dos: no se entiende cómo gana la plata. Si preguntás y te contestan que es un secreto, una fórmula exclusiva o algo demasiado complicado para explicar, alejate.
+P: 3 · PRESIÓN | para entrar o para no salir
+MONI: Señal tres: presión. Para entrar ya, porque es por tiempo limitado. O para no sacar la plata, porque te vas a perder ganancias.
+MONI: Y sumale una cuarta, de regalo: si te paga por traer a otros, es casi seguro una pirámide.
+PRÉSTAMÍN{worried}: Bueno, bueno, me voy.
+@cast moni
+P: ¿ESTÁ REGULADO? |
+MONI: Antes de invertir en cualquier lado, fijate si la empresa está registrada ante el organismo que regula los mercados en tu país. Es gratis y lleva cinco minutos.
+## Las estafas de hoy
+@bg novela
+@cast moni,fomito
+P: MISMA ESTAFA | ropa nueva
+MONI: Te podés estar preguntando: ¿esto sigue pasando? Sí. Todos los años. Cambia la ropa, pero el esqueleto es el mismo.
+FOMITO: ¡Hay una plataforma nueva que paga uno por ciento por día! ¡Todos mis amigos están adentro!
+P: 1 % POR DÍA | = más de 3.000 % al año
+MONI{shock}: Uno por ciento por día, compuesto, es más de tres mil por ciento al año. Ninguna inversión real hace eso.
+MONI: Las versiones modernas se disfrazan de criptomonedas, de trading automático con inteligencia artificial, de grupos exclusivos en redes sociales.
+P: LAS PRIMERAS GANANCIAS |
+MONI: Y casi todas usan el mismo truco que Madoff: te dejan retirar las primeras ganancias. Chiquitas. Para que confíes y pongas más.
+FOMITO{worried}: Pero yo retiré veinte dólares y funcionó.
+MONI: Claro. Esos veinte dólares eran la carnada. Lo que se pierde viene después, cuando pusiste todo.
+P: RECOMENDADO POR AMIGOS |
+MONI: Otro clásico: llegan por recomendación de alguien de confianza. Un amigo, un familiar, alguien de la iglesia o del trabajo. Esa persona no te quiere estafar. Generalmente también es víctima, solo que todavía no lo sabe.
+MONI{think}: Por eso es tan difícil. Decir que no se siente como desconfiar de alguien que querés.
+P: LA REGLA DE MONI |
+MONI: Mi regla: si no lo puedo explicar en dos frases y no puedo verificar quién guarda la plata, no entro. Aunque lo recomiende mi mejor amiga.
+## Cierre
+@bg marca
+@cast moni
+P: LA CONFIANZA |
+MONI: Madoff no engañó a la gente con promesas locas. La engañó con confianza, exclusividad y números aburridos que parecían demasiado perfectos.
+MONI: La lección: la confianza no reemplaza la verificación. Ni siquiera con gente famosa, ni con gente que conocés.
+P: ¿Te ofrecieron algo así? |
+MONI{wave}: ¿Alguna vez te ofrecieron una inversión que parecía demasiado buena? Contalo en los comentarios, así ayudamos a otros a reconocerlas.
+MONI: Y si querés aprender a usar la tarjeta de crédito sin que te robe, el próximo video es para vos.

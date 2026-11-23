@@ -1,0 +1,131 @@
+@tipo guia
+## Mil dólares, seis años
+@bg novela
+@cast moni,card
+P: $1.000 | de deuda en la tarjeta
+MONI: Mil dólares de deuda en la tarjeta de crédito. Una tasa del veinticuatro por ciento anual, que en muchos países es baja.
+TARJETÍN: Tranquila, mi amor. Pagá solo el mínimo. Es chiquito.
+P: 73 MESES | pagando el mínimo
+MONI{shock}: Si pagás solo el mínimo, tardás setenta y tres meses en terminar. Más de seis años.
+P: $1.867 | en total
+MONI{shock}: Y terminás pagando mil ochocientos sesenta y siete dólares. Casi el doble de lo que gastaste.
+P: 25 MESES | pagando el doble del mínimo
+MONI: Pero si pagás el doble del mínimo, la cancelás en veinticinco meses, y pagás mil doscientos setenta y uno.
+MONI: Misma deuda. Cuatro años de diferencia. Casi seiscientos dólares de diferencia.
+TARJETÍN{worried}: Eso no se lo cuentes a nadie.
+MONI: Se lo voy a contar a todos. En este video vemos cómo leer el resumen, cómo funciona la trampa del mínimo, las cuotas sin interés, el adelanto de efectivo y mis cinco reglas para que la tarjeta trabaje para vos.
+MONI{wave}: Porque la tarjeta no es mala. Está diseñada para que la uses mal.
+## Cómo leer el resumen
+@bg pizarra
+@cast moni
+P: EL RESUMEN |
+MONI: Empecemos por el papel que casi nadie lee: el resumen. Tiene cuatro números que tenés que conocer de memoria.
+P: 1 · FECHA DE CIERRE |
+MONI: Uno: la fecha de cierre. Es el día en que la tarjeta suma todo lo que compraste en el período. Lo que compres después del cierre, va al resumen siguiente.
+P: 2 · VENCIMIENTO |
+MONI: Dos: la fecha de vencimiento. Es el último día para pagar sin recargos. Suele ser una o dos semanas después del cierre.
+P: 3 · SALDO TOTAL |
+MONI: Tres: el saldo total. Es lo que gastaste. Si pagás este número completo antes del vencimiento, en la mayoría de las tarjetas no pagás ni un peso de interés.
+P: 4 · PAGO MÍNIMO |
+MONI: Y cuatro: el pago mínimo. Es lo menos que podés pagar para no caer en mora. Pero sobre todo lo que no pagás, empiezan a correr intereses.
+P: TASA · CFT |
+MONI{think}: Y buscá también la tasa de interés y el costo financiero total, si tu país lo informa. Es el número que te dice cuánto cuesta financiarte de verdad.
+## La trampa del mínimo
+@bg simulador
+@cast moni,card
+P: ¿POR QUÉ NO BAJA? |
+MONI: ¿Por qué pagando el mínimo la deuda casi no baja? Porque la mayor parte de lo que pagás se va en intereses.
+P: MES 1 | $20 de interés
+MONI: Con mil dólares al veinticuatro por ciento anual, el primer mes se generan unos veinte dólares de intereses.
+P: MÍNIMO: $30 | solo $10 bajan la deuda
+MONI: Si el mínimo es de treinta dólares, solo diez bajan la deuda de verdad. Los otros veinte son para Tarjetín.
+TARJETÍN{sly}: Gracias, preciosa.
+MONI: Y como el mínimo se calcula como un porcentaje de lo que debés, a medida que baja la deuda, baja el mínimo. Entonces pagás cada vez menos y tardás cada vez más.
+P: 73 MESES |
+MONI{angry}: Es como subir una escalera mecánica que baja. Caminás todos los meses y casi no avanzás.
+P: ×2 = 25 MESES |
+MONI: En cambio, si pagás el doble, casi todo lo extra va directo contra la deuda. Por eso la diferencia es tan enorme.
+## Cuotas sin interés
+@bg novela
+P: 12 CUOTAS SIN INTERÉS |
+TARJETÍN: ¡Doce cuotas sin interés! ¡Es gratis!
+MONI: Las cuotas sin interés pueden ser una buena herramienta. Pero tienen dos trampas.
+P: TRAMPA 1 | tu sueldo futuro
+MONI: Trampa uno: comprometés tu sueldo futuro. Cinco compras de cien dólares en doce cuotas son cuarenta y dos dólares por mes durante un año.
+MONI: Y si cada mes sumás una compra nueva en cuotas, en poco tiempo tenés diez cuotitas que juntas son un alquiler.
+P: TRAMPA 2 | el precio de contado
+MONI: Trampa dos: a veces el precio en cuotas es más alto que el de contado. Ahí sí hay interés, solo que escondido en el precio.
+MONI{think}: Antes de comprar en cuotas, preguntá siempre: ¿cuánto sale de contado? Y sumá todas las cuotas que ya tenés activas.
+## Adelanto de efectivo
+@bg novela
+P: ¿PLATA YA? |
+TARJETÍN{sly}: ¿Necesitás efectivo? Sacalo del cajero con la tarjeta. Así de fácil.
+MONI: El adelanto de efectivo es una de las formas más caras de conseguir plata.
+P: COMISIÓN | al retirar
+MONI: Suele cobrar una comisión fija o un porcentaje en el momento de sacar la plata.
+P: INTERÉS DESDE EL DÍA 1 |
+MONI: Y en la mayoría de las tarjetas no tiene período de gracia: el interés empieza a correr desde el día en que lo sacás, aunque pagues el resumen completo.
+MONI{angry}: Usalo solo en una emergencia de verdad, y devolvelo lo antes posible. Para eso existe el fondo de emergencia.
+## Las cinco reglas de Moni
+@bg marca
+@cast moni
+P: 5 REGLAS |
+MONI: Ahora sí, mis cinco reglas para que la tarjeta trabaje para vos y no al revés.
+P: 1 · PAGO TOTAL |
+MONI: Regla uno: pagá siempre el total del resumen. Si no podés pagar el total, la compra no entraba en tu presupuesto.
+P: 2 · COMPRÁ DESPUÉS DEL CIERRE |
+MONI: Regla dos: si tenés que hacer una compra grande, hacela justo después del cierre. Vas a tener casi dos meses hasta el vencimiento, sin interés.
+P: 3 · UNA SOLA TARJETA |
+MONI: Regla tres: una sola tarjeta, o dos como mucho. Cada tarjeta nueva es un resumen más para controlar y una tentación más.
+P: 4 · ALERTAS |
+MONI: Regla cuatro: activá las alertas en la aplicación del banco. Cada compra, un aviso. Ver los gastos en tiempo real cambia todo.
+P: 5 · TU PROPIO LÍMITE |
+MONI: Y regla cinco: ponete tu propio límite, más bajo que el del banco. El banco te da un límite pensando en lo que le conviene a él, no a vos.
+P: + BENEFICIOS |
+MONI: Si cumplís estas reglas, la tarjeta se vuelve tu aliada: compras protegidas, puntos, descuentos y un mes de plazo gratis. Sin pagar ni un peso de interés.
+## Si ya estás endeudado
+@bg simulador
+@cast moni,card
+P: PLAN DE SALIDA |
+MONI: ¿Y si ya estás en el pozo? Tranquilo. Hay salida. Plan de tres pasos.
+P: 1 · DEJÁ DE USARLA |
+MONI: Paso uno: dejá de usarla. Guardala, sacala del celular, de las compras guardadas. No se puede vaciar una bañadera con la canilla abierta.
+P: 2 · MÁS QUE EL MÍNIMO |
+MONI: Paso dos: pagá siempre más que el mínimo. Aunque sea un poco. Ya viste lo que cambia el doble.
+P: 3 · REFINANCIAR |
+MONI: Paso tres: averiguá si podés pasar esa deuda a un préstamo con una tasa más baja. Pero solo si dejaste de usar la tarjeta. Si no, vas a terminar con las dos deudas.
+TARJETÍN{worried}: ¿Me vas a guardar en un cajón?
+MONI: Por un tiempo, sí. Cuando sepas comportarte, volvés.
+## Preguntas que me hacen siempre
+@bg sitcom
+@cast moni,card
+P: PREGUNTAS FRECUENTES |
+MONI: Antes de cerrar, las preguntas que más me hacen sobre la tarjeta.
+P: ¿PAGAR ANTES DEL CIERRE? |
+MONI: ¿Conviene pagar antes del cierre? Si pagás el total antes del vencimiento, ya no pagás intereses. Pagar antes del cierre sirve para liberar límite o si te cuesta controlarte, pero no te ahorra intereses extra en la mayoría de las tarjetas.
+P: ¿CANCELAR LA TARJETA? |
+MONI: ¿Me conviene cancelar la tarjeta? Si no podés controlarla, puede ser lo mejor. Si la usás bien, tenerla con una historia de pagos puntuales puede ayudarte a conseguir créditos más baratos en el futuro.
+TARJETÍN{sly}: ¿Viste? Me necesitás.
+MONI: Te necesito bien educado, Tarjetín.
+P: ¿EL MÍNIMO ME ARRUINA EL HISTORIAL? |
+MONI: ¿Pagar el mínimo me arruina el historial? Pagar el mínimo a tiempo no suele contar como atraso. Lo que más perjudica es pagar tarde o no pagar. Pero el mínimo te arruina el bolsillo, que es casi peor.
+P: ¿Y LOS PUNTOS? |
+MONI{think}: ¿Y los puntos y millas? Son un buen beneficio solo si pagás el total. Si pagás intereses, ningún punto compensa lo que perdés. Nunca gastes para juntar puntos.
+P: ¿DÉBITO O CRÉDITO? |
+MONI: ¿Débito o crédito? Si te cuesta controlarte, débito: gastás solo lo que tenés. Si sos ordenado, crédito con pago total: tenés un mes de plazo, protección en compras y beneficios.
+## Tarjeta y celular: el gasto invisible
+@bg marca
+@cast moni
+P: PAGAR CON EL CELULAR |
+MONI: Un detalle moderno. Hoy muchas compras se hacen acercando el celular o con un clic en una aplicación. Es comodísimo, y por eso mismo es peligroso.
+MONI: Cuanto menos sentís el momento de pagar, más fácil es gastar. Con billetes, ves cómo se va la plata. Con el celular, no ves nada.
+P: REVISIÓN SEMANAL |
+MONI{think}: Mi consejo: una vez por semana, mirá los movimientos de la tarjeta en la aplicación. Cinco minutos. Vas a encontrar compras que no recordabas haber hecho.
+## Cierre
+@bg marca
+@cast moni
+P: LA TARJETA NO ES MALA |
+MONI: La tarjeta no es buena ni mala. Es una herramienta. Si la usás con las reglas, te da un mes de plazo gratis y beneficios. Si la usás con el mínimo, te cobra el doble.
+P: ¿Pagás el total? |
+MONI{wave}: Contame en los comentarios: ¿pagás el total del resumen o el mínimo? Sin vergüenza, que acá estamos para aprender.
+MONI: Y si querés ver la telenovela completa de Moni contra Tarjetín, está en la lista del canal.

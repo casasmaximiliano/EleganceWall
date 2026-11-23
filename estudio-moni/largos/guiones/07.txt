@@ -1,0 +1,117 @@
+@tipo historia
+## Ámsterdam, 1637
+@bg novela
+@cast moni
+P: HOLANDA, 1637 |
+MONI: Holanda, 1637. La Edad de Oro holandesa. Ámsterdam es una de las ciudades más ricas del mundo, llena de comerciantes, barcos y bancos.
+MONI: Y en medio de toda esa riqueza, la gente se vuelve loca por una flor.
+P: 1 BULBO = 1 CASA |
+MONI{shock}: Dicen que un solo bulbo de tulipán se llegó a vender por lo mismo que una casa en el centro de Ámsterdam.
+MONI: Dicen que la gente vendía sus tierras, sus negocios y sus joyas para comprar bulbos. Y que cuando el precio se desplomó, hubo personas que se arrojaron a los canales.
+P: LA PRIMERA BURBUJA |
+MONI: Es la historia de burbujas financieras más famosa del mundo. La vas a encontrar en libros de economía, en películas y en cualquier charla sobre criptomonedas.
+MONI{think}: Y buena parte de lo que te contaron es exagerado.
+MONI: Hoy te cuento qué pasó de verdad, por qué el mito se volvió tan popular, y qué tienen en común los tulipanes con las criptomonedas, las acciones de moda y el departamento que nunca baja.
+## Por qué los tulipanes
+@bg marca
+P: UNA FLOR EXÓTICA |
+MONI: Primero, ¿por qué los tulipanes? Los tulipanes llegaron a Europa desde el Imperio Otomano en el siglo dieciséis. Eran exóticos, nuevos y muy llamativos.
+P: TULIPANES ROTOS |
+MONI: Y había unos especiales: los tulipanes rotos. Tenían pétalos con llamas y rayas de colores, únicos. Nadie sabía cómo producirlos.
+MONI: Mucho después se descubrió que esas rayas las causaba un virus, transmitido por pulgones. El mismo virus que hacía hermosas a las flores, las debilitaba.
+P: ESCASEZ + ESTATUS |
+MONI: Resultado: eran escasos, impredecibles y hermosos. Escasez más estatus. La receta perfecta para que un objeto se vuelva carísimo.
+MONI{think}: Tener un jardín con tulipanes raros era como hoy tener un auto de lujo en la puerta. Era mostrar que te iba bien.
+## Comprar flores bajo tierra
+@bg pizarra
+P: CONTRATOS A FUTURO |
+MONI: Acá viene lo interesante. Los tulipanes florecen pocas semanas al año. El resto del tiempo, el bulbo está bajo tierra.
+MONI: Entonces la gente empezó a comprar y vender contratos: papeles que decían te entrego este bulbo cuando lo saque de la tierra, en verano.
+P: COMPRAR SIN VER |
+MONI: Se compraban flores que nadie había visto todavía. Y esos papeles se revendían, una y otra vez, en tabernas, con cada vez más ganancia.
+P: COMPRAR PARA REVENDER |
+MONI{shock}: En el invierno de 1636 a 1637 los precios se dispararon. Mucha gente ya no compraba porque quería la flor. Compraba porque esperaba vendérsela a otro más caro.
+MONI: Y esa es la definición más simple de una burbuja: cuando el precio de algo depende de que siempre haya alguien dispuesto a pagar más.
+P: MILES DE FLORINES |
+MONI: Hay registros de bulbos raros que se pagaron miles de florines. Varias veces lo que ganaba un artesano en un año entero.
+## El derrumbe de febrero
+@bg novela
+P: FEBRERO DE 1637 |
+MONI: Y entonces, en febrero de 1637, pasó algo muy simple. En una subasta en la ciudad de Haarlem, los compradores no aparecieron.
+MONI{worried}: Nadie quiso pagar el precio que se pedía. Y cuando nadie quiere pagar, el precio no baja de a poco. Se desploma.
+P: −90 % |
+MONI: En pocos días, los contratos pasaron a valer una pequeña fracción de lo que valían. Muchos compradores se negaron a pagar lo que habían prometido.
+MONI: Hubo discusiones, juicios y mucho enojo. Las autoridades terminaron dejando que muchos contratos se arreglaran por una fracción del precio.
+## El mito
+@bg pizarra
+P: 1841 · CHARLES MACKAY |
+MONI: Ahora, ¿de dónde sale la versión exagerada? En gran parte, de un libro de 1841 del escocés Charles Mackay, sobre locuras colectivas.
+MONI: Mackay contó la historia de los tulipanes como un ejemplo de ruina general. Y se basó en panfletos de la época que eran, básicamente, sermones morales contra la codicia.
+P: ANNE GOLDGAR · 2007 |
+MONI: En 2007, la historiadora Anne Goldgar publicó un estudio revisando archivos reales de la época: contratos, registros de notarios y documentos judiciales.
+P: LO QUE ENCONTRÓ |
+MONI{think}: ¿Qué encontró? Que el mercado de tulipanes existió y los precios sí se dispararon. Pero que lo jugaba un grupo relativamente chico de comerciantes y artesanos ricos.
+MONI: No encontró rastros de una ola de quiebras que hundiera la economía holandesa. Y no encontró pruebas de personas arrojándose a los canales.
+MONI: La economía holandesa siguió creciendo en los años siguientes. Fue un golpe para algunos, no un desastre nacional.
+P: ¿POR QUÉ DURA EL MITO? |
+MONI: ¿Y por qué sobrevive el mito? Porque es una historia perfecta: simple, exagerada y con moraleja. Las historias así se repiten mejor que la realidad, que siempre es más complicada.
+## Cómo se ve una burbuja
+@bg simulador
+P: 5 FASES |
+MONI: Lo que sí es real es la forma de las burbujas. Los economistas describen cinco fases que se repiten una y otra vez.
+P: 1 · NOVEDAD |
+MONI: Uno: la novedad. Aparece algo nuevo y emocionante. Una flor exótica, internet, las criptomonedas.
+P: 2 · AUGE |
+MONI: Dos: el auge. Los precios suben, los primeros ganan mucha plata y aparece en las noticias.
+P: 3 · EUFORIA |
+@cast moni,fomito
+FOMITO: ¡Todos están comprando! ¡Esta vez es diferente! ¡Nunca va a bajar!
+MONI: Tres: la euforia. Entra todo el mundo, incluso gente que no entiende qué compra. Se escucha mucho la frase esta vez es diferente.
+P: 4 · LA DUDA |
+MONI: Cuatro: la duda. Los que entraron primero empiezan a vender. El precio se frena.
+P: 5 · PÁNICO |
+MONI{worried}: Y cinco: el pánico. Todos quieren salir a la vez, y no hay compradores.
+FOMITO{shock}: ¡Nadie me avisó!
+MONI: Te avisaron, Fomito. La frase esta vez es diferente siempre es la advertencia.
+## Las burbujas de hoy
+@bg marca
+@cast moni
+P: ¿Y HOY? |
+MONI: Desde los tulipanes hubo muchas burbujas: la de los mares del sur en 1720, las acciones de internet en el año 2000, las viviendas en Estados Unidos antes de 2008.
+P: CRIPTO 2021 → 2022 |
+MONI: Y más cerca, las criptomonedas: bitcoin llegó a unos sesenta y nueve mil dólares en noviembre de 2021, y un año después rondaba los quince mil.
+MONI{think}: Eso no significa que todo lo que sube sea una burbuja. Muchas cosas suben porque valen más. La pregunta clave es: ¿por qué compro esto?
+P: ¿USO O REVENTA? |
+MONI: Si la única respuesta es porque otro me lo va a comprar más caro, estás comprando un tulipán.
+## Las otras burbujas famosas
+@bg novela
+@cast moni
+P: 1720 · MARES DEL SUR |
+MONI: Los tulipanes son la burbuja más famosa, pero no la más grande. En 1720, en Inglaterra, la Compañía de los Mares del Sur prometía riquezas del comercio con América.
+MONI: Sus acciones se multiplicaron varias veces en pocos meses. Y cayeron casi igual de rápido.
+P: ISAAC NEWTON |
+MONI{shock}: Entre los que perdieron plata estaba Isaac Newton, uno de los científicos más brillantes de la historia. Se le atribuye haber dicho que podía calcular el movimiento de los planetas, pero no la locura de la gente.
+P: 2000 · PUNTO COM |
+MONI: En el año 2000, cualquier empresa con punto com en el nombre subía en la bolsa, aunque no ganara plata. El índice Nasdaq cayó cerca de un ochenta por ciento entre 2000 y 2002.
+P: 2008 · VIVIENDAS |
+MONI: En 2008 explotó la burbuja de viviendas en Estados Unidos. Se daban créditos a gente que no podía pagarlos, porque se suponía que las casas nunca bajaban. Bajaron, y arrastraron al sistema financiero mundial.
+MONI{think}: En todas aparece la misma idea: esta vez es diferente. Y en todas, el final se pareció bastante a febrero de 1637.
+## Cómo detectar una burbuja a tiempo
+@bg pizarra
+@cast moni
+P: SEÑALES |
+MONI: ¿Se puede detectar una burbuja antes de que explote? Nadie puede adivinar el momento exacto, pero hay señales que se repiten.
+P: TODOS HABLAN DE ESO |
+MONI: Cuando en una reunión familiar todos hablan de lo mismo, incluso los que nunca invirtieron, es una señal de euforia.
+P: SE PIDE PRESTADO PARA COMPRAR |
+MONI: Cuando la gente pide préstamos o usa la tarjeta para comprar algo porque va a subir, la burbuja está alimentada con deuda. Y la deuda hace que la caída sea peor.
+P: NADIE SABE EXPLICARLO |
+MONI{think}: Y cuando preguntás por qué vale tanto y la única respuesta es porque sube, cuidado. Eso decían en las tabernas de Haarlem.
+## Cierre
+@bg marca
+@cast moni
+P: LA LECCIÓN REAL |
+MONI: La lección real de los tulipanes no es que la gente de antes era tonta. Es que todos somos capaces de entusiasmarnos con algo porque todos los demás se entusiasman.
+MONI: Y también que las historias demasiado perfectas merecen una segunda mirada.
+P: ¿Qué burbuja ves hoy? |
+MONI{wave}: Contame en los comentarios: ¿qué cosa de hoy te parece un tulipán? Después lo revisamos juntos en un video.

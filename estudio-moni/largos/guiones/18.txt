@@ -1,0 +1,136 @@
+@tipo guia
+## La pizza que se achica
+@bg pizarra
+@cast moni
+P: 🍕 $10 |
+MONI: Con diez dólares comprabas una pizza entera. Un año después, con los mismos diez, te dan siete porciones.
+MONI: La pizza no cambió. La pizzería no se volvió mala. Tu billete compra menos. Eso es la inflación.
+@cast moni,ghost
+INFLA{sly}: Buuu. Soy yo. El fantasma que se come tu plata sin que lo veas.
+P: ¿POR QUÉ SUBE TODO? |
+MONI: Todos sabemos que los precios suben. Pocos saben por qué. Y casi nadie sabe qué hacer para que la inflación no se coma sus ahorros.
+MONI{think}: Hoy Infla se sienta en el banquillo. Vemos cómo se mide, qué la causa, por qué tu sueldo casi siempre llega tarde, y cinco formas concretas de protegerte. Sin bajar línea política: solo cómo funciona.
+## Cómo se mide
+@bg marca
+@cast moni
+P: LA CANASTA |
+MONI: ¿Cómo se sabe cuánta inflación hubo? Los institutos de estadística de cada país arman una canasta: una lista de cientos de productos y servicios que compra una familia típica.
+P: COMIDA · ALQUILER · TRANSPORTE · SALUD |
+MONI: Comida, alquiler, transporte, ropa, salud, educación, servicios. Cada uno con un peso según cuánto gasta la familia en eso.
+P: ÍNDICE DE PRECIOS |
+MONI: Todos los meses miden cuánto cuesta esa canasta. Si cuesta un cinco por ciento más que hace un año, la inflación anual es del cinco por ciento.
+P: TU INFLACIÓN |
+MONI{think}: Ojo: el número oficial es un promedio. Tu inflación personal puede ser distinta. Si alquilás y los alquileres suben más que el resto, tu inflación es más alta que el promedio.
+## Qué la causa
+@bg pizarra
+P: 4 CAUSAS |
+MONI: ¿Qué hace que los precios suban? Los economistas discuten mucho los detalles, pero hay cuatro causas principales.
+P: 1 · DEMANDA |
+MONI: Uno: demanda. Cuando la gente quiere comprar más de lo que la economía puede producir, los precios suben. Mucha gente queriendo pocas cosas.
+P: 2 · COSTOS |
+MONI: Dos: costos. Si sube el petróleo, la energía o los insumos, producir cuesta más, y las empresas trasladan esa suba a los precios.
+P: 3 · EMISIÓN |
+MONI: Tres: emisión de dinero. Si se crea mucho dinero sin que la economía produzca más, cada billete vale menos.
+P: 4 · EXPECTATIVAS |
+MONI: Cuatro: expectativas. Si todos esperan que los precios suban, los comercios suben precios por las dudas, los trabajadores piden más aumento y la inflación se cumple sola.
+INFLA{sly}: Ese es mi truco favorito. Que crean que voy a volver.
+MONI{think}: Por eso los bancos centrales se preocupan tanto por la credibilidad. Si la gente cree que la inflación va a bajar, es más fácil que baje.
+## Por qué tu sueldo llega tarde
+@bg novela
+@cast moni,ghost
+P: SUELDO vs. PRECIOS |
+MONI: Ahora, lo que más duele: ¿por qué siempre parece que el sueldo llega tarde?
+MONI: Porque los precios suben todos los días, de a poco, y los sueldos suelen ajustarse una o dos veces por año.
+P: +3 % SUELDO · +6 % PRECIOS |
+MONI: Si te aumentan el tres por ciento y la inflación fue del seis, en realidad tu sueldo compra casi un tres por ciento menos que el año pasado.
+INFLA{sly}: Te aumentaron el sueldo con una sonrisa, y yo te lo bajé sin que te dieras cuenta.
+P: SUELDO REAL |
+MONI: Eso se llama sueldo real: lo que podés comprar con tu sueldo, no el número que figura en el recibo.
+MONI{angry}: Por eso, cada vez que negocies un aumento, llevá el dato de inflación. Un aumento por debajo de la inflación es una baja.
+## Quién gana y quién pierde
+@bg pizarra
+@cast moni
+P: ¿QUIÉN PIERDE? |
+MONI: La inflación no le pega a todos igual.
+P: PIERDEN |
+MONI: Pierden los que tienen ahorros en efectivo o en cuentas que no rinden, los que tienen ingresos fijos, como muchos jubilados, y los que cobran sueldos que se ajustan tarde.
+P: GANAN |
+MONI: Ganan, en parte, los que tienen deudas a tasa fija, porque la deuda se hace más chica en términos reales, y los que tienen bienes que suben con los precios.
+MONI{think}: Esto no significa que endeudarse sea bueno. Significa que entender la inflación te ayuda a tomar mejores decisiones.
+## El disfraz de Infla
+@bg sitcom
+@cast moni,ghost
+P: REDUFLACIÓN |
+INFLA: Y cuando no puedo subir el precio, me disfrazo.
+MONI: La reduflación: mismo precio, menos producto. El paquete de galletitas que tenía doce y ahora tiene diez. El chocolate que pesa un poco menos. El rollo de cocina con menos hojas.
+P: PRECIO POR KILO |
+MONI: El precio por kilo o por litro, que suele estar en la etiqueta en letra chica, te deja ver la inflación escondida.
+INFLA{worried}: Odio esa letra chica.
+## Cinco formas de protegerte
+@bg simulador
+@cast moni
+P: 5 DEFENSAS |
+MONI: Ahora lo importante: cinco formas de protegerte de Infla.
+P: 1 · NO DEJAR LA PLATA QUIETA |
+MONI: Uno: no dejes los ahorros de largo plazo quietos. Buscá opciones que, al menos, intenten acompañar a la inflación. El fondo de emergencia sí tiene que estar disponible, pero idealmente en un lugar que rinda algo.
+P: 2 · INSTRUMENTOS QUE AJUSTAN |
+MONI: Dos: en muchos países existen bonos o depósitos que se ajustan por inflación. Están diseñados justamente para esto.
+P: 3 · INVERTIR A LARGO PLAZO |
+MONI: Tres: para el largo plazo, invertir en empresas, por ejemplo a través de fondos diversificados, históricamente le ganó a la inflación en muchos mercados. No todos los años, pero sí en períodos largos.
+P: 4 · NEGOCIAR EL SUELDO |
+MONI: Cuatro: negociá tu sueldo con datos y buscá formas de aumentar ingresos. Tu ingreso es tu principal defensa.
+P: 5 · COMPRAR INTELIGENTE |
+MONI: Cinco: comprá inteligente. Precio por kilo, marcas propias, comparar. No frena la inflación, pero baja tu inflación personal.
+## La inflación en tu vida real
+@bg sitcom
+@cast moni
+P: TU INFLACIÓN |
+MONI: Hagamos un ejercicio para conocer tu inflación personal. No hace falta ser economista.
+P: 5 PRODUCTOS |
+MONI: Elegí cinco productos o servicios que pagás siempre: el alquiler, el kilo de pan, el transporte, el plan del celular, el café.
+P: ANOTÁ EL PRECIO HOY |
+MONI: Anotá cuánto cuestan hoy, y guardá esa nota con fecha.
+P: DENTRO DE UN AÑO |
+MONI: Dentro de un año, volvé a anotarlos. La suba promedio de esos cinco es una aproximación de tu inflación personal.
+MONI{think}: Y compará con cuánto subió tu sueldo en el mismo período. Esa comparación te dice si avanzaste o retrocediste, mucho mejor que cualquier titular de diario.
+## Deflación: ¿lo contrario es bueno?
+@bg pizarra
+@cast moni,ghost
+P: DEFLACIÓN |
+INFLA: ¿Y si los precios bajaran? ¿Sería genial, no?
+MONI: Suena genial, pero la deflación, que es cuando los precios bajan en general durante mucho tiempo, también es un problema.
+P: ESPERAR PARA COMPRAR |
+MONI: Si todo va a estar más barato el mes que viene, la gente posterga compras. Las empresas venden menos, producen menos, contratan menos, y la economía se frena.
+P: DEUDAS MÁS PESADAS |
+MONI: Además, con precios y sueldos bajando, las deudas pesan cada vez más.
+P: ≈ 2 % |
+MONI{think}: Por eso muchos bancos centrales del mundo buscan una inflación baja y estable, por ejemplo alrededor del dos por ciento anual, en lugar de cero.
+INFLA{sly}: ¿Ves? Un poquito de mí es necesario.
+MONI: Un poquito, Infla. Solo un poquito.
+## Lo que sí podés controlar
+@bg marca
+@cast moni
+P: LO QUE CONTROLÁS |
+MONI: La inflación de tu país no la podés controlar. Pero hay tres cosas que sí.
+P: TUS INGRESOS |
+MONI: Tus ingresos: capacitarte, negociar y buscar oportunidades mejores.
+P: TUS GASTOS |
+MONI: Tus gastos: comprar mejor y revisar los gastos fijos una vez por año.
+P: TUS AHORROS |
+MONI{think}: Y dónde ponés tus ahorros: que no se queden quietos perdiendo valor. Enfocarte en lo que controlás es mucho más útil que enojarte con lo que no.
+## Resumen en 30 segundos
+@bg pizarra
+@cast moni
+P: RESUMEN |
+MONI: La inflación es la suba generalizada de precios.
+MONI: Se mide con una canasta de productos, la causan la demanda, los costos, la emisión y las expectativas, y le pega más a los ahorros quietos y a los sueldos que se ajustan tarde.
+MONI: Para protegerte: no dejes la plata quieta, buscá instrumentos que ajusten, invertí a largo plazo, negociá tu sueldo y comprá mejor.
+## Cierre
+@bg marca
+@cast moni,ghost
+P: INFLA EXISTE |
+MONI: Resumen: la inflación es la suba generalizada de precios. Se mide con una canasta, tiene varias causas, le pega más a los ahorros quietos y a los sueldos que se ajustan tarde.
+INFLA: Y siempre vuelvo.
+MONI: Por eso hay que estar preparados.
+P: ¿Cuánta inflación hubo en tu país? |
+MONI{wave}: Contame en los comentarios: ¿cuánta inflación hubo en tu país este año? Así comparamos entre todos.

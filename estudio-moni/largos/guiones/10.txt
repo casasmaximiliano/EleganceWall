@@ -1,0 +1,143 @@
+@tipo guia
+## Por qué fallan los propósitos
+@bg marca
+@cast moni
+P: PROPÓSITOS 2027 |
+MONI: Primero de enero. Lista de propósitos: este año ahorro, este año invierto, este año salgo de deudas, este año aprendo finanzas.
+P: MARZO |
+MONI{worried}: Y en marzo, nadie se acuerda de la lista. ¿Te suena?
+MONI: Los propósitos financieros fallan por tres motivos. Son enormes, son vagos y no tienen fecha. Ahorrar más no es un plan. Es un deseo.
+P: 12 MESES · 12 HÁBITOS |
+MONI: Este plan es distinto. Un hábito chico por mes, doce en el año. Cada uno te lleva unos quince minutos para arrancar.
+MONI{wave}: Si los hacés todos, el primero de enero de 2028 vas a tener fondo de emergencia, cero deudas caras, tus gastos bajo control y tu primera inversión. Arrancamos.
+## Enero: tu foto financiera
+@bg pizarra
+P: ENERO · PATRIMONIO NETO |
+MONI: Enero: la foto. Antes de ir a algún lado, tenés que saber dónde estás parado.
+P: LO QUE TENÉS − LO QUE DEBÉS |
+MONI: Anotá todo lo que tenés: ahorros, inversiones, cosas de valor que podrías vender. Y todo lo que debés: tarjeta, préstamos, cuotas, plata prestada.
+MONI: La resta es tu patrimonio neto. Puede ser negativo, y no pasa nada. Lo importante es que el año que viene sea más alto.
+MONI{think}: Guardá ese número. En diciembre lo vas a volver a calcular, y vas a ver el resultado de todo el año en un solo número.
+## Febrero y marzo: entender tus gastos
+@bg sitcom
+@cast moni,cup
+P: FEBRERO · RASTREO |
+MONI: Febrero: rastreo. Anotá todos tus gastos durante treinta días. Febrero es corto, justo para practicar.
+CAFECITO: ¿Me vas a anotar a mí también?
+MONI: A vos primero, Cafecito.
+@cast moni,zombi
+P: MARZO · AUDITORÍA |
+MONI: Marzo: auditoría de suscripciones y gastos fijos. Revisá tres meses de resúmenes y marcá todo lo que se cobra solo.
+ZOMBI: Suscripciooones… no nos canceles…
+MONI: Cada suscripción que no usás es plata que se va todos los meses. Cancelá sin piedad. Si la extrañás, la volvés a contratar.
+P: + LLAMAR Y NEGOCIAR |
+MONI: Y aprovechá para llamar a tu compañía de celular, internet o seguros y preguntar si hay un plan más barato. Muchas veces lo hay, solo que no te lo ofrecen.
+## Abril: el fondo de emergencia
+@bg marca
+@cast moni
+P: ABRIL · FONDO |
+MONI: Abril: arrancás el fondo de emergencia. Abrí una cuenta separada y programá una transferencia automática para el día de cobro.
+P: META 1: 1 MES DE GASTOS |
+MONI: Primera meta: un mes de gastos básicos. Después, de tres a seis meses. No importa si empezás con poco. Importa que empiece a crecer.
+MONI{think}: El fondo es lo que te permite que un imprevisto sea solo un mal día y no una deuda nueva.
+## Mayo y junio: protegerte
+@bg novela
+@cast moni,card
+P: MAYO · DEUDAS |
+MONI: Mayo: plan de deudas. Lista completa, y elegís método: avalancha, primero la tasa más alta, o bola de nieve, primero la más chica.
+TARJETÍN{sly}: ¿Y si mejor me pagás el mínimo un añito más?
+MONI{angry}: No, Tarjetín. Este año te pago completo.
+@cast moni
+P: JUNIO · SEGUROS |
+MONI: Junio: revisá tus protecciones. ¿Tenés cobertura de salud? Si alguien depende de tu ingreso, ¿qué pasaría si te pasa algo? ¿Tu casa o tus cosas de valor están cubiertas?
+MONI: Un seguro no es plata tirada. Es pagar un poco para no perder mucho cuando pasa algo grave.
+## Julio a septiembre: crecer
+@bg simulador
+P: JULIO · INGRESOS |
+MONI: Julio: mitad de año, toca mirar el otro lado: los ingresos. Recortar gastos tiene un límite. Aumentar ingresos, no tanto.
+MONI: Preguntate: ¿puedo pedir un aumento con datos en la mano? ¿Puedo aprender algo que me pague más? ¿Tengo una habilidad que podría vender por fuera de mi trabajo?
+P: AGOSTO · +1 % |
+MONI: Agosto: subí tu porcentaje de ahorro un punto. Si ahorrabas cinco por ciento, ahora seis. Casi no se siente, y en el largo plazo es enorme.
+P: SEPTIEMBRE · PRIMERA INVERSIÓN |
+MONI{wave}: Septiembre: tu primera inversión. Con el fondo de emergencia armado y las deudas caras bajo control, es momento de poner a trabajar una parte. Empezá con algo simple, diversificado y con comisiones bajas.
+## Octubre a diciembre: consolidar
+@bg pizarra
+P: OCTUBRE · FIESTAS |
+MONI: Octubre: plan de fiestas. Sí, en octubre. Definí cuánto vas a gastar en diciembre y empezá a apartar. El que planifica en octubre no sufre en febrero.
+P: NOVIEMBRE · AUTOMATIZAR |
+MONI: Noviembre: revisá que todo esté en automático. El ahorro, el fondo, los pagos fijos y la inversión mensual. Cuanto menos dependa de tu fuerza de voluntad, mejor.
+P: DICIEMBRE · REVISIÓN |
+MONI: Diciembre: la revisión anual. Calculás de nuevo tu patrimonio neto y lo comparás con el de enero. Celebrás lo que salió bien, aprendés de lo que no, y escribís las metas de 2028.
+## Cómo no abandonar
+@bg sitcom
+@cast moni,bow
+P: CÓMO NO ABANDONAR |
+CAPRICHO: Doce meses es mucho. Yo abandono en febrero.
+MONI: Por eso te dejo tres trucos para no abandonar.
+P: 1 · UNA FECHA FIJA |
+MONI: Uno: elegí un día fijo del mes para tu hábito. El primer domingo, por ejemplo. Agendalo en el celular con alarma.
+P: 2 · SI FALLÁS, SEGUÍ |
+MONI: Dos: si un mes fallás, no empieces de cero. Seguí con el mes siguiente. Un hábito salteado no arruina el plan. Abandonar, sí.
+P: 3 · CONTÁRSELO A ALGUIEN |
+MONI: Tres: contale tu plan a alguien, o hacelo de a dos. Es mucho más fácil sostenerlo cuando alguien te pregunta cómo vas.
+CAPRICHO{worried}: ¿Y si me lo cuento a mí mismo?
+MONI: No cuenta, Capricho.
+## El calendario en una sola mirada
+@bg simulador
+@cast moni
+P: EL AÑO EN 4 BLOQUES |
+MONI: Si te perdiste algo, te muestro el año completo en cuatro bloques de tres meses.
+P: BLOQUE 1 · ORDENAR |
+MONI: Enero, febrero y marzo: ordenar. Saber dónde estás, entender en qué se va la plata y eliminar lo que sobra. Es el bloque menos emocionante y el más importante.
+P: BLOQUE 2 · PROTEGERSE |
+MONI: Abril, mayo y junio: protegerse. Fondo de emergencia, plan de deudas y seguros. Es construir el piso para que nada te tire abajo.
+P: BLOQUE 3 · CRECER |
+MONI: Julio, agosto y septiembre: crecer. Más ingresos, más porcentaje de ahorro y la primera inversión.
+P: BLOQUE 4 · CONSOLIDAR |
+MONI: Octubre, noviembre y diciembre: consolidar. Planificar las fiestas, automatizar todo y revisar el año.
+MONI{think}: Fijate que el orden importa. Invertir antes de tener un fondo de emergencia es construir el techo antes que las paredes.
+P: SI EMPEZÁS EN JUNIO |
+MONI: ¿Y si empezás a mitad de año? No esperes a enero. Arrancá por el bloque uno, con el mes que sea. El calendario se adapta a vos, no al revés.
+## Las metas que sí se cumplen
+@bg pizarra
+@cast moni
+P: METAS INTELIGENTES |
+MONI: Además de los hábitos, conviene tener dos o tres metas grandes para el año. Pero escritas de una forma especial.
+P: ESPECÍFICA |
+MONI: Específica: no ahorrar más, sino ahorrar dos mil dólares.
+P: CON FECHA |
+MONI: Con fecha: no algún día, sino antes del treinta de noviembre.
+P: DIVIDIDA |
+MONI: Dividida: dos mil dólares en once meses son unos ciento ochenta por mes, o cuarenta y dos por semana. Ahora sabés exactamente qué hacer cada semana.
+P: CON UN PORQUÉ |
+MONI: Y con un porqué. Dos mil dólares para el fondo de emergencia, para dejar de tener miedo cada vez que suena el teléfono. Una meta con un motivo resiste mucho mejor las tentaciones.
+P: VISIBLE |
+MONI{think}: Y ponela donde la veas. Fondo de pantalla del celular, un papel en la heladera. Lo que se ve, se recuerda.
+## El tablero del año
+@bg simulador
+@cast moni
+P: 4 NÚMEROS |
+MONI: Para saber si vas bien, te propongo un tablero con solo cuatro números, que actualizás una vez por mes.
+P: 1 · PATRIMONIO NETO |
+MONI: Uno: tu patrimonio neto. Lo que tenés menos lo que debés.
+P: 2 · % DE AHORRO |
+MONI: Dos: tu porcentaje de ahorro. Cuánto de lo que entró este mes fue a ahorro o inversión.
+P: 3 · MESES DE FONDO |
+MONI: Tres: cuántos meses de gastos tenés en el fondo de emergencia.
+P: 4 · DEUDA CARA |
+MONI: Y cuatro: cuánta deuda cara te queda.
+MONI{wave}: Si los cuatro números van en la dirección correcta, vas bien, aunque algún mes falles. Lo que importa es la tendencia, no la perfección.
+## El primer paso, hoy
+@bg marca
+@cast moni
+P: HOY MISMO |
+MONI: No esperes a que sea enero para arrancar. Hoy mismo podés hacer el primer paso: anotá en un papel todo lo que tenés y todo lo que debés. Cinco minutos.
+MONI{think}: Ese papel es tu punto de partida. Dentro de un año, lo vas a mirar y te vas a sorprender de cuánto avanzaste.
+## Cierre
+@bg marca
+@cast moni
+P: 12 HÁBITOS |
+MONI: Resumen: foto en enero, rastreo y auditoría, fondo de emergencia, deudas, seguros, ingresos, más ahorro, primera inversión, plan de fiestas, todo automático y revisión anual.
+MONI: Un hábito por mes. Chico, concreto y con fecha.
+P: ¿Cuál es tu meta 2027? |
+MONI{wave}: Escribí en los comentarios tu meta financiera para 2027. Escribirla en público ayuda a cumplirla. Y feliz año nuevo de parte de Moni.

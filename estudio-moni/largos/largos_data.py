@@ -360,7 +360,7 @@ add(tipo="Telenovela", titulo="La inflación invisible: la película completa",
 
 add(tipo="Guía", titulo="Finanzas en pareja: cómo hablar de plata sin pelear",
     alt="¿Cuenta conjunta o separada? Guía de plata en pareja",
-    thumb=dict(texto="PLATA EN PAREJA", chars=[("moni", "happy"), ("centavito", "happy")], prop="❤️", fondo="#C2185B"),
+    thumb=dict(texto="PLATA EN PAREJA", chars=[("moni", "happy"), ("peso", "happy")], prop="❤️", fondo="#C2185B"),
     gancho="La plata es uno de los motivos de pelea más comunes en las parejas. No porque falte, sino porque nadie habla de ella hasta que hay un problema. ¿Cuenta conjunta o separada? ¿Mitad y mitad o proporcional al sueldo? ¿Qué pasa con las deudas de cada uno? En este video, justo para San Valentín, te doy un método para tener esa conversación sin que termine en pelea.",
     caps=[("00:00", "La pelea del resumen", "Escena de sitcom."),
           ("01:30", "Por qué peleamos por plata", "Historias distintas con el dinero."),

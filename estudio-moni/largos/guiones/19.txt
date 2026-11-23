@@ -1,0 +1,131 @@
+@tipo historia
+## Noviembre de 2022
+@bg novela
+@cast moni
+P: NOVIEMBRE 2022 |
+MONI: Noviembre de 2022. Millones de personas en todo el mundo abren la aplicación de una plataforma de criptomonedas para retirar su plata.
+MONI{shock}: Y descubren que no pueden. Los retiros están frenados.
+P: FTX |
+MONI: La plataforma se llamaba FTX. A comienzos de ese mismo año, inversores la habían valuado en treinta y dos mil millones de dólares.
+P: $32.000.000.000 → $0 |
+MONI: Era una de las casas de cambio de criptomonedas más grandes del mundo. Tenía publicidades en el Super Bowl, su nombre en un estadio de básquet y famosos promocionándola.
+MONI{worried}: En cuestión de días, se derrumbó. Y miles de millones de dólares de clientes no estaban donde debían estar.
+MONI{think}: Hoy reconstruimos la caída de FTX, y te dejo las cinco preguntas que tenés que hacerte antes de confiarle tu plata a cualquier plataforma.
+## El genio de las cripto
+@bg marca
+P: SAM BANKMAN-FRIED |
+MONI: El fundador de FTX era Sam Bankman-Fried, un joven estadounidense que había estudiado física en una de las universidades más prestigiosas del mundo.
+P: ALAMEDA RESEARCH |
+MONI: En 2017 fundó una empresa de inversión en criptomonedas llamada Alameda Research. Y en 2019 creó FTX, una plataforma para comprar y vender criptomonedas.
+P: LA IMAGEN |
+MONI: Su imagen era parte del éxito. Andaba en bermudas y remera, dormía en un puf en la oficina, manejaba un auto común y decía que quería ganar plata para donarla.
+MONI: Las revistas lo ponían en la tapa. Los inversores más prestigiosos le dieron millones. Y la gente común confió en él.
+P: ESTADIO · SUPER BOWL |
+MONI{think}: FTX compró los derechos para ponerle su nombre al estadio del equipo de básquet de Miami y apareció en una publicidad del Super Bowl. Cuando una empresa está en todos lados, parece imposible que sea frágil.
+## El agujero
+@bg pizarra
+P: 2 EMPRESAS · 1 DUEÑO |
+MONI: Acá está el corazón del problema. Bankman-Fried controlaba dos empresas: FTX, la plataforma donde los clientes depositaban su plata, y Alameda, su fondo de inversión.
+P: LA PLATA DE LOS CLIENTES |
+MONI: Cuando vos depositás plata en una plataforma para comprar criptomonedas, esa plata debería estar guardada a tu nombre, separada, lista para que la retires.
+P: FTX → ALAMEDA |
+MONI{shock}: Según se probó después en el juicio, miles de millones de dólares de los clientes de FTX terminaron siendo usados por Alameda para hacer inversiones, prestar plata y gastos.
+MONI: Mientras los precios de las criptomonedas subían, nadie lo notaba. El problema apareció cuando empezaron a bajar.
+P: FTT | la moneda propia
+MONI{think}: Además, una parte importante de lo que tenía Alameda eran fichas creadas por la propia FTX, llamadas FTT. Era como respaldar tu riqueza con billetes impresos por vos mismo.
+## La semana del derrumbe
+@bg novela
+P: 2 DE NOVIEMBRE |
+MONI: Dos de noviembre de 2022. Un medio especializado publica un informe sobre las cuentas de Alameda. Muestra que gran parte de sus activos eran justamente esas fichas FTT.
+P: 6 DE NOVIEMBRE |
+MONI: Seis de noviembre. El dueño de Binance, la plataforma rival más grande, anuncia que va a vender sus fichas FTT.
+P: CORRIDA |
+MONI{shock}: Se desata el pánico. Los clientes corren a retirar su plata. En pocos días se piden retiros por miles de millones de dólares.
+P: NO HAY PLATA |
+MONI: Y FTX no la tiene. Frena los retiros. Binance anuncia que la va a comprar, y al día siguiente se arrepiente después de revisar las cuentas.
+P: 11 DE NOVIEMBRE · QUIEBRA |
+MONI{worried}: Once de noviembre de 2022. FTX se declara en quiebra. Bankman-Fried renuncia. En una semana, una empresa de treinta y dos mil millones se había evaporado.
+## El juicio
+@bg marca
+P: DICIEMBRE 2022 · DETENCIÓN |
+MONI: En diciembre de 2022, Bankman-Fried fue detenido en las Bahamas, donde estaba la sede de FTX, y enviado a Estados Unidos.
+P: NOVIEMBRE 2023 · CULPABLE |
+MONI: En noviembre de 2023, un jurado lo declaró culpable de fraude y conspiración. Varios de sus socios más cercanos habían declarado en su contra.
+P: MARZO 2024 · 25 AÑOS |
+MONI: En marzo de 2024 lo condenaron a veinticinco años de prisión.
+P: LOS CLIENTES |
+MONI{think}: ¿Y los clientes? El proceso de quiebra tardó años y se recuperó bastante más de lo que se esperaba, en parte porque algunas inversiones de la empresa subieron de valor. Pero durante mucho tiempo millones de personas no supieron si iban a recuperar algo.
+## No fue la primera
+@bg novela
+@cast moni,fomito
+P: NO FUE LA PRIMERA |
+FOMITO: Pero bueno, eso fue un caso aislado. Las otras plataformas son seguras.
+MONI: Ojalá. Ese mismo año cayeron otras plataformas y proyectos de criptomonedas, con pérdidas enormes para sus clientes.
+P: SE REPITE |
+MONI: Y si te fijás, el patrón se parece mucho al de Madoff: confianza en una persona carismática, rendimientos o promesas atractivas, poca transparencia y plata de clientes mezclada con la de la empresa.
+FOMITO{worried}: Pero en cripto todo es nuevo, es la tecnología del futuro.
+MONI: La tecnología puede ser nueva, Fomito. Pero los errores humanos son viejísimos.
+## Cinco preguntas antes de confiar tu plata
+@bg simulador
+@cast moni
+P: 5 PREGUNTAS |
+MONI: Ahora lo importante. Cinco preguntas antes de confiarle tu plata a cualquier plataforma, sea de criptomonedas, de inversiones o una billetera digital.
+P: 1 · ¿ESTÁ REGULADA? |
+MONI: Uno: ¿está regulada y registrada en tu país? ¿Hay un organismo que la supervise?
+P: 2 · ¿QUIÉN GUARDA LA PLATA? |
+MONI: Dos: ¿quién guarda la plata y está separada de la de la empresa? Si la plataforma quiebra, ¿tu plata está protegida?
+P: 3 · ¿DE DÓNDE SALE EL RENDIMIENTO? |
+MONI: Tres: si te pagan un rendimiento, ¿de dónde sale? Si no lo podés entender, es una señal de alerta.
+P: 4 · ¿ES TRANSPARENTE? |
+MONI: Cuatro: ¿publica información clara, auditada por terceros confiables?
+P: 5 · ¿TENGO TODO AHÍ? |
+MONI{wave}: Y cinco: ¿tengo todos mis ahorros en un solo lugar? Diversificar no es solo elegir distintas inversiones. Es también no depender de una sola plataforma.
+## Cómo se vive una corrida
+@bg novela
+@cast moni,fomito
+P: UNA CORRIDA |
+MONI: Lo que pasó en FTX tiene nombre: una corrida. Cuando muchos clientes quieren retirar su plata al mismo tiempo porque temen que no esté.
+FOMITO{worried}: ¿Eso le puede pasar a cualquier lugar?
+MONI: A muchos, sí. Incluso a bancos sanos. Ningún banco tiene toda la plata de sus clientes en efectivo en una caja fuerte: la presta. Por eso existen las regulaciones, los seguros de depósito y los bancos centrales.
+P: LA DIFERENCIA |
+MONI: La diferencia con FTX es que en un banco regulado tu plata está registrada, supervisada y, en muchos países, una parte está asegurada. En FTX, según se probó, la plata de los clientes se había usado sin que ellos lo supieran.
+MONI{think}: Por eso la pregunta más importante no es cuánto rinde, sino qué pasa con mi plata si esta empresa quiebra mañana.
+## Las señales que hubo
+@bg pizarra
+@cast moni
+P: SEÑALES |
+MONI: Mirando hacia atrás, hubo señales que hoy parecen obvias.
+P: MONEDA PROPIA |
+MONI: La empresa respaldaba buena parte de su riqueza con una moneda que ella misma había creado.
+P: CONFLICTO DE INTERÉS |
+MONI: El mismo dueño controlaba la plataforma de los clientes y el fondo que hacía apuestas. Es como si el árbitro también jugara en uno de los equipos.
+P: POCA SUPERVISIÓN |
+MONI: La sede estaba en un país con menos controles, y no había una auditoría robusta de sus cuentas.
+P: CRECIMIENTO EXPLOSIVO |
+MONI{think}: Y un crecimiento explosivo con mucha publicidad. No es malo en sí, pero cuando todo crece tan rápido, los controles suelen quedar atrás.
+## Qué hacer si ya te pasó
+@bg marca
+@cast moni
+P: SI YA TE PASÓ |
+MONI: ¿Y si una plataforma ya frenó tus retiros? Algunos pasos básicos.
+P: 1 · GUARDAR TODO |
+MONI: Uno: guardá todo: capturas de pantalla de tu saldo, comprobantes de depósitos, correos y mensajes.
+P: 2 · DENUNCIAR |
+MONI: Dos: hacé la denuncia ante el organismo regulador y, si corresponde, ante la policía o la fiscalía de tu país.
+P: 3 · CUIDADO CON LOS RECUPERADORES |
+MONI{angry}: Y tres, muy importante: cuidado con quienes te contactan prometiendo recuperar tu plata a cambio de un pago. Es una estafa muy común después de una estafa.
+## Resumen en 30 segundos
+@bg pizarra
+@cast moni
+P: RESUMEN |
+MONI: FTX era una plataforma de cripto valuada en treinta y dos mil millones.
+MONI: Usó plata de sus clientes en otra empresa del mismo dueño, y cuando todos quisieron retirar, no estaba.
+MONI: Se declaró en quiebra en noviembre de 2022 y su fundador fue condenado a veinticinco años.
+MONI: Antes de confiar tu plata, preguntá si está regulada, quién la guarda, de dónde sale el rendimiento, si es transparente, y no pongas todo en un solo lugar.
+## Cierre
+@bg marca
+P: CONFIANZA ≠ VERIFICACIÓN |
+MONI: FTX nos enseña lo mismo que Madoff, pero con tecnología nueva: la fama, la publicidad y los inversores famosos no reemplazan la verificación.
+MONI: Si una plataforma parece demasiado grande para caer, igual hacé las cinco preguntas.
+P: ¿Tenés plata en plataformas? |
+MONI{wave}: Contame en los comentarios: ¿alguna vez te pasó que una plataforma o aplicación frenara tus retiros? Compartirlo ayuda a otros a estar atentos.

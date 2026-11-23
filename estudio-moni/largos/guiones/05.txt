@@ -1,0 +1,145 @@
+@tipo simulacion
+## Las reglas del reto
+@bg sitcom
+@cast moni
+P: UN MES CON $600 |
+MONI: Seiscientos dólares. Un mes entero. Ni un peso más. Ese es el reto de hoy.
+MONI: Alquiler compartido, comida, transporte, el celular, y el cumpleaños de una amiga el día doce.
+P: PRESUPUESTO |
+MONI: Antes de arrancar, armo el presupuesto. Si no sé adónde va a ir cada dólar, a los diez días me quedo sin nada.
+P: $250 | alquiler compartido
+MONI: Doscientos cincuenta para mi parte del alquiler.
+P: $180 | comida
+MONI: Ciento ochenta para comida. Cocinando en casa casi todos los días.
+P: $40 + $40 | transporte · servicios y celular
+MONI: Cuarenta para transporte, cuarenta para servicios y el celular.
+P: $25 + $35 + $30 | salud · salidas · imprevistos
+MONI: Veinticinco para salud e higiene, treinta y cinco para salidas, y treinta para imprevistos.
+P: = $600 |
+MONI{think}: Total: seiscientos justos. No sobra nada. Cada decisión cuenta. Los precios cambian mucho de un país a otro, así que tomalo como un ejemplo, no como una receta.
+MONI{wave}: ¿Llega o no llega? Vamos a verlo día por día.
+## Semana 1: el plan
+@bg pizarra
+P: DÍA 1 | cobro y sobres
+MONI: Día uno. Cobro. Lo primero que hago es separar la plata en sobres. En mi caso, sobres digitales: subcuentas en la aplicación del banco.
+MONI: El alquiler lo pago ese mismo día. Así esa plata ni la veo.
+P: DÍA 2 | la compra grande
+MONI: Día dos: la compra grande del mes. Voy con lista y con la panza llena, porque ir al súper con hambre es tirar la plata.
+P: $95 | arroz · legumbres · pastas · verduras
+MONI: Arroz, legumbres, pastas, huevos, verduras de estación y algo de carne para congelar. Noventa y cinco dólares. Me quedan ochenta y cinco para frescos el resto del mes.
+P: DÍA 4 | la primera tentación
+@cast moni,cup
+CAFECITO: Hola, Moni. ¿Un cafecito de camino al trabajo? Son solo tres dólares.
+MONI: Hoy no, Cafecito. Si te tomo todos los días laborables, son sesenta y seis dólares. Más de un tercio de mi comida del mes.
+CAFECITO{worried}: Qué fría.
+MONI: Pero te preparo en casa y te llevo en un termo. Mismo café, una fracción del precio.
+## Semana 2: el cumpleaños
+@bg novela
+@cast moni,card
+P: DÍA 12 | el cumpleaños
+MONI: Día doce. El cumpleaños de mi amiga, en un bar. Mi sobre de salidas tiene treinta y cinco dólares.
+TARJETÍN: Moni, mi amor, invitá una ronda a todos. Vas a quedar genial. Lo pagás el mes que viene.
+MONI{think}: Es tentador. Pero una ronda para ocho son cuarenta dólares, que con los intereses van a ser más.
+P: $22 | lo que gasté
+MONI: Hago otra cosa. Llevo un regalo armado en casa, pido una bebida y algo para compartir. Gasto veintidós dólares.
+TARJETÍN{worried}: Aburrida.
+MONI: Nadie se acordó de quién pagó qué. Todos se acordaron de que fui. Me quedan trece en el sobre de salidas.
+@cast moni
+P: DÍA 14 | mitad de mes
+MONI: Día catorce. Mitad de mes. Reviso los sobres. Comida: voy bien, me quedan cincuenta y ocho. Transporte: veintidós. Todo en orden.
+## Semana 3: la emergencia
+@bg sitcom
+P: DÍA 17 | se rompe la zapatilla
+MONI{shock}: Día diecisiete. Se me rompe la zapatilla. Justo la única que uso todos los días.
+MONI: Acá es donde la mayoría saca la tarjeta. Pero yo tengo un sobre de imprevistos con treinta dólares.
+P: $27 | zapatillas en oferta
+MONI: Busco, comparo y encuentro unas en oferta por veintisiete. Me quedan tres dólares de imprevistos.
+MONI{think}: Si no hubiera tenido ese sobre, este mes ya estaría endeudada. Treinta dólares me salvaron.
+P: DÍA 19 | el delivery
+@cast moni,bag
+DELIVY: Moni, estás cansada. Pedime una pizza. Son solo quince.
+MONI: Estoy cansada, es verdad. Pero tengo comida congelada que preparé el domingo. La caliento en cinco minutos.
+DELIVY{worried}: Nadie me quiere.
+MONI: Te quiero, Delivy. Pero una vez al mes, no tres veces por semana.
+## Semana 4: el final ajustado
+@bg marca
+@cast moni
+P: DÍA 24 | quedan $31 de comida
+MONI: Día veinticuatro. Me quedan treinta y un dólares para comida y siete días. Ahora toca ponerse creativa.
+MONI: Revisión de alacena: arroz, lentejas, una lata de tomate, huevos. Sale guiso de lentejas para tres días.
+P: DÍA 27 | el error
+MONI{worried}: Día veintisiete. Cometo un error: pago un mes de una aplicación que no uso, que se renovó sola. Ocho dólares.
+MONI: Lo cancelo en el momento. Pero los ocho ya se fueron. Lección: revisar las suscripciones antes de que empiece el mes.
+P: DÍA 30 | ¿llegó?
+MONI: Día treinta. Último día. Es hora de hacer la cuenta.
+## El resultado
+@bg simulador
+P: GASTADO: $591 |
+MONI: Gasté quinientos noventa y un dólares. Me sobraron nueve.
+P: SOBRARON $9 |
+MONI{wave}: ¡Llegué! Con nueve dólares de margen. Justísimo, pero llegué.
+P: LO QUE SALIÓ BIEN |
+MONI: ¿Qué salió bien? Los sobres. Saber cuánto me quedaba en cada categoría me ahorró un montón de decisiones malas.
+MONI: También cocinar en tandas el domingo y llevar café de casa.
+P: LO QUE SALIÓ MAL |
+MONI: ¿Qué salió mal? La suscripción olvidada. Y que con seiscientos dólares no hay margen para ahorrar ni para una emergencia más grande.
+MONI{think}: Y eso es importante decirlo: con ingresos muy justos, organizarse ayuda muchísimo, pero no hace magia. A veces el problema también es cuánto entra.
+## Lo que aprendí
+@bg pizarra
+P: 4 LECCIONES |
+MONI: Cuatro lecciones que te sirven aunque ganes el triple.
+P: 1 · SOBRES |
+MONI: Una: separar la plata por categorías el día de cobro. Ver el número que queda cambia cómo decidís.
+P: 2 · SOBRE DE IMPREVISTOS |
+MONI: Dos: siempre un sobre de imprevistos, aunque sea chico. Es lo que separa un mal día de una deuda.
+P: 3 · COMIDA PLANIFICADA |
+MONI: Tres: la comida es el gasto más fácil de bajar si planificás. Lista, compra grande, cocinar en tandas.
+P: 4 · LO SOCIAL |
+MONI: Y cuatro: lo social no tiene por qué ser caro. Tus amigos quieren que estés, no que pagues.
+## La versión con $900
+@bg simulador
+@cast moni
+P: ¿Y CON $900? |
+MONI: Muchos me preguntaron: ¿y si en vez de seiscientos fueran novecientos? ¿Qué cambia? Hice la cuenta.
+P: +$300 |
+MONI: Con trescientos dólares más por mes, la tentación es subir todo un poco: más salidas, más delivery, ropa nueva. Y al final del mes, otra vez justa.
+P: LA VERSIÓN INTELIGENTE |
+MONI: La versión inteligente es otra. Primero, separar cien dólares para ahorro, automático, el día de cobro.
+P: $100 · AHORRO |
+MONI: En un año son mil doscientos dólares. Un fondo de emergencia completo para alguien que vive con seiscientos.
+P: $100 · FONDO DE IMPREVISTOS |
+MONI: Segundo, subir el sobre de imprevistos a cien. Con eso, una zapatilla rota o una consulta médica ya no te desarman el mes.
+P: $100 · VIVIR MEJOR |
+MONI: Y tercero, los cien restantes para vivir un poco mejor: más salidas, mejor comida, algún gusto.
+MONI{think}: Fijate: con el mismo aumento podés seguir viviendo al día, o podés vivir mejor y además empezar a ahorrar. La diferencia no es la plata. Es el orden en que la repartís.
+P: PRIMERO EL FUTURO |
+MONI: Esa es la regla que más me cambió la vida: cuando entra plata nueva, primero el futuro y después el resto. Al revés, el futuro nunca llega.
+## Cómo armar tus propios sobres
+@bg pizarra
+@cast moni
+P: TUS SOBRES |
+MONI: Si te gustó el método, así armás tus propios sobres este mes.
+P: 1 · LISTA DE CATEGORÍAS |
+MONI: Paso uno: hacé una lista corta de categorías. No más de siete u ocho. Alquiler, comida, transporte, servicios, salud, salidas, imprevistos y ahorro.
+P: 2 · MONTO POR SOBRE |
+MONI: Paso dos: asigná un monto a cada una, mirando lo que gastaste el mes pasado. La suma tiene que dar exactamente lo que cobrás.
+P: 3 · SEPARAR LA PLATA |
+MONI: Paso tres: separá la plata el día de cobro. Puede ser efectivo en sobres de verdad, o subcuentas en la aplicación del banco, que muchos bancos ofrecen gratis.
+P: 4 · SI UN SOBRE SE VACÍA |
+MONI: Paso cuatro: si un sobre se vacía antes de fin de mes, podés pasar plata de otro sobre, pero solo de forma consciente. Nunca del sobre de ahorro.
+MONI{think}: Y al mes siguiente ajustás los montos. El primer mes nunca sale perfecto. El tercero ya sale casi solo.
+## Lo que cuesta de verdad un mes
+@bg pizarra
+@cast moni
+P: ¿QUÉ PESA MÁS? |
+MONI: Mirando el mes completo, algo me llamó la atención: casi el setenta por ciento de mi plata se fue en solo dos cosas, alquiler y comida.
+MONI: Eso pasa en casi todos los presupuestos. Los gastos grandes son pocos y pesan muchísimo.
+P: COMPARTIR · COCINAR |
+MONI{think}: Por eso las decisiones que más ahorran son las grandes: compartir vivienda, vivir más cerca del trabajo para gastar menos en transporte, y cocinar en casa. Un buen ajuste ahí vale más que cien cafés.
+MONI: Si estás muy ajustado, empezá por mirar esas dos categorías antes que todo lo demás.
+## Cierre
+@bg marca
+@cast moni
+P: ¿CUÁNTO NECESITÁS VOS? |
+MONI{wave}: Ahora te pregunto a vos: ¿cuánto necesitás por mes para vivir en tu ciudad? Contalo en los comentarios con el nombre de la ciudad. Quiero armar un mapa.
+MONI: Y si querés armar tus propios sobres, en el canal tenés el video para dejar de vivir al día.

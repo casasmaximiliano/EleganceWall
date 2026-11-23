@@ -1,0 +1,131 @@
+@tipo guia
+## No tengo suficiente plata
+@bg marca
+@cast moni
+P: NO TENGO SUFICIENTE |
+MONI: La excusa número uno para no invertir es: no tengo suficiente plata. Cuando tenga más, empiezo.
+MONI: Hoy, en muchos países, se puede empezar con montos chicos: cincuenta, veinte, incluso diez dólares, según la plataforma.
+P: EL ORDEN IMPORTA |
+MONI{think}: Pero antes de poner un peso hay tres cosas que tenés que tener resueltas. Si las salteás, la inversión te va a durar dos semanas.
+MONI: En este video vemos el orden correcto, los instrumentos más simples, los errores que comete casi todo principiante, y cómo armar tu primera cartera aburrida. Que es exactamente lo que querés.
+P: No es asesoramiento | depende de tu país y tu perfil
+MONI: Un aviso importante: no te voy a decir en qué invertir. Eso depende de tu país, tus impuestos y tu situación. Te voy a enseñar a pensar la inversión.
+## Antes de invertir
+@bg pizarra
+P: 3 COSAS ANTES |
+MONI: Las tres cosas antes de invertir.
+P: 1 · FONDO DE EMERGENCIA |
+MONI: Uno: un fondo de emergencia. Si invertís sin tenerlo, el primer imprevisto te obliga a vender, quizás en el peor momento y perdiendo plata.
+@cast moni,card
+P: 2 · SIN DEUDAS CARAS |
+TARJETÍN{sly}: Invertí, invertí. Mientras, yo te cobro sesenta por ciento.
+MONI: Dos: sin deudas caras. Si tu tarjeta te cobra sesenta por ciento al año, ninguna inversión normal te va a dar eso. Pagar la deuda es la mejor inversión que tenés.
+@cast moni
+P: 3 · OBJETIVO Y PLAZO |
+MONI: Tres: un objetivo y un plazo. No es lo mismo invertir para un viaje en un año que para la jubilación en treinta. Cuanto más largo el plazo, más riesgo podés tolerar.
+MONI{think}: Si en un año vas a necesitar la plata, no la pongas en algo que puede bajar mucho. Si no la vas a tocar en veinte años, las subidas y bajadas del camino importan mucho menos.
+## Riesgo y rendimiento
+@bg simulador
+P: ⚖️ RIESGO ↔ RENDIMIENTO |
+MONI: La regla de oro de las inversiones: más rendimiento esperado siempre viene con más riesgo. No hay excepciones legales.
+P: BAJO RIESGO | rinde poco
+MONI: Las inversiones de bajo riesgo, como un depósito a plazo en un banco regulado, rinden poco pero son estables.
+P: MÁS RIESGO | puede rendir más, puede bajar
+MONI: Las acciones pueden rendir más a largo plazo, pero en el camino suben y bajan, a veces mucho. Hay años en que bajan veinte o treinta por ciento.
+P: TU PERFIL |
+MONI{think}: Tu perfil de riesgo es, básicamente, cuánto podés soportar ver bajar tu inversión sin desesperarte y vender. Sé honesto con vos mismo. Si una baja del veinte por ciento te quita el sueño, empezá con algo más conservador.
+## Los instrumentos simples
+@bg pizarra
+P: 4 INSTRUMENTOS |
+MONI: Veamos los instrumentos más simples. Los nombres cambian según el país, pero la idea es la misma.
+P: 1 · DEPÓSITO A PLAZO |
+MONI: Uno: el depósito a plazo. Le prestás plata al banco por un tiempo fijo y te paga un interés. Simple y de bajo riesgo, si el banco está regulado. Ojo con que la tasa le gane a la inflación.
+P: 2 · BONOS |
+MONI: Dos: los bonos. Le prestás plata a un gobierno o a una empresa. Te pagan intereses y al final te devuelven lo prestado. El riesgo es que no paguen. Los que pagan más suelen ser más riesgosos.
+P: 3 · ACCIONES |
+MONI: Tres: las acciones. Comprás un pedacito de una empresa. Si a la empresa le va bien, tu pedacito vale más. Si le va mal, vale menos.
+P: 4 · FONDOS INDEXADOS |
+MONI: Y cuatro: los fondos indexados. En vez de elegir una empresa, comprás una canasta con cientos. Si una cae, las otras compensan. Suelen tener comisiones bajas y son de las opciones más recomendadas para principiantes.
+MONI{wave}: Es como comprar la ensalada de frutas en vez de adivinar cuál va a ser la fruta más rica.
+## Los cinco errores de principiante
+@bg sitcom
+@cast moni,fomito
+P: 5 ERRORES |
+FOMITO: ¡Yo ya invierto! ¡Puse todo en una moneda que me recomendó un influencer!
+MONI: Fomito, acabás de cometer dos de los cinco errores de principiante. Veamos todos.
+P: 1 · SEGUIR MODAS |
+MONI: Uno: invertir en lo que está de moda porque todos hablan de eso. Cuando algo sale en todas las noticias, muchas veces ya subió todo lo que tenía que subir.
+P: 2 · NO DIVERSIFICAR |
+MONI: Dos: poner todo en un solo lugar. Si ese lugar cae, caés con él.
+P: 3 · MIRAR TODOS LOS DÍAS |
+MONI: Tres: mirar la inversión todos los días. Las subidas y bajadas diarias generan ansiedad y decisiones malas. Para el largo plazo, alcanza con revisar una vez cada tres o seis meses.
+P: 4 · IGNORAR COMISIONES |
+MONI: Cuatro: ignorar las comisiones. Un uno por ciento anual parece nada, pero en treinta años se puede comer una parte enorme de tu ganancia.
+P: 5 · VENDER EN PÁNICO |
+MONI{worried}: Y cinco, el más caro: vender en pánico cuando todo baja. Así se convierten pérdidas temporales en pérdidas reales.
+FOMITO{worried}: Bueno, ya entendí. ¿Qué hago con mi moneda?
+MONI: Lo primero: no invertir más plata de la que puedas perder ahí. Y aprender antes de la próxima.
+## Tu primera cartera aburrida
+@bg marca
+@cast moni
+P: CARTERA ABURRIDA |
+MONI: ¿Cómo se ve una primera cartera razonable? Te muestro la lógica, no una receta.
+P: 1 · BASE SEGURA |
+MONI: Una parte segura y disponible: el fondo de emergencia, que no se invierte en cosas que bajan.
+P: 2 · NÚCLEO DIVERSIFICADO |
+MONI: Un núcleo diversificado para el largo plazo: por ejemplo, fondos indexados de bajo costo, si en tu país tenés acceso.
+P: 3 · APORTES AUTOMÁTICOS |
+MONI: Y aportes automáticos todos los meses. Mismo monto, misma fecha, pase lo que pase. Así comprás más cuando está barato y menos cuando está caro, y te olvidás de adivinar.
+MONI{think}: Aburrida es buena noticia. Las inversiones emocionantes suelen ser las que te hacen perder plata.
+## Dónde invertir y qué revisar
+@bg pizarra
+P: ¿DÓNDE? |
+MONI: ¿Dónde se invierte? En bancos, en sociedades de bolsa o en plataformas de inversión. Lo importante no es la más linda, es que sea confiable.
+P: ✓ REGULADA |
+MONI: Revisá que esté registrada ante el organismo que regula los mercados en tu país. Es la protección más básica.
+P: ✓ COMISIONES CLARAS |
+MONI: Que las comisiones estén claras y escritas. Si no podés encontrar cuánto te cobran, mala señal.
+P: ✓ SIN PROMESAS |
+MONI: Y que nadie te prometa rendimientos garantizados altos. Eso es la señal número uno de estafa.
+## Cuánto puede crecer tu primera inversión
+@bg simulador
+@cast moni
+P: $50 POR MES |
+MONI: Para que veas que empezar chico vale la pena, hagamos una cuenta con cincuenta dólares por mes.
+P: 10 AÑOS · ≈ $8.600 |
+MONI: A un siete por ciento anual, que es solo un ejemplo, en diez años tendrías unos ocho mil seiscientos dólares. Pusiste seis mil.
+P: 20 AÑOS · ≈ $26.000 |
+MONI: En veinte años, unos veintiséis mil. Pusiste doce mil.
+P: 30 AÑOS · ≈ $61.000 |
+MONI{shock}: Y en treinta años, unos sesenta y un mil. Pusiste dieciocho mil. El resto lo hizo el tiempo.
+MONI: Y si cada año subís un poquito el aporte, a medida que te aumentan el sueldo, el resultado puede ser mucho mayor.
+MONI{think}: No son números garantizados. Las inversiones suben y bajan, y algunos años van a ser malos. Pero muestran por qué el mejor momento para empezar casi siempre es ahora, aunque sea con poco.
+## Preguntas de principiante
+@bg sitcom
+@cast moni,fomito
+P: PREGUNTAS |
+FOMITO: ¿Puedo preguntar cosas tontas?
+MONI: No hay preguntas tontas cuando se trata de tu plata. Dale.
+P: ¿PUEDO PERDER TODO? |
+FOMITO: ¿Puedo perder todo?
+MONI: Con una sola acción o una sola criptomoneda, sí, podés perder casi todo. Con un fondo muy diversificado es muy improbable perder todo, aunque sí puede bajar bastante en un mal año.
+P: ¿CUÁNDO VENDO? |
+FOMITO: ¿Y cuándo vendo?
+MONI: Cuando llegue tu objetivo o cuando necesites la plata para lo que la pensaste. No cuando el mercado baja y te asustás.
+P: ¿Y LOS IMPUESTOS? |
+FOMITO{worried}: ¿Hay que pagar impuestos?
+MONI{think}: En muchos países, sí, sobre las ganancias o sobre lo que tenés. Las reglas cambian mucho. Antes de invertir montos importantes, averiguá cómo funciona en tu país o consultá con un contador.
+## Tu checklist antes de invertir
+@bg pizarra
+@cast moni
+P: CHECKLIST |
+MONI: Antes de tu primera inversión, repasá: tengo fondo de emergencia, no tengo deudas caras, sé para qué es la plata y en cuánto tiempo la voy a necesitar, entiendo dónde la pongo y sé cuánto me cobran.
+MONI{wave}: Si respondiste sí a todo, estás listo para empezar.
+## Cierre
+@bg marca
+@cast moni
+P: EMPEZÁ CHIQUITO |
+MONI: Resumen: primero fondo de emergencia y sin deudas caras. Después, objetivo y plazo. Instrumentos simples, diversificados, con comisiones bajas y aportes automáticos.
+MONI: Empezar con poco no es una desventaja. Es la mejor forma de aprender cuando los errores todavía son baratos.
+P: ¿Ya invertís? |
+MONI{wave}: Contame en los comentarios: ¿ya invertís o todavía no? Y si no, ¿qué es lo que más te frena? Con tus respuestas armo los próximos videos.

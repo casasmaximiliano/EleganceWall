@@ -1,0 +1,149 @@
+@tipo telenovela
+## Anteriormente en la telenovela del dinero
+@bg novela
+@cast moni,card
+P: TEMPORADA 2 | la película
+MONI: En la temporada uno, le gané a Tarjetín. Pensé que lo peor había pasado.
+TARJETÍN{sly}: Ja. No sabés lo que te espera.
+@cast moni,ghost
+MONI: Pero entonces apareció alguien peor. Alguien que no se ve, no hace ruido y se come la plata sin que te des cuenta.
+INFLA{sly}: Buuu. Hola, Moni.
+P: INFLA |
+MONI: Esta es la película completa de la segunda temporada: Infla, el fantasma de la inflación. Con escenas nuevas, la explicación de cada capítulo y un final que no salió en los shorts.
+MONI{wave}: Apagá la luz, que este es de fantasmas.
+## Capítulo 1: el robo invisible
+@bg novela
+@cast moni
+P: LA ALCANCÍA |
+MONI: Todo empezó con mi alcancía. Durante cinco años guardé billetes ahí. Mil dólares en total. Estaba orgullosísima.
+P: 5 AÑOS DESPUÉS |
+MONI{shock}: Un día los saqué para comprar algo que había visto hace años. Y no me alcanzaba. Los billetes estaban todos. Pero compraban mucho menos.
+@cast moni,ghost
+INFLA: Buuu. Fui yo. Soy la inflación.
+P: 5 % POR AÑO |
+MONI: Con una inflación del cinco por ciento anual, mil dólares guardados compran, cinco años después, lo mismo que setecientos ochenta y cuatro dólares de antes.
+P: $1.000 → $784 |
+MONI{angry}: ¡Me robaste doscientos dieciséis dólares sin tocar la alcancía!
+INFLA{sly}: No te robé nada. Los billetes están todos. Solo valen menos.
+P: EXPLICACIÓN | poder de compra
+MONI: Explicación: la inflación no te saca billetes. Te saca poder de compra, que es lo que podés comprar con esos billetes. Por eso es tan peligrosa: no se ve.
+## Capítulo 2: la noche del colchón
+@bg sitcom
+@cast moni,ghost
+P: ESCENA NUEVA | la mudanza al colchón
+MONI: Mi primera idea fue esconder la plata. Si el fantasma no la encuentra, no la puede tocar. La metí adentro del colchón.
+INFLA: Moni, Moni. Yo no necesito encontrarte. Atravieso todo.
+MONI{worried}: Esa noche no pude dormir. Cada ruido me parecía un ladrón. Y encima Infla flotaba sobre la cama.
+P: 2 RIESGOS |
+MONI: Explicación: guardar efectivo en casa tiene dos riesgos. El robo, que se ve. Y la inflación, que no se ve, pero pasa siempre.
+P: UN POCO SÍ, TODO NO |
+MONI{think}: Tener un poco de efectivo para emergencias de un día está bien. Pero los ahorros de largo plazo, quietos en un colchón, pierden valor año tras año.
+INFLA{sly}: El colchón es mi lugar favorito.
+## Capítulo 3: dónde se esconde la plata
+@bg pizarra
+@cast moni
+P: LA BÚSQUEDA |
+MONI: Entonces me puse el gorro de detective. Si no puedo esconder la plata del fantasma, tengo que hacerla crecer más rápido que él.
+P: QUE CREZCA MÁS QUE INFLA |
+MONI: La regla: tu plata tiene que crecer, al menos, lo mismo que la inflación. Si la inflación es cinco, necesitás rendir cinco o más solo para no perder.
+P: 1 · INSTRUMENTOS QUE AJUSTAN |
+MONI: Encontré tres escondites. Uno: instrumentos que ajustan por inflación, como algunos bonos o depósitos que existen en muchos países. Están hechos para empatarle a Infla.
+P: 2 · FONDOS DIVERSIFICADOS |
+MONI: Dos: para el largo plazo, invertir en empresas a través de fondos diversificados, que históricamente le ganaron a la inflación en períodos largos.
+P: 3 · TU INGRESO |
+MONI: Y tres, el que nadie te dice: tu propio ingreso. Capacitarte y negociar tu sueldo es la mejor defensa contra Infla.
+@cast moni,ghost
+INFLA{worried}: Esos escondites no me gustan nada.
+P: NO ES MAGIA |
+MONI{think}: Ojo: ninguno es garantía ni magia. Cada uno tiene riesgos y depende de tu país. Pero dejar la plata quieta es la única opción que pierde siempre.
+## Capítulo 4: el disfraz
+@bg sitcom
+@cast moni,ghost
+P: EL SUPERMERCADO |
+MONI: Capítulo cuatro. Infla cambió de estrategia. Si no podía subir los precios sin que me diera cuenta, iba a disfrazarse.
+INFLA: Hola, soy el nuevo empleado del súper.
+P: 12 → 10 GALLETITAS |
+MONI: Agarré mi paquete de galletitas de siempre. Mismo precio. Mismo dibujo. Pero tenía diez en vez de doce.
+P: REDUFLACIÓN |
+MONI{angry}: ¡Reduflación! Mismo precio, menos producto. Me estabas cobrando más sin cambiar la etiqueta.
+P: PRECIO POR KILO |
+MONI: Explicación: la forma de descubrir el disfraz es mirar el precio por kilo o por litro. Si el paquete se achica y el precio por kilo sube, es inflación disfrazada.
+INFLA{worried}: Esa letra chica me arruina todo.
+## Capítulo 5: el sueldo
+@bg novela
+@cast moni,ghost
+P: EL AUMENTO |
+MONI: Final de temporada. Me llamó mi jefa. ¡Me aumentaron el sueldo un tres por ciento!
+INFLA{sly}: Y yo subí un seis.
+P: +3 % vs. +6 % |
+MONI{shock}: Hice la cuenta. Con un aumento del tres y una inflación del seis, mi sueldo compraba casi un tres por ciento menos que el año anterior.
+P: −2,8 % |
+MONI: Me habían bajado el sueldo con una sonrisa.
+P: FINAL NUEVO | la negociación
+MONI{angry}: Pero esta vez no me quedé callada. Este es el final que no salió en los shorts.
+MONI: Volví a la oficina con tres papeles: la inflación del último año, lo que pagaban otras empresas por mi trabajo y una lista de lo que había logrado.
+P: AUMENTO REAL |
+MONI{wave}: No conseguí todo lo que pedí, pero conseguí un aumento por encima de la inflación. Por primera vez, mi sueldo le ganó a Infla.
+INFLA{worried}: Esto no me lo esperaba.
+P: EXPLICACIÓN | negociar con datos
+MONI: Explicación: un aumento por debajo de la inflación es una baja de sueldo real. Llevá datos, no quejas. Los datos se discuten mucho mejor que las emociones.
+## Detrás de escena
+@bg pizarra
+@cast moni
+P: ¿QUÉ ES REAL? |
+MONI: Detrás de escena: ¿qué hay de real en esta temporada?
+P: LOS NÚMEROS |
+MONI: Los números son reales: con cinco por ciento anual, mil dólares compran como setecientos ochenta y cuatro en cinco años. Y un aumento del tres con inflación del seis es una pérdida de casi tres por ciento.
+P: LA REDUFLACIÓN |
+MONI: La reduflación es real y está documentada en muchos países. Los paquetes que se achican son uno de los temas que más comentan los consumidores.
+P: LO QUE NO ES REAL |
+MONI: Lo que no es real: la inflación no es un fantasma verde con signo de porcentaje. Aunque, admito, a veces se siente así.
+## Qué aprendí de Infla
+@bg marca
+@cast moni,ghost
+P: 4 LECCIONES |
+MONI: Cuatro lecciones de la temporada dos.
+P: 1 · LA PLATA QUIETA PIERDE |
+MONI: Una: la plata quieta pierde. Siempre.
+P: 2 · MIRÁ EL PRECIO POR KILO |
+MONI: Dos: mirá el precio por kilo, no el del paquete.
+P: 3 · NEGOCIÁ CON DATOS |
+MONI: Tres: negociá tu sueldo con el dato de inflación en la mano.
+P: 4 · INVERTÍ A LARGO PLAZO |
+MONI: Y cuatro: para el largo plazo, buscá que tu plata crezca más que Infla.
+INFLA{sly}: Igual voy a volver.
+MONI{wave}: Ya lo sé. Pero ahora te estoy esperando.
+## Infla en tu país
+@bg simulador
+@cast moni,ghost
+P: INFLA EN EL MUNDO |
+INFLA: No soy igual en todos lados, eh. En algunos países soy chiquito y en otros, enorme.
+MONI: Es verdad. En muchos países desarrollados, la inflación suele moverse cerca del dos o tres por ciento anual. En otros, puede ser de dos cifras, y en algunos casos extremos, mucho más.
+P: LA MISMA LÓGICA |
+MONI: Pero la lógica es la misma en todos lados: la plata quieta pierde, los sueldos que se ajustan tarde pierden, y conviene buscar formas de que tu plata crezca al menos al ritmo de los precios.
+P: CON INFLACIÓN ALTA |
+MONI{think}: Con inflación alta, todo se acelera: los ahorros pierden más rápido, los precios cambian seguido y planificar se vuelve más difícil. Por eso, en esos países, la educación financiera es todavía más importante.
+INFLA{sly}: Y ahí es donde más me divierto.
+MONI{angry}: Por eso estamos haciendo esta telenovela, Infla.
+## Escena eliminada: Infla y Tarjetín
+@bg novela
+@cast card,ghost
+P: ESCENA ELIMINADA |
+TARJETÍN{sly}: Infla, ¿sabés que juntos somos imparables?
+INFLA{sly}: Contame.
+TARJETÍN: Yo le presto plata a Moni para que compre ahora, porque vos le decís que mañana va a estar más caro.
+INFLA: Y yo hago que su sueldo valga menos, así le cuesta más pagarte.
+@cast moni,card,ghost
+MONI{angry}: ¡Los escuché!
+P: LA ALIANZA |
+MONI: Esta escena la sacamos de los shorts, pero explica algo real: con inflación, comprar en cuotas puede tener sentido si las cuotas son fijas y sin interés. Pero si la tasa de la tarjeta es más alta que la inflación, la deuda crece más rápido que los precios.
+MONI{think}: La regla: compará siempre la tasa de la deuda con la inflación esperada. Si la tasa es mayor, Tarjetín gana. Si es menor y fija, la ventaja puede ser tuya.
+TARJETÍN{worried}: Nos descubrió.
+INFLA{worried}: Retirada.
+## Cierre
+@bg marca
+@cast moni
+P: TEMPORADA 3 |
+MONI: Y así terminó la temporada dos. En la lista del canal tenés la temporada tres, la del préstamo fácil, en formato de shorts.
+P: ¿Qué villano querés? |
+MONI{wave}: Contame en los comentarios: ¿quién querés que sea el próximo villano de la telenovela del dinero? Los más votados tienen temporada.

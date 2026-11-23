@@ -1,0 +1,122 @@
+@tipo historia
+## Dallas, año 2000
+@bg novela
+@cast moni
+P: DALLAS · 2000 |
+MONI: Año 2000. Dallas, Texas. Dos emprendedores entran a la sede de la empresa de alquiler de películas más grande del mundo.
+MONI: Vienen de California. Tienen una empresa chiquita que manda DVDs por correo y que pierde plata.
+P: $50.000.000 |
+MONI: Le ofrecen al gigante comprar su empresa por cincuenta millones de dólares, y encargarse del negocio online del gigante.
+MONI{shock}: Según contó años después uno de ellos, Marc Randolph, los ejecutivos casi se rieron en su cara.
+P: NETFLIX |
+MONI: Esa empresita se llamaba Netflix. Y el gigante, Blockbuster.
+P: 2010 · QUIEBRA |
+MONI: Diez años después, Blockbuster quebró. Y Netflix se convirtió en una de las empresas de entretenimiento más grandes del planeta.
+MONI{think}: Hoy contamos la historia del no más caro de los negocios. Y lo que nos enseña sobre algo que te afecta a vos: el costo de no cambiar a tiempo.
+## El imperio Blockbuster
+@bg sitcom
+P: VIERNES A LA NOCHE |
+MONI: Si naciste antes del dos mil, seguro te acordás del ritual. Viernes a la noche, ir al videoclub, recorrer pasillos y elegir una película.
+P: ≈ 9.000 LOCALES |
+MONI: Blockbuster llegó a tener alrededor de nueve mil locales en todo el mundo, a mediados de los dos mil. Estaba en todos lados.
+P: LAS MULTAS |
+MONI: Y tenía un negocio que funcionaba muy bien: las multas por devolución tardía. Si te olvidabas de devolver la película a tiempo, pagabas extra.
+MONI{shock}: Se calcula que en el año 2000 las multas le dejaron unos ochocientos millones de dólares. Una parte enorme de sus ingresos.
+MONI{think}: Fijate en esto, porque es la clave de la historia: una parte importante del negocio de Blockbuster dependía de que sus clientes se equivocaran.
+## La apuesta de Netflix
+@bg marca
+P: 1997 · NETFLIX |
+MONI: Netflix nació en 1997. La idea era mandar DVDs por correo. Elegías la película en una página web, te llegaba a tu casa en un sobre rojo y la devolvías por correo.
+P: SIN MULTAS |
+MONI: En 1999 lanzaron la suscripción: pagabas un monto fijo por mes, tenías películas en tu casa y no había multas. Te la quedabas el tiempo que quisieras.
+MONI: Cuenta la leyenda que la idea nació por una multa. Reed Hastings, el otro fundador, dijo que había pagado una multa de cuarenta dólares por devolver tarde una película. La historia se discute, pero se convirtió en el mito fundacional.
+P: 2007 · STREAMING |
+MONI{wave}: Y en 2007, Netflix empezó a ofrecer películas por internet, en streaming. Sin sobres, sin esperar. Le das play y listo.
+## Por qué Blockbuster dijo que no
+@bg pizarra
+P: ¿POR QUÉ NO? |
+MONI: Es fácil reírse de Blockbuster hoy. Pero en el año 2000, su decisión tenía lógica.
+P: 1 · LO QUE TENÍAN FUNCIONABA |
+MONI: Uno: su negocio funcionaba y era enormemente rentable. ¿Para qué cambiar algo que da plata?
+P: 2 · INTERNET ERA LENTO |
+MONI: Dos: internet era lento y la mayoría de la gente no compraba nada online. Netflix perdía plata. Parecía un nicho.
+P: 3 · CAMBIAR DOLÍA |
+MONI: Tres: cambiar dolía. Eliminar las multas y pasar a lo digital significaba renunciar a ingresos seguros a cambio de algo incierto.
+MONI{think}: Esto tiene nombre en economía: el dilema del innovador. Las empresas exitosas suelen ignorar las ideas nuevas porque, al principio, son peores y menos rentables que lo que ya tienen.
+P: SÍ LO INTENTARON |
+MONI: Y en realidad, Blockbuster sí intentó reaccionar. Hacia 2004 lanzó su propio servicio online y llegó a eliminar las multas. Pero lo hizo tarde, con dudas, y hubo tironeos internos sobre si convenía o no.
+## La caída
+@bg novela
+P: 2010 |
+MONI: En septiembre de 2010, Blockbuster se declaró en quiebra. Tenía deudas enormes y los clientes se habían ido a internet.
+P: UN SOLO LOCAL |
+MONI: Hoy queda un solo local de Blockbuster en el mundo, en la ciudad de Bend, en Oregon, Estados Unidos. Funciona casi como un museo.
+P: NETFLIX HOY |
+MONI{shock}: Y Netflix, la empresita de cincuenta millones, pasó a valer cientos de miles de millones de dólares y produce sus propias series y películas.
+MONI: Netflix también hizo apuestas que dolieron. En 2011 intentó separar el negocio de DVDs del streaming, perdió suscriptores y tuvo que dar marcha atrás. Pero siguió apostando al cambio.
+## La lección para tu plata
+@bg simulador
+@cast moni
+P: EL COSTO DE NO CAMBIAR |
+MONI: Ahora, ¿qué tiene que ver esto con vos? Más de lo que parece.
+P: 1 · TU TRABAJO |
+MONI: Uno: tu trabajo. Si tu trabajo depende de algo que está cambiando, aprender algo nuevo hoy cuesta mucho menos que tener que reinventarte de golpe mañana.
+P: 2 · TUS INVERSIONES |
+MONI: Dos: tus inversiones. Ninguna empresa es para siempre. Blockbuster parecía imbatible. Por eso diversificar es tan importante: no apostar todo a un solo gigante.
+P: 3 · TUS HÁBITOS |
+MONI: Tres: tus hábitos de plata. Muchas veces seguimos haciendo lo mismo porque siempre lo hicimos así. La misma cuenta que no rinde, el mismo seguro caro, el mismo plan de celular.
+P: COSTO DE OPORTUNIDAD |
+MONI{think}: Eso tiene un nombre: costo de oportunidad. Lo que dejás de ganar por no elegir otra opción. Blockbuster no perdió plata con Netflix en el año 2000. Perdió todo lo que podría haber sido.
+## Tu propio Blockbuster
+@bg marca
+@cast moni,cup
+P: TU BLOCKBUSTER |
+MONI: Te propongo un ejercicio. Buscá tu propio Blockbuster: algo en tu vida financiera que mantenés solo por costumbre.
+CAFECITO: ¿Como pagar tres dólares por mí todos los días?
+MONI: Puede ser, Cafecito. O el banco que te cobra mantenimiento por una cuenta que podrías tener gratis.
+P: 3 PREGUNTAS |
+MONI: Tres preguntas para encontrarlo. ¿Qué pago todos los meses sin haberlo revisado en el último año? ¿Qué hago con mi plata solo porque siempre lo hice así? ¿Qué cambio vengo postergando porque me da fiaca?
+MONI{think}: Muchas veces la respuesta a esas preguntas vale más que cualquier inversión.
+## Otras empresas que dijeron que no
+@bg novela
+@cast moni
+P: NO FUERON LOS ÚNICOS |
+MONI: Blockbuster no fue la única empresa que dejó pasar el futuro.
+P: KODAK |
+MONI: Kodak, la gigante de los rollos de fotos, tenía ingenieros que construyeron uno de los primeros prototipos de cámara digital en la década del setenta. Pero su negocio era vender rollos y revelados. Avanzó despacio con lo digital y en 2012 se declaró en quiebra.
+P: NOKIA |
+MONI: Nokia llegó a ser el mayor fabricante de celulares del mundo. Cuando aparecieron los teléfonos con pantalla táctil y tiendas de aplicaciones, reaccionó tarde, y perdió el liderazgo en pocos años.
+P: EL PATRÓN |
+MONI{think}: El patrón se repite: empresas que eran las mejores en lo que hacían, a las que lo que tenían les funcionaba tan bien que no quisieron arriesgarlo.
+MONI: El éxito de hoy puede ser la trampa de mañana. Y eso también vale para las personas.
+## El dilema del innovador en tu vida
+@bg pizarra
+@cast moni
+P: TU PROPIO DILEMA |
+MONI: El dilema del innovador no le pasa solo a las empresas. Te puede pasar a vos.
+P: EL TRABAJO CÓMODO |
+MONI: Un trabajo cómodo que paga bien hoy, pero en un rubro que se está achicando. Cambiar da miedo y al principio quizás pague menos. Quedarse parece seguro, hasta que deja de serlo.
+P: APRENDER DE A POCO |
+MONI: La salida no tiene por qué ser dramática. Como Netflix con los DVDs, podés mantener lo que funciona mientras aprendés lo nuevo de a poco: un curso, un proyecto paralelo, una habilidad extra.
+P: EL FONDO TE DA OPCIONES |
+MONI{think}: Y acá aparece otra vez el fondo de emergencia. Tener unos meses de gastos ahorrados es lo que te permite animarte a cambiar cuando aparece la oportunidad.
+## Una última curiosidad
+@bg marca
+@cast moni
+P: EL ÚLTIMO BLOCKBUSTER |
+MONI: Una última curiosidad. El último local de Blockbuster, en Oregon, se volvió una atracción turística. La gente viaja para sacarse fotos, comprar remeras y alquilar una película como antes.
+MONI{think}: Es decir, lo que antes era un negocio de alquiler de películas hoy vive de la nostalgia. Hasta el final, el negocio tuvo que cambiar para sobrevivir.
+## Resumen en 30 segundos
+@bg pizarra
+@cast moni
+P: RESUMEN |
+MONI: Blockbuster rechazó comprar Netflix por cincuenta millones en el año 2000 porque su negocio funcionaba, internet era lento y cambiar dolía.
+MONI: Reaccionó tarde y quebró en 2010.
+MONI: La lección para tu plata: revisá lo que hacés por costumbre, diversificá y aprendé cosas nuevas antes de que sea urgente.
+## Cierre
+@bg marca
+@cast moni
+P: CAMBIAR A TIEMPO |
+MONI: Blockbuster no cayó por tonto. Cayó porque lo que tenía funcionaba, y cambiar dolía. Esa es la trampa más común, en las empresas y en la vida.
+P: ¿Cuál es tu Blockbuster? |
+MONI{wave}: Contame en los comentarios: ¿cuál es tu Blockbuster? ¿Qué vas a cambiar este mes? Y si te acordás del videoclub, contame cuál fue la última película que alquilaste.

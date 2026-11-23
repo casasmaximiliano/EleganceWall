@@ -1,0 +1,132 @@
+@tipo guia
+## El día 20
+@bg marca
+@cast moni
+P: DÍA 20 | y ya no queda nada
+MONI{worried}: Si cobrás el día uno y el día veinte ya estás contando monedas, este video es para vos.
+MONI: Y no, no es solo porque ganes poco. Hay gente que gana el doble que vos y vive igual de al día.
+MONI: El problema casi nunca es cuánto entra. Es que tu plata no tiene un plan antes de llegar. Entonces se va sola, en mil lugares chiquitos.
+P: 7 PASOS · 1 MES |
+MONI: En este video armamos ese plan. Siete pasos, con un sueldo de ejemplo de mil doscientos dólares, que podés empezar este mismo mes.
+MONI: Sin planillas complicadas, sin aplicaciones caras y sin dejar de vivir. Porque un plan que te hace infeliz dura dos semanas.
+MONI{wave}: Arrancamos.
+## Paso 1: lo que entra de verdad
+@bg pizarra
+P: BRUTO ≠ NETO |
+MONI: Paso uno: saber cuánto entra de verdad. No el sueldo que figura en el contrato. El que llega a tu cuenta, después de aportes e impuestos.
+P: $1.200 | netos por mes (ejemplo)
+MONI: En nuestro ejemplo, mil doscientos dólares netos.
+MONI: Si tenés ingresos que varían, como los freelance o los que cobran comisiones, usá el promedio de los últimos tres meses. O mejor todavía, el mes más bajo.
+MONI{think}: Planificar con el mes bueno es la forma más rápida de quedarte corto. Planificá con el mes malo y, cuando venga uno bueno, lo que sobra va al ahorro.
+P: + INGRESOS EXTRA |
+MONI: Anotá también los ingresos que llegan de vez en cuando: aguinaldo, bonos, devoluciones. No los cuentes para el mes a mes. Esos tienen otro destino, que vemos más adelante.
+## Paso 2: treinta días de rastreo
+@bg sitcom
+@cast moni,cup
+P: ANOTAR TODO | 30 días
+MONI: Paso dos, el más importante y el que nadie hace: anotar todo lo que gastás durante treinta días. Todo.
+MONI: El café, el colectivo, la propina, la suscripción que no te acordás que tenés.
+CAFECITO: Hola, soy solo un cafecito de tres dólares.
+P: $792 | por año en cafés
+MONI{shock}: Tres dólares por veintidós días de trabajo, por doce meses: setecientos noventa y dos al año.
+@cast moni,bag
+DELIVY: Y yo soy solo un delivery de quince, tres veces por semana.
+P: $2.340 | por año en delivery
+MONI{shock}: Dos mil trescientos cuarenta al año. Más que dos sueldos de nuestro ejemplo.
+@cast moni
+P: ¿CÓMO ANOTAR? |
+MONI: ¿Cómo anotarlo? Como te resulte más fácil: una nota en el celular, una planilla, o revisar los movimientos del banco cada noche. El mejor método es el que vas a usar.
+MONI: Spoiler: los gastos que más te sorprenden no son los grandes. Son los chiquitos que se repiten.
+MONI: No los anotes para sentir culpa. Anotalos para decidir si valen lo que cuestan. Si el café de la mañana te hace feliz, quedátelo. Pero que sea una decisión, no un piloto automático.
+## Paso 3: repartir
+@bg pizarra
+P: 50 / 30 / 20 |
+MONI: Paso tres: repartir. La regla más conocida es la cincuenta, treinta, veinte. La popularizó la senadora estadounidense Elizabeth Warren en un libro de 2005.
+P: $600 | necesidades
+MONI: Con mil doscientos: seiscientos para necesidades. Alquiler, comida, transporte, servicios. Lo que tenés que pagar sí o sí.
+P: $360 | gustos
+MONI: Trescientos sesenta para gustos. Salidas, ropa que no necesitás, series, regalos. Sin culpa.
+P: $240 | tu futuro
+MONI: Y doscientos cuarenta para tu futuro: ahorro o pago de deudas.
+P: ¿Fijos > 50 %? |
+MONI{think}: ¿Y si tus gastos fijos ya se comen más de la mitad? Pasa muchísimo, sobre todo con los alquileres de hoy.
+MONI: No pasa nada. Las proporciones son una guía, no una ley. Empezá con lo que puedas, aunque sea un cinco por ciento para el futuro.
+P: +1 % por mes |
+MONI: Y subilo un punto cada mes. Cinco, seis, siete. En un año llegaste al diecisiete por ciento sin darte cuenta.
+MONI: Lo importante es que el número del futuro no sea cero. Nunca cero.
+## Paso 4: mini fondo de emergencia
+@bg marca
+P: $500 | primera meta
+MONI: Paso cuatro: un mini fondo de emergencia. ¿Por qué antes que todo lo demás, incluso antes de las deudas? Porque sin él, cualquier imprevisto se convierte en una deuda nueva.
+MONI: Se rompe el celular, te enfermás, se rompe la moto. Si no tenés nada guardado, lo pagás con la tarjeta, y vuelve a empezar todo.
+MONI: Primera meta: quinientos dólares, o un mes de gastos básicos.
+P: SEPARADO · DISPONIBLE |
+MONI: Guardalos separados de la cuenta que usás todos los días, en un lugar donde puedas sacarlos en uno o dos días y no pierdan valor.
+P: $20 × 25 semanas | = $500
+MONI: Con veinte dólares por semana, en seis meses lo tenés. Después, el objetivo grande es de tres a seis meses de gastos. Pero eso es para más adelante.
+## Paso 5: atacar las deudas
+@bg novela
+@cast moni,card
+P: LA LISTA | saldo · tasa · cuota
+MONI: Paso cinco: las deudas. Primero hacé la lista completa: cuánto debés, a qué tasa y cuánto pagás por mes. Todo junto, en un solo lugar.
+TARJETÍN: ¿Para qué una lista? Pagá el mínimo y listo, mi amor.
+P: AVALANCHA | primero la tasa más alta
+MONI{angry}: Ni loca. Método avalancha: al resto le pagás el mínimo, y todo lo que te sobre va a la deuda con la tasa más alta. Es el método que más intereses ahorra.
+P: BOLA DE NIEVE | primero la más chica
+MONI: Método bola de nieve: lo mismo, pero empezás por la deuda más chica. Te ahorra un poco menos, pero cancelás algo rápido, y eso motiva muchísimo.
+MONI: Cuando cancelás una, lo que pagabas por ella pasa a la siguiente. Por eso se llama bola de nieve: cada vez es más grande.
+P: TARJETA = PAGO TOTAL |
+MONI: Y mientras tanto, regla de oro: la tarjeta, solo si podés pagar el total del resumen cuando vence.
+TARJETÍN{worried}: Eso no me gusta nada.
+## Paso 6: automatizar
+@bg simulador
+@cast moni
+P: PAGATE PRIMERO |
+MONI: Paso seis: automatizar. Programá una transferencia automática el mismo día que cobrás, a la cuenta del ahorro y del fondo.
+MONI: El ahorro sale primero, antes de que lo veas. Se llama págate a vos primero.
+MONI: Lo que no ves, no lo gastás. Y no depende de tu fuerza de voluntad del día veintitrés, que todos sabemos que es poca.
+P: TAMBIÉN LOS PAGOS |
+MONI: Automatizá también los pagos fijos: servicios, cuotas, el pago total de la tarjeta. Menos olvidos, menos recargos, menos cosas en la cabeza.
+## Paso 7: revisión mensual
+@bg pizarra
+P: 15 MINUTOS | una vez por mes
+MONI: Paso siete: quince minutos por mes, siempre el mismo día. Yo lo hago el primer domingo de cada mes, con un café hecho en casa.
+P: 3 PREGUNTAS | entró · salió · avancé
+MONI: Tres preguntas: ¿cuánto entró? ¿Cuánto salió y en qué? ¿Avancé en mi fondo y en mis deudas?
+MONI: Si te pasaste en algo, no te castigues. Ajustá el mes que viene. Si un gasto se repite todos los meses, quizás tu presupuesto estaba mal, no vos.
+P: PRESUPUESTO = GPS |
+MONI: Un presupuesto no es una dieta. Es un GPS: si te desviás, recalcula. Lo importante es saber adónde vas.
+## Los cinco errores más comunes
+@bg sitcom
+@cast moni,bow
+P: 5 ERRORES |
+MONI: Antes de terminar, los cinco errores que veo una y otra vez cuando alguien intenta dejar de vivir al día.
+P: 1 · TODO DE GOLPE |
+MONI: Error uno: querer cambiar todo de golpe. Cortar todas las salidas, todos los gustos, todo. Dura dos semanas y después viene el atracón.
+CAPRICHO: ¡Me lo merezco! ¡Llevo dos semanas sin nada!
+MONI: Exacto. Por eso el presupuesto tiene una parte para gustos. No es un premio: es parte del plan.
+P: 2 · SIN FONDO |
+MONI: Error dos: atacar las deudas sin tener un fondo de emergencia. Aparece un imprevisto y volvés a la tarjeta.
+P: 3 · AHORRAR LO QUE SOBRA |
+MONI: Error tres: ahorrar lo que sobra a fin de mes. Nunca sobra. El ahorro va primero, el día de cobro.
+P: 4 · NO MIRAR |
+MONI: Error cuatro: no mirar. No abrir el resumen, no revisar la cuenta, por miedo. Lo que no mirás no desaparece. Crece.
+P: 5 · COMPARARSE |
+MONI: Y error cinco: compararse. Con el amigo que viaja, con la influencer que se compró un auto. No sabés cuánto deben. Tu plan es tuyo.
+CAPRICHO{worried}: Bueno, está bien, me porto bien.
+## La plata extra
+@cast moni
+@bg marca
+P: AGUINALDO · BONOS |
+MONI: Un último detalle que cambia todo: ¿qué hacés con la plata extra? El aguinaldo, un bono, una devolución.
+P: ⅓ · ⅓ · ⅓ | disfrutar · ahorrar · deudas
+MONI: Mi regla: un tercio para disfrutar, un tercio para el ahorro y un tercio para deudas o el fondo de emergencia.
+MONI: Así la plata extra te da un gusto y, al mismo tiempo, te acerca a dejar de vivir al día.
+## Cierre
+@bg marca
+P: 7 PASOS |
+MONI: Repasemos: sabé cuánto entra, anotá todo un mes, repartí, armá un mini fondo, atacá las deudas, automatizá y revisá una vez por mes.
+MONI: No tenés que hacer los siete esta semana. Con empezar por el primero y el segundo, ya estás adelante de la mayoría.
+P: EL RETO | hacé el paso 2 este mes
+MONI{wave}: Mi reto para vos: hacé el paso dos este mes y contame en los comentarios cuál fue el gasto que más te sorprendió.
+MONI: Y si tenés tarjeta de crédito, mirá el próximo video, porque ahí se esconde el agujero más grande de todos.

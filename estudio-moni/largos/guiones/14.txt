@@ -1,0 +1,148 @@
+@tipo guia
+## La heladera que echa humo
+@bg sitcom
+@cast moni
+P: 🔥 |
+MONI{shock}: Lunes a la mañana. La heladera hace un ruido raro, echa humo y se apaga. Toda la comida adentro.
+MONI: Si tenés ahorros, esto es un mal día. Si no tenés, esto es el comienzo de una deuda.
+@cast moni,bill
+PRÉSTAMÍN{sly}: ¿Necesitás plata ya? Aprobación en cinco minutos. Cuota chiquitita.
+MONI: Y ahí está la cadena: imprevisto, deuda, intereses, menos plata el mes siguiente, más chances de otro imprevisto sin ahorro. Y vuelta a empezar.
+P: FONDO DE EMERGENCIA |
+MONI: El fondo de emergencia es lo que corta esa cadena. Hoy respondemos las tres preguntas que todo el mundo tiene: cuánto, dónde y cómo armarlo si hoy tenés cero.
+## Para qué sirve
+@bg pizarra
+@cast moni
+P: NO ES PARA INVERTIR |
+MONI: Primero, para qué sirve. El fondo de emergencia no es una inversión. No está para ganar plata. Está para que no tengas que endeudarte.
+P: ES UN SEGURO |
+MONI: Pensalo como un seguro que te pagás a vos mismo. No genera grandes ganancias, pero te ahorra muchísimos intereses y muchísimo estrés.
+P: TRES COSAS |
+MONI{think}: Además te da tres cosas que no tienen precio: dormir tranquilo, poder decir que no a un trabajo malo, y poder tomar decisiones sin desesperación.
+MONI: Con un fondo armado, una emergencia es un problema que se resuelve. Sin fondo, es una crisis.
+## Cuánto
+@bg simulador
+P: 3 a 6 MESES | de gastos esenciales
+MONI: ¿Cuánto tiene que tener? La recomendación más común es de tres a seis meses de gastos esenciales. Ojo: de gastos, no de sueldo.
+P: GASTOS ESENCIALES |
+MONI: Gastos esenciales son los que tenés que pagar sí o sí: alquiler, comida, servicios, transporte, cuotas obligatorias, salud.
+P: $800 × 3 = $2.400 |
+MONI: Si tus gastos esenciales son ochocientos dólares por mes, tu fondo debería tener entre dos mil cuatrocientos y cuatro mil ochocientos.
+P: ¿3 o 6? |
+MONI: ¿Tres o seis? Más cerca de seis si tus ingresos son variables, si sos el único ingreso de tu casa, si tenés hijos o si trabajás en un rubro donde cuesta conseguir trabajo. Más cerca de tres si tenés un empleo estable y otra persona que también aporta en tu casa.
+MONI{wave}: Y no te asustes con el número. Nadie lo arma de un mes para el otro.
+## Dónde guardarlo
+@bg marca
+P: 3 CONDICIONES |
+MONI: ¿Dónde guardarlo? Tiene que cumplir tres condiciones.
+P: 1 · DISPONIBLE |
+MONI: Una: disponible. Que lo puedas sacar en uno o dos días como mucho. Las emergencias no avisan.
+P: 2 · SEGURO |
+MONI: Dos: seguro. Nada que pueda bajar mucho de valor justo cuando lo necesitás. Las acciones o las criptomonedas no son lugar para el fondo de emergencia.
+P: 3 · SEPARADO |
+MONI: Tres: separado de tu cuenta de todos los días. Si lo ves todos los días, lo vas a usar para cosas que no son emergencias.
+P: ¿Y LA INFLACIÓN? |
+MONI{think}: ¿Y la inflación? Idealmente, que el lugar donde lo guardes rinda algo, para que no pierda tanto valor. Cada país tiene sus opciones: cuentas remuneradas, depósitos que se pueden retirar rápido, fondos de muy bajo riesgo. Lo importante es priorizar disponibilidad y seguridad antes que rendimiento.
+## Cómo empezar desde cero
+@bg pizarra
+P: DESDE $0 |
+MONI: ¿Y si hoy tenés cero? Así lo armé yo.
+P: META 1 · $500 |
+MONI: Meta uno: quinientos dólares, o un mes de gastos. Es el fondo mínimo, el que te salva de las emergencias más comunes.
+P: $20 × 25 SEMANAS |
+MONI: Con veinte dólares por semana, en veinticinco semanas lo tenés. Si podés más, más rápido.
+P: AUTOMÁTICO |
+MONI: El truco es automatizarlo. Una transferencia programada el día de cobro. Si depende de que te acuerdes, no va a pasar.
+P: PLATA EXTRA → FONDO |
+MONI: Y toda plata extra que entre, aguinaldo, bonos, devoluciones, una parte va directo al fondo.
+P: META 2 · 3 MESES |
+MONI{wave}: Cuando llegás a la meta uno, seguís hacia los tres meses. Y después, si querés, hacia los seis.
+## ¿Fondo o deudas primero?
+@bg novela
+@cast moni,card
+P: ¿FONDO O DEUDAS? |
+TARJETÍN{sly}: Si tenés deudas, no ahorres. Pagame a mí primero.
+MONI: Esta es la pregunta más común. ¿Primero el fondo o primero las deudas?
+P: 1 · MINI FONDO |
+MONI: Mi respuesta: primero un mini fondo, de quinientos dólares o un mes de gastos. Sin eso, cada imprevisto vuelve a la tarjeta y nunca salís.
+P: 2 · DEUDAS CARAS |
+MONI: Después, todo a las deudas caras, como la tarjeta.
+P: 3 · FONDO COMPLETO |
+MONI: Y con las deudas caras pagadas, completás el fondo hasta los tres o seis meses.
+TARJETÍN{worried}: No me gusta este orden.
+MONI: Por eso funciona.
+## Qué es una emergencia y qué no
+@bg sitcom
+@cast moni,tag
+P: ¿ES UNA EMERGENCIA? |
+OFERTÍN: ¡Setenta por ciento de descuento en televisores! ¡Esto es una emergencia!
+MONI: El test de Moni. Tres preguntas. Si las tres son sí, es emergencia.
+P: ¿INESPERADO? |
+MONI: Uno: ¿es inesperado? Las vacaciones, los regalos de cumpleaños o el seguro anual no son inesperados. Se planifican.
+P: ¿NECESARIO? |
+MONI: Dos: ¿es necesario? Una heladera rota, sí. Un televisor más grande, no.
+P: ¿URGENTE? |
+MONI: Tres: ¿es urgente? ¿Pasa algo grave si no lo resolvés ahora?
+OFERTÍN{worried}: ¿Y una oferta que termina hoy?
+MONI: No es inesperada, no es necesaria, y la urgencia la inventaste vos. Cero de tres.
+## Usarlo y reponerlo
+@bg marca
+@cast moni
+P: USARLO SIN CULPA |
+MONI: Cuando llega una emergencia de verdad, usá el fondo sin culpa. Para eso existe. Muchos lo armamos y después no lo queremos tocar, y terminamos pidiendo un préstamo igual.
+P: REPONER |
+MONI: Después de usarlo, lo primero es reponerlo. Volvés a poner la transferencia automática, o la subís un poco, hasta llegar otra vez a la meta.
+P: REVISAR LA META |
+MONI{think}: Y una vez por año, revisá la meta. Si tus gastos subieron, el fondo tiene que subir también.
+## Historias reales de fondos que salvaron el mes
+@bg simulador
+@cast moni
+P: 3 HISTORIAS |
+MONI: Para que veas que esto no es teoría, tres situaciones que me contaron seguidores del canal, con los datos cambiados.
+P: EL AUTO |
+MONI: Una: se le rompió el auto a alguien que lo usa para trabajar. Seiscientos dólares de arreglo. Con el fondo lo pagó en el día y no perdió ni una jornada de trabajo. Sin fondo, hubiera sido un préstamo caro.
+P: EL TRABAJO |
+MONI: Dos: alguien se quedó sin trabajo de un día para el otro. Tenía cuatro meses de gastos ahorrados. Pudo buscar con calma y elegir un trabajo mejor, en vez de aceptar el primero por desesperación.
+P: LA SALUD |
+MONI: Tres: un problema de salud en la familia que necesitaba viajar de urgencia. El fondo pagó los pasajes y el alojamiento. Sin deudas en un momento que ya era bastante difícil.
+MONI{think}: En los tres casos, el fondo no hizo a nadie rico. Hizo algo mejor: les dio opciones cuando más las necesitaban.
+## Dónde no guardarlo
+@bg novela
+@cast moni,fomito
+P: DÓNDE NO |
+FOMITO: Yo tengo mi fondo de emergencia en criptomonedas. ¡Así crece!
+MONI: Fomito, hablemos de dónde no guardarlo.
+P: ✗ CRIPTO O ACCIONES |
+MONI: En criptomonedas o acciones, no. Pueden bajar treinta o cincuenta por ciento justo cuando tenés la emergencia. Y tendrías que vender en el peor momento.
+P: ✗ DEBAJO DEL COLCHÓN |
+MONI: Debajo del colchón tampoco. Puede robarse, perderse, y la inflación se lo come en silencio. Un poquito de efectivo para urgencias de un día, sí. Todo el fondo, no.
+P: ✗ PRESTADO |
+MONI: Prestado a un amigo, menos. Cuando lo necesites, quizás él tampoco lo tenga.
+P: ✗ EN LA CUENTA DE TODOS LOS DÍAS |
+MONI{think}: Y mezclado con la cuenta de todos los días, tampoco. Se va de a poco sin que te des cuenta.
+FOMITO{worried}: ¿Y entonces dónde?
+MONI: Disponible, seguro y separado, Fomito. Aburrido. Así tiene que ser.
+## El fondo en pareja o en familia
+@bg sitcom
+@cast moni,centavito
+P: EN FAMILIA |
+CENTAVITO: ¿Y si vivo con mi pareja? ¿Cada uno tiene su fondo?
+MONI: Buena pregunta, Centavito. Si comparten gastos, conviene tener un fondo común para las emergencias de la casa: la heladera, el alquiler, una reparación.
+MONI: Y además, cada uno puede tener un fondo personal más chico, para sus propias emergencias.
+P: CALCULAR CON LOS GASTOS COMUNES |
+MONI{think}: El fondo común se calcula con los gastos esenciales de toda la casa. Y si uno de los dos tiene ingresos variables, conviene que sea más grande.
+## Resumen en 30 segundos
+@bg pizarra
+@cast moni
+P: RESUMEN |
+MONI: Fondo de emergencia: de tres a seis meses de gastos esenciales.
+MONI: Disponible en días, seguro y separado de la cuenta diaria.
+MONI: Primera meta, quinientos dólares o un mes de gastos, en automático.
+MONI: Primero un mini fondo, después las deudas caras y después el fondo completo.
+MONI: Y cuando llega una emergencia de verdad, se usa sin culpa y se repone.
+## Cierre
+@bg marca
+P: EL FONDO CORTA LA CADENA |
+MONI: Resumen: de tres a seis meses de gastos esenciales, disponible, seguro y separado. Se empieza con una meta chica, en automático, y se usa sin culpa cuando hace falta.
+P: ¿En qué etapa estás? |
+MONI{wave}: Contame en los comentarios en qué etapa estás: cero, mini fondo, tres meses o seis meses. Sin vergüenza: todos empezamos en cero.
