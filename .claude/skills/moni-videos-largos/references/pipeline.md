@@ -38,6 +38,7 @@ node thumbs.js 7                                   # miniatura
 # Producción en lote: el render espera a que el audio de cada video esté listo
 nohup python3 -u build_long.py $(seq 1 24) > out/audio.log 2>&1 &
 nohup node render_long.js --watch --workers 2 > out/render.log 2>&1 &
+nohup node render_long.js --watch --desc --workers 1 > out/render2.log 2>&1 &   # 3er worker desde el final, cuando termina el audio
 ```
 
 Contador de palabras habladas (usar antes de generar el audio):
@@ -55,6 +56,8 @@ Música más baja bajo la voz (0,075) y más alta en las placas y la pantalla fi
 
 ## Problemas conocidos y soluciones
 - **Personajes oscuros o marrones**: había ids de gradiente duplicados entre instancias ocultas. `long.js` usa `charU()` para dar ids únicos. Si agregás instancias nuevas, usá `charU`.
+- **Subtítulos cortados abajo**: con líneas de más de ~200 caracteres. `long.js` achica la letra y sube el subtítulo hasta que entra (desde la v2). Igual conviene que ninguna línea del guion pase de ~220 caracteres: mejor partirla en dos.
+- **Verificación**: `bash verify.sh NN` muestra formato, duración, loudness y silencios, y arma una hoja de fotogramas en `out/check/NN.jpg`. Mirala siempre.
 - **Duración corta**: casi siempre falta texto. Revisá con el contador, no con `wc`, porque las líneas `P:` no cuentan.
 - **Emojis en paneles**: se ven con Noto Color Emoji. Evitá emojis que muestran una fecha, como 📅.
 - **Miniaturas**: no pongas nada abajo a la derecha, porque YouTube tapa esa zona con la duración.

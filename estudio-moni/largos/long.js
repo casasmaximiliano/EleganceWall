@@ -132,6 +132,7 @@ window.frameLong = function (t) {
     } else { P.style.display = 'none'; S.num = null }
     const C = document.getElementById('Lc'); C.style.fontSize = s.text.length > 150 ? (L.className === 'b-pizarra' ? '54px' : '46px') : '';
     C.innerHTML = s.text.split(' ').map(w => `<span class="w">${esc(w)}</span>`).join(' '); S.words = [...C.querySelectorAll('.w')];
+    { let fs = parseFloat(getComputedStyle(C).fontSize); while (C.offsetHeight > 185 && fs > 30) { fs -= 2; C.style.fontSize = fs + 'px' }  C.style.top = Math.min(878, 1048 - C.offsetHeight) + 'px'; }
     const pos = layout(n, hasPanel);
     Object.entries(S.actors).forEach(([k, a]) => { const idx = s.cast.indexOf(k);
       if (idx < 0) { a.el.style.display = 'none'; a.pos = null; return }

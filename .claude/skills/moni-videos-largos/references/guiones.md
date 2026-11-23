@@ -16,6 +16,7 @@ TARJETÍN{sly}: Texto.                           (expresión forzada: shock happ
 - El hablante tiene que estar en el `@cast` para aparecer y mover la boca. El NARRADOR no tiene personaje.
 - Si el panel trae un número (“$1.867”), se anima contando hacia arriba y suena una campanita.
 - En la voz, los números van **escritos en palabras** (“mil ochocientos sesenta y siete”). En el panel, en cifras.
+- Cada línea hablada, idealmente de menos de 200 caracteres. Si es más larga, partila en dos líneas del mismo hablante.
 - Los años pueden ir en cifras en la voz (“en 2008”).
 
 ## Estructura que funciona (de 8 a 11 capítulos)
