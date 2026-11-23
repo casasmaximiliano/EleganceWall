@@ -6,7 +6,7 @@ const fs = require('fs'), path = require('path');
 const HERE = __dirname, OUT = path.join(HERE, 'out');
 const FPS = 24;
 const args = process.argv.slice(2); let workers = 4, stills = null; const nums = [];
-for (let i = 0; i < args.length; i++) { if (args[i] === '--watch' || args[i] === '--desc') {} else if (args[i] === '--workers') workers = +args[++i]; else if (args[i] === '--stills') stills = args[++i].split(',').map(Number); else nums.push(+args[i]) }
+for (let i = 0; i < args.length; i++) { if (['--watch','--desc','--no-motion','--out-motion'].includes(args[i])) {} else if (args[i] === '--workers') workers = +args[++i]; else if (args[i] === '--stills') stills = args[++i].split(',').map(Number); else nums.push(+args[i]) }
 const all = fs.readdirSync(path.join(OUT, 'timeline')).filter(f => f.endsWith('.json')).map(f => +f.slice(0, 2)).sort((a, b) => a - b);
 let watch = args.includes('--watch');
 const queue = watch ? [] : (nums.length ? nums : all).filter(n => all.includes(n));
@@ -27,7 +27,7 @@ async function renderOne(page, n) {
   await page.evaluate(t => window.setupLong(t), tl);
   if (stills) { for (const t of stills) { await page.evaluate(t => window.frameLong(t), t); await page.screenshot({path: path.join(OUT, 'stills', `${pad(n)}_${t}.jpg`), type: 'jpeg', quality: 80}) } return }
   const frames = Math.ceil(tl.total * FPS);
-  const file = path.join(OUT, 'mp4', `${pad(n)}.mp4`);
+  const file = path.join(OUT, args.includes('--out-motion') ? 'mp4_motion' : 'mp4', `${pad(n)}.mp4`);
   const ff = spawn('ffmpeg', ['-loglevel', 'error', '-y', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', '-',
     '-i', path.join(OUT, 'audio', `${pad(n)}.wav`), '-c:v', 'libx264', '-preset', 'medium', '-crf', '21', '-pix_fmt', 'yuv420p', '-r', String(FPS),
     '-af', 'loudnorm=I=-14:TP=-1.5:LRA=11', '-c:a', 'aac', '-b:a', '160k', '-ar', '48000', '-shortest', '-movflags', '+faststart', file]);
@@ -48,6 +48,7 @@ async function renderOne(page, n) {
     page.on('pageerror', e => console.error('pageerror', e.message));
     await page.goto('file://' + path.join(HERE, '..', 'video', 'renderer.html'));
     await page.addScriptTag({path: path.join(HERE, 'long.js')});
+    if (!args.includes('--no-motion')) await page.addScriptTag({path: path.join(HERE, 'motion.js')});
     await page.evaluate(() => document.fonts.ready);
     while (true) {
       let n = watch ? nextReady() : queue.shift();
