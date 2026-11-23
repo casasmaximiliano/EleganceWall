@@ -43,6 +43,7 @@ node render_long.js --workers 1 --stills 1,40,120 7   # fotogramas de control en
 node render_long.js --workers 2 --out-motion 7 8   # render con movimiento y b-roll → out/mp4_motion/ (estándar actual)
 # --no-motion / --no-broll desactivan capas; sin --out-motion escribe en out/mp4/
 node thumbs.js 7                                   # miniatura
+python3 zip_subida.py                              # zip de subida: descripción completa + .srt + miniatura por video
 # Producción en lote: el render espera a que el audio de cada video esté listo
 nohup python3 -u build_long.py $(seq 1 24) > out/audio.log 2>&1 &
 nohup node render_long.js --watch --workers 2 > out/render.log 2>&1 &
