@@ -6,13 +6,14 @@ const fs = require('fs'), path = require('path');
 const HERE = __dirname, OUT = path.join(HERE, 'out');
 const FPS = 24;
 const args = process.argv.slice(2); let workers = 4, stills = null; const nums = [];
-for (let i = 0; i < args.length; i++) { if (args[i] === '--watch') {} else if (args[i] === '--workers') workers = +args[++i]; else if (args[i] === '--stills') stills = args[++i].split(',').map(Number); else nums.push(+args[i]) }
+for (let i = 0; i < args.length; i++) { if (args[i] === '--watch' || args[i] === '--desc') {} else if (args[i] === '--workers') workers = +args[++i]; else if (args[i] === '--stills') stills = args[++i].split(',').map(Number); else nums.push(+args[i]) }
 const all = fs.readdirSync(path.join(OUT, 'timeline')).filter(f => f.endsWith('.json')).map(f => +f.slice(0, 2)).sort((a, b) => a - b);
 let watch = args.includes('--watch');
 const queue = watch ? [] : (nums.length ? nums : all).filter(n => all.includes(n));
 const claimed = new Set();
 function nextReady() {
-  for (let n = 1; n <= 24; n++) {
+  const order = args.includes('--desc') ? [...Array(24).keys()].map(i => 24 - i) : [...Array(24).keys()].map(i => i + 1);
+  for (const n of order) {
     if (claimed.has(n)) continue;
     if (fs.existsSync(path.join(OUT, 'ready', pad(n))) && !fs.existsSync(path.join(OUT, 'mp4', `${pad(n)}.mp4`))) { claimed.add(n); return n }
   }
