@@ -71,6 +71,8 @@ Música más baja bajo la voz (0,075) y más alta en las placas y la pantalla fi
 - **Emojis**: se ven con Noto Color Emoji. **Nunca uses 📅**: muestra “July 17” en inglés. Usá 🗓️.
 - **Miniaturas**: no pongas nada abajo a la derecha, porque YouTube tapa esa zona con la duración.
 - No se puede escuchar el audio en el entorno: siempre pedile al usuario que escuche una muestra.
+- **Entrega al teléfono**: los MP4 de ~100 MB no se pueden bajar desde la app; hasta ~60 MB sí. Antes de mandarlos, comprimí a `out/mp4_movil/` (≈45 MB, misma calidad visual):
+  `ffmpeg -i out/mp4_motion/NN.mp4 -c:v libx264 -preset slow -tune animation -crf 27 -maxrate 1200k -bufsize 2400k -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart out/mp4_movil/NN.mp4`
 
 ## Capas de movimiento (estándar desde el video 1 aprobado)
 - El usuario pidió **mucho movimiento**: algo nuevo en pantalla cada 2-5 s, ligado a lo que se dice.
