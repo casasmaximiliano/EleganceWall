@@ -11,6 +11,8 @@ estudio-moni/
   largos/guiones/NN.txt    guiones en formato de escenas
   largos/build_long.py     voz + música + efectos + timeline + .srt + descripción con capítulos reales
   largos/long.js           capa 16:9 que se inyecta sobre renderer.html (window.setupLong / frameLong)
+  largos/motion.js         capa de movimiento: íconos por palabra clave, cámara viva, partículas, lluvia de monedas, barridos, palabras resaltadas, cameos
+  largos/broll.js          b-roll animado: mapas con zoom (d3-geo + world-atlas), gráficos que suben/caen, dona de %, línea de tiempo de años, listas que se tildan, objetos que cruzan
   largos/render_long.js    render a MP4 (24 fps, 1920x1080, x264 crf 21, AAC con loudnorm −14 LUFS)
   largos/thumbs.js         miniaturas 1280x720
   largos/out/              audio, timeline, srt, mp4 y stills (no se versiona en git)
@@ -27,13 +29,19 @@ curl -sSL -o voices-v1.0.bin  https://github.com/thewh1teagle/kokoro-onnx/releas
 - Hugging Face y los servicios de voz online estaban bloqueados por la red. GitHub Releases y PyPI funcionan.
 - Playwright y Chromium ya vienen instalados. ffmpeg también.
 
+## Dependencias de npm (b-roll)
+```bash
+cd estudio-moni/largos && npm install   # d3-array, d3-geo, topojson-client, world-atlas (package.json)
+```
+
 ## Comandos
 ```bash
 cd estudio-moni/largos
 python3 build.py                                   # después de tocar largos_data.py
 python3 build_long.py 7                            # audio y timeline del video 7
 node render_long.js --workers 1 --stills 1,40,120 7   # fotogramas de control en out/stills/
-node render_long.js --workers 2 7 8                # render
+node render_long.js --workers 2 --out-motion 7 8   # render con movimiento y b-roll → out/mp4_motion/ (estándar actual)
+# --no-motion / --no-broll desactivan capas; sin --out-motion escribe en out/mp4/
 node thumbs.js 7                                   # miniatura
 # Producción en lote: el render espera a que el audio de cada video esté listo
 nohup python3 -u build_long.py $(seq 1 24) > out/audio.log 2>&1 &
@@ -62,3 +70,11 @@ Música más baja bajo la voz (0,075) y más alta en las placas y la pantalla fi
 - **Emojis en paneles**: se ven con Noto Color Emoji. Evitá emojis que muestran una fecha, como 📅.
 - **Miniaturas**: no pongas nada abajo a la derecha, porque YouTube tapa esa zona con la duración.
 - No se puede escuchar el audio en el entorno: siempre pedile al usuario que escuche una muestra.
+
+## Capas de movimiento (estándar desde el video 1 aprobado)
+- El usuario pidió **mucho movimiento**: algo nuevo en pantalla cada 2-5 s, ligado a lo que se dice.
+- `motion.js`: diccionario `KW` (raíz sin tildes → emoji + etiqueta). Para sumar palabras, agregalas ahí. `STOP` evita falsos positivos (p. ej. “interesante” ≠ interés).
+- `broll.js`: `COUNTRIES` (regex → id ISO numérico de world-atlas), `UP`/`DOWN` (verbos de suba/baja), `CROSS` (vehículos), `CAMEO` (palabra → personaje).
+- Ritmo actual en el video 1: ~11 íconos por minuto + 1-2 widgets (mapa/gráfico) por minuto.
+- Ayuda al guion: nombrar países, años, objetos concretos y verbos de suba/baja dispara b-roll automáticamente. Escribí pensando en lo que se va a ver.
+- No hay fotos ni videos de stock: la red los bloquea y además tienen derechos. Todo es animación propia.
