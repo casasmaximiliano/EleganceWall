@@ -326,7 +326,7 @@ add(tipo="Simulación", titulo="¿Qué pasa si ahorrás el cafecito toda tu vida
     fuentes="Cálculo propio: $66/mes al 7 % anual por 40 años ≈ $173.238; aportado $31.680. Ilustrativo.",
     tags="gastos hormiga, café, interés compuesto, simulación, ahorro")
 
-add(tipo="Guía", titulo="Cómo funciona la bolsa en 10 minutos",
+add(tipo="Guía", titulo="Cómo funciona la bolsa (explicado con una pizzería)",
     alt="La bolsa explicada con una pizzería (sin palabras raras)",
     thumb=dict(texto="LA BOLSA, FÁCIL", chars=[("moni", "happy")], prop="📊", fondo="#1D5A8C"),
     gancho="Todos los días escuchás que la bolsa subió, bajó o se desplomó. Pero ¿qué es, en concreto? ¿Quién compra, quién vende y por qué los precios se mueven? Hoy lo explicamos con una pizzería dividida en mil pedacitos, y al final vas a entender qué es una acción, un índice, un dividendo y por qué casi nadie le gana al mercado a largo plazo.",
