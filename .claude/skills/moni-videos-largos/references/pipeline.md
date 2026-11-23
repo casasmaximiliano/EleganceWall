@@ -67,7 +67,7 @@ Música más baja bajo la voz (0,075) y más alta en las placas y la pantalla fi
 - **Subtítulos cortados abajo**: con líneas de más de ~200 caracteres. `long.js` achica la letra y sube el subtítulo hasta que entra (desde la v2). Igual conviene que ninguna línea del guion pase de ~220 caracteres: mejor partirla en dos.
 - **Verificación**: `bash verify.sh NN` muestra formato, duración, loudness y silencios, y arma una hoja de fotogramas en `out/check/NN.jpg`. Mirala siempre.
 - **Duración corta**: casi siempre falta texto. Revisá con el contador, no con `wc`, porque las líneas `P:` no cuentan.
-- **Emojis en paneles**: se ven con Noto Color Emoji. Evitá emojis que muestran una fecha, como 📅.
+- **Emojis**: se ven con Noto Color Emoji. **Nunca uses 📅**: muestra “July 17” en inglés. Usá 🗓️.
 - **Miniaturas**: no pongas nada abajo a la derecha, porque YouTube tapa esa zona con la duración.
 - No se puede escuchar el audio en el entorno: siempre pedile al usuario que escuche una muestra.
 

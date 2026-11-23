@@ -4,7 +4,7 @@
 set -e
 N=$(printf "%02d" "$1")
 D="$(dirname "$0")/out"
-F="$D/mp4/$N.mp4"
+F="$D/${MP4DIR:-mp4}/$N.mp4"
 ffprobe -v error -show_entries stream=codec_name,width,height,r_frame_rate -show_entries format=duration -of csv=p=0 "$F" | tr '\n' ' '
 echo
 ffmpeg -hide_banner -nostats -i "$F" -af ebur128 -f null - 2>&1 | grep -E "^\s+I:" | tail -1

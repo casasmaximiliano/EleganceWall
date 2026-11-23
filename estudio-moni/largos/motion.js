@@ -40,7 +40,7 @@ const KW = [
  ['primo','🫂','primo'],['cerebro','🧠','cerebro'],['emocion','🎢','emoción'],['miedo','😱','miedo'],['estafa','🕵️','estafa'],['fraude','🕵️','fraude'],
  ['ponzi','🔺','pirámide'],['piramide','🔺','pirámide'],['fbi','🚨','FBI'],['carcel','🚔','cárcel'],['prision','🚔','prisión'],['juicio','⚖️','juicio'],
  ['condena','⚖️','condena'],['quiebra','💥','quiebra'],['crisis','🌪️','crisis'],['derrumb','📉','derrumbe'],
- ['crec','🌱','crece'],['tiempo','⏳','tiempo'],['año','📅','años'],['mes ','📅','mes'],['reloj','⏰','reloj'],
+ ['crec','🌱','crece'],['tiempo','⏳','tiempo'],['año','🗓️','años'],['mes ','🗓️','mes'],['reloj','⏰','reloj'],
  ['meta','🎯','meta'],['plan','🗺️','plan'],['regla','📏','regla'],['lista','📝','lista'],['anot','📝','anotar'],['presupuesto','📒','presupuesto'],
  ['fondo de emergencia','🛟','fondo'],['emergencia','🚑','emergencia'],['heladera','🧊','heladera'],['colchon','🛏️','colchón'],
  ['tulipan','🌷','tulipán'],['flor','🌷','flor'],['netflix','🍿','streaming'],['pelicula','🎬','película'],['dvd','📀','DVD'],['correo','📮','correo'],
