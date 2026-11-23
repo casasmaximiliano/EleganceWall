@@ -11,7 +11,7 @@
 const CSS = `
 #Lbr{position:absolute;inset:0;pointer-events:none;z-index:8}
 .wdg{position:absolute;display:none;background:#FFFDF6;border-radius:28px;box-shadow:0 16px 0 rgba(0,0,0,.22);overflow:hidden;border:6px solid #F7BC2B}
-.wdg h4{position:absolute;left:0;right:0;bottom:10px;margin:0;text-align:center;font:800 30px "Bricolage Grotesque";color:#14221D;text-transform:uppercase;letter-spacing:.02em}
+.wdg h4{position:absolute;left:0;right:0;bottom:8px;margin:0;text-align:center;font:800 26px "Bricolage Grotesque";color:#14221D;text-transform:uppercase;letter-spacing:.02em}
 .wdg svg{position:absolute;left:0;top:0}
 #Ltl{position:absolute;left:560px;width:800px;top:40px;height:56px;display:none}
 #Ltl .bar{position:absolute;left:30px;right:30px;top:26px;height:6px;border-radius:3px;background:rgba(255,255,255,.35)}
@@ -40,8 +40,8 @@ const COUNTRIES = [
  [/\bbrasil/, '076', 'Brasil'], [/\bperu\b/, '604', 'Perú'], [/\bbolivi/, '068', 'Bolivia'], [/\bmexic/, '484', 'México'],
  [/\bespana/, '724', 'España'], [/\bcolombi/, '170', 'Colombia'], [/imperio otomano|turquia/, '792', 'Turquía'], [/\bchile\b/, '152', 'Chile'], [/\buruguay/, '858', 'Uruguay'],
 ];
-const UP = /\b(sube|suben|subio|subieron|crece|crecen|crecio|crecer|creciendo|se duplica|duplica|se dispar|dispararon|multiplic|aumenta|aumento|gano|ganancia)/;
-const DOWN = /\b(cae|caen|cayo|cayeron|baja|bajan|bajo|se desplom|desplom|derrumb|quiebra|quebro|perdio|perdieron|pierde|pierden|hund)/;
+const UP = /\b(se dispar|dispararon|se duplica|se duplico|se multiplic|multiplicaron|subieron|subio|crecio|crecieron|crece mas|creciendo|se acelera)/;
+const DOWN = /\b(se desplom|desplomaron|derrumb|cayeron|cayo|quebro|se hundio|perdieron todo|perdio todo|perdio la mitad)/;
 const CROSS = [[/\bauto(s)?\b/, '🚗'], [/\bavion/, '✈️'], [/\bbarco/, '🚢'], [/\bcolectivo/, '🚌'], [/carretilla/, '🛒'], [/\bcamion/, '🚚'], [/\bmoto\b/, '🛵']];
 const CAMEO = [[/tarjeta/, 'card', 'Tarjetín'], [/inflacion/, 'ghost', 'Infla'], [/prestamo/, 'bill', 'Préstamín'], [/\bcafe\b|cafecito/, 'cup', 'Cafecito'],
  [/delivery/, 'bag', 'Delivy'], [/\boferta|descuento/, 'tag', 'Ofertín'], [/cripto|fomo|bitcoin/, 'fomito', 'Fomito'], [/suscripcion/, 'zombi', 'Zombi'],
@@ -54,14 +54,14 @@ function wdgBox(s) {
   const n = s.cast ? s.cast.length : 1;
   if (n === 1 && s.panel) return [880, 100, 380, 290];      // arriba a la derecha del panel
   if (n === 1) return [140, 110, 380, 290];                  // a la izquierda, Moni al centro
-  return [770, 96, 380, 290];                                // centro arriba (actores a los costados)
+  return [800, 92, 320, 245];                                // centro arriba, más chico para no tapar el panel
 }
 const origSetup = window.setupLong, origFrame = window.frameLong;
 window.setupLong = function (tl) {
   const r = origSetup(tl);
   const cam = document.getElementById('Lcam'); const L = document.getElementById('L');
   const br = document.createElement('div'); br.id = 'Lbr';
-  br.innerHTML = `<div class="wdg" id="Lw"><svg id="Lwsvg" width="380" height="290"></svg><h4 id="Lwt"></h4></div>
+  br.innerHTML = `<div class="wdg" id="Lw"><svg id="Lwsvg" viewBox="0 0 380 290" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%"></svg><h4 id="Lwt"></h4></div>
     <div id="Ltl"><div class="bar"></div><div class="mk" id="Ltlm"></div></div><div id="Lck"></div><div id="Lcross"></div>`;
   cam.appendChild(br);
   // mapa
@@ -76,7 +76,7 @@ window.setupLong = function (tl) {
     for (const [re, id, name] of COUNTRIES) { const t = at(re); if (t !== null && (!usedCountry[id] || t - usedCountry[id] > 40) && t - lastW > WDG_DUR + 0.5 && B.byId && B.byId[id]) { B.w.push({t, type: 'map', id, name, scene: idx}); usedCountry[id] = t; lastW = t; break } }
     // gráficos
     if (t0Free(lastW, s)) {
-      const tu = at(UP), td = at(DOWN);
+      const tu = at(UP), td = /cayo del cielo|cae del cielo/.test(tx) ? null : at(DOWN);
       if (tu !== null && (td === null || tu < td) && tu - lastW > WDG_DUR + 2) { B.w.push({t: tu, type: 'up', scene: idx}); lastW = tu }
       else if (td !== null && td - lastW > WDG_DUR + 2) { B.w.push({t: td, type: 'down', scene: idx}); lastW = td }
     }
