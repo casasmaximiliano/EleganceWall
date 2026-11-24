@@ -7,7 +7,7 @@ Reglas (ver análisis en el historial del canal):
 - La exploración rota de horario para que ningún nicho quede siempre en la mejor hora.
 - El grupo C (conceptos abstractos de inversión) no se publica. Ver DESCARTADOS en shorts_data.py.
 - Desde el día 7 el calendario es provisorio: los nichos que ganen la exploración van a ocupar 1-2 lugares por día.
-Uso: python3 calendario.py [--zip]   (--zip copia los MP4 y arma un zip cada 3 días para bajar al teléfono)
+Uso: python3 calendario.py [--zip]   (--zip copia los MP4 y arma un zip por semana)
 """
 import csv, datetime as dt, json, os, re, shutil, sys, unicodedata, zipfile
 
@@ -91,7 +91,7 @@ with open(os.path.join(HERE, "calendario.csv"), "w", encoding="utf-8-sig", newli
                     r["grupo"], r["nicho"], "sí" if r["provisorio"] else "", r["archivo"], r["titulo"], r["descripcion"],
                     r["comentario_fijado"]])
 
-if "--zip" in sys.argv:  # un zip cada 3 días (≈12 shorts, menos de 60 MB para poder bajarlo al teléfono)
+if "--zip" in sys.argv:  # un zip por semana (28 shorts)
     dest = os.path.join(VID, "calendario")
     if os.path.isdir(dest):
         shutil.rmtree(dest)
@@ -99,7 +99,7 @@ if "--zip" in sys.argv:  # un zip cada 3 días (≈12 shorts, menos de 60 MB par
     bloques = {}
     for r in rows:
         shutil.copyfile(os.path.join(VID, "mp4", f"{r['n']:03d}.mp4"), os.path.join(dest, r["archivo"]))
-        bloques.setdefault((r["dia"] - 1) // 3, []).append(r)
+        bloques.setdefault((r["dia"] - 1) // 7, []).append(r)
     for k, items in bloques.items():
         zp = os.path.join(VID, f"Moni_shorts_{items[0]['fecha'][5:]}_a_{items[-1]['fecha'][5:]}.zip")
         with zipfile.ZipFile(zp, "w", zipfile.ZIP_STORED) as z:
