@@ -10,7 +10,10 @@ Este repositorio tiene una app React (wallpapers) y, en `plan-shorts/`, el proye
 - **Rima del canal:** «¡Un, dos, tres, a descubrir otra vez!» / «One, two, three, come discover with me!».
 - **Público:** niños de 3 a 8 años. En YouTube se marca como «contenido creado para niños». En Instagram y TikTok los textos se dirigen a las familias (son redes para mayores de 13).
 - **Nombres descartados** porque ya están usados: El mundo de Pipo, Pipo's World y todo lo que contenga «Pipo» (existe el Capitán Pipo de El Reino Infantil), Cascarín/Cascarón y sus amigos, Dino Mimo/DinoMimi, todo lo que empiece con «Dino», Pompón, Tuti (TuTiTu), Dudú (Dudu Dada), Chimpún, Bumbú, Pumpi y todo lo que empiece con «Huevo» (Huevocartoon).
-- **Ritmo:** 3 shorts por día, 90 por mes. YouTube: lunes a viernes a las 07:30, 17:00 y 19:30; sábados y domingos a las 09:00, 12:30 y 18:00. TikTok sale 1 h después y Instagram 1 h 30 después. El canal en español va en la hora del país principal; el canal en inglés, en hora del este de EE. UU. (ET).
+- **Ritmo (desde el 24/11/2026):** el plan cambió de shorts diarios a **videos largos tipo serie** (como Peppa Pig). Temporada 1 «Bombolín descubre el mundo»: 13 episodios de unos 3 minutos. Salen **martes y viernes a las 17:00**, con una **recopilación los domingos a las 09:00** y **1 short por día a las 12:30** (2 shorts sacados de cada episodio). El lanzamiento fue el 24/11 con los episodios 1 a 3; la temporada completa sale el 31/12. Canal ES: hora del país principal; canal EN: hora del este de EE. UU. (ET). Plan completo: `plan-shorts/bombolin/plan-videos-largos.md`.
+- **Episodios autoconclusivos con un hilo suave:** el Libro de Descubrimientos (una figurita por episodio) y el anticipo del próximo. Bloques fijos en cada episodio: «¿Sabías qué?» o un cuento, «¡Hora de cantar!» y «¡Hora de jugar!».
+- **YouTube «para niños» no permite la prueba A/B de miniaturas:** se hacen 3 miniaturas por video y se rotan a mano cada 3 días según el porcentaje de clics (CTR).
+- El plan anterior de 90 shorts (3 por día) quedó como biblioteca: sus canciones, juegos y explicaciones se reutilizan dentro de los episodios.
 
 ## Dónde está cada cosa (`plan-shorts/bombolin/`)
 - `src/data_a.py`, `data_bc.py`, `data_def.py`: los 90 guiones en español (formatos A a F). `src/data_en.py`: los diálogos en inglés.
@@ -20,8 +23,11 @@ Este repositorio tiene una app React (wallpapers) y, en `plan-shorts/`, el proye
 - `canal.md`: nombre, descripciones de YouTube, Instagram y TikTok, y ajustes de cada red. `voces.md`: la voz de cada personaje.
 - `plan-shorts/moni-plan-12-shorts.md`: el plan viejo de «Moni» (ahorro), ya descartado.
 
+- `episodios/`: la temporada 1 de videos largos. `eps_*.py` son los guiones ES/EN, `episode.py` genera los episodios 1920x1080 con `.srt` y los shorts verticales, `thumbs.py` las miniaturas y `package_long.py` las recopilaciones, los textos de publicación y los zips por semana.
+
 ## Cómo regenerar
 - Voces: Piper TTS (`pip install piper-tts`), con los modelos `es_MX-claude-high`, `es_MX-ald-medium`, `es_AR-daniela-high`, `en_US-amy-medium`, `en_US-ryan-high` y `en_US-hfc_female-medium`, que se descargan de huggingface.co/rhasspy/piper-voices (el entorno ya tiene permitido huggingface.co y su CDN).
 - `python3 video/render.py --voices DIR --out DIR [--lang en] [--only ID,...] --jobs 4` y después `python3 video/package.py VIDEOS ZIPS [en]`.
 - El coro («Todos») sale de una sola locución base con el tono cambiado para cada personaje, para que las voces vayan sincronizadas. No volver a generar una locución por personaje.
+- Videos largos: `python3 episodios/episode.py --voices DIR --out DIR --lang es|en --jobs 4`; después `python3 episodios/thumbs.py MINIS` y `python3 episodios/package_long.py VIDEOS MINIS ZIPS es|en`.
 - Los videos y zips generados no se suben a git (`descargas/` está en `.gitignore`).

@@ -1,0 +1,747 @@
+"""Genera los episodios largos (horizontal 1920x1080, subtítulos en .srt aparte) y los shorts verticales
+(1080x1920, subtítulos grabados) de «Bombolín y sus amigos».
+
+Uso:
+  python3 episode.py --voices DIR --out DIR --lang es|en [--eps 1,2,3] [--what ep,short] [--jobs 4]
+"""
+import argparse
+import math
+import os
+import re
+import subprocess
+import sys
+import wave
+import zlib
+from multiprocessing import Pool
+
+import numpy as np
+from PIL import Image, ImageDraw, ImageFont
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
+sys.path.insert(0, os.path.join(ROOT, "video"))
+sys.path.insert(0, HERE)
+import render as R  # noqa: E402  (voces, música, efectos, emojis)
+from characters import build_sprites  # noqa: E402
+from eps_1_5 import EPS_A  # noqa: E402
+from eps_6_9 import EPS_B  # noqa: E402
+from eps_10_13 import EPS_C  # noqa: E402
+
+EPISODES = {e["n"]: e for e in EPS_A + EPS_B + EPS_C}
+# Bloques fijos de cada episodio: una canción (formato F) y un juego (formato E) de la biblioteca de shorts
+EXTRAS = {1: ("D09", "F03", "E13"), 2: ("C09", "F02", "E01"), 3: ("B05", "F05", "E06"), 4: ("D10", "F07", "E03"),
+          5: ("C14", "F01", "E10"), 6: ("B08", "F04", "E05"), 7: ("C18", "F08", "E11"), 8: ("D07", "F12", "E04"),
+          9: ("C05", "F11", "E07"), 10: ("D08", "F15", "E02"), 11: ("D03", "F10", "E09"), 12: ("B02", "F09", "E08"),
+          13: ("B11", "F06", "E12")}
+THEME_MAP = {"moon": "night", "sea": "sea", "show": "show"}
+
+
+def library_segments(sid):
+    """Convierte un short de la biblioteca (render.py) en escenas horizontales."""
+    x = R.get_short(sid)
+    out = []
+    allv = R.norm(" ".join(sc.split("|")[0] for sc in x["s"]))
+    fallback = []
+    for kw, em in R.EMOJI_KW:
+        mm = re.search(r"(?<![a-záéíóúñ])" + re.escape(kw.strip()), allv)
+        if mm:
+            fallback.append((mm.start(), em))
+    fallback = [e for _, e in sorted(fallback)][:2]
+    for sc in x["s"]:
+        vis, txt = [p.strip() for p in sc.split("|", 1)]
+        lines, chars, guests = [], [], []
+        for raw, text in R.LINE_RE.findall(txt):
+            key, name, qual = R.speaker_key(raw)
+            sp = key
+            lines.append((sp, text.strip()))
+            if key in ("PIPO", "TOTO", "LULA", "ZUMBI") and key not in chars:
+                chars.append(key)
+            if key == "ABU" and "voz" not in qual and key not in chars:
+                chars.append(key)
+            if key == "ALL":
+                for c in x["ch"]:
+                    if c != "ABU" and c not in chars:
+                        chars.append(c)
+            if key.startswith("G:") and R.GUESTS.get(key[2:], (None,))[0] and key[2:] not in guests:
+                guests.append(key[2:])
+        v = R.norm(vis)
+        nm = {"PIPO": "bombolín", "TOTO": "toto", "LULA": "lula", "ZUMBI": "zumbi"}
+        for c in x["ch"]:
+            if c in nm and nm[c] in v and c not in chars:
+                chars.append(c)
+        props = []
+        for kw, em in R.EMOJI_KW:
+            mm = re.search(r"(?<![a-záéíóúñ])" + re.escape(kw.strip()), v)
+            if mm and em not in [e for _, e in props]:
+                props.append((mm.start(), em))
+        props = [e for _, e in sorted(props)][:3] or fallback
+        th = R.theme_of(vis, x["f"])
+        th = THEME_MAP.get(th, th)
+        if "pizarra" in v:
+            th = "board"
+        if th not in ("meadow", "night", "xmas", "cave", "snow", "room", "board", "sea", "show"):
+            th = "meadow"
+        out.append(dict(kind="scene", theme=th, props=props, chars=chars or ["PIPO"], guests=guests,
+                        mood=R.lula_mood(x, vis), lines=lines, idx=-2))
+    return out
+R.GUESTS["Reno"] = ("🦌", "GM")
+R.LABEL_EN["Reno"] = "Reindeer"
+FPS, SR = 24, R.SR
+F700 = os.path.join(ROOT, "branding", "fonts", "fredoka-latin-700-normal.woff")
+F600 = os.path.join(ROOT, "branding", "fonts", "fredoka-latin-600-normal.woff")
+LOGO = os.path.join(ROOT, "branding", "logo_1080.png")
+INK = (40, 35, 60)
+TXT = {
+    "es": dict(show="Bombolín y sus amigos", ep="Episodio", learned="¡Hoy aprendimos que {l}!", banner="¡HOY APRENDIMOS!",
+               sticker="¡Una figurita nueva para mi Libro de Descubrimientos!", next="En el próximo episodio: {t}.",
+               last="¡Nos vemos en la próxima temporada!", bye="¡Hasta la próxima!", jingle="¡Un, dos, tres, a descubrir otra vez!",
+               intro="¡Bombolín y sus amigos!", full="¡El episodio completo está en el canal!",
+               sing="¡Hora de cantar!", play="¡Hora de jugar!", know="¿Sabías qué?", tale="¡Un cuento cortito!"),
+    "en": dict(show="Bombolín & Friends", ep="Episode", learned="Today we learned that {l}!", banner="TODAY WE LEARNED!",
+               sticker="A new sticker for my Discovery Book!", next="In the next episode: {t}.",
+               last="See you next season!", bye="See you next time!", jingle="One, two, three, come discover with me!",
+               intro="Bombolín and friends!", full="Watch the full episode on the channel!",
+               sing="Time to sing!", play="Time to play!", know="Did you know?", tale="A little story!"),
+}
+_fc = {}
+_em_master, _em = {}, {}
+
+
+def emoji(ch, size):
+    """Emoji en caché: se dibuja una vez y se reescala a tamaños cuantizados (rápido)."""
+    size = max(16, int(size) // 8 * 8)
+    key = (ch, size)
+    if key not in _em:
+        if ch not in _em_master:
+            _em_master[ch] = R.emoji(ch, 160)
+        m = _em_master[ch]
+        sc = size / max(m.size)
+        _em[key] = m.resize((max(1, int(m.width * sc)), max(1, int(m.height * sc))), Image.LANCZOS)
+    return _em[key]
+
+
+_bgc = {}
+
+
+def cached_bg(theme, W, H, seed):
+    k = (theme, W, H, seed)
+    if k not in _bgc:
+        _bgc[k] = background(theme, W, H, seed)
+    return _bgc[k]
+
+
+def font(p, s):
+    if (p, s) not in _fc:
+        _fc[(p, s)] = ImageFont.truetype(p, s)
+    return _fc[(p, s)]
+
+
+def vgrad(W, H, c1, c2):
+    a = np.linspace(0, 1, H)[:, None, None]
+    g = (np.array(c1)[None, None] * (1 - a) + np.array(c2)[None, None] * a).astype(np.uint8)
+    return Image.fromarray(np.repeat(g, W, axis=1), "RGB")
+
+
+# ------------------------------------------------------------------ fondos (coordenadas relativas)
+def background(theme, W, H, seed):
+    rng = np.random.default_rng(seed)
+    gy = 0.72 * H if W > H else 0.70 * H  # horizonte
+    if theme in ("night", "xmas"):
+        im = vgrad(W, H, (35, 45, 115), (105, 90, 170))
+    elif theme == "cave":
+        im = vgrad(W, H, (70, 50, 110), (30, 20, 50))
+    elif theme == "snow":
+        im = vgrad(W, H, (175, 215, 255), (235, 245, 255))
+    elif theme == "room":
+        im = vgrad(W, H, (255, 236, 210), (255, 220, 190))
+    elif theme == "sea":
+        im = vgrad(W, H, (120, 210, 255), (25, 90, 175))
+    elif theme == "show":
+        im = vgrad(W, H, (125, 65, 205), (60, 20, 120))
+    elif theme == "title":
+        im = vgrad(W, H, (130, 205, 255), (255, 240, 200))
+    else:
+        im = vgrad(W, H, (125, 200, 255), (205, 240, 255))
+    d = ImageDraw.Draw(im, "RGBA")
+    m = min(W, H)
+    if theme in ("meadow", "board", "title"):
+        d.ellipse([0.80 * W, 0.06 * H, 0.80 * W + 0.17 * m, 0.06 * H + 0.17 * m], fill=(255, 225, 90))
+        for cx, cy in [(0.12, 0.14), (0.45, 0.08), (0.68, 0.18)]:
+            for dx, dy, r in [(0, 0, 0.055), (0.06, -0.02, 0.065), (0.125, 0, 0.05)]:
+                x, y, rr = (cx + dx * m / W) * W, (cy + dy) * H, r * m
+                d.ellipse([x - rr, y - rr, x + rr, y + rr], fill=(255, 255, 255, 235))
+        d.ellipse([-0.35 * W, gy - 0.06 * H, 0.65 * W, gy + 1.4 * H], fill=(125, 210, 115))
+        d.ellipse([0.35 * W, gy - 0.02 * H, 1.35 * W, gy + 1.4 * H], fill=(100, 192, 98))
+        for _ in range(int(W / 25)):
+            x, y = rng.integers(0, W), rng.integers(int(gy + 0.04 * H), H)
+            c = [(255, 120, 150), (255, 230, 90), (255, 255, 255), (180, 140, 255)][rng.integers(0, 4)]
+            r = m * 0.008
+            d.ellipse([x - r, y - r, x + r, y + r], fill=c)
+    if theme in ("night", "xmas"):
+        for _ in range(int(W * H / 12000)):
+            x, y = rng.integers(0, W), rng.integers(0, int(gy))
+            r = rng.integers(2, 5)
+            d.ellipse([x, y, x + r, y + r], fill=(255, 250, 200, 220))
+        d.ellipse([0.80 * W, 0.07 * H, 0.80 * W + 0.15 * m, 0.07 * H + 0.15 * m], fill=(255, 245, 190))
+        d.ellipse([0.78 * W, 0.05 * H, 0.78 * W + 0.13 * m, 0.05 * H + 0.13 * m], fill=(35, 45, 115))
+        ground = (240, 245, 255) if theme == "xmas" else (70, 60, 130)
+        d.ellipse([-0.3 * W, gy - 0.03 * H, 1.3 * W, gy + 1.5 * H], fill=ground)
+        if theme == "xmas":
+            for _ in range(int(W * H / 9000)):
+                x, y = rng.integers(0, W), rng.integers(0, H)
+                d.ellipse([x, y, x + 6, y + 6], fill=(255, 255, 255, 200))
+            for i in range(14):  # guirnalda de luces
+                x = W * (i + 0.5) / 14
+                y = 0.04 * H + 0.03 * H * math.sin(i * 0.9)
+                c = [(255, 90, 90), (255, 220, 80), (110, 210, 110), (90, 160, 255)][i % 4]
+                d.ellipse([x - 9, y - 9, x + 9, y + 9], fill=c)
+    if theme == "sea":
+        for _ in range(30):
+            x, y, r = rng.integers(0, W), rng.integers(0, int(gy)), rng.integers(8, 28)
+            d.ellipse([x - r, y - r, x + r, y + r], outline=(255, 255, 255, 120), width=4)
+        d.rectangle([0, gy + 0.04 * H, W, H], fill=(240, 210, 140))
+        for x in range(40, W, int(W / 10)):
+            d.polygon([(x, gy + 0.04 * H), (x + 30, gy - 0.12 * H), (x + 60, gy + 0.04 * H)], fill=(60, 180, 110))
+    if theme == "show":
+        for i in range(14):
+            a = i / 14 * 2 * math.pi
+            d.polygon([(W / 2, H * 0.45), (W / 2 + 2 * W * math.cos(a), H * 0.45 + 2 * W * math.sin(a)),
+                       (W / 2 + 2 * W * math.cos(a + 0.2), H * 0.45 + 2 * W * math.sin(a + 0.2))], fill=(255, 255, 255, 25))
+        d.ellipse([0.15 * W, gy + 0.02 * H, 0.85 * W, gy + 0.22 * H], fill=(255, 200, 80), outline=(255, 255, 255), width=8)
+    if theme == "snow":
+        d.ellipse([-0.3 * W, gy - 0.05 * H, 1.3 * W, gy + 1.5 * H], fill=(255, 255, 255))
+        for _ in range(int(W * H / 8000)):
+            x, y = rng.integers(0, W), rng.integers(0, int(gy))
+            d.ellipse([x, y, x + 7, y + 7], fill=(255, 255, 255, 230))
+    if theme == "cave":
+        for x in range(0, W, int(W / 20)):
+            h = rng.integers(int(0.06 * H), int(0.2 * H))
+            d.polygon([(x, 0), (x + W / 40, h), (x + W / 20, 0)], fill=(120, 100, 160))
+        for _ in range(16):
+            x, y = rng.integers(0, W), rng.integers(int(0.15 * H), int(gy))
+            c = [(120, 255, 230, 200), (255, 150, 230, 200), (255, 240, 120, 200)][rng.integers(0, 3)]
+            s = m * 0.02
+            d.polygon([(x, y), (x + s, y + 2 * s), (x, y + 4 * s), (x - s, y + 2 * s)], fill=c)
+        d.rectangle([0, gy + 0.02 * H, W, H], fill=(90, 70, 120))
+    if theme == "room":
+        d.rectangle([0, gy + 0.02 * H, W, H], fill=(200, 150, 110))
+        for x in range(0, W, int(W / 14)):
+            d.line([x, gy + 0.02 * H, x, H], fill=(180, 130, 95), width=4)
+        wx = 0.70 * W
+        d.rounded_rectangle([wx, 0.12 * H, wx + 0.18 * W, 0.12 * H + 0.30 * H], 20, fill=(170, 220, 255),
+                            outline=(255, 255, 255), width=12)
+        d.line([wx + 0.09 * W, 0.12 * H, wx + 0.09 * W, 0.42 * H], fill=(255, 255, 255), width=8)
+        d.rounded_rectangle([0.08 * W, 0.18 * H, 0.22 * W, 0.40 * H], 14, fill=(255, 200, 120), outline=(200, 140, 90), width=8)
+    if theme == "board":
+        bx0, by0, bx1, by1 = (0.25 * W, 0.06 * H, 0.75 * W, 0.50 * H) if W > H else (0.06 * W, 0.20 * H, 0.94 * W, 0.52 * H)
+        d.rounded_rectangle([bx0 - 18, by0 - 18, bx1 + 18, by1 + 18], 30, fill=(150, 100, 60))
+        d.rounded_rectangle([bx0, by0, bx1, by1], 20, fill=(40, 90, 70))
+        for _ in range(6):
+            x, y = rng.uniform(bx0 + 40, bx1 - 200), rng.uniform(by0 + 30, by1 - 60)
+            d.arc([x, y, x + 150, y + 50], 180, 360, fill=(220, 240, 220, 120), width=4)
+    return im
+
+
+def board_box(W, H):
+    return (0.25 * W, 0.06 * H, 0.75 * W, 0.50 * H) if W > H else (0.06 * W, 0.20 * H, 0.94 * W, 0.52 * H)
+
+
+# ------------------------------------------------------------------ armado del episodio (audio + línea de tiempo)
+def parse_cast(cast):
+    chars, guests, mood = [], [], "calm"
+    for tok in cast.split():
+        if tok.startswith("G:"):
+            guests.append(tok[2:].replace("_", " "))
+        else:
+            k, _, md = tok.partition(":")
+            chars.append(k)
+            if k == "LULA" and md:
+                mood = md
+    return chars, guests, mood
+
+
+def build_timeline(ep, lang, vdir, cache, scene_range=None, short=False):
+    """Devuelve (segmentos, eventos, audio_voz, duración). Cada segmento es una escena o tarjeta."""
+    t = TXT[lang]
+    li = 1 if lang == "es" else 2
+    segs = []
+    if scene_range is None:
+        story = list(range(len(ep["s"])))
+    else:
+        story = list(range(scene_range[0], scene_range[1] + 1))
+
+    def scene_seg(i):
+        th, props, cast, lines = ep["s"][i]
+        chars, guests, mood = parse_cast(cast)
+        return dict(kind="scene", theme=th, props=props, chars=chars, guests=guests, mood=mood,
+                    lines=[(x[0].replace("_", " "), x[1] if lang == "es" else x[2]) for x in lines],
+                    idx=i)
+
+    if short:
+        for i in story:
+            segs.append(scene_seg(i))
+        segs.append(dict(kind="scene", theme=ep["s"][story[0]][0], props=[ep["sticker"]], chars=["PIPO", "ABU"],
+                         guests=[], mood="happy", lines=[("ABU", t["full"]), ("ALL", t["jingle"])], idx=-1, closing=True))
+    else:
+        segs.append(scene_seg(story[0]))  # arranque directo (gancho), sin presentación antes
+        segs.append(dict(kind="title", lines=[("ALL", t["intro"]), ("ABU", ep["tes"] if lang == "es" else ep["ten"])]))
+        for i in story[1:]:
+            segs.append(scene_seg(i))
+        mini, song, game = EXTRAS[ep["n"]]
+        lbl = t["know"] if mini.startswith("B") else t["tale"]
+        segs.append(dict(kind="bumper", icon="📚" if not mini.startswith("B") else "💡", label=lbl, lines=[("ABU", lbl)]))
+        segs += library_segments(mini)
+        segs.append(dict(kind="bumper", icon="🎵", label=t["sing"], lines=[("ABU", t["sing"])]))
+        segs += library_segments(song)
+        segs.append(dict(kind="bumper", icon="🎲", label=t["play"], lines=[("ABU", t["play"])]))
+        segs += library_segments(game)
+        nxt = EPISODES.get(ep["n"] + 1)
+        tease = t["next"].format(t=(nxt["tes"] if lang == "es" else nxt["ten"])) if nxt else t["last"]
+        segs.append(dict(kind="album", lines=[("PIPO", t["sticker"]),
+                                              ("ABU", t["learned"].format(l=(ep["les"] if lang == "es" else ep["len"]))),
+                                              ("ALL", t["jingle"]), ("ABU", tease)]))
+        segs.append(dict(kind="end", lines=[]))
+
+    events = []
+    tt = 0.05
+    for si, sg in enumerate(segs):
+        sg["t0"] = tt if si else 0.0
+        if sg["kind"] in ("title",):
+            tt += 0.6
+        for sp, text in sg["lines"]:
+            if sp == "ALL":
+                a = R.chorus(text, vdir, cache)
+            elif sp.startswith("G:"):
+                g = sp[2:]
+                a = R.tts(R.GUESTS.get(g, (None, "GM"))[1], text, vdir, cache, echo=(g == "Eco"))
+            else:
+                a = R.tts(sp, text, vdir, cache)
+            events.append(dict(t=tt, a=a, sp=sp, text=text, seg=si))
+            tt += len(a) / SR + 0.6
+        if sg["kind"] == "end":
+            tt += 4.0
+        elif sg["kind"] == "title":
+            tt = max(tt, sg["t0"] + 5.5)
+        elif sg["kind"] == "bumper":
+            tt = max(tt, sg["t0"] + 2.6)
+        else:
+            tt = max(tt, sg["t0"] + 3.0) + (1.2 if not short else 0.2)
+        sg["t1"] = tt
+    total = tt + 0.3
+    return segs, events, total
+
+
+def mix_audio(segs, events, total, fmt_short):
+    n = int(total * SR) + SR
+    voice = np.zeros(n, np.float32)
+    for ev in events:
+        a = int(ev["t"] * SR)
+        voice[a:a + len(ev["a"])] += ev["a"][: n - a]
+    mus = R.music(total + 1, "F" if fmt_short else "A", False)[:n]
+    # la música sube en la presentación, en las transiciones y en el final; baja con las voces
+    env = np.full(n, 0.06, np.float32)
+    for sg in segs:
+        if sg["kind"] in ("title", "end", "bumper"):
+            env[int(sg["t0"] * SR):int(sg["t1"] * SR)] = 0.16
+    k = int(0.5 * SR)
+    c = np.cumsum(np.concatenate([[0.0], env.astype(np.float64)]))
+    lo = np.clip(np.arange(n) - k // 2, 0, n)
+    hi = np.clip(np.arange(n) + k // 2, 0, n)
+    env = ((c[hi] - c[lo]) / np.maximum(hi - lo, 1)).astype(np.float32)
+    mix = voice + mus[:n] * env
+    for sg in segs:
+        if sg.get("kind") == "scene" and sg.get("theme") == "board":
+            s = R.sfx("tin") * 0.3
+            a = int((sg["t0"] + 0.1) * SR)
+            mix[a:a + len(s)] += s[: max(0, n - a)]
+        if sg.get("kind") == "album":
+            s = R.sfx("yay") * 0.25
+            a = int((sg["t0"] + 0.2) * SR)
+            mix[a:a + len(s)] += s[: max(0, n - a)]
+    for ev in events:
+        if ev["sp"] == "TOTO" and ev["text"].startswith(("¡Uy", "Uh-oh")):
+            s = R.sfx("boing") * 0.25
+            a = int(ev["t"] * SR)
+            mix[a:a + len(s)] += s[: max(0, n - a)]
+    return np.tanh(mix * 1.1) * 0.95
+
+
+def talk_env(events, nf):
+    talk = {}
+    hop = SR // FPS
+    for ev in events:
+        keys = ["PIPO", "TOTO", "LULA", "ZUMBI"] if ev["sp"] == "ALL" else [ev["sp"]]
+        sq = ev["a"].astype(np.float64) ** 2
+        nb = len(sq) // hop
+        rms = np.sqrt(sq[:nb * hop].reshape(nb, hop).mean(1)) if nb else np.zeros(0)
+        f0 = int(ev["t"] * FPS)
+        for k in keys:
+            arr = talk.setdefault(k, np.zeros(nf, np.float32))
+            m = max(0, min(len(rms), nf - f0))
+            arr[f0:f0 + m] = np.maximum(arr[f0:f0 + m], rms[:m])
+    return talk
+
+
+# ------------------------------------------------------------------ dibujo de cuadros
+BASE_H = {"PIPO": 0.50, "TOTO": 0.45, "LULA": 0.31, "ZUMBI": 0.25, "ABU": 0.50}
+LIFT = {"LULA": 0.33, "ZUMBI": 0.30}
+
+
+class Painter:
+    def __init__(self, W, H, ep, lang, segs, events, nf, short):
+        self.W, self.H, self.ep, self.lang, self.segs, self.events, self.short = W, H, ep, lang, segs, events, short
+        self.sp = build_sprites()
+        self.talk = talk_env(events, nf)
+        self.nf = nf
+        self.bgs = {}
+        rng = np.random.default_rng(ep["n"])
+        self.blink = {c: set(rng.integers(0, nf, max(1, nf // 70))) for c in BASE_H}
+        self.logo = Image.open(LOGO).convert("RGBA") if os.path.exists(LOGO) else None
+        self.prev_last = None
+
+    def bg(self, si, theme):
+        if si not in self.bgs:
+            self.bgs[si] = background(theme, self.W, self.H, self.ep["n"] * 100 + si)
+        return self.bgs[si]
+
+    def char_sprite(self, c, mouth, blink, fi, mood):
+        if c == "LULA":
+            return self.sp[(c, mood, mouth, blink)]
+        if c == "ZUMBI":
+            return self.sp[(c, fi % 2, mouth, blink)]
+        return self.sp[(c, mouth, blink)]
+
+    def draw_cast(self, frame, sg, fi, tt, speaking):
+        W, H = self.W, self.H
+        items = sg["chars"] + ["G:" + g for g in sg["guests"]]
+        k = max(1, len(items))
+        land = W > H
+        sc = {1: 1.0, 2: 1.0, 3: 0.92, 4: 0.82, 5: 0.74}.get(k, 0.66) if land else {1: 1, 2: 0.95, 3: 0.8}.get(k, 0.62)
+        base_y = 0.97 * H if land else 0.745 * H
+        x0, x1 = (0.12 * W, 0.88 * W) if land else (0.0, W)
+        pos = {}
+        for i, it in enumerate(items):
+            px = int(x0 + (x1 - x0) * (i + 0.5) / k) if land else int(W * (i + 1) / (k + 1))
+            pos[it] = px
+            if it.startswith("G:"):
+                g = it[2:]
+                em = R.GUESTS.get(g, ("✨",))[0] or "✨"
+                talking = speaking == it
+                amp = 1.12 + 0.05 * math.sin(tt * 18) if talking else 1.0
+                e = emoji(em, int(0.36 * H * sc * amp) if land else int(300 * sc * amp))
+                bob = int(8 * math.sin(tt * 3 + i))
+                frame.paste(e, (px - e.width // 2, int(base_y - e.height - 0.02 * H + bob)), e)
+                continue
+            c = it
+            arr = self.talk.get(c)
+            lvl = arr[fi] if arr is not None and fi < len(arr) else 0
+            is_sp = speaking == c or (speaking == "ALL" and c != "ABU")
+            mouth = 1 if (is_sp and lvl > 0.06 and (fi // 3) % 2 == 0) else 0
+            bl = 1 if any((fi - d) in self.blink[c] for d in range(3)) else 0
+            spr = self.char_sprite(c, mouth, bl, fi, sg.get("mood", "calm"))
+            bh = BASE_H[c] * H if land else {"PIPO": 540, "TOTO": 490, "LULA": 340, "ZUMBI": 280, "ABU": 540}[c]
+            bounce = abs(math.sin(tt * 7)) * 0.02 * H if is_sp else abs(math.sin(tt * 2 + i)) * 0.006 * H
+            sq = 1 + (0.035 * math.sin(tt * 14) if is_sp else 0)
+            hh = int(bh * sc * sq)
+            ww = int(spr.width * hh / spr.height / sq)
+            s2 = spr.resize((ww, hh), Image.BILINEAR)
+            lift = LIFT.get(c, 0) * (H if land else 1000) * sc
+            frame.paste(s2, (px - ww // 2, int(base_y - hh - bounce - lift)), s2)
+        return pos
+
+    def draw_props(self, frame, sg, st, tt):
+        W, H = self.W, self.H
+        land = W > H
+        if sg["theme"] == "board":
+            bx0, by0, bx1, by1 = board_box(W, H)
+            n = len(sg["props"])
+            for i, em in enumerate(sg["props"]):
+                if st < 0.2 + i * 0.7:
+                    continue
+                k = min(1, (st - 0.2 - i * 0.7) / 0.25)
+                e = emoji(em, int((by1 - by0) * 0.55 * (0.6 + 0.4 * k)))
+                cx = bx0 + (bx1 - bx0) * (i + 1) / (n + 1)
+                cy = (by0 + by1) / 2 + 10 * math.sin(tt * 2 + i)
+                frame.paste(e, (int(cx - e.width / 2), int(cy - e.height / 2)), e)
+            return
+        spots = [(0.20, 0.30), (0.80, 0.33), (0.50, 0.22)] if land else [(0.24, 0.33), (0.76, 0.36), (0.5, 0.5)]
+        for i, em in enumerate(sg["props"][:3]):
+            if st < 0.15 + i * 0.8:
+                continue
+            k = min(1, (st - 0.15 - i * 0.8) / 0.25)
+            sz = int((0.20 * H if land else 230) * (0.6 + 0.4 * k))
+            e = emoji(em, max(30, sz))
+            cx, cy = spots[i]
+            frame.paste(e, (int(cx * W - e.width / 2), int(cy * H - e.height / 2 + 14 * math.sin(tt * 2.2 + i))), e)
+
+    def text(self, d, x, y, s, size, fill, sw=None, maxw=None, path=F700):
+        f = font(path, size)
+        maxw = maxw or self.W - 80
+        while d.textlength(s, font=f) > maxw and size > 24:
+            size -= 4
+            f = font(path, size)
+        d.text((x, y), s, font=f, fill=fill, anchor="mm", stroke_width=sw if sw is not None else max(3, size // 10),
+               stroke_fill=INK)
+
+    def title_card(self, frame, sg, st):
+        W, H = self.W, self.H
+        d = ImageDraw.Draw(frame, "RGBA")
+        if self.logo:
+            sz = int(0.46 * min(W, H) * (0.85 + 0.15 * min(1, st / 0.4)))
+            lg = self.logo.resize((sz, sz), Image.LANCZOS)
+            frame.paste(lg, (W // 2 - sz // 2, int(0.30 * H - sz / 2)), lg)
+        t = TXT[self.lang]
+        self.text(d, W // 2, int(0.62 * H), t["show"], int(0.085 * H), (255, 214, 60), sw=8)
+        title = self.ep["tes"] if self.lang == "es" else self.ep["ten"]
+        self.text(d, W // 2, int(0.76 * H), title, int(0.065 * H), (255, 255, 255), sw=7)
+        self.text(d, W // 2, int(0.86 * H), f"{t['ep']} {self.ep['n']}", int(0.04 * H), (255, 255, 255), sw=5, path=F600)
+
+    def album(self, frame, sg, st, tt):
+        W, H = self.W, self.H
+        d = ImageDraw.Draw(frame, "RGBA")
+        land = W > H
+        bx0, by0, bx1, by1 = (0.30 * W, 0.08 * H, 0.95 * W, 0.80 * H) if land else (0.05 * W, 0.12 * H, 0.95 * W, 0.50 * H)
+        d.rounded_rectangle([bx0, by0, bx1, by1], 30, fill=(150, 90, 60))
+        mid = (bx0 + bx1) / 2
+        d.rounded_rectangle([bx0 + 20, by0 + 20, mid - 6, by1 - 20], 18, fill=(255, 250, 235))
+        d.rounded_rectangle([mid + 6, by0 + 20, bx1 - 20, by1 - 20], 18, fill=(255, 250, 235))
+        cols, rows = 4, 4
+        cw = (bx1 - bx0 - 60) / cols
+        rh = (by1 - by0 - 60) / rows
+        for n in range(1, 14):
+            r, c = divmod(n - 1, cols)
+            cx = bx0 + 30 + cw * (c + 0.5)
+            cy = by0 + 30 + rh * (r + 0.5)
+            d.rounded_rectangle([cx - cw * 0.38, cy - rh * 0.38, cx + cw * 0.38, cy + rh * 0.38], 14,
+                                outline=(220, 200, 170), width=4)
+            if n < self.ep["n"] or (n == self.ep["n"] and st > 1.0):
+                pop = 1.0
+                if n == self.ep["n"]:
+                    pop = min(1.25, 0.5 + (st - 1.0) * 2) if st < 1.6 else 1.0
+                e = emoji(EPISODES[n]["sticker"], int(min(cw, rh) * 0.6 * pop))
+                frame.paste(e, (int(cx - e.width / 2), int(cy - e.height / 2)), e)
+        if any(ev["text"].startswith(TXT[self.lang]["learned"][:10]) and ev["t"] <= self.now < ev["t"] + len(ev["a"]) / SR
+               for ev in self.events):
+            self.text(d, W // 2 if not land else int(0.62 * W), int(0.90 * H) if land else int(0.07 * H),
+                      TXT[self.lang]["banner"], int(0.075 * H) if land else 80, (255, 214, 60), sw=8)
+
+    def subtitles(self, d, ev, tt):
+        W, H = self.W, self.H
+        words = ev["text"].split()
+        dur = max(0.3, len(ev["a"]) / SR)
+        w = np.array([len(x) + 2 for x in words], float)
+        cum = np.cumsum(w) / w.sum() * dur
+        wi = min(int(np.searchsorted(cum, tt - ev["t"])), len(words) - 1)
+        chunks = R.chunk_words(words)
+        ch = next(c for c in chunks if wi in c)
+        key = ev["sp"]
+        col = R.COLOR.get(key, R.COLOR["GUEST"]) if not key.startswith("G:") else R.COLOR["GUEST"]
+        sz = 84
+        f = font(F700, sz)
+        full = " ".join(words[j] for j in ch)
+        while d.textlength(full, font=f) > W - 80 and sz > 50:
+            sz -= 4
+            f = font(F700, sz)
+        xx = (W - d.textlength(full, font=f)) / 2
+        y = 1560
+        for j in ch:
+            wt = words[j] + " "
+            d.text((xx, y), wt, font=f, fill=col if j == wi else (255, 255, 255), anchor="lm", stroke_width=8,
+                   stroke_fill=INK)
+            xx += d.textlength(wt, font=f)
+
+    def frame(self, fi, hook=None):
+        tt = fi / FPS
+        self.now = tt
+        W, H = self.W, self.H
+        si = next((i for i, s in enumerate(self.segs) if tt < s["t1"]), len(self.segs) - 1)
+        sg = self.segs[si]
+        st = tt - sg["t0"]
+        ev = None
+        for e in self.events:
+            if e["t"] - 0.05 <= tt < e["t"] + len(e["a"]) / SR + 0.3:
+                ev = e
+        speaking = ev["sp"] if ev else None
+        if sg["kind"] == "title":
+            fr = cached_bg("title", W, H, 7).copy()
+            self.title_card(fr, sg, st)
+        elif sg["kind"] == "bumper":
+            fr = cached_bg("show", W, H, 11).copy()
+            e = emoji(sg["icon"], int(0.40 * min(W, H) * (0.8 + 0.2 * min(1, st / 0.3))))
+            fr.paste(e, (W // 2 - e.width // 2, int(0.38 * H - e.height / 2)), e)
+            dd = ImageDraw.Draw(fr, "RGBA")
+            self.text(dd, W // 2, int(0.75 * H), sg["label"], int(0.10 * min(W, H) * 1.2), (255, 214, 60), sw=9)
+        elif sg["kind"] in ("album", "end"):
+            fr = self.bg(si, "room").copy()
+            if sg["kind"] == "album":
+                self.album(fr, sg, st, tt)
+                fake = dict(chars=["PIPO", "TOTO", "LULA", "ZUMBI", "ABU"] if W < H else ["PIPO", "ABU"], guests=[],
+                            mood="happy")
+                if W > H:
+                    sub = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+                    self.W = int(W * 0.30)
+                    self.draw_cast(sub, fake, fi, tt, speaking)
+                    self.W = W
+                    fr.paste(sub, (int(0.02 * W), 0), sub)
+                else:
+                    self.draw_cast(fr, fake, fi, tt, speaking)
+            else:
+                fr = cached_bg("title", W, H, 9).copy()
+                d = ImageDraw.Draw(fr, "RGBA")
+                if self.logo:
+                    sz = int(0.5 * min(W, H))
+                    lg = self.logo.resize((sz, sz), Image.LANCZOS)
+                    fr.paste(lg, (W // 2 - sz // 2, int(0.36 * H - sz / 2)), lg)
+                self.text(d, W // 2, int(0.74 * H), TXT[self.lang]["bye"], int(0.08 * H), (255, 214, 60), sw=8)
+                self.text(d, W // 2, int(0.86 * H), TXT[self.lang]["show"], int(0.05 * H), (255, 255, 255), sw=6)
+        else:
+            theme = sg["theme"]
+            fr = self.bg(si, theme).copy()
+            self.draw_props(fr, sg, st, tt)
+            pos = self.draw_cast(fr, sg, fi, tt, speaking)
+            # cámara: plano general y plano medio sobre quien habla, alternando cada ~5 s
+            shot = int(st / (5.0 if W > H else 3.2)) % 2
+            if shot == 1 and speaking in pos and not sg.get("closing"):
+                z = 1.28 if W > H else 1.12
+                cw, chh = int(W / z), int(H / z)
+                x0 = int(min(max(pos[speaking] - cw / 2, 0), W - cw))
+                y0 = int((H - chh) * (0.85 if W > H else 0.62))
+                fr = fr.crop((x0, y0, x0 + cw, y0 + chh)).resize((W, H), Image.BILINEAR)
+        d = ImageDraw.Draw(fr, "RGBA")
+        if ev and sg["kind"] == "scene" and R.is_countdown(ev["text"]):
+            dur = len(ev["a"]) / SR
+            k = int(min(2, (tt - ev["t"]) / (dur / 3)))
+            ph = ((tt - ev["t"]) % (dur / 3)) / (dur / 3)
+            r = int((0.16 if W > H else 0.12) * H * (1 + 0.15 * (1 - ph)))
+            cx, cy = W // 2, int(0.36 * H) if W > H else 800
+            d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(255, 90, 120, 235), outline=(255, 255, 255), width=12)
+            self.text(d, cx, cy, str(3 - k), int(r * 1.3), (255, 255, 255), sw=10)
+        # transición: fundido corto desde blanco al empezar cada escena
+        if si > 0 and st < 0.3 and sg["kind"] != "end":
+            a = int(255 * (1 - st / 0.3))
+            d.rectangle([0, 0, W, H], fill=(255, 255, 255, a))
+        if self.short:
+            d.rounded_rectangle([W // 2 - 260, 40, W // 2 + 260, 110], 35, fill=(255, 255, 255, 215))
+            d.text((W // 2, 75), TXT[self.lang]["show"], font=font(F700, 40), fill=(60, 150, 100), anchor="mm")
+            if hook and tt < 3.6:
+                self.text(d, W // 2, 330, hook, int(118 * (1 + 0.04 * math.sin(tt * 9))), (255, 214, 60), sw=12,
+                          maxw=W - 70)
+            if ev:
+                self.subtitles(d, ev, tt)
+        return fr
+
+
+# ------------------------------------------------------------------ salida
+def srt_time(t):
+    ms = int(round(t * 1000))
+    h, ms = divmod(ms, 3600000)
+    m, ms = divmod(ms, 60000)
+    s, ms = divmod(ms, 1000)
+    return f"{h:02d}:{m:02d}:{s:02d},{ms:03d}"
+
+
+def wrap2(text, n=42):
+    words, lines, cur = text.split(), [], ""
+    for w in words:
+        if len(cur) + len(w) + 1 > n and cur:
+            lines.append(cur)
+            cur = w
+        else:
+            cur = (cur + " " + w).strip()
+    lines.append(cur)
+    return "\n".join(lines)
+
+
+def write_srt(events, path, offset=0.0):
+    out = []
+    for i, ev in enumerate(events, 1):
+        a, b = ev["t"] + offset, ev["t"] + offset + len(ev["a"]) / SR + 0.2
+        out.append(f"{i}\n{srt_time(a)} --> {srt_time(b)}\n{wrap2(ev['text'])}\n")
+    open(path, "w", encoding="utf-8").write("\n".join(out))
+
+
+def slug_title(ep, lang):
+    t = ep["tes"] if lang == "es" else ep["ten"]
+    return R.safe(t)
+
+
+def render_job(job):
+    kind, n, k, lang, vdir, out, cache = job
+    R.set_lang(lang)
+    ep = EPISODES[n]
+    tag = "ES" if lang == "es" else "EN"
+    if kind == "ep":
+        W, H = 1920, 1080
+        segs, events, total = build_timeline(ep, lang, vdir, cache)
+        name = f"Bombolin_E{n:02d}_{slug_title(ep, lang)}_{tag}"
+        hook = None
+    else:
+        W, H = 1080, 1920
+        a, b, hes, hen = ep["shorts"][k]
+        segs, events, total = build_timeline(ep, lang, vdir, cache, scene_range=(a, b), short=True)
+        name = f"Bombolin_E{n:02d}_Short{k + 1}_{tag}"
+        hook = hes if lang == "es" else hen
+    mix = mix_audio(segs, events, total, kind == "short")
+    wav_p = os.path.join(cache, name + ".wav")
+    with wave.open(wav_p, "wb") as w:
+        w.setnchannels(1)
+        w.setsampwidth(2)
+        w.setframerate(SR)
+        w.writeframes((mix * 32767).astype(np.int16).tobytes())
+    nf = int(total * FPS) + 1
+    P = Painter(W, H, ep, lang, segs, events, nf, kind == "short")
+    mp4 = os.path.join(out, name + ".mp4")
+    cmd = ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
+           "-i", "-", "-i", wav_p, "-c:v", "libx264", "-preset", "veryfast", "-crf", "22", "-pix_fmt", "yuv420p",
+           "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-shortest", "-movflags", "+faststart", mp4]
+    pr = subprocess.Popen(cmd, stdin=subprocess.PIPE)
+    for fi in range(nf):
+        pr.stdin.write(P.frame(fi, hook).convert("RGB").tobytes())
+    pr.stdin.close()
+    pr.wait()
+    os.remove(wav_p)
+    if kind == "ep":
+        write_srt(events, os.path.join(out, name + ".srt"))
+        with open(os.path.join(out, name + ".json"), "w") as fh:
+            import json
+            json.dump({"duration": total, "srt": [(e["t"], len(e["a"]) / SR, e["text"]) for e in events]}, fh)
+    return name, round(total, 1)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--voices", required=True)
+    ap.add_argument("--out", required=True)
+    ap.add_argument("--lang", default="es")
+    ap.add_argument("--eps", default="")
+    ap.add_argument("--what", default="ep,short")
+    ap.add_argument("--jobs", type=int, default=4)
+    a = ap.parse_args()
+    os.makedirs(a.out, exist_ok=True)
+    cache = os.path.join(a.out, "_cache")
+    os.makedirs(cache, exist_ok=True)
+    eps = [int(x) for x in a.eps.split(",") if x] or sorted(EPISODES)
+    what = a.what.split(",")
+    R.set_lang(a.lang)
+    jobs = []
+    for n in eps:
+        if "ep" in what:
+            jobs.append(("ep", n, 0, a.lang, a.voices, a.out, cache))
+        if "short" in what:
+            for k in range(len(EPISODES[n]["shorts"])):
+                jobs.append(("short", n, k, a.lang, a.voices, a.out, cache))
+    # voces primero (en serie, quedan en caché)
+    for n in eps:
+        build_timeline(EPISODES[n], a.lang, a.voices, cache)
+        for k in range(len(EPISODES[n]["shorts"])):
+            s0, s1 = EPISODES[n]["shorts"][k][:2]
+            build_timeline(EPISODES[n], a.lang, a.voices, cache, scene_range=(s0, s1), short=True)
+    print("voces listas", flush=True)
+    jobs.sort(key=lambda j: j[0] != "ep")  # primero los episodios (los más largos)
+    with Pool(a.jobs) as p:
+        for name, dur in p.imap_unordered(render_job, jobs):
+            print("OK", name, dur, flush=True)
+
+
+if __name__ == "__main__":
+    main()
