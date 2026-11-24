@@ -110,7 +110,7 @@ window.frameLong = function (t) {
   // placa de capítulo
   const K = document.getElementById('Lk');
   if (s.type === 'card') {
-    K.style.display = 'flex'; document.getElementById('Lkn').textContent = 'Capítulo ' + s.num; document.getElementById('Lkt').textContent = s.title;
+    K.style.display = 'flex'; document.getElementById('Lkn').textContent = /^[^\s:]+ \d+/.test(s.title) ? '' : 'Capítulo ' + s.num; document.getElementById('Lkt').textContent = s.title;
     const a = clamp(ts / 0.35), b = clamp((s.dur - ts) / 0.3); K.style.opacity = Math.min(a, b);
     K.querySelector('h2').style.transform = `translateY(${(1 - ease(ts / 0.5)) * 40}px)`;
     const cm = K.querySelector('.cm'); cm.style.transform = `translateY(${Math.sin(t * 5) * 8}px)`;
