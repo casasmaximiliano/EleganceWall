@@ -35,19 +35,19 @@ MONI: Un truco: anotalos en una sola hoja, con fecha. Una hoja de papel, una not
 P: SEMANA 2 · LA CAZA |
 CAFECITO: ¿Me vas a cortar a mí? Soy solo un cafecito de tres dólares.
 MONI: No te voy a cortar. Te voy a elegir. Esta etapa no se trata de vivir sin nada. Se trata de gastar en lo que me importa y dejar de gastar en lo que ni noto.
-P: CAFÉ · $66 → $13 |
+P: $66 → $13 | café
 MONI: Café todos los días laborables: sesenta y seis dólares por mes. Lo dejo solo para los sábados, que es cuando más lo disfruto. Unos trece dólares.
 CAFECITO{wave}: ¡Los sábados soy un lujo!
 @cast moni,bag
-P: DELIVERY · $60 → $15 |
+P: $60 → $15 | delivery
 DELIVY: ¿Y yo? ¿Cuatro pedidos por mes no es nada?
 MONI: Cuatro pedidos de quince son sesenta. Me quedo con uno por mes, el del viernes de lluvia. Quince dólares.
 @cast moni,zombi
-P: SUSCRIPCIONES · $40 → $10 |
+P: $40 → $10 | suscripciones
 ZOMBI: Cuatro plataformas, diez dólares cada una. Ni sabías que seguíamos acá.
 MONI: Me quedo con una por vez, y voy rotando. De cuarenta a diez.
 @cast moni,gymzombi
-P: GIMNASIO · $40 → $16 |
+P: $40 → $16 | gimnasio
 GYM ZOMBI: Cuarenta dólares por mes. Fuiste dos veces.
 MONI: Dos clases sueltas de ocho son dieciséis. Pago por clase hasta que el hábito sea real.
 P: +$152 POR MES |
@@ -61,10 +61,10 @@ P: MES 2 · TARJETÍN |
 TARJETÍN: Bueno, bueno. Tenés doscientos dólares libres por mes. ¿Qué tal un viajecito en cuotas?
 MONI: Tengo una mejor idea. Te los doy a vos. Todos.
 TARJETÍN{shock}: ¿Cómo que a mí?
-P: MÍNIMO · $900 → $903 |
+P: $900 → $903 | pagando el mínimo
 MONI{think}: Mirá lo que pasa si pago solo el mínimo. Con un cuarenta por ciento anual, en un mes la deuda genera unos treinta dólares de intereses.
 MONI: Pago el mínimo, unos veintisiete, y al mes siguiente debo más que antes: novecientos tres. Pagando el mínimo, la deuda no baja. Sube.
-P: +$200 · $900 → $730 |
+P: $900 → $730 | pagando $200
 MONI: En cambio, si pago doscientos, después de los intereses la deuda baja a setecientos treinta. En un solo mes.
 TARJETÍN{worried}: Eso duele.
 MONI: Y la regla nueva: a la tarjeta solo le cargo lo que puedo pagar completo cuando llega el resumen. Ni un dólar más.
@@ -88,16 +88,16 @@ MONI: Cuando termine la deuda y tenga unos meses de colchón, ahí sí pienso en
 @cast moni,card
 P: DÍA 90 |
 MONI: Día noventa. Saco la misma foto que el día uno.
-P: ENTRA $1.200 = |
+P: $1.200 = $1.200 | ingreso
 MONI: Entra lo mismo: mil doscientos. No me aumentaron el sueldo. Todo lo que cambió, cambió por decisiones.
-P: SALE $1.150 → $998 |
+P: $1.150 → $998 | gastos
 MONI: Sale menos: novecientos noventa y ocho.
-P: AHORRO 4 % → 17 % |
+P: 4 % → 17 % | ahorro
 MONI{shock}: Me queda un diecisiete por ciento por mes, en vez de un cuatro. Cuatro veces más.
-P: DEUDA $900 → $604 |
+P: $900 → $604 | deuda
 MONI: La deuda bajó de novecientos a seiscientos cuatro. Y con doscientos por mes, en unos cuatro meses más desaparece.
 TARJETÍN{worried}: Me estoy achicando.
-P: COLCHÓN 0 → $250 |
+P: $0 → $250 | colchón
 MONI: El colchón pasó de cero a doscientos cincuenta. Todavía no es un mes de gastos, pero ya no estoy en cero.
 MONI{wave}: Noventa días. Mismo sueldo. Cinco números distintos.
 ## ¿Y si no me sobra nada?
