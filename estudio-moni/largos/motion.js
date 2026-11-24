@@ -136,7 +136,7 @@ window.frameLong = function (t) {
   const i = origFrame(t);
   const L = document.getElementById('L'); const s = TL_scene(i); if (!s) return i;
   const cam = document.getElementById('Lcam');
-  const bg = (L.className || 'b-marca').slice(2);
+  const bg = (L.className || 'b-marca').split(' ')[0].slice(2);
   // partículas de fondo
   const cfg = FX[bg] || FX.marca;
   [...document.querySelectorAll('#Lfx i')].forEach((el, k) => {

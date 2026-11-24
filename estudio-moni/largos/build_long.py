@@ -30,6 +30,28 @@ OUTRO = 20.0          # pantalla final de YouTube (5 a 20 s)
 
 SPEAKERS = {k.upper(): k for k in A.VOICES}
 EXPR = {"shock", "happy", "sly", "angry", "worried", "think", "wave"}
+# Compañero de escena cuando Moni está sola (los datos de los Shorts: 2 personajes retienen más que Moni sola)
+SIDEKICK = {2: "centavito", 4: "card", 5: "cup", 6: "centavito", 7: "centavito", 12: "centavito", 17: "bow",
+            18: "ghost", 22: "centavito", 23: "ghost", 24: "peso", 25: "centavito"}
+# Fondos de escena: el capítulo elige el ambiente según de qué se habla (para que no sea siempre el mismo living)
+ROOMS = [("cocina", r"caf[eé]|cafecito|cocin|comida|heladera|delivery|almuerzo|cena|pizza"),
+         ("super", r"s[uú]per|supermercado|g[oó]ndola|carrito|oferta|precio por kilo|compras?\b"),
+         ("oficina", r"sueldo|trabaj|jef[ea]|oficina|aumento|cobr[oa]|empresa|negocio"),
+         ("banco", r"banco|tarjeta|pr[eé]stamo|deuda|cuota|cr[eé]dito|inter[eé]s|tasa"),
+         ("calle", r"\bauto|transporte|ciudad|alquil|vivienda|pa[ií]s|barrio"),
+         ("parque", r"futuro|jubil|a[nñ]os|tiempo|plan\b|meta")]
+ROOM_ORDER = ["living", "cocina", "oficina", "parque", "super", "calle", "banco"]
+
+def pick_room(text, prev):
+    low = text.lower(); best = None; score = 0
+    for name, rx in ROOMS:
+        k = len(re.findall(rx, low))
+        if k > score and name != prev:
+            best, score = name, k
+    if best:
+        return best
+    return next(r for r in ROOM_ORDER if r != prev)
+
 VILLAINS = {"card", "ghost", "bill", "tag", "zombi", "gymzombi", "bow", "fomito", "atm", "chips", "cuotin", "phone", "cart", "bag", "bottle", "car", "doc"}
 KIND_OF = {k: v[3] for k, v in A.VOICES.items()}
 
@@ -85,6 +107,9 @@ def expressions(it, nxt_is_card):
         else:
             if c == "moni":
                 e = "worried" if kind in VILLAINS else ("shock" if it["panel"] and re.search(r"\$\d", it["panel"]["big"]) else "think" if kind is None else "happy")
+            elif it.get("side") == c:
+                pb = it["panel"]["big"] if it["panel"] else ""
+                e = ("worried" if c in VILLAINS else "shock") if re.search(r"\d", pb) else ("think" if "?" in txt else ("sly" if c in VILLAINS else "happy"))
             else:
                 e = "worried" if (kind == "moni" and it["ex"] in ("angry", "wave")) else ("sly" if c in VILLAINS else "happy")
         ex[c] = e
@@ -96,6 +121,26 @@ def srt_time(t):
 
 def build(n, plan):
     meta, items = parse(os.path.join(HERE, "guiones", f"{n:02d}.txt"))
+    side = SIDEKICK.get(n, "centavito")
+    for it in items:  # nunca Moni sola: suma un compañero que reacciona
+        if it["type"] == "line" and it["cast"] == ["moni"]:
+            it["cast"] = ["moni", side]; it["side"] = side
+    # ambiente por capítulo para las escenas de living (sitcom) y de marca
+    chap = []; cur = None
+    for it in items:
+        if it["type"] == "card":
+            cur = []; chap.append(cur)
+        elif cur is not None:
+            cur.append(it)
+    prev = None
+    for group in chap:
+        lines = [it for it in group if it["type"] == "line" and it["bg"] in ("sitcom", "marca")]
+        if not lines:
+            continue
+        room = pick_room(" ".join(it["text"] for it in group if it["type"] == "line"), prev)
+        for it in lines:
+            it["bg"] = "sitcom"; it["room"] = room
+        prev = room
     t = INTRO_PAD; scenes = []; clips = []; chapters = []; srt = []
     for i, it in enumerate(items):
         if it["type"] == "card":
@@ -111,7 +156,7 @@ def build(n, plan):
         dur = ad + GAP
         scenes.append({"type": "line", "start": round(t, 3), "dur": round(dur, 3), "audio": round(ad, 3), "speaker": it["speaker"],
                        "kind": KIND_OF[it["speaker"]], "text": it["text"], "bg": it["bg"], "cast": it["cast"],
-                       "panel": it["panel"], "ex": expressions(it, False)})
+                       "panel": it["panel"], "ex": expressions(it, False), "room": it.get("room")})
         clips.append((t, clip))
         srt.append((t, t + ad, it["text"]))
         t += dur
