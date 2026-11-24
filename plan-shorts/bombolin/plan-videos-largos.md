@@ -1,108 +1,119 @@
-# Bombolín: plan de videos largos (temporada 1, del 24 de noviembre al 31 de diciembre)
+# Bombolín y sus amigos: programa diario de 10 a 12 minutos
 
-## 1. Decisión
-Pasamos de 3 shorts por día a **episodios largos tipo serie animada**, como Peppa Pig. Los shorts siguen, pero ahora **salen de los episodios** (2 por episodio), así no hay que producir contenido aparte.
+## 1. Formato
+- **Un programa nuevo por día**, solo en español, en **1920x1080 a 60 fps**, de **10,8 a 11,2 minutos**.
+- **2 shorts verticales por programa** (1080x1920, 60 fps), sacados de la historia del día.
+- **Del 24 de noviembre al 31 de diciembre de 2026: 38 programas y 76 shorts.**
 
-## 2. Análisis
-
-### Duración de cada video
-| Referencia | Duración | Qué tomamos |
+### Estructura de cada programa (como un bloque de TV infantil)
+| Parte | Duración aprox. | Qué es |
 |---|---|---|
-| Peppa Pig | ~5 min por episodio | Una historia simple, con principio, problema y final feliz |
-| Bluey | ~7 min por episodio | Humor y emoción que también disfrutan los padres |
-| Canales infantiles de YouTube | episodios de 2 a 5 min y **recopilaciones de 20 a 60 min** | Las recopilaciones son las que más tiempo de visualización suman |
+| Gancho | 0:05 | La primera escena de la historia, sin saludo (los chicos se enganchan desde el primer segundo) |
+| Presentación | 0:06 | Logo, «¡Bombolín y sus amigos!» y el título de hoy |
+| **Historia del día** | 2:30–3:00 | Una aventura nueva, que se entiende sola, con un dato real explicado por Abu Tortu |
+| ¿Sabías qué? | 0:20–0:40 | Datos reales de animales y dinosaurios en la pizarra |
+| ¡Hora de cantar! | 2 canciones | Canciones cortas y pegadizas (cepillarse, lavarse las manos, bailar…) |
+| ¡Hora de jugar! | 2 juegos | «¿Mito o verdad?» con cuenta regresiva 3-2-1 |
+| ¡Un cuento cortito! | 2 cuentos | Comedias y «¿Y si…?» con los amigos |
+| **¡Otra aventura!** | 2:30–3:00 | La historia de ayer, por si no la vieron (desde el día 2) |
+| Más canciones, juegos y cuentos | hasta llegar a ~11 min | Rotan todos los días: nunca se repite un bloque dentro del mismo programa |
+| Libro de Descubrimientos | 0:30 | Bombolín pega la figurita del día, «¡Hoy aprendimos que…!», la rima del canal y **«Mañana: …»** |
 
-**Nuestro formato:**
-- **Episodio:** de 2:30 a 3:00 min. Estructura:
-  1. Arranque con gancho (sin saludo).
-  2. Presentación de 5 s.
-  3. Historia.
-  4. «¿Sabías qué?» o un cuento cortito.
-  5. «¡Hora de cantar!»
-  6. «¡Hora de jugar!» (¿Mito o verdad?).
-  7. Libro de Descubrimientos y «¡Hoy aprendimos que…!».
-  8. Anticipo del próximo episodio.
-- **Recopilación del domingo:** 4 episodios seguidos (unos 11 o 12 min). El 31 de diciembre sale **la temporada completa** (unos 37 min).
-- **Mejora pendiente:** los episodios quedaron más cortos que los de Peppa Pig. En la temporada 2 conviene llevarlos a 5 minutos con historias más largas.
+### Por qué este formato
+- **10 a 12 minutos es la duración que más funciona en los canales infantiles grandes:** alcanza para ver un programa entero y suma mucho tiempo de visualización.
+- **Una historia nueva cada día más los bloques fijos** permite publicar todos los días sin bajar la calidad. Las canciones y los juegos que se repiten son algo que los chicos buscan, no un defecto.
+- **Como Los Simpson:**
+  - Cada programa se entiende solo: el mismo mundo, los mismos personajes y los mismos rituales.
+  - El Libro de Descubrimientos (una figurita por día) y el «Mañana: …» del final dan ganas de volver al día siguiente.
+  - «¡Otra aventura!» repite la historia de ayer para quien se la perdió.
+- **Ojo con la monetización:** YouTube no paga por contenido «repetitivo o hecho en serie». Por eso cada programa tiene **una historia nueva**, y los bloques van rotando. Más adelante conviene alargar las historias a 5 minutos para que la parte original pese más.
 
-### Cantidad por semana
-- **2 episodios nuevos** (martes y viernes) + **1 recopilación** (domingo) + **1 short por día**.
-- **Por qué 2 y no más:** es un ritmo que se puede sostener con calidad. Las recopilaciones vuelven a mostrar los episodios a público nuevo sin trabajo extra.
-- **Lanzamiento:** el primer día salen **3 episodios juntos**, para que quien llegue al canal tenga varios para ver seguidos.
-
-### Una serie para ver todos los días (como Los Simpson)
-- **Cada episodio se entiende solo:** se puede ver en cualquier orden. Siempre es el mismo valle, con los mismos amigos, el mismo inicio y el mismo cierre.
-- **Hilo suave que da ganas de volver:**
-  - **Libro de Descubrimientos:** al final de cada episodio, Bombolín pega una figurita nueva. Se ven las de los episodios anteriores y los casilleros vacíos de los que faltan.
-  - **Anticipo:** cada episodio termina con «En el próximo episodio…».
-  - **Final de temporada (episodio 13):** el libro se completa.
-- **Rituales que se repiten:** «¡Hora de cantar!», «¡Hora de jugar!», «¡Hoy aprendimos que…!» y la rima del canal. Los chicos los esperan.
-- **Siempre hay algo nuevo:** los días sin episodio sale un short, y el domingo una recopilación.
-
-### Lo que cambia por ser «contenido para niños» (YouTube)
-- **Funciones desactivadas:** comentarios, campanita de notificaciones, tarjetas y pantallas finales, y guardar en playlist desde el video.
-- **No se puede usar «Probar y comparar» miniaturas:** YouTube no la habilita en videos para niños ([ayuda de YouTube](https://support.google.com/youtube/answer/16391400)). Por eso preparé **3 miniaturas por video** para rotarlas a mano (ver la sección 5).
-- **Cómo crece el canal:** con las playlists del canal, las recopilaciones, la reproducción automática y los shorts, más que con suscriptores. Fuente: [funciones afectadas en contenido para niños](https://support.google.com/youtube/answer/9632097).
-
-## 3. Horarios (canal ES: hora del país principal · canal EN: hora del este de EE. UU.)
-| Qué | Día | Hora |
+## 2. Horarios (hora local del país principal del canal)
+| Qué | Lunes a viernes | Sábados y domingos |
 |---|---|---|
-| Episodio nuevo | martes y viernes | **17:00** (salida del colegio) |
-| Recopilación | domingo | **09:00** (mañana de fin de semana en familia) |
-| Short | todos los días que toque | **12:30** |
-| Lanzamiento (hoy, martes 24/11) | episodios 1, 2 y 3 | 18:00 · 18:10 · 18:20 |
+| **Programa** | **17:00** (salida del colegio) | **09:00** (mañana en familia) |
+| Short 1 (adelanto del programa) | 12:30 | 12:30 |
+| Short 2 | 20:00 | 20:00 |
 
-Son horarios de partida: después de 2 semanas, revisa en YouTube Studio > Estadísticas > Audiencia a qué hora está conectado tu público y ajústalos.
+- **Lanzamiento hoy, martes 24/11:** el programa del día 1 se publica apenas lo tengas (sugerido: **18:00**) y sus shorts a las **19:00** y **20:00**.
+- **Después de 2 semanas:** revisa en YouTube Studio > Estadísticas > Audiencia «Cuándo están conectados tus usuarios» y ajusta los horarios.
 
-## 4. Calendario
-| Fecha | Episodio | Recopilación (domingo 09:00) |
-|---|---|---|
-| mar 24/11 | **1. Bombolín encuentra un huevo gigante · 2. ¡Toto no quiere bañarse! · 3. Lula tiene miedo de la tormenta** | |
-| vie 27/11 | 4. La gran carrera de Zumbi | dom 29/11: episodios 1 a 4 |
-| mar 1/12 | 5. ¿Dónde está el cepillo de Toto? | |
-| vie 4/12 | 6. ¡Nieve! Bombolín conoce a los pingüinos | dom 6/12: episodios 3 a 6 |
-| mar 8/12 | 7. ¡Fiesta sorpresa para Abu Tortu! | |
-| vie 11/12 | 8. La cueva que repite todo | dom 13/12: episodios 5 a 8 |
-| mar 15/12 | 9. ¡Bombolín prepara la Navidad! | |
-| vie 18/12 | 10. La Navidad de Bombolín | dom 20/12: Especial Navidad (7 a 10) |
-| mar 22/12 | 11. Bombolín no tiene sueño | |
-| vie 25/12 | 12. ¡Toto no quiere probar el brócoli! | dom 27/12: Especial Navidad (9 a 12) |
-| mar 29/12 | 13. ¡Feliz año nuevo, Bombolín! (final de temporada) | **jue 31/12 10:00: temporada completa** |
+## 3. Calendario de historias
+| Día | Fecha | Historia | Estado |
+|---|---|---|---|
+| 1 | mar 24/11 | Bombolín encuentra un huevo gigante | ✅ listo |
+| 2 | mié 25/11 | ¡Toto no quiere bañarse! | ✅ listo |
+| 3 | jue 26/11 | Lula tiene miedo de la tormenta | ✅ listo |
+| 4 | vie 27/11 | La gran carrera de Zumbi | ✅ listo |
+| 5 | sáb 28/11 | ¿Dónde está el cepillo de Toto? | ✅ listo |
+| 6 | dom 29/11 | ¡Nieve! Bombolín conoce a los pingüinos | ✅ listo |
+| 7 | lun 30/11 | ¡Fiesta sorpresa para Abu Tortu! | ✅ listo |
+| 8 | mar 1/12 | La cueva que repite todo | guion base escrito |
+| 9 | mié 2/12 | Bombolín no tiene sueño | guion base escrito |
+| 10 | jue 3/12 | ¡Toto no quiere probar el brócoli! | guion base escrito |
+| 11 | vie 4/12 | Un día en la granja | por escribir |
+| 12 | sáb 5/12 | El fondo del mar | por escribir |
+| 13 | dom 6/12 | Bombolín y la Luna | por escribir |
+| 14 | lun 7/12 | ¡Toto ordena su cuarto! | por escribir |
+| 15 | mar 8/12 | Zumbi aprende a esperar | por escribir |
+| 16 | mié 9/12 | Aventura en la selva | por escribir |
+| 17 | jue 10/12 | El jardín de las mariposas | por escribir |
+| 18 | vie 11/12 | ¡Lula está enojada! | por escribir |
+| 19 | sáb 12/12 | El museo de los dinosaurios | por escribir |
+| 20 | dom 13/12 | Pícnic en la playa | por escribir |
+| 21 | lun 14/12 | El concierto de Lula | por escribir |
+| 22 | mar 15/12 | La sabana: jirafas y cebras | por escribir |
+| 23 | mié 16/12 | Los caracoles del día de lluvia | por escribir |
+| 24 | jue 17/12 | Toto se pierde en el parque | por escribir |
+| 25 | vie 18/12 | El muñeco de nieve | por escribir |
+| 26 | sáb 19/12 | Galletitas para compartir | por escribir |
+| 27 | dom 20/12 | ¡Bombolín prepara la Navidad! | guion base escrito |
+| 28 | lun 21/12 | La carta de los deseos | por escribir |
+| 29 | mar 22/12 | Regalos hechos a mano | por escribir |
+| 30 | mié 23/12 | Las luces del valle | por escribir |
+| 31 | jue 24/12 | La Navidad de Bombolín (Nochebuena) | guion base escrito |
+| 32 | vie 25/12 | ¡Feliz Navidad! El regalo de Toto | por escribir |
+| 33 | sáb 26/12 | Juegos en la nieve | por escribir |
+| 34 | dom 27/12 | El reno vuelve de visita | por escribir |
+| 35 | lun 28/12 | ¿Qué es un año? | por escribir |
+| 36 | mar 29/12 | Recuerdos del Libro de Descubrimientos | por escribir |
+| 37 | mié 30/12 | Preparando la fiesta de fin de año | por escribir |
+| 38 | jue 31/12 | ¡Feliz año nuevo, Bombolín! | guion base escrito |
 
-- **Episodios de Navidad:** salen antes del 25 (15 y 18 de diciembre), porque el contenido navideño se busca más en los días previos.
-- **Shorts:** uno por día a las 12:30, desde el 25 de noviembre. Cada uno sale después de su episodio. Las fechas exactas están en `PUBLICAR.csv` de cada zip.
+Las historias de Navidad están entre el 20 y el 25 de diciembre, cuando más se busca ese contenido.
 
-## 5. Miniaturas (3 por video largo)
-- **miniatura1:** Bombolín en primer plano con el objeto del episodio y 2 o 3 palabras grandes («¡HUEVO GIGANTE!»).
-- **miniatura2:** la escena con dos personajes y el objeto, **sin texto** (los chicos chiquitos todavía no leen).
-- **miniatura3:** el otro personaje del episodio con una pregunta («¿QUIÉN ESTÁ ADENTRO?»).
+## 4. Miniaturas (3 por programa)
+YouTube **no permite «Probar y comparar» miniaturas en videos para niños** ([ayuda de YouTube](https://support.google.com/youtube/answer/16391400)). Por eso cada programa trae 3:
+- **miniatura1:** Bombolín grande, el objeto del día y 2 o 3 palabras.
+- **miniatura2:** la escena con dos personajes, sin texto.
+- **miniatura3:** otro personaje y una pregunta.
 
-**Cómo elegir la mejor sin la prueba automática:**
+**Cómo elegir:**
 1. Publica con la miniatura1.
-2. A los 3 días, mira en YouTube Studio > Estadísticas > Alcance el **porcentaje de clics (CTR)**. Si está por debajo del promedio de tus otros videos, cámbiala por la miniatura2.
+2. A los 3 días, mira en YouTube Studio > Estadísticas > Alcance el porcentaje de clics (CTR). Si es más bajo que el de tus otros videos, cambia a la miniatura2.
 3. A los 3 días más, prueba la miniatura3.
-4. Quédate con la que tuvo mejor porcentaje de clics, y usa ese estilo en los próximos videos.
+4. Usa el estilo ganador en los próximos programas.
 
-## 6. Título, descripción, etiquetas y categoría
-- **Título:** `Nombre del episodio | Bombolín y sus amigos | Dibujos animados para niños` (en inglés: `… | Bombolín & Friends | Cartoons for Kids`). Lo importante va al principio.
-- **Descripción:** resumen de la historia, qué trae el episodio (historia, canción, juego y dato real), «¡Hoy aprendimos que…!», cuándo salen los episodios nuevos, la fuente del dato y 3 hashtags. Las recopilaciones traen la lista de episodios con el minuto en que empieza cada uno.
-- **Etiquetas:** las del episodio más las del canal (dibujos animados, videos para niños, preescolar…), hasta 480 caracteres.
-- **Categoría:** **Cine y animación**. La alternativa es «Educación», si prefieres posicionarlo como educativo.
-- **Todo esto ya está escrito** para cada video en su `.txt` y en `PUBLICAR.csv`.
+## 5. Título, descripción, etiquetas y categoría (ya escritos en el .txt de cada video)
+- **Título:** `Historia del día | Bombolín y sus amigos | Dibujos animados para niños`.
+- **Descripción:** resumen, qué trae el programa, «¡Hoy aprendimos que…!», dato y fuente, **capítulos con minutos** (YouTube los muestra como secciones del video) y 3 hashtags.
+- **Etiquetas:** las del día más las del canal.
+- **Categoría:** Cine y animación.
 
-## 7. Configuración antes de publicar (cada video)
+## 6. Configuración antes de publicar (cada programa)
 - [ ] Audiencia: **Sí, es contenido creado para niños**.
-- [ ] Contenido alterado o sintético: **No** (es un dibujo animado que claramente no es real).
-- [ ] Idioma del video: Español (Latinoamérica) o English (US).
-- [ ] Subtítulos: subir el `.srt` del mismo nombre (Subtítulos > Subir archivo > Con sincronización).
-- [ ] Miniatura: la `miniatura1`.
-- [ ] Playlist: «Temporada 1 – Episodios completos», «Recopilaciones» o «Shorts».
-- [ ] Categoría: Cine y animación. Licencia estándar. Promoción pagada: No.
+- [ ] Contenido alterado o sintético: **No** (dibujo animado).
+- [ ] Idioma: Español (Latinoamérica).
+- [ ] Subtítulos: subir el `.srt` (Subtítulos > Agregar idioma > Español > Subir archivo > Con sincronización).
+- [ ] Miniatura: miniatura1.
+- [ ] Playlist: «Bombolín y sus amigos – Programas completos». Los shorts van en «Shorts».
+- [ ] Licencia estándar · Permitir insertar · Sin promoción pagada · Sin restricción de edad.
 - [ ] Visibilidad: **Programar** con la fecha y hora del `.txt`.
-- [ ] Una vez en el canal: crear las 3 playlists y poner la de episodios como sección destacada en la página principal del canal.
+- [ ] Recordatorio: en videos para niños no hay comentarios, campanita, tarjetas ni pantallas finales. El canal crece con las playlists, la reproducción automática y los shorts.
 
-## 8. Archivos de la producción
-- `episodios/eps_*.py`: los 13 guiones (español e inglés).
-- `episodios/episode.py`: genera los episodios (1920x1080, con `.srt`) y los shorts (1080x1920, con subtítulos grabados).
-- `episodios/thumbs.py`: genera las miniaturas.
-- `episodios/package_long.py`: arma las recopilaciones, los textos y los zips por semana.
+## 7. Producción
+- `episodios/programa.py`: arma y genera cada programa y sus shorts.
+- `episodios/extras_s1.py`: escenas extra de las historias y cortes de los shorts.
+- `episodios/thumbs.py`: miniaturas.
+- `episodios/package_prog.py`: un zip por día con todo listo para subir.
+- **Tiempos:** cada programa tarda unos 10 minutos en generarse; una semana completa, unos 25 minutos.

@@ -408,7 +408,7 @@ class Painter:
         if c == "LULA":
             return self.sp[(c, mood, mouth, blink)]
         if c == "ZUMBI":
-            return self.sp[(c, fi % 2, mouth, blink)]
+            return self.sp[(c, int(fi / FPS * 20) % 2, mouth, blink)]
         return self.sp[(c, mouth, blink)]
 
     def draw_cast(self, frame, sg, fi, tt, speaking):
@@ -436,8 +436,8 @@ class Painter:
             arr = self.talk.get(c)
             lvl = arr[fi] if arr is not None and fi < len(arr) else 0
             is_sp = speaking == c or (speaking == "ALL" and c != "ABU")
-            mouth = 1 if (is_sp and lvl > 0.06 and (fi // 3) % 2 == 0) else 0
-            bl = 1 if any((fi - d) in self.blink[c] for d in range(3)) else 0
+            mouth = 1 if (is_sp and lvl > 0.06 and int(tt * 8) % 2 == 0) else 0
+            bl = 1 if any((fi - d) in self.blink[c] for d in range(max(3, FPS // 8))) else 0
             spr = self.char_sprite(c, mouth, bl, fi, sg.get("mood", "calm"))
             bh = BASE_H[c] * H if land else {"PIPO": 540, "TOTO": 490, "LULA": 340, "ZUMBI": 280, "ABU": 540}[c]
             bounce = abs(math.sin(tt * 7)) * 0.02 * H if is_sp else abs(math.sin(tt * 2 + i)) * 0.006 * H
@@ -508,8 +508,11 @@ class Painter:
         cols, rows = 4, 4
         cw = (bx1 - bx0 - 60) / cols
         rh = (by1 - by0 - 60) / rows
-        for n in range(1, 14):
-            r, c = divmod(n - 1, cols)
+        page0 = (self.ep["n"] - 1) // 16 * 16 + 1
+        for n in range(page0, page0 + 16):
+            if n not in EPISODES:
+                continue
+            r, c = divmod(n - page0, cols)
             cx = bx0 + 30 + cw * (c + 0.5)
             cy = by0 + 30 + rh * (r + 0.5)
             d.rounded_rectangle([cx - cw * 0.38, cy - rh * 0.38, cx + cw * 0.38, cy + rh * 0.38], 14,
@@ -618,7 +621,7 @@ class Painter:
             self.text(d, cx, cy, str(3 - k), int(r * 1.3), (255, 255, 255), sw=10)
         # transición: fundido corto desde blanco al empezar cada escena
         if si > 0 and st < 0.3 and sg["kind"] != "end":
-            a = int(255 * (1 - st / 0.3))
+            a = int(110 * (1 - st / 0.3))
             d.rectangle([0, 0, W, H], fill=(255, 255, 255, a))
         if self.short:
             d.rounded_rectangle([W // 2 - 260, 40, W // 2 + 260, 110], 35, fill=(255, 255, 255, 215))
