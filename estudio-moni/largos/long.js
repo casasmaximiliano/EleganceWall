@@ -119,7 +119,7 @@ window.frameLong = function (t) {
   const O = document.getElementById('Lo');
   if (s.type === 'outro') { O.style.display = 'block'; O.style.opacity = clamp(ts / 0.5); O.querySelector('.om').style.transform = `translateY(${Math.sin(t * 4) * 10}px)`;
     const arm = O.querySelector('.arm-r'); if (arm) arm.style.transform = `rotate(${Math.sin(t * 11) * 16 + 4}deg)` } else O.style.display = 'none';
-  document.getElementById('Ld').style.opacity = (t < 12 || s.type === 'outro') ? 1 : 0;
+  document.getElementById('Ld').style.opacity = (s.type === 'outro' || (t > 20 && t < 30)) ? 1 : 0;
   if (s.type !== 'line') { document.getElementById('Lc').innerHTML = ''; return i }
   // cambio de escena
   if (i !== S.scene) {

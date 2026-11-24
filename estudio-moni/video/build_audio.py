@@ -255,9 +255,21 @@ def mito_parts(short):
     verdict = verdict.split(".")[0].upper()
     return frase, verdict
 
+SIDEKICK = [  # compañero de escena para los shorts sin segundo personaje (los datos: 2 personajes retienen más)
+    (("cuota",), "cuotin"), (("tarjeta", "mínimo"), "card"), (("préstamo", "deuda", "crédito", "banco te"), "bill"),
+    (("inflación", "precios", "reduflación", "sueldo"), "ghost"), (("oferta", "compr", "gast"), "tag"),
+]
+
+def sidekick(short):
+    low = (short["titulo"] + " " + short.get("desc", "")).lower()
+    for keys, kind in SIDEKICK:
+        if any(k in low for k in keys):
+            return kind
+    return "centavito"
+
 def build(short):
     n = short["n"]; fmt = short["fmt"]; guion = short["guion"]
-    kinds = actor_kinds(guion)
+    kinds = actor_kinds(guion) or [sidekick(short)]
     pantalla = PANTALLA.get(n, [""] * len(guion))
     assert len(pantalla) == len(guion), (n, len(pantalla), len(guion))
     lead, gap, tail = 0.12, 0.32, 1.3

@@ -1,108 +1,112 @@
-"""Arma el calendario de publicación (2-3 shorts por día) y reempaqueta los videos por semana.
+"""Calendario de Shorts v2 (desde el 25/11/2026): 4 por día, según los datos de los primeros 9 shorts.
 
-Reglas:
-- Telenovela: 1 capítulo por día, en orden, en el horario de mayor audiencia (el cierre dice "Próximo capítulo mañana").
-- Primera semana: los ganchos más fuertes.
-- El mismo día no se repite formato.
-- Lunes a viernes: 3 shorts (13:00, 19:00, 22:00). Sábado y domingo: 2 (12:00, 21:00). Hora de Argentina (UTC-3).
+Reglas (ver análisis en el historial del canal):
+- 4 horarios fijos, hora de Argentina: 10:00, 13:00, 19:00 y 22:00 (México 7, 10, 16 y 19 h).
+- Cada día: 1 short del grupo A (gastos cotidianos con personaje), 1 del grupo B (deudas, tarjeta, inflación,
+  ahorro) y 2 de exploración (nichos nuevos) durante los primeros 6 días.
+- La exploración rota de horario para que ningún nicho quede siempre en la mejor hora.
+- El grupo C (conceptos abstractos de inversión) no se publica. Ver DESCARTADOS en shorts_data.py.
+- Desde el día 7 el calendario es provisorio: los nichos que ganen la exploración van a ocupar 1-2 lugares por día.
+Uso: python3 calendario.py [--zip]   (--zip copia los MP4 y arma un zip cada 3 días para bajar al teléfono)
 """
-import csv, datetime as dt, json, os, re, shutil, unicodedata, zipfile
+import csv, datetime as dt, json, os, re, shutil, sys, unicodedata, zipfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+from shorts_data import DESCARTADOS, EXPLORACION
+
 VID = os.path.join(HERE, "video", "out")
-START = dt.date(2026, 11, 23)  # lunes
+START = dt.date(2026, 11, 25)
 DIAS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"]
 DIAS_LARGO = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
-WEEKDAY_SLOTS = ["13:00", "19:00", "22:00"]
-WEEKEND_SLOTS = ["12:00", "21:00"]
-PRIME = {"22:00", "21:00"}
-TOP = [66, 51, 81, 26, 97, 52, 67, 27, 88, 70, 82, 53]  # ganchos más fuertes al principio
+SLOTS = ["10:00", "13:00", "19:00", "22:00"]
+PUBLICADOS = [66, 51, 1, 81, 26, 2, 97, 52, 3, 67, 27, 4]  # subidos entre el 21 y el 24/11
+
+# Grupo A: gastos de todos los días con el gasto como personaje (el formato que más retuvo: 52 % vs. 19-24 %)
+A = [53, 55, 61, 63, 60, 54, 24, 57, 21, 58, 65, 62, 64, 56, 59, 68, 22, 19, 9, 16, 25, 94, 78]
+# Grupo B: deudas, tarjeta, inflación y ahorro, rehechos con el arranque nuevo (2 personajes, sin "Cap. N")
+B = [6, 11, 12, 88, 89, 5, 7, 10, 13, 20, 15, 70, 79, 17, 18, 23, 83, 85, 87, 92, 91, 96, 100, 14, 8, 76, 69, 29,
+     36, 37, 39, 43, 47, 50]
+# Exploración, fase 1: 6 nichos × 2. Orden pensado para que cada nicho caiga en días y horarios distintos.
+E_FASE1 = [(101, "10:00"), (103, "19:00"),   # día 1: negocios por dentro · trucos de precios
+           (105, "13:00"), (107, "22:00"),   # día 2: historias de empresas · acciones
+           (109, "10:00"), (111, "19:00"),   # día 3: cuánto gana un negocio · plata de famosos
+           (102, "13:00"), (104, "22:00"),   # día 4
+           (106, "10:00"), (108, "19:00"),   # día 5
+           (110, "13:00"), (112, "22:00")]   # día 6
+NICHO = {101: "Negocios por dentro", 102: "Negocios por dentro", 103: "Trucos de precios", 104: "Trucos de precios",
+         105: "Historias de empresas", 106: "Historias de empresas", 107: "Acciones", 108: "Acciones",
+         109: "Cuánto gana un negocio", 110: "Cuánto gana un negocio", 111: "Plata de famosos", 112: "Plata de famosos"}
 
 data = json.load(open(os.path.join(HERE, "shorts.json"), encoding="utf-8"))
 by_n = {s["n"]: s for s in data["shorts"]}
-novela = [s["n"] for s in data["shorts"] if s["fmt"] == "novela"]
-
-# resto: primero los TOP, después intercalado ponderado por formato
-rest_fmts = {}
-for s in data["shorts"]:
-    if s["fmt"] != "novela" and s["n"] not in TOP:
-        rest_fmts.setdefault(s["fmt"], []).append(s["n"])
-inter = []
-for fmt, ns in rest_fmts.items():
-    for k, n in enumerate(ns):
-        inter.append(((k + 0.5) / len(ns), fmt, n))
-inter.sort()
-others = TOP + [n for _, _, n in inter]
+todos = set(A) | set(B) | set(EXPLORACION) | set(PUBLICADOS) | DESCARTADOS
+assert len(A) == 23 and len(B) == 34 and not (set(A) & set(B)), (len(A), len(B))
+assert todos == set(by_n), sorted(set(by_n) - todos)
+assert sorted(n for n, _ in E_FASE1) == EXPLORACION
 
 def shift(hhmm, h):
     t = dt.datetime(2000, 1, 1, *map(int, hhmm.split(":"))) + dt.timedelta(hours=h)
     return t.strftime("%H:%M")
 
+a, b = list(A), list(B)
 plan = []
-day = 0
-while novela or others:
-    date = START + dt.timedelta(days=day)
-    slots = WEEKEND_SLOTS if date.weekday() >= 5 else WEEKDAY_SLOTS
-    used_fmts = set()
-    todays = []
-    for slot in slots:
-        n = None
-        if slot in PRIME and novela:
-            n = novela.pop(0)
-        else:
-            for i, cand in enumerate(others):
-                if by_n[cand]["fmt"] not in used_fmts:
-                    n = others.pop(i)
-                    break
-            if n is None and others:
-                n = others.pop(0)
-            if n is None and novela and slot in PRIME:
-                n = novela.pop(0)
-        if n is None:
-            continue
-        used_fmts.add(by_n[n]["fmt"])
-        todays.append((slot, n))
-    for slot, n in todays:
-        plan.append(dict(fecha=date.isoformat(), semana=day // 7 + 1, dia_semana=DIAS_LARGO[date.weekday()],
-                         hora_ar=slot, hora_co=shift(slot, -2), hora_mx=shift(slot, -3), hora_es=shift(slot, 4), n=n))
-    day += 1
+for d in range(6):  # fase 1: A + B + 2 de exploración
+    e = dict((slot, n) for n, slot in E_FASE1[2 * d: 2 * d + 2])
+    free = [s for s in SLOTS if s not in e]
+    first, second = (a, b) if d % 2 == 0 else (b, a)
+    e[free[0]] = first.pop(0); e[free[1]] = second.pop(0)
+    for slot in SLOTS:
+        plan.append((d, slot, e[slot], "exploración" if e[slot] in EXPLORACION else ("A" if e[slot] in A else "B")))
+d = 6
+while a or b:  # provisorio: se van a sumar los nichos ganadores
+    for k, slot in enumerate(SLOTS):
+        src = (a if (k + d) % 2 == 0 else b) if (a and b) else (a or b)
+        if src:
+            n = src.pop(0); plan.append((d, slot, n, "A" if n in A else "B"))
+    d += 1
 
 def slug(t):
     t = unicodedata.normalize("NFKD", t).encode("ascii", "ignore").decode()
     return re.sub(r"[^A-Za-z0-9]+", "-", t).strip("-")[:50]
 
-for i, p in enumerate(plan, 1):
-    s = by_n[p["n"]]
-    d = dt.date.fromisoformat(p["fecha"])
-    p.update(orden=i, formato=s["formato"], serie=s["serie"], titulo=s["titulo"],
-             descripcion=f"{s['desc']}\n\nContenido educativo, no es asesoramiento financiero.\n\n{s['tags']} #shorts",
-             archivo=f"{i:03d}_{d.strftime('%m-%d')}_{DIAS[d.weekday()]}_{p['hora_ar'].replace(':', 'h')}_{slug(s['titulo'])}.mp4")
+rows = []
+for i, (d, slot, n, grupo) in enumerate(plan, 1):
+    s = by_n[n]; date = START + dt.timedelta(days=d)
+    rows.append(dict(orden=i, dia=d + 1, fecha=date.isoformat(), dia_semana=DIAS_LARGO[date.weekday()], hora_ar=slot,
+                     hora_co=shift(slot, -2), hora_mx=shift(slot, -3), hora_es=shift(slot, 4), n=n, grupo=grupo,
+                     nicho=NICHO.get(n, ""), provisorio=d >= 6, formato=s["formato"], titulo=s["titulo"],
+                     descripcion=f"{s['desc']}\n\n{('Fuente: ' + s['dato'] + chr(10) + chr(10)) if n in EXPLORACION else ''}"
+                                 f"Contenido educativo, no es asesoramiento financiero.\n\n{s['tags']} #shorts",
+                     comentario_fijado=f"¿Y a vos te pasó? Contame en los comentarios 👇",
+                     archivo=f"{i:03d}_{date.strftime('%m-%d')}_{DIAS[date.weekday()]}_{slot.replace(':', 'h')}_{slug(s['titulo'])}.mp4"))
 
-json.dump(plan, open(os.path.join(HERE, "calendario.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+json.dump(rows, open(os.path.join(HERE, "calendario.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 with open(os.path.join(HERE, "calendario.csv"), "w", encoding="utf-8-sig", newline="") as f:
     w = csv.writer(f)
-    w.writerow(["Orden", "Semana", "Fecha", "Día", "Hora Argentina/Uruguay/Chile", "Hora Colombia/Perú", "Hora México", "Hora España",
-                "Archivo", "Formato", "Serie", "Título", "Descripción"])
-    for p in plan:
-        w.writerow([p["orden"], p["semana"], p["fecha"], p["dia_semana"], p["hora_ar"], p["hora_co"], p["hora_mx"], p["hora_es"],
-                    p["archivo"], p["formato"], p["serie"], p["titulo"], p["descripcion"]])
+    w.writerow(["Orden", "Día", "Fecha", "Día de la semana", "Hora Argentina", "Hora Colombia/Perú", "Hora México", "Hora España",
+                "Grupo", "Nicho", "Provisorio", "Archivo", "Título", "Descripción", "Comentario para fijar"])
+    for r in rows:
+        w.writerow([r["orden"], r["dia"], r["fecha"], r["dia_semana"], r["hora_ar"], r["hora_co"], r["hora_mx"], r["hora_es"],
+                    r["grupo"], r["nicho"], "sí" if r["provisorio"] else "", r["archivo"], r["titulo"], r["descripcion"],
+                    r["comentario_fijado"]])
 
-# reempaquetar por semana
-dest = os.path.join(VID, "calendario")
-if os.path.isdir(dest):
-    shutil.rmtree(dest)
-os.makedirs(dest)
-weeks = {}
-for p in plan:
-    src = os.path.join(VID, "mp4", f"{p['n']:03d}.mp4")
-    shutil.copyfile(src, os.path.join(dest, p["archivo"]))
-    weeks.setdefault(p["semana"], []).append(p)
-for wk, items in weeks.items():
-    first, last = items[0]["fecha"], items[-1]["fecha"]
-    zp = os.path.join(VID, f"Moni_semana{wk}_{first[5:]}_a_{last[5:]}.zip")
-    with zipfile.ZipFile(zp, "w", zipfile.ZIP_STORED) as z:
-        for p in items:
-            z.write(os.path.join(dest, p["archivo"]), p["archivo"])
-        z.write(os.path.join(HERE, "calendario.csv"), "calendario.csv")
-    print(os.path.basename(zp), len(items), "videos", round(os.path.getsize(zp) / 1e6, 1), "MB")
-print("días:", day, "· último:", plan[-1]["fecha"], "· total:", len(plan))
+if "--zip" in sys.argv:  # un zip cada 3 días (≈12 shorts, menos de 60 MB para poder bajarlo al teléfono)
+    dest = os.path.join(VID, "calendario")
+    if os.path.isdir(dest):
+        shutil.rmtree(dest)
+    os.makedirs(dest)
+    bloques = {}
+    for r in rows:
+        shutil.copyfile(os.path.join(VID, "mp4", f"{r['n']:03d}.mp4"), os.path.join(dest, r["archivo"]))
+        bloques.setdefault((r["dia"] - 1) // 3, []).append(r)
+    for k, items in bloques.items():
+        zp = os.path.join(VID, f"Moni_shorts_{items[0]['fecha'][5:]}_a_{items[-1]['fecha'][5:]}.zip")
+        with zipfile.ZipFile(zp, "w", zipfile.ZIP_STORED) as z:
+            for r in items:
+                z.write(os.path.join(dest, r["archivo"]), r["archivo"])
+            z.write(os.path.join(HERE, "calendario.csv"), "calendario.csv")
+        print(os.path.basename(zp), len(items), "videos", round(os.path.getsize(zp) / 1e6, 1), "MB")
+print("total:", len(rows), "· último día:", rows[-1]["fecha"], "· fase 1 hasta:", rows[23]["fecha"])
+for r in rows[:24]:
+    print(r["fecha"], r["hora_ar"], r["grupo"][:5], r["n"], r["titulo"][:60])

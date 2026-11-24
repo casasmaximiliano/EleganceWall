@@ -2,39 +2,55 @@
 ## Dos Monis, un café
 @bg sitcom
 @cast moni,cup
-P: $66 POR MES | en café
-CAFECITO: Hola. Soy solo un cafecito de tres dólares. Veintidós días por mes. Sesenta y seis dólares.
-MONI: Parece nada. Hoy lo vamos a simular durante cuarenta años.
+P: $3 | un cafecito
+CAFECITO: Hola. Soy solo un cafecito de tres dólares. ¿Qué daño puedo hacer?
+P: $173.238 | en 40 años
+MONI{shock}: ¿Qué daño? Según internet, me vas a costar ciento setenta y tres mil dólares.
+CAFECITO{shock}: ¿Ciento setenta y tres mil? ¡Pero si soy chiquito!
+MONI: Por eso lo vamos a comprobar, año por año. Y te adelanto algo: al final vas a ver que el problema no sos vos.
+P: $66 POR MES | 22 cafés
+MONI: Veintidós cafés por mes, a tres dólares cada uno, son sesenta y seis dólares por mes.
 P: MONI A vs. MONI B |
-MONI: Dos Monis. La Moni A se toma el café todos los días en la cafetería. La Moni B lo prepara en casa y todos los meses invierte esos sesenta y seis dólares, a un siete por ciento anual.
+MONI: Ahora imaginá dos Monis. La Moni A se toma el café todos los días en la cafetería. La Moni B lo prepara en casa y todos los meses invierte esos sesenta y seis dólares, a un siete por ciento anual.
+CAFECITO{worried}: O sea que la Moni B me abandona.
+MONI: Te cambia por uno hecho en casa. No es lo mismo.
 P: 40 AÑOS |
 MONI{think}: Cuarenta años. De los veinticinco a los sesenta y cinco. Vamos a ir viendo qué pasa década por década.
-MONI: Y ojo, que esta historia tiene trampa. Al final te cuento por qué el café, en realidad, no es tu verdadero problema.
 P: Ejemplo ilustrativo | 7 % anual, sin garantías
 MONI: Como siempre, el siete por ciento es un ejemplo. Las inversiones reales suben y bajan.
 ## Año uno a diez
 @bg simulador
-@cast moni
+@cast moni,cup
 P: AÑO 1 · ≈ $820 |
 MONI: Año uno. La Moni B tiene unos ochocientos veinte dólares. Puso setecientos noventa y dos, ganó unos treinta. Nada impresionante.
-MONI: La Moni A, en cambio, se tomó doscientos sesenta y cuatro cafés riquísimos.
+CAFECITO: ¿Treinta dólares? ¡Eso es menos de diez cafés! Gané yo.
+P: 264 CAFÉS | en un año
+MONI: Y la Moni A, en cambio, se tomó doscientos sesenta y cuatro cafés riquísimos.
+CAFECITO: Doscientos sesenta y cuatro abrazos calentitos.
 P: AÑO 5 · ≈ $4.700 |
 MONI: Año cinco. Moni B: unos cuatro mil setecientos. Puso tres mil novecientos sesenta.
 P: AÑO 10 · ≈ $11.400 |
 MONI: Año diez. Moni B: once mil cuatrocientos. Puso siete mil novecientos veinte.
 MONI{think}: Fijate algo: en la primera década, la mayor parte del total son los aportes. Las ganancias existen, pero son chicas. Es la etapa más aburrida y la que más gente abandona.
+CAFECITO: Entonces sigo ganando yo.
+MONI: Por ahora, Cafecito. Por ahora.
 ## Año diez a veinticinco
 @bg simulador
+@cast moni,cup
 P: AÑO 15 · ≈ $20.900 |
 MONI: Año quince. Moni B: unos veinte mil novecientos. Puso once mil ochocientos ochenta. Las ganancias ya casi igualan a los aportes.
+CAFECITO{worried}: Eso ya no me gusta tanto.
 P: AÑO 20 · ≈ $34.400 |
 MONI: Año veinte. Treinta y cuatro mil cuatrocientos. Puso quince mil ochocientos cuarenta.
 P: AÑO 25 · ≈ $53.500 |
 MONI{shock}: Año veinticinco. Cincuenta y tres mil quinientos. Puso diecinueve mil ochocientos. Las ganancias ya son casi el doble de lo que puso.
 P: EL CRUCE |
 MONI: En algún momento de la segunda década pasa algo mágico: lo que ganás por año con los intereses empieza a superar lo que ponés por año de tu bolsillo. La bola de nieve empieza a rodar sola.
+CAFECITO{shock}: ¿Y yo qué hago mientras tanto?
+MONI: Te enfriás, Cafecito. Como todos los días.
 ## Año veinticinco a cuarenta
 @bg simulador
+@cast moni,cup
 P: AÑO 30 · ≈ $80.500 |
 MONI: Año treinta. Ochenta mil quinientos.
 P: AÑO 35 · ≈ $118.800 |
@@ -43,17 +59,20 @@ P: AÑO 40 · $173.238 |
 MONI{shock}: Y año cuarenta. Ciento setenta y tres mil doscientos treinta y ocho dólares.
 P: APORTÓ $31.680 |
 MONI: Y en total, la Moni B puso treinta y un mil seiscientos ochenta. Más de ciento cuarenta mil dólares los hizo el interés compuesto.
-@cast moni,cup
+P: 10.560 CAFÉS |
+MONI: La Moni A, en esos cuarenta años, se tomó diez mil quinientos sesenta cafés.
 CAFECITO{shock}: ¿Yo valgo ciento setenta mil dólares?
-MONI: Vos no, Cafecito. El tiempo que estuviste invertido.
+MONI: Vos no, Cafecito. El tiempo que esa plata estuvo invertida.
 ## La trampa
 @bg pizarra
-@cast moni
+@cast moni,cup
 P: LA TRAMPA |
 MONI: Ahora, la trampa. Esta cuenta se hizo muy famosa en internet, y tiene un problema.
+CAFECITO{wave}: ¡Sabía que había trampa!
 P: 1 · INFLACIÓN |
 MONI: Uno: no tiene en cuenta la inflación. Ciento setenta y tres mil dólares dentro de cuarenta años van a comprar bastante menos que hoy. Sigue siendo mucha plata, pero no tanto como parece.
 P: 2 · EL CAFÉ TE GUSTA |
+CAFECITO: Soy el mejor momento de tu mañana.
 MONI: Dos: ignora que el café te puede hacer feliz. Si ese café es tu momento del día, tiene un valor que la planilla no ve.
 P: 3 · LOS GASTOS GRANDES |
 MONI{think}: Y tres, la más importante: el café es un gasto chico. Los gastos que más pesan en tu vida son los grandes: dónde vivís, qué auto tenés, cuánto pagás de comisiones y de intereses.
@@ -79,11 +98,12 @@ MONI: O las comisiones: diez mil dólares invertidos treinta años. Con una comi
 MONI{think}: Esas decisiones se toman una sola vez y pesan muchísimo más que el café. Por eso conviene empezar por ahí.
 ## Por qué casi nadie lo hace
 @bg pizarra
-@cast moni
+@cast moni,cup
 P: ¿POR QUÉ NADIE LO HACE? |
 MONI: Si la cuenta es tan clara, ¿por qué casi nadie invierte la plata del café?
 P: 1 · NO SE VE |
 MONI: Uno: porque los resultados no se ven por años. El café se disfruta hoy. La inversión rinde en veinte años.
+CAFECITO: Yo te espero calentito todas las mañanas. La inversión no te saluda nunca.
 P: 2 · PARECE POCO |
 MONI: Dos: porque sesenta y seis dólares parece una cantidad tan chica que no vale la pena. Y justamente esa es la trampa: los montos chicos son los más fáciles de sostener.
 P: 3 · NO HAY SISTEMA |

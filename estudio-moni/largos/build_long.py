@@ -100,6 +100,9 @@ def build(n, plan):
     for i, it in enumerate(items):
         if it["type"] == "card":
             chapters.append({"t": round(t, 2), "title": it["title"]})
+            if len(chapters) == 1 and not scenes:
+                continue  # arranque en frío: el video empieza directo en la escena, sin placa
+
             scenes.append({"type": "card", "start": round(t, 3), "dur": CARD, "title": it["title"], "num": len(chapters), "bg": it["bg"]})
             t += CARD
             continue
@@ -151,7 +154,7 @@ def build(n, plan):
     def ts(x):
         x = int(x); return f"{x // 60:02d}:{x % 60:02d}"
     chap_txt = "\n".join(f"{'00:00' if i == 0 else ts(c['t'])} {c['title']}" for i, c in enumerate(chapters))
-    v = plan[n - 1]
+    v = next(x for x in plan if x["n"] == n)
     desc = (v["descripcion"].split("⏱️ Capítulos")[0] + "⏱️ Capítulos\n" + chap_txt + "\n\n" +
             "📺" + v["descripcion"].split("📺", 1)[1])
     tl = {"n": n, "tipo": meta["tipo"], "titulo": v["titulo"], "total": total, "outro": round(outro_start, 3), "scenes": scenes,

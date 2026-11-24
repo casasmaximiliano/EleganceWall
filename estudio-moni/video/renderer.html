@@ -243,15 +243,16 @@ const LAYOUT={
 };
 window.setup=function(tl){
   TL=tl;const st=document.getElementById('stage');
-  st.className='f-'+tl.fmt;
+  const look=tl.fmt==='novela'?'sitcom':tl.fmt;
+  st.className='f-'+look+' fmt-'+tl.fmt;
   const deco={novela:'<div class="spot"></div><div class="vig" id="vig"></div>',
    pizarra:'<div class="l tray"></div>',
    sitcom:'<div class="l win"></div><div class="l frame"></div><div class="l lamp"></div><div class="l couch"></div>',
    simulador:'<svg id="curve" viewBox="0 0 1080 1920"><path id="cpath" d="" fill="none" stroke="rgba(126,255,196,.35)" stroke-width="10" stroke-linecap="round"/><path id="carea" d="" fill="rgba(126,255,196,.07)"/></svg>',
-   mito:''}[tl.fmt];
+   mito:''}[look];
   let badge=tl.serie;
-  if(tl.fmt==='novela'){const m=tl.serie.match(/^T\d+ · (.+) · Cap\. (\d+)( \(final\))?/);badge=(m[3]?'Final':'Cap. '+m[2])+' · '+m[1];}
-  if(tl.fmt==='sitcom')badge=tl.serie.replace('Sitcom: los ','').replace(/^g/,'G');
+  if(tl.fmt==='novela'){const m=tl.serie.match(/^T\d+ · (.+?) · Cap\./);badge=m?m[1]:tl.serie;}
+  if(tl.fmt==='sitcom'){badge=tl.serie.replace(/^Sitcom: (los |las |la |el )?/,'').replace(/ · Ep\. \d+.*$/,'');badge=badge.charAt(0).toUpperCase()+badge.slice(1);}
   if(tl.fmt==='simulador')badge='¿Y si…?';
   if(tl.fmt==='pizarra')badge='Pizarra express';
   st.innerHTML=`<div class="bg"></div><div class="deco">${deco}</div>
@@ -260,15 +261,15 @@ window.setup=function(tl){
    ${tl.fmt==='mito'?`<div class="l mitohead" id="mhead">¿MITO <i>o</i> VERDAD?</div><div class="l stamp" id="stamp"><span class="${tl.verdict.length>9?'long':''}">${esc(tl.verdict)}</span></div><div class="l cd" id="cd"></div>`:''}
    ${tl.fmt==='sitcom'?'<div class="l laugh" id="laugh">[risas]</div>':''}
    <div class="l panel" id="panel"></div>
-   <div class="l endcard" id="end"><span>Seguí a Moni 🔔<br><small style="font-size:46px">${tl.fmt==='novela'?'Próximo capítulo mañana':'Un tema nuevo cada día'}</small></span></div>
+   <div class="l endcard" id="end"><span>Seguí a Moni 🔔<br><small style="font-size:46px">${tl.fmt==='novela'?'Una historia nueva cada día':'Un tema nuevo cada día'}</small></span></div>
    <div id="actors"></div>
    <div class="l cap" id="cap"></div>
-   <div class="l foot">Contenido educativo. No es asesoramiento financiero.</div>`;
+   <div class="l foot" id="foot">Contenido educativo. No es asesoramiento financiero.</div>`;
   if(tl.fmt==='novela'&&/ · Cap\. 1$/.test(tl.serie)===false){}
   // actores
   const kinds=['moni',...tl.kinds];
   S.actors=kinds.map((k,i)=>{const el=document.createElement('div');el.className='actor';el.innerHTML=charSVG(k);document.getElementById('actors').appendChild(el);
-    const first=k==='moni'?0:tl.scenes.findIndex(s=>s.kind===k);
+    const first=0;
     return {k,el,slot:i===0?'moni':(i===1?'a':'b'),first:first<0?0:first,blinkOff:i*1.37}});
   S.scene=-1;S.capWords=[];
   if(tl.fmt==='simulador'){let d='',a='';for(let i=0;i<=60;i++){const x=60+i*16,y=1180-Math.pow(i/60,2.2)*520;d+=(i?'L':'M')+x+' '+y.toFixed(1)}
@@ -340,8 +341,8 @@ window.frame=function(t){
     const arm=a.el.querySelector('.arm-r');if(arm)arm.style.transform=ex==='wave'?`rotate(${Math.sin(t*Math.PI*2*1.8)*16+4}deg)`:'none';
   });
   // decoraciones por formato
-  if(TL.fmt==='novela'){const v=document.getElementById('vig');v.style.opacity=t<1.2?(0.9*(1-t/1.2)+0.15*Math.abs(Math.sin(t*9))):0;
-    const st=document.getElementById('stage');const z=t<0.5?1.08-0.08*ease(t/0.5):1;st.style.transform=`scale(${z})`;}
+  {const st=document.getElementById('stage');const z=t<0.55?1.12-0.12*ease(t/0.55):1;st.style.transform=`scale(${z})`;}
+  {const F=document.getElementById('foot');if(F)F.style.opacity=(i===sc.length-1&&t>s.start+s.audio*0.3)?1:0;}
   if(TL.fmt==='simulador'){const p=document.getElementById('cpath');const k=ease((t-0.3)/(TL.total*0.8));p.style.strokeDashoffset=S.clen*(1-k);document.getElementById('carea').style.opacity=k}
   if(TL.fmt==='sitcom'){const L=document.getElementById('laugh');const on=i===3;L.style.opacity=on?clamp((ts-0.5)/0.15):0;L.style.transform=`scale(${on?back((ts-0.5)/0.3):0.5})`}
   if(TL.fmt==='mito'){
