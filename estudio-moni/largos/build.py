@@ -27,7 +27,7 @@ for pos, (i, day) in enumerate(zip(ORDEN, dates), 1):
     v = V[i - 1]
     hora = "18:00" if day.weekday() == 2 else "11:00"
     caps = "\n".join(f"{c[0]} {c[1]}" for c in v["caps"])
-    desc = (f"{v['gancho'].split('. ')[0]}. En este video: {v['titulo'].lower() if v['tipo']=='Guía' else 'la historia completa, explicada con Moni'}.\n\n"
+    desc = (f"{v['gancho'].split('. ')[0]}. En este video: {'la guía completa, paso a paso, con números de ejemplo' if v['tipo']=='Guía' else 'la historia completa, explicada con Moni'}.\n\n"
             f"⏱️ Capítulos\n{caps}\n\n"
             f"📺 Más de Moni Finanzas: shorts nuevos todos los días y videos largos los miércoles y domingos.\n\n"
             f"📚 Fuentes y supuestos: {v['fuentes']}\n\n"
