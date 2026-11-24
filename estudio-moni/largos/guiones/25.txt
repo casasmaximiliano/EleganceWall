@@ -1,0 +1,145 @@
+@tipo simulacion
+## Noventa días, cinco números
+@bg sitcom
+@cast moni,card
+P: 90 DÍAS |
+TARJETÍN: Moni, tranquila. Arreglar tus finanzas lleva años. Mejor empezá el lunes. Del año que viene.
+MONI{angry}: No, Tarjetín. Me doy noventa días. Y vos estás en la lista.
+TARJETÍN{shock}: ¿En qué lista?
+P: 5 NÚMEROS |
+MONI: En la lista de los cinco números que voy a mirar hoy, y de nuevo dentro de noventa días. Si se mueven, el plan funciona. Si no se mueven, no me mientas que funciona.
+MONI{wave}: Quedate hasta el final, porque te voy a mostrar el antes y el después con todos los números. Y el error que hace que la mayoría abandone en la tercera semana.
+P: Ejemplo ilustrativo | números de ejemplo, en dólares
+MONI: Como siempre, los números son un ejemplo. Lo que importa es el método, y lo podés copiar con tus propios números.
+## Días 1 a 7: la foto
+@bg pizarra
+@cast moni
+P: SEMANA 1 · LA FOTO |
+MONI: La primera semana no recorto nada. Solo saco una foto. Busco los resúmenes del banco y de la tarjeta de los últimos tres meses y anoto cinco números.
+P: 1 · ENTRA $1.200 |
+MONI: Número uno: cuánto entra por mes, limpio, después de impuestos. En mi caso, mil doscientos dólares.
+P: 2 · SALE $1.150 |
+MONI: Número dos: cuánto sale por mes, contando todo, hasta el café. Mil ciento cincuenta.
+P: 3 · AHORRO 4 % |
+MONI{worried}: Número tres: cuánto me queda, en porcentaje. Cincuenta dólares de mil doscientos. Un cuatro por ciento. Poquito.
+P: 4 · DEUDA $900 | tarjeta al 40 % anual
+MONI: Número cuatro: cuánto debo y a qué tasa. Novecientos dólares en la tarjeta, a un cuarenta por ciento anual.
+P: 5 · COLCHÓN 0 MESES |
+MONI: Y número cinco: cuántos meses podría vivir si mañana dejo de cobrar. Cero. Si se me rompe algo, va a la tarjeta.
+MONI{think}: Mirar estos números da miedo. Pero no mirarlos es peor, porque igual están ahí, cobrándote intereses.
+P: 1 HOJA · 5 NÚMEROS |
+MONI: Un truco: anotalos en una sola hoja, con fecha. Una hoja de papel, una nota en el celular, lo que sea. Esa hoja es tu punto de partida, y el día noventa la vas a necesitar para comparar.
+## Días 8 a 30: los gastos hormiga
+@bg sitcom
+@cast moni,cup
+P: SEMANA 2 · LA CAZA |
+CAFECITO: ¿Me vas a cortar a mí? Soy solo un cafecito de tres dólares.
+MONI: No te voy a cortar. Te voy a elegir. Esta etapa no se trata de vivir sin nada. Se trata de gastar en lo que me importa y dejar de gastar en lo que ni noto.
+P: CAFÉ · $66 → $13 |
+MONI: Café todos los días laborables: sesenta y seis dólares por mes. Lo dejo solo para los sábados, que es cuando más lo disfruto. Unos trece dólares.
+CAFECITO{wave}: ¡Los sábados soy un lujo!
+@cast moni,bag
+P: DELIVERY · $60 → $15 |
+DELIVY: ¿Y yo? ¿Cuatro pedidos por mes no es nada?
+MONI: Cuatro pedidos de quince son sesenta. Me quedo con uno por mes, el del viernes de lluvia. Quince dólares.
+@cast moni,zombi
+P: SUSCRIPCIONES · $40 → $10 |
+ZOMBI: Cuatro plataformas, diez dólares cada una. Ni sabías que seguíamos acá.
+MONI: Me quedo con una por vez, y voy rotando. De cuarenta a diez.
+@cast moni,gymzombi
+P: GIMNASIO · $40 → $16 |
+GYM ZOMBI: Cuarenta dólares por mes. Fuiste dos veces.
+MONI: Dos clases sueltas de ocho son dieciséis. Pago por clase hasta que el hábito sea real.
+P: +$152 POR MES |
+MONI{shock}: Total encontrado: ciento cincuenta y dos dólares por mes. Sin dejar de tomar café, sin dejar de pedir comida, sin dejar de ver series.
+P: $200 | primer colchón
+MONI: Con lo que me quedó ese mes, unos doscientos dólares, armo un primer colchón. Chiquito, pero suficiente para que un imprevisto no vaya directo a la tarjeta.
+## Días 31 a 60: Tarjetín
+@bg novela
+@cast moni,card
+P: MES 2 · TARJETÍN |
+TARJETÍN: Bueno, bueno. Tenés doscientos dólares libres por mes. ¿Qué tal un viajecito en cuotas?
+MONI: Tengo una mejor idea. Te los doy a vos. Todos.
+TARJETÍN{shock}: ¿Cómo que a mí?
+P: MÍNIMO · $900 → $903 |
+MONI{think}: Mirá lo que pasa si pago solo el mínimo. Con un cuarenta por ciento anual, en un mes la deuda genera unos treinta dólares de intereses.
+MONI: Pago el mínimo, unos veintisiete, y al mes siguiente debo más que antes: novecientos tres. Pagando el mínimo, la deuda no baja. Sube.
+P: +$200 · $900 → $730 |
+MONI: En cambio, si pago doscientos, después de los intereses la deuda baja a setecientos treinta. En un solo mes.
+TARJETÍN{worried}: Eso duele.
+MONI: Y la regla nueva: a la tarjeta solo le cargo lo que puedo pagar completo cuando llega el resumen. Ni un dólar más.
+P: LA DEUDA MÁS CARA |
+MONI: Si tenés varias deudas, el orden que más plata ahorra es atacar primero la de tasa más alta, pagando el mínimo de las otras.
+MONI: Si necesitás motivación, empezá por la más chica, para ver un logro rápido. Las dos funcionan si las sostenés.
+## Días 61 a 90: el piloto automático
+@bg sitcom
+@cast moni,ghost
+P: MES 3 · AUTOMÁTICO |
+INFLA: Buuu. Aunque ahorres, yo me como un poquito todos los años.
+MONI: Ya sé, Infla. Por eso este mes no dependo de mi fuerza de voluntad. Dependo de un sistema.
+P: DÍA DE COBRO | transferencias automáticas
+MONI: El mismo día que cobro, salen dos transferencias automáticas: ciento cincuenta a la tarjeta y cincuenta al colchón. Primero me pago a mí. Después vivo con lo que queda.
+MONI{think}: Si el ahorro depende de acordarme cada mes, no pasa. Si es automático, pasa solo, aunque tenga un mes malo.
+P: DESPUÉS DEL COLCHÓN |
+INFLA{worried}: ¿Y después me vas a ganar?
+MONI: Cuando termine la deuda y tenga unos meses de colchón, ahí sí pienso en invertir a largo plazo. En ese orden. Invertir con deuda al cuarenta por ciento es como cargar agua en un balde agujereado.
+## Día 90: los cinco números de nuevo
+@bg simulador
+@cast moni,card
+P: DÍA 90 |
+MONI: Día noventa. Saco la misma foto que el día uno.
+P: ENTRA $1.200 = |
+MONI: Entra lo mismo: mil doscientos. No me aumentaron el sueldo. Todo lo que cambió, cambió por decisiones.
+P: SALE $1.150 → $998 |
+MONI: Sale menos: novecientos noventa y ocho.
+P: AHORRO 4 % → 17 % |
+MONI{shock}: Me queda un diecisiete por ciento por mes, en vez de un cuatro. Cuatro veces más.
+P: DEUDA $900 → $604 |
+MONI: La deuda bajó de novecientos a seiscientos cuatro. Y con doscientos por mes, en unos cuatro meses más desaparece.
+TARJETÍN{worried}: Me estoy achicando.
+P: COLCHÓN 0 → $250 |
+MONI: El colchón pasó de cero a doscientos cincuenta. Todavía no es un mes de gastos, pero ya no estoy en cero.
+MONI{wave}: Noventa días. Mismo sueldo. Cinco números distintos.
+## ¿Y si no me sobra nada?
+@bg sitcom
+@cast moni,cup
+P: ¿Y SI NO ME SOBRA NADA? |
+CAFECITO: ¿Y si alguien no tiene ni un café para recortar?
+MONI: Es la pregunta más importante del video. Si tus gastos son casi todos fijos, los gastos hormiga no alcanzan. Ahí hay que mirar los tres grandes.
+P: VIVIENDA · TRANSPORTE · COMIDA |
+MONI: Vivienda, transporte y comida suelen ser la mayor parte del presupuesto.
+MONI: Compartir alquiler, cambiar de plan de celular, cocinar por tanda los domingos: una sola decisión grande puede liberar más que diez chiquitas.
+P: + INGRESOS |
+MONI{think}: Y la otra mitad de la ecuación es lo que entra. Pedir un aumento con datos, vender lo que no usás, o un trabajo extra por un tiempo. Recortar tiene un piso. Ganar más, no.
+## Los 3 errores que arruinan el plan
+@bg pizarra
+@cast moni,cup
+P: 3 ERRORES |
+MONI: Ahora, el error que te prometí. En realidad son tres, y los tres aparecen alrededor de la tercera semana.
+P: 1 · TODO EL PRIMER DÍA |
+MONI: Uno: querer hacer todo el primer día. Cortás todo, te sentís un monje, y a los diez días explotás y gastás el doble. Mejor un cambio por semana.
+P: 2 · CORTAR LO QUE TE GUSTA |
+CAFECITO: Por ejemplo, a mí.
+MONI: Dos: cortar justo lo que te hace feliz. Si te sacás el único gusto del día, el plan se vuelve un castigo y lo abandonás. Cortá lo que no notás. Lo que te gusta, elegilo.
+P: 3 · SIN SISTEMA |
+MONI{think}: Y tres: no automatizar. La fuerza de voluntad se gasta. Las transferencias automáticas, no.
+## Tu plan en una hoja
+@bg marca
+@cast moni
+P: TU PLAN |
+MONI: Resumen para que lo copies. Semana uno: anotá tus cinco números, sin cambiar nada.
+P: DÍAS 8 A 30 | gastos hormiga
+MONI: Del día ocho al treinta: cazá los gastos hormiga. Quedate con lo que te importa, recortá lo que ni notás, y armá un primer colchón.
+P: DÍAS 31 A 60 | la deuda más cara
+MONI: Del treinta y uno al sesenta: todo lo que liberaste va a la deuda más cara. Y la tarjeta, solo lo que puedas pagar completo.
+P: DÍAS 61 A 90 | automático
+MONI: Del sesenta y uno al noventa: automatizá el día de cobro. Primero vos, después el resto.
+P: DÍA 90 | la foto de nuevo
+MONI: Y el día noventa, la misma foto. Si los números se movieron, seguí. Si no se movieron, revisá cuál de los tres errores apareció.
+## Cierre
+@bg sitcom
+@cast moni,card
+P: ¿CUÁL TE DA MIEDO? |
+MONI: Contame en los comentarios: de los cinco números, ¿cuál te da más miedo mirar? Yo arranco: el de la deuda.
+TARJETÍN: ¿Yo doy miedo?
+MONI{wave}: Dabas, Tarjetín. Dabas. Y si querés ver cuánto puede valer un solo cafecito en cuarenta años, tenés el video de las dos Monis acá al lado.

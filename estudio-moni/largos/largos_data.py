@@ -374,3 +374,26 @@ add(tipo="Guía", titulo="Finanzas en pareja: cómo hablar de plata sin pelear",
     tags="finanzas en pareja, dinero en pareja, cuenta conjunta, san valentín, finanzas personales")
 
 assert len(V) == 24
+
+# 25 · Agregado el 24/11/2026 a partir de lo que más se ve en el nicho (planes con plazo, números clave, gastar en lo que importa).
+V.append(dict(
+    tipo="Guía",
+    titulo="Cambiá tus finanzas en 90 días: el plan de Moni",
+    alt="Los 5 números que cambian tu plata en 90 días",
+    thumb=dict(texto="90 DÍAS 4\u00a0%\u00a0→\u00a017\u00a0%", chars=[["moni", "happy"], ["card", "worried"]], prop="🗓️", fondo="#1F7A55"),
+    gancho="Noventa días, mismo sueldo, cinco números. Moni se pone un plazo y lo cumple: primero saca la foto de su plata, después caza los gastos hormiga, ataca la tarjeta y pone todo en piloto automático. Al final, el antes y el después con todos los números.",
+    caps=[["00:00", "Noventa días, cinco números", "El reto y los cinco números."],
+          ["01:00", "Días 1 a 7: la foto", "Ingreso, gastos, ahorro, deuda y colchón."],
+          ["02:30", "Días 8 a 30: los gastos hormiga", "Cafecito, Delivy, los zombis y el gimnasio."],
+          ["04:00", "Días 31 a 60: Tarjetín", "Pagar el mínimo vs. pagar de más."],
+          ["05:00", "Días 61 a 90: el piloto automático", "Transferencias el día de cobro."],
+          ["06:00", "Día 90: los cinco números de nuevo", "El antes y el después."],
+          ["07:00", "¿Y si no me sobra nada?", "Los tres gastos grandes y ganar más."],
+          ["07:40", "Los 3 errores que arruinan el plan", "Todo el primer día, cortar lo que te gusta, no automatizar."],
+          ["08:20", "Tu plan en una hoja", "Resumen para copiar."],
+          ["09:00", "Cierre", "¿Cuál de los cinco números te da miedo?"]],
+    shorts=[51, 52, 1, 36],
+    dur="9 min",
+    fuentes="Ejemplo ilustrativo con números redondos en dólares; la tasa de la tarjeta (40 % anual) es un ejemplo. Métodos avalancha y bola de nieve: prácticas estándar de pago de deudas. Las cuentas están hechas con interés mensual simple sobre el saldo.",
+    tags="plan de 90 días, cambiar tus finanzas, finanzas personales, gastos hormiga, salir de deudas, ahorrar dinero, presupuesto",
+))

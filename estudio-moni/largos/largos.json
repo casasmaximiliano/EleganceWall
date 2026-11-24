@@ -97,11 +97,206 @@
   "tags": "gastos hormiga, café, interés compuesto, simulación, ahorro"
  },
  {
-  "n": 9,
+  "n": 25,
   "orden": 2,
   "fecha": "2026-11-29",
   "dia": "Domingo",
   "semana": 1,
+  "hora_ar": "11:00",
+  "hora_co": "09:00",
+  "hora_mx": "08:00",
+  "hora_es": "15:00",
+  "playlist": "Guías de finanzas personales",
+  "descripcion": "Noventa días, mismo sueldo, cinco números. En este video: cambiá tus finanzas en 90 días: el plan de moni.\n\n⏱️ Capítulos\n00:00 Noventa días, cinco números\n01:00 Días 1 a 7: la foto\n02:30 Días 8 a 30: los gastos hormiga\n04:00 Días 31 a 60: Tarjetín\n05:00 Días 61 a 90: el piloto automático\n06:00 Día 90: los cinco números de nuevo\n07:00 ¿Y si no me sobra nada?\n07:40 Los 3 errores que arruinan el plan\n08:20 Tu plan en una hoja\n09:00 Cierre\n\n📺 Más de Moni Finanzas: shorts nuevos todos los días y videos largos los miércoles y domingos.\n\n📚 Fuentes y supuestos: Ejemplo ilustrativo con números redondos en dólares; la tasa de la tarjeta (40 % anual) es un ejemplo. Métodos avalancha y bola de nieve: prácticas estándar de pago de deudas. Las cuentas están hechas con interés mensual simple sobre el saldo.\n\nContenido educativo. No es asesoramiento financiero. Personajes animados y voces creados con herramientas digitales.\n\n#finanzaspersonales #educacionfinanciera #monifinanzas",
+  "thumb_file": "miniatura_25.png",
+  "shorts_rel": [
+   {
+    "n": 51,
+    "titulo": "El enemigo más tierno de tu sueldo ☕"
+   },
+   {
+    "n": 52,
+    "titulo": "Delivery me costó $2.340 este año 🛵"
+   },
+   {
+    "n": 1,
+    "titulo": "Mi tarjeta me estuvo mintiendo 😱"
+   },
+   {
+    "n": 36,
+    "titulo": "Pagate a vos primero"
+   }
+  ],
+  "tipo": "Guía",
+  "titulo": "Cambiá tus finanzas en 90 días: el plan de Moni",
+  "alt": "Los 5 números que cambian tu plata en 90 días",
+  "thumb": {
+   "texto": "90 DÍAS 4 % → 17 %",
+   "chars": [
+    [
+     "moni",
+     "happy"
+    ],
+    [
+     "card",
+     "worried"
+    ]
+   ],
+   "prop": "🗓️",
+   "fondo": "#1F7A55"
+  },
+  "gancho": "Noventa días, mismo sueldo, cinco números. Moni se pone un plazo y lo cumple: primero saca la foto de su plata, después caza los gastos hormiga, ataca la tarjeta y pone todo en piloto automático. Al final, el antes y el después con todos los números.",
+  "caps": [
+   [
+    "00:00",
+    "Noventa días, cinco números",
+    "El reto y los cinco números."
+   ],
+   [
+    "01:00",
+    "Días 1 a 7: la foto",
+    "Ingreso, gastos, ahorro, deuda y colchón."
+   ],
+   [
+    "02:30",
+    "Días 8 a 30: los gastos hormiga",
+    "Cafecito, Delivy, los zombis y el gimnasio."
+   ],
+   [
+    "04:00",
+    "Días 31 a 60: Tarjetín",
+    "Pagar el mínimo vs. pagar de más."
+   ],
+   [
+    "05:00",
+    "Días 61 a 90: el piloto automático",
+    "Transferencias el día de cobro."
+   ],
+   [
+    "06:00",
+    "Día 90: los cinco números de nuevo",
+    "El antes y el después."
+   ],
+   [
+    "07:00",
+    "¿Y si no me sobra nada?",
+    "Los tres gastos grandes y ganar más."
+   ],
+   [
+    "07:40",
+    "Los 3 errores que arruinan el plan",
+    "Todo el primer día, cortar lo que te gusta, no automatizar."
+   ],
+   [
+    "08:20",
+    "Tu plan en una hoja",
+    "Resumen para copiar."
+   ],
+   [
+    "09:00",
+    "Cierre",
+    "¿Cuál de los cinco números te da miedo?"
+   ]
+  ],
+  "shorts": [
+   51,
+   52,
+   1,
+   36
+  ],
+  "dur": "9 min",
+  "fuentes": "Ejemplo ilustrativo con números redondos en dólares; la tasa de la tarjeta (40 % anual) es un ejemplo. Métodos avalancha y bola de nieve: prácticas estándar de pago de deudas. Las cuentas están hechas con interés mensual simple sobre el saldo.",
+  "tags": "plan de 90 días, cambiar tus finanzas, finanzas personales, gastos hormiga, salir de deudas, ahorrar dinero, presupuesto"
+ },
+ {
+  "n": 15,
+  "orden": 3,
+  "fecha": "2026-12-02",
+  "dia": "Miércoles",
+  "semana": 2,
+  "hora_ar": "18:00",
+  "hora_co": "16:00",
+  "hora_mx": "15:00",
+  "hora_es": "22:00",
+  "playlist": "Historias del dinero",
+  "descripcion": "En el año 2000, los fundadores de una empresa chiquita que mandaba DVDs por correo viajaron a Dallas a ofrecerle su empresa a Blockbuster por cincuenta millones de dólares. En este video: la historia completa, explicada con Moni.\n\n⏱️ Capítulos\n00:00 Dallas, año 2000\n01:30 El imperio Blockbuster\n03:30 La apuesta de Netflix\n05:30 Por qué Blockbuster dijo que no\n07:00 La caída\n08:30 La lección para tu plata\n10:00 Cierre\n\n📺 Más de Moni Finanzas: shorts nuevos todos los días y videos largos los miércoles y domingos.\n\n📚 Fuentes y supuestos: Marc Randolph, That Will Never Work (2019), sobre la reunión con Blockbuster. Quiebra de Blockbuster: septiembre de 2010.\n\nContenido educativo. No es asesoramiento financiero. Personajes animados y voces creados con herramientas digitales.\n\n#finanzaspersonales #educacionfinanciera #monifinanzas",
+  "thumb_file": "miniatura_15.png",
+  "shorts_rel": [
+   {
+    "n": 46,
+    "titulo": "Costo de oportunidad: lo que no ves"
+   },
+   {
+    "n": 62,
+    "titulo": "Celular nuevo cada año vs. cada 3 años"
+   }
+  ],
+  "tipo": "Historia",
+  "titulo": "Blockbuster pudo comprar Netflix por 50 millones",
+  "alt": "El “no” más caro de la historia de los negocios",
+  "thumb": {
+   "texto": "EL “NO” MÁS CARO",
+   "chars": [
+    [
+     "moni",
+     "shock"
+    ]
+   ],
+   "prop": "📼",
+   "fondo": "#1D3A8C"
+  },
+  "gancho": "En el año 2000, los fundadores de una empresa chiquita que mandaba DVDs por correo viajaron a Dallas a ofrecerle su empresa a Blockbuster por cincuenta millones de dólares. Según contaron después, los ejecutivos casi se rieron. Esa empresa era Netflix. Diez años más tarde, Blockbuster quebró. Hoy contamos la historia, y lo que nos enseña sobre algo que te afecta a vos: el costo de no cambiar.",
+  "caps": [
+   [
+    "00:00",
+    "Dallas, año 2000",
+    "La reunión, contada como telenovela."
+   ],
+   [
+    "01:30",
+    "El imperio Blockbuster",
+    "Miles de locales y el negocio de las multas por devolución tardía."
+   ],
+   [
+    "03:30",
+    "La apuesta de Netflix",
+    "DVD por correo, suscripción, después streaming."
+   ],
+   [
+    "05:30",
+    "Por qué Blockbuster dijo que no",
+    "El negocio que tenía funcionaba."
+   ],
+   [
+    "07:00",
+    "La caída",
+    "Quiebra en 2010."
+   ],
+   [
+    "08:30",
+    "La lección para tu plata",
+    "Costo de oportunidad y cambiar a tiempo: trabajo, inversiones, hábitos."
+   ],
+   [
+    "10:00",
+    "Cierre",
+    "¿Qué “Blockbuster” tenés en tu vida?"
+   ]
+  ],
+  "shorts": [
+   46,
+   62
+  ],
+  "dur": "10-11 min",
+  "fuentes": "Marc Randolph, That Will Never Work (2019), sobre la reunión con Blockbuster. Quiebra de Blockbuster: septiembre de 2010.",
+  "tags": "blockbuster, netflix, historia de empresas, negocios, costo de oportunidad"
+ },
+ {
+  "n": 9,
+  "orden": 4,
+  "fecha": "2026-12-06",
+  "dia": "Domingo",
+  "semana": 2,
   "hora_ar": "11:00",
   "hora_co": "09:00",
   "hora_mx": "08:00",
@@ -192,197 +387,6 @@
   "dur": "10-11 min",
   "fuentes": "Principios de merchandising y psicología del consumidor (ubicación en góndola, precios psicológicos). Evitar cifras puntuales sin fuente.",
   "tags": "supermercado, trucos de marketing, ahorrar en el súper, reduflación, psicología del consumo"
- },
- {
-  "n": 15,
-  "orden": 3,
-  "fecha": "2026-12-02",
-  "dia": "Miércoles",
-  "semana": 2,
-  "hora_ar": "18:00",
-  "hora_co": "16:00",
-  "hora_mx": "15:00",
-  "hora_es": "22:00",
-  "playlist": "Historias del dinero",
-  "descripcion": "En el año 2000, los fundadores de una empresa chiquita que mandaba DVDs por correo viajaron a Dallas a ofrecerle su empresa a Blockbuster por cincuenta millones de dólares. En este video: la historia completa, explicada con Moni.\n\n⏱️ Capítulos\n00:00 Dallas, año 2000\n01:30 El imperio Blockbuster\n03:30 La apuesta de Netflix\n05:30 Por qué Blockbuster dijo que no\n07:00 La caída\n08:30 La lección para tu plata\n10:00 Cierre\n\n📺 Más de Moni Finanzas: shorts nuevos todos los días y videos largos los miércoles y domingos.\n\n📚 Fuentes y supuestos: Marc Randolph, That Will Never Work (2019), sobre la reunión con Blockbuster. Quiebra de Blockbuster: septiembre de 2010.\n\nContenido educativo. No es asesoramiento financiero. Personajes animados y voces creados con herramientas digitales.\n\n#finanzaspersonales #educacionfinanciera #monifinanzas",
-  "thumb_file": "miniatura_15.png",
-  "shorts_rel": [
-   {
-    "n": 46,
-    "titulo": "Costo de oportunidad: lo que no ves"
-   },
-   {
-    "n": 62,
-    "titulo": "Celular nuevo cada año vs. cada 3 años"
-   }
-  ],
-  "tipo": "Historia",
-  "titulo": "Blockbuster pudo comprar Netflix por 50 millones",
-  "alt": "El “no” más caro de la historia de los negocios",
-  "thumb": {
-   "texto": "EL “NO” MÁS CARO",
-   "chars": [
-    [
-     "moni",
-     "shock"
-    ]
-   ],
-   "prop": "📼",
-   "fondo": "#1D3A8C"
-  },
-  "gancho": "En el año 2000, los fundadores de una empresa chiquita que mandaba DVDs por correo viajaron a Dallas a ofrecerle su empresa a Blockbuster por cincuenta millones de dólares. Según contaron después, los ejecutivos casi se rieron. Esa empresa era Netflix. Diez años más tarde, Blockbuster quebró. Hoy contamos la historia, y lo que nos enseña sobre algo que te afecta a vos: el costo de no cambiar.",
-  "caps": [
-   [
-    "00:00",
-    "Dallas, año 2000",
-    "La reunión, contada como telenovela."
-   ],
-   [
-    "01:30",
-    "El imperio Blockbuster",
-    "Miles de locales y el negocio de las multas por devolución tardía."
-   ],
-   [
-    "03:30",
-    "La apuesta de Netflix",
-    "DVD por correo, suscripción, después streaming."
-   ],
-   [
-    "05:30",
-    "Por qué Blockbuster dijo que no",
-    "El negocio que tenía funcionaba."
-   ],
-   [
-    "07:00",
-    "La caída",
-    "Quiebra en 2010."
-   ],
-   [
-    "08:30",
-    "La lección para tu plata",
-    "Costo de oportunidad y cambiar a tiempo: trabajo, inversiones, hábitos."
-   ],
-   [
-    "10:00",
-    "Cierre",
-    "¿Qué “Blockbuster” tenés en tu vida?"
-   ]
-  ],
-  "shorts": [
-   46,
-   62
-  ],
-  "dur": "10-11 min",
-  "fuentes": "Marc Randolph, That Will Never Work (2019), sobre la reunión con Blockbuster. Quiebra de Blockbuster: septiembre de 2010.",
-  "tags": "blockbuster, netflix, historia de empresas, negocios, costo de oportunidad"
- },
- {
-  "n": 2,
-  "orden": 4,
-  "fecha": "2026-12-06",
-  "dia": "Domingo",
-  "semana": 2,
-  "hora_ar": "11:00",
-  "hora_co": "09:00",
-  "hora_mx": "08:00",
-  "hora_es": "15:00",
-  "playlist": "Guías de finanzas personales",
-  "descripcion": "Si cobrás el día uno y el veinte ya estás contando monedas, no es porque ganes poco. En este video: cómo dejar de vivir al día: el método completo.\n\n⏱️ Capítulos\n00:00 El día 20\n01:00 Paso 1: lo que entra de verdad\n02:00 Paso 2: 30 días de rastreo\n03:30 Paso 3: 50/30/20 adaptado\n05:00 Paso 4: mini fondo de emergencia\n06:15 Paso 5: atacar deudas\n07:30 Paso 6: automatizar\n08:30 Paso 7: revisión mensual de 15 minutos\n09:30 Cierre\n\n📺 Más de Moni Finanzas: shorts nuevos todos los días y videos largos los miércoles y domingos.\n\n📚 Fuentes y supuestos: Regla 50/30/20 (Elizabeth Warren, All Your Worth, 2005). Montos de ejemplo ilustrativos.\n\nContenido educativo. No es asesoramiento financiero. Personajes animados y voces creados con herramientas digitales.\n\n#finanzaspersonales #educacionfinanciera #monifinanzas",
-  "thumb_file": "miniatura_02.png",
-  "shorts_rel": [
-   {
-    "n": 26,
-    "titulo": "Tu sueldo, dividido en 3. Así."
-   },
-   {
-    "n": 36,
-    "titulo": "Pagate a vos primero"
-   },
-   {
-    "n": 37,
-    "titulo": "Presupuesto base cero en 20 segundos"
-   },
-   {
-    "n": 18,
-    "titulo": "Cómo junté $1.000 empezando con $0"
-   },
-   {
-    "n": 51,
-    "titulo": "El enemigo más tierno de tu sueldo ☕"
-   }
-  ],
-  "tipo": "Guía",
-  "titulo": "Cómo dejar de vivir al día: el método completo",
-  "alt": "Llego a fin de mes sin un peso: el plan de 7 pasos",
-  "thumb": {
-   "texto": "DEJÁ DE VIVIR AL DÍA",
-   "chars": [
-    [
-     "moni",
-     "happy"
-    ]
-   ],
-   "prop": "💰",
-   "fondo": "#0E5A40"
-  },
-  "gancho": "Si cobrás el día uno y el veinte ya estás contando monedas, no es porque ganes poco. O no solo por eso. Es porque tu plata no tiene un plan antes de llegar. En los próximos diez minutos armamos ese plan juntos, con un sueldo de ejemplo de mil doscientos dólares, en siete pasos que podés hacer este mismo mes. Sin planillas complicadas y sin dejar de vivir.",
-  "caps": [
-   [
-    "00:00",
-    "El día 20",
-    "Moni mira su cuenta vacía. Pregunta: ¿adónde se fue?"
-   ],
-   [
-    "01:00",
-    "Paso 1: lo que entra de verdad",
-    "Bruto vs. neto. Usamos $1.200 netos."
-   ],
-   [
-    "02:00",
-    "Paso 2: 30 días de rastreo",
-    "Anotar todo un mes. Aparecen los gastos hormiga (Cafecito, Delivy)."
-   ],
-   [
-    "03:30",
-    "Paso 3: 50/30/20 adaptado",
-    "$600 / $360 / $240 y qué hacer si los gastos fijos superan el 50 %."
-   ],
-   [
-    "05:00",
-    "Paso 4: mini fondo de emergencia",
-    "Primera meta: $500. Dónde guardarlo."
-   ],
-   [
-    "06:15",
-    "Paso 5: atacar deudas",
-    "Avalancha vs. bola de nieve en 60 segundos."
-   ],
-   [
-    "07:30",
-    "Paso 6: automatizar",
-    "Págate primero: transferencia automática el día de cobro."
-   ],
-   [
-    "08:30",
-    "Paso 7: revisión mensual de 15 minutos",
-    "La checklist de Moni."
-   ],
-   [
-    "09:30",
-    "Cierre",
-    "Reto: hacé el paso 2 este mes y contame qué gasto te sorprendió."
-   ]
-  ],
-  "shorts": [
-   26,
-   36,
-   37,
-   18,
-   51
-  ],
-  "dur": "10-11 min",
-  "fuentes": "Regla 50/30/20 (Elizabeth Warren, All Your Worth, 2005). Montos de ejemplo ilustrativos.",
-  "tags": "vivir al día, presupuesto, regla 50 30 20, ahorrar, finanzas personales, fondo de emergencia"
  },
  {
   "n": 5,
@@ -2179,11 +2183,211 @@
   "tags": "cómo funciona la bolsa, acciones, mercado de valores, invertir, principiantes"
  },
  {
-  "n": 6,
+  "n": 2,
   "orden": 23,
   "fecha": "2027-02-10",
   "dia": "Miércoles",
   "semana": 12,
+  "hora_ar": "18:00",
+  "hora_co": "16:00",
+  "hora_mx": "15:00",
+  "hora_es": "22:00",
+  "playlist": "Guías de finanzas personales",
+  "descripcion": "Si cobrás el día uno y el veinte ya estás contando monedas, no es porque ganes poco. En este video: cómo dejar de vivir al día: el método completo.\n\n⏱️ Capítulos\n00:00 El día 20\n01:00 Paso 1: lo que entra de verdad\n02:00 Paso 2: 30 días de rastreo\n03:30 Paso 3: 50/30/20 adaptado\n05:00 Paso 4: mini fondo de emergencia\n06:15 Paso 5: atacar deudas\n07:30 Paso 6: automatizar\n08:30 Paso 7: revisión mensual de 15 minutos\n09:30 Cierre\n\n📺 Más de Moni Finanzas: shorts nuevos todos los días y videos largos los miércoles y domingos.\n\n📚 Fuentes y supuestos: Regla 50/30/20 (Elizabeth Warren, All Your Worth, 2005). Montos de ejemplo ilustrativos.\n\nContenido educativo. No es asesoramiento financiero. Personajes animados y voces creados con herramientas digitales.\n\n#finanzaspersonales #educacionfinanciera #monifinanzas",
+  "thumb_file": "miniatura_02.png",
+  "shorts_rel": [
+   {
+    "n": 26,
+    "titulo": "Tu sueldo, dividido en 3. Así."
+   },
+   {
+    "n": 36,
+    "titulo": "Pagate a vos primero"
+   },
+   {
+    "n": 37,
+    "titulo": "Presupuesto base cero en 20 segundos"
+   },
+   {
+    "n": 18,
+    "titulo": "Cómo junté $1.000 empezando con $0"
+   },
+   {
+    "n": 51,
+    "titulo": "El enemigo más tierno de tu sueldo ☕"
+   }
+  ],
+  "tipo": "Guía",
+  "titulo": "Cómo dejar de vivir al día: el método completo",
+  "alt": "Llego a fin de mes sin un peso: el plan de 7 pasos",
+  "thumb": {
+   "texto": "DEJÁ DE VIVIR AL DÍA",
+   "chars": [
+    [
+     "moni",
+     "happy"
+    ]
+   ],
+   "prop": "💰",
+   "fondo": "#0E5A40"
+  },
+  "gancho": "Si cobrás el día uno y el veinte ya estás contando monedas, no es porque ganes poco. O no solo por eso. Es porque tu plata no tiene un plan antes de llegar. En los próximos diez minutos armamos ese plan juntos, con un sueldo de ejemplo de mil doscientos dólares, en siete pasos que podés hacer este mismo mes. Sin planillas complicadas y sin dejar de vivir.",
+  "caps": [
+   [
+    "00:00",
+    "El día 20",
+    "Moni mira su cuenta vacía. Pregunta: ¿adónde se fue?"
+   ],
+   [
+    "01:00",
+    "Paso 1: lo que entra de verdad",
+    "Bruto vs. neto. Usamos $1.200 netos."
+   ],
+   [
+    "02:00",
+    "Paso 2: 30 días de rastreo",
+    "Anotar todo un mes. Aparecen los gastos hormiga (Cafecito, Delivy)."
+   ],
+   [
+    "03:30",
+    "Paso 3: 50/30/20 adaptado",
+    "$600 / $360 / $240 y qué hacer si los gastos fijos superan el 50 %."
+   ],
+   [
+    "05:00",
+    "Paso 4: mini fondo de emergencia",
+    "Primera meta: $500. Dónde guardarlo."
+   ],
+   [
+    "06:15",
+    "Paso 5: atacar deudas",
+    "Avalancha vs. bola de nieve en 60 segundos."
+   ],
+   [
+    "07:30",
+    "Paso 6: automatizar",
+    "Págate primero: transferencia automática el día de cobro."
+   ],
+   [
+    "08:30",
+    "Paso 7: revisión mensual de 15 minutos",
+    "La checklist de Moni."
+   ],
+   [
+    "09:30",
+    "Cierre",
+    "Reto: hacé el paso 2 este mes y contame qué gasto te sorprendió."
+   ]
+  ],
+  "shorts": [
+   26,
+   36,
+   37,
+   18,
+   51
+  ],
+  "dur": "10-11 min",
+  "fuentes": "Regla 50/30/20 (Elizabeth Warren, All Your Worth, 2005). Montos de ejemplo ilustrativos.",
+  "tags": "vivir al día, presupuesto, regla 50 30 20, ahorrar, finanzas personales, fondo de emergencia"
+ },
+ {
+  "n": 24,
+  "orden": 24,
+  "fecha": "2027-02-14",
+  "dia": "Domingo",
+  "semana": 12,
+  "hora_ar": "11:00",
+  "hora_co": "09:00",
+  "hora_mx": "08:00",
+  "hora_es": "15:00",
+  "playlist": "Guías de finanzas personales",
+  "descripcion": "La plata es uno de los motivos de pelea más comunes en las parejas. En este video: finanzas en pareja: cómo hablar de plata sin pelear.\n\n⏱️ Capítulos\n00:00 La pelea del resumen\n01:30 Por qué peleamos por plata\n03:00 La conversación\n04:30 Los 3 sistemas\n06:30 Mitad y mitad vs. proporcional\n08:00 Metas compartidas\n09:30 Cierre\n\n📺 Más de Moni Finanzas: shorts nuevos todos los días y videos largos los miércoles y domingos.\n\n📚 Fuentes y supuestos: Consejos generales.\n\nContenido educativo. No es asesoramiento financiero. Personajes animados y voces creados con herramientas digitales.\n\n#finanzaspersonales #educacionfinanciera #monifinanzas",
+  "thumb_file": "miniatura_24.png",
+  "shorts_rel": [
+   {
+    "n": 56,
+    "titulo": "“Invito yo” y la cuenta que llegó después"
+   },
+   {
+    "n": 57,
+    "titulo": "“Me lo merezco” me dejó sin ahorro"
+   },
+   {
+    "n": 37,
+    "titulo": "Presupuesto base cero en 20 segundos"
+   }
+  ],
+  "tipo": "Guía",
+  "titulo": "Finanzas en pareja: cómo hablar de plata sin pelear",
+  "alt": "¿Cuenta conjunta o separada? Guía de plata en pareja",
+  "thumb": {
+   "texto": "PLATA EN PAREJA",
+   "chars": [
+    [
+     "moni",
+     "happy"
+    ],
+    [
+     "peso",
+     "happy"
+    ]
+   ],
+   "prop": "❤️",
+   "fondo": "#C2185B"
+  },
+  "gancho": "La plata es uno de los motivos de pelea más comunes en las parejas. No porque falte, sino porque nadie habla de ella hasta que hay un problema. ¿Cuenta conjunta o separada? ¿Mitad y mitad o proporcional al sueldo? ¿Qué pasa con las deudas de cada uno? En este video, justo para San Valentín, te doy un método para tener esa conversación sin que termine en pelea.",
+  "caps": [
+   [
+    "00:00",
+    "La pelea del resumen",
+    "Escena de sitcom."
+   ],
+   [
+    "01:30",
+    "Por qué peleamos por plata",
+    "Historias distintas con el dinero."
+   ],
+   [
+    "03:00",
+    "La conversación",
+    "Cinco preguntas para hacerse."
+   ],
+   [
+    "04:30",
+    "Los 3 sistemas",
+    "Todo junto, todo separado, sistema mixto."
+   ],
+   [
+    "06:30",
+    "Mitad y mitad vs. proporcional",
+    "Ejemplo con dos sueldos."
+   ],
+   [
+    "08:00",
+    "Metas compartidas",
+    "Viajes, casa, fondo de emergencia de la pareja."
+   ],
+   [
+    "09:30",
+    "Cierre",
+    "Etiquetá a tu pareja."
+   ]
+  ],
+  "shorts": [
+   56,
+   57,
+   37
+  ],
+  "dur": "10 min",
+  "fuentes": "Consejos generales.",
+  "tags": "finanzas en pareja, dinero en pareja, cuenta conjunta, san valentín, finanzas personales"
+ },
+ {
+  "n": 6,
+  "orden": 25,
+  "fecha": "2027-02-17",
+  "dia": "Miércoles",
+  "semana": 13,
   "hora_ar": "18:00",
   "hora_co": "16:00",
   "hora_mx": "15:00",
@@ -2280,97 +2484,5 @@
   "dur": "10-11 min",
   "fuentes": "Cálculo propio: $100/mes al 7 % anual capitalizable mensual por 40 años ≈ $262.481; aportado $48.000. Ilustrativo.",
   "tags": "interés compuesto, invertir, regla del 72, ahorro a largo plazo, finanzas personales"
- },
- {
-  "n": 24,
-  "orden": 24,
-  "fecha": "2027-02-14",
-  "dia": "Domingo",
-  "semana": 12,
-  "hora_ar": "11:00",
-  "hora_co": "09:00",
-  "hora_mx": "08:00",
-  "hora_es": "15:00",
-  "playlist": "Guías de finanzas personales",
-  "descripcion": "La plata es uno de los motivos de pelea más comunes en las parejas. En este video: finanzas en pareja: cómo hablar de plata sin pelear.\n\n⏱️ Capítulos\n00:00 La pelea del resumen\n01:30 Por qué peleamos por plata\n03:00 La conversación\n04:30 Los 3 sistemas\n06:30 Mitad y mitad vs. proporcional\n08:00 Metas compartidas\n09:30 Cierre\n\n📺 Más de Moni Finanzas: shorts nuevos todos los días y videos largos los miércoles y domingos.\n\n📚 Fuentes y supuestos: Consejos generales.\n\nContenido educativo. No es asesoramiento financiero. Personajes animados y voces creados con herramientas digitales.\n\n#finanzaspersonales #educacionfinanciera #monifinanzas",
-  "thumb_file": "miniatura_24.png",
-  "shorts_rel": [
-   {
-    "n": 56,
-    "titulo": "“Invito yo” y la cuenta que llegó después"
-   },
-   {
-    "n": 57,
-    "titulo": "“Me lo merezco” me dejó sin ahorro"
-   },
-   {
-    "n": 37,
-    "titulo": "Presupuesto base cero en 20 segundos"
-   }
-  ],
-  "tipo": "Guía",
-  "titulo": "Finanzas en pareja: cómo hablar de plata sin pelear",
-  "alt": "¿Cuenta conjunta o separada? Guía de plata en pareja",
-  "thumb": {
-   "texto": "PLATA EN PAREJA",
-   "chars": [
-    [
-     "moni",
-     "happy"
-    ],
-    [
-     "peso",
-     "happy"
-    ]
-   ],
-   "prop": "❤️",
-   "fondo": "#C2185B"
-  },
-  "gancho": "La plata es uno de los motivos de pelea más comunes en las parejas. No porque falte, sino porque nadie habla de ella hasta que hay un problema. ¿Cuenta conjunta o separada? ¿Mitad y mitad o proporcional al sueldo? ¿Qué pasa con las deudas de cada uno? En este video, justo para San Valentín, te doy un método para tener esa conversación sin que termine en pelea.",
-  "caps": [
-   [
-    "00:00",
-    "La pelea del resumen",
-    "Escena de sitcom."
-   ],
-   [
-    "01:30",
-    "Por qué peleamos por plata",
-    "Historias distintas con el dinero."
-   ],
-   [
-    "03:00",
-    "La conversación",
-    "Cinco preguntas para hacerse."
-   ],
-   [
-    "04:30",
-    "Los 3 sistemas",
-    "Todo junto, todo separado, sistema mixto."
-   ],
-   [
-    "06:30",
-    "Mitad y mitad vs. proporcional",
-    "Ejemplo con dos sueldos."
-   ],
-   [
-    "08:00",
-    "Metas compartidas",
-    "Viajes, casa, fondo de emergencia de la pareja."
-   ],
-   [
-    "09:30",
-    "Cierre",
-    "Etiquetá a tu pareja."
-   ]
-  ],
-  "shorts": [
-   56,
-   57,
-   37
-  ],
-  "dur": "10 min",
-  "fuentes": "Consejos generales.",
-  "tags": "finanzas en pareja, dinero en pareja, cuenta conjunta, san valentín, finanzas personales"
  }
 ]

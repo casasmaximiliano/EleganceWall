@@ -8,7 +8,7 @@ shorts = {s["n"]: s for s in json.load(open(os.path.join(HERE, "..", "shorts.jso
 DIAS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
 # Orden de publicación (por potencial de público, según los datos de los primeros Shorts).
 # El número de video (n) es su identificador fijo: guion, audio, MP4 y miniatura no cambian.
-ORDEN = [21, 9, 15, 2, 5, 4, 1, 8, 17, 10, 11, 16, 13, 14, 19, 20, 3, 18, 7, 12, 23, 22, 6, 24]
+ORDEN = [21, 25, 15, 9, 5, 4, 1, 8, 17, 10, 11, 16, 13, 14, 19, 20, 3, 18, 7, 12, 23, 22, 2, 24, 6]
 assert sorted(ORDEN) == list(range(1, len(V) + 1))
 dates = []
 d = dt.date(2026, 11, 25)
