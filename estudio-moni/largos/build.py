@@ -2,7 +2,7 @@
 import datetime as dt, json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from largos_data import V
+from largos_data import V, THUMBS_BC
 
 shorts = {s["n"]: s for s in json.load(open(os.path.join(HERE, "..", "shorts.json"), encoding="utf-8"))["shorts"]}
 DIAS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
@@ -36,6 +36,7 @@ for pos, (i, day) in enumerate(zip(ORDEN, dates), 1):
     out.append(dict(n=i, orden=pos, fecha=day.isoformat(), dia=DIAS[day.weekday()], semana=(pos + 1) // 2, hora_ar=hora,
                     hora_co=shift(hora, -2), hora_mx=shift(hora, -3), hora_es=shift(hora, 4),
                     playlist=PLAYLIST[v["tipo"]], descripcion=desc, thumb_file=f"miniatura_{i:02d}.png",
+                    thumb_b=THUMBS_BC[i][0], thumb_c=THUMBS_BC[i][1],
                     shorts_rel=[dict(n=n, titulo=shorts[n]["titulo"]) for n in v["shorts"]], **v))
 json.dump(out, open(os.path.join(HERE, "largos.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 for o in out:

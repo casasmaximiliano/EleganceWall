@@ -56,6 +56,17 @@ function html(v) {
     }, html(v));
     await p.evaluate(() => document.fonts.ready);
     await p.screenshot({path: path.join(OUT, v.thumb_file), clip: {x: 0, y: 0, width: 1280, height: 720}});
+    // variantes B y C para "Probar y comparar" de YouTube (hasta 3 miniaturas por video)
+    for (const [suf, th] of [['B', v.thumb_b], ['C', v.thumb_c]]) {
+      if (!th) continue;
+      await p.evaluate(h => {
+        document.getElementById('t')?.remove();
+        const d = document.createElement('div'); d.innerHTML = h; document.body.appendChild(d.firstElementChild);
+        document.querySelectorAll('#t .actor').forEach(a => { a.innerHTML = charSVG(a.dataset.k) });
+      }, html({...v, thumb: th}));
+      await p.evaluate(() => document.fonts.ready);
+      await p.screenshot({path: path.join(OUT, v.thumb_file.replace('.png', `_${suf}.png`)), clip: {x: 0, y: 0, width: 1280, height: 720}});
+    }
   }
   await b.close();
   console.log('ok');

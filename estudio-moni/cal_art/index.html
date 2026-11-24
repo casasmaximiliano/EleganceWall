@@ -1,0 +1,245 @@
+<title>Calendario Moni Finanzas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: agenda diaria — tira de fechas arriba (cada día con su progreso), el día elegido abajo como lista de publicaciones en orden de hora, con todo lo necesario para subir cada una. */
+:root{
+  --bg:#EEF2EF; --surface:#FFFFFF; --ink:#14221D; --muted:#56675F; --line:#D3DDD7; --soft:#F5F8F6;
+  --brand:#0E5A40; --gold:#F2B12A; --ok:#17865A; --okbg:#E3F3EA; --warn:#9A5B00; --warnbg:#FFF1D6;
+  --c-short:#B9622A; --c-largo:#A23C8F; --c-explo:#2C7FB8;
+  --f-display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
+  --f-body:"Figtree","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1613; --surface:#16211D; --ink:#E6EEEA; --muted:#97A9A1; --line:#2A3833; --soft:#1B2823; --brand:#0B3D2E; --gold:#F5BE45; --ok:#43C98C; --okbg:#173326; --warn:#F5BE45; --warnbg:#2E2610;
+  --c-short:#F0A06A; --c-largo:#E07BCF; --c-explo:#6CB8EE; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1613; --surface:#16211D; --ink:#E6EEEA; --muted:#97A9A1; --line:#2A3833; --soft:#1B2823; --brand:#0B3D2E; --gold:#F5BE45; --ok:#43C98C; --okbg:#173326; --warn:#F5BE45; --warnbg:#2E2610;
+  --c-short:#F0A06A; --c-largo:#E07BCF; --c-explo:#6CB8EE; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5;margin:0;padding-block:0 64px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+.in{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.1;text-wrap:balance}
+p{margin:0}
+button,select,input{font:inherit;color:inherit}
+button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.hero{background:var(--brand);margin-top:calc(-1 * env(safe-area-inset-top,0px));padding-top:calc(env(safe-area-inset-top,0px) + 30px);padding-bottom:22px}
+.hero .in{display:grid;gap:10px}
+.hero .eyebrow{color:#BFE3D2}
+.hero h1{font-size:clamp(30px,5.5vw,50px);font-weight:800;letter-spacing:-.03em;color:#fff}
+.hero p{color:#DDF3E8;max-width:66ch}
+.stats{display:flex;flex-wrap:wrap;gap:8px 26px}
+.stats div{color:#DDF3E8;font-size:14px}
+.stats b{display:block;font:800 26px var(--f-display);color:#F7BC2B;font-variant-numeric:tabular-nums}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding-block:10px;display:grid;gap:8px}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ctrl label{font-size:13px;color:var(--muted);font-weight:600}
+.ctrl input,.ctrl select{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px}
+.ctrl .nav{border:1px solid var(--line);background:var(--surface);border-radius:999px;width:36px;height:34px;cursor:pointer;font-weight:800}
+.ctrl .today{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700;cursor:pointer}
+.strip{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scroll-snap-type:x proximity}
+.dchip{flex:0 0 auto;scroll-snap-align:start;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:6px 10px;min-width:62px;cursor:pointer;display:grid;justify-items:center;gap:1px}
+.dchip small{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.dchip b{font:800 20px/1.1 var(--f-display);font-variant-numeric:tabular-nums}
+.dchip i{font-style:normal;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.dchip.has-largo{border-color:var(--c-largo)}
+.dchip.all{background:var(--okbg);border-color:var(--ok)}
+.dchip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink)}
+.dchip[aria-pressed="true"] small,.dchip[aria-pressed="true"] b,.dchip[aria-pressed="true"] i{color:var(--bg)}
+main{display:grid;gap:18px;padding-top:20px}
+.dayhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px}
+.dayhead h2{font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.02em}
+.dayhead span{color:var(--muted);font-size:15px}
+.note{background:var(--warnbg);color:var(--warn);border-radius:12px;padding:10px 14px;font-size:14px;font-weight:600}
+.list{display:grid;gap:14px}
+.post{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;border-left:5px solid var(--fc)}
+.post.short{--fc:var(--c-short)}.post.explo{--fc:var(--c-explo)}.post.largo{--fc:var(--c-largo)}
+.post.done{background:var(--okbg)}
+.when{display:grid;align-content:start;gap:8px;width:120px}
+.when .t{font:800 30px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.when .t small{display:block;font:600 12px var(--f-body);color:var(--muted);margin-top:4px}
+video{width:120px;aspect-ratio:9/16;border-radius:10px;background:#000;display:block}
+.body{display:grid;gap:10px;min-width:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;background:var(--soft);color:var(--muted);border:1px solid var(--line)}
+.tag.k{background:var(--fc);color:var(--surface);border-color:var(--fc)}
+.tag.prov{background:var(--warnbg);color:var(--warn);border-color:transparent}
+.title{font:800 21px/1.2 var(--f-display);overflow-wrap:anywhere}
+.field{display:grid;gap:4px}
+.field .lab{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.field .lab span{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.field .val{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere;max-height:9.5em;overflow:auto}
+.copy{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
+.copy.ok{background:var(--ok);color:var(--surface);border-color:var(--ok)}
+.thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.thumbs figure{margin:0;display:grid;gap:4px}
+.thumbs img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block}
+.thumbs figcaption{font-size:12px;color:var(--muted);font-weight:600}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.file{font-size:13px;color:var(--muted);overflow-wrap:anywhere;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:700;cursor:pointer}
+.chk{display:flex;align-items:center;gap:8px;font-weight:700;cursor:pointer;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px 6px 10px}
+.chk input{width:20px;height:20px;accent-color:var(--ok);margin:0}
+.done .chk{border-color:var(--ok);color:var(--ok)}
+details{border-top:1px dashed var(--line);padding-top:8px}
+summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--muted)}
+details .field{margin-top:8px}
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:16px;padding:22px;color:var(--muted)}
+.foot{color:var(--muted);font-size:14px;display:grid;gap:6px}
+@media (max-width:640px){
+  .post{grid-template-columns:minmax(0,1fr)}
+  .when{width:auto;grid-template-columns:auto 1fr;align-items:start}
+  video{width:140px}
+  .thumbs{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+
+<header class="hero"><div class="in">
+  <p class="eyebrow">Calendario de publicación · Moni Finanzas</p>
+  <h1>Qué subir cada día</h1>
+  <p>Elegí la fecha y tenés todo lo de ese día en orden de hora: el video, el título, la descripción y el comentario para fijar. Marcá cada uno cuando lo subas o lo programes.</p>
+  <div class="stats" id="stats"></div>
+</div></header>
+
+<div class="bar"><div class="in" style="display:grid;gap:8px">
+  <div class="ctrl">
+    <button class="nav" id="prev" aria-label="Día anterior">‹</button>
+    <input type="date" id="pick" aria-label="Elegir fecha">
+    <button class="nav" id="next" aria-label="Día siguiente">›</button>
+    <button class="today" id="goNext">Próximo día con pendientes</button>
+    <label for="tz">Hora de</label>
+    <select id="tz">
+      <option value="ar">Argentina</option>
+      <option value="mx">México</option>
+      <option value="co">Colombia · Perú</option>
+    </select>
+  </div>
+  <div class="strip" id="strip" role="group" aria-label="Días"></div>
+</div></div>
+
+<main class="in">
+  <div class="dayhead" id="dayhead"></div>
+  <div id="dnote"></div>
+  <div class="list" id="list"><div class="empty">Cargando el calendario…</div></div>
+  <section class="foot">
+    <p><b>Videos largos:</b> el archivo es el MP4 original que te mandé por el chat (pesan más de 100 MB y no entran acá). Las 3 miniaturas sirven para "Probar y comparar" en YouTube Studio desde la computadora.</p>
+    <p><b>Shorts desde el 1/12:</b> son provisorios. Cuando veamos qué nichos de exploración funcionan, cambio algunos.</p>
+  </section>
+</main>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const DIAS = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+let PLAN = [], DATES = [], cur = null, done = {}, db = null, downloads = null;
+const store = { get(k){ try { return localStorage.getItem(k) } catch { return null } }, set(k,v){ try { localStorage.setItem(k,v) } catch {} } };
+const tzSel = $('#tz'); tzSel.value = store.get('tz') || 'ar';
+const parse = d => { const [y,m,dd] = d.split('-').map(Number); return new Date(y, m-1, dd) };
+const iso = dt => `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
+const hourOf = it => tzSel.value === 'mx' ? it.hora_mx : tzSel.value === 'co' ? it.hora_co : it.hora;
+
+function pickStart() {
+  const t = new Date(); t.setDate(t.getDate() + 1); const tomorrow = iso(t);
+  return DATES.find(d => d >= tomorrow) || DATES[DATES.length - 1];
+}
+function stats() {
+  const n = PLAN.length, k = PLAN.filter(i => done[i.id]).length;
+  const s = PLAN.filter(i => i.tipo === 'short').length, l = PLAN.length - s;
+  $('#stats').innerHTML = `<div><b>${k} / ${n}</b>subidos o programados</div><div><b>${s}</b>shorts, 4 por día</div><div><b>${l}</b>videos largos, miércoles y domingos</div><div><b>${DATES.length}</b>días con publicaciones</div>`;
+}
+function strip() {
+  const S = $('#strip'); S.innerHTML = '';
+  DATES.forEach(d => {
+    const its = PLAN.filter(i => i.fecha === d), k = its.filter(i => done[i.id]).length, dt = parse(d);
+    const b = document.createElement('button'); b.className = 'dchip' + (its.some(i => i.tipo === 'largo') ? ' has-largo' : '') + (k === its.length ? ' all' : '');
+    b.setAttribute('aria-pressed', d === cur ? 'true' : 'false');
+    b.innerHTML = `<small>${DIAS[dt.getDay()].slice(0,3)}</small><b>${dt.getDate()}</b><i>${k}/${its.length}</i>`;
+    b.title = `${DIAS[dt.getDay()]} ${dt.getDate()} de ${MESES[dt.getMonth()]}`;
+    b.onclick = () => go(d); S.appendChild(b);
+  });
+  const on = S.querySelector('[aria-pressed="true"]'); if (on) on.scrollIntoView({block:'nearest', inline:'center'});
+}
+function field(lab, val, key) {
+  return `<div class="field"><div class="lab"><span>${lab}</span><button class="copy" data-copy="${key}">Copiar</button></div><div class="val" data-val="${key}">${esc(val)}</div></div>`;
+}
+function card(it) {
+  const isL = it.tipo === 'largo', cls = isL ? 'largo' : (it.grupo === 'exploración' ? 'explo' : 'short');
+  const tags = isL ? `<span class="tag k">Video largo · ${esc(it.duracion)}</span><span class="tag">${esc(it.lista)}</span>`
+    : `<span class="tag k">${it.grupo === 'exploración' ? 'Exploración · ' + esc(it.nicho) : 'Short · grupo ' + esc(it.grupo)}</span>${it.provisorio ? '<span class="tag prov">Provisorio</span>' : ''}`;
+  const media = !isL && it.video ? `<video src="${esc(it.video)}" controls preload="metadata" playsinline></video>` : '';
+  let body = `<div class="tags">${tags}</div><div class="title">${esc(it.titulo)}</div>`;
+  if (isL) {
+    body += `<div class="thumbs">${it.thumbs.map((t, k) => `<figure><img src="${esc(t)}" alt="Miniatura ${'ABC'[k]} de ${esc(it.titulo)}" loading="lazy"><figcaption>Miniatura ${'ABC'[k]}</figcaption></figure>`).join('')}</div>`;
+    body += field('Título A', it.titulo, 'ta') + field('Título B (para Probar y comparar)', it.alt, 'tb') + field('Descripción', it.descripcion, 'd');
+    body += `<details><summary>Etiquetas, lista y shorts para vincular</summary>${field('Etiquetas', it.etiquetas, 'e')}${field('Comentario para fijar', it.comentario, 'c')}<div class="field"><div class="lab"><span>Shorts para vincular como video relacionado</span></div><div class="val">${esc(it.shorts_rel.join('\n'))}</div></div></details>`;
+    body += `<p class="file">${esc(it.archivo)} · ${esc(it.subtitulos)}</p>`;
+  } else {
+    body += field('Título', it.titulo, 'ta') + field('Descripción', it.descripcion, 'd') + field('Comentario para fijar', it.comentario, 'c');
+    body += `<p class="file">${esc(it.archivo)}</p>`;
+  }
+  body += `<div class="row"><label class="chk"><input type="checkbox" data-done="${esc(it.id)}" ${done[it.id] ? 'checked' : ''}> ${done[it.id] ? 'Subido' : 'Marcar como subido'}</label>${!isL && it.video ? `<button class="btn" data-dl="${esc(it.id)}">Descargar video</button>` : ''}</div>`;
+  return `<article class="post ${cls}${done[it.id] ? ' done' : ''}" data-id="${esc(it.id)}"><div class="when"><div class="t">${esc(hourOf(it))}<small>${tzSel.value === 'ar' ? 'hora Argentina' : tzSel.value === 'mx' ? 'hora México' : 'hora Colombia/Perú'}</small></div>${media}</div><div class="body">${body}</div></article>`;
+}
+function render() {
+  const its = PLAN.filter(i => i.fecha === cur).sort((a, b) => a.hora.localeCompare(b.hora));
+  const dt = parse(cur), k = its.filter(i => done[i.id]).length;
+  $('#dayhead').innerHTML = `<h2>${DIAS[dt.getDay()].replace(/^./, c => c.toUpperCase())} ${dt.getDate()} de ${MESES[dt.getMonth()]}</h2><span>${its.length} publicaciones · ${k} subidas</span>`;
+  $('#dnote').innerHTML = its.some(i => i.provisorio) ? '<p class="note">Día provisorio: algunos shorts pueden cambiar según cómo funcione la exploración.</p>' : '';
+  $('#list').innerHTML = its.length ? its.map(card).join('') : '<div class="empty">Este día no hay nada para publicar.</div>';
+  $('#pick').value = cur; strip(); stats();
+}
+function go(d) { if (!DATES.includes(d)) { d = DATES.find(x => x >= d) || DATES[DATES.length - 1] } cur = d; store.set('day', d); render() }
+$('#prev').onclick = () => { const i = DATES.indexOf(cur); if (i > 0) go(DATES[i - 1]) };
+$('#next').onclick = () => { const i = DATES.indexOf(cur); if (i < DATES.length - 1) go(DATES[i + 1]) };
+$('#pick').onchange = e => e.target.value && go(e.target.value);
+$('#goNext').onclick = () => { const d = DATES.find(x => PLAN.some(i => i.fecha === x && !done[i.id])); if (d) go(d) };
+tzSel.onchange = () => { store.set('tz', tzSel.value); render() };
+
+document.addEventListener('click', async e => {
+  const c = e.target.closest('[data-copy]');
+  if (c) {
+    const v = c.closest('.field').querySelector('.val');
+    try { await navigator.clipboard.writeText(v.textContent); c.textContent = 'Copiado'; c.classList.add('ok'); setTimeout(() => { c.textContent = 'Copiar'; c.classList.remove('ok') }, 1500) }
+    catch { const r = document.createRange(); r.selectNodeContents(v); const s = getSelection(); s.removeAllRanges(); s.addRange(r); c.textContent = 'Seleccionado' }
+    return;
+  }
+  const d = e.target.closest('[data-dl]');
+  if (d) {
+    const it = PLAN.find(i => i.id === d.dataset.dl); if (!it) return;
+    if (!downloads) { d.textContent = 'Usá el menú del video para guardarlo'; return }
+    d.disabled = true; d.textContent = 'Preparando…';
+    try { const blob = await (await fetch(it.video)).blob(); await downloads.save({filename: it.archivo, data: blob}); d.textContent = 'Descargado' }
+    catch (err) { d.textContent = err && err.code === 'cancelled' ? 'Descargar video' : 'No se pudo descargar' }
+    d.disabled = false;
+  }
+});
+document.addEventListener('change', async e => {
+  const ch = e.target.closest('[data-done]'); if (!ch) return;
+  const id = ch.dataset.done, val = ch.checked;
+  if (val) done[id] = true; else delete done[id];
+  store.set('done', JSON.stringify(done)); render();
+  if (db) { try { const ref = db.collection('subidos').doc(id); val ? await ref.set({done: true, at: Date.now()}) : await ref.delete() } catch {} }
+});
+
+(async () => {
+  try { done = JSON.parse(store.get('done') || '{}') || {} } catch { done = {} }
+  try { PLAN = await (await fetch('plan.json')).json() } catch { $('#list').innerHTML = '<div class="empty">No se pudo cargar el calendario. Recargá la página.</div>'; return }
+  DATES = [...new Set(PLAN.map(i => i.fecha))].sort();
+  const saved = store.get('day'); go(saved && DATES.includes(saved) && saved >= iso(new Date()) ? saved : pickStart());
+  if (window.claude && claude.use) {
+    claude.use('downloads').then(d => { downloads = d }).catch(() => {});
+    claude.use('db').then(d => {
+      if (!d) return; db = d;
+      db.collection('subidos').onSnapshot(snap => {
+        const next = {}; snap.docs.forEach(doc => { if (doc.exists) next[doc.id] = true });
+        done = next; store.set('done', JSON.stringify(done)); render();
+      }, () => {});
+    }).catch(() => {});
+  }
+})();
+</script>

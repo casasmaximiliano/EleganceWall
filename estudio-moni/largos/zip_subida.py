@@ -10,12 +10,14 @@ for v in sorted(plan, key=lambda x: x['orden']):
     dur = tl['total']; mm = f"{int(dur//60)}:{int(dur%60):02d}"
     d = f"{v['orden']:02d}_video{n}"
     txt = (f"PUBLICACIÓN {v['orden']} de {len(plan)} · VIDEO {n} · {v['dia']} {v['fecha']} · {v['hora_ar']} (hora Argentina)\n\nTÍTULO:\n{v['titulo']}\n\n"
-           f"TÍTULO ALTERNATIVO (Probar y comparar):\n{v['alt']}\n\nDESCRIPCIÓN:\n{tl['descripcion']}\n\n"
+           f"TÍTULO B (Probar y comparar):\n{v['alt']}\n\nDESCRIPCIÓN:\n{tl['descripcion']}\n\n"
            f"ETIQUETAS:\n{v['tags']}\n\nLISTA DE REPRODUCCIÓN: {v['playlist']}\nDURACIÓN: {mm}\n"
            "SHORTS PARA VINCULAR (Video relacionado): " + ", ".join(f"#{s['n']} {s['titulo']}" for s in v['shorts_rel']) + "\n")
     z.writestr(f"{d}/descripcion.txt", txt)
     z.write(f'out/srt/{n}.srt', f"{d}/subtitulos_{n}.srt")
-    z.write(f'miniaturas/miniatura_{n}.png', f"{d}/miniatura_{n}.png")
+    z.write(f'miniaturas/miniatura_{n}.png', f"{d}/miniatura_{n}_A.png")
+    for suf in ("B", "C"):  # para "Probar y comparar" en YouTube Studio
+        z.write(f'miniaturas/miniatura_{n}_{suf}.png', f"{d}/miniatura_{n}_{suf}.png")
     rows.append([v['orden'], n, v['fecha'], v['dia'], v['hora_ar'], v['titulo'], mm, f"{n}.mp4"])
 with open('out/entrega/resumen.csv', 'w', encoding='utf-8-sig', newline='') as f:
     w = csv.writer(f); w.writerow(['Orden', 'Video', 'Fecha', 'Día', 'Hora AR', 'Título', 'Duración', 'Archivo']); w.writerows(rows)
