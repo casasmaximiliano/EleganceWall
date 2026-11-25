@@ -1,0 +1,131 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}</style></head><body>
+<script src="node_modules/three/build/three.min.js"></script>
+<script>
+// Prototipo 3D: Moni y Cafecito sentados en una cafetería, con clientes y barista animados atrás.
+const W = 1920, H = 1080;
+const R = new THREE.WebGLRenderer({antialias: true, preserveDrawingBuffer: true});
+R.setSize(W, H); R.setPixelRatio(1); R.shadowMap.enabled = true; R.shadowMap.type = THREE.PCFSoftShadowMap;
+R.outputColorSpace = THREE.SRGBColorSpace; R.toneMapping = THREE.ACESFilmicToneMapping; R.toneMappingExposure = 1.05;
+document.body.appendChild(R.domElement);
+const S = new THREE.Scene(); S.background = new THREE.Color('#F3D9B8'); S.fog = new THREE.Fog('#F3D9B8', 18, 40);
+const cam = new THREE.PerspectiveCamera(35, W / H, 0.1, 100);
+const mat = (c, o = {}) => new THREE.MeshStandardMaterial(Object.assign({color: c, roughness: .55, metalness: 0}, o));
+const box = (w, h, d, m) => { const g = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m); g.castShadow = g.receiveShadow = true; return g };
+const cyl = (rt, rb, h, m, s = 32) => { const g = new THREE.Mesh(new THREE.CylinderGeometry(rt, rb, h, s), m); g.castShadow = g.receiveShadow = true; return g };
+const sph = (r, m, s = 24) => { const g = new THREE.Mesh(new THREE.SphereGeometry(r, s, s), m); g.castShadow = true; return g };
+function canvasTex(w, h, draw) { const c = document.createElement('canvas'); c.width = w; c.height = h; draw(c.getContext('2d'), w, h); const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t }
+
+// luces
+S.add(new THREE.HemisphereLight('#FFF4E0', '#8A5A3B', 1.1));
+const sun = new THREE.DirectionalLight('#FFE2B0', 2.2); sun.position.set(6, 10, 6); sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048);
+Object.assign(sun.shadow.camera, {left: -14, right: 14, top: 10, bottom: -6}); S.add(sun);
+const warm = new THREE.PointLight('#FFC27A', 25, 12); warm.position.set(-2, 4, -2); S.add(warm);
+
+// cafetería: piso, paredes, ventanal, mostrador, máquina, pizarrón, lámparas
+const floorTex = canvasTex(1024, 1024, (g, w, h) => { for (let i = 0; i < 16; i++) { g.fillStyle = i % 2 ? '#A86E45' : '#B97B4E'; g.fillRect(0, i * 64, w, 64); g.fillStyle = 'rgba(0,0,0,.08)'; g.fillRect(0, i * 64 + 62, w, 2) } });
+floorTex.wrapS = floorTex.wrapT = THREE.RepeatWrapping; floorTex.repeat.set(4, 4);
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), mat('#fff', {map: floorTex, roughness: .8})); floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; S.add(floor);
+const wallTex = canvasTex(512, 512, (g, w, h) => { g.fillStyle = '#E9C9A0'; g.fillRect(0, 0, w, h); g.fillStyle = '#DDB98E'; for (let x = 0; x < w; x += 64) g.fillRect(x, 0, 4, h) });
+const back = new THREE.Mesh(new THREE.PlaneGeometry(40, 12), mat('#fff', {map: wallTex})); back.position.set(0, 6, -9); back.receiveShadow = true; S.add(back);
+const win = new THREE.Mesh(new THREE.PlaneGeometry(7, 3.6), mat('#BFE6F7', {emissive: '#9FD8F2', emissiveIntensity: .6})); win.position.set(6.5, 3.6, -8.95); S.add(win);
+for (let k = -1; k <= 1; k++) { const b = box(.12, 3.6, .1, mat('#6B3F22')); b.position.set(6.5 + k * 2.3, 3.6, -8.9); S.add(b) }
+const menu = new THREE.Mesh(new THREE.PlaneGeometry(4.2, 2.2), mat('#fff', {map: canvasTex(840, 440, (g, w, h) => {
+  g.fillStyle = '#23302B'; g.fillRect(0, 0, w, h); g.strokeStyle = '#8A5A3B'; g.lineWidth = 18; g.strokeRect(0, 0, w, h);
+  g.fillStyle = '#F7E9D2'; g.font = 'bold 54px sans-serif'; g.fillText('CAFÉ', 40, 80); g.font = '38px sans-serif';
+  [['Espresso', '$2'], ['Latte', '$3'], ['Capuccino', '$3.5'], ['Medialuna', '$1.5']].forEach(([a, b], i) => { g.fillText(a, 40, 150 + i * 70); g.fillText(b, 640, 150 + i * 70) }) })}));
+menu.position.set(-4.5, 5.2, -8.9); S.add(menu);
+const counter = box(9, 1.6, 1.6, mat('#7A4A2C')); counter.position.set(-4, .8, -6); S.add(counter);
+const ctop = box(9.2, .15, 1.8, mat('#EFE6D8', {roughness: .3})); ctop.position.set(-4, 1.65, -6); S.add(ctop);
+const machine = box(1.6, 1, .8, mat('#B8C0C8', {metalness: .6, roughness: .3})); machine.position.set(-6, 2.2, -6.2); S.add(machine);
+for (let i = 0; i < 3; i++) { const l = cyl(.35, .5, .35, mat('#2B2B2B')); l.position.set(-3 + i * 3, 7, -3); S.add(l); const bulb = sph(.18, mat('#FFE7B0', {emissive: '#FFD38A', emissiveIntensity: 2})); bulb.position.set(-3 + i * 3, 6.75, -3); S.add(bulb); const c = cyl(.015, .015, 3, mat('#222')); c.position.set(-3 + i * 3, 8.6, -3); S.add(c) }
+
+// mesa en primer plano con taza
+const table = new THREE.Group();
+const tt = cyl(1.6, 1.6, .12, mat('#F4EBDD', {roughness: .35}), 48); tt.position.y = 1.5; table.add(tt);
+const leg = cyl(.12, .12, 1.5, mat('#3B2A20')); leg.position.y = .75; table.add(leg);
+const foot = cyl(.6, .6, .06, mat('#3B2A20')); foot.position.y = .03; table.add(foot);
+const mug = cyl(.22, .19, .38, mat('#FFFFFF', {roughness: .3})); mug.position.set(.2, 1.75, .5); table.add(mug);
+const coffee = cyl(.2, .2, .02, mat('#5A3420')); coffee.position.set(.2, 1.93, .5); table.add(coffee);
+const plate = cyl(.38, .38, .03, mat('#FFFFFF')); plate.position.set(.2, 1.57, .5); table.add(plate);
+S.add(table);
+
+// personaje genérico (clientes y barista): cuerpo cápsula + cabeza
+function npc(color, x, z) {
+  const g = new THREE.Group();
+  const body = new THREE.Mesh(new THREE.CapsuleGeometry(.35, .8, 8, 16), mat(color)); body.position.y = 1.05; body.castShadow = true; g.add(body);
+  const head = sph(.3, mat('#F2C9A0')); head.position.y = 1.95; g.add(head);
+  const hair = sph(.31, mat('#3B2A20')); hair.scale.set(1, .6, 1); hair.position.set(0, 2.08, -.03); g.add(hair);
+  g.position.set(x, 0, z); S.add(g); return g;
+}
+const crowd = [npc('#4B8FD8', -2.2, -4.6), npc('#E85D4E', -3.4, -4.4), npc('#3FAE6B', -4.6, -4.7), npc('#A66BC9', 3.5, -6.5), npc('#F4C542', 5.2, -5.5)];
+const barista = npc('#2B2B2B', -5, -7.2);
+
+// MONI: moneda dorada 3D con canto, borde, $ grabado, brote, cara, brazos y piernas
+function face(parent, y, z, r = 1) {
+  const white = mat('#FFFFFF', {roughness: .2}), black = mat('#111111', {roughness: .2});
+  const eyes = [];
+  [-.32, .32].forEach(x => { const e = sph(.2 * r, white); e.scale.z = .5; e.position.set(x * r, y, z); parent.add(e);
+    const p = sph(.1 * r, black); p.position.set(x * r + .03, y - .02, z + .09 * r); parent.add(p); eyes.push(e, p) });
+  const mouth = new THREE.Mesh(new THREE.TorusGeometry(.18 * r, .045 * r, 12, 24, Math.PI), mat('#B3122E')); mouth.rotation.z = Math.PI; mouth.position.set(0, y - .38 * r, z); parent.add(mouth);
+  [-.55, .55].forEach(x => { const c = new THREE.Mesh(new THREE.CircleGeometry(.12 * r, 24), mat('#F6A3A3', {transparent: true, opacity: .8})); c.position.set(x * r, y - .25 * r, z + .01); parent.add(c) });
+  return {eyes, mouth};
+}
+function limbs(parent, col, armY, legY, spread) {
+  const m = mat(col), parts = {};
+  parts.armL = new THREE.Group(); parts.armR = new THREE.Group();
+  [[parts.armL, -1], [parts.armR, 1]].forEach(([a, s]) => { const t = cyl(.05, .05, .8, m, 12); t.position.y = -.4; a.add(t); const h = sph(.12, mat('#F7BC2B', {metalness: .3})); h.position.y = -.82; a.add(h); a.position.set(s * spread, armY, 0); a.rotation.z = s * .5; parent.add(a) });
+  [-1, 1].forEach(s => { const t = cyl(.06, .06, .9, m, 12); t.position.set(s * .35, legY, 0); parent.add(t); const sh = sph(.17, mat('#222')); sh.scale.set(1.3, .7, 1.6); sh.position.set(s * .35, legY - .5, .08); parent.add(sh) });
+  return parts;
+}
+function makeMoni() {
+  const g = new THREE.Group(); const gold = mat('#F7BC2B', {metalness: .2, roughness: .32, emissive: '#5A3A00', emissiveIntensity: .25}); const goldD = mat('#D9961A', {metalness: .25, roughness: .35});
+  const coin = cyl(1, 1, .32, gold, 64); coin.rotation.x = Math.PI / 2; coin.position.y = 2.1; g.add(coin);
+  const rim = new THREE.Mesh(new THREE.TorusGeometry(1, .07, 16, 64), goldD); rim.position.set(0, 2.1, .16); g.add(rim);
+  const dollar = new THREE.Mesh(new THREE.PlaneGeometry(.32, .32), new THREE.MeshStandardMaterial({map: canvasTex(128, 128, (c) => { c.fillStyle = '#B07A0E'; c.font = 'bold 110px sans-serif'; c.textAlign = 'center'; c.fillText('$', 64, 104) }), transparent: true}));
+  dollar.position.set(0, 2.78, .17); g.add(dollar);
+  const stem = cyl(.04, .05, .35, mat('#2E8B57'), 10); stem.position.set(0, 3.25, 0); g.add(stem);
+  [-1, 1].forEach(s => { const leaf = sph(.22, mat('#3FAE6B')); leaf.scale.set(1.6, .35, .8); leaf.position.set(s * .28, 3.45, 0); leaf.rotation.z = s * .4; g.add(leaf) });
+  const f = face(g, 2.15, .2);
+  const l = limbs(g, '#8A5A1F', 2.0, .75, .95);
+  return Object.assign(g, {f, l, base: 0});
+}
+function makeCafecito() {
+  const g = new THREE.Group();
+  const cup = cyl(.85, .65, 1.9, mat('#F5EBDD', {roughness: .5}), 48); cup.position.y = 2.0; g.add(cup);
+  const band = cyl(.79, .7, .4, mat('#7A4A2C'), 48); band.position.y = 1.35; g.add(band);
+  const lid = cyl(.92, .9, .18, mat('#FFFFFF'), 48); lid.position.y = 3.0; g.add(lid);
+  const lid2 = cyl(.7, .85, .12, mat('#FFFFFF'), 48); lid2.position.y = 3.13; g.add(lid2);
+  const f = face(g, 1.95, .86, .9);
+  const l = limbs(g, '#7A4A2C', 2.1, .75, .85);
+  const steam = []; for (let i = 0; i < 6; i++) { const s = sph(.12, mat('#FFFFFF', {transparent: true, opacity: .5})); g.add(s); steam.push(s) }
+  return Object.assign(g, {f, l, steam});
+}
+const moni = makeMoni(); moni.position.set(-1.7, .2, .6); moni.rotation.y = .35; S.add(moni);
+const cafe = makeCafecito(); cafe.position.set(1.9, .2, .4); cafe.rotation.y = -.35; S.add(cafe);
+// sillas
+[[-1.7, .6], [1.9, .4]].forEach(([x, z]) => { const seat = box(1.4, .12, 1.2, mat('#C46A3C')); seat.position.set(x, .9, z - .1); S.add(seat) });
+
+// animación determinística
+const shots = [
+  {from: [0, 3.4, 9.5], to: [0, 3.1, 8.6], look: [0, 2.2, 0]},           // plano general
+  {from: [-4.5, 2.9, 5.2], to: [-4.0, 2.8, 4.6], look: [-1.5, 2.3, .4]},  // plano sobre Moni
+  {from: [5.2, 3.2, 6.5], to: [4.6, 3.0, 6.0], look: [1.2, 2.2, -1]},     // contraplano con la fila de atrás
+];
+window.renderAt = function (t, shotIdx) {
+  const sh = shots[shotIdx ?? Math.floor(t / 4) % shots.length]; const k = (t % 4) / 4;
+  cam.position.set(...sh.from.map((v, i) => v + (sh.to[i] - v) * k)); cam.lookAt(...sh.look);
+  const talkM = Math.sin(t * 9) > 0, who = Math.floor(t / 2) % 2;
+  [[moni, who === 0], [cafe, who === 1]].forEach(([c, talking], i) => {
+    c.position.y = .2 + Math.abs(Math.sin(t * (talking ? 6 : 2) + i)) * (talking ? .08 : .03);
+    c.rotation.z = talking ? Math.sin(t * 5) * .04 : 0;
+    c.f.mouth.scale.y = talking ? (talkM ? 1.6 : .5) : 1;
+    const blink = ((t + i * 1.3) % 3.5) < .12; c.f.eyes.forEach(e => e.scale.y = blink ? .1 : 1);
+    c.l.armR.rotation.z = (i ? 1 : -1) * (.5 + (talking ? Math.sin(t * 4) * .4 : 0)) * -1;
+  });
+  cafe.steam.forEach((s, i) => { const p = ((t * .5 + i / 6) % 1); s.position.set(Math.sin(p * 6 + i) * .15, 3.3 + p * 1.4, 0); s.scale.setScalar(.6 + p); s.material.opacity = .5 * (1 - p) });
+  crowd.forEach((n, i) => { n.position.y = Math.abs(Math.sin(t * 2 + i)) * .04; n.rotation.y = Math.sin(t * .7 + i) * .4; n.children[1].rotation.y = Math.sin(t + i) * .3 });
+  barista.position.x = -5 + Math.sin(t * .8) * 1.2;
+  R.render(S, cam);
+};
+window.renderAt(0, 0);
+</script></body></html>
