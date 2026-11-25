@@ -81,3 +81,18 @@ Música más baja bajo la voz (0,075) y más alta en las placas y la pantalla fi
 - Ritmo actual en el video 1: ~11 íconos por minuto + 1-2 widgets (mapa/gráfico) por minuto.
 - Ayuda al guion: nombrar países, años, objetos concretos y verbos de suba/baja dispara b-roll automáticamente. Escribí pensando en lo que se va a ver.
 - No hay fotos ni videos de stock: la red los bloquea y además tienen derechos. Todo es animación propia.
+
+## Lo que aprendimos con los primeros datos (noviembre 2026) — aplicar siempre
+- **Datos de los primeros 9 Shorts**: la sitcom (2 personajes, living cálido, objeto + precio) retuvo 52 % "se quedaron a mirar" contra 19-24 % de Moni sola con un cartel sobre fondo oscuro. Lo que falla es el primer segundo, no el contenido.
+- **Shorts**: 2 personajes desde el primer cuadro (`build_audio.py`: `SIDEKICK` si el guion no tiene un segundo personaje), zoom de entrada, aviso legal solo al final, sin "Cap. N"/"Ep. N" (cada short se entiende solo), telenovela en escena cálida.
+- **Videos largos**:
+  - Arranque en frío: el primer capítulo no tiene placa (`build_long.py`). La primera línea es el gancho con número sorpresa.
+  - Nunca Moni sola: `SIDEKICK` en `build_long.py` agrega un compañero por video (Peso en pareja, Infla en inflación, Capricho en trampas, Tarjetín en tarjeta, Centavito por defecto) que reacciona a números y preguntas.
+  - Fondos variados: `ROOMS` elige por capítulo cocina, oficina, súper, banco, calle, parque o living según de qué se habla, sin repetir dos seguidos (CSS en `long.js`, clases `r-*`).
+  - Si el título del capítulo ya trae número (Paso 1, Episodio 2, Trampa 3), la placa no dice "Capítulo N".
+  - Carteles con número: el número grande en el cartel y el rubro abajo en chico (`P: $40 → $10 | suscripciones`), si no se corta feo.
+  - Mejor que reescribir: en las simulaciones, un personaje que reaccione en cada etapa (ver guion 21 con Cafecito).
+- **Orden de publicación**: `ORDEN` en `build.py` (el número de video es un identificador fijo; las fechas salen del orden). Primero temas cotidianos e historias; guías después; las de temporada (diciembre, plan anual, San Valentín) en su fecha.
+- **Miniaturas**: 3 por video (`THUMBS_BC` en `largos_data.py`, `thumbs.js` genera `_B` y `_C`) para "Probar y comparar" de YouTube (solo videos largos, desde la computadora, con funciones avanzadas activadas). Usar espacio no separable (` `) entre número y % para que no se corte.
+- **Calendario**: `calendario.py` arma 4 shorts por día (10, 13, 19 y 22 h de Argentina) con grupos A (gastos), B (deudas/inflación/ahorro) y exploración. `calendario_artifact.py` genera `cal_art/plan.json` para el artefacto "Calendario Moni Finanzas" (https://claude.ai/artifact/SPLppXuGb86ztkgUvsncoA): por día, video del short (asset subido), título, descripción, etiquetas, categoría, lista, video relacionado (el largo del tema ya publicado), comentario fijado y check de subido (db `subidos`).
+- **Entrega**: el usuario descarga en la compu; mandar los MP4 en calidad original (`out/mp4_motion`) y el zip de `zip_subida.py` (descripción, subtítulos y miniaturas A/B/C por video).
