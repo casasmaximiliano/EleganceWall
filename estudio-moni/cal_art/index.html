@@ -174,7 +174,7 @@ function card(it) {
   const media = !isL && it.video ? `<video src="${esc(it.video)}" controls preload="metadata" playsinline></video>` : '';
   let body = `<div class="tags">${tags}</div><div class="title">${esc(it.titulo)}</div>`;
   if (isL) {
-    body += `<div class="thumbs">${it.thumbs.map((t, k) => `<figure><img src="${esc(t)}" alt="Miniatura ${'ABC'[k]} de ${esc(it.titulo)}" loading="lazy"><figcaption>Miniatura ${'ABC'[k]}</figcaption></figure>`).join('')}</div>`;
+    body += `<div class="thumbs">${it.thumbs.map((t, k) => `<figure><img src="${esc(t)}" alt="Miniatura ${'ABC'[k]} de ${esc(it.titulo)}" loading="lazy"><figcaption class="row" style="justify-content:space-between">Miniatura ${'ABC'[k]} <button class="copy" data-th="${esc(t)}" data-name="miniatura_${String(it.n).padStart(2,'0')}_${'ABC'[k]}.jpg">Descargar</button></figcaption></figure>`).join('')}</div><div class="row"><button class="btn" data-th3="${esc(it.id)}">Descargar las 3 miniaturas</button></div>`;
     body += field('Título A', it.titulo, 'ta') + field('Título B (para Probar y comparar)', it.alt, 'tb') + field('Descripción', it.descripcion, 'd');
     body += `<details><summary>Etiquetas, lista y shorts para vincular</summary>${field('Etiquetas', it.etiquetas, 'e')}${field('Comentario para fijar', it.comentario, 'c')}<div class="field"><div class="lab"><span>Shorts para vincular como video relacionado</span></div><div class="val">${esc(it.shorts_rel.join('\n'))}</div></div></details>`;
     body += `<p class="file">${esc(it.archivo)} · ${esc(it.subtitulos)}</p>`;
@@ -207,6 +207,16 @@ document.addEventListener('click', async e => {
     try { await navigator.clipboard.writeText(v.textContent); c.textContent = 'Copiado'; c.classList.add('ok'); setTimeout(() => { c.textContent = 'Copiar'; c.classList.remove('ok') }, 1500) }
     catch { const r = document.createRange(); r.selectNodeContents(v); const s = getSelection(); s.removeAllRanges(); s.addRange(r); c.textContent = 'Seleccionado' }
     return;
+  }
+  const th = e.target.closest('[data-th]'), th3 = e.target.closest('[data-th3]');
+  if (th || th3) {
+    const btn = th || th3;
+    const list = th ? [[th.dataset.th, th.dataset.name]] : (() => { const it = PLAN.find(i => i.id === th3.dataset.th3); return it.thumbs.map((t, k) => [t, `miniatura_${String(it.n).padStart(2,'0')}_${'ABC'[k]}.jpg`]) })();
+    if (!downloads) { btn.textContent = 'Mantené apretada la imagen y elegí Guardar'; return }
+    const label = btn.textContent; btn.disabled = true;
+    try { for (const [url, name] of list) { btn.textContent = 'Descargando…'; const blob = await (await fetch(url)).blob(); await downloads.save({filename: name, data: blob}) } btn.textContent = 'Descargada' + (list.length > 1 ? 's' : '') }
+    catch (err) { btn.textContent = err && err.code === 'cancelled' ? label : 'No se pudo descargar' }
+    btn.disabled = false; return;
   }
   const d = e.target.closest('[data-dl]');
   if (d) {
