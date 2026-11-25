@@ -87,6 +87,10 @@ video{width:120px;aspect-ratio:9/16;border-radius:10px;background:#000;display:b
 details{border-top:1px dashed var(--line);padding-top:8px}
 summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--muted)}
 details .field{margin-top:8px}
+.meta2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.meta2 div{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:8px 10px;display:grid;gap:2px;min-width:0}
+.meta2 span{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.meta2 b{font-size:14px;overflow-wrap:anywhere}
 .empty{background:var(--surface);border:1px dashed var(--line);border-radius:16px;padding:22px;color:var(--muted)}
 .foot{color:var(--muted);font-size:14px;display:grid;gap:6px}
 @media (max-width:640px){
@@ -176,10 +180,14 @@ function card(it) {
   if (isL) {
     body += `<div class="thumbs">${it.thumbs.map((t, k) => `<figure><img src="${esc(t)}" alt="Miniatura ${'ABC'[k]} de ${esc(it.titulo)}" loading="lazy"><figcaption class="row" style="justify-content:space-between">Miniatura ${'ABC'[k]} <button class="copy" data-th="${esc(t)}" data-name="miniatura_${String(it.n).padStart(2,'0')}_${'ABC'[k]}.jpg">Descargar</button></figcaption></figure>`).join('')}</div><div class="row"><button class="btn" data-th3="${esc(it.id)}">Descargar las 3 miniaturas</button></div>`;
     body += field('Título A', it.titulo, 'ta') + field('Título B (para Probar y comparar)', it.alt, 'tb') + field('Descripción', it.descripcion, 'd');
-    body += `<details><summary>Etiquetas, lista y shorts para vincular</summary>${field('Etiquetas', it.etiquetas, 'e')}${field('Comentario para fijar', it.comentario, 'c')}<div class="field"><div class="lab"><span>Shorts para vincular como video relacionado</span></div><div class="val">${esc(it.shorts_rel.join('\n'))}</div></div></details>`;
+    body += field('Etiquetas', it.etiquetas, 'e');
+    body += `<div class="meta2"><div><span>Categoría</span><b>${esc(it.categoria)}</b></div><div><span>Lista de reproducción</span><b>${esc(it.lista)}</b></div></div>`;
+    body += `<details><summary>Comentario para fijar y shorts relacionados</summary>${field('Comentario para fijar', it.comentario, 'c')}<div class="field"><div class="lab"><span>Shorts de este tema (en cada uno, poné este video largo como video relacionado)</span></div><div class="val">${esc(it.shorts_rel.join('\n'))}</div></div></details>`;
     body += `<p class="file">${esc(it.archivo)} · ${esc(it.subtitulos)}</p>`;
   } else {
-    body += field('Título', it.titulo, 'ta') + field('Descripción', it.descripcion, 'd') + field('Comentario para fijar', it.comentario, 'c');
+    body += field('Título', it.titulo, 'ta') + field('Descripción', it.descripcion, 'd') + field('Etiquetas', it.etiquetas, 'e') + field('Comentario para fijar', it.comentario, 'c');
+    body += `<div class="meta2"><div><span>Categoría</span><b>${esc(it.categoria)}</b></div><div><span>Lista de reproducción</span><b>${esc(it.lista)}</b></div></div>`;
+    body += field('Video relacionado (en “Video relacionado” del Short)', it.relacionado, 'r');
     body += `<p class="file">${esc(it.archivo)}</p>`;
   }
   body += `<div class="row"><label class="chk"><input type="checkbox" data-done="${esc(it.id)}" ${done[it.id] ? 'checked' : ''}> ${done[it.id] ? 'Subido' : 'Marcar como subido'}</label>${!isL && it.video ? `<button class="btn" data-dl="${esc(it.id)}">Descargar video</button>` : ''}</div>`;
