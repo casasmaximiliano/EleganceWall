@@ -26,7 +26,7 @@ E.FPS = 60
 FPS = 60
 R = E.R
 SR = E.SR
-START = dt.date(2026, 11, 24)
+START = dt.date(2026, 11, 26)
 TARGET_MIN, TARGET_MAX = 630.0, 700.0  # contenido antes del cierre: 10:30 a 11:40 (con el cierre queda entre 11 y 12 min)
 
 LIB = {

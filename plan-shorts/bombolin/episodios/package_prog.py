@@ -19,7 +19,7 @@ from extras_s1 import SHORTS  # noqa: E402
 
 vids, thumbs, out, dias = sys.argv[1], sys.argv[2], sys.argv[3], [int(x) for x in sys.argv[4].split(",")]
 os.makedirs(out, exist_ok=True)
-START = dt.date(2026, 11, 24)
+START = dt.date(2026, 11, 26)
 DIAS = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"]
 SHOW = "Bombolín y sus amigos"
 TAGS = ["Bombolín", "Bombolín y sus amigos", "dibujos animados", "dibujos animados para niños", "caricaturas",
