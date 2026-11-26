@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000}</style></head><body>
+<script src="node_modules/three/build/three.min.js"></script><script src="core.js"></script><script src="personajes.js"></script><script src="props.js"></script><script src="lugares.js"></script>
+<script>
+const R = new THREE.WebGLRenderer({antialias: true, preserveDrawingBuffer: true}); R.setSize(1920, 1080); R.shadowMap.enabled = true; R.outputColorSpace = THREE.SRGBColorSpace; document.body.appendChild(R.domElement);
+const cam = new THREE.PerspectiveCamera(36, 16 / 9, .1, 300);
+const moni = M3.personaje('moni'), tar = M3.personaje('tarjetin'), caf = M3.personaje('cafecito');
+function place(c, L, spot) { const s = L.spots[spot]; L.scene.add(c); c.position.set(s.p[0], s.sit ? s.sit - (c.legY0 - c.sitDrop) : s.p[1], s.p[2]); c.rotation.y = s.ry || 0; return !!s.sit }
+const views = [['depto', 'two', [[moni, 'sofaL'], [tar, 'sofaR']]], ['depto', 'deskWide', [[moni, 'escritorio']]], ['calle', 'establish', []], ['cafeteria', 'two', [[moni, 'mesaA'], [caf, 'mesaB']]]];
+window.renderAt = (t, v) => { const [ln, cn, cast] = views[v]; const L = M3.lugar(ln); const sits = cast.map(([c, s]) => [c, place(c, L, s)]); L.update(t); sits.forEach(([c, sit], i) => c.anim(t, {sit, talk: i === 0 ? 1 : 0, expr: 'happy'}));
+  const C = L.cams[cn]; cam.fov = C.fov || 36; cam.updateProjectionMatrix(); cam.position.set(...C.p); cam.lookAt(...C.look); R.render(L.scene, cam) };
+</script></body></html>

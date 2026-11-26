@@ -39,7 +39,7 @@ M3.sign = function (text, o = {}) {
   const tex = M3.canvasTex(pxw, pxh, (g) => { g.fillStyle = o.bg || '#C8102E'; g.fillRect(0, 0, pxw, pxh); g.fillStyle = o.fg || '#fff'; g.font = M3.font(Math.round(pxh * .55)); g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(text, pxw / 2, pxh / 2 + 2) });
   const g = new THREE.Group();
   const back = M3.rbox(w + .08, h + .08, .08, .06, M3.toon(o.frame || '#2a2a2a')); g.add(back);
-  const face = M3.plane(w, h, M3.toon('#fff', {map: tex})); face.position.z = .06; g.add(face);
+  const face = M3.plane(w, h, M3.toon('#fff', {map: tex})); face.position.z = .1; g.add(face);
   return g;
 };
 
