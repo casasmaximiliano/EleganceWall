@@ -1,0 +1,13 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000}</style></head><body>
+<script src="node_modules/three/build/three.min.js"></script><script src="core.js"></script><script src="personajes.js"></script>
+<script>
+const R = new THREE.WebGLRenderer({antialias: true, preserveDrawingBuffer: true}); R.setSize(1920, 1080); R.shadowMap.enabled = true; R.outputColorSpace = THREE.SRGBColorSpace; document.body.appendChild(R.domElement);
+const S = new THREE.Scene(); S.background = new THREE.Color('#BFE3F2');
+S.add(new THREE.HemisphereLight('#FFF6E8', '#B98A5E', 1.4)); const sun = new THREE.DirectionalLight('#FFE6C0', 2.4); sun.position.set(5, 9, 8); sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048); Object.assign(sun.shadow.camera, {left: -16, right: 16, top: 8, bottom: -4}); S.add(sun);
+const fl = M3.plane(60, 30, M3.toon('#E9D6B4')); fl.rotation.x = -Math.PI / 2; S.add(fl);
+const cam = new THREE.PerspectiveCamera(32, 16 / 9, .1, 200); cam.position.set(0, 3.2, 21); cam.lookAt(0, 1.9, 0);
+const cast = [['moni', 'happy', 'talk'], ['tarjetin', 'sly', 'point'], ['centavito', 'shock', 'shock'], ['cafecito', 'worried', 'idle'], ['delivy', 'angry', 'cross']].map(([k, e, g], i) => { const c = M3.personaje(k); c.position.x = -9 + i * 3.6; S.add(c); return [c, e, g] });
+const ex = [0, 1, 2, 3, 4].map(i => { const c = M3.extra({seed: i}); c.position.set(-8 + i * 4, 0, -6); S.add(c); return c });
+window.renderAt = (t) => { cast.forEach(([c, e, g], i) => c.anim(t, {talk: i === 0 ? 1 : 0, expr: e, gesture: g, seed: i})); ex.forEach((c, i) => c.anim(t, {walk: i % 2, talk: i === 2 ? 1 : 0})); R.render(S, cam) };
+for (let k = 0; k < 30; k++) renderAt(k / 10);
+</script></body></html>
