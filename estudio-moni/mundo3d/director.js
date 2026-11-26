@@ -3,7 +3,7 @@
 (function () {
 const W = 1920, H = 1080;
 let R, cam, TL, SHOTS, CH = {}, INS, overlay;
-const KIND = {moni: 'moni', card: 'tarjetin', centavito: 'centavito', cup: 'cafecito', bag: 'delivy', zombi: 'zombi', gymzombi: 'gymzombi', ghost: 'infla'};
+const KIND = {moni: 'moni', card: 'tarjetin', centavito: 'centavito', cup: 'cafecito', bag: 'delivy', zombi: 'zombi', gymzombi: 'gymzombi', ghost: 'infla', car: 'autito'};
 
 // Gestos con sentido: se eligen por las palabras de cada frase (yo → pecho, vos → señalar, números → contar, pregunta → palmas arriba).
 const NUM = /^(\$?\d|uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|cien|mil|veinte|treinta|cuarenta|cincuenta|sesenta|setenta|ochenta|noventa|doscientos|trescientos|novecientos|ciento|primer|primera)/i;

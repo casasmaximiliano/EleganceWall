@@ -162,8 +162,24 @@ function infla() {
   c.eye = new THREE.Vector3(0, 3.0, 0); return c;
 }
 
+// ───── AUTITO: auto compacto de frente, con cara en el parabrisas y ruedas ─────
+function autito() {
+  const c = new THREE.Group(); const B = rig(c, {height: 3.0});
+  const red = toon('#2F8FD8');
+  const body = rbox(2.7, 1.05, 1.9, .3, red); body.position.y = 1.0; B.add(body);
+  const cabin = rbox(1.9, 1.05, 1.5, .3, red); cabin.position.set(0, 1.95, -.1); B.add(cabin);
+  const glass = rbox(1.55, .78, .06, .14, toon('#CFEFFF')); glass.position.set(0, 1.98, .66); B.add(glass);
+  const grill = rbox(1.1, .22, .05, .08, toon('#2b2b2b')); grill.position.set(0, .78, .97); B.add(grill);
+  [-1, 1].forEach(s => { const l = cyl(.18, .18, .08, toon('#FFF3B0', {emissive: '#FFE08A', emissiveIntensity: .4}), {seg: 20}); l.rotation.x = Math.PI / 2; l.position.set(s * .95, 1.08, .97); B.add(l) });
+  c.wheels = []; [[-1, .55], [1, .55], [-1, -.6], [1, -.6]].forEach(([s, z]) => { const w = cyl(.42, .42, .32, toon('#222'), {seg: 24}); w.rotation.z = Math.PI / 2; w.position.set(s * 1.25, .42, z); c.add(w); c.wheels.push(w) });
+  c.face = M3.face(B, {y: 1.98, z: .72, s: .78, lidColor: '#2678BD', cheek: '#F49A9A'});
+  c.arms = [-1, 1].map(side => M3.arm(B, {x: side * 1.4, y: 1.25, color: '#1D5F96', handColor: '#2F8FD8', side, len: .45, len2: .4}));
+  c.legs = []; c.legY0 = 0; c.sitDrop = 0;
+  c.anim = (t, st) => { animate(c, t, Object.assign({}, st, {sit: false})); B.position.y += Math.abs(Math.sin(t * 9)) * (st.talk ? .03 : 0) };
+  c.eye = new THREE.Vector3(0, 2.0, 0); return c;
+}
 M3.personaje = function (tipo) {
-  const f = {moni, centavito, tarjetin, card: tarjetin, cafecito, cup: cafecito, delivy, bag: delivy, zombi: () => zombi(), gymzombi: () => zombi({gym: true, cloth: '#3FAE6B', skin: '#9AD08A'}), infla, ghost: infla}[tipo];
+  const f = {moni, centavito, tarjetin, card: tarjetin, cafecito, cup: cafecito, delivy, bag: delivy, zombi: () => zombi(), gymzombi: () => zombi({gym: true, cloth: '#3FAE6B', skin: '#9AD08A'}), infla, ghost: infla, autito, car: autito}[tipo];
   if (!f) throw new Error('personaje desconocido ' + tipo);
   const c = f(); c.tipo = tipo; return c;
 };
