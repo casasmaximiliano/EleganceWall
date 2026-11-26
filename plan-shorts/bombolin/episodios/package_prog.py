@@ -76,7 +76,7 @@ for n in dias:
                  extra=[prog, prog[:-4] + ".srt"] + [os.path.join(thumbs, f"E{n:02d}_ES_miniatura{k}.jpg") for k in (1, 2, 3)])]
     for k, (a, b, hook) in enumerate(SHORTS[n]):
         f = os.path.join(vids, f"Bombolin_Dia{n:02d}_Short{k + 1}.mp4")
-        hk = hook.capitalize() if hook.isupper() else hook
+        hk = (hook[0] + hook[1:].capitalize() if hook[0] in "¡¿" else hook.capitalize()) if hook.isupper() else hook
         hora = ("19:00", "20:00")[k] if n == 1 else ("12:30", "20:00")[k]
         rows.append(dict(fecha=d, hora=hora, tipo="Short", archivo=os.path.basename(f), duracion="",
                          titulo=f"{hk} {ep['thumb']['em']} | {SHOW} #Shorts",
