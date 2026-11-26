@@ -67,7 +67,7 @@ function depto() {
   [[0, 7.2, 7.4, .3], [0, 2.1, 7.4, .3], [-3.6, 4.65, .3, 5.4], [3.6, 4.65, .3, 5.4], [0, 4.65, .2, 5.2], [0, 4.65, 7.2, .15]].forEach(([x, y, w, h]) => { const b = box(w, h, .3, toon('#FFFFFF')); b.position.set(x, y, 0); frame.add(b) });
   // cortar la pared detrás de la ventana: dos paneles de pared alrededor
   back.visible = false;
-  [[-11, 6, 18, 12], [13.2, 6, 10, 12], [4.5, 9.7, 7.4, 4.6], [4.5, 1, 7.4, 2]].forEach(([x, y, w, h]) => { const p = plane(w, h, toon(wallC)); p.position.set(x, y, -6); S.add(p) });
+  [[-9.6, 6, 21.2, 12], [14.1, 6, 11.8, 12], [4.5, 9.67, 7.4, 4.66], [4.5, 1, 7.4, 2]].forEach(([x, y, w, h]) => { const p = plane(w, h, toon(wallC)); p.position.set(x, y, -6); S.add(p) });
   const curtain = [-1, 1].map(s => { const c = rbox(1.2, 5.6, .15, .1, toon('#E85D4E')); c.position.set(4.5 + s * 4.3, 4.6, -5.7); S.add(c); return c });
   // sillón, mesa ratona, alfombra, planta, lámpara, cuadro, reloj, biblioteca
   const rug = new THREE.Mesh(new THREE.CircleGeometry(4.2, 40), toon('#C8B6E2')); rug.rotation.x = -Math.PI / 2; rug.position.set(-3.5, .02, 1.2); rug.scale.x = 1.35; S.add(rug);
@@ -99,7 +99,7 @@ function depto() {
   const desk = new THREE.Group(); desk.position.set(7.5, 0, 2.4); desk.rotation.y = -.2; S.add(desk);
   const dt = rbox(4.6, .2, 2.4, .08, toon('#F1E4CF')); dt.position.y = 1.85; desk.add(dt);
   [[-2.1, -1], [2.1, -1], [-2.1, 1], [2.1, 1]].forEach(([x, z]) => { const l = cyl(.08, .08, 1.85, toon('#3b2a20'), {seg: 8}); l.position.set(x, .92, z); desk.add(l) });
-  const lap = new THREE.Group(); lap.position.set(1.3, 1.97, .1); lap.rotation.y = Math.PI + .4; desk.add(lap);
+  const lap = new THREE.Group(); lap.position.set(1.2, 1.97, -.2); lap.rotation.y = Math.PI + .7; lap.scale.setScalar(.85); desk.add(lap);
   const lb = rbox(1.6, .08, 1.1, .05, toon('#B8C0C8')); lap.add(lb); const ls = rbox(1.6, 1.0, .06, .05, toon('#2f3740')); ls.position.set(0, .5, -.55); ls.rotation.x = -.2; lap.add(ls);
   const lsc = plane(1.45, .85, toon('#fff', {map: canvasTex(290, 170, g => { g.fillStyle = '#EAF6EF'; g.fillRect(0, 0, 290, 170); g.fillStyle = '#0E5A40'; g.fillRect(0, 0, 290, 30); g.fillStyle = '#fff'; g.font = font(18); g.fillText('Mi banco', 10, 21); g.fillStyle = '#14221D'; g.font = font(22); ['Ingresos', 'Gastos', 'Tarjeta'].forEach((s, i) => g.fillText(s, 14, 66 + i * 36)); g.fillStyle = '#17865A'; g.fillText('$1.200', 190, 66); g.fillStyle = '#C8102E'; g.fillText('$1.150', 190, 102); g.fillText('$900', 200, 138) })}));
   lsc.position.set(0, .51, -.51); lsc.rotation.x = -.2; lap.add(lsc);
@@ -114,12 +114,12 @@ function depto() {
   return {
     scene: S,
     spots: {sofaL: {p: [-5, 0, -2.9], ry: .3, sit: 1.75}, sofaR: {p: [-1.9, 0, -2.9], ry: -.3, sit: 1.75}, centro: {p: [-3.5, 0, 3.2], ry: 0},
-      escritorio: {p: [7.5, 0, .7], ry: -.2, sit: 1.6}, junto: {p: [10.6, 0, 2.2], ry: -.7}, detras: {p: [9.8, 0, -.4], ry: -.5}},
+      escritorio: {p: [7.5, 0, .7], ry: -.2, sit: 1.6}, junto: {p: [9.3, 1.96, 3.5], ry: -.4}, detras: {p: [9.8, 0, -.4], ry: -.5}},
     cams: {two: {p: [-3.5, 4.6, 6.2], look: [-3.5, 3.2, -2.8], fov: 36}, wide: {p: [1, 5.6, 14], look: [-2, 2.6, -2], fov: 42},
       calendario: {p: [10.4, 5.6, -2.6], look: [10.4, 5.6, -5.9], fov: 32},
-      deskWide: {p: [4.6, 4.2, 9.5], look: [7.6, 2.8, 1.4], fov: 34}, deskOver: {p: [11, 4.6, 8], look: [7.6, 3, 1.2], fov: 34}},
+      deskWide: {p: [4.6, 4.2, 9.5], look: [7.6, 2.8, 1.4], fov: 34}, deskOver: {p: [3.6, 4.9, 7.8], look: [8.2, 2.9, 1.4], fov: 36}},
     update(t) {
-      cars[0].position.x = -14 + ((t * 2.2) % 28); cars[1].position.x = 14 - ((t * 1.7 + 9) % 28); cars[1].rotation.y = Math.PI;
+      cars[0].position.x = -9 + ((t * 2.2) % 18); cars[1].position.x = 9 - ((t * 1.7 + 9) % 18); cars[1].rotation.y = Math.PI;
       curtain.forEach((c, i) => c.rotation.z = Math.sin(t * .9 + i) * .02);
       leaves.forEach((l, i) => l.rotation.y = Math.sin(t * .7 + i) * .05);
       hand1.rotation.z = -t * .02; hand2.rotation.z = -Math.floor(t) * Math.PI / 30;
@@ -170,10 +170,16 @@ function cafeteria() {
   const floor = plane(40, 30, toon('#fff', {map: wood})); floor.rotation.x = -Math.PI / 2; S.add(floor);
   const brick = canvasTex(512, 512, (g, w, h) => { g.fillStyle = '#C9714A'; g.fillRect(0, 0, w, h); g.fillStyle = '#E9C9A0'; for (let y = 0; y < h; y += 32) { g.fillRect(0, y, w, 3); for (let x = (y / 32) % 2 * 32; x < w; x += 64) g.fillRect(x, y, 3, 32) } }); brick.wrapS = brick.wrapT = THREE.RepeatWrapping; brick.repeat.set(4, 2);
   const back = plane(40, 14, toon('#fff', {map: brick})); back.position.set(0, 7, -9); S.add(back);
-  const side = plane(30, 14, toon('#EAD2B0')); side.rotation.y = -Math.PI / 2; side.position.set(14, 7, 4); S.add(side);
+  // pared lateral en paneles alrededor de la ventana (ventana: z -3..7, y 1.6..6.8)
+  [[-7.5, 7, 9, 14], [13, 7, 12, 14], [2, 10.4, 10, 7.2], [2, .8, 10, 1.6]].forEach(([z, y, w, h]) => { const p = plane(w, h, toon('#EAD2B0')); p.rotation.y = -Math.PI / 2; p.position.set(14, y, z); S.add(p) });
+  // afuera: vereda, calle y edificios de enfrente
+  const sw = plane(6, 40, toon('#D9D3C7')); sw.rotation.x = -Math.PI / 2; sw.position.set(17, .02, 2); S.add(sw);
+  const rd = plane(10, 60, toon('#5C6066')); rd.rotation.x = -Math.PI / 2; rd.position.set(25, .01, 2); S.add(rd);
+  [[31, -8, '#8FB1D9'], [31, 0, '#E9A96B'], [31, 8, '#9CCB8A'], [31, 16, '#C98BB9']].forEach(([x, z, c]) => { const b = building(6, 10, 7, c); b.position.set(x, 0, z); b.rotation.y = -Math.PI / 2; S.add(b) });
+  const tr1 = tree(1); tr1.position.set(18.5, 0, -1); S.add(tr1);
   // ventanal hacia la calle (con autos que pasan)
   const winG = new THREE.Group(); winG.position.set(13.9, 0, 2); winG.rotation.y = -Math.PI / 2; S.add(winG);
-  const out = plane(10, 5, flat('#BFE6F7')); out.position.set(0, 4.2, -.05); winG.add(out);
+  const glass = plane(10, 5.2, toon('#DFF3FA', {transparent: true, opacity: .18})); glass.position.set(0, 4.2, 0); winG.add(glass);
   const outCar = car('#4B8FD8'); outCar.scale.setScalar(.8); outCar.rotation.y = Math.PI / 2; S.add(outCar);
   [[0, 6.8, 10.4, .3], [0, 1.6, 10.4, .3], [-5.1, 4.2, .3, 5.5], [5.1, 4.2, .3, 5.5], [0, 4.2, .2, 5.3]].forEach(([x, y, w, h]) => { const b = box(w, h, .3, toon('#3b2a20')); b.position.set(x, y, 0); winG.add(b) });
   // mostrador, máquina, vitrina, pizarrón con precios
@@ -193,10 +199,13 @@ function cafeteria() {
   [[-2.4, 2.4], [2.4, 2.4]].forEach(([x, z]) => { const ch = rbox(1.5, .2, 1.4, .1, toon('#C46A3C')); ch.position.set(x, 1.45, z); S.add(ch); [[-.6, -.55], [.6, -.55], [-.6, .55], [.6, .55]].forEach(([a, b]) => { const l = cyl(.05, .05, 1.45, toon('#3b2a20'), {seg: 8}); l.position.set(x + a, .72, z + b); S.add(l) }) });
   table(8, -1); table(-9, 3);
   // fila de clientes y barista
-  const queue = npcs(S, [[-3, -3.6, 0, {seed: 1}], [-1.4, -2.6, -.3, {seed: 2}], [.3, -1.8, -.5, {seed: 3}]]);
+  const queue = npcs(S, [[-3, -3.6, 0, {seed: 1, kind: 4}], [-1.4, -2.6, -.3, {seed: 2, kind: 2}], [.3, -1.8, -.5, {seed: 3, kind: 1}], [1.9, -1.2, -.6, {seed: 7}]]);
   queue.forEach(q => q.rotation.y = Math.PI);
   const barista = M3.extra({seed: 9, shirt: '#2B2B2B', hair: 2}); barista.position.set(-6, 0, -7.6); S.add(barista);
-  const seated = npcs(S, [[8, 1.3, Math.PI, {seed: 4}], [-9.8, 4.8, Math.PI * .8, {seed: 6}]]);
+  const seated = npcs(S, [[8, 1.0, Math.PI, {seed: 4, kind: 3}], [-9.6, 5.2, Math.PI * .85, {seed: 6, kind: 2}], [8, -3.1, 0, {seed: 11, kind: 1}]]);
+  seated.forEach(q => { const ch = rbox(1.4, .2, 1.3, .1, toon('#C46A3C')); ch.position.set(q.position.x, 1.45, q.position.z); S.add(ch);
+    [[-.55, -.5], [.55, -.5], [-.55, .5], [.55, .5]].forEach(([a, b]) => { const l = cyl(.05, .05, 1.45, toon('#3b2a20'), {seg: 8}); l.position.set(q.position.x + a, .72, q.position.z + b); S.add(l) });
+    q.position.y = 1.55 - (q.legY0 - q.sitDrop) * q.scale.y; });
   return {
     scene: S, props: {menu},
     spots: {mesaA: {p: [-2.4, 0, 2.6], ry: .55, sit: 1.55}, mesaB: {p: [2.4, 0, 2.6], ry: -.55, sit: 1.55}, llega: {p: [4.2, 0, 4.4], ry: -.7}},
@@ -204,9 +213,9 @@ function cafeteria() {
       menu: {p: [-3.2, 6.4, -1.4], look: [-4.5, 7.0, -8.9], fov: 34}},
     update(t) {
       queue.forEach((q, i) => { q.anim(t, {seed: i, talk: i === 1 && (t % 6) < 3}); q.rotation.y = Math.PI + Math.sin(t * .5 + i) * .4 });
-      barista.position.x = -6 + Math.sin(t * .6) * 2.2; barista.rotation.y = Math.cos(t * .6) > 0 ? .3 : -.3; barista.anim(t, {gesture: 'hold', seed: 9});
+      barista.position.x = -6 + Math.sin(t * .6) * 2.2; barista.rotation.y = Math.cos(t * .6) > 0 ? .3 : -.3; barista.anim(t, {pose: 'hold', poseW: 1, seed: 9});
       seated.forEach((q, i) => q.anim(t, {sit: true, seed: 4 + i, talk: (t + i * 3) % 7 < 3}));
-      outCar.position.set(14.6, 0, -12 + ((t * 3) % 28));
+      outCar.position.set(23.5, 0, -20 + ((t * 4) % 44));
     },
   };
 }

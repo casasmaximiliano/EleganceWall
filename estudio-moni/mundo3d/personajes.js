@@ -14,31 +14,48 @@ function attachLimbs(root, body, o) {
   root.legs = [-1, 1].map(side => M3.leg(root, {x: side * o.legX, y: o.legY, color: o.limb, len: o.legLen, shoe: o.shoe}));
 }
 
-// Animación común: respiración, habla con gestos, expresiones, sentado, caminar, saludo.
+// Poses de brazos con sentido (lado derecho; el izquierdo se espeja). [x, z, codoX, codoZ]
+const POSES = {
+  rest:    {R: [0, .22, -.15, 0],    L: [0, .22, -.15, 0]},
+  open:    {R: [-.85, .45, -.75, 0], L: [-.85, .45, -.75, 0]},        // explica con las dos manos adelante
+  chest:   {R: [-1.15, .05, -2.0, 0], L: [0, .22, -.15, 0]},          // "yo", "me", "mi": mano al pecho
+  point:   {R: [-1.35, .55, -.1, 0], L: [0, .25, -.2, 0]},            // "vos", "te": señala al otro
+  palmsUp: {R: [-.6, .75, -1.0, 0],  L: [-.6, .75, -1.0, 0]},         // pregunta: palmas arriba
+  count:   {R: [-.35, 1.35, -.9, 0], L: [0, .22, -.15, 0]},           // número: levanta la mano
+  armsUp:  {R: [0, 2.35, .25, 0],    L: [0, 2.35, .25, 0]},           // sorpresa
+  no:      {R: [-1.0, .4, -1.25, 0], L: [0, .22, -.15, 0]},           // "no": mueve la mano
+  think:   {R: [-1.5, .3, -2.2, 0],  L: [-.6, .1, -1.6, 0]},          // pensando: mano al mentón
+  hold:    {R: [-1.1, .35, -.5, 0],  L: [-1.1, .35, -.5, 0]},
+  cross:   {R: [-1.2, .15, -1.7, 0], L: [-1.2, .15, -1.7, 0]},        // enojo: brazos cruzados
+  wave:    {R: [0, 2.5, .4, 0],      L: [0, .25, -.2, 0]},
+  hips:    {R: [-.2, .9, -1.9, 0],   L: [-.2, .9, -1.9, 0]},          // manos en la cintura
+};
+M3.POSES = POSES;
+const smooth = x => { x = M3.clamp(x); return x * x * (3 - 2 * x) };
+
+// Animación común. estado: {talk, expr, pose, poseW (0-1), sit, walk, seed, nod (0-1), turn (rad), lean, emph (0-1)}
 function animate(c, t, st) {
   const talk = st.talk || 0, seed = st.seed || 0, B = c.rig.body;
-  const breath = Math.sin(t * 2.2 + seed) * .012;
-  const beat = talk > .05 ? Math.abs(Math.sin(t * 6.5 + seed)) : 0;
-  B.scale.set(1 - beat * .025 + breath, 1 + beat * .04 - breath, 1);
-  B.position.y = (st.sit ? -(c.sitDrop || .6) : 0) + beat * .05;
-  B.rotation.z = talk > .05 ? Math.sin(t * 2.3 + seed) * .05 : Math.sin(t * .8 + seed) * .015;
-  B.rotation.x = st.lean || 0;
-  c.face.set(st.expr || 'happy', .35);
-  c.face.update(t, talk > .05 ? (.25 + .75 * Math.abs(Math.sin(t * 13 + Math.sin(t * 5)))) * talk : 0, seed);
-  // brazos
-  const g = st.gesture || (talk > .05 ? 'talk' : 'idle');
-  c.arms.forEach((a, i) => {
-    const s = a.userData.side, el = a.userData.el; let z = s * .35, x = 0, ez = 0, ex = 0;
-    if (g === 'idle') { z = s * (.25 + Math.sin(t * 1.1 + i + seed) * .04); }
-    if (g === 'talk') { const w = Math.sin(t * 3.1 + i * 1.7 + seed); z = s * (.5 + w * .25); x = -.4 - Math.max(0, w) * .5; ex = -.6 - w * .3; }
-    if (g === 'wave' && s > 0) { z = 2.5; ez = .4 + Math.sin(t * 10) * .45 }
-    if (g === 'wave' && s < 0) { z = -.3 }
-    if (g === 'shock') { z = s * 2.3; ez = s * .3 + Math.sin(t * 20) * .05 }
-    if (g === 'point' && s > 0) { z = 1.2; x = -.6; ex = -.2 }
-    if (g === 'cross') { z = s * .2; x = -1.2; ex = -1.6 }
-    if (g === 'hold') { z = s * .35; x = -1.1; ex = -.5 }
-    if (g === 'think' && s > 0) { z = .3; x = -1.5; ex = -2.2 }
-    a.rotation.set(x, 0, z); el.rotation.set(ex, 0, ez);
+  const breath = Math.sin(t * 2.0 + seed) * .01;
+  const emph = st.emph || 0;                                  // énfasis en palabras acentuadas (lo calcula el director)
+  B.scale.set(1 - emph * .03 + breath, 1 + emph * .045 - breath, 1);
+  B.position.y = (st.sit ? -(c.sitDrop || .6) : 0) + emph * .05;
+  B.rotation.z = talk ? M3.noise(t * .5, seed) * .03 : M3.noise(t * .25, seed) * .012;
+  B.rotation.x = (st.lean || 0) + (st.nod || 0) * .12 + emph * .03;
+  B.rotation.y = st.turn || 0;
+  c.face.set(st.expr || 'happy', .3);
+  c.face.update(t, talk ? (.3 + .7 * Math.abs(Math.sin(t * 12.5 + Math.sin(t * 4.3) * 1.5))) : 0, seed, st.lookX || 0);
+  // brazos: mezcla entre reposo y la pose del momento
+  const P = POSES[st.pose] || POSES.rest, Rst = POSES[st.idle || 'rest'] || POSES.rest, w = smooth(st.poseW ?? 1);
+  c.arms.forEach(a => {
+    const s = a.userData.side, el = a.userData.el, key = s > 0 ? 'R' : 'L';
+    const v = P[key].map((x, i) => M3.lerp(Rst[key][i], x, w));
+    let wig = 0, ez = v[3];
+    if (st.pose === 'no' && s > 0) ez += Math.sin(t * 11) * .45 * w;
+    if (st.pose === 'wave' && s > 0) ez += Math.sin(t * 10) * .5 * w;
+    if (talk && w > .5 && st.pose !== 'rest') wig = Math.sin(t * 4.2 + s) * .06;   // leve gesticulación, no balanceo
+    a.rotation.set(v[0] + wig, 0, s * (v[1] + Math.sin(t * 1.1 + s + seed) * .02));
+    el.rotation.set(v[2] - wig * .8, 0, s * ez);
   });
   // piernas
   c.legs.forEach((l, i) => {
@@ -128,7 +145,12 @@ M3.extra = function (o = {}) {
   const r = (k, arr) => arr[(o.seed * 7 + k) % arr.length | 0];
   const seed = o.seed || 0, c = new THREE.Group(); const B = rig(c, {height: 3});
   const shirt = toon(o.shirt || r(1, SHIRT)), skin = toon(o.skin || r(2, SKIN));
+  const kind = o.kind ?? (seed % 5);                     // 0 remera, 1 buzo con capucha, 2 vestido, 3 camisa y corbata, 4 campera
   const torso = cap(.42, .55, shirt); torso.position.y = 1.55; B.add(torso);
+  if (kind === 1) { const hood = sph(.36, shirt); hood.scale.set(1.25, .6, .9); hood.position.set(0, 2.08, -.18); B.add(hood); const pk = rbox(.5, .25, .05, .05, toon('#00000022'.slice(0, 7))); pk.position.set(0, 1.35, .41); B.add(pk) }
+  if (kind === 2) { const sk = new THREE.Mesh(new THREE.ConeGeometry(.62, .9, 20, 1, true), shirt); sk.position.y = 1.15; B.add(sk); M3.outline(sk) }
+  if (kind === 3) { const tie = rbox(.12, .45, .04, .03, toon('#C8102E')); tie.position.set(0, 1.75, .43); B.add(tie); const col = rbox(.5, .1, .1, .04, toon('#FFFFFF')); col.position.set(0, 2.02, .3); B.add(col) }
+  if (kind === 4) { const z = plane(.04, .7, flat('#1d140f')); z.position.set(0, 1.55, .43); B.add(z); const col = rbox(.6, .14, .3, .05, shirt); col.position.set(0, 2.0, .1); B.add(col) }
   const head = sph(.55, skin); head.position.y = 2.6; B.add(head);
   const hairStyle = o.hair ?? (seed % 4);
   const hairMat = toon(r(3, HAIR));
@@ -141,9 +163,12 @@ M3.extra = function (o = {}) {
   const eyes = [-1, 1].map(s => { const e = new THREE.Mesh(new THREE.SphereGeometry(.06, 10, 8), flat('#141010')); e.position.set(s * .18, .05, 0); fg.add(e); return e });
   const mouth = new THREE.Mesh(new THREE.TorusGeometry(.1, .025, 8, 16, Math.PI), flat('#5a1414')); mouth.rotation.z = Math.PI; mouth.position.y = -.17; fg.add(mouth);
   if (seed % 3 === 0) { const m = rbox(.32, .07, .04, .03, toon('#3b2410'), {outline: false}); m.position.set(0, -.08, .02); fg.add(m) }
+  if (seed % 4 === 1) { [-1, 1].forEach(sd => { const r = new THREE.Mesh(new THREE.TorusGeometry(.12, .02, 8, 20), flat('#1d140f')); r.position.set(sd * .18, .05, .02); fg.add(r) }); const br = box(.12, .02, .02, flat('#1d140f'), {outline: false}); br.position.set(0, .07, .02); fg.add(br) }
+  if (seed % 6 === 5) { const brim = cyl(.75, .75, .05, toon('#E8C57A'), {seg: 28}); brim.position.y = 2.95; B.add(brim); const top = cyl(.42, .48, .4, toon('#E8C57A'), {seg: 24}); top.position.y = 3.15; B.add(top) }
   c.face = {set() {}, update(t, talk) { const b = ((t + seed) % 4.1) < .1; eyes.forEach(e => e.scale.y = b ? .1 : 1); mouth.scale.y = talk ? .4 + Math.abs(Math.sin(t * 12)) : 1 }};
   attachLimbs(c, B, {armX: .45, armY: 1.95, limb: '#1d140f', hand: o.skin || r(2, SKIN), legX: .2, legY: 1.05, legLen: 1.0, armLen: .55, armLen2: .5});
   c.arms.forEach(a => a.children.forEach(ch => { if (ch.material && ch.material.color && ch !== a.userData.el) ch.material = toon('#1d140f') }));
-  c.legY0 = 1.05; c.sitDrop = .7; c.anim = (t, st) => animate(c, t, Object.assign({seed}, st)); c.eye = new THREE.Vector3(0, 2.6, 0); return c;
+  c.legY0 = 1.05; c.sitDrop = .7; c.anim = (t, st) => animate(c, t, Object.assign({seed}, st)); c.eye = new THREE.Vector3(0, 2.6, 0);
+  const sc = o.scale || (seed % 7 === 3 ? .72 : .92 + (seed % 4) * .05); c.scale.setScalar(sc); return c;
 };
 })();

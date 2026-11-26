@@ -69,7 +69,7 @@ M3.face = function (parent, o = {}) {
     const ball = M3.sph(.2, white, {t: .022}); ball.scale.set(1, 1.15, .55); g.add(ball);
     const pupil = new THREE.Mesh(new THREE.SphereGeometry(.105, 20, 14), black); pupil.scale.z = .5; pupil.position.z = .085; g.add(pupil);
     const hi = new THREE.Mesh(new THREE.SphereGeometry(.035, 10, 8), M3.flat('#fff')); hi.position.set(.04, .05, .14); g.add(hi);
-    const lid = new THREE.Mesh(new THREE.SphereGeometry(.215, 24, 12, 0, Math.PI * 2, 0, Math.PI / 2), skinD); lid.scale.set(1.02, 1.17, .6); g.add(lid);
+    const lid = null;
     const brow = M3.rbox(.3, .065, .05, .03, M3.toon(o.browColor || '#3b2410'), {t: .0}); brow.position.set(0, .33, .05); g.add(brow);
     eyes.push({g, pupil, hi, lid, brow, side});
   });
@@ -82,13 +82,13 @@ M3.face = function (parent, o = {}) {
   [-1, 1].forEach(side => { const c = new THREE.Mesh(new THREE.CircleGeometry(.1, 20), M3.flat(o.cheek || '#F49A9A', {transparent: true, opacity: .75})); c.position.set(side * .5, -.18, -.01); F.add(c) });
   let cur = Object.assign({}, EXPR.happy);
   F.set = function (name, k = 1) { const e = EXPR[name] || EXPR.happy; for (const key in e) cur[key] = Array.isArray(e[key]) ? e[key].map((v, i) => M3.lerp(cur[key][i], v, k)) : M3.lerp(cur[key], e[key], k) };
-  F.update = function (t, talk, seed = 0) {
-    const blink = ((t + seed * 1.37) % 3.7) < .11 ? 1 : 0;
+  F.update = function (t, talk, seed = 0, lookX = 0) {
+    const bp = (t + seed * 1.37) % 3.7; const blink = bp < .07 ? bp / .07 : bp < .14 ? 1 - (bp - .07) / .07 : 0;
     eyes.forEach(E => {
-      E.brow.rotation.z = cur.brow[E.side < 0 ? 0 : 1] * (E.side < 0 ? 1 : 1);
-      E.brow.position.y = .33 + cur.browY + (talk > .1 ? Math.sin(t * 7) * .012 : 0);
-      const lid = Math.max(blink, M3.clamp(cur.lid)); E.lid.rotation.x = -Math.PI / 2 + (1 - lid) * -1.25; E.lid.visible = lid > .02;
-      const lx = cur.look[0] + M3.noise(t * .4, seed) * .015, ly = cur.look[1] + M3.noise(t * .35, seed + 4) * .01;
+      E.brow.rotation.z = cur.brow[E.side < 0 ? 0 : 1];
+      E.brow.position.y = .33 + cur.browY + (talk > .1 ? Math.sin(t * 6) * .01 : 0);
+      E.g.scale.y = Math.max(.08, 1 - blink * .95 - M3.clamp(cur.lid) * .25);
+      const lx = cur.look[0] + lookX + M3.noise(t * .4, seed) * .012, ly = cur.look[1] + M3.noise(t * .35, seed + 4) * .008;
       E.pupil.position.x = lx; E.pupil.position.y = ly; E.hi.position.x = .04 + lx; E.hi.position.y = .05 + ly;
     });
     const o2 = M3.clamp(Math.max(cur.open, talk));
