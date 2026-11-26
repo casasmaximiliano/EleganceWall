@@ -3,7 +3,7 @@
 Este repo contiene la producción del canal animado de finanzas **Moni Finanzas** (@moni.finanzas), en `estudio-moni/`.
 El resto del repo (`src/`, `public/`) es una app de Create React App sin relación con el canal.
 
-- Videos largos: usar la skill `.claude/skills/moni-videos-largos/`. Tiene la marca, los personajes, el formato de guion, el pipeline y la configuración de YouTube.
+- Videos largos: estilo 3D (`estudio-moni/mundo3d/`). Shorts: se quedan en 2D. Usar la skill `.claude/skills/moni-videos-largos/`. Tiene la marca, los personajes, el formato de guion, el pipeline y la configuración de YouTube.
 - Shorts verticales: `estudio-moni/video/` (`build_audio.py` + `render.js`), con los datos de `estudio-moni/shorts_data.py` y `shorts_pantalla.py`.
 - Calendario de Shorts: `estudio-moni/calendario.py`. Plan de largos: `estudio-moni/largos/largos_data.py`.
 - Kit de marca: `estudio-moni/marca/`.

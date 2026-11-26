@@ -28,6 +28,7 @@ Antes de empezar, leé según lo que vayas a hacer:
 ## Reglas que no se negocian
 
 - Mismos personajes, voces y estilo visual (3D suave). No cambiar colores ni voces sin pedido explícito.
+- **Desde el 26/11/2026 los videos largos se hacen en el mundo 3D** (`estudio-moni/mundo3d/`, ver `references/pipeline.md`): lugares reales, gente de fondo, cámaras y gestos. El paso 5 se reemplaza por `node render3d.js NN` y la miniatura por `node thumb3d.js NN`. **Los Shorts siguen con el estilo 2D actual**: no cambiarlos.
 - Movimiento constante: íconos, cámara viva, mapas, gráficos, línea de tiempo y cameos (ver `pipeline.md`). Nunca más de ~5 s sin que aparezca algo nuevo.
 - Cada dato numérico se calcula y se aclaran los supuestos en pantalla o en la voz (“ejemplo ilustrativo”).
 - Fuentes reales en la descripción. Nada de cifras virales sin fuente: si una cifra famosa es un mito, se dice.
