@@ -96,3 +96,14 @@ Música más baja bajo la voz (0,075) y más alta en las placas y la pantalla fi
 - **Miniaturas**: 3 por video (`THUMBS_BC` en `largos_data.py`, `thumbs.js` genera `_B` y `_C`) para "Probar y comparar" de YouTube (solo videos largos, desde la computadora, con funciones avanzadas activadas). Usar espacio no separable (` `) entre número y % para que no se corte.
 - **Calendario**: `calendario.py` arma 4 shorts por día (10, 13, 19 y 22 h de Argentina) con grupos A (gastos), B (deudas/inflación/ahorro) y exploración. `calendario_artifact.py` genera `cal_art/plan.json` para el artefacto "Calendario Moni Finanzas" (https://claude.ai/artifact/SPLppXuGb86ztkgUvsncoA): por día, video del short (asset subido), título, descripción, etiquetas, categoría, lista, video relacionado (el largo del tema ya publicado), comentario fijado y check de subido (db `subidos`).
 - **Entrega**: el usuario descarga en la compu; mandar los MP4 en calidad original (`out/mp4_motion`) y el zip de `zip_subida.py` (descripción, subtítulos y miniaturas A/B/C por video).
+
+## Mundo 3D (estilo nuevo de los largos, desde noviembre 2026)
+
+Carpeta `estudio-moni/mundo3d/`. Usa el mismo audio y timeline de `build_long.py`; solo cambia la imagen.
+
+- `core.js` (toon + contornos, cara con expresiones, brazos y piernas), `personajes.js` (Moni, Centavito, Tarjetín, Cafecito, Delivy, zombis, Infla y extras), `props.js` (celular, cuaderno, resumen, calendario, alcancía, pizarrón; `M3.insert()` para planos de detalle), `lugares.js` (depto, calle, cafeteria, banco: spots con altura de asiento y cámaras con nombre), `director.js` (planos, gestos por palabras, el que escucha mira y asiente, subtítulos de 2-4 palabras).
+- Guion de planos: `planos/NN.js` → `{índiceDeEscena: [[fracciónFin, plano], ...]}`. Un plano lleva `loc`, `cam` (nombre o `'close:<kind>'` con `camOpt {angle, dist, fov}`), `cast {kind: spot}`, y opcionales `insert`, `title`, `gesture`, `enter`, `push`, `propSet`.
+- Pruebas: `node render3d.js NN --stills 120,300` → `largos/out/stills3d/`. Revisá siempre: personajes tapados, gente flotando o en el piso, árboles/faroles delante de la cámara, texto cortado en cuadernos (máx. ~26 letras por renglón).
+- Render: `node render3d.js NN --workers 3 --out ../largos/out/mp4_3d/NN_3d.mp4` (~1 fps por worker: 8 min de video ≈ 70-80 min).
+- Miniaturas 3D: `node thumb3d.js NN` (variantes A/B/C configuradas dentro del script) → `largos/miniaturas/miniatura_NN_3D_X.png`; reescalar a 1280×720.
+- Trabajo semanal: guiones listos con anticipación, pero el 3D se arma y renderiza por semana, corrigiendo con stills.
