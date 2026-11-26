@@ -18,6 +18,12 @@ os.makedirs(OUT, exist_ok=True)
 _m = {}
 
 
+def srgb2lin(v):
+    """Colores sRGB (0-255) a lineal, como los usa Blender: así salen vivos y no lavados."""
+    v = v / 255
+    return v / 12.92 if v <= 0.04045 else ((v + 0.055) / 1.055) ** 2.4
+
+
 def reset(w, h):
     bpy.ops.wm.read_factory_settings(use_empty=True)
     sc = bpy.context.scene
@@ -43,7 +49,7 @@ def mat(name, col, rough=0.6, emis=0.0, alpha=1.0):
     m = bpy.data.materials.new(name)
     m.use_nodes = True
     b = m.node_tree.nodes["Principled BSDF"]
-    c = tuple(x / 255 for x in col) + (1,)
+    c = tuple(srgb2lin(x) for x in col) + (1,)
     b.inputs["Base Color"].default_value = c
     b.inputs["Roughness"].default_value = rough
     if emis:
@@ -132,7 +138,7 @@ def tree(x, y, s=1.0, snowy=False, pine=False):
                  mat("snowpine" if snowy else "pine", (235, 245, 255) if snowy else (60, 150, 90)))
         return
     for (dx, dz, r) in [(0, 2.4, 1.0), (-0.6, 2.0, 0.75), (0.6, 2.0, 0.75), (0, 2.9, 0.7)]:
-        sph((x + dx * s, y, dz * s), (r * s, r * s, r * s), mat("leaves", (95, 185, 95), 0.8))
+        sph((x + dx * s, y, dz * s), (r * s, r * s, r * s), mat("leaves", (70, 190, 75), 0.8))
 
 
 def flowers(n, area, seed=1):
@@ -167,12 +173,12 @@ def hills(colors):
 
 # ------------------------------------------------------------------ temas
 def meadow(portrait, night=False):
-    ground(mat("grass", (110, 200, 100) if not night else (60, 90, 120), 0.9))
+    ground(mat("grass", (170, 225, 85) if not night else (60, 90, 120), 0.9))
     hills([(125, 210, 115), (100, 190, 95)] if not night else [(55, 80, 120), (45, 70, 110)])
     for (x, y, s) in [(-7, 7, 1.0), (7.5, 9, 1.2), (-11, 14, 1.3), (12, 16, 1.1), (-3.5, 20, 1.0), (4, 22, 0.9)]:
         tree(x, y, s)
     for (x, y) in [(-5, 3), (5.2, 4), (-8, 10), (9, 12)]:
-        sph((x, y, 0.3), (0.9, 0.8, 0.6), mat("bush", (80, 170, 85), 0.85))
+        sph((x, y, 0.3), (0.9, 0.8, 0.6), mat("bush", (95, 195, 70), 0.85))
     flowers(70, ((-9, 9), (-1, 12)))
     if not night:
         clouds()
@@ -195,12 +201,12 @@ def room(portrait):
     nt.links.new(rp.outputs["Color"], b.inputs["Base Color"])
     bpy.ops.mesh.primitive_plane_add(size=40)
     bpy.context.object.data.materials.append(wood)
-    cube((0, 9, 8), (20, 0.2, 9), mat("wall", (255, 214, 190), 0.9), 0.01)
-    cube((-11, 0, 8), (0.2, 20, 9), mat("wall2", (250, 200, 175), 0.9), 0.01)
-    cube((11, 0, 8), (0.2, 20, 9), mat("wall2", (250, 200, 175), 0.9), 0.01)
+    cube((0, 9, 8), (20, 0.2, 9), mat("wall", (255, 236, 150), 0.9), 0.01)
+    cube((-11, 0, 8), (0.2, 20, 9), mat("wall2", (255, 214, 120), 0.9), 0.01)
+    cube((11, 0, 8), (0.2, 20, 9), mat("wall2", (255, 214, 120), 0.9), 0.01)
     cube((4.5, 8.7, 4.2), (2.2, 0.15, 1.7), mat("frame", (255, 255, 255), 0.4))
     cube((4.5, 8.6, 4.2), (1.9, 0.12, 1.45), mat("glass", (150, 205, 255), 0.2, emis=0.35))
-    cyl((0, 2, 0.02), 4.5, 0.04, mat("rug", (255, 170, 190), 0.95), v=64)
+    cyl((0, 2, 0.02), 4.5, 0.04, mat("rug", (255, 120, 175), 0.95), v=64)
     cube((-6.5, 7.5, 1.0), (1.6, 0.9, 1.0), mat("toybox", (255, 190, 90), 0.5))
     for k, c in enumerate([(255, 100, 100), (100, 170, 255), (120, 210, 120), (255, 220, 90), (190, 140, 255)]):
         cube((-7.5 + k * 0.55, 8.4, 3.4), (0.2, 0.5, 0.7 + 0.1 * (k % 2)), mat(f"book{k}", c, 0.5), 0.02)
@@ -209,7 +215,7 @@ def room(portrait):
     cyl((7.5, 7.5, 1.4), 0.08, 2.8, mat("lampstem", (240, 240, 240), 0.4))
     cone((7.5, 7.5, 3.0), 0.8, 0.4, 0.8, mat("lampshade", (255, 240, 180), 0.6, emis=0.8))
     L = bpy.data.lights.new("ceiling", "AREA")
-    L.energy, L.size = 450, 10
+    L.energy, L.size = 1200, 10
     o = bpy.data.objects.new("ceil", L)
     bpy.context.scene.collection.objects.link(o)
     o.location = (0, 2, 9)
@@ -316,7 +322,7 @@ def show(portrait):
 
 THEMES = {"meadow": lambda p: meadow(p), "night": lambda p: meadow(p, night=True), "room": room, "snow": snow,
           "xmas": xmas, "cave": cave, "sea": sea, "show": show}
-SUN = {"meadow": (3.5, (1, 0.95, 0.88)), "night": (0.6, (0.6, 0.7, 1.0)), "room": (1.0, (1, 0.95, 0.9)),
+SUN = {"meadow": (3.5, (1, 0.95, 0.88)), "night": (0.6, (0.6, 0.7, 1.0)), "room": (2.2, (1, 0.95, 0.9)),
        "snow": (3.0, (1, 0.97, 0.95)), "xmas": (0.7, (0.6, 0.7, 1.0)), "cave": (0.3, (0.7, 0.6, 1)),
        "sea": (1.5, (0.7, 0.9, 1)), "show": (0.5, (1, 0.9, 1))}
 

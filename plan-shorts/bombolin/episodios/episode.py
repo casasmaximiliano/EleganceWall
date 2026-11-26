@@ -145,10 +145,23 @@ def vgrad(W, H, c1, c2):
 # ------------------------------------------------------------------ fondos (coordenadas relativas)
 SPRITE_DIR = os.environ.get("BOMBOLIN_SPRITES3D")
 BG3D_DIR = os.environ.get("BOMBOLIN_BG3D")
+# Estilo 2 (desde el día 2, 27/11): colores vivos, contorno, profundidad de campo, entradas, gestos y chispas
+STYLE2 = os.environ.get("BOMBOLIN_ESTILO") == "2"
 SKY = {"meadow": ((120, 195, 255), (215, 240, 255)), "night": ((25, 35, 95), (95, 80, 160)),
        "xmas": ((25, 35, 95), (95, 80, 160)), "snow": ((165, 205, 250), (235, 245, 255)),
        "cave": ((60, 40, 95), (30, 20, 50)), "sea": ((110, 200, 250), (25, 90, 175)),
        "show": ((110, 55, 190), (60, 20, 120)), "room": ((255, 230, 210), (255, 220, 190))}
+
+
+def outline(im, px=7, col=(45, 35, 70)):
+    """Contorno oscuro suave alrededor del personaje: lo separa del fondo (estilo dibujo animado)."""
+    from PIL import ImageFilter
+    a = im.getchannel("A").point(lambda v: 255 if v > 90 else 0)
+    big = a.filter(ImageFilter.MaxFilter(px * 2 + 1)).filter(ImageFilter.GaussianBlur(1.5))
+    out = Image.new("RGBA", im.size, col + (0,))
+    out.putalpha(big.point(lambda v: int(v * 0.85)))
+    out.alpha_composite(im)
+    return out
 
 
 def load_3d_sprites(d):
@@ -168,9 +181,15 @@ def load_3d_sprites(d):
         for k in keys:
             im = Image.open(files[k]).convert("RGBA")
             a = im.getchannel("A")
-            rgb = ImageEnhance.Contrast(ImageEnhance.Color(im.convert("RGB")).enhance(1.35)).enhance(1.06)
-            im = rgb.convert("RGBA")
-            im.putalpha(a)
+            if STYLE2:
+                rgb = ImageEnhance.Contrast(ImageEnhance.Color(im.convert("RGB")).enhance(1.15)).enhance(1.08)
+                im = rgb.convert("RGBA")
+                im.putalpha(a)
+                im = outline(im)
+            else:
+                rgb = ImageEnhance.Contrast(ImageEnhance.Color(im.convert("RGB")).enhance(1.35)).enhance(1.06)
+                im = rgb.convert("RGBA")
+                im.putalpha(a)
             ims[k] = im
         boxes = [im.getchannel("A").point(lambda v: 255 if v > 60 else 0).getbbox() for im in ims.values()]
         boxes = [b for b in boxes if b]
@@ -184,6 +203,15 @@ def load_3d_sprites(d):
             else:
                 sp[(c, int(k[1]), int(k[2]))] = im
     return sp
+
+
+def vignette(im, k=0.28):
+    W, H = im.size
+    yy, xx = np.mgrid[0:H, 0:W]
+    r = np.sqrt(((xx - W / 2) / (W / 2)) ** 2 + ((yy - H / 2) / (H / 2)) ** 2)
+    m = 1 - k * np.clip(r - 0.6, 0, 1) ** 1.6
+    arr = (np.asarray(im.convert("RGB")).astype(np.float32) * m[..., None]).clip(0, 255).astype(np.uint8)
+    return Image.fromarray(arr)
 
 
 def background(theme, W, H, seed):
@@ -202,7 +230,11 @@ def background(theme, W, H, seed):
                     dd.ellipse([x, y, x + r, y + r], fill=(255, 250, 210, 255))
             im.alpha_composite(Image.open(p).convert("RGBA").resize((W, H)))
             from PIL import ImageEnhance
-            im = ImageEnhance.Color(im.convert("RGB")).enhance(1.2)
+            im = ImageEnhance.Color(im.convert("RGB")).enhance(1.12 if STYLE2 else 1.2)
+            if STYLE2 and theme not in ("title", "board"):
+                from PIL import ImageFilter
+                im = im.filter(ImageFilter.GaussianBlur(2.2))
+                im = vignette(im)
             if theme == "title":
                 from PIL import ImageFilter
                 im = im.filter(ImageFilter.GaussianBlur(6))
@@ -486,6 +518,8 @@ class Painter:
         self.blink = {c: set(rng.integers(0, nf, max(1, nf // 70))) for c in BASE_H}
         self.logo = Image.open(LOGO).convert("RGBA") if os.path.exists(LOGO) else None
         self.prev_last = None
+        self.cur_ev = None
+        self.last_pos = {}
 
     def bg(self, si, theme):
         if si not in self.bgs:
@@ -534,9 +568,40 @@ class Painter:
             bh = BASE_H[c] * H if land else {"PIPO": 540, "TOTO": 490, "LULA": 340, "ZUMBI": 280, "ABU": 400}[c]
             bounce = abs(math.sin(tt * 7)) * 0.02 * H if is_sp else abs(math.sin(tt * 2 + i)) * 0.006 * H
             sq = 1 + (0.035 * math.sin(tt * 14) if is_sp else 0)
+            tilt = 0.0
+            if STYLE2:
+                st_ = tt - sg.get("t0", 0)
+                # entrada: cada personaje llega saltando desde su lado
+                if st_ < 0.55 and not sg.get("closing"):
+                    e_ = 1 - (1 - st_ / 0.55) ** 3
+                    side = -1 if px < W / 2 else 1
+                    px = int(px + side * (1 - e_) * 0.35 * W)
+                    bounce += abs(math.sin(st_ * 11)) * 0.05 * H * (1 - e_)
+                ev_ = self.cur_ev
+                if ev_ is not None and is_sp:
+                    since = tt - ev_["t"]
+                    if ev_["text"].strip().endswith("!") and since < 0.45:  # salto de entusiasmo
+                        bounce += math.sin(since / 0.45 * math.pi) * 0.06 * H
+                    # se inclina hacia quien escucha
+                    others = [p for o, p in self.last_pos.items() if o != c]
+                    if others:
+                        tgt = sum(others) / len(others)
+                        tilt = 4.0 * (1 if tgt < px else -1) * (0.6 + 0.4 * math.sin(tt * 3))
+                elif speaking and speaking in self.last_pos and speaking != c:
+                    # los que escuchan miran (se corren un poco) hacia el que habla y asienten
+                    dx = self.last_pos[speaking] - px
+                    px = int(px + max(-1, min(1, dx / (0.3 * W))) * 0.015 * W)
+                    bounce += abs(math.sin(tt * 4.5 + i)) * 0.008 * H
+                    tilt = 2.5 * (1 if dx < 0 else -1)
+                # respiración
+                sq *= 1 + 0.012 * math.sin(tt * 2.4 + i * 1.7)
             hh = int(bh * sc * sq)
             ww = int(spr.width * hh / spr.height / sq)
             s2 = spr.resize((ww, hh), Image.BILINEAR)
+            if tilt:
+                s2 = s2.rotate(tilt, resample=Image.BICUBIC, expand=True)
+                ww = s2.width
+                hh = s2.height
             lift = LIFT.get(c, 0) * (H if land else 1000) * sc
             sh = ImageDraw.Draw(frame, "RGBA")
             sw_ = ww * (0.36 if lift else 0.42) * (1 - min(0.3, bounce / (0.08 * H)))
@@ -544,7 +609,30 @@ class Painter:
             top = int(base_y - hh - bounce - lift)
             frame.paste(s2, (px - ww // 2, top), s2)
             self.heads[c] = (px, top + hh * (0.32 if c in ("PIPO", "ABU") else 0.42))
+            pos[c] = px
+        self.last_pos = dict(pos)
         return pos
+
+    def sparkles(self, layer, head, since, seed):
+        if since < 0 or since > 1.2:
+            return
+        d = ImageDraw.Draw(layer, "RGBA")
+        rng = np.random.default_rng(int(seed * 1000) % 100000)
+        hx, hy = head
+        cols = [(255, 214, 60), (255, 90, 150), (90, 200, 255), (140, 230, 90), (190, 120, 255)]
+        k = since / 1.2
+        for j in range(14):
+            ang = rng.uniform(0, 2 * math.pi)
+            ang = math.pi + ang / 2  # solo arriba y a los costados de la cabeza, nunca sobre la cara
+            dist = (0.16 + 0.10 * rng.random()) * self.H * (0.6 + 0.6 * k)
+            x = hx + math.cos(ang) * dist
+            y = hy - 0.10 * self.H + math.sin(ang) * dist * 0.6
+            r = (0.012 * self.H) * (1 - k) * (0.6 + rng.random())
+            if r < 1:
+                continue
+            c = cols[j % len(cols)] + (int(255 * (1 - k)),)
+            d.polygon([(x, y - r * 2), (x + r * 0.6, y - r * 0.6), (x + r * 2, y), (x + r * 0.6, y + r * 0.6),
+                       (x, y + r * 2), (x - r * 0.6, y + r * 0.6), (x - r * 2, y), (x - r * 0.6, y - r * 0.6)], fill=c)
 
     def draw_props(self, frame, sg, st, tt):
         W, H = self.W, self.H
@@ -682,6 +770,7 @@ class Painter:
             if e["t"] - 0.05 <= tt < e["t"] + len(e["a"]) / SR + 0.3:
                 ev = e
         speaking = ev["sp"] if ev else None
+        self.cur_ev = ev
         if sg["kind"] == "title":
             fr = cached_bg("title", W, H, 7).copy()
             self.title_card(fr, sg, st)
@@ -721,7 +810,13 @@ class Painter:
             layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
             self.heads = {}
             pos = self.draw_cast(layer, sg, fi, tt, speaking)
+            if STYLE2 and ev is not None and ev["text"].strip().endswith("!") and speaking in self.heads:
+                self.sparkles(layer, self.heads[speaking], tt - ev["t"], ev["t"])
             cx, cy, z = self.camera(si, sg, st, tt, ev, speaking)
+            if STYLE2 and ev is not None:
+                since = tt - ev["t"]
+                if 0 <= since < 0.35:
+                    z *= 1 + 0.03 * (1 - since / 0.35)
             # paralaje: el fondo se mueve y acerca menos que los personajes (sensación de profundidad)
             zb = 1 + (z - 1) * 0.55
             bx, by = W / 2 + (cx - W / 2) * 0.55, H / 2 + (cy - H / 2) * 0.55

@@ -41,6 +41,12 @@ def reset():
 _mats = {}
 
 
+def srgb2lin(v):
+    """Blender trabaja en color lineal: pasar los colores sRGB (0-255) a lineal para que salgan vivos y no lavados."""
+    v = v / 255
+    return v / 12.92 if v <= 0.04045 else ((v + 0.055) / 1.055) ** 2.4
+
+
 def mat(name, color, rough=0.45, emis=0.0, alpha=1.0, sss=0.0, metal=0.0):
     key = (name, color, rough, emis, alpha)
     if key in _mats:
@@ -48,7 +54,7 @@ def mat(name, color, rough=0.45, emis=0.0, alpha=1.0, sss=0.0, metal=0.0):
     m = bpy.data.materials.new(name)
     m.use_nodes = True
     b = m.node_tree.nodes["Principled BSDF"]
-    c = tuple(x / 255 for x in color) + (1,)
+    c = tuple(srgb2lin(x) for x in color) + (1,)
     b.inputs["Base Color"].default_value = c
     b.inputs["Roughness"].default_value = rough
     b.inputs["Metallic"].default_value = metal
@@ -183,16 +189,16 @@ def render(sc, path):
 # ------------------------------------------------------------------ personajes
 def bombolin(mouth_open, closed):
     sc = reset()
-    G = mat("pipo", (126, 217, 166), 0.5, sss=0.05)
-    Y = mat("belly", (255, 228, 120), 0.5)
+    G = mat("pipo", (70, 215, 150), 0.5, sss=0.05)
+    Y = mat("belly", (255, 220, 80), 0.5)
     O = mat("orange", (255, 150, 60), 0.45)
     W = mat("shell", (255, 253, 245), 0.3)
-    B = mat("dots", (110, 170, 255), 0.35)
+    B = mat("dots", (40, 120, 255), 0.35)
     K = mat("cheek", (255, 150, 170), 0.6)
     sphere((0, 0, 0.62), (0.56, 0.5, 0.62), G, name="body")
     sphere((0, -0.3, 0.6), (0.38, 0.22, 0.46), Y, name="belly")
     for (x, z) in [(-0.1, 0.72), (0.14, 0.55), (-0.05, 0.42)]:
-        sphere((x, -0.5, z), (0.045, 0.02, 0.045), mat("spot", (100, 190, 130), 0.5), name="spot")
+        sphere((x, -0.5, z), (0.045, 0.02, 0.045), mat("spot", (30, 160, 110), 0.5), name="spot")
     sphere((0, -0.02, 1.42), (0.56, 0.52, 0.5), G, name="head")
     sphere((0, -0.33, 1.3), (0.34, 0.26, 0.24), G, name="snout")
     for x in (-0.24, 0.24):
@@ -224,7 +230,7 @@ def bombolin(mouth_open, closed):
 
 def toto(mouth_open, closed):
     sc = reset()
-    Or = mat("toto", (255, 154, 60), 0.85)
+    Or = mat("toto", (255, 135, 30), 0.85)
     body = sphere((0, 0, 0.8), (0.78, 0.72, 0.78), Or, seg=96, name="fur")
     tex = bpy.data.textures.new("furtex", "CLOUDS")
     tex.noise_scale = 0.08
@@ -248,8 +254,8 @@ def toto(mouth_open, closed):
     return sc
 
 
-LULA_COL = {"calm": (150, 210, 245), "sad": (175, 180, 195), "angry": (255, 140, 130), "shy": (255, 175, 210),
-            "happy": (150, 210, 245)}
+LULA_COL = {"calm": (120, 200, 255), "sad": (160, 170, 200), "angry": (255, 110, 100), "shy": (255, 150, 200),
+            "happy": (120, 200, 255)}
 
 
 def lula(mouth_open, closed, mood):
@@ -334,7 +340,7 @@ def zumbi(mouth_open, closed, wing):
 
 def abu(mouth_open, closed):
     sc = reset()
-    SK = mat("abuskin", (150, 205, 120), 0.6)
+    SK = mat("abuskin", (120, 205, 85), 0.6)
     # caparazón tipo colcha: voronoi con colores
     sh = bpy.data.materials.new("shell")
     sh.use_nodes = True
@@ -344,8 +350,8 @@ def abu(mouth_open, closed):
     vor = nt.nodes.new("ShaderNodeTexVoronoi")
     vor.inputs["Scale"].default_value = 5.0
     ramp = nt.nodes.new("ShaderNodeValToRGB")
-    ramp.color_ramp.elements[0].color = (0.25, 0.55, 0.32, 1)
-    ramp.color_ramp.elements[1].color = (0.62, 0.82, 0.45, 1)
+    ramp.color_ramp.elements[0].color = (0.04, 0.35, 0.12, 1)
+    ramp.color_ramp.elements[1].color = (0.35, 0.7, 0.12, 1)
     nt.links.new(vor.outputs["Color"], ramp.inputs["Fac"])
     nt.links.new(ramp.outputs["Color"], b.inputs["Base Color"])
     shell = sphere((0.25, 0.25, 0.7), (0.85, 0.78, 0.62), sh, name="shell")
