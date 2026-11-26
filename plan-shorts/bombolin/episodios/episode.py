@@ -205,6 +205,32 @@ def load_3d_sprites(d):
     return sp
 
 
+_SHD = {}
+
+
+def soft_shadow(w, strength):
+    """Sombra elíptica difuminada (cacheada por tamaño): oscura al centro, suave en los bordes."""
+    from PIL import ImageFilter
+    w = max(20, int(w) // 8 * 8)
+    q = round(strength * 10) / 10
+    k = (w, q)
+    if k not in _SHD:
+        h = max(8, int(w * 0.16))
+        pad = int(w * 0.12)
+        m = Image.new("L", (w * 2 + pad * 2, h * 2 + pad * 2), 0)
+        ImageDraw.Draw(m).ellipse([pad, pad, pad + w * 2, pad + h * 2], fill=int(255 * q))
+        m = m.filter(ImageFilter.GaussianBlur(max(3, w * 0.07)))
+        core = Image.new("L", m.size, 0)
+        ImageDraw.Draw(core).ellipse([pad + w * 0.45, pad + h * 0.55, pad + w * 1.55, pad + h * 1.45], fill=int(255 * q * 0.6))
+        core = core.filter(ImageFilter.GaussianBlur(max(2, w * 0.03)))
+        from PIL import ImageChops
+        a = ImageChops.add(m, core)
+        im = Image.new("RGBA", m.size, (30, 25, 40, 0))
+        im.putalpha(a)
+        _SHD[k] = im
+    return _SHD[k]
+
+
 def vignette(im, k=0.28):
     W, H = im.size
     yy, xx = np.mgrid[0:H, 0:W]
@@ -570,6 +596,9 @@ class Painter:
             sq = 1 + (0.035 * math.sin(tt * 14) if is_sp else 0)
             tilt = 0.0
             if STYLE2:
+                bounce = 0.0
+                if is_sp:  # habla «con el cuerpo»: se estira y se aplasta sin despegarse del suelo
+                    sq = 1 + 0.045 * abs(math.sin(tt * 7))
                 st_ = tt - sg.get("t0", 0)
                 # entrada: cada personaje llega saltando desde su lado
                 if st_ < 0.55 and not sg.get("closing"):
@@ -581,7 +610,7 @@ class Painter:
                 if ev_ is not None and is_sp:
                     since = tt - ev_["t"]
                     if ev_["text"].strip().endswith("!") and since < 0.45:  # salto de entusiasmo
-                        bounce += math.sin(since / 0.45 * math.pi) * 0.06 * H
+                        bounce += math.sin(since / 0.45 * math.pi) * 0.035 * H
                     # se inclina hacia quien escucha
                     others = [p for o, p in self.last_pos.items() if o != c]
                     if others:
@@ -591,7 +620,7 @@ class Painter:
                     # los que escuchan miran (se corren un poco) hacia el que habla y asienten
                     dx = self.last_pos[speaking] - px
                     px = int(px + max(-1, min(1, dx / (0.3 * W))) * 0.015 * W)
-                    bounce += abs(math.sin(tt * 4.5 + i)) * 0.008 * H
+                    sq *= 1 - 0.015 * abs(math.sin(tt * 4.5 + i))  # asiente
                     tilt = 2.5 * (1 if dx < 0 else -1)
                 # respiración
                 sq *= 1 + 0.012 * math.sin(tt * 2.4 + i * 1.7)
@@ -603,10 +632,19 @@ class Painter:
                 ww = s2.width
                 hh = s2.height
             lift = LIFT.get(c, 0) * (H if land else 1000) * sc
-            sh = ImageDraw.Draw(frame, "RGBA")
-            sw_ = ww * (0.36 if lift else 0.42) * (1 - min(0.3, bounce / (0.08 * H)))
-            sh.ellipse([px - sw_, base_y - ww * 0.06, px + sw_, base_y + ww * 0.06], fill=(0, 0, 0, 45 if lift else 70))
-            top = int(base_y - hh - bounce - lift)
+            if STYLE2:
+                # sombra de contacto suave pegada a los pies (más chica y clara cuando salta o vuela)
+                air = min(1.0, (bounce + lift) / (0.12 * H))
+                sw_ = int(ww * 0.46 * (1 - 0.45 * air))
+                shd = soft_shadow(sw_, 0.55 * (1 - 0.6 * air))
+                frame.alpha_composite(shd, (int(px - shd.width / 2), int(base_y - shd.height / 2)))
+                sink = int(0.012 * hh)  # los pies «pisan» un poco la sombra
+            else:
+                sh = ImageDraw.Draw(frame, "RGBA")
+                sw_ = ww * (0.36 if lift else 0.42) * (1 - min(0.3, bounce / (0.08 * H)))
+                sh.ellipse([px - sw_, base_y - ww * 0.06, px + sw_, base_y + ww * 0.06], fill=(0, 0, 0, 45 if lift else 70))
+                sink = 0
+            top = int(base_y - hh - bounce - lift + sink)
             frame.paste(s2, (px - ww // 2, top), s2)
             self.heads[c] = (px, top + hh * (0.32 if c in ("PIPO", "ABU") else 0.42))
             pos[c] = px
