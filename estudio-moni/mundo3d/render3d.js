@@ -10,7 +10,7 @@ const tl = JSON.parse(fs.readFileSync(path.join(LARGOS, 'timeline', `${pad(n)}.j
 const spec = require(path.join(HERE, 'planos', `${n}.js`));
 const t0 = +(opt('desde') || 0), t1 = +(opt('hasta') || tl.total), workers = +(opt('workers') || 3);
 const stills = opt('stills') ? opt('stills').split(',').map(Number) : null;
-const outFile = opt('out') || path.join(LARGOS, 'mp4_3d', `${pad(n)}${t0 || t1 < tl.total ? `_${Math.round(t0)}-${Math.round(t1)}` : ''}.mp4`);
+const outFile = opt('out') ? path.resolve(opt('out')) : path.join(LARGOS, 'mp4_3d', `${pad(n)}${t0 || t1 < tl.total ? `_${Math.round(t0)}-${Math.round(t1)}` : ''}.mp4`);
 
 // planos absolutos a partir del guion de planos
 const shots = [];
@@ -59,6 +59,7 @@ function enc(file, withAudio, from, dur) {
   const list = outFile.replace('.mp4', '.txt'); fs.writeFileSync(list, parts.filter(Boolean).map(f => `file '${f}'`).join('\n'));
   await new Promise(r => spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'concat', '-safe', '0', '-i', list, '-i', path.join(LARGOS, 'audio', `${pad(n)}.wav`),
     '-map', '0:v', '-map', '1:a', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-af', `atrim=${t0}:${t1},asetpts=PTS-STARTPTS,loudnorm=I=-14:TP=-1.5:LRA=11`, '-shortest', outFile], {stdio: 'inherit'}).on('close', r));
+  if (!fs.existsSync(outFile) || fs.statSync(outFile).size < 1000) { console.error('ERROR: no se pudo unir; quedan las partes en', path.dirname(outFile)); process.exit(1) }
   parts.filter(Boolean).forEach(f => fs.unlinkSync(f)); fs.unlinkSync(list);
   console.log(`listo ${outFile} en ${((Date.now() - t00) / 60000).toFixed(1)} min`);
 })();
