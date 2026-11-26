@@ -57,6 +57,7 @@ function closeCam(c, o = {}) {
   const e = new THREE.Vector3(0, (c.eye.y - (c.userData.sit ? c.sitDrop : 0)) * c.scale.y, 0).add(c.position);
   const ry = c.rotation.y + (o.angle || 0), d = o.dist || 5.6;
   const p = new THREE.Vector3(Math.sin(ry) * d, .45, Math.cos(ry) * d).add(e);
+  if (o.shift) { const rx = Math.cos(ry) * o.shift, rz = -Math.sin(ry) * o.shift; p.x -= rx; p.z -= rz; e.x -= rx; e.z -= rz }  // corre al personaje a la derecha del cuadro
   return {p: p.toArray(), look: [e.x, e.y - .1, e.z], fov: o.fov || 33};
 }
 function chunkCaption(text, k) { // 2-4 palabras por pantalla, sincronizado por proporción de letras

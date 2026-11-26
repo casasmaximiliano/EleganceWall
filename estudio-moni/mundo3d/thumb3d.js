@@ -17,6 +17,14 @@ const T = {
     {loc: 'cafeteria', cast: CAFE, ex: {cup: 'shock', moni: 'happy'}, gesture: {cup: 'shock'}, cam: CAM_CUP,
       txt: ['$3 →', '$173.238'], side: 'left'},
   ],
+  25: [
+    {loc: 'depto', cast: {moni: 'escritorio', centavito: 'junto'}, ex: {moni: 'happy', centavito: 'happy'}, gesture: {moni: 'armsUp'}, closeOf: 'moni', camOpt: {angle: -.35, dist: 7, shift: 1.6, fov: 36},
+      txt: ['90 DÍAS', '4 % → 17 %']},
+    {loc: 'depto', cast: {moni: 'escritorio', centavito: 'junto'}, ex: {moni: 'shock'}, gesture: {moni: 'armsUp'}, closeOf: 'moni', camOpt: {angle: -.35, dist: 7, shift: 1.6, fov: 36},
+      txt: ['5 NÚMEROS', 'QUE CAMBIAN', 'TODO']},
+    {loc: 'cafeteria', cast: CAFE, ex: {moni: 'happy', cup: 'happy'}, gesture: {moni: 'armsUp'}, cam: CAM_MONI,
+      txt: ['MISMO', 'SUELDO', '+$152/MES']},
+  ],
 };
 
 const CSS = `#ov{display:none!important}
