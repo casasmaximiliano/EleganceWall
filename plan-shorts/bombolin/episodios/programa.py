@@ -142,11 +142,45 @@ def build_program(n, vdir, cache):
     return segs, events, total
 
 
+def program_picks(n):
+    """Bloques de la biblioteca que entran seguro en el programa del día n (antes de «¡Otra aventura!»)."""
+    used, picks = set(), []
+    for kind, count in PATTERN:
+        if kind == "OTRA":
+            break
+        picks += [(kind, lib_pick(kind, n, used)) for _ in range(count)]
+    return picks
+
+
+def lib_short(n):
+    """Tercer short del día: una canción, un juego o un dato del programa que no haya sido short antes."""
+    prev = {lib_short(d) for d in range(1, n) if d in E.EPISODES} if n > 1 else set()
+    order = ["F", "E", "B"]
+    order = order[(n - 1) % 3:] + order[:(n - 1) % 3]
+    picks = program_picks(n)
+    for kind in order:
+        for kd, sid in picks:
+            if kd == kind and sid not in prev:
+                return sid
+    return picks[0][1]
+
+
+def n_shorts(n):
+    return len(SHORTS[n]) + 1
+
+
 def build_short(n, k, vdir, cache):
-    st = story(n)
-    a, b, hook = SHORTS[n][k]
-    segs = [scene_seg(sc) for sc in st[a:b + 1]]
-    segs.append(dict(kind="scene", theme=st[a][0], props=[E.EPISODES[n]["sticker"]], chars=["PIPO", "ABU"], guests=[],
+    if k >= len(SHORTS[n]):
+        sid = lib_short(n)
+        segs = [dict(s) for s in E.library_segments(sid)]
+        hook = R.get_short(sid)["hes"]
+        a_theme = next((s.get("theme") for s in segs if s.get("theme")), "show")
+    else:
+        st = story(n)
+        a, b, hook = SHORTS[n][k]
+        segs = [scene_seg(sc) for sc in st[a:b + 1]]
+        a_theme = st[a][0]
+    segs.append(dict(kind="scene", theme=a_theme, props=[E.EPISODES[n]["sticker"]], chars=["PIPO", "ABU"], guests=[],
                      mood="happy", lines=[("ABU", "¡El programa completo está en el canal!"),
                                           ("ALL", "¡Un, dos, tres, a descubrir otra vez!")], idx=-1, closing=True))
     events, total = timeline(segs, vdir, cache)
@@ -223,11 +257,11 @@ def main():
         if "prog" in a.what:
             jobs.append(("prog", n, 0, a.voices, a.out, cache))
         if "short" in a.what:
-            jobs += [("short", n, k, a.voices, a.out, cache) for k in range(len(SHORTS[n]))]
+            jobs += [("short", n, k, a.voices, a.out, cache) for k in range(n_shorts(n))]
     for n in dias:  # voces primero, en serie
         s, e, t = build_program(n, a.voices, cache)
         print(f"día {n}: {t / 60:.1f} min", flush=True)
-        for k in range(len(SHORTS[n])):
+        for k in range(n_shorts(n)):
             build_short(n, k, a.voices, cache)
     jobs.sort(key=lambda j: j[0] != "prog")
     with Pool(a.jobs) as p:
