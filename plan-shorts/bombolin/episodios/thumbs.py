@@ -14,8 +14,35 @@ import branding as B  # noqa: E402
 from episode import EPISODES  # noqa: E402
 
 W, H = 1280, 720
-PALETTE = [((255, 120, 150), (255, 200, 120)), ((90, 160, 255), (150, 230, 255)), ((120, 200, 110), (220, 250, 150)),
-           ((170, 115, 230), (255, 160, 220)), ((255, 170, 60), (255, 230, 120))]
+VIVID = bool(os.environ.get("BOMBOLIN_ESTILO") == "2")
+PALETTE = ([((255, 40, 120), (255, 170, 0)), ((10, 90, 255), (0, 210, 255)), ((0, 160, 80), (160, 235, 30)),
+            ((120, 40, 230), (255, 70, 190)), ((255, 90, 0), (255, 210, 0))] if VIVID else
+           [((255, 120, 150), (255, 200, 120)), ((90, 160, 255), (150, 230, 255)), ((120, 200, 110), (220, 250, 150)),
+            ((170, 115, 230), (255, 160, 220)), ((255, 170, 60), (255, 230, 120))])
+
+
+def pop(im, px=12):
+    """Borde blanco grueso alrededor de un recorte (estilo calcomanía): resalta sobre cualquier fondo."""
+    if not VIVID:
+        return im
+    from PIL import ImageFilter
+    a = im.getchannel("A").point(lambda v: 255 if v > 80 else 0)
+    pad = px + 4
+    big = Image.new("L", (im.width + pad * 2, im.height + pad * 2), 0)
+    big.paste(a, (pad, pad))
+    big = big.filter(ImageFilter.MaxFilter(px * 2 + 1)).filter(ImageFilter.GaussianBlur(1.2))
+    out = Image.new("RGBA", big.size, (255, 255, 255, 0))
+    out.putalpha(big)
+    out.alpha_composite(im, (pad, pad))
+    return out
+
+
+def finish(im):
+    if not VIVID:
+        return im
+    from PIL import ImageEnhance
+    rgb = ImageEnhance.Contrast(ImageEnhance.Color(im.convert("RGB")).enhance(1.2)).enhance(1.06)
+    return rgb.convert("RGBA")
 _sp = {}
 
 
@@ -33,7 +60,7 @@ def sprite(name, h):
                 _SP3D = E.load_3d_sprites(d)
             key = {"PIPO": ("PIPO", 1, 0), "LULA": ("LULA", "happy", 0, 0), "ZUMBI": ("ZUMBI", 1, 1, 0)}.get(name, (name, 0, 0))
             im = _SP3D[key]
-            _sp[(name, h)] = im.resize((int(im.width * h / im.height), h), Image.LANCZOS)
+            _sp[(name, h)] = pop(im.resize((int(im.width * h / im.height), h), Image.LANCZOS))
         else:
             _sp[(name, h)] = B.sprite(name, h)
     return _sp[(name, h)]
@@ -42,6 +69,12 @@ def sprite(name, h):
 def scene_bg(seed):
     if os.environ.get("BOMBOLIN_BG3D"):
         import episode as E
+        if VIVID:  # en la miniatura, fondo nítido y saturado (sin desenfoque ni viñeta)
+            from PIL import ImageEnhance
+            old, E.STYLE2 = E.STYLE2, False
+            im = E.background("meadow", W, H, seed)
+            E.STYLE2 = old
+            return ImageEnhance.Color(im.convert("RGB")).enhance(1.35).convert("RGBA")
         return E.background("meadow", W, H, seed).convert("RGBA")
     return B.meadow(W, H, seed=seed, horizon=0.62)
 
@@ -64,8 +97,9 @@ def burst(im, c):
     import math
     for i in range(18):
         a = i / 18 * 2 * math.pi
+        col = ((255, 240, 90) if i % 2 else (255, 255, 255)) if VIVID else c
         d.polygon([(W / 2, H / 2), (W / 2 + 1500 * math.cos(a), H / 2 + 1500 * math.sin(a)),
-                   (W / 2 + 1500 * math.cos(a + 0.17), H / 2 + 1500 * math.sin(a + 0.17))], fill=c + (60,))
+                   (W / 2 + 1500 * math.cos(a + 0.17), H / 2 + 1500 * math.sin(a + 0.17))], fill=col + (70 if VIVID else 60,))
 
 
 def v1(ep, lang, pal):
@@ -73,7 +107,7 @@ def v1(ep, lang, pal):
     burst(im, (255, 255, 255))
     p = sprite("PIPO", 600)
     im.alpha_composite(p, (40, H - p.height + 20))
-    e = B.emoji(ep["thumb"]["em"], 360)
+    e = pop(B.emoji(ep["thumb"]["em"], 360))
     im.alpha_composite(e, (W - e.width - 90, 230))
     d = ImageDraw.Draw(im)
     big_text(d, (W * 0.62, 110), ep["thumb"]["t1_" + lang], 110)
@@ -88,7 +122,7 @@ def v2(ep, lang, pal):
         s = sprite(c, 470 if c != "LULA" else 300)
         y = H - s.height + 10 if c not in ("LULA", "ZUMBI") else 230
         im.alpha_composite(s, (int(x[i] - s.width / 2), int(y)))
-    e = B.emoji(ep["thumb"]["em"], 330)
+    e = pop(B.emoji(ep["thumb"]["em"], 330))
     im.alpha_composite(e, (W // 2 - e.width // 2, 150))
     logo_corner(im)
     return im
@@ -100,7 +134,7 @@ def v3(ep, lang, pal):
     c = ep["thumb"]["chars"][1] if ep["thumb"]["chars"][0] == "PIPO" else ep["thumb"]["chars"][0]
     s = sprite(c, 560 if c not in ("LULA", "ZUMBI") else 380)
     im.alpha_composite(s, (W - s.width - 30, H - s.height + 10 if c not in ("LULA", "ZUMBI") else 200))
-    e = B.emoji(ep["thumb"]["em"], 300)
+    e = pop(B.emoji(ep["thumb"]["em"], 300))
     im.alpha_composite(e, (90, 260))
     d = ImageDraw.Draw(im)
     big_text(d, (W * 0.40, 120), ep["thumb"]["t2_" + lang], 96, fill=(255, 255, 255), maxw=W * 0.75)
@@ -152,7 +186,7 @@ def main():
         pal = PALETTE[n % len(PALETTE)]
         for lang in ("es", "en"):
             for k, f in enumerate((v1, v2, v3), 1):
-                f(ep, lang, pal).convert("RGB").save(os.path.join(out, f"E{n:02d}_{lang.upper()}_miniatura{k}.jpg"), quality=90)
+                finish(f(ep, lang, pal)).convert("RGB").save(os.path.join(out, f"E{n:02d}_{lang.upper()}_miniatura{k}.jpg"), quality=90)
     for cid, eps in COMPS:
         for lang in ("es", "en"):
             for k in range(3):
