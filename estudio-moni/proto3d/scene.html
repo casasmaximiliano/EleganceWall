@@ -7,7 +7,7 @@ const R = new THREE.WebGLRenderer({antialias: true, preserveDrawingBuffer: true}
 R.setSize(W, H); R.setPixelRatio(1); R.shadowMap.enabled = true; R.shadowMap.type = THREE.PCFSoftShadowMap;
 R.outputColorSpace = THREE.SRGBColorSpace; R.toneMapping = THREE.ACESFilmicToneMapping; R.toneMappingExposure = 1.05;
 document.body.appendChild(R.domElement);
-const S = new THREE.Scene(); S.background = new THREE.Color('#F3D9B8'); S.fog = new THREE.Fog('#F3D9B8', 18, 40);
+const S = new THREE.Scene(); S.background = new THREE.Color('#F6D7A8'); S.fog = new THREE.Fog('#F3D9B8', 18, 40);
 const cam = new THREE.PerspectiveCamera(35, W / H, 0.1, 100);
 const mat = (c, o = {}) => new THREE.MeshStandardMaterial(Object.assign({color: c, roughness: .55, metalness: 0}, o));
 const box = (w, h, d, m) => { const g = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m); g.castShadow = g.receiveShadow = true; return g };
@@ -104,6 +104,22 @@ const moni = makeMoni(); moni.position.set(-1.7, .2, .6); moni.rotation.y = .35;
 const cafe = makeCafecito(); cafe.position.set(1.9, .2, .4); cafe.rotation.y = -.35; S.add(cafe);
 // sillas
 [[-1.7, .6], [1.9, .4]].forEach(([x, z]) => { const seat = box(1.4, .12, 1.2, mat('#C46A3C')); seat.position.set(x, .9, z - .1); S.add(seat) });
+
+
+// ESTILO TOON: sombreado en 3 tonos + contorno negro (como los shorts de referencia)
+const grad = (() => { const d = new Uint8Array([90, 170, 255]); const t = new THREE.DataTexture(d, 3, 1, THREE.RedFormat); t.needsUpdate = true; t.minFilter = t.magFilter = THREE.NearestFilter; return t })();
+const OUT = new THREE.MeshBasicMaterial({color: '#1b1410', side: THREE.BackSide});
+function toonify(root) {
+  const list = []; root.traverse(o => { if (o.isMesh) list.push(o) });
+  list.forEach(o => {
+    const m = o.material; if (!m || m.isMeshBasicMaterial) return;
+    o.material = new THREE.MeshToonMaterial({color: m.color, map: m.map || null, gradientMap: grad, emissive: m.emissive || new THREE.Color(0), emissiveIntensity: m.emissiveIntensity || 0, transparent: m.transparent, opacity: m.opacity});
+    const big = o.geometry.boundingSphere || (o.geometry.computeBoundingSphere(), o.geometry.boundingSphere);
+    if (o.geometry.type === 'PlaneGeometry' || o.geometry.type === 'CircleGeometry' || m.transparent) return;
+    const h = new THREE.Mesh(o.geometry, OUT); const k = 1 + Math.min(.08, .035 / Math.max(.05, big.radius)); h.scale.setScalar(k); o.add(h);
+  });
+}
+toonify(S);
 
 // animación determinística
 const shots = [
