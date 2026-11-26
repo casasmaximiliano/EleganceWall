@@ -237,14 +237,14 @@ def xmas(portrait):
     snow(portrait, night=True)
     cone((-5.5, 6, 1.6), 1.6, 0.05, 3.2, mat("xtree", (40, 140, 80), 0.7))
     cone((-5.5, 6, 3.2), 1.1, 0.05, 2.2, mat("xtree", (40, 140, 80), 0.7))
-    sph((-5.5, 6, 4.5), (0.3, 0.3, 0.3), mat("star", (255, 220, 60), 0.3, emis=6))
+    sph((-5.5, 6, 4.5), (0.3, 0.3, 0.3), mat("star", (255, 210, 50), 0.3, emis=2.0))
     rnd = random.Random(5)
     cols = [(255, 80, 80), (255, 210, 60), (90, 170, 255), (255, 255, 255)]
     for k in range(26):
         h = rnd.uniform(0.4, 3.8)
         r = 1.6 * (1 - h / 4.6) + 0.05
         a = rnd.uniform(0, 2 * math.pi)
-        sph((-5.5 + r * math.cos(a), 6 + r * math.sin(a), h), (0.11, 0.11, 0.11), mat(f"bulb{k % 4}", cols[k % 4], 0.3, emis=5))
+        sph((-5.5 + r * math.cos(a), 6 + r * math.sin(a), h), (0.11, 0.11, 0.11), mat(f"bulb{k % 4}", cols[k % 4], 0.3, emis=1.6))
     for k in range(3):
         cube((-4.6 + k * 0.7, 5.0, 0.3), (0.3, 0.3, 0.3), mat(f"gift{k}", [(255, 90, 120), (90, 170, 255), (255, 210, 70)][k], 0.5))
 
@@ -252,9 +252,9 @@ def xmas(portrait):
 def cave(portrait):
     rock = mat("rock", (110, 85, 150), 0.95)
     ground(mat("cavefloor", (90, 70, 120), 0.95), bumps=0.4)
-    bpy.ops.mesh.primitive_uv_sphere_add(segments=64, ring_count=32, location=(0, 8, 0))
+    bpy.ops.mesh.primitive_uv_sphere_add(segments=64, ring_count=32, location=(0, 2, 0))
     o = bpy.context.object
-    o.scale = (16, 14, 9)
+    o.scale = (24, 22, 10)
     t = bpy.data.textures.new("rockt", "CLOUDS")
     t.noise_scale = 1.5
     d = o.modifiers.new("d", "DISPLACE")
@@ -265,7 +265,7 @@ def cave(portrait):
     cols = [(120, 255, 230), (255, 150, 230), (255, 240, 120)]
     for k in range(18):
         x, y = rnd.uniform(-10, 10), rnd.uniform(3, 18)
-        cone((x, y, 0.5), rnd.uniform(0.15, 0.35), 0.0, rnd.uniform(0.8, 1.8), mat(f"cry{k % 3}", cols[k % 3], 0.2, emis=2.5),
+        cone((x, y, 0.5), rnd.uniform(0.15, 0.35), 0.0, rnd.uniform(0.8, 1.8), mat(f"cry{k % 3}", cols[k % 3], 0.2, emis=1.0),
              rot=(rnd.uniform(-0.3, 0.3), rnd.uniform(-0.3, 0.3), 0))
     for k in range(20):
         x, y = rnd.uniform(-12, 12), rnd.uniform(4, 20)

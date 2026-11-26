@@ -175,6 +175,8 @@ def render_job(job):
         w.setframerate(SR)
         w.writeframes((mix * 32767).astype(np.int16).tobytes())
     nf = int(total * FPS) + 1
+    if os.environ.get("BOMBOLIN_MAXT"):
+        nf = min(nf, int(float(os.environ["BOMBOLIN_MAXT"]) * FPS))
     P = E.Painter(W, H, ep, "es", segs, events, nf, kind == "short")
     mp4 = os.path.join(out, name + ".mp4")
     cmd = ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),

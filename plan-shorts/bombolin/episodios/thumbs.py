@@ -19,10 +19,31 @@ PALETTE = [((255, 120, 150), (255, 200, 120)), ((90, 160, 255), (150, 230, 255))
 _sp = {}
 
 
+_SP3D = None
+
+
 def sprite(name, h):
+    """Sprite del personaje: 3D si existe BOMBOLIN_SPRITES3D, si no el dibujo 2D."""
+    global _SP3D
     if (name, h) not in _sp:
-        _sp[(name, h)] = B.sprite(name, h)
+        d = os.environ.get("BOMBOLIN_SPRITES3D")
+        if d:
+            if _SP3D is None:
+                import episode as E
+                _SP3D = E.load_3d_sprites(d)
+            key = {"PIPO": ("PIPO", 1, 0), "LULA": ("LULA", "happy", 0, 0), "ZUMBI": ("ZUMBI", 1, 1, 0)}.get(name, (name, 0, 0))
+            im = _SP3D[key]
+            _sp[(name, h)] = im.resize((int(im.width * h / im.height), h), Image.LANCZOS)
+        else:
+            _sp[(name, h)] = B.sprite(name, h)
     return _sp[(name, h)]
+
+
+def scene_bg(seed):
+    if os.environ.get("BOMBOLIN_BG3D"):
+        import episode as E
+        return E.background("meadow", W, H, seed).convert("RGBA")
+    return B.meadow(W, H, seed=seed, horizon=0.62)
 
 
 def big_text(d, xy, text, size, fill=(255, 214, 60), anchor="mm", maxw=W - 80):
@@ -60,7 +81,7 @@ def v1(ep, lang, pal):
 
 
 def v2(ep, lang, pal):
-    im = B.meadow(W, H, seed=ep["n"], horizon=0.62)
+    im = scene_bg(ep["n"])
     chars = ep["thumb"]["chars"][:2]
     x = [250, W - 250]
     for i, c in enumerate(chars):
@@ -88,7 +109,7 @@ def v3(ep, lang, pal):
 
 def compilation(eps, lang, variant, label):
     pal = PALETTE[variant % len(PALETTE)]
-    im = B.vgrad(W, H, *pal) if variant != 1 else B.meadow(W, H, seed=len(eps), horizon=0.62)
+    im = B.vgrad(W, H, *pal) if variant != 1 else scene_bg(len(eps))
     if variant != 1:
         burst(im, (255, 255, 255))
     d = ImageDraw.Draw(im, "RGBA")

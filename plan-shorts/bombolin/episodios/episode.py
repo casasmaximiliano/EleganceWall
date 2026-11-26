@@ -163,8 +163,17 @@ def load_3d_sprites(d):
         by_char.setdefault(k[0], []).append(k)
     sp = {}
     for c, keys in by_char.items():
-        ims = {k: Image.open(files[k]).convert("RGBA") for k in keys}
-        boxes = [im.getbbox() for im in ims.values() if im.getbbox()]
+        from PIL import ImageEnhance
+        ims = {}
+        for k in keys:
+            im = Image.open(files[k]).convert("RGBA")
+            a = im.getchannel("A")
+            rgb = ImageEnhance.Contrast(ImageEnhance.Color(im.convert("RGB")).enhance(1.35)).enhance(1.06)
+            im = rgb.convert("RGBA")
+            im.putalpha(a)
+            ims[k] = im
+        boxes = [im.getchannel("A").point(lambda v: 255 if v > 60 else 0).getbbox() for im in ims.values()]
+        boxes = [b for b in boxes if b]
         box = (min(b[0] for b in boxes), min(b[1] for b in boxes), max(b[2] for b in boxes), max(b[3] for b in boxes))
         for k, im in ims.items():
             im = im.crop(box)
@@ -192,7 +201,8 @@ def background(theme, W, H, seed):
                     r = rng.integers(2, 5)
                     dd.ellipse([x, y, x + r, y + r], fill=(255, 250, 210, 255))
             im.alpha_composite(Image.open(p).convert("RGBA").resize((W, H)))
-            im = im.convert("RGB")
+            from PIL import ImageEnhance
+            im = ImageEnhance.Color(im.convert("RGB")).enhance(1.2)
             if theme == "title":
                 from PIL import ImageFilter
                 im = im.filter(ImageFilter.GaussianBlur(6))
@@ -521,7 +531,7 @@ class Painter:
             mouth = 1 if (is_sp and lvl > 0.06 and int(tt * 8) % 2 == 0) else 0
             bl = 1 if any((fi - d) in self.blink[c] for d in range(max(3, FPS // 8))) else 0
             spr = self.char_sprite(c, mouth, bl, fi, sg.get("mood", "calm"))
-            bh = BASE_H[c] * H if land else {"PIPO": 540, "TOTO": 490, "LULA": 340, "ZUMBI": 280, "ABU": 540}[c]
+            bh = BASE_H[c] * H if land else {"PIPO": 540, "TOTO": 490, "LULA": 340, "ZUMBI": 280, "ABU": 400}[c]
             bounce = abs(math.sin(tt * 7)) * 0.02 * H if is_sp else abs(math.sin(tt * 2 + i)) * 0.006 * H
             sq = 1 + (0.035 * math.sin(tt * 14) if is_sp else 0)
             hh = int(bh * sc * sq)
