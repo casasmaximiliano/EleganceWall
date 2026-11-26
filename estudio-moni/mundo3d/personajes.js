@@ -131,8 +131,39 @@ function delivy() {
   c.legY0 = 1.05; c.sitDrop = .75; c.anim = (t, st) => animate(c, t, st); c.eye = new THREE.Vector3(0, 2.4, 0); return c;
 }
 
+
+// ───── ZOMBI DE SUSCRIPCIONES: tierno, verde, con control remoto y balde de pochoclo ─────
+function zombi(o = {}) {
+  const c = new THREE.Group(); const B = rig(c, {height: 3.3});
+  const skin = toon(o.skin || '#8BCB7A'), cloth = toon(o.cloth || '#6B5B95');
+  const torso = M3.cap(.62, .6, cloth); torso.position.y = 1.75; B.add(torso);
+  const head = sph(.72, skin); head.position.y = 2.95; head.scale.set(1, .95, .95); B.add(head);
+  const hair = sph(.74, toon('#3d5a35')); hair.scale.set(1, .45, 1); hair.position.set(0, 3.32, -.05); B.add(hair);
+  const stitch = box(.35, .04, .04, flat('#3d2a2a'), {outline: false}); stitch.position.set(.35, 3.3, .6); stitch.rotation.z = .4; B.add(stitch);
+  c.face = M3.face(B, {y: 2.92, z: .62, s: .85, lidColor: '#7BBB6A', cheek: '#9ED68E'});
+  attachLimbs(c, B, {armX: .68, armY: 2.2, limb: '#6BAA5C', hand: '#8BCB7A', legX: .3, legY: 1.15, legLen: .95});
+  if (o.gym) { const band = cyl(.74, .74, .16, toon('#E85D4E'), {seg: 32}); band.position.y = 3.2; B.add(band); const bag = rbox(.9, .45, .45, .1, toon('#2F6DB5')); bag.position.set(.95, 1.4, 0); B.add(bag) }
+  else { const remote = rbox(.14, .45, .08, .04, toon('#2b2b2b')); c.arms[1].userData.el.add(remote); remote.position.y = -.55; const pop = cyl(.32, .25, .45, toon('#E84D4D')); pop.position.set(-.55, 1.25, .45); B.add(pop); for (let i = 0; i < 6; i++) { const k = sph(.09, toon('#FFF6D8'), {seg: 8}); k.position.set(-.55 + Math.sin(i) * .15, 1.52, .45 + Math.cos(i) * .15); B.add(k) } }
+  c.legY0 = 1.15; c.sitDrop = .8; c.anim = (t, st) => animate(c, t, Object.assign({}, st, {expr: st.expr === 'happy' ? 'sly' : st.expr})); c.eye = new THREE.Vector3(0, 2.95, 0); return c;
+}
+// ───── INFLA: fantasma verde translúcido con % en la panza, flota ─────
+function infla() {
+  const c = new THREE.Group(); const B = rig(c, {height: 3.4});
+  const mat = toon('#7FE0B8', {transparent: true, opacity: .88});
+  const head = sph(1.05, mat, {seg: 36}); head.position.y = 2.45; B.add(head);
+  const skirt = new THREE.Mesh(new THREE.CylinderGeometry(1.05, 1.2, 1.3, 36, 1, true), mat); skirt.position.y = 1.4; B.add(skirt); M3.outline(skirt);
+  const waves = []; for (let i = 0; i < 8; i++) { const a = i / 8 * Math.PI * 2; const w = sph(.28, mat, {seg: 14}); w.position.set(Math.cos(a) * 1.05, .75, Math.sin(a) * 1.05); B.add(w); waves.push(w) }
+  const pct = M3.plane(.7, .7, new THREE.MeshToonMaterial({map: M3.canvasTex(128, 128, g => { g.fillStyle = '#2E8F6A'; g.font = M3.font(110); g.textAlign = 'center'; g.fillText('%', 64, 104) }), transparent: true, gradientMap: M3.grad}));
+  pct.position.set(0, 1.55, 1.13); B.add(pct);
+  c.face = M3.face(B, {y: 2.55, z: .98, s: .95, lidColor: '#6FD0A8', cheek: '#A8F0D0'});
+  c.arms = [-1, 1].map(side => M3.arm(B, {x: side * 1.0, y: 2.0, color: '#6FD0A8', handColor: '#7FE0B8', side, len: .45, len2: .4}));
+  c.legs = []; c.legY0 = 0; c.sitDrop = 0;
+  c.anim = (t, st) => { animate(c, t, Object.assign({}, st, {sit: false})); B.position.y = .5 + Math.sin(t * 1.6) * .2; waves.forEach((w, i) => w.position.y = .75 + Math.sin(t * 3 + i) * .08) };
+  c.eye = new THREE.Vector3(0, 3.0, 0); return c;
+}
+
 M3.personaje = function (tipo) {
-  const f = {moni, centavito, tarjetin, card: tarjetin, cafecito, cup: cafecito, delivy, bag: delivy}[tipo];
+  const f = {moni, centavito, tarjetin, card: tarjetin, cafecito, cup: cafecito, delivy, bag: delivy, zombi: () => zombi(), gymzombi: () => zombi({gym: true, cloth: '#3FAE6B', skin: '#9AD08A'}), infla, ghost: infla}[tipo];
   if (!f) throw new Error('personaje desconocido ' + tipo);
   const c = f(); c.tipo = tipo; return c;
 };

@@ -114,7 +114,7 @@ function depto() {
   return {
     scene: S,
     spots: {sofaL: {p: [-5, 0, -2.9], ry: .3, sit: 1.75}, sofaR: {p: [-1.9, 0, -2.9], ry: -.3, sit: 1.75}, centro: {p: [-3.5, 0, 3.2], ry: 0},
-      escritorio: {p: [7.5, 0, .7], ry: -.2, sit: 1.6}, junto: {p: [9.3, 1.96, 3.5], ry: -.4}, detras: {p: [9.8, 0, -.4], ry: -.5}},
+      escritorio: {p: [7.5, 0, .7], ry: -.2, sit: 1.6}, junto: {p: [9.3, 1.96, 3.5], ry: -.4}, detras: {p: [9.8, 0, -.4], ry: -.5}, flota: {p: [-1.7, 0, -1.3], ry: -.3}, frente: {p: [-3.5, 0, 4.2], ry: 0}},
     cams: {two: {p: [-3.5, 4.6, 6.2], look: [-3.5, 3.2, -2.8], fov: 36}, wide: {p: [1, 5.6, 14], look: [-2, 2.6, -2], fov: 42},
       calendario: {p: [10.4, 5.6, -2.6], look: [10.4, 5.6, -5.9], fov: 32},
       deskWide: {p: [4.6, 4.2, 9.5], look: [7.6, 2.8, 1.4], fov: 34}, deskOver: {p: [3.6, 4.9, 7.8], look: [8.2, 2.9, 1.4], fov: 36}},
@@ -145,15 +145,20 @@ function calle() {
   const shop = plane(3, 2.2, toon('#CFEFFF')); shop.position.set(1, 1.6, .12); cafeF.add(shop);
   const bancoF = sign('BANCO', {w: 3.4, h: .9, bg: '#0E5A40'}); bancoF.position.set(9, 4.8, -9.3); S.add(bancoF);
   const alq = sign('SE ALQUILA', {w: 3, h: .8, bg: '#C8102E'}); alq.position.set(19, 6.5, -9.3); S.add(alq);
-  for (let i = -36; i < 40; i += 9) { const tr = tree(1); tr.position.set(i, .3, -6.2); S.add(tr); const lp = lamp(); lp.position.set(i + 4.5, .3, -5.6); S.add(lp) }
+  const gym = sign('GIMNASIO', {w: 3.6, h: .9, bg: '#2F6DB5'}); gym.position.set(1.5, 4.6, -9.3); S.add(gym);
+  const gymW = plane(4, 2.2, toon('#CFEFFF')); gymW.position.set(1.5, 1.8, -9.35); S.add(gymW);
+  const alq2 = sign('SE ALQUILA', {w: 2.6, h: .7, bg: '#C8102E'}); alq2.position.set(-14, 3.2, -9.3); S.add(alq2);
+  const libre = x => (x > -17.5 && x < -10.5) || (x > -2.5 && x < 4.5); // sin árboles ni faroles delante de los personajes
+  for (let i = -36; i < 40; i += 9) { if (!libre(i)) { const tr = tree(1); tr.position.set(i, .3, -6.2); S.add(tr) } if (!libre(i + 4.5)) { const lp = lamp(); lp.position.set(i + 4.5, .3, -5.6); S.add(lp) } }
   const clouds = [0, 1, 2, 3].map(i => { const c = cloud(); c.position.set(-30 + i * 18, 22 + (i % 2) * 3, -30); c.scale.setScalar(1.6); S.add(c); return c });
   const traffic = [car('#E85D4E'), car('#4B8FD8'), car('#F4C542'), car('#3FAE6B')]; traffic.forEach(c => S.add(c));
   const mt = moto(); S.add(mt);
   const walkers = npcs(S, [[0, 6.2, Math.PI / 2, {seed: 1}], [0, 7.6, -Math.PI / 2, {seed: 2}], [0, -6.5, Math.PI / 2, {seed: 3}], [0, -7.6, -Math.PI / 2, {seed: 4}], [0, 6.8, Math.PI / 2, {seed: 6}]]);
   return {
-    scene: S, spots: {vereda: {p: [-2, .3, -6.8], ry: .2}, vereda2: {p: [1.5, .3, -6.8], ry: -.2}},
+    scene: S, spots: {vereda: {p: [-.6, .3, -7.2], ry: .35}, vereda2: {p: [2.6, .3, -7.0], ry: -.35}, alquilaA: {p: [-15.6, .3, -7.3], ry: .3}, alquilaB: {p: [-12.4, .3, -7.1], ry: -.3}},
     cams: {establish: {p: [-22, 7, 6], to: [-15, 4, 5], look: [-5, 3.5, -9], fov: 42}, cafeFront: {p: [-3, 3, 6], to: [-4.6, 3, 3.6], look: [-6, 3.4, -9.4], fov: 40},
-      street: {p: [-18, 2.2, 3.5], look: [0, 2, -2], fov: 38}},
+      street: {p: [-18, 2.2, 3.5], look: [0, 2, -2], fov: 38}, gymTwo: {p: [3.2, 3.6, 2.2], look: [1, 2.6, -7.2], fov: 38},
+      alquilaTwo: {p: [-9.4, 3.4, -3.5], look: [-14, 2.8, -7.8], fov: 40}, bancoFront: {p: [4, 3.2, 5], to: [6, 3.4, 3.2], look: [9, 4, -9.3], fov: 40}},
     update(t) {
       traffic.forEach((c, i) => { const dir = i % 2 ? -1 : 1, sp = 5 + i; const xx = ((t * sp + i * 23) % 90) - 45; c.position.set(dir * xx, 0, dir * 2.1); c.rotation.y = dir > 0 ? 0 : Math.PI });
       mt.position.set(-45 + ((t * 7) % 90), 0, 2.2); mt.userData.rider.anim(t, {sit: true});
@@ -220,9 +225,41 @@ function cafeteria() {
   };
 }
 
+
+// ───────────── BANCO: columnas, ventanillas, fila con cinta, cajero automático ─────────────
+function banco() {
+  const S = baseScene('#EDE3D2', {sunPos: [-8, 14, 10], sunI: 1.9, hemi: 1.5});
+  const marble = texTiles('#EFE9DF', '#E2DACB', 6); marble.repeat.set(6, 6);
+  const floor = plane(44, 32, toon('#fff', {map: marble})); floor.rotation.x = -Math.PI / 2; S.add(floor);
+  const back = plane(44, 14, toon('#E6DCCB')); back.position.set(0, 7, -9); S.add(back);
+  const side = plane(32, 14, toon('#DDD1BC')); side.rotation.y = Math.PI / 2; side.position.set(-16, 7, 4); S.add(side);
+  const logo = sign('BANCO', {w: 5, h: 1.3, bg: '#0E5A40'}); logo.position.set(0, 9.6, -8.9); S.add(logo);
+  [-12, -6, 6, 12].forEach(x => { const col = cyl(.7, .7, 12, toon('#F7F2EA'), {seg: 24}); col.position.set(x, 6, -7.6); S.add(col); const cap = box(1.9, .5, 1.9, toon('#E9E0CF')); cap.position.set(x, 11.8, -7.6); S.add(cap) });
+  const counter = rbox(16, 2.4, 1.6, .1, toon('#6E4B33')); counter.position.set(0, 1.2, -5.2); S.add(counter);
+  const ctop = rbox(16.4, .2, 1.9, .06, toon('#F2ECE2')); ctop.position.set(0, 2.45, -5.2); S.add(ctop);
+  [-5, 0, 5].forEach(x => { const gl = plane(4.2, 2.2, toon('#DFF3FA', {transparent: true, opacity: .35})); gl.position.set(x, 3.7, -5.2); S.add(gl); const fr = box(4.4, .12, .12, toon('#3b3b3b')); fr.position.set(x, 4.85, -5.2); S.add(fr);
+    const num = sign(['1', '2', '3'][(x + 5) / 5], {w: .7, h: .7, bg: '#0E5A40'}); num.position.set(x, 5.4, -5.2); S.add(num) });
+  const tellers = npcs(S, [[-5, -6.6, 0, {seed: 12, kind: 3}], [0, -6.6, 0, {seed: 13, kind: 3}], [5, -6.6, 0, {seed: 14, kind: 3}]]);
+  // fila con postes y cinta
+  for (let i = 0; i < 5; i++) { const p = cyl(.08, .1, 1.6, toon('#C9A24A'), {seg: 10}); p.position.set(-9 + i * 1.8, .8, 1.4); S.add(p); if (i < 4) { const r = box(1.8, .1, .05, toon('#C8102E'), {outline: false}); r.position.set(-8.1 + i * 1.8, 1.35, 1.4); S.add(r) } }
+  const queue = npcs(S, [[-8, -.2, Math.PI, {seed: 15}], [-6.2, .1, Math.PI, {seed: 16, kind: 2}], [-4.4, -.1, Math.PI, {seed: 17, kind: 4}]]);
+  const atm = new THREE.Group(); atm.position.set(12.5, 0, -2); atm.rotation.y = -Math.PI / 2 + .3; S.add(atm);
+  const ab = rbox(2, 4, 1.4, .15, toon('#2F6DB5')); ab.position.y = 2; atm.add(ab); const as = plane(1.3, .9, toon('#BFE6F7', {emissive: '#9FD8F2', emissiveIntensity: .4})); as.position.set(0, 2.9, .72); atm.add(as);
+  const plant = sph(.9, toon('#4FAE52')); plant.position.set(-13.5, 2.2, -6); S.add(plant); const pot = cyl(.6, .45, 1.2, toon('#C46A3C')); pot.position.set(-13.5, .6, -6); S.add(pot);
+  return {
+    scene: S,
+    spots: {ventanilla: {p: [-1.4, 0, -2.6], ry: .25}, junto: {p: [1.6, 0, -2.4], ry: -.3}, flota: {p: [2.4, 0, -1.6], ry: -.35}},
+    cams: {two: {p: [0, 4.2, 7.5], look: [0, 2.8, -2.6], fov: 38}, wide: {p: [8, 7, 15], look: [-1, 3, -3], fov: 44}, est: {p: [-12, 5, 14], to: [-8, 4.4, 11], look: [0, 4, -6], fov: 44}},
+    update(t) {
+      tellers.forEach((q, i) => { q.anim(t, {seed: 12 + i, talk: (t + i * 2) % 6 < 2.5}); q.rotation.y = Math.sin(t * .4 + i) * .3 });
+      queue.forEach((q, i) => { q.anim(t, {seed: 15 + i}); q.rotation.y = Math.PI + Math.sin(t * .5 + i) * .35 });
+    },
+  };
+}
+
 const CACHE = {};
 M3.lugar = function (nombre) {
-  if (!CACHE[nombre]) CACHE[nombre] = ({depto, calle, cafeteria})[nombre]();
+  if (!CACHE[nombre]) CACHE[nombre] = ({depto, calle, cafeteria, banco})[nombre]();
   return CACHE[nombre];
 };
 })();

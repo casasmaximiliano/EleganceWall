@@ -3,7 +3,7 @@
 (function () {
 const W = 1920, H = 1080;
 let R, cam, TL, SHOTS, CH = {}, INS, overlay;
-const KIND = {moni: 'moni', card: 'tarjetin', centavito: 'centavito', cup: 'cafecito', bag: 'delivy'};
+const KIND = {moni: 'moni', card: 'tarjetin', centavito: 'centavito', cup: 'cafecito', bag: 'delivy', zombi: 'zombi', gymzombi: 'gymzombi', ghost: 'infla'};
 
 // Gestos con sentido: se eligen por las palabras de cada frase (yo → pecho, vos → señalar, números → contar, pregunta → palmas arriba).
 const NUM = /^(\$?\d|uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|cien|mil|veinte|treinta|cuarenta|cincuenta|sesenta|setenta|ochenta|noventa|doscientos|trescientos|novecientos|ciento|primer|primera)/i;
@@ -51,7 +51,7 @@ function shotAt(t) { let lo = 0, hi = SHOTS.length - 1; while (lo < hi) { const 
 
 function place(c, L, spotName) {
   const s = L.spots[spotName]; if (c.parent !== L.scene) L.scene.add(c);
-  c.position.set(s.p[0], s.sit ? s.sit - (c.legY0 - c.sitDrop) : s.p[1], s.p[2]); c.rotation.y = s.ry || 0; c.visible = true; c.userData.sit = !!s.sit;
+  c.position.set(s.p[0], s.sit ? s.sit - (c.legY0 - c.sitDrop) : s.p[1], s.p[2]); c.rotation.y = s.ry || 0; c.visible = true; c.userData.sit = !!s.sit; c.userData.walking = false;
 }
 function closeCam(c, o = {}) {
   const e = new THREE.Vector3(0, (c.eye.y - (c.userData.sit ? c.sitDrop : 0)) * c.scale.y, 0).add(c.position);
@@ -80,6 +80,8 @@ window.frame3d = function (t) {
     const L = M3.lugar(sh.loc); scene = L.scene; L.update(t);
     if (sh.propSet && !sh._propApplied) { L.props[sh.propSet.name].set(sh.propSet.content); sh._propApplied = true }
     Object.entries(sh.cast || {}).forEach(([kind, spot]) => place(CH[kind], L, spot));
+    if (sh.enter) Object.entries(sh.enter).forEach(([kind, from]) => { const c = CH[kind], k2 = M3.clamp((t - sh.start) / 1.4);
+      if (k2 < 1) { const e2 = M3.ease(k2); c.position.x = M3.lerp(c.position.x + from[0], c.position.x, e2); c.position.z = M3.lerp(c.position.z + from[1], c.position.z, e2); c.userData.walking = true } else c.userData.walking = false });
     const speaker = talkWho && sh.cast && sh.cast[talkWho] ? CH[talkWho] : null;
     Object.keys(sh.cast || {}).forEach(kind => { const c = CH[kind];
       const ex = (ln && ln.ex && ln.ex[kind]) || 'happy'; const talking = talkWho === kind; const tt = ln ? t - ln.start : 0;
@@ -93,7 +95,7 @@ window.frame3d = function (t) {
         turn = M3.clamp(Math.atan2(Math.sin(ang), Math.cos(ang)) * .35, -.5, .5); lookX = M3.clamp(turn * .12, -.06, .06);
         const ph = (tt % 2.6) / 2.6; nod = ph > .1 && ph < .25 ? Math.sin((ph - .1) / .15 * Math.PI) : 0;
       }
-      c.anim(t, {talk: talking ? 1 : 0, expr: ex, pose, poseW, emph, nod, turn, lookX, sit: c.userData.sit, seed: kind.length, lean: talking ? .03 : 0}) });
+      c.anim(t, {talk: talking ? 1 : 0, expr: ex, pose, poseW, emph, nod, turn, lookX, sit: c.userData.sit, walk: !!c.userData.walking, seed: kind.length, lean: talking ? .03 : 0}) });
     if (typeof sh.cam === 'string' && sh.cam.startsWith('close:')) C = closeCam(CH[sh.cam.slice(6)], sh.camOpt || {});
     else C = Object.assign({}, L.cams[sh.cam]);
   }
