@@ -57,6 +57,7 @@ main{display:grid;gap:18px;padding-top:20px}
 .list{display:grid;gap:14px}
 .post{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;border-left:5px solid var(--fc)}
 .post.short{--fc:var(--c-short)}.post.explo{--fc:var(--c-explo)}.post.largo{--fc:var(--c-largo)}
+.aviso{margin:0 0 12px;padding:10px 12px;border-radius:10px;border:2px solid var(--c-largo);background:color-mix(in srgb,var(--c-largo) 12%,transparent);font-weight:600;line-height:1.4}
 .post.done{background:var(--okbg)}
 .when{display:grid;align-content:start;gap:8px;width:120px}
 .when .t{font:800 30px/1 var(--f-display);font-variant-numeric:tabular-nums}
@@ -130,7 +131,7 @@ details .field{margin-top:8px}
   <div id="dnote"></div>
   <div class="list" id="list"><div class="empty">Cargando el calendario…</div></div>
   <section class="foot">
-    <p><b>Videos largos:</b> el archivo es el MP4 original que te mandé por el chat (pesan más de 100 MB y no entran acá). Las 3 miniaturas sirven para "Probar y comparar" en YouTube Studio desde la computadora.</p>
+    <p><b>Videos largos:</b> desde el 26/11 se hacen en 3D; el archivo es el MP4 que te mandé por el chat (pesan más de 100 MB y no entran acá). Los shorts siguen igual. Las 3 miniaturas sirven para "Probar y comparar" en YouTube Studio desde la computadora.</p>
     <p><b>Shorts desde el 1/12:</b> son provisorios. Cuando veamos qué nichos de exploración funcionan, cambio algunos.</p>
   </section>
 </main>
@@ -184,6 +185,7 @@ function card(it) {
     body += `<div class="meta2"><div><span>Categoría</span><b>${esc(it.categoria)}</b></div><div><span>Lista de reproducción</span><b>${esc(it.lista)}</b></div></div>`;
     body += `<details><summary>Comentario para fijar y shorts relacionados</summary>${field('Comentario para fijar', it.comentario, 'c')}<div class="field"><div class="lab"><span>Shorts de este tema (en cada uno, poné este video largo como video relacionado)</span></div><div class="val">${esc(it.shorts_rel.join('\n'))}</div></div></details>`;
     body += `<p class="file">${esc(it.archivo)} · ${esc(it.subtitulos)}</p>`;
+    if (it.aviso) body = `<p class="aviso">${esc(it.aviso)}</p>` + body;
   } else {
     body += field('Título', it.titulo, 'ta') + field('Descripción', it.descripcion, 'd') + field('Etiquetas', it.etiquetas, 'e') + field('Comentario para fijar', it.comentario, 'c');
     body += `<div class="meta2"><div><span>Categoría</span><b>${esc(it.categoria)}</b></div><div><span>Lista de reproducción</span><b>${esc(it.lista)}</b></div></div>`;

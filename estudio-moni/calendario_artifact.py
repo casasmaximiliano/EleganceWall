@@ -42,22 +42,31 @@ for r in cal:
                       etiquetas=", ".join([t.lstrip("#") for t in shorts[r["n"]]["tags"].split() if t.lstrip("#") not in ("moni", "shorts")] + BASE_TAGS),
                       lista=(r["nicho"] + " (exploración)") if r["grupo"] == "exploración" else LISTA.get(r["formato"], "Shorts de Moni"),
                       relacionado=relacionado(r["titulo"], shorts[r["n"]]["desc"], r["fecha"], r["hora_ar"])))
+# Videos ya publicados que se reemplazan por la versión 3D: n → (fecha, hora AR, aviso)
+REEMPLAZOS = {21: ("2026-11-26", "18:00", "REEMPLAZO EN 3D: 1) En YouTube Studio borrá el video “¿Qué pasa si ahorrás el cafecito toda tu vida?” publicado el 25/11. "
+                   "2) Subí este video en 3D con estos mismos datos y programalo para hoy a las 18:00. 3) Cargá las 3 miniaturas en Probar y comparar. "
+                   "4) En los shorts ya publicados que tenían este video como relacionado, volvé a elegirlo (el enlace cambia).")}
 for v in largos:
     n = v["n"]; tl = json.load(open(os.path.join(HERE, "largos", "out", "timeline", f"{n:02d}.json"), encoding="utf-8"))
     desc = tl["descripcion"].replace("un short nuevo cada día", "shorts nuevos todos los días")
     if v["tipo"] == "Guía":
         desc = desc.replace(f"En este video: {v['titulo'].lower()}.", "En este video: la guía completa, paso a paso, con números de ejemplo.")
     dur = tl["total"]; thumbs = []
+    tres_d = os.path.exists(os.path.join(HERE, "largos", "miniaturas", f"miniatura_{n:02d}_3D_A.png"))
     for suf in ["", "_B", "_C"]:
-        src = os.path.join(HERE, "largos", "miniaturas", f"miniatura_{n:02d}{suf}.png")
+        src = os.path.join(HERE, "largos", "miniaturas", f"miniatura_{n:02d}_3D_{suf[1:] or 'A'}.png" if tres_d else f"miniatura_{n:02d}{suf}.png")
         dst = os.path.join(OUT, "mini", f"m{n:02d}{suf or '_A'}.jpg")
         subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", src, "-q:v", "3", dst], check=True)
         thumbs.append(f"mini/m{n:02d}{suf or '_A'}.jpg")
     items.append(dict(id=f"l{n}", tipo="largo", fecha=v["fecha"], hora=v["hora_ar"], hora_mx=v["hora_mx"], hora_co=v["hora_co"],
                       titulo=v["titulo"], alt=v["alt"], descripcion=desc, etiquetas=v["tags"], lista=v["playlist"],
                       shorts_rel=[f"{s['titulo']}" for s in v["shorts_rel"]], duracion=f"{int(dur // 60)}:{int(dur % 60):02d}",
-                      archivo=f"video {n:02d} (mp4 original que te mandé por el chat)", subtitulos=f"subtitulos_{n}.srt",
+                      archivo=f"video {n:02d} {'en 3D ' if tres_d else ''}(mp4 original que te mandé por el chat)", subtitulos=f"subtitulos_{n}.srt",
                       thumbs=thumbs, categoria=CATEGORIA, comentario="¿Y a vos qué te pasó con esto? Te leo en los comentarios 👇", n=n))
+    if n in REEMPLAZOS:  # el video ya publicado se reemplaza por la versión 3D: tarjeta aparte en el día del reemplazo
+        f, h, aviso = REEMPLAZOS[n]
+        items.append(dict(items[-1], id=f"l{n}r", fecha=f, hora=h, hora_mx=f"{int(h[:2]) - 3:02d}{h[2:]}", hora_co=f"{int(h[:2]) - 2:02d}{h[2:]}", aviso=aviso))
+        items[-2]["aviso"] = f"Esta versión se reemplaza el {f[8:]}/{f[5:7]} por la versión 3D (mirá ese día)."
 items.sort(key=lambda x: (x["fecha"], x["hora"]))
 json.dump(items, open(os.path.join(OUT, "plan.json"), "w", encoding="utf-8"), ensure_ascii=False)
 print(len(items), "items ·", sum(1 for i in items if i["tipo"] == "short"), "shorts ·", sum(1 for i in items if i["tipo"] == "largo"), "largos ·",
