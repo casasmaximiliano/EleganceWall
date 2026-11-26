@@ -143,7 +143,75 @@ def vgrad(W, H, c1, c2):
 
 
 # ------------------------------------------------------------------ fondos (coordenadas relativas)
+SPRITE_DIR = os.environ.get("BOMBOLIN_SPRITES3D")
+BG3D_DIR = os.environ.get("BOMBOLIN_BG3D")
+SKY = {"meadow": ((120, 195, 255), (215, 240, 255)), "night": ((25, 35, 95), (95, 80, 160)),
+       "xmas": ((25, 35, 95), (95, 80, 160)), "snow": ((165, 205, 250), (235, 245, 255)),
+       "cave": ((60, 40, 95), (30, 20, 50)), "sea": ((110, 200, 250), (25, 90, 175)),
+       "show": ((110, 55, 190), (60, 20, 120)), "room": ((255, 230, 210), (255, 220, 190))}
+
+
+def load_3d_sprites(d):
+    """Carga los sprites 3D y los recorta con el mismo cuadro por personaje (sin saltos entre estados)."""
+    import glob as _g
+    files = {}
+    for p in _g.glob(os.path.join(d, "*.png")):
+        parts = os.path.basename(p)[:-4].split("_")
+        files[tuple(parts)] = p
+    by_char = {}
+    for k in files:
+        by_char.setdefault(k[0], []).append(k)
+    sp = {}
+    for c, keys in by_char.items():
+        ims = {k: Image.open(files[k]).convert("RGBA") for k in keys}
+        boxes = [im.getbbox() for im in ims.values() if im.getbbox()]
+        box = (min(b[0] for b in boxes), min(b[1] for b in boxes), max(b[2] for b in boxes), max(b[3] for b in boxes))
+        for k, im in ims.items():
+            im = im.crop(box)
+            if c == "LULA":
+                sp[(c, k[1], int(k[2]), int(k[3]))] = im
+            elif c == "ZUMBI":
+                sp[(c, int(k[1]), int(k[2]), int(k[3]))] = im
+            else:
+                sp[(c, int(k[1]), int(k[2]))] = im
+    return sp
+
+
 def background(theme, W, H, seed):
+    key = {"board": "meadow", "title": "meadow"}.get(theme, theme)
+    if BG3D_DIR:
+        p = os.path.join(BG3D_DIR, f"{key}_{'h' if W > H else 'v'}.png")
+        if os.path.exists(p):
+            c1, c2 = SKY.get(key, SKY["meadow"])
+            im = vgrad(W, H, c1, c2).convert("RGBA")
+            if key in ("night", "xmas"):
+                rng = np.random.default_rng(seed)
+                dd = ImageDraw.Draw(im)
+                for _ in range(int(W * H / 9000)):
+                    x, y = rng.integers(0, W), rng.integers(0, int(H * 0.5))
+                    r = rng.integers(2, 5)
+                    dd.ellipse([x, y, x + r, y + r], fill=(255, 250, 210, 255))
+            im.alpha_composite(Image.open(p).convert("RGBA").resize((W, H)))
+            im = im.convert("RGB")
+            if theme == "title":
+                from PIL import ImageFilter
+                im = im.filter(ImageFilter.GaussianBlur(6))
+            if theme == "board":
+                d = ImageDraw.Draw(im, "RGBA")
+                bx0, by0, bx1, by1 = board_box(W, H)
+                d.rounded_rectangle([bx0 - 4, by0 + 14, bx1 + 30, by1 + 44], 30, fill=(0, 0, 0, 70))
+                d.rounded_rectangle([bx0 - 18, by0 - 18, bx1 + 18, by1 + 18], 30, fill=(150, 100, 60))
+                d.rounded_rectangle([bx0 - 18, by0 - 18, bx1 + 18, by0 - 4], 20, fill=(185, 130, 80))
+                d.rounded_rectangle([bx0, by0, bx1, by1], 20, fill=(40, 90, 70))
+                rng = np.random.default_rng(seed)
+                for _ in range(6):
+                    x, y = rng.uniform(bx0 + 40, bx1 - 200), rng.uniform(by0 + 30, by1 - 60)
+                    d.arc([x, y, x + 150, y + 50], 180, 360, fill=(220, 240, 220, 120), width=4)
+            return im
+    return background2d(theme, W, H, seed)
+
+
+def background2d(theme, W, H, seed):
     rng = np.random.default_rng(seed)
     gy = 0.72 * H if W > H else 0.70 * H  # horizonte
     if theme in ("night", "xmas"):
@@ -240,6 +308,15 @@ def background(theme, W, H, seed):
             x, y = rng.uniform(bx0 + 40, bx1 - 200), rng.uniform(by0 + 30, by1 - 60)
             d.arc([x, y, x + 150, y + 50], 180, 360, fill=(220, 240, 220, 120), width=4)
     return im
+
+
+def cam_crop(img, cx, cy, z, W, H):
+    if z <= 1.001:
+        return img
+    cw, ch = W / z, H / z
+    x0 = min(max(cx - cw / 2, 0), W - cw)
+    y0 = min(max(cy - ch / 2, 0), H - ch)
+    return img.crop((int(x0), int(y0), int(x0 + cw), int(y0 + ch))).resize((W, H), Image.BILINEAR)
 
 
 def board_box(W, H):
@@ -390,7 +467,8 @@ LIFT = {"LULA": 0.33, "ZUMBI": 0.30}
 class Painter:
     def __init__(self, W, H, ep, lang, segs, events, nf, short):
         self.W, self.H, self.ep, self.lang, self.segs, self.events, self.short = W, H, ep, lang, segs, events, short
-        self.sp = build_sprites()
+        self.sp = load_3d_sprites(SPRITE_DIR) if SPRITE_DIR else build_sprites()
+        self.heads = {}
         self.talk = talk_env(events, nf)
         self.nf = nf
         self.bgs = {}
@@ -430,7 +508,11 @@ class Painter:
                 amp = 1.12 + 0.05 * math.sin(tt * 18) if talking else 1.0
                 e = emoji(em, int(0.36 * H * sc * amp) if land else int(300 * sc * amp))
                 bob = int(8 * math.sin(tt * 3 + i))
+                sh = ImageDraw.Draw(frame, "RGBA")
+                sh.ellipse([px - e.width * 0.38, base_y - 0.02 * H - e.width * 0.07, px + e.width * 0.38,
+                            base_y - 0.02 * H + e.width * 0.07], fill=(0, 0, 0, 55))
                 frame.paste(e, (px - e.width // 2, int(base_y - e.height - 0.02 * H + bob)), e)
+                self.heads[it] = (px, base_y - e.height * 0.7)
                 continue
             c = it
             arr = self.talk.get(c)
@@ -446,7 +528,12 @@ class Painter:
             ww = int(spr.width * hh / spr.height / sq)
             s2 = spr.resize((ww, hh), Image.BILINEAR)
             lift = LIFT.get(c, 0) * (H if land else 1000) * sc
-            frame.paste(s2, (px - ww // 2, int(base_y - hh - bounce - lift)), s2)
+            sh = ImageDraw.Draw(frame, "RGBA")
+            sw_ = ww * (0.36 if lift else 0.42) * (1 - min(0.3, bounce / (0.08 * H)))
+            sh.ellipse([px - sw_, base_y - ww * 0.06, px + sw_, base_y + ww * 0.06], fill=(0, 0, 0, 45 if lift else 70))
+            top = int(base_y - hh - bounce - lift)
+            frame.paste(s2, (px - ww // 2, top), s2)
+            self.heads[c] = (px, top + hh * (0.32 if c in ("PIPO", "ABU") else 0.42))
         return pos
 
     def draw_props(self, frame, sg, st, tt):
@@ -553,6 +640,26 @@ class Painter:
                    stroke_fill=INK)
             xx += d.textlength(wt, font=f)
 
+    def camera(self, si, sg, st, tt, ev, speaking):
+        """Plano general / medio / primer plano según la frase, siempre con un movimiento lento."""
+        W, H = self.W, self.H
+        land = W > H
+        idx = sum(1 for e in self.events if e["seg"] == si and e["t"] <= tt) - 1
+        t_shot = tt - next((e["t"] for e in reversed(self.events) if e["seg"] == si and e["t"] <= tt), sg["t0"])
+        drift = 1 + 0.035 * min(1.0, t_shot / 4.0)
+        target = speaking if speaking in self.heads else None
+        kind = 0 if (idx < 0 or target is None or sg.get("closing")) else (idx % 3)
+        if kind == 0:  # general con paneo suave
+            z = 1.04 * drift
+            cx = W / 2 + 0.03 * W * math.sin(tt * 0.35 + si)
+            cy = H * (0.55 if land else 0.56)
+        else:
+            hx, hy = self.heads[target]
+            z = (1.35 if kind == 1 else 1.75) * drift if land else (1.15 if kind == 1 else 1.38) * drift
+            cx = hx + 0.01 * W * math.sin(tt * 0.5)
+            cy = hy + (H / z) * (0.22 if kind == 1 else 0.08)
+        return cx, cy, z
+
     def frame(self, fi, hook=None):
         tt = fi / FPS
         self.now = tt
@@ -599,17 +706,18 @@ class Painter:
                 self.text(d, W // 2, int(0.86 * H), TXT[self.lang]["show"], int(0.05 * H), (255, 255, 255), sw=6)
         else:
             theme = sg["theme"]
-            fr = self.bg(si, theme).copy()
-            self.draw_props(fr, sg, st, tt)
-            pos = self.draw_cast(fr, sg, fi, tt, speaking)
-            # cámara: plano general y plano medio sobre quien habla, alternando cada ~5 s
-            shot = int(st / (5.0 if W > H else 3.2)) % 2
-            if shot == 1 and speaking in pos and not sg.get("closing"):
-                z = 1.28 if W > H else 1.12
-                cw, chh = int(W / z), int(H / z)
-                x0 = int(min(max(pos[speaking] - cw / 2, 0), W - cw))
-                y0 = int((H - chh) * (0.85 if W > H else 0.62))
-                fr = fr.crop((x0, y0, x0 + cw, y0 + chh)).resize((W, H), Image.BILINEAR)
+            bgl = self.bg(si, theme).copy()
+            self.draw_props(bgl, sg, st, tt)
+            layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+            self.heads = {}
+            pos = self.draw_cast(layer, sg, fi, tt, speaking)
+            cx, cy, z = self.camera(si, sg, st, tt, ev, speaking)
+            # paralaje: el fondo se mueve y acerca menos que los personajes (sensación de profundidad)
+            zb = 1 + (z - 1) * 0.55
+            bx, by = W / 2 + (cx - W / 2) * 0.55, H / 2 + (cy - H / 2) * 0.55
+            fr = cam_crop(bgl, bx, by, zb, W, H).convert("RGBA")
+            fr.alpha_composite(cam_crop(layer, cx, cy, z, W, H))
+            fr = fr.convert("RGB")
         d = ImageDraw.Draw(fr, "RGBA")
         if ev and sg["kind"] == "scene" and R.is_countdown(ev["text"]):
             dur = len(ev["a"]) / SR
