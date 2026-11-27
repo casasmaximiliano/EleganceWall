@@ -748,7 +748,13 @@ class Painter:
         d = ImageDraw.Draw(layer, "RGBA")
         for it in items:
             m = it["mode"]
-            if m == "river":
+            if m == "sky":  # objeto en el cielo (nube de lluvia, arcoíris), con un vaivén suave
+                sz = int(it["size"] * H)
+                e = prop_img(it["sp"], h=sz) if has_prop(it) else emoji(it["em"], sz)
+                x = it["x"] * W + 0.01 * W * math.sin(tt * 0.6)
+                y = it["y"] * H + 0.008 * H * math.sin(tt * 0.9)
+                layer.alpha_composite(e, (int(x - e.width / 2), max(0, int(y - e.height / 2))))
+            elif m == "river":
                 y0, y1 = by - 0.30 * H, by - 0.17 * H
                 pts = [(x, y0 + 8 * math.sin(x / 90 + tt * 2)) for x in range(0, W + 40, 40)]
                 pts += [(x, y1 + 8 * math.sin(x / 110 + tt * 2.3)) for x in range(W, -40, -40)]
@@ -825,6 +831,13 @@ class Painter:
                     e = prop_img(it["sp"], h=sz) if has_prop(it) else emoji(it["em"], sz)
                     if 0 < y < H:
                         layer.alpha_composite(e, (int(x - e.width / 2), int(y - e.height / 2)))
+            elif m == "rain":  # gotas que caen en diagonal
+                d = ImageDraw.Draw(layer, "RGBA")
+                n = it.get("n", 60)
+                for k in range(n):
+                    x = (W * ((k * 0.618) % 1.0) + tt * 0.05 * W) % (W + 40) - 20
+                    y = (H * ((k * 0.377) % 1.0) + tt * 0.9 * H * (1 + (k % 3) * 0.2)) % H
+                    d.line([x, y, x - 0.006 * W, y + 0.035 * H], fill=(170, 210, 255, 200), width=max(2, int(0.003 * H)))
             elif m == "sparkle":
                 hd = self.heads.get(who)
                 if hd:
@@ -1072,6 +1085,18 @@ class Painter:
             cx, cy = W // 2, int(0.36 * H) if W > H else 800
             d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(255, 90, 120, 235), outline=(255, 255, 255), width=12)
             self.text(d, cx, cy, str(3 - k), int(r * 1.3), (255, 255, 255), sw=10)
+        if STYLE2 and sg["kind"] == "scene" and sg.get("stage"):
+            li = sum(1 for e in self.events if e["seg"] == si and e["t"] <= tt) - 1
+            for it in sg["stage"]:
+                if it["mode"] == "dark" and li >= it.get("frm", 0):
+                    d.rectangle([0, 0, W, H], fill=(10, 15, 45, it.get("alpha", 120)))
+                if it["mode"] == "flash" and li in it.get("lines", [0]):
+                    t0 = next((e["t"] for e in self.events if e["seg"] == si and
+                               sum(1 for e2 in self.events if e2["seg"] == si and e2["t"] <= e["t"]) - 1 == li), None)
+                    if t0 is not None and 0 <= tt - t0 < 0.5:
+                        k = tt - t0
+                        a = int(200 * (1 - k / 0.5) * (1 if int(k * 20) % 3 else 0.4))
+                        d.rectangle([0, 0, W, H], fill=(255, 255, 235, a))
         # transición: en estilo 2, un círculo que se abre desde el centro (como en los dibujos animados)
         if STYLE2 and si > 0 and st < 0.34 and sg["kind"] != "end":
             k = st / 0.34

@@ -27,6 +27,9 @@ BANERA = dict(mode="variant", who="TOTO", name="banera")
 CAMA = dict(mode="variant", who="TOTO", name="cama")
 LIMPIO = dict(mode="variant", who="TOTO", name="limpio")
 
+# Bombolín sostiene la cometa que vuela arriba a su derecha
+KITE = dict(sp="kite", em="🪁", mode="on", who="PIPO", at=(0.95, -0.55), w=0.75, rot=-12)
+
 STAGE = {
     # Día 2: ¡Toto no quiere bañarse!  ("sp" = objeto 3D de 3d/objetos.py; "em" = emoji de respaldo)
     (2, 0): [dict(sp="sponge", em="🧽", mode="ground", x=0.22, size=0.11),
@@ -51,4 +54,23 @@ STAGE = {
               dict(sp="lotion", em="🧴", mode="ground", x=0.12, size=0.16),
               dict(sp="comb", em="🪮", mode="on", who="TOTO", at=(0.18, 0.06), w=0.36, rot=25, anchor="bottom")],
     (2, 12): [LIMPIO, dict(sp="sock", em="🧦", mode="ground", x=0.86, size=0.16, frm=1)],
+
+    # Día 3: Lula tiene miedo de la tormenta
+    (3, 0): [KITE],
+    (3, 1): [KITE, dict(sp="raincloud", em="🌧️", mode="sky", x=0.82, y=0.16, size=0.18),
+             dict(sp="raincloud", em="🌧️", mode="sky", x=0.64, y=0.10, size=0.13)],
+    (3, 2): [dict(sp="raincloud", em="🌧️", mode="sky", x=0.5, y=0.17, size=0.30), dict(mode="rain", n=70),
+             dict(mode="flash", lines=[0, 2])],
+    (3, 3): [dict(mode="rain", n=40), dict(sp="teddy", em="🧸", mode="ground", x=0.9, size=0.17)],
+    (3, 4): [dict(mode="dark", alpha=130), dict(sp="flashlight", em="🔦", mode="on", who="TOTO", at=(0.62, 0.48), w=0.85, frm=1),
+             dict(sp="book", em="📖", mode="ground", x=0.1, size=0.12, frm=1)],
+    (3, 5): [dict(mode="dark", alpha=90), dict(sp="teddy", em="🧸", mode="on", who="PIPO", at=(0.05, 0.62), w=0.55, frm=2)],
+    (3, 6): [dict(mode="flash", lines=[0, 2]), dict(sp="teddy", em="🧸", mode="ground", x=0.9, size=0.15)],
+    (3, 8): [dict(mode="flash", lines=[0]), dict(sp="teddy", em="🧸", mode="on", who="LULA", at=(0.0, 0.75), w=0.4)],
+    (3, 9): [dict(mode="rain", n=25), dict(sp="umbrella", em="☂️", mode="ground", x=0.08, size=0.22)],
+    (3, 10): [dict(sp="rainbow", em="🌈", mode="sky", x=0.5, y=0.2, size=0.32, frm=1), dict(mode="sparkle", who="LULA", frm=2)],
+    (3, 11): [dict(sp="rainbow", em="🌈", mode="sky", x=0.5, y=0.2, size=0.32), KITE],
+    (3, 12): [dict(mode="puddle", x=0.30, w=0.20, col=(80, 160, 240)), dict(mode="puddle", x=0.72, w=0.24, col=(80, 160, 240)),
+              dict(em="💦", mode="orbit", who="ZUMBI", n=3, size=0.06, frm=1),
+              dict(sp="rainbow", em="🌈", mode="sky", x=0.5, y=0.16, size=0.24)],
 }
