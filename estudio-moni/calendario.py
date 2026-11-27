@@ -1,4 +1,4 @@
-"""Calendario de Shorts v2 (desde el 25/11/2026): 4 por día, según los datos de los primeros 9 shorts.
+"""Calendario de Shorts v3: 4 por día del 25 al 27/11/2026 y 3 por día desde el 28/11 (13, 19 y 22 h de Argentina).
 
 Reglas (ver análisis en el historial del canal):
 - 4 horarios fijos, hora de Argentina: 10:00, 13:00, 19:00 y 22:00 (México 7, 10, 16 y 19 h).
@@ -19,7 +19,8 @@ VID = os.path.join(HERE, "video", "out")
 START = dt.date(2026, 11, 25)
 DIAS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"]
 DIAS_LARGO = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
-SLOTS = ["10:00", "13:00", "19:00", "22:00"]
+SLOTS = ["10:00", "13:00", "19:00", "22:00"]   # hasta el 27/11
+SLOTS3 = ["13:00", "19:00", "22:00"]          # desde el 28/11: 3 por día
 PUBLICADOS = [66, 51, 1, 81, 26, 2, 97, 52, 3, 67, 27, 4]  # subidos entre el 21 y el 24/11
 
 # Grupo A: gastos de todos los días con el gasto como personaje (el formato que más retuvo: 52 % vs. 19-24 %)
@@ -51,19 +52,28 @@ def shift(hhmm, h):
 
 a, b = list(A), list(B)
 plan = []
-for d in range(6):  # fase 1: A + B + 2 de exploración
+for d in range(3):  # 25 al 27/11 (ya publicados o programados): A + B + 2 de exploración, 4 por día
     e = dict((slot, n) for n, slot in E_FASE1[2 * d: 2 * d + 2])
     free = [s for s in SLOTS if s not in e]
     first, second = (a, b) if d % 2 == 0 else (b, a)
     e[free[0]] = first.pop(0); e[free[1]] = second.pop(0)
     for slot in SLOTS:
         plan.append((d, slot, e[slot], "exploración" if e[slot] in EXPLORACION else ("A" if e[slot] in A else "B")))
-d = 6
-while a or b:  # provisorio: se van a sumar los nichos ganadores
-    for k, slot in enumerate(SLOTS):
-        src = (a if (k + d) % 2 == 0 else b) if (a and b) else (a or b)
-        if src:
-            n = src.pop(0); plan.append((d, slot, n, "A" if n in A else "B"))
+# Desde el 28/11: 3 por día (se saca las 10:00, que en México son las 7). Un short de exploración por día hasta
+# terminar los 6 que faltan, rotando de horario; el resto alterna A y B.
+expl = [n for n, _ in E_FASE1[6:]]
+d = 3
+while a or b or expl:
+    hoy = []
+    if expl: hoy.append(expl.pop(0))
+    while len(hoy) < len(SLOTS3):
+        src = (a if (len(hoy) + d) % 2 == 0 else b) if (a and b) else (a or b)
+        if not src: break
+        hoy.append(src.pop(0))
+    k = d % len(SLOTS3)  # la exploración rota de horario
+    hoy = hoy[-k:] + hoy[:-k] if k else hoy
+    for slot, n in zip(SLOTS3, hoy):
+        plan.append((d, slot, n, "exploración" if n in EXPLORACION else ("A" if n in A else "B")))
     d += 1
 
 def slug(t):

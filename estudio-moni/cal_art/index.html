@@ -154,8 +154,8 @@ function pickStart() {
 }
 function stats() {
   const n = PLAN.length, k = PLAN.filter(i => done[i.id]).length;
-  const s = PLAN.filter(i => i.tipo === 'short').length, l = PLAN.length - s;
-  $('#stats').innerHTML = `<div><b>${k} / ${n}</b>subidos o programados</div><div><b>${s}</b>shorts, 4 por día</div><div><b>${l}</b>videos largos, miércoles y domingos</div><div><b>${DATES.length}</b>días con publicaciones</div>`;
+  const s = PLAN.filter(i => i.tipo === 'short').length, l = PLAN.filter(i => i.tipo === 'largo' && !i.aviso?.startsWith('REEMPLAZO')).length;
+  $('#stats').innerHTML = `<div><b>${k} / ${n}</b>subidos o programados</div><div><b>${s}</b>shorts, 3 por día desde el 28/11</div><div><b>${l}</b>videos largos, miércoles y domingos</div><div><b>${DATES.length}</b>días con publicaciones</div>`;
 }
 function strip() {
   const S = $('#strip'); S.innerHTML = '';
