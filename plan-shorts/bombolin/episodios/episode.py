@@ -1088,9 +1088,17 @@ class Painter:
             self.box = {}
             stage = sg.get("stage") or []
             if STYLE2 and not stage and sg.get("theme") != "board" and sg.get("props"):
-                xs = [0.10, 0.90, 0.50] if not sg.get("closing") else [0.88]
-                stage = [dict(em=e, mode="ground", x=x, size=0.15 if W > H else 0.10)
-                         for e, x in zip(sg["props"], xs)][:2]
+                pr = list(sg["props"])[:3]
+                if sg.get("closing"):
+                    stage = [dict(em=pr[0], mode="ground", x=0.88, size=0.15 if W > H else 0.10)]
+                elif sg.get("theme") == "show":  # juegos y canciones: los objetos grandes y en fila, como en un concurso
+                    rows = {1: [0.5], 2: [0.36, 0.64], 3: [0.25, 0.5, 0.75]}[len(pr)]
+                    stage = [dict(em=e, mode="sky", x=x, y=0.30 if W > H else 0.34, size=0.22 if W > H else 0.12)
+                             for e, x in zip(pr, rows)]
+                else:
+                    xs = [0.09, 0.91, 0.5]
+                    stage = [dict(em=e, mode="ground", x=x, size=0.18 if W > H else 0.11, back=(k == 2))
+                             for k, (e, x) in enumerate(zip(pr, xs))]
             li = sum(1 for e in self.events if e["seg"] == si and e["t"] <= tt) - 1
             items = [it for it in stage if li >= it.get("frm", 0)]
             self.variant = {it["who"]: f'{it["who"]}-{it["name"]}' for it in items if it["mode"] == "variant"}
