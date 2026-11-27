@@ -51,55 +51,87 @@ ESCENAS = {
 }
 
 
-def build(plan, song):
+def line_times(plan, align):
+    """Tiempos reales de cada palabra (alineación de ElevenLabs) repartidos por renglón de la letra."""
+    words = [w for w in align["words"] if w["text"].strip()]
+    out, k = [], 0
+    for sec in plan["composition_plan"]["sections"]:
+        for line in sec["lines"]:
+            n = len(line.split())
+            ws = words[k:k + n]
+            k += n
+            out.append([(w["start"], w["end"]) for w in ws])
+    return out
+
+
+def build(plan, song, align=None):
     secs = plan["composition_plan"]["sections"]
-    segs, events, t = [], [], 0.0
-    seen = {}
-    for sec in secs:
-        name = sec["section_name"]
+    total = len(song) / SR
+    lt_all = line_times(plan, align) if align else None
+    # renglones con su inicio y fin reales (o repartidos en partes iguales si no hay alineación)
+    rows, t, li = [], 0.0, 0
+    for si_, sec in enumerate(secs):
         dur = sec["duration_ms"] / 1000
-        lines = sec["lines"] or [""]
+        for j, x in enumerate(sec["lines"]):
+            if lt_all and lt_all[li]:
+                st, en, ws = lt_all[li][0][0], lt_all[li][-1][1], lt_all[li]
+            else:
+                lt = dur / len(sec["lines"])
+                st, en, ws = t + j * lt, t + (j + 1) * lt, None
+            rows.append(dict(sec=si_, text=x, st=st, en=en, words=ws))
+            li += 1
+        t += dur
+    segs, events, seen = [], [], {}
+    sec_start = 0.0
+    for si_, sec in enumerate(secs):
+        name = sec["section_name"]
         k = seen.get(name, 0)
         seen[name] = k + 1
         opts = ESCENAS.get(name, ESCENAS["Chorus"])
-        n_sc = len(opts)
-        per_scene = max(1, math.ceil(len(lines) / n_sc))
-        lt = dur / len(lines)
-        for j in range(n_sc):
-            chunk = lines[j * per_scene:(j + 1) * per_scene]
-            if not chunk:
-                continue
-            th, cast, stage = opts[(j + k) % n_sc]
+        mine = [r for r in rows if r["sec"] == si_]
+        nxt = [r for r in rows if r["sec"] > si_]
+        sec_end = (nxt[0]["st"] - 0.25) if nxt else total
+        if not mine:
+            groups = [[]]
+        else:
+            per = max(1, math.ceil(len(mine) / len(opts)))
+            groups = [mine[i:i + per] for i in range(0, len(mine), per)]
+        for j, g in enumerate(groups):
+            th, cast, stage = opts[(j + k) % len(opts)]
             chars, guests, mood = E.parse_cast(cast)
-            t0 = t + j * per_scene * lt
+            t0 = sec_start if j == 0 else g[0]["st"] - 0.25
+            t1 = (groups[j + 1][0]["st"] - 0.25) if j + 1 < len(groups) else sec_end
             sg = dict(kind="scene", theme=th, props=[], chars=chars, guests=guests, mood=mood, idx=0,
-                      lines=[("ALL", x) for x in chunk], stage=stage, dance=BPM, t0=t0,
-                      t1=t + min(len(lines), (j + 1) * per_scene) * lt)
-            si = len(segs)
+                      lines=[("ALL", r["text"]) for r in g] or [("ALL", "♪")], stage=stage, dance=BPM, t0=t0, t1=t1)
             segs.append(sg)
-            for i, x in enumerate(chunk):
-                st = t0 + i * lt
-                a = song[int(st * SR):int((st + lt) * SR)] if x else np.zeros(int(lt * SR))
-                events.append(dict(t=st, a=a, sp="ALL", text=x or "♪", seg=si))
-        t += dur
-    segs[-1]["t1"] = max(segs[-1]["t1"], len(song) / SR)
-    return segs, events, len(song) / SR
+            for r in g:
+                a = song[int(r["st"] * SR):int(r["en"] * SR)]
+                events.append(dict(t=r["st"], a=a, sp="ALL", text=r["text"], seg=len(segs) - 1, words=r["words"]))
+        sec_start = sec_end
+    segs[-1]["t1"] = max(segs[-1]["t1"], total)
+    return segs, events, total
 
 
 class SongPainter(E.Painter):
+    def subtitles(self, d, ev, tt):
+        return  # la letra la dibuja frame() con los tiempos reales de cada palabra
+
     def frame(self, fi, hook=None):
         fr = super().frame(fi, hook)
         tt = fi / E.FPS
         ev = None
         for e in self.events:
-            if e["t"] <= tt < e["t"] + len(e["a"]) / SR:
+            if e["t"] - 0.15 <= tt < e["t"] + len(e["a"]) / SR + 0.6:
                 ev = e
-        if ev is not None and ev["text"] != "♪" and self.W > self.H:
+        if ev is not None and ev["text"] != "♪" and tt < ev["t"] + len(ev["a"]) / SR + 0.6:
             d = ImageDraw.Draw(fr, "RGBA")
             W, H = self.W, self.H
             words = ev["text"].split()
             dur = max(0.3, len(ev["a"]) / SR)
-            k = min(len(words) - 1, int((tt - ev["t"]) / dur * len(words) * 1.05))
+            if ev.get("words"):
+                k = sum(1 for (ws, we) in ev["words"] if ws <= tt) - 1
+            else:
+                k = min(len(words) - 1, int((tt - ev["t"]) / dur * len(words) * 1.05))
             sz = int(0.062 * H) if W > H else 74
             f = E.font(E.F700, sz)
             full = " ".join(words)
@@ -131,7 +163,9 @@ def main():
     wav = a.out + ".wav"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", a.song, "-ac", "1", "-ar", str(SR), wav], check=True)
     song = R.read_wav(wav)
-    segs, events, total = build(plan, song)
+    al = a.song[:-4] + "_align.json"
+    align = json.load(open(al)) if os.path.exists(al) else None
+    segs, events, total = build(plan, song, align)
     W, H = (1080, 1920) if a.vertical else (1920, 1080)
     ep = dict(E.EPISODES[3])
     f0 = int(a.desde * E.FPS)
