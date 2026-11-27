@@ -21,6 +21,18 @@ DIAS = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"]
 DIAS_LARGO = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
 SLOTS = ["10:00", "13:00", "19:00", "22:00"]   # hasta el 27/11
 SLOTS3 = ["13:00", "19:00", "22:00"]          # desde el 28/11: 3 por día
+# Títulos reescritos con lo que mostraron los datos del 25-27/11: número concreto + conflicto en primera persona
+# ("Gasté $20 más para ahorrarme $5" y "Por qué todo cuesta $9,99" fueron los que más retuvieron).
+TITULO_NUEVO = {
+    88: "Pagué el mínimo de la tarjeta: 6 años y casi el doble 😱",
+    89: "Las cuotas sin interés no son tan gratis 💳",
+    60: "El cajero me cobra $144 al año por sacar MI plata",
+    54: "El 2x1 me hizo gastar el 100 %",
+    5: "La regla para que la tarjeta no me cobre intereses 💳",
+    58: "7 cuotas “chiquitas” = $210 por mes",
+    13: "Le presté $100 a mi primo y… 🫠",
+    15: "Salí de deudas… y casi vuelvo a caer",
+}
 PUBLICADOS = [66, 51, 1, 81, 26, 2, 97, 52, 3, 67, 27, 4]  # subidos entre el 21 y el 24/11
 
 # Grupo A: gastos de todos los días con el gasto como personaje (el formato que más retuvo: 52 % vs. 19-24 %)
@@ -85,7 +97,7 @@ for i, (d, slot, n, grupo) in enumerate(plan, 1):
     s = by_n[n]; date = START + dt.timedelta(days=d)
     rows.append(dict(orden=i, dia=d + 1, fecha=date.isoformat(), dia_semana=DIAS_LARGO[date.weekday()], hora_ar=slot,
                      hora_co=shift(slot, -2), hora_mx=shift(slot, -3), hora_es=shift(slot, 4), n=n, grupo=grupo,
-                     nicho=NICHO.get(n, ""), provisorio=d >= 6, formato=s["formato"], titulo=s["titulo"],
+                     nicho=NICHO.get(n, ""), provisorio=d >= 6, formato=s["formato"], titulo=TITULO_NUEVO.get(n, s["titulo"]),
                      descripcion=f"{s['desc']}\n\n{('Fuente: ' + s['dato'] + chr(10) + chr(10)) if n in EXPLORACION else ''}"
                                  f"Contenido educativo, no es asesoramiento financiero.\n\n{s['tags']} #shorts",
                      comentario_fijado=f"¿Y a vos te pasó? Contame en los comentarios 👇",

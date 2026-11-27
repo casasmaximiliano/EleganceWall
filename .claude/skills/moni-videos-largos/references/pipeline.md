@@ -107,3 +107,27 @@ Carpeta `estudio-moni/mundo3d/`. Usa el mismo audio y timeline de `build_long.py
 - Render: `node render3d.js NN --workers 3 --out ../largos/out/mp4_3d/NN_3d.mp4` (~1 fps por worker: 8 min de video ≈ 70-80 min).
 - Miniaturas 3D: `node thumb3d.js NN` (variantes A/B/C configuradas dentro del script) → `largos/miniaturas/miniatura_NN_3D_X.png`; reescalar a 1280×720.
 - Trabajo semanal: guiones listos con anticipación, pero el 3D se arma y renderiza por semana, corrigiendo con stills.
+
+### Mundo 3D · reglas de calidad (27/11/2026)
+
+- **Datos en pantalla:** los `insert` de `cuaderno` y `resumen` ya no cortan a la mesa. `render3d.js` los convierte en un panel que entra por la derecha encima del último plano con personajes, con los renglones apareciendo de a uno, y corre la escena a la izquierda (`setViewOffset`). El celular, la alcancía y el calendario siguen como planos de detalle. `--sin-paneles` vuelve al comportamiento viejo.
+- **Primeros planos:** `close:<kind>` prueba ángulos y distancias y elige uno sin árboles o faroles delante y sin otro personaje cortado por el borde (o lo deja entero, o lo saca). `camOpt.fixed: true` fuerza el ángulo pedido. `DBG=1` imprime el puntaje.
+- **Calle:** la gente camina sobre la vereda (alto .3) y pasa por detrás de los personajes. Los autos van por los carriles z 1,0 y 3,1; la mitad del fondo es para estacionar. Autito usa el spot `cordon` (en la calle) con Moni en `veredaAuto`, cámara `autoTwo`.
+- **Lugares nuevos:** `videoclub` (spots `pasillo`, `mostrador` para Centavito arriba del mostrador, `junto`; cámaras `two`, `wide`, `est`, `estantes`, `tele`) y `sala` de reuniones (cámaras `mesa`, `risa`, `fundadores`, `atril`; `fx: {laugh: 1}` hace reír a los ejecutivos).
+- **Cámara a medida:** `cam` también acepta un objeto `{p, look, fov}`.
+- **Short vertical en 3D:** `node render3d.js NN --short` usa `video/out/timeline/NNN.json`, `video/out/audio/NNN.wav` y `planos/short_NNN.js`, a 1080×1920. Muestra el `panel.big` de cada frase arriba y el aviso legal al final. En vertical, primeros planos con `dist` ≈ 8,6 y `fov` 44.
+- **Guiones largos:** que Moni nunca esté sola: un compañero que pregunta lo que pensaría el espectador (Centavito no conoce un videoclub, etc.). Gancho con el número en la primera frase y un "quedate hasta el final porque…" que se paga en el último tercio.
+
+### Lo que dicen los datos de Shorts (25-27/11/2026)
+
+| Short | Duración | Se quedaron | % visto | Me gusta | Suscriptores |
+| --- | --- | --- | --- | --- | --- |
+| Gasté $20 más para ahorrarme $5 de envío | 13 s | 61,8 % | 106,9 % | 26 | 0 |
+| Por qué todo cuesta $9,99 | 18 s | 56,3 % | 74,4 % | 14 | 2 |
+| Si tenés una acción de Coca-Cola | 22 s | 41,3 % | 59 % | 11 | 0 |
+| La suscripción que vive en mi sillón | 12 s | 33,6 % | 97 % | 7 | 0 |
+
+- Lo que decide si se quedan es el primer cuadro y el título: un número concreto y un conflicto en primera persona ("Gasté $20 más…"). "DESDE MARZO" como primer cartel no engancha.
+- Los de 12-14 s se ven enteros o se repiten; los de 20 s o más pierden la mitad. Apuntar a 12-16 s.
+- Casi todo el tráfico es el feed de Shorts (98-99 %): la búsqueda no trae nada todavía.
+- Títulos reescritos con este criterio en `calendario.py` (`TITULO_NUEVO`).
