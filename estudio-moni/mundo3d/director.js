@@ -80,6 +80,17 @@ function camPenalty(C, c, others, scene) {
   });
   return pen;
 }
+function panelOffset(C, chars) {
+  TMP.fov = C.fov || 36; TMP.aspect = W / H; TMP.position.fromArray(C.p); TMP.lookAt(...C.look); TMP.updateProjectionMatrix(); TMP.updateMatrixWorld();
+  let minX = W, maxX = 0;
+  chars.forEach(o => { const hgt = (o.rig ? o.rig.height : 3) * o.scale.y, w = 1.1 * o.scale.x;
+    for (const dx of [-w, w]) for (const dy of [.3, hgt * .6, hgt]) { const v = new THREE.Vector3(o.position.x + dx, o.position.y + dy, o.position.z).project(TMP);
+      if (v.z >= 1 || Math.abs(v.y) > 1.1) continue; const px = (v.x + 1) / 2 * W; minX = Math.min(minX, px); maxX = Math.max(maxX, px) } });
+  const panelLeft = W - 70 - 640 - 40;                       // borde izquierdo del panel, con aire
+  let off = Math.max(W * .1, maxX - panelLeft);             // lo justo para despejar al de más a la derecha
+  off = Math.min(off, Math.max(W * .1, minX - 40), W * .34); // sin sacar de cuadro al de la izquierda
+  return off;
+}
 function closeCam(c, o = {}, others = [], scene) {
   const base = o.angle || 0, d0 = o.dist || 5.6;
   if (!scene || o.fixed) return closeCamAt(c, o, base, d0);
@@ -164,7 +175,9 @@ window.frame3d = function (t) {
   const pos = C.p.map((v, i) => M3.lerp(v, to[i], e));
   const hand = [M3.noise(t * .7, 1) * .04, M3.noise(t * .6, 2) * .03, 0];
   cam.fov = C.fov || 36; cam.aspect = W / H;
-  if (sh.panel && !sh.insert) { const off = (H > W ? 0 : W * .17); cam.setViewOffset(W, H, off, 0, W, H) } else cam.clearViewOffset();
+  if (sh.panel && !sh.insert && H < W) {  // corre la escena lo justo para que ningún personaje quede debajo del panel
+    if (sh._off == null) sh._off = panelOffset(C, Object.keys(sh.cast || {}).map(k => CH[k]));
+    cam.setViewOffset(W, H, sh._off, 0, W, H) } else cam.clearViewOffset();
   cam.updateProjectionMatrix();
   cam.position.set(pos[0] + hand[0], pos[1] + hand[1], pos[2]); cam.lookAt(...C.look);
   R.render(scene, cam);

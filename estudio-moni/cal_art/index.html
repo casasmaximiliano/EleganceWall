@@ -191,6 +191,7 @@ function card(it) {
     body += `<div class="meta2"><div><span>Categoría</span><b>${esc(it.categoria)}</b></div><div><span>Lista de reproducción</span><b>${esc(it.lista)}</b></div></div>`;
     body += field('Video relacionado (en “Video relacionado” del Short)', it.relacionado, 'r');
     body += `<p class="file">${esc(it.archivo)}</p>`;
+    if (it.aviso) body = `<p class="aviso">${esc(it.aviso)}</p>` + body;
   }
   body += `<div class="row"><label class="chk"><input type="checkbox" data-done="${esc(it.id)}" ${done[it.id] ? 'checked' : ''}> ${done[it.id] ? 'Subido' : 'Marcar como subido'}</label>${!isL && it.video ? `<button class="btn" data-dl="${esc(it.id)}">Descargar video</button>` : ''}</div>`;
   return `<article class="post ${cls}${done[it.id] ? ' done' : ''}" data-id="${esc(it.id)}"><div class="when"><div class="t">${esc(hourOf(it))}<small>${tzSel.value === 'ar' ? 'hora Argentina' : tzSel.value === 'mx' ? 'hora México' : 'hora Colombia/Perú'}</small></div>${media}</div><div class="body">${body}</div></article>`;
