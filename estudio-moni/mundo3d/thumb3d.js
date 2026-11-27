@@ -17,6 +17,14 @@ const T = {
     {loc: 'cafeteria', cast: CAFE, ex: {cup: 'shock', moni: 'happy'}, gesture: {cup: 'shock'}, cam: CAM_CUP,
       txt: ['$3 →', '$173.238'], side: 'left'},
   ],
+  15: [
+    {loc: 'videoclub', cast: {moni: 'pasillo', centavito: 'mostrador'}, ex: {moni: 'shock'}, gesture: {moni: 'shock'}, closeOf: 'moni', camOpt: {angle: .15, dist: 5.4, shift: 1.5, fov: 36, fixed: true},
+      txt: ['$50', 'MILLONES ❌']},
+    {loc: 'sala', cast: {}, ex: {}, fx: {laugh: 1}, cam: {p: [.2, 3.5, -1.1], look: [.9, 3.0, -4.3], fov: 50},
+      txt: ['SE RIERON', 'DE NETFLIX']},
+    {loc: 'videoclub', cast: {moni: 'pasillo', centavito: 'mostrador'}, ex: {centavito: 'shock'}, gesture: {centavito: 'shock'}, closeOf: 'centavito', camOpt: {angle: -.1, dist: 5, shift: 1.3, fov: 36, fixed: true},
+      txt: ['EL “NO”', 'MÁS CARO']},
+  ],
   25: [
     {loc: 'depto', cast: {moni: 'escritorio', centavito: 'junto'}, ex: {moni: 'happy', centavito: 'happy'}, gesture: {moni: 'armsUp'}, closeOf: 'moni', camOpt: {angle: -.35, dist: 7, shift: 1.6, fov: 36},
       txt: ['90 DÍAS', '4 % → 17 %']},
@@ -44,9 +52,9 @@ const CSS = `#ov{display:none!important}
   await p.goto('file://' + path.join(__dirname, 'page.html'));
   for (let i = 0; i < vs.length; i++) {
     const v = vs[i], letter = 'ABC'[i];
-    const kind = Object.keys(v.cast)[0];
+    const kind = Object.keys(v.cast)[0] || 'moni';
     const tl = {scenes: [{type: 'line', start: 0, dur: 9, audio: .01, kind, text: '.', ex: v.ex}]};
-    const shot = {start: 0, end: 9, loc: v.loc, cast: v.cast, gesture: v.gesture, push: 0, cam: v.closeOf ? 'close:' + v.closeOf : '_th', camOpt: v.camOpt};
+    const shot = {start: 0, end: 9, loc: v.loc, cast: v.cast, gesture: v.gesture, push: 0, fx: v.fx, cam: v.closeOf ? 'close:' + v.closeOf : '_th', camOpt: v.camOpt};
     await p.evaluate(({tl, shot, cam}) => { if (!window._ready) { window._ready = true } return window.setup3d({tl, shots: [shot]}).then(() => { if (cam) M3.lugar(shot.loc).cams._th = cam }) }, {tl, shot, cam: v.cam || null});
     await p.evaluate(() => window.frame3d(2.2));
     const longest = Math.max(...v.txt.map(s => s.length));
