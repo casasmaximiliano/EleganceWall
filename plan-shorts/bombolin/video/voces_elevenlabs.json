@@ -1,0 +1,16 @@
+{
+  "model": "eleven_v3",
+  "settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.8
+  },
+  "voices": {
+    "PIPO": "AlJMiRp5YocIFYRlSinB",
+    "TOTO": "hTOt5Hm31k0p8nP1orye",
+    "LULA": "jeVhe3AGbBSHgk1AlQYu",
+    "ZUMBI": "rWOQDZ25hfLE07xg1RTY",
+    "ABU": "2VNnRd0H1pfxQrQxVVu8",
+    "GM": "La4XaBglgfNWyEmsEipU",
+    "GF": "jeVhe3AGbBSHgk1AlQYu"
+  }
+}
