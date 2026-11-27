@@ -119,6 +119,10 @@ class SongPainter(E.Painter):
     def frame(self, fi, hook=None):
         fr = super().frame(fi, hook)
         tt = fi / E.FPS
+        if hook and self.H > self.W and tt >= 3.6:  # en el short el título va al empezar aunque no sea el segundo 0
+            dh = ImageDraw.Draw(fr, "RGBA")
+            self.text(dh, self.W // 2, 330, hook, int(118 * (1 + 0.04 * math.sin(tt * 9))), (255, 214, 60), sw=12,
+                      maxw=self.W - 70)
         ev = None
         for e in self.events:
             if e["t"] - 0.15 <= tt < e["t"] + len(e["a"]) / SR + 0.6:
