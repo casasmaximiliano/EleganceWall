@@ -193,7 +193,53 @@ def read_wav(p):
     return a
 
 
+# Voces Kokoro (elegidas por el usuario el 27/11/2026): voz, tono (con formantes preservados), velocidad
+KOKORO = {"PIPO": ("ef_dora", 1.15, 1.0), "TOTO": ("em_alex", 1.08, 0.95), "LULA": ("ef_dora", 1.06, 0.95),
+          "ZUMBI": ("ef_dora", 1.25, 1.1), "ABU": ("ef_dora", 0.96, 0.88), "GM": ("em_santa", 1.0, 1.0),
+          "GF": ("ef_dora", 0.98, 1.0)}
+_KK = None
+
+
+def use_kokoro():
+    return os.environ.get("BOMBOLIN_VOZ") == "kokoro" and LANG == "es"
+
+
+def _kokoro():
+    global _KK
+    if _KK is None:
+        from kokoro_onnx import Kokoro
+        d = os.environ.get("BOMBOLIN_KOKORO", "kokoro")
+        _KK = Kokoro(os.path.join(d, "model.onnx"), os.path.join(d, "voices_es.npz"))
+    return _KK
+
+
+def kokoro_raw(voice, text, speed, path):
+    import soundfile as sf
+    a, sr = _kokoro().create(tts_text(text), voice=voice, speed=speed, lang="es")
+    sf.write(path, a, sr)
+    return sr
+
+
+def tts_kokoro(key, text, cache, echo=False):
+    voice, pitch, speed = KOKORO.get(key, KOKORO["GF"])
+    h = hashlib.md5(f"KOKORO|{key}|{text}|{echo}|k1".encode()).hexdigest()
+    out = os.path.join(cache, h + ".wav")
+    if not os.path.exists(out):
+        raw = out + ".raw.wav"
+        kokoro_raw(voice, text, speed, raw)
+        af = f"rubberband=pitch={pitch}:formant=preserved:pitchq=quality,aresample={SR}"
+        if echo:
+            af += ",aecho=0.8:0.7:350|700:0.45|0.25"
+        af += ",silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse"
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", raw, "-af", af, "-ac", "1", "-ar", str(SR), out], check=True)
+        os.remove(raw)
+    a = read_wav(out)
+    return a / (np.abs(a).max() or 1) * 0.85
+
+
 def tts(key, text, vdir, cache, echo=False):
+    if use_kokoro():
+        return tts_kokoro(key, text, cache, echo)
     model, pitch, ls = VOICES[key]
     h = hashlib.md5(f"{key}|{text}|{echo}|v3{'' if LANG == 'es' else '|' + LANG}".encode()).hexdigest()
     out = os.path.join(cache, h + ".wav")
@@ -218,8 +264,28 @@ def tts(key, text, vdir, cache, echo=False):
 def chorus(text, vdir, cache):
     """Coro sincronizado: UNA sola locución base (misma duración de cada sílaba) a la que se le cambia
     solo el tono para cada personaje. Así todas las voces empiezan y terminan cada palabra a la vez."""
-    h = hashlib.md5(f"CHORUS|{text}|v4{'' if LANG == 'es' else '|' + LANG}".encode()).hexdigest()
+    h = hashlib.md5(f"CHORUS|{text}|v4{'' if LANG == 'es' else '|' + LANG}{'|kokoro' if use_kokoro() else ''}".encode()).hexdigest()
     out = os.path.join(cache, h + ".wav")
+    if use_kokoro() and not os.path.exists(out):
+        base = out + ".base.wav"
+        kokoro_raw("ef_dora", text, 1.0, base)
+        parts = []
+        for pitch, gain in ((1.15, 1.0), (0.9, 0.55), (1.06, 0.5), (1.25, 0.45)):  # Bombolín, Toto, Lula, Zumbi
+            pv = out + f".{pitch}.wav"
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", base, "-af",
+                            f"rubberband=pitch={pitch}:formant=preserved,aresample={SR}", "-ac", "1", "-ar", str(SR), pv], check=True)
+            a = read_wav(pv)
+            parts.append((a / (np.abs(a).max() or 1)) * gain)
+            os.remove(pv)
+        n = min(len(p) for p in parts)
+        mix = sum(p[:n] for p in parts)
+        mix = mix / (np.abs(mix).max() or 1) * 0.85
+        with wave.open(out, "wb") as w:
+            w.setnchannels(1)
+            w.setsampwidth(2)
+            w.setframerate(SR)
+            w.writeframes((mix * 32767).astype(np.int16).tobytes())
+        os.remove(base)
     if not os.path.exists(out):
         from piper import SynthesisConfig
         model = CHORUS_MODEL[LANG]

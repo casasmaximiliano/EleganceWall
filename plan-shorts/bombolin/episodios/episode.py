@@ -147,6 +147,40 @@ SPRITE_DIR = os.environ.get("BOMBOLIN_SPRITES3D")
 BG3D_DIR = os.environ.get("BOMBOLIN_BG3D")
 # Estilo 2 (desde el día 2, 27/11): colores vivos, contorno, profundidad de campo, entradas, gestos y chispas
 STYLE2 = os.environ.get("BOMBOLIN_ESTILO") == "2"
+OBJ3D_DIR = os.environ.get("BOMBOLIN_OBJ3D")
+_PROPS = {}
+
+
+def prop_img(name, h=None, w=None):
+    """Objeto 3D (cama, bañera, fideos…) recortado, con el mismo color y contorno que los personajes."""
+    key = (name, h, w)
+    if key in _PROPS:
+        return _PROPS[key]
+    base = _PROPS.get((name, None, None))
+    if base is None:
+        from PIL import ImageEnhance
+        im = Image.open(os.path.join(OBJ3D_DIR, name + ".png")).convert("RGBA")
+        a = im.getchannel("A")
+        im = ImageEnhance.Contrast(ImageEnhance.Color(im.convert("RGB")).enhance(1.15)).enhance(1.08).convert("RGBA")
+        im.putalpha(a)
+        im = im.crop(a.point(lambda v: 255 if v > 40 else 0).getbbox())
+        base = outline(im, px=5)
+        _PROPS[(name, None, None)] = base
+    if h:
+        out = base.resize((max(1, int(base.width * h / base.height)), int(h)), Image.LANCZOS)
+    elif w:
+        out = base.resize((int(w), max(1, int(base.height * w / base.width))), Image.LANCZOS)
+    else:
+        out = base
+    if len(_PROPS) > 400:
+        _PROPS.clear()
+        _PROPS[(name, None, None)] = base
+    _PROPS[key] = out
+    return out
+
+
+def has_prop(it):
+    return bool(it.get("sp") and OBJ3D_DIR and os.path.exists(os.path.join(OBJ3D_DIR, it["sp"] + ".png")))
 SKY = {"meadow": ((120, 195, 255), (215, 240, 255)), "night": ((25, 35, 95), (95, 80, 160)),
        "xmas": ((25, 35, 95), (95, 80, 160)), "snow": ((165, 205, 250), (235, 245, 255)),
        "cave": ((60, 40, 95), (30, 20, 50)), "sea": ((110, 200, 250), (25, 90, 175)),
@@ -686,7 +720,7 @@ class Painter:
                           fill=tuple(min(255, v + 50) for v in c) + (200,))
             elif m == "ground":
                 sz = int(it["size"] * H)
-                e = emoji(it["em"], sz)
+                e = prop_img(it["sp"], h=sz) if has_prop(it) else emoji(it["em"], sz)
                 cx = it["x"] * W
                 bot = by - (0.10 * H if it.get("back") else 0.025 * H)
                 shd = soft_shadow(int(e.width * 0.42), 0.45)
@@ -705,16 +739,25 @@ class Painter:
                 continue
             if m == "front":
                 px, top, ww, hh = self.box[who]
-                hh0 = hh
-                e = emoji(it["em"], int(it["size"] * hh0 * 1.45))
-                layer.alpha_composite(e, (int(px - e.width / 2), int(by - e.height * 0.86)))
+                if has_prop(it):
+                    e = prop_img(it["sp"], w=int(it.get("w", 1.5) * ww))
+                    shd = soft_shadow(int(e.width * 0.5), 0.5)
+                    layer.alpha_composite(shd, (int(px - shd.width / 2), int(by - shd.height / 2)))
+                    layer.alpha_composite(e, (int(px - e.width / 2), int(by + 0.01 * H - e.height)))
+                else:
+                    e = emoji(it["em"], int(it["size"] * hh * 1.45))
+                    layer.alpha_composite(e, (int(px - e.width / 2), int(by - e.height * 0.86)))
             elif m == "on":
                 px, top, ww, hh = self.box[who]
-                e = emoji(it["em"], max(24, int(it["size"] * hh)))
+                if has_prop(it):
+                    e = prop_img(it["sp"], w=max(16, int(it.get("w", 0.4) * ww)))
+                else:
+                    e = emoji(it["em"], max(24, int(it["size"] * hh)))
                 if it.get("rot"):
-                    e = e.rotate(it["rot"] + 4 * math.sin(tt * 3), resample=Image.BICUBIC, expand=True)
+                    e = e.rotate(it["rot"] + 3 * math.sin(tt * 3), resample=Image.BICUBIC, expand=True)
                 dx, dy = it["at"]
-                layer.alpha_composite(e, (int(px + dx * ww - e.width / 2), max(0, int(top + dy * hh - e.height / 2))))
+                y = top + dy * hh - (e.height if it.get("anchor") == "bottom" else e.height / 2)
+                layer.alpha_composite(e, (int(px + dx * ww - e.width / 2), max(0, int(y))))
             elif m == "orbit":
                 hx, hy = self.heads.get(who, (self.box[who][0], self.box[who][1]))
                 ww = self.box[who][2]
@@ -722,7 +765,7 @@ class Painter:
                 for k in range(n):
                     a = tt * 2.6 + k * 2 * math.pi / n
                     r = 0.62 * ww
-                    e = emoji(it["em"], max(20, int(it["size"] * H)))
+                    e = prop_img(it["sp"], h=max(16, int(it["size"] * H))) if has_prop(it) else emoji(it["em"], max(20, int(it["size"] * H)))
                     x = hx + r * math.cos(a)
                     y = hy - 0.05 * H + 0.35 * r * math.sin(a) + 6 * math.sin(tt * 9 + k)
                     layer.alpha_composite(e, (int(x - e.width / 2), max(0, int(y - e.height / 2))))
@@ -733,7 +776,7 @@ class Painter:
                     x = W * ((k * 0.381) % 1.0) + 40 * math.sin(tt * 1.3 + k)
                     y = by - ph * H * 0.95
                     sz = int((0.06 + 0.05 * ((k * 7) % 5) / 5) * H)
-                    e = emoji(it["em"], sz)
+                    e = prop_img(it["sp"], h=sz) if has_prop(it) else emoji(it["em"], sz)
                     if 0 < y < H:
                         layer.alpha_composite(e, (int(x - e.width / 2), int(y - e.height / 2)))
             elif m == "sparkle":
