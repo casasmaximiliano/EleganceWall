@@ -19,12 +19,12 @@ MUD = (120, 78, 40)
 SPAG = dict(sp="spaghetti", em="🍝", mode="on", who="TOTO", at=(0.06, 0.16), w=0.55, rot=-8, anchor="bottom")
 SOCK = dict(sp="sock", em="🧦", mode="on", who="TOTO", at=(0.47, 0.50), w=0.26, rot=-35)
 # Toto metido en la bañera llena de espuma
-TUB = dict(sp="bathtub", em="🛁", mode="front", who="TOTO", w=1.7, size=0.62, hide=0.32)
+TUB = dict(sp="bathtub", em="🛁", mode="front", who="TOTO", w=1.45, size=0.62, hide=-0.38)  # Toto sentado adentro
 
 STAGE = {
     # Día 2: ¡Toto no quiere bañarse!  ("sp" = objeto 3D de 3d/objetos.py; "em" = emoji de respaldo)
     (2, 0): [dict(sp="sponge", em="🧽", mode="ground", x=0.22, size=0.11),
-             dict(sp="bubble", em="🫧", mode="rise", n=6),
+             dict(em="🫧", mode="rise", n=6),
              dict(sp="bed", em="🛏️", mode="front", who="TOTO", w=1.9, size=0.85, hide=0.50, frm=1)],
     (2, 1): [SPAG, SOCK],
     (2, 2): [SPAG, SOCK, dict(sp="fly", em="🪰", mode="orbit", who="TOTO", n=3, size=0.07)],
@@ -36,13 +36,13 @@ STAGE = {
     (2, 6): [dict(mode="puddle", x=0.83, w=0.30, col=MUD),
              dict(sp="mudball", em="🟤", mode="orbit", who="G:Elefante", n=4, size=0.05, frm=2),
              dict(em="💦", mode="orbit", who="G:Elefante", n=2, size=0.09, frm=2)],
-    (2, 8): [dict(sp="bubble", em="🫧", mode="rise", n=10),
+    (2, 8): [dict(em="🫧", mode="rise", n=10),
              dict(sp="soap", em="🧼", mode="ground", x=0.5, size=0.10)],
-    (2, 9): [TUB, dict(sp="bubble", em="🫧", mode="rise", n=10)],
-    (2, 10): [TUB, dict(sp="duck", em="🦆", mode="on", who="TOTO", at=(0.55, 0.62), w=0.38, anchor="bottom"),
-              dict(sp="bubble", em="🫧", mode="on", who="TOTO", at=(-0.10, 0.60), w=0.22, frm=2),
-              dict(sp="bubble", em="🫧", mode="on", who="TOTO", at=(0.10, 0.62), w=0.26, frm=2),
-              dict(sp="bubble", em="🫧", mode="rise", n=10)],
+    (2, 9): [TUB, dict(em="🫧", mode="rise", n=10)],
+    (2, 10): [TUB, dict(sp="duck", em="🦆", mode="on", who="TOTO", at=(0.36, 0.74), w=0.34, anchor="bottom"),
+              dict(em="🫧", mode="on", size=0.22, who="TOTO", at=(-0.10, 0.60), frm=2),
+              dict(em="🫧", mode="on", size=0.22, who="TOTO", at=(0.10, 0.62), frm=2),
+              dict(em="🫧", mode="rise", n=10)],
     (2, 11): [dict(sp="lotion", em="🧴", mode="ground", x=0.12, size=0.16),
               dict(sp="comb", em="🪮", mode="on", who="TOTO", at=(0.18, 0.06), w=0.42, rot=25, anchor="bottom"),
               dict(mode="sparkle", who="TOTO", frm=1)],
