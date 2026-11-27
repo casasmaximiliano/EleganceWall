@@ -21,6 +21,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import episode as E  # noqa: E402
 from extras_s1 import EXTRA, SHORTS  # noqa: E402
+from staging import STAGE  # noqa: E402
 
 E.FPS = 60
 FPS = 60
@@ -53,11 +54,14 @@ def story(n):
     return out
 
 
-def scene_seg(sc):
+def scene_seg(sc, key=None):
     th, props, cast, lines = sc
     chars, guests, mood = E.parse_cast(cast)
-    return dict(kind="scene", theme=th, props=props, chars=chars, guests=guests, mood=mood,
-                lines=[(x[0].replace("_", " "), x[1]) for x in lines], idx=0)
+    seg = dict(kind="scene", theme=th, props=props, chars=chars, guests=guests, mood=mood,
+               lines=[(x[0].replace("_", " "), x[1]) for x in lines], idx=0)
+    if E.STYLE2 and key in STAGE:
+        seg["stage"] = STAGE[key]
+    return seg
 
 
 def lib_pick(kind, n, used):
@@ -86,7 +90,7 @@ def timeline(segs, vdir, cache):
             else:
                 a = R.tts(sp, text, vdir, cache)
             events.append(dict(t=tt, a=a, sp=sp, text=text, seg=si))
-            tt += len(a) / SR + 0.8
+            tt += len(a) / SR + (0.45 if E.STYLE2 else 0.8)
         if sg["kind"] == "end":
             tt += 4.0
         elif sg["kind"] == "title":
@@ -94,7 +98,7 @@ def timeline(segs, vdir, cache):
         elif sg["kind"] == "bumper":
             tt = max(tt, sg["t0"] + 2.6)
         else:
-            tt = max(tt, sg["t0"] + 3.0) + 1.4
+            tt = max(tt, sg["t0"] + (2.4 if E.STYLE2 else 3.0)) + (0.7 if E.STYLE2 else 1.4)
         sg["t1"] = tt
     return events, tt + 0.3
 
@@ -102,9 +106,9 @@ def timeline(segs, vdir, cache):
 def build_program(n, vdir, cache):
     ep = E.EPISODES[n]
     st = story(n)
-    head = [scene_seg(st[0]),
+    head = [scene_seg(st[0], (n, 0)),
             dict(kind="title", lines=[("ALL", "¡Bombolín y sus amigos!"), ("ABU", ep["tes"])])]
-    head += [scene_seg(sc) for sc in st[1:]]
+    head += [scene_seg(sc, (n, i + 1)) for i, sc in enumerate(st[1:])]
     # bloques de relleno (en orden), con su presentación
     used, blocks = set(), []
     for kind, count in PATTERN:
@@ -112,7 +116,7 @@ def build_program(n, vdir, cache):
         if kind == "OTRA":
             if n - 1 not in E.EPISODES:
                 continue
-            body = [scene_seg(sc) for sc in story(n - 1)]
+            body = [scene_seg(sc, (n - 1, i)) for i, sc in enumerate(story(n - 1))]
             blocks.append([dict(kind="bumper", icon=icon, label=label, lines=[("ABU", label)])] + body)
             continue
         for j in range(count):
@@ -178,7 +182,7 @@ def build_short(n, k, vdir, cache):
     else:
         st = story(n)
         a, b, hook = SHORTS[n][k]
-        segs = [scene_seg(sc) for sc in st[a:b + 1]]
+        segs = [scene_seg(sc, (n, a + j)) for j, sc in enumerate(st[a:b + 1])]
         a_theme = st[a][0]
     segs.append(dict(kind="scene", theme=a_theme, props=[E.EPISODES[n]["sticker"]], chars=["PIPO", "ABU"], guests=[],
                      mood="happy", lines=[("ABU", "¡El programa completo está en el canal!"),

@@ -546,6 +546,8 @@ class Painter:
         self.prev_last = None
         self.cur_ev = None
         self.last_pos = {}
+        self.hide = {}
+        self.box = {}
 
     def bg(self, si, theme):
         if si not in self.bgs:
@@ -583,6 +585,7 @@ class Painter:
                             base_y - 0.02 * H + e.width * 0.07], fill=(0, 0, 0, 55))
                 frame.paste(e, (px - e.width // 2, int(base_y - e.height - 0.02 * H + bob)), e)
                 self.heads[it] = (px, base_y - e.height * 0.7)
+                self.box[it] = (px, int(base_y - e.height - 0.02 * H + bob), e.width, e.height)
                 continue
             c = it
             arr = self.talk.get(c)
@@ -645,11 +648,99 @@ class Painter:
                 sh.ellipse([px - sw_, base_y - ww * 0.06, px + sw_, base_y + ww * 0.06], fill=(0, 0, 0, 45 if lift else 70))
                 sink = 0
             top = int(base_y - hh - bounce - lift + sink)
+            hide = self.hide.get(c, 0.0)
+            if hide:
+                top += int(hide * hh)
+            self.box[c] = (px, top, ww, hh)
             frame.paste(s2, (px - ww // 2, top), s2)
             self.heads[c] = (px, top + hh * (0.32 if c in ("PIPO", "ABU") else 0.42))
             pos[c] = px
         self.last_pos = dict(pos)
         return pos
+
+    def _base_y(self):
+        return 0.97 * self.H if self.W > self.H else 0.745 * self.H
+
+    def stage_back(self, layer, items, tt):
+        """Lo que va detrás de los personajes: río, charcos y objetos apoyados en el piso."""
+        W, H = self.W, self.H
+        by = self._base_y()
+        d = ImageDraw.Draw(layer, "RGBA")
+        for it in items:
+            m = it["mode"]
+            if m == "river":
+                y0, y1 = by - 0.30 * H, by - 0.17 * H
+                pts = [(x, y0 + 8 * math.sin(x / 90 + tt * 2)) for x in range(0, W + 40, 40)]
+                pts += [(x, y1 + 8 * math.sin(x / 110 + tt * 2.3)) for x in range(W, -40, -40)]
+                d.polygon(pts, fill=(70, 160, 245, 235))
+                for k in range(7):
+                    x = (k * W / 6 + tt * 60) % (W + 200) - 100
+                    yy = y0 + (y1 - y0) * (0.3 + 0.4 * ((k * 37) % 10) / 10)
+                    d.arc([x, yy - 10, x + 120, yy + 10], 200, 340, fill=(235, 250, 255, 220), width=5)
+            elif m == "puddle":
+                cx, w = it["x"] * W, it["w"] * W
+                cy = by - (0.10 if it.get("back") else 0.03) * H
+                c = it.get("col", (120, 78, 40))
+                d.ellipse([cx - w / 2, cy - w * 0.09, cx + w / 2, cy + w * 0.09], fill=c + (240,))
+                d.ellipse([cx - w * 0.3, cy - w * 0.05, cx + w * 0.05, cy - w * 0.01],
+                          fill=tuple(min(255, v + 50) for v in c) + (200,))
+            elif m == "ground":
+                sz = int(it["size"] * H)
+                e = emoji(it["em"], sz)
+                cx = it["x"] * W
+                bot = by - (0.10 * H if it.get("back") else 0.025 * H)
+                shd = soft_shadow(int(e.width * 0.42), 0.45)
+                layer.alpha_composite(shd, (int(cx - shd.width / 2), int(bot - shd.height / 2)))
+                y = int(bot - e.height * 0.92 + 3 * math.sin(tt * 1.5 + cx))
+                layer.alpha_composite(e, (int(cx - e.width / 2), max(0, y)))
+
+    def stage_front(self, layer, items, tt):
+        """Lo que va delante o encima de los personajes: cama, bañera, cosas pegadas, moscas, burbujas."""
+        W, H = self.W, self.H
+        by = self._base_y()
+        for it in items:
+            m = it["mode"]
+            who = it.get("who")
+            if who is not None and who not in self.box:
+                continue
+            if m == "front":
+                px, top, ww, hh = self.box[who]
+                hh0 = hh
+                e = emoji(it["em"], int(it["size"] * hh0 * 1.45))
+                layer.alpha_composite(e, (int(px - e.width / 2), int(by - e.height * 0.86)))
+            elif m == "on":
+                px, top, ww, hh = self.box[who]
+                e = emoji(it["em"], max(24, int(it["size"] * hh)))
+                if it.get("rot"):
+                    e = e.rotate(it["rot"] + 4 * math.sin(tt * 3), resample=Image.BICUBIC, expand=True)
+                dx, dy = it["at"]
+                layer.alpha_composite(e, (int(px + dx * ww - e.width / 2), max(0, int(top + dy * hh - e.height / 2))))
+            elif m == "orbit":
+                hx, hy = self.heads.get(who, (self.box[who][0], self.box[who][1]))
+                ww = self.box[who][2]
+                n = it.get("n", 3)
+                for k in range(n):
+                    a = tt * 2.6 + k * 2 * math.pi / n
+                    r = 0.62 * ww
+                    e = emoji(it["em"], max(20, int(it["size"] * H)))
+                    x = hx + r * math.cos(a)
+                    y = hy - 0.05 * H + 0.35 * r * math.sin(a) + 6 * math.sin(tt * 9 + k)
+                    layer.alpha_composite(e, (int(x - e.width / 2), max(0, int(y - e.height / 2))))
+            elif m == "rise":
+                n = it.get("n", 8)
+                for k in range(n):
+                    ph = (tt * 0.13 + k * 0.618) % 1.0
+                    x = W * ((k * 0.381) % 1.0) + 40 * math.sin(tt * 1.3 + k)
+                    y = by - ph * H * 0.95
+                    sz = int((0.06 + 0.05 * ((k * 7) % 5) / 5) * H)
+                    e = emoji(it["em"], sz)
+                    if 0 < y < H:
+                        layer.alpha_composite(e, (int(x - e.width / 2), int(y - e.height / 2)))
+            elif m == "sparkle":
+                hd = self.heads.get(who)
+                if hd:
+                    cyc = int(tt / 1.2)
+                    self.sparkles(layer, hd, tt - cyc * 1.2, cyc * 7.31 + 1)
 
     def sparkles(self, layer, head, since, seed):
         if since < 0 or since > 1.2:
@@ -686,6 +777,8 @@ class Painter:
                 cx = bx0 + (bx1 - bx0) * (i + 1) / (n + 1)
                 cy = (by0 + by1) / 2 + 10 * math.sin(tt * 2 + i)
                 frame.paste(e, (int(cx - e.width / 2), int(cy - e.height / 2)), e)
+            return
+        if sg.get("stage"):
             return
         spots = [(0.20, 0.30), (0.80, 0.33), (0.50, 0.22)] if land else [(0.24, 0.33), (0.76, 0.36), (0.5, 0.5)]
         for i, em in enumerate(sg["props"][:3]):
@@ -847,7 +940,16 @@ class Painter:
             self.draw_props(bgl, sg, st, tt)
             layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
             self.heads = {}
+            self.box = {}
+            stage = sg.get("stage") or []
+            li = sum(1 for e in self.events if e["seg"] == si and e["t"] <= tt) - 1
+            items = [it for it in stage if li >= it.get("frm", 0)]
+            self.hide = {it["who"]: it.get("hide", 0.0) for it in items if it["mode"] == "front" and it.get("hide")}
+            if items:
+                self.stage_back(layer, items, tt)
             pos = self.draw_cast(layer, sg, fi, tt, speaking)
+            if items:
+                self.stage_front(layer, items, tt)
             if STYLE2 and ev is not None and ev["text"].strip().endswith("!") and speaking in self.heads:
                 self.sparkles(layer, self.heads[speaking], tt - ev["t"], ev["t"])
             cx, cy, z = self.camera(si, sg, st, tt, ev, speaking)
