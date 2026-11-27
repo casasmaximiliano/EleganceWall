@@ -149,7 +149,7 @@ BG3D_DIR = os.environ.get("BOMBOLIN_BG3D")
 STYLE2 = os.environ.get("BOMBOLIN_ESTILO") == "2"
 OBJ3D_DIR = os.environ.get("BOMBOLIN_OBJ3D")
 # Alto relativo de las variantes 3D (personaje + objeto en una sola imagen) respecto del personaje solo
-VAR_H = {"TOTO-sucio": 1.0, "TOTO-banera": 1.0, "TOTO-cama": 1.0, "TOTO-limpio": 1.0}
+VAR_H = {"TOTO-sucio": 1.117, "TOTO-banera": 1.401, "TOTO-cama": 1.62, "TOTO-limpio": 1.131}
 _PROPS = {}
 
 
