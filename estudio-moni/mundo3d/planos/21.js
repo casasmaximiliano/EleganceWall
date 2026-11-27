@@ -5,7 +5,7 @@ const CAFE = {moni: 'mesaA', cup: 'mesaB'};
 const SOFA = {moni: 'sofaL', cup: 'sofaR'};
 const DESK = {moni: 'escritorio', centavito: 'junto'};
 const CALLE = {moni: 'alquilaA', cup: 'alquilaB'};
-const AUTO = {moni: 'vereda', car: 'vereda2'};
+const AUTO = {moni: 'veredaAuto', car: 'cordon'};
 const BANCO = {moni: 'ventanilla', cup: 'junto'};
 const nb = (title, lines) => ({prop: 'cuaderno', content: {title, lines}});
 const cuenta = (rows) => ({prop: 'celular', content: {app: 'Inversión Moni B', color: '#0E5A40', rows}});
@@ -71,10 +71,10 @@ module.exports = {
   // ── los gastos grandes: el auto en la calle ──
   49: [[1, {loc: 'calle', cam: 'street', cast: {}, title: {over: 'Capítulo 6', text: 'Los gastos grandes'}}]],
   50: [[1, Object.assign({loc: 'calle', cast: AUTO, enter: {car: [6, 0]}}, cl('car', -.3, {dist: 7.6}))]],
-  51: [[.4, {loc: 'calle', cam: 'gymTwo', cast: AUTO}], [1, {insert: res('AUTO USADO', [{t: 'Más barato', v: '$10.000'}, {t: 'Invertido 10 años', v: ''}, {t: 'al 7 %', v: '≈ $19.600', vc: G}])}]],
+  51: [[.4, {loc: 'calle', cam: 'autoTwo', cast: AUTO}], [1, {insert: res('AUTO USADO', [{t: 'Más barato', v: '$10.000'}, {t: 'Invertido 10 años', v: ''}, {t: 'al 7 %', v: '≈ $19.600', vc: G}])}]],
   52: [[1, Object.assign({loc: 'calle', cast: AUTO, gesture: {car: 'armsUp'}}, cl('car', -.3, {dist: 7.6}))]],
   53: [[.35, Object.assign({loc: 'calle', cast: AUTO}, cl('moni', .3, {dist: 7.2}))], [1, {insert: res('COMISIONES', [{t: '$10.000 · 30 años'}, {t: '1 % vs. 0,1 %'}, {t: 'Perdés', v: '≈ $16.500', vc: R}])}]],
-  54: [[1, {loc: 'calle', cam: 'gymTwo', cast: AUTO, push: .12}]],
+  54: [[1, {loc: 'calle', cam: 'autoTwo', cast: AUTO, push: .12}]],
   // ── por qué casi nadie lo hace: living ──
   55: [[1, {loc: 'depto', cam: 'wide', cast: {}, title: {over: 'Capítulo 7', text: 'Por qué casi nadie lo hace'}}]],
   56: [[1, {loc: 'depto', cam: 'two', cast: SOFA}]],

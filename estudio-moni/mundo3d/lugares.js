@@ -47,7 +47,18 @@ function tree(s = 1) {
 }
 function lamp() { const g = new THREE.Group(); const p = cyl(.08, .1, 5, toon('#2f3a40'), {seg: 10}); p.position.y = 2.5; g.add(p); const a = box(1, .08, .08, toon('#2f3a40')); a.position.set(.45, 4.95, 0); g.add(a); const h = sph(.22, toon('#FFF1C2', {emissive: '#FFE08A', emissiveIntensity: .4})); h.position.set(.9, 4.8, 0); g.add(h); return g }
 function cloud() { const g = new THREE.Group(); [[0, 0, 1.2], [1.2, .2, .9], [-1.2, .1, .9], [.4, .6, .9]].forEach(([x, y, r]) => { const c = new THREE.Mesh(new THREE.SphereGeometry(r, 16, 12), flat('#FFFFFF')); c.position.set(x, y, 0); g.add(c) }); return g }
-function npcs(S, list) { return list.map(([x, z, ry, o]) => { const e = M3.extra(o); e.position.set(x, 0, z); e.rotation.y = ry || 0; S.add(e); return e }) }
+// Desvío suave para que la gente de fondo esquive a los personajes en vez de atravesarlos.
+// z0: carril normal; [zIn, zOut]: límites (en valor absoluto) de la vereda.
+function dodge(x, z0, obs, zIn, zOut) {
+  let z = z0; const s = Math.sign(z0) || 1;
+  (obs || []).forEach(o => { const dx = Math.abs(x - o.x); if (dx > 3.2 || Math.abs(o.z - z0) > 1.6) return;
+    const k = .5 + .5 * Math.cos(Math.PI * dx / 3.2);                      // 1 al lado del personaje, 0 a 3,2 m
+    const room = zOut - Math.abs(o.z) > .9 ? 1 : -1;                         // pasa por detrás (lejos de la cámara) si hay lugar
+    const target = s * (Math.abs(o.z) + room * 1.5);
+    z = M3.lerp(z, Math.max(zIn, Math.min(zOut, Math.abs(target))) * s, k) });
+  return z;
+}
+function npcs(S, list) { return list.map(([x, z, ry, o]) => { const e = M3.extra(o); e.position.set(x, 0, z); e.userData.z0 = z; e.rotation.y = ry || 0; S.add(e); return e }) }
 
 // ───────────── DEPARTAMENTO DE MONI: living + escritorio ─────────────
 function depto() {
@@ -148,21 +159,21 @@ function calle() {
   const gym = sign('GIMNASIO', {w: 3.6, h: .9, bg: '#2F6DB5'}); gym.position.set(1.5, 4.6, -9.3); S.add(gym);
   const gymW = plane(4, 2.2, toon('#CFEFFF')); gymW.position.set(1.5, 1.8, -9.35); S.add(gymW);
   const alq2 = sign('SE ALQUILA', {w: 2.6, h: .7, bg: '#C8102E'}); alq2.position.set(-14, 3.2, -9.3); S.add(alq2);
-  const libre = x => (x > -17.5 && x < -10.5) || (x > -2.5 && x < 4.5); // sin árboles ni faroles delante de los personajes
+  const libre = x => (x > -21 && x < -8.5) || (x > -4 && x < 6.5); // sin árboles ni faroles delante de los personajes
   for (let i = -36; i < 40; i += 9) { if (!libre(i)) { const tr = tree(1); tr.position.set(i, .3, -6.2); S.add(tr) } if (!libre(i + 4.5)) { const lp = lamp(); lp.position.set(i + 4.5, .3, -5.6); S.add(lp) } }
   const clouds = [0, 1, 2, 3].map(i => { const c = cloud(); c.position.set(-30 + i * 18, 22 + (i % 2) * 3, -30); c.scale.setScalar(1.6); S.add(c); return c });
   const traffic = [car('#E85D4E'), car('#4B8FD8'), car('#F4C542'), car('#3FAE6B')]; traffic.forEach(c => S.add(c));
   const mt = moto(); S.add(mt);
   const walkers = npcs(S, [[0, 6.2, Math.PI / 2, {seed: 1}], [0, 7.6, -Math.PI / 2, {seed: 2}], [0, -6.5, Math.PI / 2, {seed: 3}], [0, -7.6, -Math.PI / 2, {seed: 4}], [0, 6.8, Math.PI / 2, {seed: 6}]]);
   return {
-    scene: S, spots: {vereda: {p: [-.6, .3, -7.2], ry: .35}, vereda2: {p: [2.6, .3, -7.0], ry: -.35}, alquilaA: {p: [-15.6, .3, -7.3], ry: .3}, alquilaB: {p: [-12.4, .3, -7.1], ry: -.3}},
+    scene: S, spots: {vereda: {p: [-.6, .3, -7.2], ry: .35}, vereda2: {p: [2.6, .3, -7.0], ry: -.35}, alquilaA: {p: [-15.6, .3, -7.3], ry: .3}, alquilaB: {p: [-12.4, .3, -7.1], ry: -.3}, cordon: {p: [4.4, 0, -2.9], ry: -.45}, veredaAuto: {p: [1.2, .3, -5.6], ry: .45}},
     cams: {establish: {p: [-22, 7, 6], to: [-15, 4, 5], look: [-5, 3.5, -9], fov: 42}, cafeFront: {p: [-3, 3, 6], to: [-4.6, 3, 3.6], look: [-6, 3.4, -9.4], fov: 40},
       street: {p: [-18, 2.2, 3.5], look: [0, 2, -2], fov: 38}, gymTwo: {p: [3.2, 3.6, 2.2], look: [1, 2.6, -7.2], fov: 38},
-      alquilaTwo: {p: [-9.4, 3.4, -3.5], look: [-14, 2.8, -7.8], fov: 40}, bancoFront: {p: [4, 3.2, 5], to: [6, 3.4, 3.2], look: [9, 4, -9.3], fov: 40}},
+      alquilaTwo: {p: [-9.4, 3.4, -3.5], look: [-14, 2.8, -7.8], fov: 40}, alquilaFront: {p: [-14, 3.0, -1.2], look: [-14, 2.2, -7.2], fov: 42}, autoTwo: {p: [2.4, 3.4, 7.4], look: [2.8, 2.2, -4.2], fov: 40}, bancoFront: {p: [4, 3.2, 5], to: [6, 3.4, 3.2], look: [9, 4, -9.3], fov: 40}},
     update(t) {
-      traffic.forEach((c, i) => { const dir = i % 2 ? -1 : 1, sp = 5 + i; const xx = ((t * sp + i * 23) % 90) - 45; c.position.set(dir * xx, 0, dir * 2.1); c.rotation.y = dir > 0 ? 0 : Math.PI });
-      mt.position.set(-45 + ((t * 7) % 90), 0, 2.2); mt.userData.rider.anim(t, {sit: true});
-      walkers.forEach((w, i) => { const dir = Math.sign(Math.sin(w.rotation.y)) || 1; w.position.x = -30 + ((t * 1.6 * dir + i * 13) % 60 + 60) % 60; w.anim(t, {walk: true, seed: i}) });
+      traffic.forEach((c, i) => { const dir = i % 2 ? -1 : 1, sp = 5 + i; const xx = ((t * sp + i * 23) % 90) - 45; c.position.set(dir * xx, 0, dir > 0 ? 3.1 : 1.0); c.rotation.y = dir > 0 ? 0 : Math.PI });
+      mt.position.set(-45 + ((t * 7) % 90), 0, -.9); mt.userData.rider.anim(t, {sit: true});
+      walkers.forEach((w, i) => { const dir = Math.sign(Math.sin(w.rotation.y)) || 1; w.position.x = -30 + ((t * 1.6 * dir + i * 13) % 60 + 60) % 60; w.position.y = .3; w.position.z = dodge(w.position.x, w.userData.z0, this.obstacles, Math.abs(w.userData.z0) - 2.3, Math.abs(w.userData.z0) + 2.0); w.anim(t, {walk: true, seed: i}) });
       clouds.forEach((c, i) => c.position.x = -40 + ((t * .6 + i * 22) % 90));
     },
   };
@@ -257,9 +268,98 @@ function banco() {
   };
 }
 
+// ───────────── VIDEOCLUB (genérico, sin marcas reales) ─────────────
+function tapesTex(seed) {  // lomos de cajas de películas de colores
+  const cols = ['#E85D4E', '#4B8FD8', '#F4C542', '#3FAE6B', '#A66BC9', '#F08A7E', '#2B2B2B', '#5FC0C0', '#E98AB0', '#F7F2EA'];
+  return canvasTex(512, 256, (g, w, h) => { g.fillStyle = '#3a2a1e'; g.fillRect(0, 0, w, h); let x = 6, k = seed;
+    for (let row = 0; row < 2; row++) { x = 6; while (x < w - 20) { const bw = 22 + (k * 7) % 14; g.fillStyle = cols[(k * 3 + row) % cols.length]; g.fillRect(x, 10 + row * 124, bw, 108);
+      g.fillStyle = 'rgba(255,255,255,.55)'; g.fillRect(x + 4, 22 + row * 124, bw - 8, 10); g.fillStyle = 'rgba(0,0,0,.18)'; g.fillRect(x + bw - 3, 10 + row * 124, 3, 108); x += bw + 3; k++ } } });
+}
+function shelf(len, seed) {
+  const g = new THREE.Group(); const wood = toon('#6E4B33');
+  const back = box(len, 4.4, .3, wood); back.position.set(0, 2.2, -.35); g.add(back);
+  [0, 1].forEach(i => { const face = plane(len - .2, 1.9, toon('#fff', {map: tapesTex(seed + i * 5)})); face.position.set(0, 1.25 + i * 2.05, -.18); g.add(face);
+    const b = box(len, .12, .8, wood); b.position.set(0, .25 + i * 2.05, 0); g.add(b) });
+  const top = box(len, .12, .8, wood); top.position.set(0, 4.35, 0); g.add(top);
+  return g;
+}
+function videoclub() {
+  const S = baseScene('#E8DCF0', {sunPos: [6, 14, 10], sunI: 1.8, hemi: 1.6});
+  const floor = plane(44, 32, toon('#fff', {map: (() => { const t = texTiles('#3D4C8C', '#34427C', 8); t.repeat.set(6, 6); return t })()})); floor.rotation.x = -Math.PI / 2; S.add(floor);
+  const back = plane(44, 14, toon('#2F5FB3')); back.position.set(0, 7, -9); S.add(back);
+  const side = plane(32, 14, toon('#2A55A0')); side.rotation.y = Math.PI / 2; side.position.set(-16, 7, 4); S.add(side);
+  const stripe = box(44, .9, .1, toon('#F4C542')); stripe.position.set(0, 9.4, -8.9); S.add(stripe);
+  const logo = sign('VIDEOCLUB', {w: 6.4, h: 1.4, bg: '#F4C542', fg: '#14306B'}); logo.position.set(-2, 11.2, -8.85); S.add(logo);
+  const nov = sign('NOVEDADES', {w: 3.6, h: .8, bg: '#C8102E'}); nov.position.set(-9.5, 6.9, -8.4); S.add(nov);
+  const dev = sign('DEVOLUCIONES', {w: 3.4, h: .7, bg: '#C8102E'}); dev.position.set(9.2, 4.6, -3.4); S.add(dev);
+  // estanterías: contra la pared y dos islas
+  [[-9.5, -8.2, 0], [-1, -8.2, 0]].forEach(([x, z, ry], i) => { const sh = shelf(7.6, 3 + i * 4); sh.position.set(x, 0, z); sh.rotation.y = ry; S.add(sh) });
+  [[-12, -1.5, Math.PI / 2], [-12, 5, Math.PI / 2]].forEach(([x, z, ry], i) => { const sh = shelf(5.5, 11 + i * 3); sh.position.set(x, 0, z); sh.rotation.y = ry; S.add(sh) });
+  // mostrador con caja registradora, tele y buzón de devoluciones
+  const counter = rbox(7, 2.4, 1.8, .1, toon('#F4C542')); counter.position.set(8.5, 1.2, -5.6); S.add(counter);
+  const ctop = rbox(7.3, .2, 2, .06, toon('#14306B')); ctop.position.set(8.5, 2.45, -5.6); S.add(ctop);
+  const reg = rbox(1.1, .8, .9, .08, toon('#3b3b3b')); reg.position.set(10.4, 2.95, -5.8); S.add(reg);
+  const tv = rbox(2.8, 1.9, .3, .12, toon('#222')); tv.position.set(8.5, 6.6, -8.7); S.add(tv);
+  const scr = plane(2.4, 1.5, toon('#fff', {map: canvasTex(256, 160, (g, w, h) => { ['#E85D4E', '#F4C542', '#3FAE6B', '#4B8FD8', '#A66BC9', '#fff', '#222'].forEach((c, i) => { g.fillStyle = c; g.fillRect(i * w / 7, 0, w / 7 + 1, h) }) }), emissive: '#ffffff', emissiveIntensity: .25}));
+  scr.position.set(8.5, 6.6, -8.3); S.add(scr);
+  const slot = rbox(1.6, 1.6, 1.1, .1, toon('#C8102E')); slot.position.set(12.8, .8, -4.2); S.add(slot);
+  const clerk = M3.extra({seed: 21, shirt: '#F4C542', kind: 0}); clerk.position.set(8.5, 0, -7.4); S.add(clerk);
+  const browsers = npcs(S, [[-9.8, -6.2, Math.PI, {seed: 22, kind: 1}], [-10.2, 2, -Math.PI / 2, {seed: 23, kind: 4}], [-3, -6.3, Math.PI, {seed: 24, kind: 2, scale: .72}]]);
+  browsers[2].scale.setScalar(.72);
+  return {
+    scene: S,
+    spots: {pasillo: {p: [2.4, 0, -2.2], ry: .2}, mostrador: {p: [6.3, 2.55, -5.2], ry: -.35}, centro: {p: [0, 0, 1], ry: 0}, junto: {p: [5.2, 0, -2.0], ry: -.3}},
+    cams: {two: {p: [3.4, 4.4, 7.8], look: [4.2, 3, -3.6], fov: 38}, wide: {p: [-4, 7.4, 15], look: [1, 3, -4], fov: 46},
+      est: {p: [-14, 6, 14], to: [-9, 5, 11], look: [0, 4.4, -6], fov: 44}, estantes: {p: [-4.5, 3.6, -1], to: [-3.5, 3.4, -1.8], look: [-6, 3, -8.2], fov: 40},
+      tele: {p: [6.8, 5.4, 1.5], look: [8.5, 6.4, -8.5], fov: 34}},
+    update(t) {
+      clerk.anim(t, {seed: 21, talk: (t % 7) < 2}); clerk.rotation.y = Math.sin(t * .35) * .4;
+      browsers.forEach((q, i) => { q.anim(t, {seed: 22 + i}); q.rotation.y += Math.sin(t * .6 + i) * .002 });
+    },
+  };
+}
+
+// ───────────── SALA DE REUNIONES (la oficina del gigante, año 2000) ─────────────
+function sala() {
+  const S = baseScene('#D9E4EE', {sunPos: [-6, 14, 10], sunI: 1.8, hemi: 1.5});
+  const carpet = plane(40, 30, toon('#7A8696')); carpet.rotation.x = -Math.PI / 2; S.add(carpet);
+  const back = plane(40, 14, toon('#E9E3D8')); back.position.set(0, 7, -8); S.add(back);
+  const win = plane(14, 6, toon('#fff', {map: windowsTex('#9FB7D0', '#D7ECFA', 8, 4)})); win.position.set(-4, 6.2, -7.95); S.add(win);
+  const wf = box(14.4, .3, .3, toon('#3b3b3b')); wf.position.set(-4, 9.3, -7.9); S.add(wf); const wf2 = wf.clone(); wf2.position.y = 3.1; S.add(wf2);
+  const logo = sign('DALLAS · 2000', {w: 4, h: .9, bg: '#14306B'}); logo.position.set(8, 7.6, -7.85); S.add(logo);
+  const front = plane(40, 14, toon('#E3DCCF')); front.rotation.y = Math.PI; front.position.set(0, 7, 9); S.add(front);
+  const door = box(2.4, 5, .2, toon('#6E4B33')); door.position.set(3.5, 2.5, 8.9); S.add(door);
+  const pic = sign('ESTRATEGIA 2000', {w: 4.4, h: 1, bg: '#14306B'}); pic.rotation.y = Math.PI; pic.position.set(-4, 6.4, 8.85); S.add(pic);
+  const fern = sph(1, toon('#4FAE52')); fern.position.set(-9, 2.4, 8); S.add(fern); const fpot = cyl(.7, .5, 1.4, toon('#C46A3C')); fpot.position.set(-9, .7, 8); S.add(fpot);
+  [-1, 1].forEach(sd => { const w = plane(30, 14, toon('#DDD5C6')); w.rotation.y = -sd * Math.PI / 2; w.position.set(sd * 14, 7, 1); S.add(w) });
+  const table = rbox(12, .3, 4, .4, toon('#5A3A26')); table.position.set(0, 1.65, -1.5); S.add(table);
+  [[-5, -2.8], [5, -2.8], [-5, -.2], [5, -.2]].forEach(([x, z]) => { const l = cyl(.18, .18, 1.6, toon('#3b2a20'), {seg: 10}); l.position.set(x, .8, z); S.add(l) });
+  // ejecutivos sentados del lado del fondo, con corbata
+  const execs = npcs(S, [[-4, -4.2, 0, {seed: 31, kind: 3}], [-1.3, -4.2, 0, {seed: 32, kind: 3}], [1.4, -4.2, 0, {seed: 33, kind: 3}], [4.1, -4.2, 0, {seed: 34, kind: 3}]]);
+  execs.forEach(q => { const ch = rbox(1.5, .2, 1.4, .1, toon('#2B2B2B')); ch.position.set(q.position.x, 1.2, q.position.z); S.add(ch);
+    const cb = rbox(1.5, 2.2, .2, .1, toon('#2B2B2B')); cb.position.set(q.position.x, 2.3, q.position.z - .7); S.add(cb);
+    q.position.y = 1.3 - (q.legY0 - q.sitDrop) * q.scale.y; });
+  // los dos emprendedores, parados del lado de la cámara, y un atril con la oferta
+  const founders = npcs(S, [[-2, 1.8, Math.PI, {seed: 35, kind: 4}], [.6, 1.9, Math.PI, {seed: 36, kind: 0}]]);
+  const easel = new THREE.Group(); easel.position.set(4.6, 0, 1.6); easel.rotation.y = -.5; S.add(easel);
+  [-.6, .6].forEach(x => { const l = cyl(.05, .05, 3.6, toon('#6E4B33'), {seg: 8}); l.position.set(x, 1.8, 0); l.rotation.z = x > 0 ? -.08 : .08; easel.add(l) });
+  const board = sign('$50 M', {w: 2.2, h: 1.6, bg: '#FFFFFF', fg: '#C8102E', frame: '#6E4B33'}); board.position.set(0, 3.4, .1); easel.add(board);
+  return {
+    scene: S, spots: {},
+    cams: {mesa: {p: [0, 6.5, 9.5], to: [0, 5.6, 7.8], look: [0, 2.6, -2.6], fov: 40},
+      risa: {p: [-1.2, 3.7, -.6], to: [-.6, 3.7, -1.0], look: [0, 3.0, -4.2], fov: 46},
+      fundadores: {p: [-.6, 4.4, -2.4], look: [-.7, 2.9, 1.9], fov: 42}, atril: {p: [2.4, 3.8, 6.2], look: [4.6, 3.3, 1.6], fov: 30}},
+    update(t) {
+      const laugh = this.laugh || 0;
+      execs.forEach((q, i) => { q.anim(t, {seed: 31 + i, sit: true, talk: laugh ? Math.abs(Math.sin(t * 9 + i)) : 0, nod: laugh * Math.abs(Math.sin(t * 7 + i * 1.3)), expr: laugh ? 'happy' : 'think'}) });
+      founders.forEach((q, i) => { q.anim(t, {seed: 35 + i, talk: !laugh && (t + i) % 4 < 2 ? 1 : 0, pose: i === 1 && !laugh ? 'open' : 'rest', poseW: 1, expr: laugh ? 'worried' : 'happy'}) });
+    },
+  };
+}
+
 const CACHE = {};
 M3.lugar = function (nombre) {
-  if (!CACHE[nombre]) CACHE[nombre] = ({depto, calle, cafeteria, banco})[nombre]();
+  if (!CACHE[nombre]) CACHE[nombre] = ({depto, calle, cafeteria, banco, videoclub, sala})[nombre]();
   return CACHE[nombre];
 };
 })();

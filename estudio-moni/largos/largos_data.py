@@ -220,10 +220,10 @@ add(tipo="Guía", titulo="Fondo de emergencia: cuánto, dónde y cómo armarlo d
     fuentes="Recomendación habitual de 3-6 meses de gastos esenciales.",
     tags="fondo de emergencia, ahorro, imprevistos, cómo ahorrar, finanzas personales")
 
-add(tipo="Historia", titulo="Blockbuster pudo comprar Netflix por 50 millones",
+add(tipo="Historia", titulo="Blockbuster pudo comprar Netflix por $50 millones (y se rió)",
     alt="El “no” más caro de la historia de los negocios",
-    thumb=dict(texto="EL “NO” MÁS CARO", chars=[("moni", "shock")], prop="📼", fondo="#1D3A8C"),
-    gancho="En el año 2000, los fundadores de una empresa chiquita que mandaba DVDs por correo viajaron a Dallas a ofrecerle su empresa a Blockbuster por cincuenta millones de dólares. Según contaron después, los ejecutivos casi se rieron. Esa empresa era Netflix. Diez años más tarde, Blockbuster quebró. Hoy contamos la historia, y lo que nos enseña sobre algo que te afecta a vos: el costo de no cambiar.",
+    thumb=dict(texto="$50\u00a0MILLONES ❌", chars=[("moni", "shock")], prop="📼", fondo="#1D3A8C"),
+    gancho="Cincuenta millones de dólares: ese era el precio de Netflix en el año 2000, y Blockbuster dijo que no. Moni le cuenta a Centavito, que nunca pisó un videoclub, cómo el gigante quebró y qué tiene que ver con tu plata. En el año 2000, los fundadores de una empresa chiquita que mandaba DVDs por correo viajaron a Dallas a ofrecerle su empresa a Blockbuster por cincuenta millones de dólares. Según contaron después, los ejecutivos casi se rieron. Esa empresa era Netflix. Diez años más tarde, Blockbuster quebró. Hoy contamos la historia, y lo que nos enseña sobre algo que te afecta a vos: el costo de no cambiar.",
     caps=[("00:00", "Dallas, año 2000", "La reunión, contada como telenovela."),
           ("01:30", "El imperio Blockbuster", "Miles de locales y el negocio de las multas por devolución tardía."),
           ("03:30", "La apuesta de Netflix", "DVD por correo, suscripción, después streaming."),
@@ -232,7 +232,7 @@ add(tipo="Historia", titulo="Blockbuster pudo comprar Netflix por 50 millones",
           ("08:30", "La lección para tu plata", "Costo de oportunidad y cambiar a tiempo: trabajo, inversiones, hábitos."),
           ("10:00", "Cierre", "¿Qué “Blockbuster” tenés en tu vida?")],
     shorts=[46, 62], dur="10-11 min",
-    fuentes="Marc Randolph, That Will Never Work (2019), sobre la reunión con Blockbuster. Quiebra de Blockbuster: septiembre de 2010.",
+    fuentes="Marc Randolph, That Will Never Work (2019), sobre la reunión con Blockbuster. Multas de Blockbuster en 2000 (≈ USD 800 M): cifra citada por la prensa de negocios (p. ej., The New York Times, 2005, al eliminar las multas). Quiebra de Blockbuster: septiembre de 2010. Kodak: prototipo de cámara digital de Steven Sasson (1975), quiebra en enero de 2012. Ejemplo de la cuenta bancaria: ilustrativo (USD 8 × 12 = 96).",
     tags="blockbuster, netflix, historia de empresas, negocios, costo de oportunidad")
 
 add(tipo="Guía", titulo="Cómo salir de deudas: bola de nieve vs. avalancha",
@@ -408,8 +408,8 @@ THUMBS_BC = {
       T(f"$3{N}→{N}$173.238", [["cup", "shock"]], "☕", "#3A1D08")),
  25: (T("5 NÚMEROS QUE CAMBIAN TODO", [["moni", "shock"]], "🔢", "#1D3A8C"),
       T(f"MISMO SUELDO, +$152{N}/MES", [["moni", "happy"], ["cup", "happy"]], "💰", "#B9622A")),
- 15: (T(f"$50{N}MILLONES ❌", [["moni", "angry"]], "🎬", "#B3122E"),
-      T("EL ERROR MÁS CARO DE LA HISTORIA", [["moni", "shock"]], "📼", "#14051A")),
+ 15: (T("SE RIERON DE NETFLIX", [["moni", "shock"]], "🎬", "#B3122E"),
+      T("EL “NO” MÁS CARO", [["moni", "shock"]], "📼", "#14051A")),
  9: (T("TRUCOS DEL SÚPER", [["moni", "angry"], ["cart", "sly"]], "🛒", "#0F8A57"),
      T("¿POR QUÉ LA LECHE ESTÁ AL FONDO?", [["moni", "think"]], "🥛", "#1D3A8C")),
  5: (T(f"$600 · 30{N}DÍAS", [["moni", "shock"], ["card", "sly"]], "⏳", "#1F7A55"),

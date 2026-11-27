@@ -271,21 +271,21 @@
   "hora_mx": "15:00",
   "hora_es": "22:00",
   "playlist": "Historias del dinero",
-  "descripcion": "En el año 2000, los fundadores de una empresa chiquita que mandaba DVDs por correo viajaron a Dallas a ofrecerle su empresa a Blockbuster por cincuenta millones de dólares. En este video: la historia completa, explicada con Moni.\n\n⏱️ Capítulos\n00:00 Dallas, año 2000\n01:30 El imperio Blockbuster\n03:30 La apuesta de Netflix\n05:30 Por qué Blockbuster dijo que no\n07:00 La caída\n08:30 La lección para tu plata\n10:00 Cierre\n\n📺 Más de Moni Finanzas: shorts nuevos todos los días y videos largos los miércoles y domingos.\n\n📚 Fuentes y supuestos: Marc Randolph, That Will Never Work (2019), sobre la reunión con Blockbuster. Quiebra de Blockbuster: septiembre de 2010.\n\nContenido educativo. No es asesoramiento financiero. Personajes animados y voces creados con herramientas digitales.\n\n#finanzaspersonales #educacionfinanciera #monifinanzas",
+  "descripcion": "Cincuenta millones de dólares: ese era el precio de Netflix en el año 2000, y Blockbuster dijo que no. En este video: la historia completa, explicada con Moni.\n\n⏱️ Capítulos\n00:00 Dallas, año 2000\n01:30 El imperio Blockbuster\n03:30 La apuesta de Netflix\n05:30 Por qué Blockbuster dijo que no\n07:00 La caída\n08:30 La lección para tu plata\n10:00 Cierre\n\n📺 Más de Moni Finanzas: shorts nuevos todos los días y videos largos los miércoles y domingos.\n\n📚 Fuentes y supuestos: Marc Randolph, That Will Never Work (2019), sobre la reunión con Blockbuster. Multas de Blockbuster en 2000 (≈ USD 800 M): cifra citada por la prensa de negocios (p. ej., The New York Times, 2005, al eliminar las multas). Quiebra de Blockbuster: septiembre de 2010. Kodak: prototipo de cámara digital de Steven Sasson (1975), quiebra en enero de 2012. Ejemplo de la cuenta bancaria: ilustrativo (USD 8 × 12 = 96).\n\nContenido educativo. No es asesoramiento financiero. Personajes animados y voces creados con herramientas digitales.\n\n#finanzaspersonales #educacionfinanciera #monifinanzas",
   "thumb_file": "miniatura_15.png",
   "thumb_b": {
-   "texto": "$50 MILLONES ❌",
+   "texto": "SE RIERON DE NETFLIX",
    "chars": [
     [
      "moni",
-     "angry"
+     "shock"
     ]
    ],
    "prop": "🎬",
    "fondo": "#B3122E"
   },
   "thumb_c": {
-   "texto": "EL ERROR MÁS CARO DE LA HISTORIA",
+   "texto": "EL “NO” MÁS CARO",
    "chars": [
     [
      "moni",
@@ -306,10 +306,10 @@
    }
   ],
   "tipo": "Historia",
-  "titulo": "Blockbuster pudo comprar Netflix por 50 millones",
+  "titulo": "Blockbuster pudo comprar Netflix por $50 millones (y se rió)",
   "alt": "El “no” más caro de la historia de los negocios",
   "thumb": {
-   "texto": "EL “NO” MÁS CARO",
+   "texto": "$50 MILLONES ❌",
    "chars": [
     [
      "moni",
@@ -319,7 +319,7 @@
    "prop": "📼",
    "fondo": "#1D3A8C"
   },
-  "gancho": "En el año 2000, los fundadores de una empresa chiquita que mandaba DVDs por correo viajaron a Dallas a ofrecerle su empresa a Blockbuster por cincuenta millones de dólares. Según contaron después, los ejecutivos casi se rieron. Esa empresa era Netflix. Diez años más tarde, Blockbuster quebró. Hoy contamos la historia, y lo que nos enseña sobre algo que te afecta a vos: el costo de no cambiar.",
+  "gancho": "Cincuenta millones de dólares: ese era el precio de Netflix en el año 2000, y Blockbuster dijo que no. Moni le cuenta a Centavito, que nunca pisó un videoclub, cómo el gigante quebró y qué tiene que ver con tu plata. En el año 2000, los fundadores de una empresa chiquita que mandaba DVDs por correo viajaron a Dallas a ofrecerle su empresa a Blockbuster por cincuenta millones de dólares. Según contaron después, los ejecutivos casi se rieron. Esa empresa era Netflix. Diez años más tarde, Blockbuster quebró. Hoy contamos la historia, y lo que nos enseña sobre algo que te afecta a vos: el costo de no cambiar.",
   "caps": [
    [
     "00:00",
@@ -362,7 +362,7 @@
    62
   ],
   "dur": "10-11 min",
-  "fuentes": "Marc Randolph, That Will Never Work (2019), sobre la reunión con Blockbuster. Quiebra de Blockbuster: septiembre de 2010.",
+  "fuentes": "Marc Randolph, That Will Never Work (2019), sobre la reunión con Blockbuster. Multas de Blockbuster en 2000 (≈ USD 800 M): cifra citada por la prensa de negocios (p. ej., The New York Times, 2005, al eliminar las multas). Quiebra de Blockbuster: septiembre de 2010. Kodak: prototipo de cámara digital de Steven Sasson (1975), quiebra en enero de 2012. Ejemplo de la cuenta bancaria: ilustrativo (USD 8 × 12 = 96).",
   "tags": "blockbuster, netflix, historia de empresas, negocios, costo de oportunidad"
  },
  {

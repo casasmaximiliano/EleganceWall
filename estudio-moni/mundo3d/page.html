@@ -12,6 +12,25 @@ canvas{position:absolute;left:0;top:0}
 #ttl small{display:block;font-size:36px;letter-spacing:.2em;text-transform:uppercase;color:#C8102E;margin-bottom:6px}
 #wm{position:absolute;right:46px;top:38px;font-weight:800;font-size:30px;color:#fff;-webkit-text-stroke:6px #14100c;paint-order:stroke fill;display:flex;gap:10px;align-items:center}
 #wm i{width:34px;height:34px;border-radius:50%;background:#F7BC2B;border:4px solid #14100c}
+#pn{position:absolute;right:70px;top:50%;margin-top:-330px;width:640px;min-height:520px;padding:46px 50px 40px 76px;box-sizing:border-box;border:7px solid #14100c;border-radius:26px;
+  box-shadow:0 22px 0 rgba(0,0,0,.25);font-family:"Figtree","DejaVu Sans",sans-serif;opacity:0;transform-origin:50% 50%}
+#pn.pn-cuaderno{background:#FFFBEA repeating-linear-gradient(#FFFBEA 0 63px,#B9D3EE 63px 66px);background-position:0 30px}
+#pn.pn-cuaderno::before{content:"";position:absolute;left:52px;top:0;bottom:0;width:4px;background:#F08A8A}
+#pn.pn-resumen{background:#fff}
+#pn h3{margin:0 0 18px;font:800 48px/1.1 "Bricolage Grotesque","Figtree",sans-serif;color:#14221D}
+#pn .r{display:flex;justify-content:space-between;gap:18px;font-weight:700;font-size:40px;line-height:66px}
+#pn .r em{font-style:normal;font-weight:800;white-space:nowrap}
+#pn .st{position:absolute;right:40px;bottom:36px;border:7px solid #C8102E;color:#C8102E;border-radius:12px;padding:6px 18px;font:800 46px "Bricolage Grotesque",sans-serif;background:rgba(255,255,255,.85)}
+#big,#disc{opacity:0}
+body.vert{width:1080px;height:1920px}
+body.vert #big{position:absolute;left:50%;top:300px;transform:translateX(-50%);text-align:center;white-space:nowrap}
+body.vert #big b{display:block;font:800 170px/1 "Bricolage Grotesque",sans-serif;color:#FFD43B;-webkit-text-stroke:22px #14100c;paint-order:stroke fill;letter-spacing:-.02em}
+body.vert #big small{display:block;margin-top:10px;font:800 64px/1 "Bricolage Grotesque",sans-serif;color:#fff;-webkit-text-stroke:12px #14100c;paint-order:stroke fill}
+body.vert #disc{position:absolute;left:0;right:0;bottom:250px;text-align:center;font:700 34px "Figtree",sans-serif;color:#fff;-webkit-text-stroke:6px #14100c;paint-order:stroke fill}
+body.vert #pn{right:50%;margin-right:-460px;top:auto;bottom:470px;margin-top:0;width:920px;min-height:0}
+body.vert #cap{bottom:auto;top:1420px;font-size:84px;padding:0 60px}
+body.vert #ttl{top:30%;font-size:80px;white-space:normal;width:820px}
+body.vert #wm{top:150px}
 </style></head><body>
 <script src="node_modules/three/build/three.min.js"></script>
 <script src="core.js"></script><script src="personajes.js"></script><script src="props.js"></script><script src="lugares.js"></script><script src="director.js"></script>
