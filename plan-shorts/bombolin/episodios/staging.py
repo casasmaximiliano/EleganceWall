@@ -25,7 +25,7 @@ STAGE = {
     # Día 2: ¡Toto no quiere bañarse!  ("sp" = objeto 3D de 3d/objetos.py; "em" = emoji de respaldo)
     (2, 0): [dict(sp="sponge", em="🧽", mode="ground", x=0.22, size=0.11),
              dict(em="🫧", mode="rise", n=6),
-             dict(sp="bed", em="🛏️", mode="front", who="TOTO", w=1.9, size=0.85, hide=0.50, frm=1)],
+             dict(sp="bed", em="🛏️", mode="front", who="TOTO", w=1.35, size=0.85, hide=0.08, frm=1)],
     (2, 1): [SPAG, SOCK],
     (2, 2): [SPAG, SOCK, dict(sp="fly", em="🪰", mode="orbit", who="TOTO", n=3, size=0.07)],
     (2, 3): [SPAG, dict(sp="fly", em="🪰", mode="orbit", who="TOTO", n=2, size=0.07),

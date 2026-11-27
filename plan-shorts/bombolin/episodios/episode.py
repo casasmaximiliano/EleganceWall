@@ -663,6 +663,10 @@ class Painter:
                 sq *= 1 + 0.012 * math.sin(tt * 2.4 + i * 1.7)
             hh = int(bh * sc * sq)
             ww = int(spr.width * hh / spr.height / sq)
+            crouch = self.hide.get(c, 0.0) if STYLE2 else 0.0
+            if crouch > 0:  # se agacha: más bajito y un poco más ancho, con los pies en el piso
+                hh = int(hh * (1 - crouch))
+                ww = int(ww * (1 + 0.25 * crouch))
             s2 = spr.resize((ww, hh), Image.BILINEAR)
             if tilt:
                 s2 = s2.rotate(tilt, resample=Image.BICUBIC, expand=True)
@@ -683,7 +687,7 @@ class Painter:
                 sink = 0
             top = int(base_y - hh - bounce - lift + sink)
             hide = self.hide.get(c, 0.0)
-            if hide:
+            if hide < 0:
                 top += int(hide * hh)
             self.box[c] = (px, top, ww, hh)
             frame.paste(s2, (px - ww // 2, top), s2)
@@ -823,6 +827,8 @@ class Painter:
             return
         if sg.get("stage"):
             return
+        if STYLE2 and sg["props"]:
+            return  # se dibujan en el piso desde stage_auto (capa de personajes)
         spots = [(0.20, 0.30), (0.80, 0.33), (0.50, 0.22)] if land else [(0.24, 0.33), (0.76, 0.36), (0.5, 0.5)]
         for i, em in enumerate(sg["props"][:3]):
             if st < 0.15 + i * 0.8:
@@ -985,6 +991,10 @@ class Painter:
             self.heads = {}
             self.box = {}
             stage = sg.get("stage") or []
+            if STYLE2 and not stage and sg.get("theme") != "board" and sg.get("props"):
+                xs = [0.10, 0.90, 0.50] if not sg.get("closing") else [0.88]
+                stage = [dict(em=e, mode="ground", x=x, size=0.15 if W > H else 0.10)
+                         for e, x in zip(sg["props"], xs)][:2]
             li = sum(1 for e in self.events if e["seg"] == si and e["t"] <= tt) - 1
             items = [it for it in stage if li >= it.get("frm", 0)]
             self.hide = {it["who"]: it.get("hide", 0.0) for it in items if it["mode"] == "front" and it.get("hide")}
