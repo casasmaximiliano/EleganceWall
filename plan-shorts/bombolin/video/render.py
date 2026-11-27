@@ -128,6 +128,7 @@ GUESTS = {  # nombre: (emoji, voz)
     "Tricerátops": ("🦕", "GM"), "Eco": (None, "PIPO"),
 }
 EMOJI_KW = [
+    ("huella de dinosaurio", "🐾"), ("pata", "🐾"),
     ("t. rex", "🦖"), ("tiranosaurio", "🦖"), ("velocirraptor", "🦖"), ("braquiosaurio", "🦕"), ("argentinosaurus", "🦕"),
     ("tricerátops", "🦕"), ("dinosaurio", "🦕"), ("huevo", "🥚"), ("cascarón", "🥚"), ("gallina", "🐔"), ("granja", "🏡"),
     ("cocodrilo", "🐊"), ("tortuga", "🐢"), ("caparazón", "🐢"), ("arena", "🏖"), ("playa", "🏖"), ("avestruz", "🐣"),

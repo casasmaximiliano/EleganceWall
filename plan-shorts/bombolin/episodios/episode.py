@@ -47,6 +47,7 @@ def library_segments(sid):
         if mm:
             fallback.append((mm.start(), em))
     fallback = [e for _, e in sorted(fallback)][:2]
+    last_props, acc = [], []  # lo nombrado se va sumando a lo largo de todo el bloque (como en una pizarra)
     for sc in x["s"]:
         vis, txt = [p.strip() for p in sc.split("|", 1)]
         lines, chars, guests = [], [], []
@@ -75,6 +76,29 @@ def library_segments(sid):
             if mm and em not in [e for _, e in props]:
                 props.append((mm.start(), em))
         props = [e for _, e in sorted(props)][:3] or fallback
+        # objetos frase por frase: se muestra lo que se está nombrando (y lo ya nombrado en la escena)
+        per = []
+        for _, text in lines:
+            t = R.norm(text)
+            found = []
+            for kw, em in R.EMOJI_KW:
+                mm = re.search(r"(?<![a-záéíóúñ])" + re.escape(kw.strip()), t)
+                if mm and em not in [e for _, e in found]:
+                    found.append((mm.start(), em))
+            per.append([e for _, e in sorted(found)])
+        line_props = []
+        for i, f in enumerate(per):
+            for e in f:
+                if e not in acc:
+                    acc.append(e)
+            if acc:
+                line_props.append(acc[-3:])
+            elif last_props:  # sin nada nuevo que nombrar: sigue lo último que se mostró
+                line_props.append(last_props)
+            else:
+                later = {e for g in per[i + 1:] for e in g}
+                line_props.append([e for e in props if e not in later][:3])
+            last_props = line_props[-1]
         th = R.theme_of(vis, x["f"])
         th = THEME_MAP.get(th, th)
         if "pizarra" in v:
@@ -82,7 +106,7 @@ def library_segments(sid):
         if th not in ("meadow", "night", "xmas", "cave", "snow", "room", "board", "sea", "show"):
             th = "meadow"
         out.append(dict(kind="scene", theme=th, props=props, chars=chars or ["PIPO"], guests=guests,
-                        mood=R.lula_mood(x, vis), lines=lines, idx=-2))
+                        mood=R.lula_mood(x, vis), lines=lines, idx=-2, line_props=line_props))
     return out
 R.GUESTS["Reno"] = ("🦌", "GM")
 R.LABEL_EN["Reno"] = "Reindeer"
@@ -865,6 +889,13 @@ class Painter:
             d.polygon([(x, y - r * 2), (x + r * 0.6, y - r * 0.6), (x + r * 2, y), (x + r * 0.6, y + r * 0.6),
                        (x, y + r * 2), (x - r * 0.6, y + r * 0.6), (x - r * 2, y), (x - r * 0.6, y - r * 0.6)], fill=c)
 
+    def props_now(self, sg, si, tt):
+        lp = sg.get("line_props")
+        if not lp:
+            return sg["props"]
+        li = max(0, sum(1 for e in self.events if e["seg"] == si and e["t"] <= tt) - 1)
+        return lp[min(li, len(lp) - 1)]
+
     def draw_props(self, frame, sg, st, tt):
         W, H = self.W, self.H
         land = W > H
@@ -1042,6 +1073,7 @@ class Painter:
         else:
             theme = sg["theme"]
             bgl = self.bg(si, theme).copy()
+            sg = dict(sg, props=self.props_now(sg, si, tt)) if sg.get("line_props") else sg
             self.draw_props(bgl, sg, st, tt)
             if STYLE2:
                 self.ambient(bgl, theme, tt)
