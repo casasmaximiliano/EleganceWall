@@ -395,10 +395,12 @@ def v_banera(mouth_open, closed):
     # espuma: en la superficie y trepando por el cuerpo de Toto (hasta la mitad; adelante, debajo de la boca)
     foam = mat("foam", (250, 252, 255), 0.75)
     rnd = random.Random(4)
-    for k in range(150):
+    for k in range(240):
         ang, rr = rnd.uniform(0, 2 * math.pi), math.sqrt(rnd.uniform(0.0, 1.0))
         x, y = a * 0.93 * rr * math.cos(ang), b * 0.9 * rr * math.sin(ang)
         if math.hypot(x / 0.72, y / 0.66) < 1:   # dentro de Toto
+            continue
+        if math.hypot(x - 0.92, y + 0.42) < 0.28:  # lugar del patito
             continue
         s = rnd.uniform(0.1, 0.2)
         sphere((x, y, rim_z + rnd.uniform(-0.02, 0.07)), (s, s, s * 0.8), foam, seg=24, name="foam")
@@ -421,7 +423,7 @@ def v_banera(mouth_open, closed):
         sphere((x, y, z), (s, s, s * 0.85), foam, seg=24, name="foam")
     # patito flotando a la derecha (lado de la cámara)
     d = rubber_duck()
-    group(d, (0.98, -0.3, rim_z + 0.03), 0.42, rotz=math.radians(-35))
+    group(d, (0.92, -0.42, rim_z + 0.06), 0.55, rotz=math.radians(-55))
     # burbujas
     for (loc, rr) in [((-1.0, -0.25, 1.25), 0.13), ((-0.75, -0.4, 1.7), 0.09), ((1.0, -0.1, 1.45), 0.11),
                       ((0.75, -0.3, 1.95), 0.07), ((-1.15, -0.1, 0.95), 0.07)]:
@@ -430,68 +432,99 @@ def v_banera(mouth_open, closed):
 
 
 def v_cama(mouth_open, closed):
+    """Toto metido en la cama, tapado hasta debajo de los ojos: solo asoman ojos, cuernos y la parte de arriba."""
     sc = toto_base(mouth_open, closed)
     delete(["foot"])
-    S = 1.3                                  # cama un poco más grande que la de objetos.py: Toto es grandote
-    dx, dz = 0.65, -0.03                     # Toto sentado sobre el colchón, cerca de la cabecera
+    dz = -0.45                               # Toto hundido bajo la frazada (lo que queda debajo no se ve)
+    for o in bpy.data.objects:
+        if o.type == "MESH":
+            o.location.z += dz
+    S = 1.35                                 # cama más grande que la de objetos.py: Toto es grandote
     L, D = 2.5 * S, 1.2 * S
-    mat_top = 0.0                            # colchón arriba = base del cuerpo de Toto
+    bx, by = 0.6, -0.1                       # centro de la cama: Toto cerca de la cabecera
+    top = 0.0                                # parte de arriba del colchón
     wood, wood2 = mat("wood", (200, 125, 70), 0.5), mat("wood2", (170, 100, 55), 0.5)
-    base_z = mat_top - 0.26 * S
-    O.box((dx, 0, base_z - 0.1 * S), (L, D, 0.24 * S), wood, 0.06)
-    floor = base_z - 0.58 * S
+    base_z = top - 0.3 * S
+    O.box((bx, by, base_z - 0.1 * S), (L, D, 0.24 * S), wood, 0.06)
+    floor = base_z - 0.55 * S
     for x in (-L / 2 + 0.1, L / 2 - 0.1):
         for y in (-D / 2 + 0.1, D / 2 - 0.1):
-            O.box((dx + x, y, (floor + base_z) / 2), (0.16, 0.16, base_z - floor), wood2, 0.04)
-    O.box((dx - L / 2, 0, floor + 0.85 * S), (0.16, D + 0.06, 1.7 * S), wood, 0.07)          # cabecera
-    sphere((dx - L / 2, 0, floor + 1.7 * S), (0.14, D / 2 + 0.06, 0.14), wood2, name="knob")
-    O.box((dx + L / 2, 0, floor + 0.6 * S), (0.16, D + 0.06, 1.2 * S), wood, 0.07)           # pie de cama
-    sphere((dx + L / 2, 0, floor + 1.2 * S), (0.14, D / 2 + 0.06, 0.14), wood2, name="knob")
-    O.box((dx, 0, mat_top - 0.14 * S), (L - 0.2, D - 0.06, 0.3 * S), mat("mattress", (255, 252, 240), 0.6), 0.1)
-    O.box((dx - L / 2 + 0.45, 0.05, mat_top + 0.12), (0.55, D * 0.75, 0.3), mat("pillow", (255, 255, 255), 0.7), 0.12)
-    blue = mat("blanket", (70, 140, 255), 0.75)
-    hem = mat("hem", (255, 255, 255), 0.6)
-    # frazada sobre la cama, que cae por el costado de adelante
-    x0, x1 = -0.75, dx + L / 2 - 0.12
-    O.box(((x0 + x1) / 2, -0.03, mat_top + 0.04), (x1 - x0, D + 0.06, 0.16), blue, 0.07)
-    O.box(((x0 + x1) / 2, -D / 2 - 0.02, mat_top - 0.2), (x1 - x0, 0.1, 0.5), blue, 0.05)
-    O.box(((x0 + x1) / 2, -D / 2 - 0.08, mat_top - 0.43), (x1 - x0 + 0.02, 0.05, 0.08), hem, 0.02)
-    # la frazada tapa a Toto hasta debajo de los ojos (cáscara un poco más grande que su cuerpo)
-    k = 1.07
+            O.box((bx + x, by + y, (floor + base_z) / 2), (0.16, 0.16, base_z - floor), wood2, 0.04)
+    O.box((bx - L / 2, by, floor + 0.95 * S), (0.16, D + 0.06, 1.9 * S), wood, 0.07)           # cabecera
+    sphere((bx - L / 2, by, floor + 1.9 * S), (0.14, D / 2 + 0.06, 0.14), wood2, name="knob")
+    O.box((bx + L / 2, by, floor + 0.62 * S), (0.16, D + 0.06, 1.24 * S), wood, 0.07)          # pie de cama
+    sphere((bx + L / 2, by, floor + 1.24 * S), (0.14, D / 2 + 0.06, 0.14), wood2, name="knob")
+    O.box((bx, by, top - 0.15 * S), (L - 0.2, D - 0.06, 0.3 * S), mat("mattress", (255, 252, 240), 0.6), 0.1)
+    O.box((bx - L / 2 + 0.42, by + 0.15, top + 0.42), (0.5, D * 0.7, 0.5), mat("pillow", (255, 255, 255), 0.7), 0.16)
+
+    # frazada: superficie que cubre la cama, se levanta en un bulto sobre el cuerpo de Toto y cae por adelante
     z_edge = 0.86 + dz
-    for o in bpy.data.objects:
-        if o.type == "MESH" and o.name.split(".")[0] in ("fur", "horn", "eyew", "iris", "pupil", "glint", "glint2",
-                                                          "lid", "lidline", "mouth", "tongue", "tooth", "smile"):
-            o.location.z += dz
-    sh = sphere((0, 0, BODY_C.z + dz - 0.04), (BODY_R[0] * k, BODY_R[1] * k, BODY_R[2] * k), blue, seg=96, name="shell")
-    bpy.ops.object.mode_set(mode="EDIT")
-    bpy.ops.mesh.select_all(action="SELECT")
-    bpy.ops.mesh.bisect(plane_co=(0, 0, z_edge), plane_no=(0, 0, 1), clear_outer=True)
-    bpy.ops.object.mode_set(mode="OBJECT")
-    so = sh.modifiers.new("thick", "SOLIDIFY")
-    so.thickness = 0.03
-    rz = (z_edge - (BODY_C.z + dz - 0.04)) / (BODY_R[2] * k)
-    rh = math.sqrt(1 - rz * rz)
-    ring = [(BODY_R[0] * k * rh * math.cos(2 * math.pi * i / 96), BODY_R[1] * k * rh * math.sin(2 * math.pi * i / 96), z_edge)
-            for i in range(96)]
-    t = tube("hem", ring + ring[:4], 0.05, hem)
+    rz = (z_edge - (BODY_C.z + dz)) / BODY_R[2]
+    hx, hy = BODY_R[0] * math.sqrt(1 - rz * rz), BODY_R[1] * math.sqrt(1 - rz * rz)   # contorno de la cabeza ahí
+    base = top + 0.1
+
+    def h(x, y):
+        r = math.hypot(x / (hx * 1.06), y / (hy * 1.06))
+        if r <= 1:
+            p = 1.0
+        elif r >= 2.1:
+            p = 0.0
+        else:
+            t = (r - 1) / 1.1
+            p = 0.5 + 0.5 * math.cos(math.pi * t)
+        return base + (z_edge - base) * p + 0.015 * math.sin(7 * x + 2 * y)
+
+    x0, x1 = bx - L / 2 + 0.2, bx + L / 2 - 0.1
+    yf, yb = by - D / 2 - 0.03, by + D / 2 - 0.02
+    Sd = 0.5                                  # largo de lo que cuelga por adelante
+    NX, NS = 90, 70
+    depth = yb - yf
+    verts, faces = [], []
+    for i in range(NX + 1):
+        x = x0 + (x1 - x0) * i / NX
+        for j in range(NS + 1):
+            s = (Sd + depth) * j / NS
+            if s < Sd:
+                zt = h(x, yf)
+                w = (Sd - s)
+                verts.append((x, yf - 0.03 * math.sin(math.pi * min(1, w / Sd)) - 0.02 * math.sin(9 * x), zt - w))
+            else:
+                y = yf + (s - Sd)
+                verts.append((x, y, h(x, y)))
+    for i in range(NX):
+        for j in range(NS):
+            a = i * (NS + 1) + j
+            faces.append((a, a + NS + 1, a + NS + 2, a + 1))
+    me = bpy.data.meshes.new("blanket")
+    me.from_pydata(verts, [], faces)
+    bl = bpy.data.objects.new("blanket", me)
+    sc.collection.objects.link(bl)
+    for p in me.polygons:
+        p.use_smooth = True
+    blue = mat("blanket", (70, 140, 255), 0.75)
+    bl.data.materials.append(blue)
+    so = bl.modifiers.new("thick", "SOLIDIFY")
+    so.thickness, so.offset = 0.05, 0
+    sub = bl.modifiers.new("sub", "SUBSURF")
+    sub.levels, sub.render_levels = 1, 2
+    # borde blanco de la frazada alrededor de la cara (el dobladillo)
+    hem = mat("hem", (255, 255, 255), 0.6)
+    ring = [(hx * 1.04 * math.cos(2 * math.pi * i / 96), hy * 1.04 * math.sin(2 * math.pi * i / 96),
+             z_edge + 0.012) for i in range(96)]
+    t = tube("hem", ring + ring[:4], 0.055, hem)
     t.data.splines[0].use_cyclic_u = True
-    # pliegue suave donde la frazada se junta con la cama
-    f = torus((0, 0, mat_top + 0.12), 0.8, 0.12, blue, name="fold")
-    f.scale = (1.02, 0.95, 0.7)
-    # estrellitas de la frazada
+    O.box(((x0 + x1) / 2, yf - 0.04, top + 0.1 - Sd + 0.03), (x1 - x0, 0.06, 0.07), hem, 0.025)
+    # estrellitas amarillas de la frazada
     star = mat("star", (255, 220, 60), 0.4)
-    for (x, z) in [(-0.45, 0.35), (0.0, 0.18), (0.42, 0.45), (-0.2, 0.62), (0.3, 0.05)]:
-        zz = z + dz
-        rz = (zz - (BODY_C.z + dz - 0.04)) / (BODY_R[2] * k)
-        xr = x / (BODY_R[0] * k * math.sqrt(max(1e-3, 1 - rz * rz)))
-        if abs(xr) >= 0.98:
+    rnd = random.Random(8)
+    for k in range(14):
+        x, y = rnd.uniform(x0 + 0.1, x1 - 0.1), rnd.uniform(yf + 0.1, yb - 0.1)
+        if math.hypot(x / (hx * 1.15), y / (hy * 1.15)) < 1:
             continue
-        y = -BODY_R[1] * k * math.sqrt(max(0, 1 - rz * rz)) * math.sqrt(1 - xr * xr)
-        o = sphere((x, y - 0.015, zz), (0.06, 0.02, 0.06), star, name="star")
-        o.rotation_euler = Vector((x, y, 0)).normalized().to_track_quat("-Y", "Z").to_euler()
-    for i in range(5):
-        sphere((1.0 + i * 0.42, -D / 2 - 0.08, mat_top - 0.15), (0.06, 0.02, 0.06), star, name="star")
+        sphere((x, y, h(x, y) + 0.03), (0.06, 0.06, 0.02), star, name="star")
+    for k in range(7):
+        x = x0 + 0.25 + k * (x1 - x0 - 0.5) / 6
+        sphere((x, yf - 0.06, top + 0.1 - Sd / 2 - 0.05), (0.06, 0.02, 0.06), star, name="star")
     return sc
 
 
@@ -504,11 +537,11 @@ def v_limpio(mouth_open, closed):
     d.texture.noise_scale = 0.045
     d.strength = 0.07
     cam_loc = sc.camera.location
-    for (loc, R) in [((-0.85, -0.3, 1.45), 0.13), ((0.95, -0.2, 1.25), 0.1), ((0.75, -0.5, 1.75), 0.08),
-                     ((-1.0, -0.2, 0.6), 0.09), ((0.95, -0.4, 0.45), 0.07), ((-0.55, -0.5, 1.82), 0.06)]:
+    for (loc, R) in [((-0.9, -0.3, 1.5), 0.2), ((1.0, -0.2, 1.25), 0.15), ((0.72, -0.5, 1.8), 0.12),
+                     ((-1.05, -0.2, 0.6), 0.13), ((1.0, -0.4, 0.45), 0.1), ((-0.5, -0.5, 1.85), 0.09)]:
         sparkle(loc, R, cam_loc)
     # brillito sobre el pelo limpio
-    sparkle((0.42, -0.62, 1.28), 0.06, cam_loc, col=(255, 255, 255))
+    sparkle((0.45, -0.66, 1.3), 0.09, cam_loc, col=(255, 255, 255))
     return sc
 
 

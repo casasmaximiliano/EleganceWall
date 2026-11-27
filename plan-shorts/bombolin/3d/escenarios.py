@@ -437,7 +437,7 @@ def meadow(portrait, night=False):
     cols = [(255, 120, 160), (255, 220, 70), (255, 255, 255), (185, 140, 255), (255, 150, 60), (120, 190, 255)]
     for (cx, cy, n, sd) in [(-4.8, 0.2, 9, 1), (4.9, -0.5, 9, 2), (-7.2, 2.6, 8, 3), (7.4, 2.8, 8, 4),
                             (-2.8, 5.5, 6, 5), (3.2, 7.2, 6, 6), (-10.5, 7, 7, 7), (11.5, 9, 7, 8),
-                            (-1.8, 11, 6, 9), (6.5, 13, 6, 10)]:
+                            (-1.8, 11, 6, 9), (6.5, 13, 6, 10), (-3.0, 3.6, 5, 11), (3.1, 4.0, 5, 12)]:
         rr = random.Random(sd)
         for _ in range(n):
             x, y = cx + rr.uniform(-0.9, 0.9), cy + rr.uniform(-0.6, 0.6)
@@ -478,8 +478,8 @@ def room(portrait):
     wv = nt.nodes.new("ShaderNodeTexWave")
     wv.inputs["Scale"].default_value = 8.0
     rp = nt.nodes.new("ShaderNodeValToRGB")
-    rp.color_ramp.elements[0].color = (0.55, 0.33, 0.18, 1)
-    rp.color_ramp.elements[1].color = (0.82, 0.58, 0.36, 1)
+    rp.color_ramp.elements[0].color = (0.66, 0.43, 0.25, 1)
+    rp.color_ramp.elements[1].color = (0.85, 0.62, 0.40, 1)
     nt.links.new(wv.outputs["Fac"], rp.inputs["Fac"])
     nt.links.new(rp.outputs["Color"], b.inputs["Base Color"])
     bpy.ops.mesh.primitive_plane_add(size=40)
@@ -500,7 +500,7 @@ def room(portrait):
         for col in range(-12, 13):
             x = col * 1.0 + (0.5 if row % 2 else 0)
             if (col + row) % 2:
-                disc((x, 8.79, z), 0.12, mat("dot", (255, 250, 225), 0.8), 0.02)
+                disc((x, 8.79, z), 0.12, mat("dot", (255, 255, 255), 0.8, emis=0.25), 0.02)
             else:
                 star((x, 8.79, z), 0.16, mat("wstar", (255, 200, 110), 0.8), 0.02, spin=rnd.uniform(-0.3, 0.3))
     # ventana con cortinas a rayas, barral y una plantita en el alféizar
@@ -582,15 +582,15 @@ def room(portrait):
     potted_plant(-9.6, 6.5, 0, 1.3, pot=(255, 255, 255), leaf=(70, 180, 90), seed=6)
     # guirnalda de banderines y móvil de estrellas (este se ve en el vertical)
     BC = [(255, 110, 140), (255, 210, 70), (110, 190, 255), (130, 215, 120), (190, 140, 255)]
-    bunting(-10.5, 10.5, 7.4, 8.6, 0.6, BC, n=22)
+    bunting(-10.5, 10.5, 6.8, 8.6, 0.2, BC, n=24, size=0.38)
     bunting(-6, 6, 11.0, 8.6, 0.5, BC[::-1], n=12, size=0.5)
     for k, (x, z, c) in enumerate([(-3.4, 8.6, (255, 210, 70)), (-1.2, 9.2, (255, 140, 180)), (1.3, 8.8, (120, 190, 255)),
                                    (3.6, 9.4, (255, 210, 70))]):
         rod((x, 8.2, 13), (x, 8.2, z + 0.3), 0.012, mat("string", (250, 250, 250), 0.6), v=6)
         star((x, 8.2, z), 0.4, mat(f"mob{c}", c, 0.4, emis=0.2), 0.12)
-    disc((-4.8, 8.75, 9.6), 0.75, mat("moonw", (255, 230, 120), 0.6), 0.06)
-    disc((-4.5, 8.7, 9.75), 0.65, mat("wall", WALL, 0.9), 0.06)
-    area_light((0, 2, 9), 1200, 10)
+    star((-4.8, 8.7, 9.7), 0.7, mat("bigstar", (255, 170, 60), 0.5, emis=0.15), 0.1)
+    area_light((0, 2, 9), 1100, 10)
+    area_light((0, 3, 15), 900, 12, (1, 0.97, 0.9))
     area_light((0, -6, 5), 500, 8, (1, 0.95, 0.85)).rotation_euler = (math.radians(70), 0, 0)
 
 
@@ -599,7 +599,7 @@ def bath(portrait):
     El centro de abajo queda libre: ahí se compone la bañera."""
     slab((0, 0, -0.1), (20, 20, 0.1), tiles("floortile", (255, 255, 255), (185, 228, 250), (160, 200, 225), 1.1, "floor", 0.3), 0.01)
     WT = tiles("walltile", (160, 218, 248), (175, 226, 252), (255, 255, 255), 0.7)
-    PAINT = mat("bathpaint", (205, 243, 225), 0.9)
+    PAINT = mat("bathpaint", (190, 240, 215), 0.9)
     slab((0, 9, 1.7), (20, 0.2, 1.7), WT, 0.01)
     cube((0, 9.02, 10.4), (20, 0.2, 7.0), PAINT, 0.01)
     for s in (-1, 1):
@@ -629,10 +629,9 @@ def bath(portrait):
     MX = -5.2
     torus((MX, 8.72, 5.1), 1.15, 0.17, mat("mframe", (255, 160, 190), 0.4), rot=(math.pi / 2, 0, 0))
     disc((MX, 8.77, 5.1), 1.15, mat("mirror", (185, 225, 250), 0.05, emis=0.35), 0.04)
-    flat([(-0.5, 0.2), (-0.3, 0.2), (0.2, -0.45), (0.0, -0.45)], mat("mhl", (255, 255, 255), 0.3, emis=0.5),
-         (MX - 0.2, 8.73, 5.35), 0.02)
-    flat([(-0.15, 0.25), (-0.02, 0.25), (0.25, -0.1), (0.12, -0.1)], mat("mhl", (255, 255, 255), 0.3, emis=0.5),
-         (MX + 0.25, 8.73, 5.35), 0.02)
+    for (dx, dz, L) in [(-0.35, 0.35, 0.42), (0.05, 0.5, 0.22)]:
+        o = sph((MX + dx, 8.73, 5.1 + dz), (L, 0.02, 0.07), mat("mhl", (255, 255, 255), 0.3, emis=0.6), seg=16)
+        o.rotation_euler = (0, math.radians(40), 0)
     cone((MX, 8.2, 1.2), 0.35, 0.5, 2.4, mat("porcelain", (255, 255, 255), 0.25))
     o = sph((MX, 8.05, 2.55), (1.2, 0.75, 0.45), mat("porcelain", (255, 255, 255), 0.25))
     cyl((MX, 8.05, 2.95), 1.05, 0.12, mat("porcelain", (255, 255, 255), 0.25), v=48).scale = (1, 0.62, 1)
@@ -682,7 +681,7 @@ def bath(portrait):
     sph((8.5, 6.3, 1.45), (0.55, 0.5, 0.25), mat("laundry", (150, 210, 255), 0.9))
     # plantas colgantes en las esquinas y una arriba en el centro (vertical)
     hanging_plant(-8.4, 6.0, 12, 7.2, 1.1, pot=(255, 255, 255), leaf=(90, 195, 100), seed=1)
-    hanging_plant(9.3, 6.0, 12, 7.0, 1.0, pot=(255, 170, 200), leaf=(110, 200, 90), seed=2)
+    hanging_plant(8.2, 6.0, 12, 7.3, 1.0, pot=(255, 170, 200), leaf=(110, 200, 90), seed=2)
     # cuadrito con un pez (arriba, se ve en el vertical)
     cube((-2.8, 8.74, 9.2), (1.0, 0.06, 0.75), mat("pframe2", (255, 200, 90), 0.5), 0.06)
     cube((-2.8, 8.68, 9.2), (0.85, 0.03, 0.6), mat("sea", (130, 205, 255), 0.7), 0.01)
@@ -697,7 +696,8 @@ def bath(portrait):
         x, y, z = rnd.uniform(-7, 7), rnd.uniform(4, 8), rnd.uniform(4.5, 12)
         if abs(x) < 2.2 and z < 7:
             continue
-        sph((x, y, z), (rnd.uniform(0.12, 0.3),) * 3, mat("bubble", (225, 245, 255), 0.05, emis=0.2, alpha=0.35), seg=16)
+        o = sph((x, y, z), (rnd.uniform(0.12, 0.3),) * 3, mat("bubble", (225, 245, 255), 0.05, emis=0.2, alpha=0.35), seg=16)
+        o.visible_shadow = False
     area_light((0, 2, 9), 1000, 10, (1, 0.98, 0.95))
     area_light((0, 3, 15), 900, 12, (1, 0.98, 0.95))
     area_light((0, -6, 5), 500, 8, (0.95, 0.97, 1.0)).rotation_euler = (math.radians(70), 0, 0)
