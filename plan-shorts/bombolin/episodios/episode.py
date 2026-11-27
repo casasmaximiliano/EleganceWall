@@ -696,6 +696,40 @@ class Painter:
         self.last_pos = dict(pos)
         return pos
 
+    def ambient(self, bg, theme, tt):
+        """Vida en el fondo: mariposas en la pradera, luciérnagas de noche, copos de nieve, brillitos en el cuarto."""
+        W, H = self.W, self.H
+        d = ImageDraw.Draw(bg, "RGBA")
+        if theme in ("meadow", "board"):
+            for k in range(3):
+                x = (0.15 + 0.35 * k) * W + 0.12 * W * math.sin(tt * 0.45 + k * 2.1)
+                y = (0.35 + 0.08 * k) * H + 0.06 * H * math.sin(tt * 0.9 + k)
+                e = emoji("🦋", int(0.10 * H))
+                fl = 0.35 + 0.65 * abs(math.sin(tt * 9 + k))
+                e = e.resize((max(4, int(e.width * fl)), e.height))
+                bg.paste(e, (int(x - e.width / 2), int(y - e.height / 2)), e)
+        elif theme in ("night", "xmas"):
+            for k in range(18):
+                x = W * ((k * 0.618 + 0.05 * math.sin(tt * 0.3 + k)) % 1.0)
+                y = H * (0.35 + 0.4 * ((k * 0.377) % 1.0)) + 10 * math.sin(tt + k)
+                a = int(180 * (0.5 + 0.5 * math.sin(tt * 3 + k * 1.7)))
+                r = 0.006 * H
+                d.ellipse([x - r * 2, y - r * 2, x + r * 2, y + r * 2], fill=(255, 240, 120, a // 4))
+                d.ellipse([x - r, y - r, x + r, y + r], fill=(255, 250, 170, a))
+        elif theme == "snow":
+            for k in range(40):
+                x = W * ((k * 0.618) % 1.0) + 30 * math.sin(tt * 1.2 + k)
+                y = (H * ((k * 0.377) % 1.0) + tt * 0.06 * H * (1 + (k % 3) * 0.4)) % H
+                r = 0.004 * H * (1 + k % 3)
+                d.ellipse([x - r, y - r, x + r, y + r], fill=(255, 255, 255, 230))
+        elif theme in ("room", "show"):
+            for k in range(14):
+                x = W * ((k * 0.618) % 1.0) + 20 * math.sin(tt * 0.6 + k)
+                y = H * (0.15 + 0.55 * ((k * 0.377 + tt * 0.02) % 1.0))
+                a = int(150 * (0.5 + 0.5 * math.sin(tt * 2.2 + k * 1.3)))
+                r = 0.004 * H
+                d.ellipse([x - r, y - r, x + r, y + r], fill=(255, 255, 230, a))
+
     def _base_y(self):
         return 0.97 * self.H if self.W > self.H else 0.745 * self.H
 
@@ -768,10 +802,10 @@ class Painter:
                 n = it.get("n", 3)
                 for k in range(n):
                     a = tt * 2.6 + k * 2 * math.pi / n
-                    r = 0.62 * ww
+                    r = 0.75 * ww
                     e = prop_img(it["sp"], h=max(16, int(it["size"] * H))) if has_prop(it) else emoji(it["em"], max(20, int(it["size"] * H)))
                     x = hx + r * math.cos(a)
-                    y = hy - 0.05 * H + 0.35 * r * math.sin(a) + 6 * math.sin(tt * 9 + k)
+                    y = hy - 0.16 * H + 0.25 * r * math.sin(a) + 6 * math.sin(tt * 9 + k)  # por arriba de la cabeza
                     layer.alpha_composite(e, (int(x - e.width / 2), max(0, int(y - e.height / 2))))
             elif m == "rise":
                 n = it.get("n", 8)
@@ -987,6 +1021,8 @@ class Painter:
             theme = sg["theme"]
             bgl = self.bg(si, theme).copy()
             self.draw_props(bgl, sg, st, tt)
+            if STYLE2:
+                self.ambient(bgl, theme, tt)
             layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
             self.heads = {}
             self.box = {}
@@ -1025,10 +1061,23 @@ class Painter:
             cx, cy = W // 2, int(0.36 * H) if W > H else 800
             d.ellipse([cx - r, cy - r, cx + r, cy + r], fill=(255, 90, 120, 235), outline=(255, 255, 255), width=12)
             self.text(d, cx, cy, str(3 - k), int(r * 1.3), (255, 255, 255), sw=10)
-        # transición: fundido corto desde blanco al empezar cada escena
-        if si > 0 and st < 0.3 and sg["kind"] != "end":
+        # transición: en estilo 2, un círculo que se abre desde el centro (como en los dibujos animados)
+        if STYLE2 and si > 0 and st < 0.34 and sg["kind"] != "end":
+            k = st / 0.34
+            r = int((0.05 + 0.95 * (1 - (1 - k) ** 3)) * math.hypot(W, H) / 2)
+            mask = Image.new("L", (W, H), 255)
+            ImageDraw.Draw(mask).ellipse([W // 2 - r, H // 2 - r, W // 2 + r, H // 2 + r], fill=0)
+            fr.paste(Image.new("RGB", (W, H), (255, 200, 40)), (0, 0), mask)
+            d = ImageDraw.Draw(fr, "RGBA")
+            d.ellipse([W // 2 - r, H // 2 - r, W // 2 + r, H // 2 + r], outline=(255, 255, 255), width=14)
+        elif not STYLE2 and si > 0 and st < 0.3 and sg["kind"] != "end":
             a = int(110 * (1 - st / 0.3))
             d.rectangle([0, 0, W, H], fill=(255, 255, 255, a))
+        if STYLE2 and not self.short and hook and tt < 3.0:
+            # gancho del programa: el título corto del día salta en grande al empezar
+            pop = min(1.0, tt / 0.25)
+            sz = int(0.13 * H * (0.6 + 0.4 * pop) * (1 + 0.03 * math.sin(tt * 9)))
+            self.text(d, W // 2, int(0.15 * H), hook, sz, (255, 214, 60), sw=14, maxw=W - 120)
         if self.short:
             d.rounded_rectangle([W // 2 - 260, 40, W // 2 + 260, 110], 35, fill=(255, 255, 255, 215))
             d.text((W // 2, 75), TXT[self.lang]["show"], font=font(F700, 40), fill=(60, 150, 100), anchor="mm")

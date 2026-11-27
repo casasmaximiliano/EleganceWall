@@ -94,7 +94,7 @@ def timeline(segs, vdir, cache):
         if sg["kind"] == "end":
             tt += 4.0
         elif sg["kind"] == "title":
-            tt = max(tt, sg["t0"] + 5.5)
+            tt = max(tt, sg["t0"] + (3.6 if E.STYLE2 else 5.5))
         elif sg["kind"] == "bumper":
             tt = max(tt, sg["t0"] + 2.6)
         else:
@@ -200,7 +200,7 @@ def render_job(job):
         W, H = 1920, 1080
         segs, events, total = build_program(n, vdir, cache)
         name = f"Bombolin_Dia{n:02d}_{fecha.strftime('%d-%m')}_{R.safe(ep['tes'])}"
-        hook = None
+        hook = ep["thumb"]["t1_es"] if E.STYLE2 else None
     else:
         W, H = 1080, 1920
         segs, events, total, hook = build_short(n, k, vdir, cache)
