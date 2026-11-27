@@ -668,6 +668,10 @@ class Painter:
                 bounce = 0.0
                 if is_sp:  # habla «con el cuerpo»: se estira y se aplasta sin despegarse del suelo
                     sq = 1 + 0.045 * abs(math.sin(tt * 7))
+                if sg.get("dance"):  # video musical: saltitos y balanceo al ritmo de la canción
+                    beat = tt * sg["dance"] / 60 + (0.5 if i % 2 else 0.0)
+                    bounce = abs(math.sin(math.pi * beat)) * 0.035 * H
+                    sq = 1 + 0.05 * math.cos(2 * math.pi * beat)
                 st_ = tt - sg.get("t0", 0)
                 # entrada: cada personaje llega saltando desde su lado
                 if st_ < 0.55 and not sg.get("closing"):
@@ -693,6 +697,8 @@ class Painter:
                     tilt = 2.5 * (1 if dx < 0 else -1)
                 # respiración
                 sq *= 1 + 0.012 * math.sin(tt * 2.4 + i * 1.7)
+                if sg.get("dance"):
+                    tilt = 6.0 * math.sin(math.pi * (tt * sg["dance"] / 60) / 2 + i)
             hh = int(bh * sc * sq)
             ww = int(spr.width * hh / spr.height / sq)
             crouch = self.hide.get(c, 0.0) if STYLE2 else 0.0
