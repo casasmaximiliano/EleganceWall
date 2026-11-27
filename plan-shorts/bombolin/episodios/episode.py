@@ -148,6 +148,8 @@ BG3D_DIR = os.environ.get("BOMBOLIN_BG3D")
 # Estilo 2 (desde el día 2, 27/11): colores vivos, contorno, profundidad de campo, entradas, gestos y chispas
 STYLE2 = os.environ.get("BOMBOLIN_ESTILO") == "2"
 OBJ3D_DIR = os.environ.get("BOMBOLIN_OBJ3D")
+# Alto relativo de las variantes 3D (personaje + objeto en una sola imagen) respecto del personaje solo
+VAR_H = {"TOTO-sucio": 1.0, "TOTO-banera": 1.0, "TOTO-cama": 1.0, "TOTO-limpio": 1.0}
 _PROPS = {}
 
 
@@ -582,6 +584,7 @@ class Painter:
         self.last_pos = {}
         self.hide = {}
         self.box = {}
+        self.variant = {}
 
     def bg(self, si, theme):
         if si not in self.bgs:
@@ -589,6 +592,9 @@ class Painter:
         return self.bgs[si]
 
     def char_sprite(self, c, mouth, blink, fi, mood):
+        v = self.variant.get(c)
+        if v and (v, mouth, blink) in self.sp:  # personaje modelado en 3D junto con su objeto (p. ej. TOTO-banera)
+            return self.sp[(v, mouth, blink)]
         if c == "LULA":
             return self.sp[(c, mood, mouth, blink)]
         if c == "ZUMBI":
@@ -629,6 +635,8 @@ class Painter:
             bl = 1 if any((fi - d) in self.blink[c] for d in range(max(3, FPS // 8))) else 0
             spr = self.char_sprite(c, mouth, bl, fi, sg.get("mood", "calm"))
             bh = BASE_H[c] * H if land else {"PIPO": 540, "TOTO": 490, "LULA": 340, "ZUMBI": 280, "ABU": 400}[c]
+            if self.variant.get(c) and (self.variant[c], 0, 0) in self.sp:
+                bh *= VAR_H.get(self.variant[c], 1.0)
             bounce = abs(math.sin(tt * 7)) * 0.02 * H if is_sp else abs(math.sin(tt * 2 + i)) * 0.006 * H
             sq = 1 + (0.035 * math.sin(tt * 14) if is_sp else 0)
             tilt = 0.0
@@ -973,6 +981,7 @@ class Painter:
         return cx, cy, z
 
     def frame(self, fi, hook=None):
+        self.variant = {}
         tt = fi / FPS
         self.now = tt
         W, H = self.W, self.H
@@ -1033,7 +1042,9 @@ class Painter:
                          for e, x in zip(sg["props"], xs)][:2]
             li = sum(1 for e in self.events if e["seg"] == si and e["t"] <= tt) - 1
             items = [it for it in stage if li >= it.get("frm", 0)]
-            self.hide = {it["who"]: it.get("hide", 0.0) for it in items if it["mode"] == "front" and it.get("hide")}
+            self.variant = {it["who"]: f'{it["who"]}-{it["name"]}' for it in items if it["mode"] == "variant"}
+            self.hide = {it["who"]: it.get("hide", 0.0) for it in items if it["mode"] == "front" and it.get("hide")
+                         and not self.variant.get(it["who"])}
             if items:
                 self.stage_back(layer, items, tt)
             pos = self.draw_cast(layer, sg, fi, tt, speaking)

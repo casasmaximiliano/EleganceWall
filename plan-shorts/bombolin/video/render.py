@@ -237,7 +237,48 @@ def tts_kokoro(key, text, cache, echo=False):
     return a / (np.abs(a).max() or 1) * 0.85
 
 
+# Voces de ElevenLabs (diseñadas para cada personaje). La clave la inyecta el proxy del entorno (no hay variable).
+ELEVEN_VOICES_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "voces_elevenlabs.json")
+
+
+def use_eleven():
+    return os.environ.get("BOMBOLIN_VOZ") == "elevenlabs" and LANG == "es" and os.path.exists(ELEVEN_VOICES_FILE)
+
+
+def tts_eleven(key, text, cache, echo=False):
+    import json as _json
+    cfg = _json.load(open(ELEVEN_VOICES_FILE))
+    vid = cfg["voices"].get(key) or cfg["voices"]["GM"]
+    model = cfg.get("model", "eleven_multilingual_v2")
+    h = hashlib.md5(f"ELEVEN|{vid}|{model}|{text}|{echo}|e1".encode()).hexdigest()
+    out = os.path.join(cache, h + ".wav")
+    if not os.path.exists(out):
+        mp3 = out + ".mp3"
+        body = _json.dumps({"text": tts_text(text), "model_id": model,
+                            "voice_settings": cfg.get("settings", {"stability": 0.4, "similarity_boost": 0.8, "style": 0.5})})
+        for attempt in range(5):
+            r = subprocess.run(["curl", "-s", "-o", mp3, "-w", "%{http_code}", "-X", "POST",
+                                f"https://api.elevenlabs.io/v1/text-to-speech/{vid}?output_format=mp3_44100_128",
+                                "-H", "Content-Type: application/json", "-d", body], capture_output=True, text=True)
+            if r.stdout.strip() == "200":
+                break
+            import time
+            time.sleep(3 + attempt * 4)
+        else:
+            raise RuntimeError(f"ElevenLabs falló ({r.stdout}): {open(mp3, errors='ignore').read()[:300]}")
+        af = "aresample=%d" % SR
+        if echo:
+            af += ",aecho=0.8:0.7:350|700:0.45|0.25"
+        af += ",silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse"
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", mp3, "-af", af, "-ac", "1", "-ar", str(SR), out], check=True)
+        os.remove(mp3)
+    a = read_wav(out)
+    return a / (np.abs(a).max() or 1) * 0.85
+
+
 def tts(key, text, vdir, cache, echo=False):
+    if use_eleven():
+        return tts_eleven(key, text, cache, echo)
     if use_kokoro():
         return tts_kokoro(key, text, cache, echo)
     model, pitch, ls = VOICES[key]
@@ -264,11 +305,19 @@ def tts(key, text, vdir, cache, echo=False):
 def chorus(text, vdir, cache):
     """Coro sincronizado: UNA sola locución base (misma duración de cada sílaba) a la que se le cambia
     solo el tono para cada personaje. Así todas las voces empiezan y terminan cada palabra a la vez."""
-    h = hashlib.md5(f"CHORUS|{text}|v4{'' if LANG == 'es' else '|' + LANG}{'|kokoro' if use_kokoro() else ''}".encode()).hexdigest()
+    h = hashlib.md5(f"CHORUS|{text}|v4{'' if LANG == 'es' else '|' + LANG}{'|kokoro' if use_kokoro() else ''}{'|eleven' if use_eleven() else ''}".encode()).hexdigest()
     out = os.path.join(cache, h + ".wav")
-    if use_kokoro() and not os.path.exists(out):
+    if (use_kokoro() or use_eleven()) and not os.path.exists(out):
         base = out + ".base.wav"
-        kokoro_raw("ef_dora", text, 1.0, base)
+        if use_eleven():  # una sola locución (voz de Bombolín) y copias con otro tono: el coro va sincronizado
+            b = tts_eleven("PIPO", text, cache)
+            with wave.open(base, "wb") as w:
+                w.setnchannels(1)
+                w.setsampwidth(2)
+                w.setframerate(SR)
+                w.writeframes((b * 32767).astype(np.int16).tobytes())
+        else:
+            kokoro_raw("ef_dora", text, 1.0, base)
         parts = []
         for pitch, gain in ((1.15, 1.0), (0.9, 0.55), (1.06, 0.5), (1.25, 0.45)):  # Bombolín, Toto, Lula, Zumbi
             pv = out + f".{pitch}.wav"
