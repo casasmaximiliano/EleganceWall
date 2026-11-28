@@ -61,19 +61,53 @@ class Rig:
         return self._memo((fname, ang), lambda: self.img(fname).rotate(
             ang, resample=Image.BICUBIC, center=(pivot[0] * WS, pivot[1] * WS)))
 
+    def _safe(self):
+        """Máscara de los ojos achicada por el radio del iris (+4 px): el centro de la pupila debe quedar adentro,
+        así el iris entero queda siempre dentro del blanco y nunca se ve cortado (efecto «D» o bizco)."""
+        if not hasattr(self, "_safe_m"):
+            import numpy as np
+            from PIL import ImageFilter
+            m = self.img("eyes_mask.png")
+            pup = self.img("pupil.png")
+            if m is None or pup is None:
+                self._safe_m = None
+            else:
+                r = int(min(pup.width, pup.height) / 2 + 4 * WS)
+                a = m.getchannel("A").point(lambda v: 255 if v > 128 else 0)
+                k = 2 * r + 1
+                while k > 1:  # MinFilter admite hasta tamaños impares; se aplica en pasos
+                    step = min(k, 15) | 1
+                    a = a.filter(ImageFilter.MinFilter(step))
+                    k -= step - 1
+                self._safe_m = np.array(a) > 0
+        return self._safe_m
+
     def _with_pupils(self, base, gx, gy):
         """base + pupilas desplazadas (gx, gy en -1..1), recortadas por la máscara de los ojos."""
         c = self.cfg
+        per = c.get("pupil_range_per_eye")
         rx = c.get("pupil_range_xy", {})
         r = c.get("pupil_range", 8)
-        # el iris nunca llega al borde del blanco (si no, queda cortado y parece que «pone los ojos en blanco»)
-        lim = 0.45
-        dx = max(-1.0, min(1.0, gx)) * (rx.get("x", r) if gx > 0 else rx.get("-x", r)) * lim * WS
-        dy = max(-1.0, min(1.0, gy)) * min(rx.get("y", r), rx.get("-y", r), r) * lim * WS
+        gx, gy = max(-1.0, min(1.0, gx)), max(-1.0, min(1.0, gy))
         pup = self.img("pupil.png")
+        safe = self._safe()
         lay = Image.new("RGBA", (self.N, self.N), (0, 0, 0, 0))
-        for ex, ey in c["eyes"]:
-            lay.alpha_composite(pup, (int(ex * WS + dx - pup.width / 2), int(ey * WS + dy - pup.height / 2)))
+        for i, (ex, ey) in enumerate(c["eyes"]):
+            rr = per[i] if per and i < len(per) else rx
+            dx = gx * (rr.get("x", r) if gx > 0 else rr.get("-x", r)) * WS
+            dy = gy * (rr.get("y", r) if gy > 0 else rr.get("-y", r)) * WS
+            cx, cy = ex * WS, ey * WS
+            if safe is not None and safe[min(self.N - 1, int(cy)), min(self.N - 1, int(cx))]:
+                t = 1.0  # se acorta el recorrido hasta que el centro quede en la zona segura
+                while t > 0:
+                    x, y = int(cx + dx * t), int(cy + dy * t)
+                    if 0 <= x < self.N and 0 <= y < self.N and safe[y, x]:
+                        break
+                    t -= 0.05
+                dx, dy = dx * max(0.0, t), dy * max(0.0, t)
+            else:
+                dx, dy = dx * 0.45, dy * 0.45
+            lay.alpha_composite(pup, (int(cx + dx - pup.width / 2), int(cy + dy - pup.height / 2)))
         mask = self.img("eyes_mask.png")
         if mask is not None:
             a = ImageChops.multiply(lay.getchannel("A"), mask.getchannel("A"))
@@ -130,7 +164,8 @@ def load_rigs(folder, sprites):
         ref = os.path.join(folder, name, "_ref")
         box = None
         for f in sorted(os.listdir(ref)) if os.path.isdir(ref) else []:
-            if f.endswith(".png") and "iris" not in f:
+            # solo las poses neutras: la lluvia (triste) y las chispas (enojada) agrandan el cuadro y achican al personaje
+            if f.endswith(".png") and "iris" not in f and not any(k in f for k in ("sad", "angry", "shy")):
                 a = Image.open(os.path.join(ref, f)).getchannel("A").point(lambda v: 255 if v > 60 else 0)
                 b = a.getbbox()
                 if b:
