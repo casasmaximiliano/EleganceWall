@@ -1221,7 +1221,7 @@ class Painter:
         W, H = self.W, self.H
         d = ImageDraw.Draw(frame, "RGBA")
         land = W > H
-        bx0, by0, bx1, by1 = (0.30 * W, 0.08 * H, 0.95 * W, 0.80 * H) if land else (0.05 * W, 0.12 * H, 0.95 * W, 0.50 * H)
+        bx0, by0, bx1, by1 = (0.37 * W, 0.08 * H, 0.97 * W, 0.80 * H) if land else (0.05 * W, 0.12 * H, 0.95 * W, 0.50 * H)
         d.rounded_rectangle([bx0, by0, bx1, by1], 30, fill=(150, 90, 60))
         mid = (bx0 + bx1) / 2
         d.rounded_rectangle([bx0 + 20, by0 + 20, mid - 6, by1 - 20], 18, fill=(255, 250, 235))
@@ -1327,11 +1327,11 @@ class Painter:
                     # los personajes articulados son anchos (Abu Tortu): se dibujan con más espacio y se achican,
                     # así no se tapan entre ellos ni tapan el libro
                     sub = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-                    self.W = int(W * 0.50)
+                    self.W = int(W * 0.90)
                     self.draw_cast(sub, fake, fi, tt, speaking)
                     self.W = W
-                    k = 0.58
-                    sub = sub.crop((0, 0, int(W * 0.50), H)).resize((int(W * 0.50 * k), int(H * k)), Image.LANCZOS)
+                    k = 0.42
+                    sub = sub.crop((0, 0, int(W * 0.90), H)).resize((int(W * 0.90 * k), int(H * k)), Image.LANCZOS)
                     fr.paste(sub, (int(0.005 * W), H - sub.height - int(0.04 * H)), sub)
                 else:
                     self.draw_cast(fr, fake, fi, tt, speaking)
