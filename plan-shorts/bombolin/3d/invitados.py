@@ -390,27 +390,74 @@ def elefante(o):
     return sc
 
 
+def heart_mask_body(c, r, dark, light, name="peng"):
+    """Cuerpo con la máscara de corazón pintada en el material (sin geometría extra): un atributo por vértice
+    con la distancia al borde del corazón y una rampa de corte nítido, así el borde queda liso."""
+    o = sphere(c, r, mat("tmp", (0, 0, 0)), seg=128, name="body")
+    o.data.materials.clear()
+    me = o.data
+    attr = me.attributes.new("mask", "FLOAT", "POINT")
+    for v in me.vertices:
+        x, y, z = v.co.x / 1.0, v.co.y, v.co.z
+        d1 = 0.28 - math.hypot(x + 0.27, z - 0.55)
+        d2 = 0.28 - math.hypot(x - 0.27, z - 0.55)
+        tri = (0.52 * (z - 0.08) / 0.47 - abs(x)) * 0.75 if z < 0.6 else -1
+        val = max(d1, d2, tri)
+        if y > -0.15:
+            val = min(val, (-0.15 - y) * 2)
+        attr.data[v.index].value = val
+    m = bpy.data.materials.new(name + "mask")
+    m.use_nodes = True
+    nt = m.node_tree
+    bsdf = nt.nodes["Principled BSDF"]
+    bsdf.inputs["Roughness"].default_value = 0.35
+    if "Coat Weight" in bsdf.inputs:
+        bsdf.inputs["Coat Weight"].default_value = 0.15
+    at = nt.nodes.new("ShaderNodeAttribute")
+    at.attribute_name = "mask"
+    ramp = nt.nodes.new("ShaderNodeValToRGB")
+    ramp.color_ramp.elements[0].position = 0.49
+    ramp.color_ramp.elements[0].color = tuple(M.srgb2lin(v) for v in dark) + (1,)
+    ramp.color_ramp.elements[1].position = 0.51
+    ramp.color_ramp.elements[1].color = tuple(M.srgb2lin(v) for v in light) + (1,)
+    mp = nt.nodes.new("ShaderNodeMapRange")
+    mp.inputs["From Min"].default_value = -0.05
+    mp.inputs["From Max"].default_value = 0.05
+    nt.links.new(at.outputs["Fac"], mp.inputs["Value"])
+    nt.links.new(mp.outputs["Result"], ramp.inputs["Fac"])
+    nt.links.new(ramp.outputs["Color"], bsdf.inputs["Base Color"])
+    me.materials.append(m)
+    return o
+
+
+def smooth_beak(base, length, r, m, open_, up_deg=16, lo_deg=30):
+    """Pico liso de dos elipsoides que giran desde la base (sin aristas)."""
+    from mathutils import Matrix
+    bx, by, bz = base
+    for part, ang, sc_, dz in (("U", -up_deg if open_ else 0, (r, length * 0.5, r * 0.6), r * 0.22),
+                               ("L", lo_deg if open_ else 0, (r * 0.85, length * 0.42, r * 0.45), -r * 0.3)):
+        R = Matrix.Rotation(math.radians(ang), 3, "X")
+        off = R @ Vector((0, -sc_[1] * 0.92, dz))
+        o = sphere((bx + off.x, by + off.y, bz + off.z), sc_, m, name="beak" + part)
+        o.rotation_euler = (math.radians(ang), 0, 0)
+    if open_:
+        sphere((bx, by - length * 0.3, bz - r * 0.3), (r * 0.8, length * 0.28, r * 0.75), mat("mouth", (95, 20, 40), 0.7), name="mouthin")
+        sphere((bx, by - length * 0.42, bz - r * 0.6), (r * 0.5, length * 0.18, r * 0.25), mat("tongue", (240, 100, 125), 0.5), name="tongue")
+
+
 def pinguino(o):
     sc = setup()
     K = mat("peng", (44, 62, 102), 0.3)
     W = mat("pengw", (255, 255, 255), 0.5)
     Or = mat("beak", (255, 160, 40), 0.35)
     bc, br = (0, 0, 0.85), (0.58, 0.5, 0.78)
-    sphere(bc, br, K, name="body")
+    heart_mask_body(bc, br, (44, 62, 102), (250, 250, 255))
     sphere((0, -0.2, 0.7), (0.45, 0.35, 0.6), W, name="belly")
-    # una sola máscara blanca en forma de corazón, pegada a la cara (dos lóbulos arriba y la punta abajo)
     M2 = mat("pengmask", (250, 250, 255), 0.45)
-    mr = (br[0] * 1.02, br[1] * 1.02, br[2] * 1.02)  # pegada a la superficie: lóbulos finos y anchos
-    for s in (-1, 1):
-        patch(bc, br, s * 20, 34, 0.29, M2, flat=0.12)
-    patch(bc, br, 0, 24, 0.26, M2, flat=0.12, sx=1.1)
-    patch(bc, br, 0, 14, 0.2, M2, flat=0.16)
-    for s in (-1, 1):
-        x = s * 0.19
-        eye(x, surf_y(bc, br, x, 1.32) - 0.0, 1.32, 0.15, (60, 110, 200), False, M2)
-        sphere((s * 0.3, surf_y(bc, br, s * 0.3, 1.12) - 0.03, 1.12), (0.07, 0.03, 0.045), mat("cheek", PINK, 0.6), name="cheek")
-    yb = surf_y(bc, br, 0, 1.12) - 0.03
-    beak((0, yb + 0.07, 1.12), 0.36, 0.15, Or, o, gap=(16, 32), lower_ratio=0.85, merge=True)
+    eyes(bc, br, 0.19, 1.32, 0.15, (60, 110, 200), M2)
+    cheeks(bc, br, 0.32, 1.12, 0.07)
+    yb = surf_y(bc, br, 0, 1.13)
+    smooth_beak((0, yb + 0.04, 1.13), 0.34, 0.095, Or, o, up_deg=18, lo_deg=32)
     for s in (-1, 1):
         w = sphere((s * 0.58, 0.0, 0.8), (0.1, 0.2, 0.42), K, name="flipper")
         w.rotation_euler = (0, s * math.radians(-25), 0)

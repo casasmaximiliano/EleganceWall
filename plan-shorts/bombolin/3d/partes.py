@@ -80,7 +80,66 @@ def px(sc, co):
 
 def build(who, m, c, v=None):
     M._mats.clear()
-    return BUILD[who](m, c, v)
+    sc = BUILD[who](m, c, v)
+    FIX.get(who, lambda sc, v: None)(sc, v)
+    bpy.context.view_layer.update()
+    return sc
+
+
+# ------------------------------------------------------------------ retoques (solo en las capas; modelos.py no cambia)
+def fix_pipo(sc, v):
+    """La panza amarilla casi coincide con la superficie del cuerpo arriba: se ve una línea fantasma (z-fighting).
+    Se la adelanta 6 mm y se agranda 1 % en profundidad."""
+    for o in geo():
+        if base(o) == "belly":
+            o.location.y -= 0.006
+            o.scale.y *= 1.01
+
+
+def fix_lula(sc, v):
+    sc.eevee.taa_render_samples = 96  # menos grano en las sombras suaves de la cara
+    sc.eevee.shadow_ray_count = 3
+    sc.eevee.shadow_step_count = 12
+    for o in geo():
+        if base(o) in ("eyew", "lash", "iris", "pupil", "glint", "glint2", "lid", "lidline"):
+            o.visible_shadow = False  # los ojos ya no manchan la cara con sombra granulada
+    # pestañas pegadas al borde de arriba del blanco (antes flotaban un poco arriba)
+    r, ey, ez = 0.12, -0.46, 1.12
+    for o in geo():
+        if base(o) != "lash":
+            continue
+        ex = min((-0.22, 0.22), key=lambda e: abs(o.location.x - e))
+        a = o.rotation_euler.y  # inclinación de la pestaña
+        h = 0.45 * r
+        bx = o.location.x - ex - (h / 2) * math.sin(a)  # x del pie de la pestaña, relativo al ojo
+        yy = 0.3 / 0.85
+        zs = 1.08 * r * math.sqrt(max(0.0, 1 - (bx / r) ** 2 - yy ** 2))  # alto del blanco en ese punto
+        o.location.z = ez + zs - 0.06 * r + (h / 2) * math.cos(a)  # el pie queda apenas metido en el blanco
+    # patitas de arcoíris en todos los ánimos (en modelos.py solo las tiene «happy»)
+    if v != "happy" and not any(base(o) == "rainbow" for o in geo()):
+        for i, col in enumerate([(255, 90, 90), (255, 170, 60), (255, 230, 80), (110, 210, 110), (90, 160, 255),
+                                 (170, 110, 230)]):
+            M.torus((0, 0.05, 0.55), 0.62 - i * 0.055, 0.03, M.mat(f"rb{i}", col, 0.4, emis=0.3),
+                    rot=(math.radians(90), 0, 0), name="rainbow", arc=(0, 0, 1))
+
+
+def fix_abu(sc, v):
+    sc.eevee.taa_render_samples = 96  # menos grano en el caparazón
+    sc.eevee.shadow_ray_count = 2
+    skin = None
+    for o in geo():
+        if base(o) == "leg":
+            skin = o.data.materials[0]
+            bv = o.modifiers.new("bevel", "BEVEL")  # bordes redondeados: ya no parecen caños
+            bv.width, bv.segments, bv.limit_method = 0.07, 5, "ANGLE"
+            x, y, _ = o.location
+            M.sphere((x, y - 0.03, 0.07), (0.19, 0.22, 0.09), skin, name="foot")  # piecito blando
+            for k in (-1, 0, 1):  # deditos
+                M.sphere((x + k * 0.08, y - 0.2, 0.05), (0.045, 0.04, 0.035), M.mat("toe", (235, 230, 200), 0.5),
+                         name="toe")
+
+
+FIX = {"PIPO": fix_pipo, "LULA": fix_lula, "ABU": fix_abu}
 
 
 def is_arm(o):
