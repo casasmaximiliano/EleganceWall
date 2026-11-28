@@ -66,8 +66,10 @@ class Rig:
         c = self.cfg
         rx = c.get("pupil_range_xy", {})
         r = c.get("pupil_range", 8)
-        dx = gx * (rx.get("x", r) if gx > 0 else rx.get("-x", r)) * 0.85 * WS
-        dy = gy * (rx.get("y", r) if gy > 0 else rx.get("-y", r)) * 0.85 * WS
+        # el iris nunca llega al borde del blanco (si no, queda cortado y parece que «pone los ojos en blanco»)
+        lim = 0.45
+        dx = max(-1.0, min(1.0, gx)) * (rx.get("x", r) if gx > 0 else rx.get("-x", r)) * lim * WS
+        dy = max(-1.0, min(1.0, gy)) * min(rx.get("y", r), rx.get("-y", r), r) * lim * WS
         pup = self.img("pupil.png")
         lay = Image.new("RGBA", (self.N, self.N), (0, 0, 0, 0))
         for ex, ey in c["eyes"]:
