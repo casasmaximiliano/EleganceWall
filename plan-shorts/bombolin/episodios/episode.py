@@ -205,6 +205,38 @@ def prop_img(name, h=None, w=None):
     return out
 
 
+GUEST3D_DIR = os.environ.get("BOMBOLIN_GUESTS3D")
+GUEST_ALIAS = {"Gatito": ("Gato", 1.0), "Pajarito": ("Pájaro", 1.0), "Mamá Avestruz": ("Avestruz", 1.15),
+               "Avestruz bebé": ("Avestruz", 0.7), "Mamá Cocodrilo": ("Cocodrilo", 1.1)}
+_GST = {}
+
+
+def guest_img(name, mouth, h):
+    """Invitado modelado en 3D (si existe), con contorno como los personajes; None si no hay."""
+    if not GUEST3D_DIR:
+        return None
+    base, k = GUEST_ALIAS.get(name, (name, 1.0))
+    key = (base, mouth)
+    if key not in _GST:
+        p = os.path.join(GUEST3D_DIR, f"{base}_{mouth}.png")
+        if not os.path.exists(p):
+            p = os.path.join(GUEST3D_DIR, f"{base}_0.png")
+        if not os.path.exists(p):
+            _GST[key] = None
+        else:
+            from PIL import ImageEnhance
+            im = Image.open(p).convert("RGBA")
+            a = im.getchannel("A")
+            im = ImageEnhance.Contrast(ImageEnhance.Color(im.convert("RGB")).enhance(1.15)).enhance(1.08).convert("RGBA")
+            im.putalpha(a)
+            _GST[key] = outline(im.crop(a.point(lambda v: 255 if v > 40 else 0).getbbox()))
+    im = _GST[key]
+    if im is None:
+        return None
+    hh = int(h * k)
+    return im.resize((max(1, int(im.width * hh / im.height)), hh), Image.BILINEAR)
+
+
 def has_prop(it):
     return bool(it.get("sp") and OBJ3D_DIR and os.path.exists(os.path.join(OBJ3D_DIR, it["sp"] + ".png")))
 SKY = {"meadow": ((120, 195, 255), (215, 240, 255)), "night": ((25, 35, 95), (95, 80, 160)),
@@ -642,7 +674,23 @@ class Painter:
                 em = R.GUESTS.get(g, ("✨",))[0] or "✨"
                 talking = speaking == it
                 amp = 1.12 + 0.05 * math.sin(tt * 18) if talking else 1.0
-                e = emoji(em, int(0.36 * H * sc * amp) if land else int(300 * sc * amp))
+                g3 = None
+                if STYLE2:
+                    gh = int((0.40 if land else 0.0) * H * sc) or int(340 * sc)
+                    g3 = guest_img(g, 1 if (talking and int(tt * 8) % 2 == 0) else 0,
+                                   int(gh * (1 + 0.04 * abs(math.sin(tt * 7))) if talking else gh))
+                e = g3 if g3 is not None else emoji(em, int(0.36 * H * sc * amp) if land else int(300 * sc * amp))
+                if g3 is not None:  # invitado 3D: apoyado en el piso, con sombra suave y balanceo
+                    shd = soft_shadow(int(e.width * 0.45), 0.5)
+                    frame.alpha_composite(shd, (int(px - shd.width / 2), int(base_y - shd.height / 2)))
+                    if talking or (speaking and speaking != it):
+                        e = e.rotate(3 * math.sin(tt * 3 + i), resample=Image.BICUBIC, expand=True)
+                    top = int(base_y - e.height + 0.01 * e.height)
+                    frame.alpha_composite(e, (px - e.width // 2, max(0, top)))
+                    self.heads[it] = (px, top + e.height * 0.3)
+                    self.box[it] = (px, top, e.width, e.height)
+                    pos[it] = px
+                    continue
                 bob = int(8 * math.sin(tt * 3 + i))
                 sh = ImageDraw.Draw(frame, "RGBA")
                 sh.ellipse([px - e.width * 0.38, base_y - 0.02 * H - e.width * 0.07, px + e.width * 0.38,
