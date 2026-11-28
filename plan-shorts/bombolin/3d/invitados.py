@@ -113,6 +113,33 @@ def beak(base, length, r, m, open_, up=0.0, lower_ratio=0.75):
         sphere((x, y - length * 0.2, z - r * 0.1), (r * 0.8, length * 0.3, r * 0.7), mat("mouth", (95, 20, 40), 0.7), name="mouthin")
 
 
+def stripes_mat(name, c1, c2, freq=16.0, rough=0.45, split=0.55):
+    """Material a rayas horizontales (como el de Zumbi), según la altura Z del objeto."""
+    m = bpy.data.materials.new(name)
+    m.use_nodes = True
+    nt = m.node_tree
+    bsdf = nt.nodes["Principled BSDF"]
+    bsdf.inputs["Roughness"].default_value = rough
+    tc = nt.nodes.new("ShaderNodeTexCoord")
+    sep = nt.nodes.new("ShaderNodeSeparateXYZ")
+    sin = nt.nodes.new("ShaderNodeMath")
+    sin.operation = "SINE"
+    mul = nt.nodes.new("ShaderNodeMath")
+    mul.operation = "MULTIPLY"
+    mul.inputs[1].default_value = freq
+    ramp = nt.nodes.new("ShaderNodeValToRGB")
+    ramp.color_ramp.interpolation = "CONSTANT"
+    ramp.color_ramp.elements[0].color = tuple(M.srgb2lin(v) for v in c1) + (1,)
+    ramp.color_ramp.elements[1].position = split
+    ramp.color_ramp.elements[1].color = tuple(M.srgb2lin(v) for v in c2) + (1,)
+    nt.links.new(tc.outputs["Object"], sep.inputs[0])
+    nt.links.new(sep.outputs["Z"], mul.inputs[0])
+    nt.links.new(mul.outputs[0], sin.inputs[0])
+    nt.links.new(sin.outputs[0], ramp.inputs["Fac"])
+    nt.links.new(ramp.outputs["Color"], bsdf.inputs["Base Color"])
+    return m
+
+
 def chibi(skin, belly=None, foot=None, hz=1.35, hr=(0.5, 0.46, 0.44), bz=0.6, br=(0.42, 0.38, 0.48), arms=True,
           feet=True, arm_m=None, foot_scale=(0.17, 0.24, 0.09)):
     """Cuerpo base de dibujo animado: cuerpo, panza, cabeza grande, bracitos y pies. Devuelve (cabeza, radios)."""
@@ -131,12 +158,12 @@ def chibi(skin, belly=None, foot=None, hz=1.35, hr=(0.5, 0.46, 0.44), bz=0.6, br
     return hc, hr
 
 
-def frame(sc, pad=1.08):
+def frame(sc, pad=1.08, rise=0.55):
     """Cámara como la de los personajes (ángulo 3/4) y encuadre automático del modelo."""
     dg = bpy.context.evaluated_depsgraph_get()
     pts = []
     for o in sc.objects:
-        if o.type not in ("MESH", "META"):
+        if o.type not in ("MESH", "META", "FONT", "CURVE"):
             continue
         ev = o.evaluated_get(dg)
         me = ev.to_mesh()
@@ -146,7 +173,7 @@ def frame(sc, pad=1.08):
     lo = Vector((min(p.x for p in pts), min(p.y for p in pts), min(p.z for p in pts)))
     hi = Vector((max(p.x for p in pts), max(p.y for p in pts), max(p.z for p in pts)))
     tgt = (lo + hi) / 2
-    cam = M.camera_and_lights(sc, target=tuple(tgt), dist=6.2, height=tgt.z + 0.55, ortho=2.5)
+    cam = M.camera_and_lights(sc, target=tuple(tgt), dist=6.2, height=tgt.z + rise, ortho=2.5)
     bpy.context.view_layer.update()
     inv = cam.matrix_world.inverted()
     loc = [inv @ p for p in pts]
@@ -240,13 +267,13 @@ def mariquita(o):
     K = mat("ladyblack", (45, 40, 55), 0.45)
     F = mat("ladyface", (60, 55, 80), 0.45)
     # caparazón rojo detrás, con línea central y lunares; cuerpo oscuro adelante
-    sc_c, sc_r = (0, 0.12, 0.72), (0.58, 0.48, 0.58)
+    sc_c, sc_r = (0, 0.08, 0.72), (0.62, 0.5, 0.62)
     sphere(sc_c, sc_r, R, name="shell")
     tube((0, sc_c[1] - 0.02, 0.15), (0, sc_c[1] - 0.02, 1.29), 0.025, 0.025, K, caps=False)
     for (az, el, k) in [(55, 30, 1), (65, -20, 0.9), (110, 5, 1.1), (-55, 30, 1), (-65, -20, 0.9), (-110, 5, 1.1),
                         (150, 40, 0.9), (-150, 40, 0.9), (90, 55, 0.8), (-90, 55, 0.8)]:
         patch(sc_c, sc_r, az, el, 0.1 * k, K, flat=0.25)
-    sphere((0, -0.2, 0.6), (0.36, 0.3, 0.42), K, name="belly")
+    sphere((0, -0.3, 0.6), (0.3, 0.2, 0.36), F, name="belly")
     for s in (-1, 1):
         sphere((s * 0.2, -0.15, 0.08), (0.14, 0.2, 0.08), mat("shoe", (255, 210, 60), 0.4), name="foot")
         sphere((s * 0.42, -0.25, 0.75), (0.09, 0.08, 0.16), K, name="arm")
@@ -376,9 +403,6 @@ def pinguino(o):
         w = sphere((s * 0.58, 0.0, 0.8), (0.1, 0.2, 0.42), K, name="flipper")
         w.rotation_euler = (0, s * math.radians(-25), 0)
         sphere((s * 0.2, -0.18, 0.05), (0.15, 0.24, 0.06), Or, name="foot")
-    torus((0, -0.02, 0.98), 0.44, 0.08, mat("scarf", (255, 80, 90), 0.8), rot=(math.radians(-6), 0, 0), name="scarf")
-    e = sphere((0.28, -0.44, 0.75), (0.1, 0.06, 0.2), mat("scarf", (255, 80, 90), 0.8), name="scarftail")
-    e.rotation_euler = (0, math.radians(-15), 0)
     frame(sc)
     return sc
 
@@ -745,7 +769,7 @@ def conejo(o):
 
 def avestruz(o):
     sc = setup()
-    K = mat("ostrich", (70, 65, 80), 0.9)
+    K = mat("ostrich", (95, 85, 100), 0.9)
     Wt = mat("ostw", (255, 250, 245), 0.8)
     S = mat("ostskin", (250, 195, 175), 0.55)
     random.seed(5)
@@ -764,13 +788,13 @@ def avestruz(o):
         w = sphere((s * 0.5, 0.15, 1.3), (0.12, 0.3, 0.2), Wt, name="wingtip")
         w.rotation_euler = (math.radians(-20), s * math.radians(20), 0)
     chain(bez((0, -0.25, 1.35), (0, -0.4, 1.8), (0, -0.25, 2.25)), lambda t: 0.09, S, n=30)
-    hc, hr = (0, -0.28, 2.45), (0.3, 0.28, 0.28)
+    hc, hr = (0, -0.28, 2.5), (0.38, 0.35, 0.35)
     sphere(hc, hr, S, name="head")
-    for (x, z) in [(-0.06, 2.72), (0.05, 2.74), (0.0, 2.76)]:
-        sphere((x, -0.28, z), (0.06, 0.06, 0.06), K, seg=20, name="fluff")
-    eyes(hc, hr, 0.12, 2.5, 0.12, (90, 60, 40), S, lashes=True)
-    beak((0, surf_y(hc, hr, 0, 2.36) + 0.05, 2.36), 0.2, 0.1, mat("beak", (255, 180, 80), 0.4), o)
-    cheeks(hc, hr, 0.22, 2.38, 0.06)
+    for (x, z) in [(-0.08, 2.84), (0.07, 2.86), (0.0, 2.89)]:
+        sphere((x, -0.28, z), (0.08, 0.08, 0.08), K, seg=20, name="fluff")
+    eyes(hc, hr, 0.15, 2.56, 0.14, (90, 60, 40), S, lashes=True)
+    beak((0, surf_y(hc, hr, 0, 2.38) + 0.05, 2.38), 0.24, 0.11, mat("beak", (255, 180, 80), 0.4), o)
+    cheeks(hc, hr, 0.27, 2.4, 0.07)
     frame(sc)
     return sc
 
@@ -781,9 +805,6 @@ def cocodrilo(o):
     L = mat("crocbelly", (220, 240, 150), 0.5)
     hc, hr = chibi(G, None, G, hr=(0.46, 0.44, 0.36), hz=1.3, br=(0.45, 0.4, 0.5))
     sphere((0, -0.22, 0.58), (0.32, 0.22, 0.38), L, name="belly")
-    for z in (0.35, 0.5, 0.65, 0.8):
-        torus((0, -0.25, z), 0.25 * math.sqrt(max(0.1, 1 - ((z - 0.58) / 0.38) ** 2)), 0.012,
-              mat("crocline", (180, 210, 110), 0.5), rot=(math.radians(90), 0, 0), name="line", arc=(0, 0, -1))
     sn, snr = (0, -0.45, 1.2), (0.32, 0.38, 0.16)
     sphere(sn, snr, G, name="snout")
     for s in (-1, 1):
@@ -795,8 +816,8 @@ def cocodrilo(o):
         sphere((0, -0.55, 1.08), (0.15, 0.2, 0.05), mat("tongue", (240, 100, 125), 0.5), name="tongue")
         sphere((0, -0.45, 0.98), (0.3, 0.35, 0.08), G, name="jaw")
     else:
-        torus((0, -0.46, 1.12), 0.33, 0.02, mat("ink", INK, 0.6), rot=(0, 0, 0), name="smile")
-        bpy.context.object.scale = (1, 1.2, 1)
+        t = torus((0, -0.45, 1.13), 0.3, 0.022, mat("ink", INK, 0.6), name="smile", arc=(0, -1, 0))
+        t.scale = (1.1, 1.3, 1)
     for x in (-0.18, -0.06, 0.06, 0.18):
         cone((x, surf_y(sn, snr, x, 1.1) - 0.01 + (0.03 if o else 0), 1.1 - (0.0 if not o else 0.02)), 0.03, 0.0, 0.06,
              mat("tooth", (255, 255, 255), 0.3), rot=(math.pi, 0, 0), name="tooth")
@@ -816,15 +837,17 @@ def colibri(o):
     P = mat("throat", (255, 70, 140), 0.3)
     bc, br = (0, 0, 0.9), (0.45, 0.42, 0.5)
     sphere(bc, br, G, name="body")
-    sphere((0, -0.25, 0.68), (0.28, 0.22, 0.28), P, name="throat")
+    patch(bc, br, 0, -42, 0.13, P, flat=0.3, sx=1.3)
     eyes(bc, br, 0.17, 1.05, 0.13, (60, 60, 120), G, lashes=True)
     cheeks(bc, br, 0.3, 0.9, 0.07)
     yb = surf_y(bc, br, 0, 0.92)
+    Bk = mat("hbeak", (70, 60, 80), 0.4)
     if o:
-        tube((0, yb + 0.05, 0.94), (0, yb - 0.5, 1.02), 0.035, 0.012, mat("ink", INK, 0.4))
-        tube((0, yb + 0.05, 0.9), (0, yb - 0.4, 0.82), 0.03, 0.01, mat("ink", INK, 0.4))
+        tube((0, yb + 0.05, 0.94), (-0.3, yb - 0.45, 1.0), 0.05, 0.014, Bk)
+        tube((0, yb + 0.05, 0.88), (-0.25, yb - 0.38, 0.8), 0.045, 0.012, Bk)
+        sphere((0, yb - 0.01, 0.91), (0.06, 0.03, 0.05), mat("mouth", (95, 20, 40), 0.7), name="mouthin")
     else:
-        tube((0, yb + 0.05, 0.92), (0, yb - 0.5, 0.9), 0.035, 0.012, mat("ink", INK, 0.4))
+        tube((0, yb + 0.05, 0.91), (-0.3, yb - 0.45, 0.9), 0.05, 0.014, Bk)
     Wm = mat("hwing", (190, 245, 230), 0.1, alpha=0.6)
     for s in (-1, 1):
         w = sphere((s * 0.6, 0.15, 1.15), (0.5, 0.05, 0.18), Wm, name="wing")
@@ -955,12 +978,19 @@ def murcielago(o):
     for s in (-1, 1):
         cone((s * 0.3, 0.0, 1.82), 0.16, 0.0, 0.38, P, rot=(0, s * math.radians(22), 0), name="ear")
         cone((s * 0.3, -0.08, 1.8), 0.09, 0.0, 0.26, mat("earin", (255, 170, 200), 0.6), rot=(0, s * math.radians(22), 0), name="earin")
-        # ala: abanico de óvalos
-        for k, a in enumerate((20, 45, 70)):
-            e = sphere((s * (0.55 + 0.25 * math.sin(math.radians(a))), 0.1, 0.75 + 0.2 * math.cos(math.radians(a)) - 0.1),
-                       (0.32, 0.04, 0.17), D, name="wing")
-            e.rotation_euler = (0, s * math.radians(-(a - 40)), 0)
-        tube((s * 0.3, 0.05, 0.85), (s * 1.0, 0.1, 1.05), 0.03, 0.02, P)
+        # ala de murciélago: malla plana con borde festoneado, con grosor y suavizada
+        pts2 = [(0.25, 1.0), (0.6, 1.12), (1.05, 1.22), (0.98, 0.95), (0.86, 0.72), (0.74, 0.86), (0.6, 0.58),
+                (0.47, 0.72), (0.3, 0.5)]
+        verts = [(s * x, 0.12, z) for (x, z) in pts2]
+        me = bpy.data.meshes.new("batwing")
+        me.from_pydata(verts, [], [tuple(range(len(verts)))])
+        ob = bpy.data.objects.new("batwing", me)
+        bpy.context.scene.collection.objects.link(ob)
+        ob.modifiers.new("sol", "SOLIDIFY").thickness = 0.05
+        ob.data.materials.append(D)
+        tube((s * 0.3, 0.09, 1.0), (s * 1.05, 0.09, 1.22), 0.04, 0.025, P)
+        for (x, z) in [(0.86, 0.72), (0.6, 0.58)]:
+            tube((s * 0.7, 0.1, 1.12), (s * x, 0.1, z), 0.02, 0.015, P)
     frame(sc)
     return sc
 
@@ -970,18 +1000,19 @@ def pez(o):
     Or = mat("fish", (255, 120, 60), 0.3)
     W = mat("fishw", (255, 255, 255), 0.4)
     Bl = mat("fishfin", (80, 170, 255), 0.35)
-    bc, br = (0, 0, 0.75), (0.48, 0.65, 0.6)
+    bc, br = (0, 0, 0.75), (0.5, 0.55, 0.6)
     sphere(bc, br, Or, name="body")
-    for y in (-0.15, 0.25):
-        e = sphere((0, y, 0.75), (0.49, 0.06, 0.6), W, name="stripe")
+    for y in (0.05, 0.32):
+        k = math.sqrt(1 - (y / 0.55) ** 2)
+        sphere((0, y, 0.75), (0.525 * k, 0.07, 0.63 * k), W, name="stripe")
     eyes(bc, br, 0.22, 0.9, 0.15, (40, 90, 200), Or, lashes=True)
     cheeks(bc, br, 0.33, 0.7, 0.08)
     put_mouth(bc, br, 0.6, 0.22, o)
     for s in (-1, 1):
         e = sphere((s * 0.48, 0.0, 0.55), (0.06, 0.18, 0.12), Bl, name="pfin")
         e.rotation_euler = (math.radians(30), 0, s * math.radians(-30))
-        e = sphere((s * 0.12, 0.85, 0.75), (0.05, 0.25, 0.32), Bl, name="tail")
-        e.rotation_euler = (math.radians(s * 35), 0, 0)
+        e = sphere((s * 0.3, 0.7, 0.75), (0.32, 0.06, 0.22), Bl, name="tail")
+        e.rotation_euler = (0, 0, s * math.radians(-50))
     e = sphere((0, 0.15, 1.35), (0.05, 0.35, 0.18), Bl, name="dorsal")
     e.rotation_euler = (math.radians(-10), 0, 0)
     W2 = mat("bubble", (190, 230, 255), 0.05, alpha=0.6)
@@ -1042,6 +1073,163 @@ def triceratops(o):
     return sc
 
 
+def flamenco(o):
+    sc = setup()
+    P = mat("flamingo", (255, 140, 180), 0.5)
+    D = mat("flamdark", (240, 100, 150), 0.5)
+    K = mat("flamink", (50, 45, 60), 0.4)
+    bc, br = (0, 0.1, 1.2), (0.42, 0.55, 0.38)
+    sphere(bc, br, P, name="body")
+    for s in (-1, 1):
+        w = sphere((s * 0.38, 0.15, 1.25), (0.12, 0.4, 0.25), D, name="wing")
+        w.rotation_euler = (math.radians(-15), s * math.radians(15), 0)
+    for a in (-20, 0, 20):
+        e = sphere((0.12 * math.sin(math.radians(a)), 0.65, 1.35), (0.08, 0.2, 0.07), D, name="tail")
+        e.rotation_euler = (math.radians(-25), math.radians(a), 0)
+    # una pata recta y la otra doblada (parado en una pata)
+    tube((0.05, 0.05, 0.9), (0.05, -0.02, 0.08), 0.04, 0.035, P)
+    sphere((0.05, -0.12, 0.04), (0.1, 0.16, 0.04), D, name="foot")
+    tube((-0.12, 0.05, 0.9), (-0.14, 0.0, 0.62), 0.04, 0.035, P)
+    tube((-0.14, 0.0, 0.62), (0.02, 0.0, 0.72), 0.035, 0.03, P)
+    sphere((0.05, -0.02, 0.62), (0.05, 0.05, 0.05), P, name="knee")
+    chain(bez((0, -0.25, 1.3), (0, -0.55, 1.7), (0, -0.25, 2.1)), lambda t: 0.09, P, n=30)
+    hc, hr = (0, -0.3, 2.32), (0.36, 0.33, 0.33)
+    sphere(hc, hr, P, name="head")
+    eyes(hc, hr, 0.14, 2.38, 0.14, (90, 60, 40), P, lashes=True)
+    cheeks(hc, hr, 0.26, 2.22, 0.07)
+    yb = surf_y(hc, hr, 0, 2.2)
+    beak((0, yb + 0.05, 2.22), 0.2, 0.09, mat("flambeak", (255, 240, 225), 0.4), o, up=-20)
+    sphere((0, yb - 0.2, 2.12 - (0.04 if o else 0)), (0.05, 0.06, 0.06), K, name="beaktip")
+    for k, (x, z) in enumerate([(-0.04, 2.66), (0.05, 2.68)]):
+        cone((x, -0.3, z), 0.05, 0.0, 0.16, D, rot=(0, math.radians(-20 + 40 * k), 0), name="crest")
+    frame(sc)
+    return sc
+
+
+def hormiga(o):
+    sc = setup()
+    R = mat("ant", (215, 75, 60), 0.35)
+    D = mat("antdark", (165, 50, 45), 0.4)
+    K = mat("ink", INK, 0.5)
+    sphere((0, 0.42, 0.5), (0.36, 0.42, 0.36), R, name="abdomen")
+    sphere((0, 0.05, 0.62), (0.3, 0.28, 0.36), R, name="thorax")
+    sphere((0, -0.15, 0.6), (0.2, 0.12, 0.25), mat("antbelly", (245, 150, 120), 0.4), name="belly")
+    for s in (-1, 1):  # dos patitas con zapatillas y cuatro bracitos cortos
+        tube((s * 0.15, 0.0, 0.35), (s * 0.2, -0.05, 0.12), 0.06, 0.055, D)
+        sphere((s * 0.2, -0.12, 0.07), (0.13, 0.19, 0.08), mat("antshoe", (255, 210, 60), 0.4), name="shoe")
+        for z, a in ((0.8, 30), (0.6, -10)):
+            tube((s * 0.25, -0.05, z), (s * 0.45, -0.15, z - 0.08), 0.045, 0.04, D)
+            sphere((s * 0.47, -0.16, z - 0.09), (0.06, 0.06, 0.06), D, name="hand")
+    hc, hr = (0, -0.15, 1.25), (0.46, 0.42, 0.42)
+    sphere(hc, hr, R, name="head")
+    eyes(hc, hr, 0.18, 1.32, 0.14, (60, 40, 30), R, lashes=False)
+    cheeks(hc, hr, 0.32, 1.15)
+    put_mouth(hc, hr, 1.07, 0.2, o)
+    for s in (-1, 1):
+        f = bez((s * 0.12, -0.15, 1.6), (s * 0.15, -0.2, 1.9), (s * 0.35, -0.3, 1.95))
+        chain(f, lambda t: 0.022, K, n=20)
+        sphere(f(1), (0.055, 0.055, 0.055), D, name="antball")
+    frame(sc)
+    return sc
+
+
+def perezoso(o):
+    sc = setup()
+    Br = mat("sloth", (175, 140, 105), 0.8)
+    F = mat("slothface", (245, 225, 195), 0.6)
+    D = mat("slotheye", (115, 85, 65), 0.6)
+    hc, hr = chibi(Br, mat("slothbelly", (200, 170, 135), 0.8), Br, hz=1.3, br=(0.46, 0.4, 0.5))
+    fc, fr = (0, -0.18, 1.28), (0.4, 0.32, 0.34)
+    sphere(fc, fr, F, name="face")
+    for s in (-1, 1):  # antifaz típico del perezoso
+        e = patch(fc, fr, s * 28, 5, 0.15, D, flat=0.3, sx=1.5)
+    eyes(fc, fr, 0.16, 1.32, 0.11, (70, 45, 30), D)
+    nose(fc, fr, 1.2, 0.06, (80, 55, 45))
+    put_mouth(fc, fr, 1.1, 0.18, o)
+    cheeks(fc, fr, 0.3, 1.16, 0.07)
+    for s in (-1, 1):  # brazos largos que abrazan una ramita
+        tube((s * 0.42, -0.05, 0.85), (s * 0.15, -0.42, 0.65), 0.09, 0.08, Br)
+        for k in (-1, 0, 1):
+            cone((s * 0.13 + k * 0.03, -0.5, 0.6 + k * 0.03), 0.02, 0.0, 0.1, mat("claw", (240, 230, 210), 0.4),
+                 rot=(math.radians(150), 0, 0), name="claw")
+    tube((-0.6, -0.48, 0.62), (0.6, -0.48, 0.66), 0.04, 0.04, mat("branch", (130, 90, 55), 0.7))
+    for x in (-0.45, 0.48):
+        e = sphere((x, -0.5, 0.75), (0.08, 0.02, 0.05), mat("leaf", (110, 200, 110), 0.5), name="leaf")
+        e.rotation_euler = (0, math.radians(30 if x > 0 else -30), 0)
+    frame(sc)
+    return sc
+
+
+def tortuga(o):
+    sc = setup()
+    SK = mat("turtle", (130, 215, 120), 0.5)
+    sh = mat("tshell", (60, 175, 185), 0.4)
+    sh2 = mat("tshell2", (40, 130, 160), 0.4)
+    shc, shr = (0, 0.25, 0.65), (0.6, 0.45, 0.55)
+    sphere(shc, shr, sh, name="shell")
+    for (az, el, k) in [(90, 0, 1.3), (-90, 0, 1.3), (180, 20, 1.3), (135, 40, 1), (-135, 40, 1), (90, 60, 0.8), (-90, 60, 0.8),
+                        (180, 70, 1)]:
+        patch(shc, shr, az, el, 0.15 * k, sh2, flat=0.2)
+    torus((0, 0.25, 0.65), 0.55, 0.05, mat("trim", (255, 220, 120), 0.5), rot=(0, math.radians(90), 0), name="trim")
+    bpy.context.object.scale = (1, 0.85, 1)
+    hc, hr = chibi(SK, mat("plastron", (255, 230, 140), 0.5), SK, hz=1.3, hr=(0.42, 0.4, 0.38), br=(0.38, 0.33, 0.45))
+    eyes(hc, hr, 0.17, 1.36, 0.13, (60, 90, 50), SK)
+    cheeks(hc, hr, 0.3, 1.2)
+    put_mouth(hc, hr, 1.12, 0.2, o)
+    frame(sc)
+    return sc
+
+
+def abeja(o):
+    sc = setup()
+    Y = mat("bee", (255, 205, 45), 0.4)
+    K = mat("beeblack", (50, 45, 55), 0.45)
+    bc, br = (0, 0, 0.75), (0.62, 0.58, 0.62)
+    sphere(bc, br, stripes_mat("beestr", (255, 205, 45), (50, 45, 55), freq=13.0, split=0.6), name="body")
+    # la cara va sobre una máscara amarilla lisa (como Zumbi) para que las rayas no tapen los ojos
+    sphere((0, -0.22, 0.82), (0.5, 0.4, 0.42), Y, name="face")
+    eyes(bc, br, 0.2, 0.95, 0.14, (60, 40, 20), Y, lashes=True)
+    cheeks(bc, br, 0.36, 0.78)
+    put_mouth(bc, br, 0.66, 0.22, o)
+    Wm = mat("wing", (220, 240, 255), 0.1, alpha=0.55)
+    for s in (-1, 1):
+        w = sphere((s * 0.5, 0.3, 1.3), (0.35, 0.05, 0.25), Wm, name="wing")
+        w.rotation_euler = (0, s * math.radians(30), 0)
+        f = bez((s * 0.15, -0.1, 1.3), (s * 0.18, -0.2, 1.55), (s * 0.3, -0.25, 1.6))
+        chain(f, lambda t: 0.02, K, n=20)
+        sphere(f(1), (0.055, 0.055, 0.055), K, name="antball")
+        sphere((s * 0.2, -0.12, 0.08), (0.1, 0.14, 0.07), K, name="foot")
+    cone((0, 0.62, 0.65), 0.08, 0.0, 0.18, K, rot=(math.radians(-80), 0, 0), name="stinger")
+    frame(sc)
+    return sc
+
+
+def mariposa(o):
+    sc = setup()
+    B = mat("bfbody", (120, 90, 200), 0.45)
+    W1 = mat("bfwing", (255, 150, 60), 0.4)
+    W2 = mat("bfwing2", (255, 90, 160), 0.4)
+    Dt = mat("bfdot", (255, 240, 120), 0.4)
+    sphere((0, 0, 0.6), (0.18, 0.18, 0.45), B, name="body")
+    hc, hr = (0, -0.05, 1.2), (0.32, 0.3, 0.3)
+    sphere(hc, hr, B, name="head")
+    eyes(hc, hr, 0.12, 1.25, 0.1, (60, 40, 120), B, lashes=True)
+    cheeks(hc, hr, 0.21, 1.13, 0.055)
+    put_mouth(hc, hr, 1.07, 0.15, o)
+    for s in (-1, 1):
+        w = sphere((s * 0.55, 0.15, 1.0), (0.5, 0.04, 0.42), W1, name="wingU")
+        w.rotation_euler = (0, s * math.radians(-25), s * math.radians(-25))
+        w = sphere((s * 0.42, 0.17, 0.45), (0.33, 0.04, 0.3), W2, name="wingL")
+        w.rotation_euler = (0, s * math.radians(25), s * math.radians(-25))
+        for (x, z, r) in [(0.65, 1.1, 0.12), (0.45, 0.85, 0.07), (0.45, 0.45, 0.09)]:
+            d = sphere((s * x, 0.08, z), (r, 0.03, r), Dt, name="wdot")
+        f = bez((s * 0.08, -0.05, 1.45), (s * 0.12, -0.1, 1.7), (s * 0.28, -0.15, 1.78))
+        chain(f, lambda t: 0.018, B, n=20)
+        sphere(f(1), (0.05, 0.05, 0.05), W2, name="antball")
+    frame(sc)
+    return sc
+
+
 ANIMALS = {
     "Guepardo": guepardo, "Canguro": canguro, "Mariquita": mariquita, "Pájaro": pajaro, "Gallina": gallina,
     "Cerdito": cerdito, "Elefante": elefante, "Pingüino": pinguino, "Perrito": perrito, "Gato": gato,
@@ -1049,14 +1237,14 @@ ANIMALS = {
     "Pulpo": pulpo, "Ballena": ballena, "Búho": buho, "Ardilla": ardilla, "Conejo": conejo,
     "Avestruz": avestruz, "Cocodrilo": cocodrilo, "Colibrí": colibri, "Koala": koala, "Castor": castor,
     "Camaleón": camaleon, "Caracol": caracol, "Murciélago": murcielago, "Pez": pez, "Braquiosaurio": braquiosaurio,
-    "Tricerátops": triceratops,
+    "Tricerátops": triceratops, "Flamenco": flamenco, "Hormiga": hormiga, "Perezoso": perezoso, "Tortuga": tortuga,
+    "Abeja": abeja, "Mariposa": mariposa,
 }
 
 
 def main():
-    for name, fn in ANIMALS.items():
-        if ONLY and name not in ONLY:
-            continue
+    for name in (ONLY or list(ANIMALS)):  # en el orden pedido
+        fn = ANIMALS[name]
         for o in ((0,) if TEST else (0, 1)):
             p = os.path.join(OUT, f"{name}_{o}.png")
             if os.path.exists(p):

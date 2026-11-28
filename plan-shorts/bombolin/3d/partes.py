@@ -115,24 +115,27 @@ def passes(who):
                 moving = lambda o: is_arm(o) or base(o) == "wing"  # noqa: E731
                 render_pass(sc, todo[0], lambda o: True)
                 if bodyp:
-                    render_pass(sc, bodyp, lambda o: not iris(o) and not moving(o), iris)
+                    render_pass(sc, bodyp, lambda o: not iris(o) and not moving(o))
                 if headp:
-                    render_pass(sc, headp, lambda o: base(o) in head, iris,
-                                lambda o: not iris(o) and not moving(o))  # el torso tapa la papada como en 3D
+                    render_pass(sc, headp, lambda o: base(o) in head,
+                                holdout=lambda o: not iris(o) and not moving(o))  # el torso tapa la papada como en 3D
                 if not first:
                     continue
                 # pasadas que no dependen de la boca ni de los ojos cerrados (estado m0 c0)
                 if head:
                     render_pass(sc, os.path.join(d, "body.png"),
                                 lambda o: base(o) not in head and not iris(o) and not moving(o),
-                                lambda o: base(o) in head or iris(o))
+                                lambda o: base(o) in head)
                 for s in ("L", "R"):
-                    if any(is_arm(o) for o in geo()):
-                        render_pass(sc, os.path.join(d, f"arm_{s}.png"), lambda o, s=s: is_arm(o) and side(o) == s,
-                                    lambda o: not moving(o))
-                    if any(base(o) == "wing" for o in geo()):
-                        render_pass(sc, os.path.join(d, f"wing_{s}.png"),
-                                    lambda o, s=s: base(o) == "wing" and side(o) == s, lambda o: not moving(o))
+                    for kind, test in (("arm", is_arm), ("wing", lambda o: base(o) == "wing")):
+                        if not any(test(o) for o in geo()):
+                            continue
+                        mine = lambda o, s=s, test=test: test(o) and side(o) == s  # noqa: E731
+                        # entera (va detrás del cuerpo) y «_front»: solo lo que se ve delante del cuerpo
+                        render_pass(sc, os.path.join(d, f"{kind}_{s}.png"), mine,
+                                    lambda o: not moving(o) and not iris(o))
+                        render_pass(sc, os.path.join(d, f"{kind}_{s}_front.png"), mine,
+                                    lambda o: False, lambda o: not moving(o) and not iris(o))
                 # iris entero (sin recortar); el compositor lo recorta con eyes_mask.png
                 render_pass(sc, os.path.join(ref, "irises.png"), iris, lambda o: not iris(o))
                 render_pass(sc, os.path.join(d, "eyes_mask.png"), lambda o: base(o) == "eyew",
@@ -143,6 +146,7 @@ def passes(who):
 
 def geometry(sc, who):
     """Centros de ojos y pivotes proyectados al lienzo."""
+    bpy.context.view_layer.update()  # sin esto la cámara recién creada no tiene matrix_world
     g = {}
     irises = sorted([o for o in geo() if base(o) == "iris"], key=lambda o: o.matrix_world.translation.x)
     g["eyes"] = [px(sc, o.matrix_world.translation) for o in irises]
@@ -233,11 +237,11 @@ def compose(who, rig, tag, order, arm_rot=None, head_rot=0, look=(0, 0), wing_ro
             if not c:
                 cv = put_pupils(cv, rig, pup, mask, look[0], look[1], head_rot, rig["head_pivot"])
         elif lay.startswith("arm_"):
-            s = lay[-1]
+            s = lay[4]
             cv = paste(cv, load(os.path.join(d, lay + ".png")), rot=(arm_rot or {}).get(s, 0),
                        pivot=rig["arms"][s]["pivot"])
         elif lay.startswith("wing_"):
-            s = lay[-1]
+            s = lay[5]
             cv = paste(cv, load(os.path.join(d, lay + ".png")), rot=(wing_rot or {}).get(s, 0),
                        pivot=rig["wings"][s]["pivot"])
     return cv
@@ -261,8 +265,9 @@ def choose_order(who, rig, tag):
     parts = [f"arm_{s}" for s in rig.get("arms", {})] + [f"wing_{s}" for s in rig.get("wings", {})]
     for p in parts:
         back = [p] + order
-        front = order[:1] + [p] + order[1:]
-        order = min((back, front), key=lambda o: err(compose(who, rig, tag, o), ref)[0])
+        i = order.index("body") + 1
+        both = [p] + order[:i] + [p + "_front"] + order[i:]  # entera detrás + parte visible delante
+        order = min((back, both), key=lambda o: err(compose(who, rig, tag, o), ref)[0])
     return order
 
 
@@ -273,26 +278,29 @@ def pupil_range(who, rig, pup):
     ph, pw = pa.shape
 
     def cover(dx, dy):
-        tot = ins = 0
+        out = []
         for ex, ey in rig["eyes"]:
             x0 = int(round(ex + dx - pw / 2 + 0.5))
             y0 = int(round(ey + dy - ph / 2 + 0.5))
             win = mask[y0: y0 + ph, x0: x0 + pw]
-            if win.shape != pa.shape:
-                return 0.0
-            tot += pa.sum()
-            ins += (pa & win).sum()  # la máscara se renderizó sin iris: incluye el blanco que el iris tapa
-        return ins / tot
+            out.append((pa & win).sum() / pa.sum() if win.shape == pa.shape else 0.0)
+        return out  # la máscara se renderizó sin iris: incluye el blanco que el iris tapa
 
     base_c = cover(0, 0)
-    rng = {}
-    for name, (ux, uy) in {"x": (1, 0), "-x": (-1, 0), "y": (0, 1), "-y": (0, -1)}.items():
-        r = 0
-        for k in range(1, 80):
-            if cover(ux * k, uy * k) < base_c - 0.08:
-                break
-            r = k
-        rng[name] = r
+    dirs = {"x": (1, 0), "-x": (-1, 0), "y": (0, 1), "-y": (0, -1)}
+    per_eye = []
+    for e in range(len(base_c)):
+        rng = {}
+        for name, (ux, uy) in dirs.items():
+            r = 0
+            for k in range(1, 80):
+                if cover(ux * k, uy * k)[e] < base_c[e] * 0.75:
+                    break
+                r = k
+            rng[name] = r
+        per_eye.append(rng)
+    rig["pupil_range_per_eye"] = per_eye
+    rng = {k: min(p[k] for p in per_eye) for k in dirs}
     return rng, base_c
 
 
@@ -362,9 +370,9 @@ def finish(who, rig):
             rig["verify"][t] = {"mean": round(e[0], 3), "p99.9": round(e[1], 1)}
     rig["notes"] = {
         "L_R": "L/R = lado izquierdo/derecho de la PANTALLA, no del personaje",
-        "order": "capas de atrás hacia adelante; las pupilas van sobre la capa de 'eyes_on'",
+        "order": "capas de atrás hacia adelante; las pupilas van sobre la capa de 'eyes_on'. X_front.png = la parte de X que se ve delante del cuerpo: se dibuja ADEMÁS de X.png (entera, detrás) con la misma rotación y pivote, así al girar no quedan huecos",
         "pupils": "pupil.png centrado en cada punto de 'eyes' (+ desplazamiento de la mirada), recortado con el alfa de eyes_mask.png (lienzo completo; gira con la cabeza si eyes_on=head). Con c=1 (ojos cerrados) no se dibujan",
-        "pupil_range": "px que se puede mover la pupila perdiendo como mucho un 8 % del iris; pupil_range_xy por dirección",
+        "pupil_range": "px que se puede mover la pupila y que en los dos ojos se siga viendo al menos el 75 % del iris que se ve en reposo (lo que se sale lo recorta eyes_mask, como un ojo que gira); pupil_range_xy por dirección (x = derecha, y = abajo) y pupil_range_per_eye por ojo",
         "rotation": "grados en sentido antihorario (como PIL Image.rotate) alrededor del pivote",
     }
     if who == "LULA":
