@@ -9,7 +9,7 @@ import os
 import random
 
 import bpy
-from mathutils import Vector
+from mathutils import Euler, Vector
 
 import objetos as O
 from objetos import cam, setup
@@ -62,7 +62,7 @@ def rounded(pts, r, n=6):
     return out
 
 
-def shape(pts, m, depth=0.08, bevel=0.04, loc=(0, 0, 0), rot=(R(90), 0, 0), smooth=False, name="sh"):
+def shape(pts, m, depth=0.08, bevel=0.04, loc=(0, 0, 0), rot=(R(90), 0, 0), smooth=False, name="sh", sharp=()):
     """Forma 2D (x, z de frente a la cámara) extruida y con bordes redondeados (curva con bisel)."""
     cu = bpy.data.curves.new(name, "CURVE")
     cu.dimensions = "2D"
@@ -77,6 +77,8 @@ def shape(pts, m, depth=0.08, bevel=0.04, loc=(0, 0, 0), rot=(R(90), 0, 0), smoo
         for p, (x, y) in zip(sp.bezier_points, pts):
             p.co = (x, y, 0)
             p.handle_left_type = p.handle_right_type = "AUTO"
+        for i in sharp:  # esquinas en punta
+            sp.bezier_points[i].handle_left_type = sp.bezier_points[i].handle_right_type = "VECTOR"
     else:
         sp = cu.splines.new("POLY")
         sp.points.add(len(pts) - 1)
@@ -181,6 +183,53 @@ def star_pts(n, r1, r2, rot=math.pi / 2):
     return pts
 
 
+def meta(name, m, elems, res=0.02, thr=0.6, stiff=2.0):
+    """Metaball (unión suave de elipsoides). elems: (centro, semiejes) o (centro, semiejes, rotación euler).
+    Los semiejes son el tamaño final de cada elipsoide suelto; juntos se funden sin costuras."""
+    mb = bpy.data.metaballs.new(name)
+    mb.resolution = mb.render_resolution = res
+    mb.threshold = thr
+    for el in elems:
+        e = mb.elements.new()
+        e.type = "ELLIPSOID"
+        e.co = el[0]
+        e.radius = 1 / 0.575
+        e.stiffness = stiff
+        e.size_x, e.size_y, e.size_z = el[1]
+        if len(el) > 2:
+            e.rotation = Euler(el[2]).to_quaternion()
+    mb.materials.append(m)
+    return link(bpy.data.objects.new(name, mb))
+
+
+def fit(sc, margin=0.05):
+    """Encuadre automático: ajusta la escala ortográfica y el desplazamiento de la cámara para que todo el objeto
+    entre con un margen en cada lado."""
+    camo = sc.camera
+    dg = bpy.context.evaluated_depsgraph_get()
+    dg.update()
+    inv = camo.matrix_world.inverted()
+    xs, ys = [], []
+    for o in sc.objects:
+        if o.type not in ("MESH", "CURVE", "META", "SURFACE", "FONT"):
+            continue
+        ev = o.evaluated_get(dg)
+        me = ev.to_mesh()
+        if me is None:
+            continue
+        mw = ev.matrix_world
+        for v in me.vertices:
+            q = inv @ (mw @ v.co)
+            xs.append(q.x)
+            ys.append(q.y)
+        ev.to_mesh_clear()
+    w, h = max(xs) - min(xs), max(ys) - min(ys)
+    S = max(w, h) / (1 - 2 * margin)
+    camo.data.ortho_scale = S
+    camo.data.shift_x = (max(xs) + min(xs)) / 2 / S
+    camo.data.shift_y = (max(ys) + min(ys)) / 2 / S
+
+
 def ell_y(c, sc, x, z, off=0.0):
     """Coordenada y (lado de la cámara) de la superficie de un elipsoide en (x, z)."""
     a, b, cc = sc
@@ -208,7 +257,8 @@ def paws():
 
 def wind():
     sc = setup()
-    cols = [(140, 210, 255), (180, 230, 255), (110, 190, 250)]
+    edge = mat("windedge", (74, 155, 224), 0.12, alpha=0.72)
+    core = mat("windcore", (245, 250, 255), 0.1, emis=0.3)
     for i, (z, L, curl) in enumerate([(1.05, 1.9, 0.26), (0.55, 2.3, 0.3), (0.05, 1.6, 0.22)]):
         pts = []
         x0 = -1.15 + i * 0.12
@@ -223,7 +273,8 @@ def wind():
             pts.append((cx + rr * math.cos(a), -0.1 * i, cz + rr * math.sin(a)))
         radii = [0.25 + 0.75 * min(1, k / 5) for k in range(len(pts))]
         radii = [r * (1 - 0.6 * max(0, k - n) / 15) for k, r in enumerate(radii)]
-        tube(pts, 0.07, mat(f"wind{i}", cols[i], 0.15, alpha=0.8, emis=0.25), radii=radii, poly=False)
+        tube(pts, 0.092, edge, radii=radii)
+        tube(pts, 0.05, core, radii=radii)
     cam(sc, (0.15, 0, 0.6), 2.8, height=1.0)
     return sc
 
@@ -301,36 +352,61 @@ def strawberry():
 
 def dolphin():
     sc = setup()
-    B = mat("dolph", (70, 150, 240), 0.25)
-    Bl = mat("dolphb", (205, 232, 255), 0.3)
+    B = mat("dolph", (70, 150, 240), 0.22)
+    Bl = mat("dolphb", (205, 232, 255), 0.25)
 
-    def body(v, r=0.52, L=1.1):
-        X = v.x * L
-        t = (v.x + 1) / 2                     # 0 cabeza, 1 cola
-        f = r * (1.0 - 0.78 * t ** 1.4) * (1.0 + 0.12 * math.sin(math.pi * t))
-        return Vector((X, v.y * f, v.z * f + 0.3 * (1 - (X / L) ** 2)))
-    b = sphere((0, 0, 0), (1, 1, 1), B, seg=64)
-    deform(b, body)
-    bl = sphere((0, 0, 0), (1, 1, 1), Bl, seg=64)
-    deform(bl, lambda v: body(v, r=0.47, L=0.92) + Vector((-0.14, -0.08, -0.1)))
-    b.location = bl.location = (0, 0, 0.3)
-    sphere((-1.22, -0.02, 0.24), (0.24, 0.17, 0.13), B)        # hocico
-    sphere((-1.2, -0.04, 0.18), (0.2, 0.14, 0.07), Bl)
-    cone((0.1, 0.0, 1.08), 0.22, 0.02, 0.4, B, rot=(0, R(-35), 0))    # aleta dorsal
-    o = sphere((-0.35, -0.42, 0.3), (0.24, 0.06, 0.1), B)
-    o.rotation_euler = (0, R(40), R(-15))
-    for s_ in (-1, 1):  # cola
-        o = sphere((1.28, 0, 0.42 + s_ * 0.16), (0.08, 0.06, 0.22), B)
-        o.rotation_euler = (0, R(s_ * -40), 0)
-    # cara
-    for (x, z, r) in [(-0.82, 0.62, 0.16), (-0.47, 0.68, 0.15)]:
-        M.eye(x, -0.38, z, r, (40, 30, 40), False, B)
-    torus((-1.0, -0.36, 0.33), 0.15, 0.02, mat("ink", INK, 0.6), rot=(R(90), 0, R(-15)), arc=(0, 0, -1))
-    sphere((-0.72, -0.46, 0.42), (0.07, 0.02, 0.045), mat("cheek", (255, 140, 160), 0.6))
-    shine((-0.2, -0.38, 0.95), 1.2, rot=(0, R(15), 0))
-    for (x, z, r) in [(1.5, 0.15, 0.06), (1.62, 0.32, 0.045), (-1.55, 0.6, 0.05)]:
-        sphere((x, -0.1, z), (r, r, r), mat("wdrop", (120, 200, 255), 0.05))
-    cam(sc, (-0.12, 0, 0.55), 3.15, height=1.1)
+    def arc(t):  # lomo arqueado (salto): de la cabeza (izquierda) a la cola (derecha)
+        a = R(165 - 150 * t)
+        P = Vector((1.0 * math.cos(a), 0, 0.15 + 0.45 * math.sin(a)))
+        N = Vector((math.cos(a) / 1.0, 0, math.sin(a) / 0.45)).normalized()
+        return a, P, N
+
+    def rad(t):
+        return 0.43 * math.sin(math.pi * (0.32 + 0.68 * t)) ** 0.9 + 0.1 * (1 - t) if t < 0.95 else 0.11
+    el = []
+    for k in range(12):
+        t = k / 11
+        a, P, N = arc(t)
+        r = rad(t)
+        el.append((tuple(P), (r * 1.15, r * 0.92, r)))
+    # hocico largo hacia abajo a la izquierda
+    a, P0, N0 = arc(0)
+    el.append((tuple(P0 + Vector((-0.42, 0, -0.1))), (0.34, 0.15, 0.13), (0, R(-20), 0)))
+    # aleta dorsal (curva hacia la cola)
+    a, Pf, Nf = arc(0.42)
+    el.append((tuple(Pf + Nf * 0.42), (0.11, 0.06, 0.25), (0, R(-30), 0)))
+    # aleta de la cola, soldada
+    a, Pe, Ne = arc(1.0)
+    tang = Vector((math.sin(a) * 1.0, 0, -math.cos(a) * 0.45)).normalized()
+    for ang in (-45, 45):
+        dv = Euler((0, R(ang), 0)).to_matrix() @ tang
+        el.append((tuple(Pe + dv * 0.2), (0.24, 0.06, 0.08), (0, -math.atan2(dv.z, dv.x), 0)))
+    # aleta lateral
+    a, Pl, Nl = arc(0.25)
+    el.append((tuple(Pl - Nl * 0.3 + Vector((0.05, -0.32, 0))), (0.22, 0.06, 0.1), (R(10), R(-40), 0)))
+    parts = [meta("dolbody", B, el)]
+    bel = []
+    for k in range(7):
+        t = k / 11
+        a, P, N = arc(t)
+        r = rad(t)
+        bel.append((tuple(P - N * r * 0.45 + Vector((0, -0.06, 0))), (r * 0.95, r * 0.8, r * 0.55)))
+    bel.append((tuple(P0 + Vector((-0.42, -0.03, -0.16))), (0.3, 0.12, 0.07), (0, R(-20), 0)))
+    parts.append(meta("dolbelly", Bl, bel))
+    # carita: armada mirando a -Y y girada -28° para que, con el giro del delfín, quede de frente a la cámara
+    th = R(-28)
+    d = Vector((-0.469, -0.883, 0))
+    fc = P0 + Vector((0.08, 0, 0.1)) + d * 0.46
+    fparts = []
+    for sx in (-1, 1):
+        fparts += M.eye(sx * 0.17, 0, 0.1, 0.155, (40, 30, 40), False, B)
+    fparts.append(torus((-0.2, -0.03, -0.2), 0.14, 0.022, mat("ink", INK, 0.6), rot=(R(90), 0, R(-20)), arc=(0, 0, -1)))
+    for sx in (-1, 1):
+        fparts.append(sphere((sx * 0.3, 0.02, -0.08), (0.07, 0.02, 0.045), mat("cheek", (255, 140, 160), 0.6)))
+    parts.append(group(fparts, tuple(fc), (0, 0, th)))
+    parts.append(shine((0.05, -0.4, 0.78), 1.2, rot=(0, R(10), 0)))
+    group(parts, (0, 0, 0), (0, 0, R(28)))
+    cam(sc, (0, 0, 0.55), 3.0, height=1.2)
     return sc
 
 
@@ -338,21 +414,22 @@ def spider():
     sc = setup()
     P = mat("spid", (130, 80, 210), 0.45)
     Pd = mat("spidl", (100, 60, 170), 0.5)
-    sphere((0, 0.25, 0.65), (0.42, 0.42, 0.38), Pd)  # abdomen detrás
+    sphere((0, 0.28, 0.66), (0.42, 0.42, 0.38), Pd)  # abdomen detrás
     body = (0, 0, 0.6)
     bs = (0.5, 0.45, 0.46)
     sphere(body, bs, P)
     for s in (-1, 1):
-        for k in range(4):
-            y0 = -0.25 + k * 0.2
-            kx = 0.72 + 0.12 * k
-            fx = 0.85 + 0.2 * k
-            pts = [(s * 0.35, y0 * 0.6, 0.58), (s * kx, y0, 1.0 - 0.06 * k), (s * (fx + 0.05), y0 * 1.3, 0.45),
-                   (s * fx, y0 * 1.4, 0.06)]
-            tube(pts, 0.055, Pd if k % 2 else P)
-            sphere((s * (fx + 0.04), y0 * 1.4 - 0.04, 0.05), (0.1, 0.12, 0.06), mat("spshoe", (255, 120, 170), 0.4))
+        for k, ph in enumerate((-55, -20, 15, 50)):
+            a = R(ph)
+            u = Vector((s * math.cos(a), math.sin(a), 0))
+            hip = Vector(body) + u * 0.38 + Vector((0, 0, -0.05))
+            knee = hip + u * 0.3 + Vector((0, 0, 0.28))
+            foot = hip + u * 0.58 + Vector((0, 0, -0.5))
+            mid = hip + u * 0.5 + Vector((0, 0, -0.05))
+            tube([tuple(hip), tuple(knee), tuple(mid), tuple(foot)], 0.07, Pd if k % 2 else P)
+            sphere(tuple(foot + u * 0.03 + Vector((0, 0, -0.02))), (0.1, 0.1, 0.06), mat("spshoe", (255, 120, 170), 0.4))
     face(0, ell_y(body, bs, 0, 0.62, -0.08), 0.62, 0.7, P, iris=(60, 40, 90), er=0.26, gap=0.33)
-    tube([(0, 0.1, 1.05), (0, 0.1, 1.8)], 0.008, mat("thread", (255, 255, 255), 0.5))
+    tube([(0, 0.1, 1.05), (0, 0.1, 1.7)], 0.008, mat("thread", (255, 255, 255), 0.5))
     cam(sc, (0, 0, 0.75), 2.7, height=1.3)
     return sc
 
@@ -380,23 +457,33 @@ def guitar():
     sc = setup()
     Rd = mat("gbody", (255, 90, 70), 0.3)
     Y = mat("gtop", (255, 210, 70), 0.35)
-    parts = []
-    for (z, r) in [(0.0, 0.5), (0.62, 0.38)]:
-        parts.append(cyl((0, 0.02, z), r, 0.3, Rd, rot=(R(90), 0, 0)))
-        parts.append(cyl((0, -0.06, z), r - 0.06, 0.18, Y, rot=(R(90), 0, 0)))
-    parts.append(cyl((0, -0.155, 0.38), 0.15, 0.02, mat("hole", (60, 30, 30), 0.8), rot=(R(90), 0, 0)))
-    parts.append(torus((0, -0.155, 0.38), 0.16, 0.025, mat("gring", (60, 160, 255), 0.4), rot=(R(90), 0, 0)))
-    parts.append(box((0, -0.12, 1.25), (0.16, 0.1, 1.0), mat("neck", (170, 100, 60), 0.5), 0.03))
-    parts.append(box((0, -0.12, 1.85), (0.28, 0.12, 0.3), mat("ghead", (60, 160, 255), 0.4), 0.06))
-    for s in (-1, 1):
-        for z in (1.78, 1.92):
-            parts.append(sphere((s * 0.19, -0.12, z), (0.05, 0.05, 0.05), mat("peg", (255, 255, 255), 0.3)))
-    parts.append(box((0, -0.17, -0.18), (0.36, 0.06, 0.08), mat("bridge", (90, 50, 40), 0.5), 0.02))
+    # contorno en forma de 8: círculo grande abajo, chico arriba y una cintura suave
+    out = []
+    for k in range(9):        # círculo de abajo, de la cintura derecha a la izquierda pasando por abajo
+        a = R(40 - k * 35)
+        out.append((0.5 * math.cos(a), 0.5 * math.sin(a)))
+    out.append((-0.27, 0.42))
+    for k in range(7):        # círculo de arriba, de izquierda a derecha pasando por arriba
+        a = R(200 - k * 36.6)
+        out.append((0.38 * math.cos(a), 0.62 + 0.38 * math.sin(a)))
+    out.append((0.27, 0.42))
+    parts = [shape(out, Rd, depth=0.13, bevel=0.05, smooth=True, loc=(0, 0, 0))]
+    inner = [(x * 0.85, 0.06 + y * 0.85) for x, y in out]
+    parts.append(shape(inner, Y, depth=0.005, bevel=0.02, smooth=True, loc=(0, -0.19, 0)))
+    parts.append(cyl((0, -0.2, 0.42), 0.14, 0.02, mat("hole", (70, 35, 35), 0.8), rot=(R(90), 0, 0)))
+    parts.append(torus((0, -0.21, 0.42), 0.15, 0.025, mat("gring", (60, 160, 255), 0.4), rot=(R(90), 0, 0)))
+    parts.append(box((0, -0.12, 1.4), (0.24, 0.16, 0.95), mat("neck", (170, 100, 60), 0.5), 0.05))
+    parts.append(box((0, -0.12, 1.98), (0.32, 0.16, 0.34), mat("ghead", (60, 160, 255), 0.4), 0.07))
+    for sx in (-1, 1):
+        for z in (1.9, 2.05):
+            parts.append(cyl((sx * 0.2, -0.12, z), 0.025, 0.1, mat("pegs", (230, 230, 240), 0.3), rot=(0, R(90), 0)))
+            parts.append(sphere((sx * 0.26, -0.12, z), (0.04, 0.06, 0.05), mat("peg", (255, 255, 255), 0.3)))
+    parts.append(box((0, -0.21, -0.18), (0.36, 0.06, 0.08), mat("bridge", (90, 50, 40), 0.5), 0.02))
     for k in range(4):
-        x = -0.045 + k * 0.03
-        parts.append(cyl((x, -0.19, 0.83), 0.006, 2.0, mat("gstr", (240, 240, 240), 0.2, metal=0.6)))
-    for (x, z) in [(-0.3, -0.05), (0.32, 0.05), (0.22, 0.7)]:
-        parts.append(sphere((x, -0.155, z), (0.05, 0.02, 0.05), mat("gdot", (255, 255, 255), 0.4)))
+        x = -0.06 + k * 0.04
+        parts.append(cyl((x, -0.215, 0.88), 0.006, 2.1, mat("gstr", (240, 240, 240), 0.2, metal=0.6)))
+    for (x, z) in [(-0.3, -0.05), (0.32, 0.0), (0.22, 0.78)]:
+        parts.append(sphere((x, -0.2, z), (0.05, 0.02, 0.05), mat("gdot", (255, 255, 255), 0.4)))
     group(parts, (0, 0, 0.3), (0, R(-28), 0))
     cam(sc, (0.15, 0, 0.95), 2.6, height=1.0)
     return sc
@@ -572,87 +659,110 @@ def leaves():
 
 def tongue():
     sc = setup()
-    Lp = mat("lip", (255, 120, 140), 0.35)
-    In = mat("mouthin", (110, 20, 40), 0.7)
-    sphere((0, 0, 0.8), (0.75, 0.2, 0.45), In)
-    lip = torus((0, -0.12, 0.8), 1.0, 0.09, Lp, rot=(R(90), 0, 0))
-    lip.scale = (0.78, 0.47, 1)
-    # dientes de arriba
-    for x in (-0.13, 0.13):
-        box((x, -0.18, 1.08), (0.24, 0.06, 0.18), mat("teeth", (255, 255, 255), 0.25), 0.06)
-    # lengua afuera
-    T = mat("tongue", (255, 95, 130), 0.35)
-    t = sphere((0, -0.3, 0.45), (0.36, 0.12, 0.42), T)
-    tube([(0, -0.415, 0.62), (0, -0.425, 0.45), (0, -0.405, 0.3)], 0.014, mat("tline", (220, 60, 100), 0.4))
-    shine((-0.15, -0.43, 0.38), 0.7, rot=(0, R(-60), 0))
+    Pk = mat("tface", (255, 175, 195), 0.4)
+    C, S = (0, 0, 0.75), (0.7, 0.62, 0.66)
+    sphere(C, S, Pk, seg=64)
+    for sx in (-1, 1):  # orejitas redondas
+        sphere((sx * 0.5, 0.1, 1.3), (0.18, 0.12, 0.18), Pk)
+    yf = ell_y(C, S, 0, 0.58)
     for sx in (-1, 1):
-        sphere((sx * 0.98, -0.05, 0.85), (0.14, 0.04, 0.09), mat("cheek", (255, 140, 160), 0.6))
-    cam(sc, (0, 0, 0.7), 2.3, height=1.1)
+        M.eye(sx * 0.25, ell_y(C, S, sx * 0.25, 0.95, -0.07), 0.95, 0.17, (70, 45, 35), False, Pk)
+        sphere((sx * 0.45, ell_y(C, S, sx * 0.45, 0.68, -0.01), 0.68), (0.1, 0.03, 0.065), mat("cheek", (255, 120, 150), 0.6))
+    # boca abierta (rosa cálido) con la lengua afuera
+    sphere((0, yf + 0.02, 0.55), (0.28, 0.08, 0.17), mat("mouthin", (176, 71, 90), 0.5))
+    torus((0, yf - 0.01, 0.55), 1.0, 0.035, mat("lip", (220, 90, 120), 0.4), rot=(R(90), 0, 0)).scale = (0.29, 0.18, 1)
+    box((0, yf - 0.03, 0.66), (0.16, 0.05, 0.07), mat("teeth", (255, 255, 255), 0.25), 0.03)
+    T = mat("tongue", (255, 85, 125), 0.15)
+    t = sphere((0, yf - 0.12, 0.36), (0.2, 0.09, 0.27), T)
+    t.rotation_euler = (R(-25), 0, 0)
+    tube([(0, yf - 0.215, 0.5), (0, yf - 0.23, 0.38), (0, yf - 0.2, 0.22)], 0.012, mat("tline", (215, 55, 95), 0.4))
+    shine((-0.08, yf - 0.22, 0.34), 0.6, rot=(0, R(-60), 0))
+    shine((-0.35, ell_y(C, S, -0.35, 1.2, 0.01), 1.2), 1.3, rot=(0, R(-40), 0))
+    cam(sc, (0, 0, 0.75), 1.9, height=1.1)
     return sc
 
 
 def shrimp():
     sc = setup()
-    Or = mat("shrimp", (255, 130, 100), 0.35)
-    Ol = mat("shrimpl", (255, 180, 150), 0.35)
-    n = 9
-    for k in range(n):  # cuerpo curvado en C
+    Or = mat("shrimp", (255, 130, 100), 0.3)
+    Ol = mat("shrimpl", (255, 190, 160), 0.35)
+    cx, cz, Rc = 0.1, 0.6, 0.42
+    n = 8
+    segs = []
+    for k in range(n):  # cuerpo curvado en C (de la cabeza, a la izquierda, por arriba hasta abajo)
         t = k / (n - 1)
-        a = R(170 - t * 250)
-        x, z = 0.5 * math.cos(a), 0.6 + 0.45 * math.sin(a)
-        r = 0.27 - 0.17 * t
-        o = sphere((x, 0, z), (r, r * 0.9, r * 1.05), Or if k % 2 == 0 else Ol, seg=32)
-    # cola en abanico
-    ax, az = 0.5 * math.cos(R(-80)), 0.6 + 0.45 * math.sin(R(-80))
-    for s in (-1, 0, 1):
-        o = sphere((ax - 0.14 + s * 0.12, -0.02, az - 0.07 - abs(s) * 0.02), (0.07, 0.04, 0.16), Or)
-        o.rotation_euler = (0, R(70 + s * 25), 0)
-    # cabeza
-    hx, hz = -0.52, 0.66
-    sphere((hx - 0.08, 0, hz + 0.02), (0.3, 0.26, 0.28), Or)
-    M.eye(hx - 0.2, -0.22, hz + 0.12, 0.11, (40, 30, 40), False, Or)
-    M.eye(hx + 0.04, -0.22, hz + 0.14, 0.1, (40, 30, 40), False, Or)
-    torus((hx - 0.1, -0.24, hz - 0.08), 0.07, 0.015, mat("ink", INK, 0.6), rot=(R(90), 0, 0), arc=(0, 0, -1))
-    sphere((hx - 0.3, -0.18, hz - 0.04), (0.05, 0.02, 0.035), mat("cheek", (255, 90, 120), 0.6))
-    for s in (0, 1):  # antenas
-        tube([(hx - 0.2, -0.05, hz + 0.25), (hx - 0.4 - s * 0.1, -0.05, hz + 0.6), (hx - 0.1 + s * 0.1, -0.05, hz + 0.95)],
-             0.012, Or)
-    cam(sc, (-0.05, 0, 0.62), 1.9, height=1.1)
+        a = R(165 - t * 240)
+        r = 0.27 - 0.15 * t
+        segs.append((a, r, Vector((cx + Rc * math.cos(a), 0, cz + Rc * math.sin(a)))))
+    elems = [(tuple(P), (r * 1.1, r * 0.95, r)) for a, r, P in segs]
+    # cola en abanico soldada al último segmento
+    a, r, P = segs[-1]
+    tang = Vector((math.sin(a), 0, -math.cos(a)))
+    for k, ang in enumerate((-35, 0, 35)):
+        dv = Euler((0, R(ang), 0)).to_matrix() @ tang
+        c = P + dv * 0.2
+        rot = (0, -math.atan2(dv.z, dv.x), 0)
+        elems.append((tuple(c), (0.17, 0.04, 0.07), rot))
+    hc = Vector((-0.42, 0, 0.7))
+    elems.append((tuple(hc), (0.32, 0.28, 0.28)))
+    meta("shrbody", Or, elems)
+    # placas del caparazón: bandas claras que cruzan el lomo
+    for k in range(1, n - 1):
+        a, r, P = segs[k]
+        N = Vector((math.cos(a), 0, math.sin(a)))
+        Y = Vector((0, -1, 0))
+        rr = r * 1.04 + 0.02
+        pts = [tuple(P + rr * (math.cos(R(q)) * N + math.sin(R(q)) * Y)) for q in range(-10, 101, 10)]
+        tube(pts, 0.022, Ol, res=4)
+    # patitas en el lado de adentro de la C
+    for k in range(1, 6):
+        a, r, P = segs[k]
+        N = Vector((math.cos(a), 0, math.sin(a)))
+        b = P - N * (r * 0.8) + Vector((0, -0.12, 0))
+        e = P - N * (r + 0.14) + Vector((0, -0.14, 0))
+        tube([tuple(b), tuple(e)], 0.022, Ol, poly=True)
+    # cara
+    for (x, z, er) in [(-0.6, 0.8, 0.12), (-0.33, 0.83, 0.11)]:
+        M.eye(x, ell_y(hc, (0.32, 0.28, 0.28), x, z, -0.07), z, er, (40, 30, 40), False, Or)
+    torus((-0.5, ell_y(hc, (0.32, 0.28, 0.28), -0.5, 0.6, 0.01), 0.62), 0.07, 0.015, mat("ink", INK, 0.6),
+          rot=(R(90), 0, 0), arc=(0, 0, -1))
+    sphere((-0.7, ell_y(hc, (0.32, 0.28, 0.28), -0.68, 0.66), 0.66), (0.05, 0.02, 0.035), mat("cheek", (255, 90, 120), 0.6))
+    for s_ in (0, 1):  # antenas
+        tube([(-0.5, -0.05, 0.95), (-0.65 - s_ * 0.12, -0.05, 1.25), (-0.35 + s_ * 0.15, -0.05, 1.45)], 0.013, Or)
+    cam(sc, (-0.05, 0, 0.7), 2.0, height=1.1)
     return sc
 
 
 def eagle():
     sc = setup()
-    Br = mat("eagleb", (150, 95, 55), 0.55)
-    Bd = mat("eagled", (115, 70, 40), 0.55)
-    W = mat("eaglew", (255, 255, 250), 0.55)
-    Yb = mat("beakE", (255, 190, 40), 0.35)
+    Br = mat("eagleb", (125, 78, 42), 0.5)
+    Bd = mat("eagled", (85, 50, 28), 0.5)
+    W = mat("eaglew", (255, 255, 255), 0.45)
+    Yb = mat("beakE", (255, 185, 30), 0.3)
     sphere((0, 0, 0.6), (0.42, 0.38, 0.5), Br)
-    sphere((0, -0.2, 0.5), (0.26, 0.2, 0.32), mat("eaglebel", (220, 180, 130), 0.6))
+    sphere((0, -0.2, 0.5), (0.26, 0.2, 0.32), mat("eaglebel", (200, 150, 100), 0.6))
     head = (0, -0.05, 1.18)
-    hs = (0.38, 0.36, 0.34)
+    hs = (0.4, 0.37, 0.36)
     sphere(head, hs, W)
-    for s in (-1, 1):  # alas abiertas
-        o = sphere((s * 0.62, 0.08, 0.95), (0.42, 0.07, 0.22), Br)
+    for s in (-1, 1):  # alas abiertas, oscuras
+        o = sphere((s * 0.62, 0.08, 0.95), (0.42, 0.07, 0.22), Bd)
         o.rotation_euler = (0, R(-s * 30), 0)
-        for k in range(4):  # plumas de la punta del ala
-            ang = R(-s * (30 + k * 14))
-            L = 0.3 - k * 0.03
-            o = sphere((s * (0.62 + 0.36 * math.cos(R(30 + k * 14))), 0.1, 0.95 + 0.36 * math.sin(R(30 + k * 14)) - 0.1),
-                       (L, 0.05, 0.075), Bd)
-            o.rotation_euler = (0, ang, 0)
+        for k in range(4):
+            o = sphere((s * (0.62 + 0.36 * math.cos(R(30 + k * 14))), 0.1, 0.85 + 0.36 * math.sin(R(30 + k * 14))),
+                       (0.3 - k * 0.03, 0.05, 0.075), Bd)
+            o.rotation_euler = (0, R(-s * (30 + k * 14)), 0)
     for s in (-1, 0, 1):  # cola
         o = sphere((s * 0.1, 0.1, 0.12), (0.08, 0.05, 0.18), Bd)
         o.rotation_euler = (0, R(s * 20), 0)
     for s in (-1, 1):
         sphere((s * 0.16, -0.2, 0.08), (0.1, 0.12, 0.05), Yb)
-        M.eye(s * 0.15, ell_y(head, hs, s * 0.15, 1.25, -0.06), 1.25, 0.11, (110, 70, 30), False, W)
-        o = sphere((s * 0.17, ell_y(head, hs, s * 0.17, 1.38, -0.04), 1.38), (0.12, 0.04, 0.035), mat("brow", (120, 80, 50), 0.5))
-        o.rotation_euler = (0, R(s * 12), 0)
-    sphere((0, -0.38, 1.08), (0.1, 0.12, 0.08), Yb)
-    cone((0, -0.43, 0.98), 0.06, 0.0, 0.12, Yb, rot=(R(160), 0, 0))
-    for s in (-1, 1):
-        sphere((s * 0.26, ell_y(head, hs, s * 0.26, 1.08, -0.02), 1.08), (0.06, 0.02, 0.04), mat("cheek", (255, 140, 160), 0.6))
+        M.eye(s * 0.17, ell_y(head, hs, s * 0.17, 1.3, -0.06), 1.3, 0.12, (110, 70, 30), False, W)
+        sphere((s * 0.3, ell_y(head, hs, s * 0.3, 1.08, -0.01), 1.08), (0.065, 0.02, 0.04), mat("cheek", (255, 140, 160), 0.6))
+    # pico grande y ganchudo
+    yb = ell_y(head, hs, 0, 1.1)
+    sphere((0, yb - 0.08, 1.12), (0.16, 0.18, 0.12), Yb)
+    tube([(0, yb - 0.18, 1.15), (0, yb - 0.27, 1.08), (0, yb - 0.24, 0.98)], 0.06, Yb, radii=[1.0, 0.7, 0.3])
+    torus((0, yb - 0.02, 0.98), 0.08, 0.014, mat("ink", INK, 0.6), rot=(R(90), 0, 0), arc=(0, 0, -1))
     cam(sc, (0, 0, 0.75), 2.6, height=1.3)
     return sc
 
@@ -747,20 +857,26 @@ def splash():
         d.rotation_mode = "QUATERNION"
         d.rotation_quaternion = Vector((0, 0, 1)).rotation_difference(Vector(direction).normalized())
         shine((loc[0] - r * 0.3, loc[1] - r * 0.95, loc[2] + r * 0.15), r * 4)
-    sphere((0, 0.1, 0.06), (1.05, 0.6, 0.1), Bl)                 # charco
-    sphere((0, 0.1, 0.12), (0.55, 0.36, 0.14), B)                # base de la corona
-    for k in range(8):                                               # puntas de la corona
+    sphere((0, 0.1, 0.05), (1.05, 0.6, 0.08), Bl)                 # charco
+    el = []
+    for k in range(24):                                              # anillo continuo de la corona
+        a = k / 24 * 2 * math.pi
+        el.append(((0.45 * math.cos(a), 0.1 + 0.3 * math.sin(a), 0.14), (0.13, 0.13, 0.12)))
+    tips = []
+    for k in range(8):                                               # puntas que suben y se afinan
         a = k / 8 * 2 * math.pi + 0.2
-        x, y = 0.45 * math.cos(a), 0.1 + 0.3 * math.sin(a)
-        h = 0.55 if math.sin(a) > 0 else 0.42
-        o = cyl((0, 0, 0), 0.17, h, B)
-        deform(o, lambda v, h=h: Vector((v.x * (1 - 0.5 * (v.z / h + 0.5)), v.y * (1 - 0.5 * (v.z / h + 0.5)), v.z)))
-        o.location = (x * 1.1, y, 0.12 + h / 2)
-        o.rotation_euler = (R(-22 * math.sin(a)), R(22 * math.cos(a)), 0)
-        sphere((x * 1.1 + 0.22 * h * math.cos(a), y + 0.2 * h * math.sin(a), 0.12 + h + 0.05), (0.11, 0.11, 0.11), B)
-    for (x, z, r) in [(-0.85, 1.0, 0.13), (-0.35, 1.3, 0.15), (0.3, 1.35, 0.14), (0.85, 1.05, 0.13), (0.0, 1.0, 0.1),
+        h = 0.5 if math.sin(a) > 0 else 0.4
+        for j in range(5):
+            t = j / 4
+            rr = 0.45 + 0.14 * t
+            el.append(((rr * math.cos(a), 0.1 + rr * 0.66 * math.sin(a), 0.16 + h * t), (0.11 - 0.06 * t, 0.11 - 0.06 * t, 0.1)))
+        tips.append((0.62 * math.cos(a), 0.1 + 0.62 * 0.66 * math.sin(a), 0.16 + h + 0.15, a))
+    meta("crown", B, el, res=0.015)
+    for (x, y, z, a) in tips:                                        # gotitas en la punta
+        sphere((x, y, z), (0.07, 0.07, 0.07), B)
+    for (x, z, r) in [(-0.85, 1.0, 0.13), (-0.35, 1.3, 0.15), (0.3, 1.35, 0.14), (0.85, 1.05, 0.13), (0.0, 1.05, 0.1),
                       (-1.1, 0.55, 0.09), (1.1, 0.6, 0.09)]:
-        droplet((x, -0.15, z), r, (-x, 0, -(z - 0.2)))   # la colita apunta al centro
+        droplet((x, -0.15, z), r, (-x, 0, -(z - 0.2)))
     cam(sc, (0, 0, 0.7), 2.45, height=1.3)
     return sc
 
@@ -810,16 +926,14 @@ def microphone():
     parts.append(h)
     parts.append(sphere((0, 0, 0.05), (0.095, 0.095, 0.04), Pk))
     parts.append(cyl((0, 0, 0.98), 0.21, 0.14, mat("micr", (255, 210, 40), 0.3, metal=0.4)))
-    parts.append(sphere((0, 0, 1.24), (0.3, 0.3, 0.3), mat("micg", (205, 210, 225), 0.3, metal=0.7)))
-    K = mat("micd", (140, 145, 170), 0.4, metal=0.5)
-    for i in range(6):
-        for j in range(14):
-            th = R(25 + i * 22)
-            ph = j / 14 * 2 * math.pi + i * 0.2
-            v = Vector((math.sin(th) * math.cos(ph), math.sin(th) * math.sin(ph), math.cos(th)))
-            if v.y > 0.3:
-                continue
-            parts.append(sphere((0.3 * v.x, 0.3 * v.y, 1.24 + 0.3 * v.z), (0.022, 0.022, 0.022), K, seg=12))
+    c = (0, 0, 1.24)
+    parts.append(sphere(c, (0.3, 0.3, 0.3), mat("micg", (215, 220, 232), 0.25, metal=0.75)))
+    K = mat("micmesh", (160, 165, 185), 0.35, metal=0.6)
+    for k in range(6):  # malla fina: meridianos
+        parts.append(torus(c, 0.302, 0.006, K, rot=(R(90), 0, k * math.pi / 6)))
+    for z in (-0.2, -0.1, 0.0, 0.1, 0.2):  # y paralelos
+        r = math.sqrt(0.302 ** 2 - z ** 2)
+        parts.append(torus((0, 0, c[2] + z), r, 0.006, K))
     parts.append(sphere((0, -0.13, 0.65), (0.05, 0.03, 0.05), mat("micbtn", (255, 255, 255), 0.3)))
     parts.append(shine((-0.12, -0.28, 1.38), 0.8, rot=(0, R(-40), 0)))
     group(parts, (0, 0, 0), (0, R(-20), 0))
@@ -833,24 +947,21 @@ def hands_up():
     Cf = mat("cuff", (255, 200, 40), 0.4)
     Y = mat("burst", (255, 200, 40), 0.3, emis=0.8)
     for s in (-1, 1):
-        parts = [sphere((0, 0, 0), (0.28, 0.13, 0.27), W)]
-        for k, (a, L) in enumerate([(-24, 0.3), (-8, 0.36), (8, 0.35), (24, 0.29)]):
+        parts = [sphere((0, 0, 0), (0.3, 0.15, 0.28), W)]
+        for k, (a, L) in enumerate([(-26, 0.28), (-9, 0.34), (9, 0.33), (26, 0.27)]):
             ar = R(a)
-            bx, bz = 0.2 * math.sin(ar), 0.18
+            bx, bz = 0.21 * math.sin(ar), 0.18
             ex, ez = bx + L * math.sin(ar), bz + L * math.cos(ar)
-            parts.append(tube([(bx, 0, bz), (ex, 0, ez)], 0.075, W, poly=True))
-            parts.append(sphere((ex, 0, ez), (0.075, 0.075, 0.075), W))
-        parts.append(tube([(0.2, 0, -0.02), (0.36, 0, 0.12), (0.42, 0, 0.26)], 0.075, W))
-        parts.append(sphere((0.42, 0, 0.26), (0.075, 0.075, 0.075), W))
+            parts.append(tube([(bx, 0, bz), (ex, 0, ez)], 0.095, W, poly=True))
+            parts.append(sphere((ex, 0, ez), (0.095, 0.095, 0.095), W))
+        parts.append(tube([(0.22, 0, -0.02), (0.38, 0, 0.12), (0.44, 0, 0.26)], 0.095, W))
+        parts.append(sphere((0.44, 0, 0.26), (0.095, 0.095, 0.095), W))
         parts.append(cyl((0, 0, -0.32), 0.2, 0.18, Cf))
         parts.append(torus((0, 0, -0.24), 0.2, 0.05, Cf))
-        for k in range(2):  # pliegues del guante
-            parts.append(tube([(-0.12 + k * 0.1, -0.135, 0.02), (-0.1 + k * 0.1, -0.135, 0.14)], 0.01,
-                              mat("ink", INK, 0.6), poly=True))
-        group(parts, (s * 0.5, 0, 0.72), (0, R(s * 15), 0)).scale = (-s, 1, 1)
+        group(parts, (s * 0.55, 0, 0.72), (0, R(s * 15), 0)).scale = (-s * 1.2, 1.2, 1.2)
         for (a, L) in [(-50, 0.2), (-15, 0.24), (20, 0.2)]:  # rayitas de festejo
             ar = R(a * s + s * 15)
-            cx, cz = s * 0.5 + 0.85 * math.sin(ar), 0.72 + 0.85 * math.cos(ar)
+            cx, cz = s * 0.55 + 1.0 * math.sin(ar), 0.72 + 1.0 * math.cos(ar)
             box((cx, 0, cz), (0.07, 0.06, L), Y, 0.03, rot=(0, ar, 0))
     cam(sc, (0, 0, 0.95), 2.6, height=1.0)
     return sc
@@ -929,20 +1040,86 @@ def moon():
     return sc
 
 
+def puffy(pts, m, H=0.25, back=0.5, step=0.03, loc=(0, 0, 0), name="puffy"):
+    """Forma 2D «inflada» como un globo (x, z de frente): malla de Delaunay dentro del contorno y cada punto sale
+    hacia la cámara según su distancia al borde (alisada). Mantiene las puntas (la del corazón) sin los picos que
+    deja el bisel de las curvas en las esquinas agudas."""
+    from mathutils import geometry
+    P = [Vector(p) for p in pts]
+    edges = [(P[i], P[(i + 1) % len(P)]) for i in range(len(P))]
+
+    def dist(q):
+        best = 1e9
+        for A, Bp in edges:
+            ab = Bp - A
+            t = max(0.0, min(1.0, (q - A).dot(ab) / ab.length_squared))
+            best = min(best, (A + ab * t - q).length)
+        return best
+
+    def inside(q):
+        c = False
+        for A, Bp in edges:
+            if (A.y > q.y) != (Bp.y > q.y) and q.x < A.x + (q.y - A.y) * (Bp.x - A.x) / (Bp.y - A.y):
+                c = not c
+        return c
+    xs, ys = [p.x for p in P], [p.y for p in P]
+    verts = list(P)
+    j = 0
+    y = min(ys)
+    while y < max(ys):
+        x = min(xs) + (step / 2 if j % 2 else 0)
+        while x < max(xs):
+            q = Vector((x, y))
+            if inside(q) and dist(q) > step * 0.6:
+                verts.append(q)
+            x += step
+        y += step * 0.866
+        j += 1
+    out = geometry.delaunay_2d_cdt(verts, [(i, (i + 1) % len(P)) for i in range(len(P))], [], 1, 1e-7)
+    V, F = out[0], out[2]
+    ds = [dist(Vector(v)) for v in V]
+    dmax = max(ds)
+    hs = [math.sqrt(max(0.0, 1 - (1 - min(1.0, d / dmax)) ** 2)) for d in ds]
+    nb = [set() for _ in V]
+    for f in F:
+        for i in range(len(f)):
+            a_, b_ = f[i], f[(i + 1) % len(f)]
+            nb[a_].add(b_)
+            nb[b_].add(a_)
+    nP = len(P)
+    for _ in range(25):  # alisar las alturas (sin la «cresta» del medio)
+        hs = [hs[i] if i < nP else 0.5 * hs[i] + 0.5 * sum(hs[n] for n in nb[i]) / max(1, len(nb[i])) for i in range(len(V))]
+    objs = []
+    for side, k in ((-1, 1.0), (1, back)):
+        me = bpy.data.meshes.new(name)
+        me.from_pydata([(v.x, side * k * H * h, v.y) for v, h in zip(V, hs)], [], [list(f) for f in F])
+        me.update()
+        ny = sum(pl.normal.y for pl in me.polygons)
+        if ny * side < 0:
+            me.flip_normals()
+        for pl in me.polygons:
+            pl.use_smooth = True
+        me.materials.append(m)
+        ob = link(bpy.data.objects.new(name, me))
+        ob.location = loc
+        objs.append(ob)
+    return objs
+
+
 def heart():
     sc = setup()
     Rd = mat("heart", (240, 40, 70), 0.15)
     pts = []
-    for k in range(72):
-        t = k / 72 * 2 * math.pi
-        if t < 0.3 or t > 2 * math.pi - 0.3:      # sin la punta del medio de arriba: un hoyito suave
+    for k in range(96):
+        t = k / 96 * 2 * math.pi
+        if t < 0.3 or t > 2 * math.pi - 0.3:      # sin el pico del medio de arriba: un hoyito suave
             continue
         x = 16 * math.sin(t) ** 3
         y = 13 * math.cos(t) - 5 * math.cos(2 * t) - 2 * math.cos(3 * t) - math.cos(4 * t)
-        pts.append((x / 22, y / 22))
-    pts.append((0, 3.2 / 22))
-    shape(pts[::2] + [pts[-1]], Rd, depth=0.08, bevel=0.16, loc=(0, 0, 0.75), smooth=True)
-    shine((-0.4, -0.25, 1.0), 1.2, rot=(0, R(-40), 0))
+        pts.append((x / 22, y / 22 * (0.85 if y < 0 else 1.0)))
+    pts.append((0, 3.6 / 22))
+    puffy(pts, Rd, H=0.36, loc=(0, 0, 0.75))
+    shine((-0.38, -0.3, 0.98), 1.2, rot=(0, R(-40), 0))
     cam(sc, (0, 0, 0.72), 1.95, height=1.0)
     return sc
 
@@ -994,19 +1171,22 @@ def apple():
 def cookie():
     sc = setup()
     parts = []
-    C = mat("cookie", (215, 150, 80), 0.75)
-    parts.append(cyl((0, 0, 0), 0.65, 0.16, C))
-    parts.append(torus((0, 0, 0), 0.62, 0.08, C))
+    C = mat("cookie", (215, 150, 80), 0.8)
+    C.node_tree.nodes["Principled BSDF"].inputs["Coat Weight"].default_value = 0.0   # sin el reflejo cuadrado de la luz
+    C.node_tree.nodes["Principled BSDF"].inputs["Specular IOR Level"].default_value = 0.2
+    parts.append(sphere((0, 0, 0), (0.66, 0.66, 0.12), C, seg=64))
     K = mat("chip", (85, 50, 35), 0.5)
     random.seed(9)
     for (x, y) in [(-0.3, 0.2), (0.2, 0.3), (0.35, -0.15), (-0.1, -0.3), (0.0, 0.05), (-0.42, -0.15), (0.12, -0.5),
                    (0.45, 0.2), (-0.2, 0.48)]:
-        parts.append(sphere((x, y, 0.08), (0.07, 0.07, 0.05), K, seg=16))
+        z = 0.12 * math.sqrt(max(0, 1 - (x * x + y * y) / 0.66 ** 2))
+        parts.append(sphere((x, y, z), (0.07, 0.07, 0.05), K, seg=16))
     for k in range(18):
         x, y = random.uniform(-0.5, 0.5), random.uniform(-0.5, 0.5)
         if x * x + y * y < 0.25:
-            parts.append(sphere((x, y, 0.085), (0.02, 0.02, 0.012), mat("crumb", (240, 190, 120), 0.8), seg=10))
-    group(parts, (0, 0, 0.6), (R(70), R(-10), 0))
+            z = 0.12 * math.sqrt(max(0, 1 - (x * x + y * y) / 0.66 ** 2))
+            parts.append(sphere((x, y, z), (0.02, 0.02, 0.012), mat("crumb", (240, 190, 120), 0.8), seg=10))
+    group(parts, (0, 0, 0.6), (R(58), R(-10), 0))
     cam(sc, (0, 0, 0.6), 1.65, height=1.0)
     return sc
 
@@ -1022,12 +1202,14 @@ def sea_wave():
     shape(prof, B, depth=0.25, bevel=0.06, loc=(0, 0.15, 0.08), smooth=True)
     inner = [(x * 0.9 - 0.05, z * 0.9 + 0.02) for x, z in prof[1:9]] + [(0.7, 0.62), (0.5, 0.75), (0.1, 0.5), (-0.4, 0.2)]
     shape(inner, Bl, depth=0.02, bevel=0.03, loc=(0, -0.2, 0.08), smooth=True)
-    for (x, z, r) in [(-0.15, 1.12, 0.1), (0.12, 1.3, 0.13), (0.42, 1.35, 0.15), (0.72, 1.24, 0.13), (0.93, 1.03, 0.11),
-                      (1.04, 0.8, 0.08)]:
-        sphere((x, -0.05, z), (r, r, r), W)
-    for (x, z, r) in [(1.2, 1.1, 0.05), (1.25, 0.88, 0.035), (-0.45, 1.05, 0.04)]:
-        sphere((x, -0.1, z), (r, r, r), W)
-    sphere((0, 0.15, 0.05), (1.45, 0.45, 0.12), B)
+    # espuma pegada a la cresta (la forma tiene el borde en x, z + 0.08)
+    for (x, z, r) in [(-0.2, 1.0, 0.1), (0.1, 1.22, 0.13), (0.4, 1.28, 0.15), (0.7, 1.2, 0.13), (0.93, 1.02, 0.11),
+                      (1.03, 0.78, 0.08)]:
+        sphere((x, -0.08, z), (r, r * 0.9, r), W)
+    # mar: bloque redondeado con el borde de arriba ondulado
+    sea = [(1.45, -0.15), (-1.45, -0.15)] + [(-1.45 + 2.9 * k / 16, 0.3 + 0.06 * math.cos(k * math.pi / 2)) for k in range(17)]
+    shape(sea, mat("wavebase", (50, 145, 240), 0.25), depth=0.22, bevel=0.1, loc=(0, -0.05, 0.0), smooth=True,
+          sharp=(0, 1))
     cam(sc, (0, 0, 0.7), 2.8, height=0.8)
     return sc
 
@@ -1043,25 +1225,27 @@ def palm():
         x, z = 0.35 * t ** 2, 0.08 + t * 1.55
         r = 0.15 - 0.05 * t
         sphere((x, 0, z), (r * 1.1, r * 1.1, 0.11), Tr if k % 2 else Td)
-        top = (x, 0, z + 0.05)
-    G = [mat("palmg", (55, 175, 70), 0.5), mat("palmg2", (95, 200, 80), 0.5)]
-    for k, (a, L) in enumerate([(10, 1.0), (55, 0.8), (125, 0.8), (170, 1.0), (215, 0.75), (325, 0.75), (90, 0.6)]):
-        ar = R(a)
-        dx, dy = math.cos(ar), math.sin(ar) * 0.5
-        spine = []
-        for j in range(8):
-            t = j / 7
-            spine.append((top[0] + dx * t * L, top[1] + dy * t * L, top[2] + 0.3 * L * math.sin(t * math.pi * 0.8) - 0.55 * L * t * t))
-        tube(spine, 0.03, G[0])
-        for j in range(1, 8):  # hojitas colgando a los dos lados del nervio
-            t = j / 7
-            w = 0.2 * math.sin(math.pi * (0.2 + 0.75 * t)) + 0.05
-            p = Vector(spine[j])
-            for sy in (-1, 1):
-                o = sphere(tuple(p + Vector((0, sy * 0.04, -w * 0.7))), (0.06, 0.03, w), G[(j + k) % 2], seg=16)
-                o.rotation_euler = (R(sy * 25), R(-25 * math.cos(ar)), ar)
-    for (dx, dz) in [(-0.1, -0.12), (0.1, -0.14), (0.0, -0.24)]:
-        sphere((top[0] + dx, -0.14, top[2] + dz), (0.11, 0.11, 0.11), mat("coco", (120, 75, 40), 0.6))
+        top = Vector((x, 0, z + 0.05))
+    G = [mat("palmg", (55, 175, 70), 0.3), mat("palmg2", (95, 200, 80), 0.3)]
+    Gv = mat("palmv", (150, 225, 110), 0.4)
+    for k, (az, L) in enumerate([(5, 1.05), (50, 0.85), (130, 0.85), (175, 1.05), (225, 0.8), (315, 0.8), (90, 0.7)]):
+        W = 0.3 * L
+
+        def frond(v, L=L, W=W):
+            u = (v.x + 1) / 2
+            w = W * max(0.0, math.sin(math.pi * min(1, max(0.0, u) * 1.05))) ** 0.6
+            cut = 1 - 0.18 * (math.sin(u * 28) > 0.6) * (abs(v.y) > 0.55) * (u > 0.3)   # algunos cortecitos
+            return Vector((u * L, v.y * w * cut, v.z * 0.035 + 0.35 * L * math.sin(u * math.pi * 0.75) - 0.75 * L * u * u))
+        f = sphere((0, 0, 0), (1, 1, 1), G[k % 2], seg=48)
+        deform(f, frond)
+        f.location = top
+        f.rotation_euler = (R(50 * math.cos(R(az))), 0, R(az))
+        spine = [frond(Vector((-1 + 2 * j / 6, 0, 1))) + Vector((0, 0, 0.01)) for j in range(7)]
+        rib = tube([tuple(p) for p in spine], 0.018, Gv)
+        rib.location = top
+        rib.rotation_euler = (R(50 * math.cos(R(az))), 0, R(az))
+    for (dx, dz) in [(-0.13, -0.14), (0.13, -0.16), (0.0, -0.28)]:
+        sphere((top.x + dx, -0.16, top.z + dz), (0.15, 0.14, 0.15), mat("coco", (120, 75, 40), 0.5))
     sphere((0, 0, 0.0), (0.75, 0.45, 0.14), mat("sand", (250, 220, 150), 0.8))
     cam(sc, (0.3, 0, 1.0), 2.6, height=1.2)
     return sc
@@ -1123,6 +1307,10 @@ OBJS = dict(paws=paws, wind=wind, balloon=balloon, feather=feather, strawberry=s
             carrot=carrot, apple=apple, cookie=cookie, sea_wave=sea_wave, palm=palm, mushroom=mushroom,
             snowflake=snowflake)
 
+# Encuadre automático con margen (revisión de calidad: nada tocando los bordes)
+FIT = {"wind", "balloon", "dolphin", "spider", "guitar", "tongue", "shrimp", "eagle", "splash", "microphone",
+       "hands_up", "lightbulb", "moon", "heart", "cookie", "sea_wave", "palm"}
+
 if __name__ == "__main__":
     for name, fn in OBJS.items():
         if M.ONLY and name not in M.ONLY:
@@ -1131,5 +1319,7 @@ if __name__ == "__main__":
         if os.path.exists(p):
             continue
         sc = fn()
+        if name in FIT:
+            fit(sc, 0.05)
         M.render(sc, p)
         print("OK", name, flush=True)
