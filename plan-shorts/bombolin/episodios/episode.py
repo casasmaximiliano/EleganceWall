@@ -1190,11 +1190,15 @@ class Painter:
                 fake = dict(chars=["PIPO", "TOTO", "LULA", "ZUMBI", "ABU"] if W < H else ["PIPO", "ABU"], guests=[],
                             mood="happy")
                 if W > H:
+                    # los personajes articulados son anchos (Abu Tortu): se dibujan con más espacio y se achican,
+                    # así no se tapan entre ellos ni tapan el libro
                     sub = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-                    self.W = int(W * 0.30)
+                    self.W = int(W * 0.50)
                     self.draw_cast(sub, fake, fi, tt, speaking)
                     self.W = W
-                    fr.paste(sub, (int(0.02 * W), 0), sub)
+                    k = 0.58
+                    sub = sub.crop((0, 0, int(W * 0.50), H)).resize((int(W * 0.50 * k), int(H * k)), Image.LANCZOS)
+                    fr.paste(sub, (int(0.005 * W), H - sub.height - int(0.04 * H)), sub)
                 else:
                     self.draw_cast(fr, fake, fi, tt, speaking)
             else:

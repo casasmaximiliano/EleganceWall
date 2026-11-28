@@ -79,7 +79,7 @@ STAGE = {
     (4, 0): [dict(sp="finish", em="🏁", mode="ground", x=0.88, size=0.36, back=True),
              dict(sp="flower_big", em="🌸", mode="ground", x=0.1, size=0.2)],
     (4, 1): [dict(sp="sneakers", em="👟", mode="ground", x=0.14, size=0.1),
-             dict(sp="banana", em="🍌", mode="on", who="TOTO", at=(0.45, 0.45), w=0.4, rot=-20, frm=2)],
+             dict(sp="banana", em="🍌", mode="on", who="ZUMBI", at=(0.0, 0.5), w=0.45, rot=-20, frm=2)],
     (4, 2): [dict(sp="start_line", em="🏁", mode="ground", x=0.5, size=0.1),
              dict(sp="flag", em="🚩", mode="on", who="ABU", at=(0.2, -0.05), w=0.45, rot=10)],
     (4, 3): [dict(sp="start_line", em="🏁", mode="ground", x=0.5, size=0.1),

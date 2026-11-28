@@ -128,7 +128,7 @@ def build_program(n, vdir, cache):
             bump = [dict(kind="bumper", icon=icon, label=label, lines=[("ABU", label)])] if j == 0 else []
             blocks.append(bump + body)
     nxt = E.EPISODES.get(n + 1)
-    tease = f"Mañana: {nxt['tes']}." if nxt else "¡Mañana, una aventura nueva!"
+    tease = f"Mañana: {nxt['tes']}" + ("" if nxt["tes"][-1] in "?!." else ".") if nxt else "¡Mañana, una aventura nueva!"
     closing = [dict(kind="album", lines=[("PIPO", "¡Una figurita nueva para mi Libro de Descubrimientos!"),
                                          ("ABU", f"¡Hoy aprendimos que {ep['les']}!"),
                                          ("ALL", "¡Un, dos, tres, a descubrir otra vez!"), ("ABU", tease)]),
