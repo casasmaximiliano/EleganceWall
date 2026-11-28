@@ -9,8 +9,8 @@ import os
 import bpy  # noqa: F401  (carga mathutils)
 
 from objetos import cam, setup
-from objetos4 import meta, group, shine, fit, INK, R
-from modelos import mat, sphere, torus
+from objetos4 import meta, group, fit, R
+from modelos import mat, sphere
 import modelos as M
 
 
@@ -43,23 +43,34 @@ def _seahorse(s=1.0, loc=(0, 0, 0), body=(255, 170, 50), belly=(255, 230, 150), 
     parts = [meta(tag + "b", B, el)]
     # panza clara con anillitos
     parts.append(meta(tag + "l", L, [((-0.1, -0.06, z), (0.17, 0.17, 0.17)) for z in (0.95, 0.78, 0.6)]))
-    for k, z in enumerate((1.02, 0.88, 0.74, 0.6)):
-        parts.append(torus((-0.14 + 0.01 * k, -0.13, z), 0.12, 0.014,
-                           mat("ring", tuple(min(255, int(c * 0.88)) for c in belly), 0.4),
-                           rot=(R(90), R(20), 0), arc=(0.0, 0.0, 0.5)))
-    # aleta del lomo (abanico) y crestita de la cabeza
+    Ld = mat("sh_d%s" % (belly,), tuple(int(c * 0.85) for c in belly), 0.45)
+    if not baby:
+        # borde de la bolsita: un labio grueso y suave del color de la panza, apenas más oscuro
+        parts.append(meta(tag + "p", Ld, [((-0.13, -0.1, 1.08), (0.16, 0.1, 0.035), (R(-10), 0, R(-5)))]))
+        # un bebé asomando de la bolsita (cabecita, ojitos y cresta): «el papá lleva a los bebés»
+        BB = mat("sh_bb", (120, 200, 255), 0.35)
+        parts.append(meta(tag + "k", BB, [((-0.14, -0.12, 1.15), (0.075, 0.065, 0.07)),
+                                           ((-0.23, -0.13, 1.16), (0.06, 0.03, 0.028), (0, R(10), 0))]))
+        for sx in (-1, 1):
+            parts += M.eye(-0.13 + sx * 0.035, -0.18, 1.17, 0.03, (60, 40, 30), False, BB)
+        for k, x in enumerate((-0.15, -0.11)):
+            parts.append(sphere((x, -0.1, 1.23 - k * 0.01), (0.018, 0.015, 0.03), mat("sh_bf", (150, 120, 255), 0.3)))
+    # aleta del lomo: un abanico con nervaduras suaves
+    parts.append(sphere((0.33, 0.02, 0.8), (0.13, 0.022, 0.2), F))
     for k in range(5):
-        parts.append(sphere((0.3 + 0.02 * k, 0.02, 0.62 + k * 0.09), (0.12, 0.025, 0.045), F))
+        a = R(-50 + k * 25)
+        o = sphere((0.29 + 0.09 * math.cos(a), 0.0, 0.8 + 0.12 * math.sin(a)), (0.11, 0.03, 0.013),
+                   mat("sh_r%s" % (fin,), tuple(int(c * 0.82) for c in fin), 0.3))
+        o.rotation_euler = (0, -a, 0)
+        parts.append(o)
     for k, (x, z) in enumerate([(0.02, 1.8), (0.13, 1.76), (0.21, 1.66)]):
         parts.append(sphere((x, 0, z), (0.06, 0.05, 0.1 - k * 0.015), F))
     # carita de frente (ojo grande y sonrisa); la cámara lo ve de 3/4
     for sx in (-1, 1):
         parts += M.eye(-0.04 + sx * 0.11, -0.17, 1.63, 0.095, (60, 40, 30), False, B)
-    parts.append(torus((-0.12, -0.2, 1.48), 0.05, 0.013, mat("ink", INK, 0.6), rot=(R(90), 0, 0), arc=(0, 0, -1)))
+    parts.append(M.mouth(-0.06, -0.2, 1.47, 0.09, False))  # sonrisita corta al pie del hocico
     for sx in (-1, 1):
         parts.append(sphere((-0.04 + sx * 0.19, -0.18, 1.52), (0.045, 0.02, 0.03), mat("cheek", (255, 140, 160), 0.6)))
-    if not baby:
-        parts.append(shine((-0.06, -0.24, 0.86), 0.8, rot=(0, R(10), 0)))
     return group(parts, loc, (0, 0, R(-18)), s)
 
 
