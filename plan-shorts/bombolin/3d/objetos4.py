@@ -419,13 +419,13 @@ def spider():
     bs = (0.5, 0.45, 0.46)
     sphere(body, bs, P)
     for s in (-1, 1):
-        for k, ph in enumerate((-55, -20, 15, 50)):
+        for k, ph in enumerate((-12, 18, 48, 78)):   # patas a los costados y atrás, lejos de la cara
             a = R(ph)
             u = Vector((s * math.cos(a), math.sin(a), 0))
-            hip = Vector(body) + u * 0.38 + Vector((0, 0, -0.05))
-            knee = hip + u * 0.3 + Vector((0, 0, 0.28))
-            foot = hip + u * 0.58 + Vector((0, 0, -0.5))
-            mid = hip + u * 0.5 + Vector((0, 0, -0.05))
+            hip = Vector(body) + u * 0.4 + Vector((0, 0, -0.14))
+            knee = hip + u * 0.36 + Vector((0, 0, 0.26))
+            foot = hip + u * 0.66 + Vector((0, 0, -0.42))
+            mid = hip + u * 0.56 + Vector((0, 0, -0.04))
             tube([tuple(hip), tuple(knee), tuple(mid), tuple(foot)], 0.07, Pd if k % 2 else P)
             sphere(tuple(foot + u * 0.03 + Vector((0, 0, -0.02))), (0.1, 0.1, 0.06), mat("spshoe", (255, 120, 170), 0.4))
     face(0, ell_y(body, bs, 0, 0.62, -0.08), 0.62, 0.7, P, iris=(60, 40, 90), er=0.26, gap=0.33)
@@ -707,20 +707,25 @@ def shrimp():
     elems.append((tuple(hc), (0.32, 0.28, 0.28)))
     meta("shrbody", Or, elems)
     # placas del caparazón: bandas claras que cruzan el lomo
-    for k in range(1, n - 1):
+    Op = mat("shrplate", (255, 155, 125), 0.3)
+    for k in range(1, n - 1):  # placas apenas en relieve, del mismo coral un poco más claro
         a, r, P = segs[k]
-        N = Vector((math.cos(a), 0, math.sin(a)))
+        a2, r2, P2 = segs[k + 1]
+        Pm = (P + P2) / 2
+        rm = (r + r2) / 2
+        N = Vector((math.cos((a + a2) / 2), 0, math.sin((a + a2) / 2)))
         Y = Vector((0, -1, 0))
-        rr = r * 1.04 + 0.02
-        pts = [tuple(P + rr * (math.cos(R(q)) * N + math.sin(R(q)) * Y)) for q in range(-10, 101, 10)]
-        tube(pts, 0.022, Ol, res=4)
+        rr = rm * 0.98
+        pts = [tuple(Pm + rr * (math.cos(R(q)) * N + math.sin(R(q)) * Y)) for q in range(20, 111, 10)]
+        tube(pts, 0.035, Op, res=4)
     # patitas en el lado de adentro de la C
-    for k in range(1, 6):
+    for k in range(1, 6):  # patitas cortas y redondas pegadas a la panza
         a, r, P = segs[k]
         N = Vector((math.cos(a), 0, math.sin(a)))
-        b = P - N * (r * 0.8) + Vector((0, -0.12, 0))
-        e = P - N * (r + 0.14) + Vector((0, -0.14, 0))
-        tube([tuple(b), tuple(e)], 0.022, Ol, poly=True)
+        b = P - N * (r * 0.55) + Vector((0, -r * 0.45, 0))
+        e = P - N * (r + 0.1) + Vector((0, -r * 0.5, 0))
+        tube([tuple(b), tuple(e)], 0.04, Op, poly=True)
+        sphere(tuple(e), (0.045, 0.045, 0.045), Op)
     # cara
     for (x, z, er) in [(-0.6, 0.8, 0.12), (-0.33, 0.83, 0.11)]:
         M.eye(x, ell_y(hc, (0.32, 0.28, 0.28), x, z, -0.07), z, er, (40, 30, 40), False, Or)
@@ -1040,14 +1045,13 @@ def moon():
     return sc
 
 
-def puffy(pts, m, H=0.25, back=0.5, step=0.03, loc=(0, 0, 0), name="puffy"):
+def puffy(pts, m, H=0.25, back=0.5, step=0.03, loc=(0, 0, 0), name="puffy", hfun=None, smooth=25):
     """Forma 2D «inflada» como un globo (x, z de frente): malla de Delaunay dentro del contorno y cada punto sale
     hacia la cámara según su distancia al borde (alisada). Mantiene las puntas (la del corazón) sin los picos que
     deja el bisel de las curvas en las esquinas agudas."""
     from mathutils import geometry
     P = [Vector(p) for p in pts]
     edges = [(P[i], P[(i + 1) % len(P)]) for i in range(len(P))]
-
     def dist(q):
         best = 1e9
         for A, Bp in edges:
@@ -1080,6 +1084,8 @@ def puffy(pts, m, H=0.25, back=0.5, step=0.03, loc=(0, 0, 0), name="puffy"):
     ds = [dist(Vector(v)) for v in V]
     dmax = max(ds)
     hs = [math.sqrt(max(0.0, 1 - (1 - min(1.0, d / dmax)) ** 2)) for d in ds]
+    if hfun:  # altura propia (p. ej. lóbulos que se funden), siempre 0 en el borde
+        hs = [hfun(Vector(v), h) * math.sqrt(min(1.0, d / 0.07)) for v, h, d in zip(V, hs, ds)]
     nb = [set() for _ in V]
     for f in F:
         for i in range(len(f)):
@@ -1087,7 +1093,7 @@ def puffy(pts, m, H=0.25, back=0.5, step=0.03, loc=(0, 0, 0), name="puffy"):
             nb[a_].add(b_)
             nb[b_].add(a_)
     nP = len(P)
-    for _ in range(25):  # alisar las alturas (sin la «cresta» del medio)
+    for _ in range(smooth):  # alisar las alturas (sin la «cresta» del medio)
         hs = [hs[i] if i < nP else 0.5 * hs[i] + 0.5 * sum(hs[n] for n in nb[i]) / max(1, len(nb[i])) for i in range(len(V))]
     objs = []
     for side, k in ((-1, 1.0), (1, back)):
@@ -1118,7 +1124,14 @@ def heart():
         y = 13 * math.cos(t) - 5 * math.cos(2 * t) - 2 * math.cos(3 * t) - math.cos(4 * t)
         pts.append((x / 22, y / 22 * (0.85 if y < 0 else 1.0)))
     pts.append((0, 3.6 / 22))
-    puffy(pts, Rd, H=0.36, loc=(0, 0, 0.75))
+    def lobes(q, hd, k=9.0, R_=0.38):
+        # dos lóbulos redondos (cúpulas) fundidos con la forma general: sin pliegue bajo el hoyito
+        hs_ = [hd]
+        for cx in (-0.35, 0.35):
+            r2 = (q.x - cx) ** 2 + (q.y - 0.19) ** 2
+            hs_.append(math.sqrt(max(0.0, R_ * R_ - r2)) / R_)
+        return math.log(sum(math.exp(k * h) for h in hs_)) / k - math.log(3) / k * 0.6
+    puffy(pts, Rd, H=0.34, loc=(0, 0, 0.75), step=0.025, smooth=20, hfun=lobes)
     shine((-0.38, -0.3, 0.98), 1.2, rot=(0, R(-40), 0))
     cam(sc, (0, 0, 0.72), 1.95, height=1.0)
     return sc
