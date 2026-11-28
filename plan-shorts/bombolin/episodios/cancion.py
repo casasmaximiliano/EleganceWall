@@ -80,9 +80,30 @@ ESCENAS_CORRER = {
         dict(sp="medal", em="🏅", mode="on", who="ZUMBI", at=(0.0, 0.55), w=0.3)])],
 }
 
+# «Chiki-chiki-brilla» (la canción del cepillo, día 5)
+_TB_P = dict(sp="toothbrush", em="🪥", mode="on", who="PIPO", at=(0.42, 0.45), w=0.35, rot=-20)
+_TB_T = dict(sp="toothbrush", em="🪥", mode="on", who="TOTO", at=(0.42, 0.5), w=0.3, rot=-20)
+_BUB = dict(sp="bubble", em="🫧", mode="rise", n=10)
+ESCENAS_CEPILLO = {
+    "Intro": [("bath", "PIPO TOTO", [_BUB])],
+    "Verse 1": [("bath", "PIPO TOTO", [dict(sp="tooth", em="🦷", mode="sky", x=0.5, y=0.25, size=0.18)]),
+                ("room", "PIPO TOTO", [dict(sp="bed", em="🛏️", mode="ground", x=0.82, size=0.3, back=True),
+                                       dict(_TB_T, frm=1)])],
+    "Chorus": [("bath", "PIPO TOTO LULA:happy ZUMBI", [_TB_P, _TB_T, _BUB]),
+               ("bath", "PIPO TOTO LULA:happy ZUMBI", [_TB_P, _TB_T, dict(mode="sparkle", who="PIPO")])],
+    "Verse 2": [("bath", "PIPO TOTO", [_TB_P, dict(sp="tooth", em="🦷", mode="sky", x=0.5, y=0.25, size=0.18)]),
+                ("bath", "PIPO TOTO", [_TB_T, _BUB])],
+    "Bridge": [("bath", "PIPO TOTO", [dict(sp="drop", em="💧", mode="rise", n=8)]),
+               ("bath", "PIPO TOTO LULA:happy", [dict(mode="sparkle", who="TOTO")])],
+    "Final Chorus": [("bath", "PIPO TOTO LULA:happy ZUMBI ABU", [_TB_P, _TB_T, _BUB])],
+    "Outro": [("room", "PIPO TOTO LULA:happy ZUMBI ABU", [dict(sp="star", em="⭐", mode="sky", x=0.5, y=0.2, size=0.2),
+                                                         dict(mode="sparkle", who="PIPO")])],
+}
+
 SONGS = {
     "plic": dict(escenas=ESCENAS, bpm=112, titulo="¡PLIC, PLIC, PLOC!", nombre="Plic, plic, ploc"),
     "correr": dict(escenas=ESCENAS_CORRER, bpm=124, titulo="¡A CORRER!", nombre="¡A correr!"),
+    "cepillo": dict(escenas=ESCENAS_CEPILLO, bpm=116, titulo="¡CHIKI-CHIKI-BRILLA!", nombre="Chiki-chiki-brilla"),
 }
 
 

@@ -1,0 +1,20 @@
+{"composition_plan": {
+ "positive_global_styles": ["children's song", "preschool cartoon theme", "cheerful", "bouncy", "ukulele", "glockenspiel", "hand claps", "soft drums", "bubbly sound effects", "bright warm female lead vocal", "playful kids-style backing vocals", "Latin American Spanish lyrics", "116 bpm", "major key"],
+ "negative_global_styles": ["sad", "dark", "aggressive", "distorted", "rap", "heavy bass", "explicit"],
+ "sections": [
+  {"section_name": "Intro", "positive_local_styles": ["bubbles", "light", "sparkle sound"], "negative_local_styles": [], "duration_ms": 6000, "lines": []},
+  {"section_name": "Verse 1", "positive_local_styles": ["storytelling", "gentle"], "negative_local_styles": [], "duration_ms": 16000,
+   "lines": ["Toto busca su cepillo,", "¡uy, uy, uy!, ¿dónde estará?", "Bajo la cama, en el bolsillo...", "¡en el vaso está, ja, ja!"]},
+  {"section_name": "Chorus", "positive_local_styles": ["catchy", "sing-along", "claps"], "negative_local_styles": [], "duration_ms": 16000,
+   "lines": ["Arriba, abajo, chiki-chiki-brilla,", "dos minutos, ¡sí!, mañana y noche, ¡sí!", "Espumita de colores,", "¡dientes limpios, qué feliz!"]},
+  {"section_name": "Verse 2", "positive_local_styles": ["playful", "a bit softer"], "negative_local_styles": [], "duration_ms": 16000,
+   "lines": ["Los de adelante, los de atrás,", "las muelitas también van.", "Un poquito de pasta,", "¡y la lengua, ja, ja, ja!"]},
+  {"section_name": "Chorus", "positive_local_styles": ["catchy", "sing-along", "claps", "bigger"], "negative_local_styles": [], "duration_ms": 16000,
+   "lines": ["Arriba, abajo, chiki-chiki-brilla,", "dos minutos, ¡sí!, mañana y noche, ¡sí!", "Espumita de colores,", "¡dientes limpios, qué feliz!"]},
+  {"section_name": "Bridge", "positive_local_styles": ["call and response", "fun", "gargle sound"], "negative_local_styles": [], "duration_ms": 10000,
+   "lines": ["Enjuagamos: ¡gluglú, gluglú!", "Y sonreímos: ¡mira tú!"]},
+  {"section_name": "Final Chorus", "positive_local_styles": ["joyful", "everyone sings", "key change"], "negative_local_styles": [], "duration_ms": 16000,
+   "lines": ["Arriba, abajo, chiki-chiki-brilla,", "dos minutos, ¡sí!, mañana y noche, ¡sí!", "Espumita de colores,", "¡dientes limpios, qué feliz!"]},
+  {"section_name": "Outro", "positive_local_styles": ["happy ending", "spoken-sung tag"], "negative_local_styles": [], "duration_ms": 7000,
+   "lines": ["¡Un, dos, tres, a descubrir otra vez!"]}
+ ]}}

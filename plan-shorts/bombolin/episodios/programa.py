@@ -44,10 +44,11 @@ LABEL = {"B": ("💡", "¿Sabías qué?"), "F": ("🎸", "¡Hora de cantar!"), "
 # letra karaoke; las rimas habladas de la biblioteca («F») ya no entran en el programa.
 PATTERN = [("B", 1), ("SONG", 1), ("E", 2), ("C", 2), ("OTRA", 1), ("E", 2), ("C", 2), ("B", 2), ("SONG", 1), ("E", 2),
            ("C", 2), ("B", 2), ("E", 2)]
-SONG_LIST = ["plic", "correr"]
-SONG_DAY = {4: ["correr", "plic"]}  # el día de la carrera abre con la canción de la carrera
+SONG_LIST = ["plic", "correr", "cepillo"]
+SONG_DAY = {4: ["correr", "plic"], 5: ["cepillo", "correr"]}  # el día de cada historia abre con su canción
 # Renglones de la historia que se cantan con la canción de verdad: texto → (canción, primer renglón, último renglón)
-SUNG = {"¡Plic, plic, ploc, llueve despacito, plic, plic, ploc, ya sale el solcito!": ("plic", 0, 1)}
+SUNG = {"¡Plic, plic, ploc, llueve despacito, plic, plic, ploc, ya sale el solcito!": ("plic", 0, 1),
+        "Arriba, abajo, chiki-chiki-brilla, dos minutos, ¡sí!, mañana y noche, ¡sí!": ("cepillo", 4, 5)}
 
 
 def day_songs(n):
