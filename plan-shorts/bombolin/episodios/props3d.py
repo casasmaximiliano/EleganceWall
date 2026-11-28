@@ -24,7 +24,7 @@ EMOJI3D = {
     "🦁": ("guest", "León"), "🦒": ("guest", "Jirafa"), "🐙": ("guest", "Pulpo"), "🐳": ("guest", "Ballena"),
     "🐋": ("guest", "Ballena"), "🦉": ("guest", "Búho"), "🐿️": ("guest", "Ardilla"), "🐿": ("guest", "Ardilla"),
     "🐰": ("guest", "Conejo"), "🦜": ("guest", "Pájaro"), "🐤": ("guest", "Pájaro"), "🐥": ("guest", "Pájaro"),
-    "🐣": ("guest", "Pájaro"), "🐊": ("guest", "Cocodrilo"), "🦩": ("guest", "Flamenco"), "🐜": ("guest", "Hormiga"),
+    "🐣": ("guest", "Pájaro"), "🐊": ("guest", "Cocodrilo"), "🦩": ("guest", "Flamenco"), "🐜": ("guest", "Hormiga"), "🐴": ("prop", "seahorse"),  # solo se usa para «caballito de mar»
     "🦥": ("guest", "Perezoso"), "🦕": ("guest", "Braquiosaurio"), "🦖": ("guest", "Tricerátops"),
     "🐢": ("guest", "Tortuga"), "🐌": ("guest", "Caracol"), "🦇": ("guest", "Murciélago"), "🐟": ("guest", "Pez"),
     "🐠": ("guest", "Pez"), "🐨": ("guest", "Koala"), "🦫": ("guest", "Castor"), "🦎": ("guest", "Camaleón"),

@@ -150,7 +150,7 @@ EMOJI_KW = [
     ("chimpancé", "🐒"), ("koala", "🐨"), ("camaleón", "🦎"), ("pez", "🐠"), ("branquia", "🐠"), ("edificio", "🏢"),
     ("caracol", "🐌"), ("medalla", "🏅"), ("cohete", "🚀"), ("astronauta", "🚀"), ("tierra", "🌍"), ("canguro", "🦘"),
     ("casa", "🏠"), ("techo", "🏠"), ("trampolín", "🤸"), ("ballena", "🐋"), ("barco", "⛵"), ("halcón", "🦅"),
-    ("arañ", "🕷"), ("hormiga", "🐜"), ("caballito", "🐴"), ("búho", "🦉"), ("pluma", "🪶"), ("perro", "🐶"),
+    ("arañ", "🕷"), ("hormiga", "🐜"), ("caballito de mar", "🐴"), ("caballito", "🐴"), ("búho", "🦉"), ("pluma", "🪶"), ("perro", "🐶"),
     ("pavo", "🦃"), ("frutilla", "🍓"), ("banana", "🍌"), ("manzana", "🍎"), ("kiwi", "🥝"), ("uva", "🍇"),
     ("diente", "🦷"), ("cepillo", "🪥"), ("jabón", "🧼"), ("manos", "🙌"), ("perezoso", "🦥"), ("calendario", "📅"),
     ("espejo", "🪞"), ("lengua", "👅"), ("jirafa", "🦒"), ("cinta métrica", "📏"), ("regla", "📏"), ("agua", "💧"),
