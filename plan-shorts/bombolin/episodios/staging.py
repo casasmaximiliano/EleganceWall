@@ -11,6 +11,7 @@ STAGE[(día, escena)] = lista de objetos. Cada objeto es un dict con "em" (emoji
 - "river":  un río que cruza el piso.
 - "sparkle": brillitos alrededor de un personaje.
 Todos aceptan "from" (número de frase de la escena desde la que aparece; por defecto 0).
+- "guest":  suma un invitado 3D a la escena aunque no hable ("name").
 Si una escena tiene puesta en escena, sus emojis «sueltos» no se dibujan.
 """
 
@@ -73,4 +74,26 @@ STAGE = {
     (3, 12): [dict(mode="puddle", x=0.30, w=0.20, col=(80, 160, 240)), dict(mode="puddle", x=0.72, w=0.24, col=(80, 160, 240)),
               dict(em="💦", mode="orbit", who="ZUMBI", n=3, size=0.06, frm=1),
               dict(sp="rainbow", em="🌈", mode="sky", x=0.5, y=0.16, size=0.24)],
+
+    # Día 4: La gran carrera de Zumbi
+    (4, 0): [dict(sp="finish", em="🏁", mode="ground", x=0.88, size=0.36, back=True),
+             dict(sp="flower_big", em="🌸", mode="ground", x=0.1, size=0.2)],
+    (4, 1): [dict(sp="sneakers", em="👟", mode="ground", x=0.14, size=0.1),
+             dict(sp="banana", em="🍌", mode="on", who="TOTO", at=(0.45, 0.45), w=0.4, rot=-20, frm=2)],
+    (4, 2): [dict(sp="start_line", em="🏁", mode="ground", x=0.5, size=0.1),
+             dict(sp="flag", em="🚩", mode="on", who="ABU", at=(0.2, -0.05), w=0.45, rot=10)],
+    (4, 3): [dict(sp="start_line", em="🏁", mode="ground", x=0.5, size=0.1),
+             dict(sp="flag", em="🚩", mode="on", who="ABU", at=(0.2, -0.05), w=0.45, rot=10)],
+    (4, 4): [dict(sp="wind", em="💨", mode="sky", x=0.2, y=0.45, size=0.16),
+             dict(sp="flower_big", em="🌸", mode="ground", x=0.92, size=0.18, back=True)],
+    (4, 5): [dict(sp="flower_big", em="🌸", mode="ground", x=0.08, size=0.18, back=True)],
+    (4, 6): [dict(sp="car", em="🚗", mode="ground", x=0.8, size=0.16, frm=0)],
+    (4, 7): [dict(mode="guest", name="Mariquita"), dict(sp="leaf", em="🍃", mode="ground", x=0.75, size=0.1)],
+    (4, 8): [dict(sp="water_bottle", em="💧", mode="on", who="PIPO", at=(0.42, 0.45), w=0.28, rot=-10),
+             dict(sp="tree", em="🌳", mode="ground", x=0.9, size=0.45, back=True)],
+    (4, 9): [dict(sp="leaves", em="🍃", mode="ground", x=0.12, size=0.1)],
+    (4, 10): [dict(sp="flower_big", em="🌸", mode="ground", x=0.9, size=0.2, back=True)],
+    (4, 11): [dict(sp="finish", em="🏁", mode="ground", x=0.5, size=0.42, back=True),
+              dict(sp="confetti", em="🎉", mode="sky", x=0.5, y=0.2, size=0.3),
+              dict(sp="medal", em="🏅", mode="on", who="ZUMBI", at=(0.0, 0.55), w=0.3, frm=1)],
 }

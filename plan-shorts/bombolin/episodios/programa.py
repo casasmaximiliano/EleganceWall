@@ -60,7 +60,8 @@ def scene_seg(sc, key=None):
     seg = dict(kind="scene", theme=th, props=props, chars=chars, guests=guests, mood=mood,
                lines=[(x[0].replace("_", " "), x[1]) for x in lines], idx=0)
     if E.STYLE2 and key in STAGE:
-        seg["stage"] = [it for it in STAGE[key] if it["mode"] != "theme"]
+        seg["stage"] = [it for it in STAGE[key] if it["mode"] not in ("theme", "guest")]
+        seg["guests"] = guests + [it["name"] for it in STAGE[key] if it["mode"] == "guest" and it["name"] not in guests]
         for it in STAGE[key]:
             if it["mode"] == "theme" and os.path.exists(os.path.join(E.BG3D_DIR or "", it["name"] + "_h.png")):
                 seg["theme"] = it["name"]  # escenario más adecuado (p. ej. el baño) si ya está renderizado
