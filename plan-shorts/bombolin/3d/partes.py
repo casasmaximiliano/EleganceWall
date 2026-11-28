@@ -89,11 +89,16 @@ def build(who, m, c, v=None):
 # ------------------------------------------------------------------ retoques (solo en las capas; modelos.py no cambia)
 def fix_pipo(sc, v):
     """La panza amarilla casi coincide con la superficie del cuerpo arriba: se ve una línea fantasma (z-fighting).
-    Se la adelanta 6 mm y se agranda 1 % en profundidad."""
+    Se la adelanta 6 mm y se agranda 1 % en profundidad; además la boca ya no proyecta sombra sobre la panza."""
+    sc.eevee.taa_render_samples = 96
+    sc.eevee.shadow_ray_count = 2
     for o in geo():
         if base(o) == "belly":
             o.location.y -= 0.006
             o.scale.y *= 1.01
+        # la sonrisa y la boca proyectaban un arco de sombra granulado arriba de la panza
+        if base(o) in ("smile", "mouth", "tongue", "eyew", "iris", "pupil", "glint", "glint2", "lid", "lidline", "cheek"):
+            o.visible_shadow = False
 
 
 def fix_lula(sc, v):
