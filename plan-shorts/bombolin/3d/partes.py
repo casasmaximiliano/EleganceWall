@@ -331,7 +331,9 @@ def choose_order(who, rig, tag):
         back = [p] + order
         i = order.index("body") + 1
         both = [p] + order[:i] + [p + "_front"] + order[i:]  # entera detrás + parte visible delante
-        order = min((back, both), key=lambda o: err(compose(who, rig, tag, o), ref)[0])
+        # la parte «_front» solo si mejora de verdad: al girar, su borde recortado puede tapar la panza
+        eb, ef = (err(compose(who, rig, tag, o), ref)[0] for o in (back, both))
+        order = both if ef < eb - 0.05 else back
     return order
 
 
