@@ -230,6 +230,14 @@ GUEST3D_DIR = os.environ.get("BOMBOLIN_GUESTS3D")
 GUEST_ALIAS = {"Gatito": ("Gato", 1.0), "Pajarito": ("Pájaro", 1.0), "Mamá Avestruz": ("Avestruz", 1.15),
                "Avestruz bebé": ("Avestruz", 0.7), "Mamá Cocodrilo": ("Cocodrilo", 1.1)}
 _GST = {}
+# Tamaño relativo de cada invitado (1 = alto normal de un invitado, parecido a Toto): una hormiga no mide como un elefante
+GUEST_SIZE = {"Hormiga": 0.38, "Mariquita": 0.42, "Caracol": 0.45, "Colibrí": 0.45, "Abeja": 0.45, "Mariposa": 0.5,
+              "Pájaro": 0.55, "Pez": 0.55, "Rana": 0.55, "Camaleón": 0.6, "Murciélago": 0.6, "Ardilla": 0.6,
+              "Tortuga": 0.6, "Pato": 0.65, "Búho": 0.7, "Conejo": 0.7, "Gallina": 0.75, "Gato": 0.75, "Cerdito": 0.75,
+              "Castor": 0.75, "Perrito": 0.8, "Koala": 0.8, "Pulpo": 0.8, "Pingüino": 0.85, "Oveja": 0.9, "Mono": 0.9,
+              "Cocodrilo": 0.9, "Perezoso": 0.9, "León": 0.95, "Guepardo": 1.0, "Canguro": 1.1, "Vaca": 1.15,
+              "Ballena": 1.15, "Tricerátops": 1.2, "Flamenco": 1.2, "Elefante": 1.3, "Avestruz": 1.4, "Jirafa": 1.6,
+              "Braquiosaurio": 1.7}
 
 
 def guest_img(name, mouth, h):
@@ -255,7 +263,11 @@ def guest_img(name, mouth, h):
     if im is None:
         return None
     hh = int(h * k)
-    return im.resize((max(1, int(im.width * hh / im.height)), hh), Image.BILINEAR)
+    ww = max(1, int(im.width * hh / im.height))
+    if ww > hh * 1.6:  # ballena, murciélago, mariposa: que no ocupen media pantalla
+        hh = int(hh * hh * 1.6 / ww)
+        ww = max(1, int(im.width * hh / im.height))
+    return im.resize((ww, hh), Image.BILINEAR)
 
 
 def has_prop(it):
@@ -700,6 +712,8 @@ class Painter:
                 g3 = None
                 if STYLE2:
                     gh = int((0.40 if land else 0.0) * H * sc) or int(340 * sc)
+                    gbase = GUEST_ALIAS.get(g, (g, 1.0))[0]
+                    gh = int(gh * GUEST_SIZE.get(gbase, 1.0))
                     g3 = guest_img(g, 1 if (talking and int(tt * 8) % 2 == 0) else 0,
                                    int(gh * (1 + 0.04 * abs(math.sin(tt * 7))) if talking else gh))
                 e = g3 if g3 is not None else emoji(em, int(0.36 * H * sc * amp) if land else int(300 * sc * amp))
