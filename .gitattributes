@@ -1,1 +1,1 @@
-*.bin filter=lfs diff=lfs merge=lfs -text
+# Los videos de más de 95 MB se agregan acá uno por uno (Git LFS), p. ej.: Bombolin_DiaNN_*.mp4 filter=lfs diff=lfs merge=lfs -text
