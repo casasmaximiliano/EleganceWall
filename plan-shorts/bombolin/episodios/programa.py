@@ -37,9 +37,34 @@ LIB = {
     "C": ["C01", "C03", "C02", "C06", "C04", "C10", "C05", "C07", "C09", "C11", "C12", "C13", "C14", "C15", "C16",
           "C17", "C18", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08", "D09", "D10"],
 }
-LABEL = {"B": ("💡", "¿Sabías qué?"), "F": ("🎸", "¡Hora de cantar!"), "E": ("🎲", "¡Hora de jugar!"),
+LABEL = {"B": ("💡", "¿Sabías qué?"), "F": ("🎸", "¡Hora de cantar!"), "SONG": ("🎸", "¡Hora de cantar!"),
+         "E": ("🎲", "¡Hora de jugar!"),
          "C": ("📚", "¡Un cuento cortito!"), "OTRA": ("⭐", "¡Otra aventura de Bombolín!")}
-PATTERN = [("B", 1), ("F", 2), ("E", 2), ("C", 2), ("OTRA", 1), ("F", 2), ("E", 2), ("C", 2), ("B", 2), ("F", 2), ("E", 2), ("C", 2), ("F", 2), ("E", 2)]
+# Desde el 28/11, «¡Hora de cantar!» es siempre una canción cantada de verdad (canciones/, ElevenLabs Music) con
+# letra karaoke; las rimas habladas de la biblioteca («F») ya no entran en el programa.
+PATTERN = [("B", 1), ("SONG", 1), ("E", 2), ("C", 2), ("OTRA", 1), ("E", 2), ("C", 2), ("B", 2), ("SONG", 1), ("E", 2),
+           ("C", 2), ("B", 2), ("E", 2)]
+SONG_LIST = ["plic", "correr"]
+SONG_DAY = {4: ["correr", "plic"]}  # el día de la carrera abre con la canción de la carrera
+# Renglones de la historia que se cantan con la canción de verdad: texto → (canción, primer renglón, último renglón)
+SUNG = {"¡Plic, plic, ploc, llueve despacito, plic, plic, ploc, ya sale el solcito!": ("plic", 0, 1)}
+
+
+def day_songs(n):
+    if n in SONG_DAY:
+        return list(SONG_DAY[n])
+    k = n % len(SONG_LIST)
+    return SONG_LIST[k:] + SONG_LIST[:k]
+
+
+def song_block(sid):
+    """«¡Hora de cantar!»: presentación + pedacito de la canción (cantada, con karaoke y baile) + aviso de la completa."""
+    import cancion
+    icon, label = LABEL["SONG"]
+    body = cancion.clip(sid)
+    tail = dict(kind="scene", theme="show", props=[], chars=["PIPO", "ABU"], guests=[], mood="happy", idx=0,
+                lines=[("ABU", f"¡La canción completa de «{cancion.SONGS[sid]['nombre']}» está en el canal!")])
+    return [dict(kind="bumper", icon=icon, label=label, lines=[("ABU", label)])] + body + [tail]
 
 
 def story(n):
@@ -60,7 +85,12 @@ def scene_seg(sc, key=None):
     seg = dict(kind="scene", theme=th, props=props, chars=chars, guests=guests, mood=mood,
                lines=[(x[0].replace("_", " "), x[1]) for x in lines], idx=0)
     if E.STYLE2 and key in STAGE:
-        seg["stage"] = [it for it in STAGE[key] if it["mode"] not in ("theme", "guest")]
+        seg["stage"] = [it for it in STAGE[key] if it["mode"] not in ("theme", "guest", "race")]
+        for it in STAGE[key]:
+            if it["mode"] == "race":  # carrera: pista que se mueve (3d/carrera.py); si no está, la pradera de siempre
+                seg["race"] = it
+                if os.path.exists(os.path.join(E.BG3D_DIR or "", "track_near_h.png")):
+                    seg["theme"] = "track"
         seg["guests"] = guests + [it["name"] for it in STAGE[key] if it["mode"] == "guest" and it["name"] not in guests]
         for it in STAGE[key]:
             if it["mode"] == "theme" and os.path.exists(os.path.join(E.BG3D_DIR or "", it["name"] + "_h.png")):
@@ -81,12 +111,27 @@ def lib_pick(kind, n, used):
 
 def timeline(segs, vdir, cache):
     events, tt = [], 0.05
+    base = 0.0
     for si, sg in enumerate(segs):
         sg["t0"] = tt if si else 0.0
+        if sg.get("clip"):  # pedacito de canción: tiempos fijos de la canción, el audio va entero en «bed»
+            c = sg["clip"]
+            if c.get("first"):
+                base = tt
+            sg["t0"] = base + c["t0"]
+            for ev in c["events"]:
+                events.append(dict(t=base + ev["t"], a=ev["a"], sp="ALL", text=ev["text"], seg=si, mute=True,
+                                   words=[(x + base, y + base) for (x, y) in ev["words"]] if ev["words"] else None))
+            tt = base + c["t1"]
+            sg["t1"] = tt
+            continue
         if sg["kind"] == "title":
             tt += 0.6
         for sp, text in sg["lines"]:
-            if sp == "ALL":
+            if sp == "ALL" and text in SUNG:  # se canta con la canción de verdad
+                import cancion
+                a = cancion.sung_line(*SUNG[text])
+            elif sp == "ALL":
                 a = R.chorus(text, vdir, cache)
             elif sp.startswith("G:"):
                 g = sp[2:]
@@ -115,8 +160,13 @@ def build_program(n, vdir, cache):
     head += [scene_seg(sc, (n, i + 1)) for i, sc in enumerate(st[1:])]
     # bloques de relleno (en orden), con su presentación
     used, blocks = set(), []
+    songs = day_songs(n)
     for kind, count in PATTERN:
         icon, label = LABEL[kind]
+        if kind == "SONG":
+            if songs:
+                blocks.append(song_block(songs.pop(0)))
+            continue
         if kind == "OTRA":
             if n - 1 not in E.EPISODES:
                 continue
@@ -156,6 +206,8 @@ def program_picks(n):
     for kind, count in PATTERN:
         if kind == "OTRA":
             break
+        if kind not in LIB:
+            continue
         picks += [(kind, lib_pick(kind, n, used)) for _ in range(count)]
     return picks
 

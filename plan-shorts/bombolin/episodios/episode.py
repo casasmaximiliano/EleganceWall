@@ -365,8 +365,47 @@ def vignette(im, k=0.28):
     return Image.fromarray(arr)
 
 
+_TRACK = {}
+
+
+def track_layers(W, H):
+    """Capas de la pista de carrera (3d/carrera.py): cerca (rápida) y lejos (lenta), repetidas sin costura."""
+    if (W, H) in _TRACK:
+        return _TRACK[(W, H)]
+    res = None
+    pn = os.path.join(BG3D_DIR or "", "track_near_h.png")
+    pf = os.path.join(BG3D_DIR or "", "track_far_h.png")
+    if W > H and os.path.exists(pn) and os.path.exists(pf):
+        from PIL import ImageEnhance, ImageFilter
+
+        def prep(p, blur):
+            im = Image.open(p).convert("RGBA").resize((2 * W, H), Image.LANCZOS)
+            im = ImageEnhance.Color(im).enhance(1.12 if STYLE2 else 1.2)
+            if blur:  # desenfoque suave premultiplicado (sin bordes oscuros contra el cielo)
+                a = np.asarray(im).astype(np.float32) / 255
+                pm = a.copy()
+                pm[..., :3] *= pm[..., 3:4]
+                bl = np.asarray(Image.fromarray((pm * 255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(blur)))
+                bl = bl.astype(np.float32) / 255
+                al = np.maximum(bl[..., 3:4], 1e-4)
+                out = np.concatenate([np.clip(bl[..., :3] / al, 0, 1), bl[..., 3:4]], -1)
+                im = Image.fromarray((out * 255).astype(np.uint8), "RGBA")
+            dbl = Image.new("RGBA", (4 * W, H))
+            dbl.paste(im, (0, 0))
+            dbl.paste(im, (2 * W, 0))
+            return dbl
+        c1, c2 = SKY["meadow"]
+        sky = vgrad(W, H, c1, c2).convert("RGBA")
+        yy, xx = np.mgrid[0:H, 0:W]
+        r = np.sqrt(((xx - W / 2) / (W / 2)) ** 2 + ((yy - H / 2) / (H / 2)) ** 2)
+        vig = (1 - 0.28 * np.clip(r - 0.6, 0, 1) ** 1.6).astype(np.float32)[..., None]
+        res = dict(near=prep(pn, 2.2 if STYLE2 else 0), far=prep(pf, 3.0 if STYLE2 else 0), sky=sky, vig=vig)
+    _TRACK[(W, H)] = res
+    return res
+
+
 def background(theme, W, H, seed):
-    key = {"board": "meadow", "title": "meadow"}.get(theme, theme)
+    key = {"board": "meadow", "title": "meadow", "track": "meadow"}.get(theme, theme)
     if BG3D_DIR:
         p = os.path.join(BG3D_DIR, f"{key}_{'h' if W > H else 'v'}.png")
         if os.path.exists(p):
@@ -605,14 +644,23 @@ def mix_audio(segs, events, total, fmt_short):
     n = int(total * SR) + SR
     voice = np.zeros(n, np.float32)
     for ev in events:
+        if ev.get("mute"):
+            continue
         a = int(ev["t"] * SR)
         voice[a:a + len(ev["a"])] += ev["a"][: n - a]
+    for sg in segs:  # canciones: el audio completo del pedacito
+        bed = (sg.get("clip") or {}).get("bed")
+        if bed is not None:
+            a = int(sg["t0"] * SR)
+            voice[a:a + len(bed)] += bed[: max(0, n - a)] * 0.9
     mus = R.music(total + 1, "F" if fmt_short else "A", False)[:n]
     # la música sube en la presentación, en las transiciones y en el final; baja con las voces
     env = np.full(n, 0.06, np.float32)
     for sg in segs:
         if sg["kind"] in ("title", "end", "bumper"):
             env[int(sg["t0"] * SR):int(sg["t1"] * SR)] = 0.16
+        if sg.get("clip"):
+            env[int(sg["t0"] * SR):int(sg["t1"] * SR)] = 0.0
     k = int(0.5 * SR)
     c = np.cumsum(np.concatenate([[0.0], env.astype(np.float64)]))
     lo = np.clip(np.arange(n) - k // 2, 0, n)
@@ -676,6 +724,60 @@ class Painter:
         self.hide = {}
         self.box = {}
         self.variant = {}
+        self.race, self.race_cur, self.race_v, self.race_off, self.race_li = {}, None, 0.0, 0.0, (-1, 9.0)
+        off = 0.0
+        for si, s in enumerate(segs):
+            r = s.get("race")
+            if not r or not STYLE2 or not track_layers(W, H):
+                continue
+            f0, f1 = int(s["t0"] * FPS), int(s["t1"] * FPS) + 2
+            evs = [e["t"] for e in events if e["seg"] == si]
+            v, vs, offs, start = r.get("v0", 0.0), [], [], off
+            for f in range(f0, f1):
+                t = f / FPS
+                if "stop_at" in r:  # llegada: frena hasta quedar quieto en la meta
+                    v = r.get("v0", 0.0) * max(0.0, 1 - (t - s["t0"]) / r["stop_at"])
+                else:
+                    li = sum(1 for x in evs if x <= t) - 1
+                    vl = r.get("v", [0.0])
+                    tgt = r.get("v0", 0.0) if li < 0 else vl[min(li, len(vl) - 1)]
+                    v += (tgt - v) * min(1.0, (1 / FPS) / 0.35)
+                off += v * W / FPS
+                vs.append(v)
+                offs.append(off)
+            self.race[si] = dict(f0=f0, v=np.array(vs), off=np.array(offs), start=start, end=off, cfg=r)
+
+    def track_bg(self, off):
+        """Fondo de la carrera: el cielo quieto, las lomas lentas y la pista rápida (paralaje)."""
+        W, H = self.W, self.H
+        tl = track_layers(W, H)
+        fr = tl["sky"].copy()
+        xf = int(off * 0.3) % (2 * W)
+        fr.alpha_composite(tl["far"].crop((xf, 0, xf + W, H)))
+        xn = int(off) % (2 * W)
+        fr.alpha_composite(tl["near"].crop((xn, 0, xn + W, H)))
+        arr = (np.asarray(fr.convert("RGB")).astype(np.float32) * tl["vig"]).clip(0, 255).astype(np.uint8)
+        return Image.fromarray(arr)
+
+    def lead_dx(self, who):
+        """Corrimiento en pantalla de un corredor según la frase (se adelanta, se queda atrás, llega desde un costado)."""
+        rc = self.race_cur
+        if not rc or who not in rc["cfg"].get("lead", {}):
+            return 0.0
+        vals = rc["cfg"]["lead"][who]
+        li, since = self.race_li
+        cur = vals[min(max(li, 0), len(vals) - 1)]
+        prev = vals[min(max(li - 1, 0), len(vals) - 1)]
+        k = min(1.0, since / 0.8)
+        k = 1 - (1 - k) ** 3
+        return prev + (cur - prev) * k
+
+    def world_dx(self, it):
+        """Objetos pegados a la pista (largada, meta): se mueven con el piso."""
+        rc = self.race_cur
+        if not rc or not it.get("world"):
+            return 0.0
+        return -(self.race_off - rc["start"]) if it["world"] == "start" else (rc["end"] - self.race_off)
 
     def bg(self, si, theme):
         if si not in self.bgs:
@@ -701,8 +803,11 @@ class Painter:
         base_y = 0.97 * H if land else 0.745 * H
         x0, x1 = (0.12 * W, 0.88 * W) if land else (0.0, W)
         pos = {}
+        run = min(1.0, self.race_v / 0.3) if self.race_cur else 0.0
         for i, it in enumerate(items):
             px = int(x0 + (x1 - x0) * (i + 0.5) / k) if land else int(W * (i + 1) / (k + 1))
+            px += int(self.lead_dx(it) * W)
+            ph = tt * (2.0 + 5.0 * min(self.race_v, 0.6)) + i * 0.37  # paso de carrera
             pos[it] = px
             if it.startswith("G:"):
                 g = it[2:]
@@ -723,6 +828,12 @@ class Painter:
                     if talking or (speaking and speaking != it):
                         e = e.rotate(3 * math.sin(tt * 3 + i), resample=Image.BICUBIC, expand=True)
                     top = int(base_y - e.height + 0.01 * e.height)
+                    if run > 0.02:  # invitado corriendo (el canguro salta alto)
+                        if run > 0.1:
+                            self.dust(frame, px, e.width, base_y, tt, i, run)
+                        hop = abs(math.sin(math.pi * ph * (0.6 if g == "Canguro" else 1.0))) * 0.03 * H * run
+                        top -= int(hop * (4.0 if g == "Canguro" else 1.0))
+                        e = e.rotate(-6 * run, resample=Image.BICUBIC, expand=True)
                     frame.alpha_composite(e, (px - e.width // 2, max(0, top)))
                     self.heads[it] = (px, top + e.height * 0.3)
                     self.box[it] = (px, top, e.width, e.height)
@@ -753,7 +864,7 @@ class Painter:
                 bounce = 0.0
                 if is_sp:  # habla «con el cuerpo»: se estira y se aplasta sin despegarse del suelo
                     sq = 1 + 0.045 * abs(math.sin(tt * 7))
-                if sg.get("dance"):  # video musical: saltitos y balanceo al ritmo de la canción
+                if sg.get("dance") and run <= 0.02:  # video musical: saltitos y balanceo al ritmo de la canción
                     beat = tt * sg["dance"] / 60 + (0.5 if i % 2 else 0.0)
                     bounce = abs(math.sin(math.pi * beat)) * 0.035 * H
                     sq = 1 + 0.05 * math.cos(2 * math.pi * beat)
@@ -782,8 +893,13 @@ class Painter:
                     tilt = 2.5 * (1 if dx < 0 else -1)
                 # respiración
                 sq *= 1 + 0.012 * math.sin(tt * 2.4 + i * 1.7)
-                if sg.get("dance"):
+                if sg.get("dance") and run <= 0.02:
                     tilt = 6.0 * math.sin(math.pi * (tt * sg["dance"] / 60) / 2 + i)
+                if run > 0.02:  # corre: rebota a cada paso, se inclina hacia adelante y se estira y aplasta
+                    amp = {"PIPO": 1.5, "ZUMBI": 0.4, "LULA": 0.3, "ABU": 0.6}.get(c, 1.0)
+                    bounce += abs(math.sin(math.pi * ph)) * 0.035 * H * run * amp
+                    tilt += -7.0 * run
+                    sq *= 1 + 0.03 * math.cos(2 * math.pi * ph) * run
             hh = int(bh * sc * sq)
             ww = int(spr.width * hh / spr.height / sq)
             crouch = self.hide.get(c, 0.0) if STYLE2 else 0.0
@@ -819,7 +935,10 @@ class Painter:
                 if excl:
                     k_ = math.sin(min(1.0, since / 0.7) * math.pi)
                     ra, rb = ra + 45 * k_, rb + 45 * k_
-                if sg.get("dance"):
+                if run > 0.02:  # brazos que van y vienen al correr
+                    sw = math.sin(math.pi * ph)
+                    ra, rb = 20 + 35 * sw * run, 20 - 35 * sw * run
+                if sg.get("dance") and run <= 0.02:
                     beat = tt * sg["dance"] / 60
                     ra = 35 * abs(math.sin(math.pi * beat))
                     rb = 35 * abs(math.sin(math.pi * beat + math.pi / 2))
@@ -854,6 +973,8 @@ class Painter:
                 sh.ellipse([px - sw_, base_y - ww * 0.06, px + sw_, base_y + ww * 0.06], fill=(0, 0, 0, 45 if lift else 70))
                 sink = 0
             top = int(base_y - hh - bounce - lift + sink)
+            if run > 0.1 and c not in ("ZUMBI", "LULA"):
+                self.dust(frame, px, ww, base_y, tt, i, run)
             hide = self.hide.get(c, 0.0)
             if hide < 0:
                 top += int(hide * hh)
@@ -864,11 +985,22 @@ class Painter:
         self.last_pos = dict(pos)
         return pos
 
+    def dust(self, frame, px, ww, base_y, tt, i, run):
+        """Nubecitas de polvo que quedan atrás de los pies al correr."""
+        W, H = self.W, self.H
+        d = ImageDraw.Draw(frame, "RGBA")
+        for k in range(4):
+            age = (tt * 2.2 + k / 4 + i * 0.13) % 1.0
+            x = px - ww * 0.3 - age * 0.12 * W * min(1.0, self.race_v / 0.4)
+            y = base_y - 0.012 * H - age * 0.03 * H
+            r = (0.012 + 0.03 * age) * H * run
+            d.ellipse([x - r, y - r, x + r, y + r], fill=(245, 230, 205, int(150 * (1 - age))))
+
     def ambient(self, bg, theme, tt):
         """Vida en el fondo: mariposas en la pradera, luciérnagas de noche, copos de nieve, brillitos en el cuarto."""
         W, H = self.W, self.H
         d = ImageDraw.Draw(bg, "RGBA")
-        if theme in ("meadow", "board"):
+        if theme in ("meadow", "board", "track"):
             for k in range(3):
                 x = (0.15 + 0.35 * k) * W + 0.12 * W * math.sin(tt * 0.45 + k * 2.1)
                 y = (0.35 + 0.08 * k) * H + 0.06 * H * math.sin(tt * 0.9 + k)
@@ -933,7 +1065,9 @@ class Painter:
             elif m == "ground":
                 sz = int(it["size"] * H)
                 e = prop_img(it["sp"], h=sz) if has_prop(it) else emoji(it["em"], sz)
-                cx = it["x"] * W
+                cx = it["x"] * W + self.world_dx(it)
+                if cx < -e.width or cx > W + e.width:
+                    continue
                 bot = by - (0.10 * H if it.get("back") else 0.025 * H)
                 shd = soft_shadow(int(e.width * 0.42), 0.45)
                 layer.alpha_composite(shd, (int(cx - shd.width / 2), int(bot - shd.height / 2)))
@@ -1212,7 +1346,17 @@ class Painter:
                 self.text(d, W // 2, int(0.86 * H), TXT[self.lang]["show"], int(0.05 * H), (255, 255, 255), sw=6)
         else:
             theme = sg["theme"]
-            bgl = self.bg(si, theme).copy()
+            rc = self.race.get(si)
+            self.race_cur = rc
+            if rc:  # carrera: el piso se mueve según la velocidad de cada frase
+                j = min(len(rc["off"]) - 1, max(0, fi - rc["f0"]))
+                self.race_v, self.race_off = float(rc["v"][j]), float(rc["off"][j])
+                mine = [e["t"] for e in self.events if e["seg"] == si and e["t"] <= tt]
+                self.race_li = (len(mine) - 1, tt - mine[-1] if mine else tt - sg["t0"])
+                bgl = self.track_bg(self.race_off)
+            else:
+                self.race_v = 0.0
+                bgl = self.bg(si, theme).copy()
             sg = dict(sg, props=self.props_now(sg, si, tt)) if sg.get("line_props") else sg
             self.draw_props(bgl, sg, st, tt)
             if STYLE2:
@@ -1221,7 +1365,8 @@ class Painter:
             self.heads = {}
             self.box = {}
             stage = sg.get("stage") or []
-            if STYLE2 and not stage and sg.get("theme") != "board" and sg.get("props"):
+            if STYLE2 and not stage and not sg.get("race") and not sg.get("clip") and sg.get("theme") != "board" \
+                    and sg.get("props"):
                 pr = list(sg["props"])[:3]
                 if sg.get("closing"):
                     stage = [dict(em=pr[0], mode="ground", x=0.88, size=0.15 if W > H else 0.10)]
@@ -1257,7 +1402,10 @@ class Painter:
             fr.alpha_composite(cam_crop(layer, cx, cy, z, W, H))
             fr = fr.convert("RGB")
         d = ImageDraw.Draw(fr, "RGBA")
-        if ev and sg["kind"] == "scene" and R.is_countdown(ev["text"]):
+        if ev and sg["kind"] == "scene" and sg.get("clip") and ev.get("words") and ev["text"] != "♪":
+            import cancion
+            cancion.karaoke(self, d, ev, tt)
+        if ev and sg["kind"] == "scene" and not sg.get("clip") and not sg.get("dance") and R.is_countdown(ev["text"]):
             dur = len(ev["a"]) / SR
             k = int(min(2, (tt - ev["t"]) / (dur / 3)))
             ph = ((tt - ev["t"]) % (dur / 3)) / (dur / 3)

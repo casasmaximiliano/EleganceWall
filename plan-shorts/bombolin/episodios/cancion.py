@@ -3,7 +3,7 @@
 La canción se genera aparte (ElevenLabs Music, con plan de composición en JSON: secciones, duración y letra).
 Este script arma las escenas siguiendo las secciones, hace bailar a los personajes al ritmo y muestra la letra.
 
-Uso: python3 cancion.py PLAN.json CANCION.mp3 SALIDA.mp4 [--vertical] [--desde S --hasta S]
+Uso: python3 cancion.py ID SALIDA.mp4 [--vertical] [--desde S --hasta S]   (ID = carpeta en canciones/: plic, correr)
 Variables: las mismas del programa (BOMBOLIN_ESTILO=2, BOMBOLIN_SPRITES3D, BOMBOLIN_BG3D, BOMBOLIN_OBJ3D).
 """
 import argparse
@@ -24,6 +24,8 @@ import programa as P  # noqa: E402
 R = E.R
 SR = R.SR
 BPM = 112
+
+CANC = os.path.join(os.path.dirname(HERE), "canciones")  # canciones/<id>/plan.json, cancion.mp3 y cancion_align.json
 
 # Escenas de «Plic, plic, ploc» por sección: fondo, personajes y puesta en escena (misma sintaxis que staging.py)
 ESCENAS = {
@@ -51,6 +53,52 @@ ESCENAS = {
 }
 
 
+# «¡A correr!» (la canción de la carrera): en la pista que se mueve (mode="race", ver staging.py)
+_RUN = dict(mode="race", v0=0.35, v=[0.35])
+ESCENAS_CORRER = {
+    "Intro": [("meadow", "PIPO ZUMBI TOTO ABU", [dict(mode="race", v=[0.0]),
+                                               dict(sp="start_line", em="🏁", mode="ground", x=0.5, size=0.1),
+                                               dict(sp="flag", em="🚩", mode="on", who="ABU", at=(0.2, -0.05), w=0.45, rot=10)])],
+    "Verse 1": [("meadow", "PIPO ZUMBI TOTO ABU", [dict(mode="race", v0=0.3, v=[0.35], lead=dict(ZUMBI=[0.08], ABU=[-0.05]))]),
+                ("meadow", "PIPO TOTO ABU", [dict(mode="race", v0=0.3, v=[0.3])])],
+    "Chorus": [("meadow", "PIPO TOTO LULA:happy ZUMBI", [dict(mode="race", v0=0.4, v=[0.42])]),
+               ("meadow", "PIPO ZUMBI ABU G:Mariquita", [dict(mode="race", v0=0.3, v=[0.3, 0.0], lead={"G:Mariquita": [1.2, 0.0]})])],
+    "Verse 2": [("meadow", "PIPO ZUMBI", [dict(mode="race", v=[0.0]),
+                                         dict(sp="water_bottle", em="💧", mode="on", who="PIPO", at=(0.42, 0.45), w=0.28, rot=-10)]),
+                ("meadow", "PIPO ZUMBI ABU", [dict(mode="race", v0=0.12, v=[0.12])])],
+    "Bridge": [("meadow", "PIPO G:Guepardo", [dict(mode="race", v0=0.55, v=[0.6], lead={"G:Guepardo": [0.05]})]),
+               ("meadow", "PIPO ABU", [dict(mode="race", v0=0.08, v=[0.08])]),
+               ("meadow", "PIPO G:Canguro", [dict(mode="race", v0=0.32, v=[0.32])])],
+    "Final Chorus": [("meadow", "PIPO TOTO LULA:happy ZUMBI ABU", [dict(mode="race", v0=0.35, v=[0.35])]),
+                     ("meadow", "PIPO TOTO LULA:happy ZUMBI ABU", [
+                         dict(mode="race", v0=0.8, stop_at=1.4),
+                         dict(sp="finish", em="🏁", mode="ground", x=0.5, size=0.42, back=True, world="end"),
+                         dict(sp="confetti", em="🎉", mode="sky", x=0.5, y=0.2, size=0.3)])],
+    "Outro": [("meadow", "PIPO TOTO LULA:happy ZUMBI ABU", [
+        dict(mode="race", v=[0.0]), dict(sp="finish", em="🏁", mode="ground", x=0.5, size=0.42, back=True),
+        dict(sp="confetti", em="🎉", mode="sky", x=0.5, y=0.2, size=0.3),
+        dict(sp="medal", em="🏅", mode="on", who="ZUMBI", at=(0.0, 0.55), w=0.3)])],
+}
+
+SONGS = {
+    "plic": dict(escenas=ESCENAS, bpm=112, titulo="¡PLIC, PLIC, PLOC!", nombre="Plic, plic, ploc"),
+    "correr": dict(escenas=ESCENAS_CORRER, bpm=124, titulo="¡A CORRER!", nombre="¡A correr!"),
+}
+
+
+def load_song(sid):
+    """Plan, audio mono (a la frecuencia del programa) y alineación de una canción de canciones/<sid>."""
+    d = os.path.join(CANC, sid)
+    plan = json.load(open(os.path.join(d, "plan.json")))
+    wav = os.path.join(d, "_mono.wav")
+    if not os.path.exists(wav):
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", os.path.join(d, "cancion.mp3"), "-ac", "1", "-ar", str(SR), wav],
+                       check=True)
+    song = R.read_wav(wav)
+    al = os.path.join(d, "cancion_align.json")
+    return plan, song, (json.load(open(al)) if os.path.exists(al) else None)
+
+
 def line_times(plan, align):
     """Tiempos reales de cada palabra (alineación de ElevenLabs) repartidos por renglón de la letra."""
     words = [w for w in align["words"] if w["text"].strip()]
@@ -64,7 +112,8 @@ def line_times(plan, align):
     return out
 
 
-def build(plan, song, align=None):
+def build(plan, song, align=None, escenas=None, bpm=BPM):
+    escenas = escenas or ESCENAS
     secs = plan["composition_plan"]["sections"]
     total = len(song) / SR
     lt_all = line_times(plan, align) if align else None
@@ -87,7 +136,7 @@ def build(plan, song, align=None):
         name = sec["section_name"]
         k = seen.get(name, 0)
         seen[name] = k + 1
-        opts = ESCENAS.get(name, ESCENAS["Chorus"])
+        opts = escenas.get(name, escenas["Chorus"])
         mine = [r for r in rows if r["sec"] == si_]
         nxt = [r for r in rows if r["sec"] > si_]
         sec_end = (nxt[0]["st"] - 0.25) if nxt else total
@@ -102,7 +151,13 @@ def build(plan, song, align=None):
             t0 = sec_start if j == 0 else g[0]["st"] - 0.25
             t1 = (groups[j + 1][0]["st"] - 0.25) if j + 1 < len(groups) else sec_end
             sg = dict(kind="scene", theme=th, props=[], chars=chars, guests=guests, mood=mood, idx=0,
-                      lines=[("ALL", r["text"]) for r in g] or [("ALL", "♪")], stage=stage, dance=BPM, t0=t0, t1=t1)
+                      lines=[("ALL", r["text"]) for r in g] or [("ALL", "♪")],
+                      stage=[it for it in stage if it["mode"] != "race"], dance=bpm, t0=t0, t1=t1)
+            for it in stage:
+                if it["mode"] == "race":  # carrera: pista que se mueve (si está renderizada)
+                    sg["race"] = it
+                    if os.path.exists(os.path.join(E.BG3D_DIR or "", "track_near_h.png")):
+                        sg["theme"] = "track"
             segs.append(sg)
             for r in g:
                 a = song[int(r["st"] * SR):int(r["en"] * SR)]
@@ -110,6 +165,79 @@ def build(plan, song, align=None):
         sec_start = sec_end
     segs[-1]["t1"] = max(segs[-1]["t1"], total)
     return segs, events, total
+
+
+def karaoke(P, d, ev, tt):
+    """Letra tipo karaoke: cada palabra se pinta de amarillo cuando se canta."""
+    W, H = P.W, P.H
+    words = ev["text"].split()
+    dur = max(0.3, len(ev["a"]) / SR)
+    if ev.get("words"):
+        k = sum(1 for (ws, we) in ev["words"] if ws <= tt) - 1
+    else:
+        k = min(len(words) - 1, int((tt - ev["t"]) / dur * len(words) * 1.05))
+    sz = int(0.062 * H) if W > H else 74
+    f = E.font(E.F700, sz)
+    full = " ".join(words)
+    while d.textlength(full, font=f) > W - 100 and sz > 36:
+        sz -= 4
+        f = E.font(E.F700, sz)
+    y = int(0.91 * H) if W > H else 1560
+    x = (W - d.textlength(full, font=f)) / 2
+    d.rounded_rectangle([x - 30, y - sz * 0.8, W - x + 30, y + sz * 0.8], 30, fill=(40, 30, 70, 150))
+    for j, w in enumerate(words):
+        col = (255, 214, 60) if j <= k else (255, 255, 255)
+        d.text((x, y), w + " ", font=f, fill=col, anchor="lm", stroke_width=6, stroke_fill=E.INK)
+        x += d.textlength(w + " ", font=f)
+
+
+def clip(sid, a=None, b=None):
+    """Pedacito de una canción para el programa: escenas y eventos con tiempos relativos al inicio del pedacito.
+    Por defecto, desde un poco antes de la primera estrofa hasta el final del primer estribillo."""
+    cfg = SONGS[sid]
+    plan, song, align = load_song(sid)
+    segs, events, total = build(plan, song, align, cfg["escenas"], cfg["bpm"])
+    if a is None or b is None:
+        secs = plan["composition_plan"]["sections"]
+        names = [s_["section_name"] for s_ in secs]
+        ci = names.index("Chorus")
+        lt = line_times(plan, align)
+        n_before = sum(len(s_["lines"]) for s_ in secs[:ci + 1])
+        b = lt[n_before - 1][-1][1] + 1.6  # fin del primer estribillo
+        first = next(x for x in lt if x)
+        a = max(0.0, first[0][0] - 3.0)
+    out = []
+    for si_, sg in enumerate(segs):
+        t0, t1 = max(sg["t0"], a), min(sg["t1"], b)
+        if t1 - t0 < 0.3:
+            continue
+        evs = []
+        for ev in events:
+            if ev["seg"] == si_ and a <= ev["t"] < b:
+                evs.append(dict(t=ev["t"] - a, a=ev["a"], text=ev["text"],
+                                words=[(x - a, y - a) for (x, y) in ev["words"]] if ev.get("words") else None))
+        s2 = {k: v for k, v in sg.items() if k not in ("t0", "t1", "lines")}
+        s2.update(clip=dict(t0=t0 - a, t1=t1 - a, events=evs), lines=[])
+        out.append(s2)
+    bed = song[int(a * SR):int(b * SR)].copy()
+    fi, fo = int(0.4 * SR), int(1.4 * SR)
+    bed[:fi] *= np.linspace(0, 1, fi)
+    bed[-fo:] *= np.linspace(1, 0, fo)
+    out[0]["clip"]["bed"] = bed
+    out[0]["clip"]["first"] = True
+    out[-1]["clip"]["t1"] = b - a
+    return out
+
+
+def sung_line(sid, i0, i1):
+    """Audio cantado de los renglones i0..i1 de la letra (para que en la historia se cante de verdad)."""
+    plan, song, align = load_song(sid)
+    lt = line_times(plan, align)
+    s0, s1 = lt[i0][0][0] - 0.15, lt[i1][-1][1] + 0.5
+    a = song[int(s0 * SR):int(s1 * SR)].copy()
+    fo = int(0.4 * SR)
+    a[-fo:] *= np.linspace(1, 0, fo)
+    return a
 
 
 class SongPainter(E.Painter):
@@ -128,48 +256,25 @@ class SongPainter(E.Painter):
             if e["t"] - 0.15 <= tt < e["t"] + len(e["a"]) / SR + 0.6:
                 ev = e
         if ev is not None and ev["text"] != "♪" and tt < ev["t"] + len(ev["a"]) / SR + 0.6:
-            d = ImageDraw.Draw(fr, "RGBA")
-            W, H = self.W, self.H
-            words = ev["text"].split()
-            dur = max(0.3, len(ev["a"]) / SR)
-            if ev.get("words"):
-                k = sum(1 for (ws, we) in ev["words"] if ws <= tt) - 1
-            else:
-                k = min(len(words) - 1, int((tt - ev["t"]) / dur * len(words) * 1.05))
-            sz = int(0.062 * H) if W > H else 74
-            f = E.font(E.F700, sz)
-            full = " ".join(words)
-            while d.textlength(full, font=f) > W - 100 and sz > 36:
-                sz -= 4
-                f = E.font(E.F700, sz)
-            y = int(0.91 * H) if W > H else 1560
-            x = (W - d.textlength(full, font=f)) / 2
-            d.rounded_rectangle([x - 30, y - sz * 0.8, W - x + 30, y + sz * 0.8], 30, fill=(40, 30, 70, 150))
-            for j, w in enumerate(words):
-                col = (255, 214, 60) if j <= k else (255, 255, 255)
-                d.text((x, y), w + " ", font=f, fill=col, anchor="lm", stroke_width=6, stroke_fill=E.INK)
-                x += d.textlength(w + " ", font=f)
+            karaoke(self, ImageDraw.Draw(fr, "RGBA"), ev, tt)
         return fr
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("plan")
-    ap.add_argument("song")
+    ap.add_argument("sid", help="id de la canción en canciones/ (plic, correr)")
     ap.add_argument("out")
     ap.add_argument("--vertical", action="store_true")
     ap.add_argument("--desde", type=float, default=0)
     ap.add_argument("--hasta", type=float, default=0)
-    ap.add_argument("--titulo", default="¡PLIC, PLIC, PLOC!")
+    ap.add_argument("--titulo", default=None)
     a = ap.parse_args()
     E.FPS = 60
-    plan = json.load(open(a.plan))
-    wav = a.out + ".wav"
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", a.song, "-ac", "1", "-ar", str(SR), wav], check=True)
-    song = R.read_wav(wav)
-    al = a.song[:-4] + "_align.json"
-    align = json.load(open(al)) if os.path.exists(al) else None
-    segs, events, total = build(plan, song, align)
+    cfg = SONGS[a.sid]
+    a.titulo = a.titulo or cfg["titulo"]
+    a.song = os.path.join(CANC, a.sid, "cancion.mp3")
+    plan, song, align = load_song(a.sid)
+    segs, events, total = build(plan, song, align, cfg["escenas"], cfg["bpm"])
     W, H = (1080, 1920) if a.vertical else (1920, 1080)
     ep = dict(E.EPISODES[3])
     f0 = int(a.desde * E.FPS)
@@ -185,7 +290,6 @@ def main():
         pr.stdin.write(Pn.frame(fi, a.titulo if fi - f0 < 3 * E.FPS else None).convert("RGB").tobytes())
     pr.stdin.close()
     pr.wait()
-    os.remove(wav)
     print("OK", a.out, round((f1 - f0) / E.FPS, 1))
 
 

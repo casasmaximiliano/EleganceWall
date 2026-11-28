@@ -1,0 +1,20 @@
+{"composition_plan": {
+ "positive_global_styles": ["children's song", "preschool cartoon theme", "energetic", "bouncy", "marching band snare", "ukulele", "xylophone", "hand claps", "whistle", "bright warm female lead vocal", "playful kids-style backing vocals", "Latin American Spanish lyrics", "124 bpm", "major key"],
+ "negative_global_styles": ["sad", "dark", "aggressive", "distorted", "rap", "heavy bass", "explicit"],
+ "sections": [
+  {"section_name": "Intro", "positive_local_styles": ["starting whistle", "drum roll", "count-in"], "negative_local_styles": [], "duration_ms": 6000, "lines": ["¡En sus marcas, listos... ya!"]},
+  {"section_name": "Verse 1", "positive_local_styles": ["storytelling", "light"], "negative_local_styles": [], "duration_ms": 16000,
+   "lines": ["Zumbi vuela, zum, zum, zum,", "Toto rueda, pum, pum, pum,", "Bombolín salta sin parar,", "¡y Abu Tortu va a llegar!"]},
+  {"section_name": "Chorus", "positive_local_styles": ["catchy", "sing-along", "claps", "running feel"], "negative_local_styles": [], "duration_ms": 16000,
+   "lines": ["¡A correr, a correr, un pasito y otro más!", "¡A correr, a correr, nadie se queda atrás!", "Si un amigo se cayó,", "¡lo ayudamos, sí señor!"]},
+  {"section_name": "Verse 2", "positive_local_styles": ["playful", "a bit softer"], "negative_local_styles": [], "duration_ms": 16000,
+   "lines": ["Hace calor, ¡qué sed, qué sed!,", "tomo agüita y sigo después.", "Despacito, sin parar,", "¡paso a paso vamos a llegar!"]},
+  {"section_name": "Chorus", "positive_local_styles": ["catchy", "sing-along", "claps", "bigger"], "negative_local_styles": [], "duration_ms": 16000,
+   "lines": ["¡A correr, a correr, un pasito y otro más!", "¡A correr, a correr, nadie se queda atrás!", "Si un amigo se cayó,", "¡lo ayudamos, sí señor!"]},
+  {"section_name": "Bridge", "positive_local_styles": ["call and response", "slow then fast", "fun"], "negative_local_styles": [], "duration_ms": 12000,
+   "lines": ["Rápido como el guepardo, ¡fiuuum!", "Lento como la tortuga, ¡mmm!", "Salto como el canguro, ¡hop, hop, hop!"]},
+  {"section_name": "Final Chorus", "positive_local_styles": ["joyful", "everyone sings", "key change", "cheering crowd"], "negative_local_styles": [], "duration_ms": 16000,
+   "lines": ["¡A correr, a correr, un pasito y otro más!", "¡A correr, a correr, nadie se queda atrás!", "Llegamos todos juntos,", "¡el mejor premio es la amistad!"]},
+  {"section_name": "Outro", "positive_local_styles": ["happy ending", "cheer", "spoken-sung tag"], "negative_local_styles": [], "duration_ms": 7000,
+   "lines": ["¡Un, dos, tres, a descubrir otra vez!"]}
+ ]}}

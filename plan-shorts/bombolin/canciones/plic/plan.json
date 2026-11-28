@@ -1,0 +1,20 @@
+{"composition_plan": {
+ "positive_global_styles": ["children's song", "preschool cartoon theme", "cheerful", "bouncy", "ukulele", "xylophone", "hand claps", "soft drums", "bright warm female lead vocal", "playful backing vocals", "Latin American Spanish lyrics", "112 bpm", "major key"],
+ "negative_global_styles": ["sad", "dark", "aggressive", "distorted", "rap", "heavy bass", "explicit"],
+ "sections": [
+  {"section_name": "Intro", "positive_local_styles": ["rain drops sound on xylophone", "light"], "negative_local_styles": [], "duration_ms": 7000, "lines": []},
+  {"section_name": "Verse 1", "positive_local_styles": ["gentle", "storytelling"], "negative_local_styles": [], "duration_ms": 18000,
+   "lines": ["Plic, plic, ploc, llueve despacito,", "plic, plic, ploc, ya sale el solcito.", "Lula la nube no tiene miedo,", "cuenta los truenos: ¡uno, dos, tres!"]},
+  {"section_name": "Chorus", "positive_local_styles": ["catchy", "sing-along", "claps"], "negative_local_styles": [], "duration_ms": 18000,
+   "lines": ["¡Plic, plic, ploc! ¡Canta la lluvia!", "¡Plic, plic, ploc! ¡Salto en el charco!", "Las gotitas bailan en la ventana,", "¡y después sale el arcoíris!"]},
+  {"section_name": "Verse 2", "positive_local_styles": ["playful", "a bit softer"], "negative_local_styles": [], "duration_ms": 18000,
+   "lines": ["Si el cielo ruge, ¡bum, bum, bum!,", "abrazo a mi osito y respiro: ¡uf!", "Con mis amigos estoy seguro,", "¡la tormenta ya se va!"]},
+  {"section_name": "Chorus", "positive_local_styles": ["catchy", "sing-along", "claps", "bigger"], "negative_local_styles": [], "duration_ms": 18000,
+   "lines": ["¡Plic, plic, ploc! ¡Canta la lluvia!", "¡Plic, plic, ploc! ¡Salto en el charco!", "Las gotitas bailan en la ventana,", "¡y después sale el arcoíris!"]},
+  {"section_name": "Bridge", "positive_local_styles": ["call and response", "fun"], "negative_local_styles": [], "duration_ms": 12000,
+   "lines": ["¿Cuántos colores? ¡Rojo, naranja, amarillo!", "¡Verde, azul y violeta, qué lindo brillo!"]},
+  {"section_name": "Final Chorus", "positive_local_styles": ["joyful", "everyone sings", "key change"], "negative_local_styles": [], "duration_ms": 18000,
+   "lines": ["¡Plic, plic, ploc! ¡Canta la lluvia!", "¡Plic, plic, ploc! ¡Salto en el charco!", "Las gotitas bailan en la ventana,", "¡y después sale el arcoíris!"]},
+  {"section_name": "Outro", "positive_local_styles": ["happy ending", "spoken-sung tag"], "negative_local_styles": [], "duration_ms": 8000,
+   "lines": ["¡Un, dos, tres, a descubrir otra vez!"]}
+ ]}}
