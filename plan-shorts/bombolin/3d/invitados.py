@@ -103,13 +103,14 @@ def bez(p0, p1, p2, p3=None):
     return lambda t: tuple((1 - t) ** 3 * P[0] + 3 * (1 - t) ** 2 * t * P[1] + 3 * (1 - t) * t * t * P[2] + t ** 3 * P[3])
 
 
-def beak(base, length, r, m, open_, up=0.0, lower_ratio=0.75):
+def beak(base, length, r, m, open_, up=0.0, lower_ratio=0.75, gap=(14, 24), merge=False):
     """Pico de pájaro hacia −Y desde base. Abierto: se separan las dos mitades y se ve la boca."""
     x, y, z = base
-    a_up = math.radians(90 - up - (14 if open_ else 0))
+    a_up = math.radians(90 - up - (gap[0] if open_ else 0))
     cone((x, y - length * 0.45, z + r * 0.25), r, 0.0, length, m, rot=(a_up, 0, 0), name="beakU")
-    a_lo = math.radians(90 - up + (24 if open_ else 0))
-    cone((x, y - length * 0.4 * lower_ratio, z - r * 0.35), r * 0.85, 0.0, length * lower_ratio, m, rot=(a_lo, 0, 0), name="beakL")
+    a_lo = math.radians(90 - up + (gap[1] if open_ else 0))
+    zl = z - r * (0.05 if (merge and not open_) else 0.35)
+    cone((x, y - length * 0.4 * lower_ratio, zl), r * 0.85, 0.0, length * lower_ratio, m, rot=(a_lo, 0, 0), name="beakL")
     if open_:
         sphere((x, y - length * 0.2, z - r * 0.1), (r * 0.8, length * 0.3, r * 0.7), mat("mouth", (95, 20, 40), 0.7), name="mouthin")
 
@@ -397,13 +398,19 @@ def pinguino(o):
     bc, br = (0, 0, 0.85), (0.58, 0.5, 0.78)
     sphere(bc, br, K, name="body")
     sphere((0, -0.2, 0.7), (0.45, 0.35, 0.6), W, name="belly")
-    for s in (-1, 1):  # ojos sobre la cabeza oscura (contraste) y carita blanca abajo
-        lc, lr = (s * 0.16, -0.22, 1.08), (0.22, 0.26, 0.2)
-        sphere(lc, lr, W, name="mask")
-        eye(s * 0.2, surf_y(bc, br, s * 0.2, 1.33) + 0.025, 1.33, 0.11, (60, 110, 200), False, K)
-        sphere((s * 0.3, surf_y(lc, lr, s * 0.3, 1.04) + 0.005, 1.04), (0.07, 0.03, 0.045), mat("cheek", PINK, 0.6), name="cheek")
-    yb = surf_y((0.16, -0.22, 1.08), (0.22, 0.26, 0.2), 0, 1.12)
-    beak((0, yb + 0.05, 1.14), 0.26, 0.11, Or, o)
+    # una sola máscara blanca en forma de corazón, pegada a la cara (dos lóbulos arriba y la punta abajo)
+    M2 = mat("pengmask", (250, 250, 255), 0.45)
+    mr = (br[0] * 1.02, br[1] * 1.02, br[2] * 1.02)  # pegada a la superficie: lóbulos finos y anchos
+    for s in (-1, 1):
+        patch(bc, br, s * 20, 34, 0.29, M2, flat=0.12)
+    patch(bc, br, 0, 24, 0.26, M2, flat=0.12, sx=1.1)
+    patch(bc, br, 0, 14, 0.2, M2, flat=0.16)
+    for s in (-1, 1):
+        x = s * 0.19
+        eye(x, surf_y(bc, br, x, 1.32) - 0.0, 1.32, 0.15, (60, 110, 200), False, M2)
+        sphere((s * 0.3, surf_y(bc, br, s * 0.3, 1.12) - 0.03, 1.12), (0.07, 0.03, 0.045), mat("cheek", PINK, 0.6), name="cheek")
+    yb = surf_y(bc, br, 0, 1.12) - 0.03
+    beak((0, yb + 0.07, 1.12), 0.36, 0.15, Or, o, gap=(16, 32), lower_ratio=0.85, merge=True)
     for s in (-1, 1):
         w = sphere((s * 0.58, 0.0, 0.8), (0.1, 0.2, 0.42), K, name="flipper")
         w.rotation_euler = (0, s * math.radians(-25), 0)
@@ -1010,6 +1017,18 @@ def murcielago(o):
     return sc
 
 
+def band_slice(c, r, scale, y0, half, m):
+    """Banda que rodea el cuerpo: rebanada (entre y0-half e y0+half) de un elipsoide apenas más grande."""
+    o = sphere(c, (r[0] * scale, r[1] * scale, r[2] * scale), m, seg=64, name="band")
+    bpy.ops.object.mode_set(mode="EDIT")
+    bpy.ops.mesh.select_all(action="SELECT")
+    bpy.ops.mesh.bisect(plane_co=(0, y0 + half, 0), plane_no=(0, 1, 0), clear_outer=True)
+    bpy.ops.mesh.select_all(action="SELECT")
+    bpy.ops.mesh.bisect(plane_co=(0, y0 - half, 0), plane_no=(0, 1, 0), clear_inner=True)
+    bpy.ops.object.mode_set(mode="OBJECT")
+    return o
+
+
 def pez(o):
     sc = setup()
     Or = mat("fish", (255, 120, 60), 0.3)
@@ -1018,10 +1037,9 @@ def pez(o):
     Bl = mat("fishfin", (80, 170, 255), 0.35)
     bc, br = (0, 0, 0.75), (0.5, 0.62, 0.6)
     sphere(bc, br, Or, name="body")
-    for y, half in ((0.12, 0.075), (0.42, 0.06)):  # bandas blancas con borde oscuro
-        k = math.sqrt(1 - (y / br[1]) ** 2)
-        sphere((0, y, 0.75), (br[0] * k * 1.03, half + 0.018, br[2] * k * 1.03), Ln, name="bandline")
-        sphere((0, y, 0.75), (br[0] * k * 1.055, half, br[2] * k * 1.055), W, name="band")
+    for y, half in ((-0.1, 0.105), (0.36, 0.1)):  # bandas blancas anchas que rodean el cuerpo, con borde oscuro
+        band_slice(bc, br, 1.025, y, half + 0.025, Ln)
+        band_slice(bc, br, 1.04, y, half, W)
     eyes(bc, br, 0.22, 0.9, 0.15, (40, 90, 200), Or, lashes=True)
     cheeks(bc, br, 0.33, 0.7, 0.08)
     put_mouth(bc, br, 0.6, 0.22, o)
