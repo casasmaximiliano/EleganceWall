@@ -131,9 +131,30 @@ _fc = {}
 _em_master, _em = {}, {}
 
 
+MISSING_3D = set()  # emojis que se dibujaron sin modelo 3D (la auditoría los lista)
+
+
 def emoji(ch, size):
-    """Emoji en caché: se dibuja una vez y se reescala a tamaños cuantizados (rápido)."""
+    """Emoji en caché: se dibuja una vez y se reescala a tamaños cuantizados (rápido).
+    En estilo 2 se usa el modelo 3D equivalente si existe (regla del canal: nada de emojis en pantalla)."""
     size = max(16, int(size) // 8 * 8)
+    if STYLE2:
+        from props3d import EMOJI3D
+        m3 = EMOJI3D.get(ch)
+        key3 = ("3d", ch, size)
+        if key3 in _em:
+            return _em[key3]
+        im = None
+        if m3 and m3[0] == "prop" and OBJ3D_DIR and os.path.exists(os.path.join(OBJ3D_DIR, m3[1] + ".png")):
+            im = prop_img(m3[1], h=size)
+        elif m3 and m3[0] == "guest":
+            im = guest_img(m3[1], 0, size)
+        if im is not None:
+            if im.width > size * 1.3:  # que entre en el mismo recuadro que el emoji
+                im = im.resize((int(size * 1.3), max(1, int(im.height * size * 1.3 / im.width))), Image.LANCZOS)
+            _em[key3] = im
+            return im
+        MISSING_3D.add(ch)
     key = (ch, size)
     if key not in _em:
         if ch not in _em_master:
