@@ -132,6 +132,22 @@ def flag():
     return sc
 
 
+def side_stripe(c, r, side, m, tilt, off, w=0.035, scale=1.025):
+    """Raya curva pegada al costado del zapato: rebanada fina e inclinada de un elipsoide apenas más grande."""
+    o = sphere(c, (r[0] * scale, r[1] * scale, r[2] * scale), m, seg=64)
+    n = (0.0, math.cos(math.radians(tilt)), math.sin(math.radians(tilt)))
+    base = (c[0], c[1] + n[1] * off, c[2] + n[2] * off)
+    bpy.ops.object.mode_set(mode="EDIT")
+    for d, keep_neg in ((w, True), (-w, False)):
+        bpy.ops.mesh.select_all(action="SELECT")
+        co = (base[0], base[1] + n[1] * d, base[2] + n[2] * d)
+        bpy.ops.mesh.bisect(plane_co=co, plane_no=n, clear_outer=keep_neg, clear_inner=not keep_neg)
+    bpy.ops.mesh.select_all(action="SELECT")
+    bpy.ops.mesh.bisect(plane_co=(c[0] + side * r[0] * 0.55, 0, 0), plane_no=(side, 0, 0), clear_inner=True)
+    bpy.ops.object.mode_set(mode="OBJECT")
+    return o
+
+
 def sneaker(x, rotz, col, stripe):
     W = mat("sole", (255, 255, 255), 0.5)
     C = mat("shoe" + str(col), col, 0.4)
@@ -142,10 +158,9 @@ def sneaker(x, rotz, col, stripe):
     parts.append(sphere((x, 0.2, 0.4), (0.21, 0.24, 0.2), C))           # talón alto
     parts.append(torus((x, 0.18, 0.56), 0.13, 0.04, mat("collar", (255, 255, 255), 0.5)))
     parts.append(sphere((x, -0.42, 0.2), (0.19, 0.12, 0.1), W))          # puntera
-    for s in (-1, 1):  # raya de color pegada al costado
-        for k in range(2):
-            o = patch((x, 0.05, 0.25), (0.24, 0.5, 0.17), s * (100 - 25 * k), 5 + 10 * k, 0.09, S, flat=0.25, sx=0.6)
-            parts.append(o)
+    for s in (-1, 1):  # dos rayas curvas pegadas a cada costado
+        for off in (-0.08, 0.1):
+            parts.append(side_stripe((x, 0.05, 0.25), (0.24, 0.5, 0.17), s, S, tilt=-35, off=off))
     for k in range(3):
         z = 0.37 + k * 0.035
         y = -0.12 + k * 0.1
@@ -271,15 +286,18 @@ def flower_big():
 
 def start_line():
     sc = setup()
-    box((0, 0, 0.01), (3.0, 0.5, 0.02), mat("paint", (255, 255, 255), 0.6), 0.005)
-    sq = 0.16
+    box((0, 0, 0.01), (3.0, 1.0, 0.02), mat("paint", (255, 255, 255), 0.6), 0.005)
+    sq = 0.3
     for row in range(2):
         for i in range(int(3.0 / sq)):
             if (i + row) % 2 == 0:
-                box((-1.5 + sq / 2 + i * sq, -0.08 - sq / 2 + row * sq + 0.08, 0.022), (sq, sq, 0.005), mat("chk", INK, 0.5), 0.0)
-    for x in (-1.6, 1.6):  # conitos en las puntas
-        cone((x, 0, 0.18), 0.12, 0.02, 0.36, mat("cone", (255, 130, 30), 0.45))
-    frame(sc, pad=1.05, rise=3.5)
+                box((-1.5 + sq / 2 + i * sq, -sq + sq / 2 + row * sq, 0.022), (sq, sq, 0.005), mat("chk", INK, 0.5), 0.0)
+    for x in (-1.75, 1.75):  # conos altos en las puntas, con franjas blancas
+        cone((x, 0, 0.55), 0.26, 0.05, 1.1, mat("cone", (255, 130, 30), 0.45))
+        box((x, 0, 0.03), (0.6, 0.6, 0.06), mat("cone", (255, 130, 30), 0.45), 0.03)
+        for z, r in ((0.42, 0.18), (0.72, 0.12)):
+            cyl((x, 0, z), r + 0.02, 0.09, mat("white", (255, 255, 255), 0.4))
+    frame(sc, pad=1.05, rise=4.9)
     return sc
 
 
