@@ -649,6 +649,8 @@ class Painter:
     def __init__(self, W, H, ep, lang, segs, events, nf, short):
         self.W, self.H, self.ep, self.lang, self.segs, self.events, self.short = W, H, ep, lang, segs, events, short
         self.sp = load_3d_sprites(SPRITE_DIR) if SPRITE_DIR else build_sprites()
+        from rig import load_rigs
+        self.rigs = load_rigs(os.environ.get("BOMBOLIN_RIG"), self.sp) if STYLE2 else {}
         self.heads = {}
         self.talk = talk_env(events, nf)
         self.nf = nf
@@ -774,11 +776,56 @@ class Painter:
             if crouch > 0:  # se agacha: más bajito y un poco más ancho, con los pies en el piso
                 hh = int(hh * (1 - crouch))
                 ww = int(ww * (1 + 0.25 * crouch))
-            s2 = spr.resize((ww, hh), Image.BILINEAR)
+            rg = self.rigs.get(c) if not self.variant.get(c) else None
+            rig_pad = 0
+            if rg is not None:
+                # personaje articulado: brazos, cabeza, ojos y alas según lo que pasa en la escena
+                ev_ = self.cur_ev
+                since = (tt - ev_["t"]) if ev_ is not None else 9.0
+                excl = ev_ is not None and is_sp and ev_["text"].strip().endswith("!") and since < 0.7
+                others = [p for o, p in self.last_pos.items() if o != c]
+                if is_sp and others:
+                    gx = max(-1.0, min(1.0, (sum(others) / len(others) - px) / (0.25 * W)))
+                elif speaking and speaking in self.last_pos and speaking != c:
+                    gx = max(-1.0, min(1.0, (self.last_pos[speaking] - px) / (0.25 * W)))
+                else:
+                    gx = 0.5 * math.sin(tt * 0.6 + i * 1.3)
+                gx += 0.12 * math.sin(tt * 2.3 + i)  # pequeños movimientos de ojos
+                gy = -0.15 + 0.1 * math.sin(tt * 1.1 + i)
+                if is_sp:
+                    head = 6 * math.sin(tt * 3.2 + i)
+                    ra = 18 + 14 * math.sin(tt * 5.5 + i)
+                    rb = 12 + 14 * math.sin(tt * 4.3 + i + 1.7)
+                elif speaking:
+                    head = (4 if gx < 0 else -4) + 2 * math.sin(tt * 4.5 + i)  # inclina la cabeza hacia el que habla
+                    ra = rb = 4 + 3 * math.sin(tt * 1.7 + i)
+                else:
+                    head = 2 * math.sin(tt * 1.2 + i)
+                    ra = rb = 3 * math.sin(tt * 1.5 + i)
+                if excl:
+                    k_ = math.sin(min(1.0, since / 0.7) * math.pi)
+                    ra, rb = ra + 45 * k_, rb + 45 * k_
+                if sg.get("dance"):
+                    beat = tt * sg["dance"] / 60
+                    ra = 35 * abs(math.sin(math.pi * beat))
+                    rb = 35 * abs(math.sin(math.pi * beat + math.pi / 2))
+                    head = 8 * math.sin(math.pi * beat / 2 + i)
+                comp = rg.compose(mouth, bl, sg.get("mood", "calm"), head=head, arm_l=-ra, arm_r=rb,
+                                  wings=22 * math.sin(tt * 42), gx=gx, gy=gy)
+                kk = hh / rg.core_h
+                s2 = comp.resize((max(1, int(comp.width * kk)), max(1, int(comp.height * kk))), Image.BILINEAR)
+                rig_pad = int(rg.pad_top * kk)
+                ww = int(rg.core_w * kk)
+            else:
+                s2 = spr.resize((ww, hh), Image.BILINEAR)
             if tilt:
+                h0 = s2.height
                 s2 = s2.rotate(tilt, resample=Image.BICUBIC, expand=True)
-                ww = s2.width
-                hh = s2.height
+                if rg is not None:
+                    rig_pad += (s2.height - h0) // 2
+                else:
+                    ww = s2.width
+                    hh = s2.height
             lift = LIFT.get(c, 0) * (H if land else 1000) * sc
             if STYLE2:
                 # sombra de contacto suave pegada a los pies (más chica y clara cuando salta o vuela)
@@ -797,7 +844,7 @@ class Painter:
             if hide < 0:
                 top += int(hide * hh)
             self.box[c] = (px, top, ww, hh)
-            frame.paste(s2, (px - ww // 2, top), s2)
+            frame.paste(s2, (px - s2.width // 2, top - rig_pad), s2)
             self.heads[c] = (px, top + hh * (0.32 if c in ("PIPO", "ABU") else 0.42))
             pos[c] = px
         self.last_pos = dict(pos)

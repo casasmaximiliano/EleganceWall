@@ -34,11 +34,16 @@ def link(ob):
     return ob
 
 
-def rounded(pts, r, n=6):
-    """Redondea las esquinas de un polígono 2D (lista de (x, y)) con arcos de radio r."""
+def rounded(pts, r, n=6, rs=None):
+    """Redondea las esquinas de un polígono 2D (lista de (x, y)) con arcos de radio r (rs: radio por esquina)."""
     out = []
     N = len(pts)
+    r0 = r
     for i in range(N):
+        r = rs.get(i, r0) if rs else r0
+        if r <= 0:
+            out.append(tuple(pts[i]))
+            continue
         P, A, B = Vector(pts[i]), Vector(pts[i - 1]), Vector(pts[(i + 1) % N])
         u, v = (A - P), (B - P)
         la, lb = u.length, v.length
@@ -1045,7 +1050,7 @@ def moon():
     return sc
 
 
-def puffy(pts, m, H=0.25, back=0.5, step=0.03, loc=(0, 0, 0), name="puffy", hfun=None, smooth=25):
+def puffy(pts, m, H=0.25, back=0.5, step=0.03, loc=(0, 0, 0), name="puffy", hfun=None, smooth=25, rings=()):
     """Forma 2D «inflada» como un globo (x, z de frente): malla de Delaunay dentro del contorno y cada punto sale
     hacia la cámara según su distancia al borde (alisada). Mantiene las puntas (la del corazón) sin los picos que
     deja el bisel de las curvas en las esquinas agudas."""
@@ -1068,13 +1073,39 @@ def puffy(pts, m, H=0.25, back=0.5, step=0.03, loc=(0, 0, 0), name="puffy", hfun
         return c
     xs, ys = [p.x for p in P], [p.y for p in P]
     verts = list(P)
+    cell = {}
+
+    def free(q, rmin):
+        cx, cy = int(q.x // 0.02), int(q.y // 0.02)
+        for i in range(cx - 2, cx + 3):
+            for j_ in range(cy - 2, cy + 3):
+                for o in cell.get((i, j_), ()):
+                    if (o - q).length < rmin:
+                        return False
+        return True
+
+    def add(q):
+        verts.append(q)
+        cell.setdefault((int(q.x // 0.02), int(q.y // 0.02)), []).append(q)
+    for q in P:
+        cell.setdefault((int(q.x // 0.02), int(q.y // 0.02)), []).append(q)
+    area = sum(P[i].x * P[(i + 1) % len(P)].y - P[(i + 1) % len(P)].x * P[i].y for i in range(len(P)))
+    sgn = 1 if area > 0 else -1
+    for off in rings:  # anillos paralelos al borde: el borde redondeado queda parejo
+        for i in range(len(P)):
+            t_ = (P[(i + 1) % len(P)] - P[i - 1]).normalized()
+            nrm = Vector((-t_.y, t_.x)) * sgn
+            q = P[i] + nrm * off
+            if inside(q) and abs(dist(q) - off) < off * 0.25 and free(q, 0.6 * min(off, 0.02) + 0.004):
+                add(q)
+    dmin = max(rings) * 1.15 if rings else step * 0.6
     j = 0
     y = min(ys)
     while y < max(ys):
         x = min(xs) + (step / 2 if j % 2 else 0)
         while x < max(xs):
             q = Vector((x, y))
-            if inside(q) and dist(q) > step * 0.6:
+            if inside(q) and dist(q) > dmin:
                 verts.append(q)
             x += step
         y += step * 0.866
@@ -1084,8 +1115,8 @@ def puffy(pts, m, H=0.25, back=0.5, step=0.03, loc=(0, 0, 0), name="puffy", hfun
     ds = [dist(Vector(v)) for v in V]
     dmax = max(ds)
     hs = [math.sqrt(max(0.0, 1 - (1 - min(1.0, d / dmax)) ** 2)) for d in ds]
-    if hfun:  # altura propia (p. ej. lóbulos que se funden), siempre 0 en el borde
-        hs = [hfun(Vector(v), h) * math.sqrt(min(1.0, d / 0.07)) for v, h, d in zip(V, hs, ds)]
+    if hfun:  # perfil propio de altura según la distancia al borde (0 en el borde)
+        hs = [hfun(d, dmax) for d in ds]
     nb = [set() for _ in V]
     for f in F:
         for i in range(len(f)):
@@ -1115,24 +1146,28 @@ def puffy(pts, m, H=0.25, back=0.5, step=0.03, loc=(0, 0, 0), name="puffy", hfun
 def heart():
     sc = setup()
     Rd = mat("heart", (240, 40, 70), 0.15)
-    pts = []
-    for k in range(96):
-        t = k / 96 * 2 * math.pi
-        if t < 0.3 or t > 2 * math.pi - 0.3:      # sin el pico del medio de arriba: un hoyito suave
-            continue
-        x = 16 * math.sin(t) ** 3
-        y = 13 * math.cos(t) - 5 * math.cos(2 * t) - 2 * math.cos(3 * t) - math.cos(4 * t)
-        pts.append((x / 22, y / 22 * (0.85 if y < 0 else 1.0)))
-    pts.append((0, 3.6 / 22))
-    def lobes(q, hd, k=9.0, R_=0.38):
-        # dos lóbulos redondos (cúpulas) fundidos con la forma general: sin pliegue bajo el hoyito
-        hs_ = [hd]
-        for cx in (-0.35, 0.35):
-            r2 = (q.x - cx) ** 2 + (q.y - 0.19) ** 2
-            hs_.append(math.sqrt(max(0.0, R_ * R_ - r2)) / R_)
-        return math.log(sum(math.exp(k * h) for h in hs_)) / k - math.log(3) / k * 0.6
-    puffy(pts, Rd, H=0.34, loc=(0, 0, 0.75), step=0.025, smooth=20, hfun=lobes)
-    shine((-0.38, -0.3, 0.98), 1.2, rot=(0, R(-40), 0))
+    # contorno clásico: dos círculos (lóbulos) + rectas tangentes hasta la punta; hoyito y punta redondeados.
+    # Se rellena, se extruye y se bisela grande: un almohadón liso, sin uniones en el hoyito.
+    cx, cy, Rr, T = 0.36, 0.2, 0.39, -0.78
+    C = Vector((cx, cy))
+    Tp = Vector((0, T))
+    D = (Tp - C).length
+    al = math.atan2(Tp.y - C.y, Tp.x - C.x)
+    a0 = al + math.acos(Rr / D)          # punto de tangencia del lado de afuera (derecha)
+    a1 = math.atan2(math.sqrt(Rr * Rr - cx * cx), -cx)   # donde el círculo corta x = 0 (hoyito)
+    if a0 > a1:
+        a0 -= 2 * math.pi
+    right = []
+    n = 40
+    for k in range(n + 1):
+        a = a0 + (a1 - 0.6 - a0) * k / n
+        right.append((cx + Rr * math.cos(a), cy + Rr * math.sin(a)))
+    notch = (0, cy + math.sqrt(Rr * Rr - cx * cx))
+    left = [(-x, y) for x, y in reversed(right)]
+    pts = [(0, T)] + right + [notch] + left
+    pts = rounded(pts, 0.0, n=16, rs={0: 0.03, n + 2: 0.3})
+    shape(pts, Rd, depth=0.14, bevel=0.09, loc=(0, 0, 0.75))
+    shine((-0.38, -0.25, 1.0), 1.2, rot=(0, R(-40), 0))
     cam(sc, (0, 0, 0.72), 1.95, height=1.0)
     return sc
 
